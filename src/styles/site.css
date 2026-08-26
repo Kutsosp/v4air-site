@@ -454,6 +454,10 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   padding: 0;
   max-width: 640px;
   position: relative;
+  /* every row as tall as the tallest, so the numbered rings sit at equal
+     distances regardless of how long each step's text runs */
+  display: grid;
+  grid-auto-rows: 1fr;
 }
 .steps .thread,
 .steps .thread-fill {
@@ -720,6 +724,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .road.compact .castle { width: 150px; height: 78px; margin-top: -14px; }
 .road.compact .road-stops { height: auto; }
 .road.compact .dot { width: 14px; height: 14px; cursor: pointer; }
+/* finger-sized invisible hit area around each 14px dot */
+.road.compact .dot::after { content: ""; position: absolute; inset: -15px; }
 .road.compact .dot.sel { border-color: var(--accent); box-shadow: 0 0 8px rgb(var(--accent-glow) / 0.5); }
 .stop-caption { text-align: center; padding-top: 14px; min-height: 4.2rem; }
 .stop-caption .date {
