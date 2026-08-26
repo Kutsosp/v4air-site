@@ -91,9 +91,16 @@ export function Timeline() {
       road
         .querySelectorAll('.castle, .now-tag, .marker, .dot')
         .forEach((n) => n.remove())
-      const pad = 75
+      /* narrow screens: same horizontal road squeezed to the viewport, with a
+         single tappable caption under it instead of seven side-by-side cards */
+      const compact = w < 640
+      road.classList.toggle('compact', compact)
+      const castleDim = compact
+        ? { h: 78, lift: 14 }
+        : { h: Math.round(CASTLE.scale * 0.52), lift: CASTLE.lift }
+      const pad = compact ? 26 : 75
       const H = 90
-      const amp = 14
+      const amp = compact ? 12 : 14
       const mid = 48
       const pts = STOPS.map((_, k) => ({
         x: pad + (w - 2 * pad) * (k / (STOPS.length - 1)),
@@ -123,19 +130,34 @@ export function Timeline() {
       for (let i = 0; i <= 400; i++) samples.push(track.getPointAtLength((L * i) / 400))
       prog.style.strokeDasharray = `${L} ${L}`
 
+      const { last, eventLive, sign } = state
+
       stopsEl.innerHTML = ''
       const dotEls: HTMLElement[] = []
       const stopEls: HTMLElement[] = []
+      let selectCaption = (_k: number) => {}
+      if (compact) {
+        const caption = document.createElement('div')
+        caption.className = 'stop-caption'
+        stopsEl.appendChild(caption)
+        selectCaption = (k: number) => {
+          const s = STOPS[k]
+          caption.innerHTML = `<span class="date">${s.label}</span><span class="what">${s.what}</span>`
+          dotEls.forEach((el, i) => el.classList.toggle('sel', i === k))
+        }
+      }
       STOPS.forEach((s, k) => {
         const isMain = k === 5
-        const div = document.createElement('div')
-        div.className = `stop${isMain ? ' main' : ''}`
-        div.style.left = `${pts[k].x}px`
-        div.style.top = `${pts[k].y + 18}px`
-        div.innerHTML = `<span class="date">${s.label}</span><span class="what">${s.what}</span><span class="sub">${s.sub}</span>`
-        div.tabIndex = 0
-        stopsEl.appendChild(div)
-        stopEls.push(div)
+        if (!compact) {
+          const div = document.createElement('div')
+          div.className = `stop${isMain ? ' main' : ''}`
+          div.style.left = `${pts[k].x}px`
+          div.style.top = `${pts[k].y + 18}px`
+          div.innerHTML = `<span class="date">${s.label}</span><span class="what">${s.what}</span><span class="sub">${s.sub}</span>`
+          div.tabIndex = 0
+          stopsEl.appendChild(div)
+          stopEls.push(div)
+        }
         if (isMain) {
           const c = document.createElement('span')
           c.className = 'castle'
@@ -151,7 +173,9 @@ export function Timeline() {
           road.appendChild(dot)
           dotEls.push(dot)
         }
+        if (compact) dotEls[k].addEventListener('click', () => selectCaption(k))
       })
+      if (compact) selectCaption(Math.min(Math.max(last, 0), STOPS.length - 1))
 
       const lengthAtX = (x: number) => {
         let best = 0
@@ -166,13 +190,12 @@ export function Timeline() {
         return (L * best) / 400
       }
 
-      const { last, eventLive, sign } = state
       STOPS.forEach((_, k) => {
         if (dotEls[k].classList.contains('dot')) {
           dotEls[k].classList.toggle('past', k < last)
           dotEls[k].classList.toggle('now-dot', k === last)
         }
-        stopEls[k].classList.toggle('done', k < last)
+        if (stopEls[k]) stopEls[k].classList.toggle('done', k < last)
       })
 
       if (last >= 0 && !eventLive && sign) {
@@ -185,7 +208,7 @@ export function Timeline() {
       }
 
       let x: number
-      if (last === -1) x = pts[0].x - 40
+      if (last === -1) x = pts[0].x - (compact ? 18 : 40)
       else if (last >= STOPS.length - 2) x = pts[5].x
       else {
         const f = (now - T[last]) / (T[last + 1] - T[last])
@@ -200,11 +223,11 @@ export function Timeline() {
         if (eventLive) {
           m.classList.add('m-victory')
           m.style.left = `${pts[5].x}px`
-          m.style.top = `${pts[5].y - 8 - Math.round(CASTLE.scale * 0.52) - CASTLE.lift - 4 - VICTORY.lift}px`
+          m.style.top = `${pts[5].y - 8 - castleDim.h - castleDim.lift - 4 - VICTORY.lift}px`
           m.innerHTML = TAICHI_SVG
         } else {
           m.classList.add('m-walk')
-          const mx = Math.max(60, x)
+          const mx = Math.max(compact ? 8 : 60, x)
           let my = 48
           let bestDx = Infinity
           samples.forEach((p) => {
@@ -221,13 +244,6 @@ export function Timeline() {
           m.innerHTML = `<span class="frame f1">${WALK_SVG}</span><span class="frame f2">${RUN_SVG}</span>`
         }
         road.appendChild(m)
-      }
-
-      /* on a scrolling band (mobile), start with the current position centered */
-      const band = road.parentElement
-      if (band && band.scrollWidth > band.clientWidth + 1) {
-        const focus = sign && !eventLive ? x : pts[5].x
-        band.scrollLeft = Math.max(0, focus - band.clientWidth / 2)
       }
     }
 

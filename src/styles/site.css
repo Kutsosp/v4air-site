@@ -714,17 +714,24 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .road-wrap { display: none; }
 .timeline.js .road-wrap { display: block; }
 .timeline.js .tl-list { display: none; }
-/* mobile: same road, laid out at 900px inside a sideways-scrolling band;
-   the top padding keeps the castle inside the scroll clip */
-@media (max-width: 900px) {
-  .timeline.js .road-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-top: 150px;
-    padding-bottom: 28px; /* the main-event card's glow needs clearance */
-  }
-  .timeline.js .road { width: 900px; }
+/* compact (phone) road: full width, no scroll; the castle shrinks and one
+   tappable caption under the road replaces the seven side-by-side cards */
+.road.compact { margin-top: 56px; } /* headroom for the small castle */
+.road.compact .castle { width: 150px; height: 78px; margin-top: -14px; }
+.road.compact .road-stops { height: auto; }
+.road.compact .dot { width: 14px; height: 14px; cursor: pointer; }
+.road.compact .dot.sel { border-color: var(--accent); box-shadow: 0 0 8px rgb(var(--accent-glow) / 0.5); }
+.stop-caption { text-align: center; padding-top: 14px; min-height: 4.2rem; }
+.stop-caption .date {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
 }
+.stop-caption .what { font-weight: 600; }
 
 /* ---------- faq ---------- */
 :root { interpolate-size: allow-keywords; } /* enables height:auto transitions (Chromium 131+) */
@@ -864,7 +871,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .who { padding-block: clamp(4.5rem, 9vw, 8rem); border-top: 1px solid var(--line); }
 .who-q { margin-bottom: 2rem; }
 .who-doubt {
-  font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2rem);
+  /* the rotator is the section's highlight: display-scale type */
+  font-size: clamp(1.5rem, 1rem + 2.2vw, 2.6rem);
   font-weight: 500;
   color: var(--text-2);
   line-height: 1.5;
@@ -946,7 +954,9 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   .partner-q:hover .partner-tip,
   .partner-q:focus .partner-tip,
   .partner-q:focus-within .partner-tip { transform: translateY(0); }
-  .who-doubt { font-size: clamp(0.9rem, 3.4vw, 1.6rem); }
+  /* phones: keep it big and let the rotating lines wrap instead of shrinking */
+  .who-doubt { font-size: clamp(1.2rem, 5.2vw, 1.9rem); }
+  .who-doubt .slot-loop { white-space: normal; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .slot__col { transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1); }
