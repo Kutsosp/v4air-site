@@ -547,6 +547,20 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .apply-cta { text-align: center; }
 .apply-cta .btn { margin-bottom: 0.9rem; }
 .apply-cta p { font-size: 0.95rem; margin: 0; }
+/* the pinned frame must fit 100vh whole, title through panel: spacing and
+   type compress with viewport height on short screens.
+   (Must come after the base .steps/.apply-panel rules, or their shorthand
+   margins win.) */
+@media (min-width: 901px) {
+  .apply h2 { font-size: clamp(1.5rem, 3vh, 2.6rem); margin-bottom: clamp(0.4rem, 1vh, 1rem); }
+  .apply .pin-inner .muted { margin-bottom: 0; }
+  .apply .steps { margin-top: clamp(0.7rem, 2vh, 2.5rem); }
+  .apply .steps li { padding-bottom: clamp(0.6rem, 2vh, 2.2rem); }
+  .apply .steps h3 { font-size: clamp(0.95rem, 2vh, 1.2rem); margin-bottom: clamp(0.15rem, 0.5vh, 1rem); }
+  .apply .steps p { font-size: clamp(0.82rem, 1.8vh, 1rem); }
+  .apply .apply-panel { margin-top: clamp(0.7rem, 2vh, 2.5rem); padding: clamp(0.8rem, 2vh, 2.75rem) clamp(1.5rem, 3.5vw, 2.75rem); }
+  .apply .apply-panel h3 { margin-bottom: clamp(0.2rem, 0.7vh, 0.6rem); }
+}
 
 /* ---------- timeline: the road to Kostelec ---------- */
 .timeline { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
