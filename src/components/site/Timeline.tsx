@@ -256,9 +256,6 @@ export function Timeline() {
     <section className="timeline" id="timeline" ref={sectionRef}>
       <Reveal className="wrap">
         <h2>The road to Kostelec</h2>
-        <p className="muted intro">
-          Seven dates. Only the first two need anything from you; the rest is on us.
-        </p>
         <p className="countdown" ref={countdownRef}></p>
         <div className="road-wrap">
           <div className="road" ref={roadRef}>
