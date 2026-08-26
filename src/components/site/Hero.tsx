@@ -1,9 +1,10 @@
 import type { Theme } from '@/App'
+import { asset } from '@/lib/utils'
 import { APPLY_URL } from './Reveal'
 
 export function Hero({ theme }: { theme: Theme }) {
   const photo =
-    theme === 'light' ? '/assets/castle-day-2x.jpg' : '/assets/castle-dusk-2x.jpg'
+    theme === 'light' ? asset('assets/castle-day-2x.jpg') : asset('assets/castle-dusk-2x.jpg')
 
   return (
     <section className="hero ov-on ts-on" id="hero">

@@ -1,4 +1,5 @@
 import { Reveal } from './Reveal'
+import { asset } from '@/lib/utils'
 
 export function Funded() {
   return (
@@ -6,7 +7,7 @@ export function Funded() {
       <Reveal>
         <div className="wrap">
           <img
-            src="/assets/visegrad-fund_white.png"
+            src={asset('assets/visegrad-fund_white.png')}
             alt="International Visegrad Fund"
             width={626}
             height={280}

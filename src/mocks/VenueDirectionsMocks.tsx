@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { asset } from '@/lib/utils'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { InView } from '@/components/motion-primitives/in-view'
 import { TransitionPanel } from '@/components/motion-primitives/transition-panel'
@@ -17,11 +18,11 @@ const view = { once: true, amount: 0.3 } as const
 
 /* ---------- 1. 72 HOURS: the resident's timeline ---------- */
 const HOURS = [
-  { d: 'Day 1', t: '12:00', line: 'You arrive through the gate tower. Someone hands you a key and a programme your own answers helped write.', img: '/assets/exterior-2024-web.jpg' },
+  { d: 'Day 1', t: '12:00', line: 'You arrive through the gate tower. Someone hands you a key and a programme your own answers helped write.', img: asset('assets/exterior-2024-web.jpg') },
   { d: 'Day 1', t: '19:30', line: 'Dinner in one hall. All of you, one table plan, no name-tag roulette.' },
   { d: 'Day 2', t: '09:10', line: 'A talk you asked for, given to the exact people who asked for it.' },
-  { d: 'Day 2', t: '16:00', line: 'A workshop built from what applicants said they were stuck on.', img: '/assets/hall-web.jpg' },
-  { d: 'Day 2', t: '23:40', line: 'The best conversation of your year happens in a corridor.', img: '/assets/corridor-web.jpg' },
+  { d: 'Day 2', t: '16:00', line: 'A workshop built from what applicants said they were stuck on.', img: asset('assets/hall-web.jpg') },
+  { d: 'Day 2', t: '23:40', line: 'The best conversation of your year happens in a corridor.', img: asset('assets/corridor-web.jpg') },
   { d: 'Day 3', t: '17:00', line: 'You leave with people you will still be working with in five years.' },
 ]
 
@@ -73,8 +74,8 @@ export function DossierMock() {
         <h2 className="mb-14">Kostelec Castle, a file</h2>
 
         <div className="grid gap-10 md:grid-cols-2">
-          <Plate n="01" src="/assets/exterior-wide-web.jpg" cap="The chateau above the black forests. Until 1920 the town was officially Black Kostelec." />
-          <Plate n="02" src="/assets/courtyard-web.jpg" cap="The Renaissance courtyard, largely completed by the 1590s." />
+          <Plate n="01" src={asset('assets/exterior-wide-web.jpg')} cap="The chateau above the black forests. Until 1920 the town was officially Black Kostelec." />
+          <Plate n="02" src={asset('assets/courtyard-web.jpg')} cap="The Renaissance courtyard, largely completed by the 1590s." />
         </div>
 
         <InView variants={rise} viewOptions={view} transition={{ duration: 0.7 }}>
@@ -85,8 +86,8 @@ export function DossierMock() {
         </InView>
 
         <div className="grid gap-10 md:grid-cols-2">
-          <Plate n="03" src="/assets/chapel-web.jpg" cap="Chapel of St. Adalbert, 1568–1573." />
-          <Plate n="04" src="/assets/sgraffito-web.jpg" cap="Sgraffito on the facade, up close." />
+          <Plate n="03" src={asset('assets/chapel-web.jpg')} cap="Chapel of St. Adalbert, 1568–1573." />
+          <Plate n="04" src={asset('assets/sgraffito-web.jpg')} cap="Sgraffito on the facade, up close." />
         </div>
 
         <InView variants={rise} viewOptions={view} transition={{ duration: 0.7 }}>
@@ -97,8 +98,8 @@ export function DossierMock() {
         </InView>
 
         <div className="grid gap-10 md:grid-cols-2">
-          <Plate n="05" src="/assets/corridor-web.jpg" cap="Castle corridors." />
-          <Plate n="06" src="/assets/exterior-2024-web.jpg" cap="The gate tower today. A working university castle: 150 beds, conference halls, its own kitchen." />
+          <Plate n="05" src={asset('assets/corridor-web.jpg')} cap="Castle corridors." />
+          <Plate n="06" src={asset('assets/exterior-2024-web.jpg')} cap="The gate tower today. A working university castle: 150 beds, conference halls, its own kitchen." />
         </div>
       </div>
     </section>
@@ -107,10 +108,10 @@ export function DossierMock() {
 
 /* ---------- 3. THE GROUND PLAN: silhouette with hotspots ---------- */
 const SPOTS = [
-  { id: 'gate', x: '18%', y: '58%', label: 'Gate tower', img: '/assets/exterior-2024-web.jpg', text: 'You arrive here. Prague is 30 minutes behind you; the black forests start at the wall.' },
-  { id: 'courtyard', x: '44%', y: '48%', label: 'Courtyard', img: '/assets/courtyard-web.jpg', text: 'Renaissance arcades; coffee, arguments, and the space between sessions.' },
-  { id: 'chapel', x: '68%', y: '38%', label: 'Chapel', img: '/assets/chapel-web.jpg', text: 'St. Adalbert’s, 1568–1573. The almost-king of Bohemia is buried here.' },
-  { id: 'halls', x: '85%', y: '55%', label: 'Halls', img: '/assets/hall-web.jpg', text: 'Talks and workshops in the historic halls; you sleep one staircase away.' },
+  { id: 'gate', x: '18%', y: '58%', label: 'Gate tower', img: asset('assets/exterior-2024-web.jpg'), text: 'You arrive here. Prague is 30 minutes behind you; the black forests start at the wall.' },
+  { id: 'courtyard', x: '44%', y: '48%', label: 'Courtyard', img: asset('assets/courtyard-web.jpg'), text: 'Renaissance arcades; coffee, arguments, and the space between sessions.' },
+  { id: 'chapel', x: '68%', y: '38%', label: 'Chapel', img: asset('assets/chapel-web.jpg'), text: 'St. Adalbert’s, 1568–1573. The almost-king of Bohemia is buried here.' },
+  { id: 'halls', x: '85%', y: '55%', label: 'Halls', img: asset('assets/hall-web.jpg'), text: 'Talks and workshops in the historic halls; you sleep one staircase away.' },
 ]
 
 export function GroundPlanMock() {
@@ -123,7 +124,7 @@ export function GroundPlanMock() {
         <p className="muted mb-10">Tap a point.</p>
         <div className="grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
           <div className="relative">
-            <img src="/assets/castle-silhouette.png" alt="Silhouette of Kostelec Castle and town" className="w-full opacity-90 [filter:drop-shadow(0_0_14px_rgba(233,162,79,0.25))]" />
+            <img src={asset('assets/castle-silhouette.png')} alt="Silhouette of Kostelec Castle and town" className="w-full opacity-90 [filter:drop-shadow(0_0_14px_rgba(233,162,79,0.25))]" />
             {SPOTS.map((s, k) => (
               <button
                 key={s.id}
@@ -167,7 +168,7 @@ export function CinematicChaptersMock() {
   return (
     <section className="border-t border-line">
       <div className="relative h-[75vh]">
-        <img src="/assets/castle-dusk.jpg" alt="Kostelec Castle at dusk" className="h-full w-full object-cover" />
+        <img src={asset('assets/castle-dusk.jpg')} alt="Kostelec Castle at dusk" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
         <p className="absolute bottom-8 left-1/2 mb-0 -translate-x-1/2 text-sm uppercase tracking-[0.2em] text-ink-2">The venue</p>
       </div>
@@ -177,7 +178,7 @@ export function CinematicChaptersMock() {
         </div>
       </InView>
       <div className="relative h-[75vh]">
-        <img src="/assets/chapel-web.jpg" alt="Chapel of St. Adalbert" className="h-full w-full object-cover" />
+        <img src={asset('assets/chapel-web.jpg')} alt="Chapel of St. Adalbert" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
       </div>
       <InView variants={rise} viewOptions={view} transition={{ duration: 0.7 }}>
@@ -199,12 +200,12 @@ export function ThenNowMock() {
         <p className="muted mb-10">Drag the divider.</p>
         <ImageComparison className="aspect-video w-full max-w-4xl overflow-hidden rounded-xl border border-line" enableHover springOptions={{ bounce: 0.2 }}>
           <ImageComparisonImage
-            src="/assets/exterior-wide-web.jpg"
+            src={asset('assets/exterior-wide-web.jpg')}
             alt="The castle, archival treatment"
             position="left"
             className="grayscale sepia-[0.35] contrast-125 brightness-75"
           />
-          <ImageComparisonImage src="/assets/exterior-wide-web.jpg" alt="The castle today" position="right" />
+          <ImageComparisonImage src={asset('assets/exterior-wide-web.jpg')} alt="The castle today" position="right" />
           <ImageComparisonSlider className="w-0.5 bg-accent shadow-[0_0_10px_rgba(233,162,79,0.6)]">
             <span className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent bg-bg-raise" />
           </ImageComparisonSlider>
@@ -217,13 +218,13 @@ export function ThenNowMock() {
 
 /* ---------- 6. THE CORRIDOR: horizontal hung gallery ---------- */
 const HUNG = [
-  { src: '/assets/corridor-web.jpg', cap: 'Castle corridors', h: 'h-80' },
-  { src: '/assets/exterior-wide-web.jpg', cap: 'Above the black forests', h: 'h-56' },
-  { src: '/assets/chapel-web.jpg', cap: 'Chapel of St. Adalbert', h: 'h-72' },
-  { src: '/assets/courtyard-web.jpg', cap: 'The courtyard', h: 'h-60' },
-  { src: '/assets/sgraffito-web.jpg', cap: 'Sgraffito, up close', h: 'h-48' },
-  { src: '/assets/exterior-2024-web.jpg', cap: 'The gate tower', h: 'h-72' },
-  { src: '/assets/hall-web.jpg', cap: 'Historic halls', h: 'h-64' },
+  { src: asset('assets/corridor-web.jpg'), cap: 'Castle corridors', h: 'h-80' },
+  { src: asset('assets/exterior-wide-web.jpg'), cap: 'Above the black forests', h: 'h-56' },
+  { src: asset('assets/chapel-web.jpg'), cap: 'Chapel of St. Adalbert', h: 'h-72' },
+  { src: asset('assets/courtyard-web.jpg'), cap: 'The courtyard', h: 'h-60' },
+  { src: asset('assets/sgraffito-web.jpg'), cap: 'Sgraffito, up close', h: 'h-48' },
+  { src: asset('assets/exterior-2024-web.jpg'), cap: 'The gate tower', h: 'h-72' },
+  { src: asset('assets/hall-web.jpg'), cap: 'Historic halls', h: 'h-64' },
 ]
 
 export function CorridorMock() {
@@ -257,16 +258,16 @@ export function NightfallMock() {
     <section className="border-t border-line" ref={ref}>
       <div className="relative h-[160vh]">
         <div className="sticky top-0 h-screen overflow-hidden">
-          <img src="/assets/castle-day.jpg" alt="Kostelec Castle in daylight" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={asset('assets/castle-day.jpg')} alt="Kostelec Castle in daylight" className="absolute inset-0 h-full w-full object-cover" />
           <motion.img
-            src="/assets/castle-dusk.jpg"
+            src={asset('assets/castle-dusk.jpg')}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ opacity: duskOpacity }}
           />
           <motion.img
-            src="/assets/castle-silhouette.png"
+            src={asset('assets/castle-silhouette.png')}
             alt=""
             aria-hidden="true"
             className="absolute bottom-0 left-1/2 w-[520px] max-w-[70vw] -translate-x-1/2 opacity-90"

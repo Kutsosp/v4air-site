@@ -1,4 +1,5 @@
 import { Reveal } from './Reveal'
+import { asset } from '@/lib/utils'
 
 /* Canon venue section (the cinematic scrollytelling rework lives in
    v4air-landing/mock-venue.html, pending Peter's final verdict). */
@@ -19,7 +20,7 @@ export function Venue() {
           </div>
           <figure className="venue-photo">
             <img
-              src="/assets/castle-day.jpg"
+              src={asset('assets/castle-day.jpg')}
               alt="Aerial view of Kostelec Castle in daylight, red roofs and towers surrounded by green forest"
               width={1600}
               height={1066}

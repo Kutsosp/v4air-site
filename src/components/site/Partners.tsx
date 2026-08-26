@@ -1,12 +1,13 @@
 import { CONTACT_MAILTO, Reveal } from './Reveal'
+import { asset } from '@/lib/utils'
 
 const LOGOS = [
-  { src: '/assets/charles-university_white.png', alt: 'Charles University', place: 'Prague, Czechia', tall: true, w: 280, h: 280 },
-  { src: '/assets/uwr-wroclaw_white.png', alt: 'University of Wroclaw', place: 'Wrocław, Poland', w: 751, h: 255 },
-  { src: '/assets/umk-torun_white.png', alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 348, h: 280 },
-  { src: '/assets/cvut_white.png', alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 137, h: 280 },
-  { src: '/assets/elte_white.png', alt: 'Eotvos Lorand University in Budapest', place: 'Budapest, Hungary', w: 1400, h: 280 },
-  { src: '/assets/comenius-university_white.png', alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 693, h: 280 },
+  { src: asset('assets/charles-university_white.png'), alt: 'Charles University', place: 'Prague, Czechia', tall: true, w: 280, h: 280 },
+  { src: asset('assets/uwr-wroclaw_white.png'), alt: 'University of Wroclaw', place: 'Wrocław, Poland', w: 751, h: 255 },
+  { src: asset('assets/umk-torun_white.png'), alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 348, h: 280 },
+  { src: asset('assets/cvut_white.png'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 137, h: 280 },
+  { src: asset('assets/elte_white.png'), alt: 'Eotvos Lorand University in Budapest', place: 'Budapest, Hungary', w: 1400, h: 280 },
+  { src: asset('assets/comenius-university_white.png'), alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 693, h: 280 },
 ]
 
 export function Partners() {

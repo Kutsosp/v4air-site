@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { asset } from '@/lib/utils'
 import { motion, useInView } from 'motion/react'
 import { TextEffect } from '@/components/motion-primitives/text-effect'
 import { TextMorph } from '@/components/motion-primitives/text-morph'
@@ -62,7 +63,7 @@ export function Footer() {
             </div>
             <motion.img
               className="footer-castle"
-              src="/assets/castle-silhouette.png"
+              src={asset('assets/castle-silhouette.png')}
               alt=""
               loading="lazy"
               initial={false}

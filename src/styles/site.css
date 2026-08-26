@@ -633,7 +633,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .castle {
   position: absolute;
   transform: translate(-50%, -96%);
-  background: url(/assets/castle-silhouette.png) center bottom / contain no-repeat;
+  background: url(../assets/castle-silhouette.png) center bottom / contain no-repeat;
   width: 240px;
   height: 125px;
   margin-top: -24px;

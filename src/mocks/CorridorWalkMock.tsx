@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { asset } from '@/lib/utils'
 import { motion, useScroll, useTransform } from 'motion/react'
 import {
   ImageComparison,
@@ -91,9 +92,9 @@ export function CorridorWalkMock() {
       </div>
 
       {/* 2: first photo cluster */}
-      <Hung src="/assets/corridor-web.jpg" cap="Castle corridors" h="h-[52vh]" />
-      <Hung src="/assets/exterior-wide-web.jpg" cap="Above the black forests" h="h-[38vh]" />
-      <Hung src="/assets/courtyard-web.jpg" cap="The Renaissance courtyard" h="h-[46vh]" />
+      <Hung src={asset('assets/corridor-web.jpg')} cap="Castle corridors" h="h-[52vh]" />
+      <Hung src={asset('assets/exterior-wide-web.jpg')} cap="Above the black forests" h="h-[38vh]" />
+      <Hung src={asset('assets/courtyard-web.jpg')} cap="The Renaissance courtyard" h="h-[46vh]" />
 
       {/* 3: 1548 wall */}
       <NumeralWall
@@ -109,13 +110,13 @@ export function CorridorWalkMock() {
           springOptions={{ bounce: 0.1 }}
         >
           <ImageComparisonImage
-            src="/assets/exterior-wide-web.jpg"
+            src={asset('assets/exterior-wide-web.jpg')}
             alt="The castle, archival treatment"
             position="left"
             className="grayscale sepia-[0.35] contrast-125 brightness-75"
           />
           <ImageComparisonImage
-            src="/assets/exterior-wide-web.jpg"
+            src={asset('assets/exterior-wide-web.jpg')}
             alt="The castle today"
             position="right"
           />
@@ -127,18 +128,18 @@ export function CorridorWalkMock() {
       </div>
 
       {/* 5: chapel + 1618 wall */}
-      <Hung src="/assets/chapel-web.jpg" cap="Chapel of St. Adalbert, 1568–1573" h="h-[52vh]" />
+      <Hung src={asset('assets/chapel-web.jpg')} cap="Chapel of St. Adalbert, 1568–1573" h="h-[52vh]" />
       <NumeralWall
         year="1618"
         line="The castle's owner helps plan the Prague defenestration, nearly takes the Bohemian throne, and dies at 23. He is buried in this chapel."
       />
-      <Hung src="/assets/sgraffito-web.jpg" cap="Sgraffito, up close" h="h-[40vh]" />
-      <Hung src="/assets/exterior-2024-web.jpg" cap="The gate tower today" h="h-[48vh]" />
+      <Hung src={asset('assets/sgraffito-web.jpg')} cap="Sgraffito, up close" h="h-[40vh]" />
+      <Hung src={asset('assets/exterior-2024-web.jpg')} cap="The gate tower today" h="h-[48vh]" />
 
       {/* 6: nightfall finale */}
       <div className="relative flex w-[75vw] flex-none items-center justify-center">
         <img
-          src="/assets/castle-dusk.jpg"
+          src={asset('assets/castle-dusk.jpg')}
           alt="Kostelec Castle at dusk, windows lit"
           className="h-[70vh] w-auto rounded-md border border-line object-cover"
           loading="lazy"

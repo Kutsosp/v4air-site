@@ -1,4 +1,5 @@
 import { AnimatedBackground } from '@/components/motion-primitives/animated-background'
+import { asset } from '@/lib/utils'
 import { Spotlight } from '@/components/motion-primitives/spotlight'
 import { Tilt } from '@/components/motion-primitives/tilt'
 
@@ -32,7 +33,7 @@ export function FormatBentoMock() {
           {/* hero cell */}
           <div className="relative overflow-hidden rounded-2xl border border-line md:col-span-2 md:row-span-3">
             <img
-              src="/assets/courtyard-web.jpg"
+              src={asset('assets/courtyard-web.jpg')}
               alt=""
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover opacity-25"

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { asset } from '@/lib/utils'
 import { Card, CardFooter } from '@/components/ui/card'
 
 /* Cinematic venue scrollytelling: pinned stage, 4 editorial fact beats,
@@ -28,10 +29,10 @@ const BEATS = [
 
 /* One photo per beat: image and text always change together */
 const PHOTOS = [
-  { src: '/assets/exterior-wide-web.jpg', cap: 'The chateau above the black forests.' },
-  { src: '/assets/courtyard-web.jpg', cap: 'The Renaissance courtyard.' },
-  { src: '/assets/chapel-web.jpg', cap: 'Chapel of St. Adalbert, 1568–1573.' },
-  { src: '/assets/exterior-2024-web.jpg', cap: 'The gate tower over the main entrance.' },
+  { src: asset('assets/exterior-wide-web.jpg'), cap: 'The chateau above the black forests.' },
+  { src: asset('assets/courtyard-web.jpg'), cap: 'The Renaissance courtyard.' },
+  { src: asset('assets/chapel-web.jpg'), cap: 'Chapel of St. Adalbert, 1568–1573.' },
+  { src: asset('assets/exterior-2024-web.jpg'), cap: 'The gate tower over the main entrance.' },
 ]
 
 export function VenueScrollyMock() {
