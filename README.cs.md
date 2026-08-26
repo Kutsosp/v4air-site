@@ -38,6 +38,10 @@ npm run build    # typová kontrola + produkční build do dist/
 - Motion (`motion/react`) s komponentami Motion Primitives (text-loop, text-morph, text-effect, in-view, animated-group, text-shimmer) a flip-clock z Watermelon UI
 - Písma: Aileron (titulky), Satoshi (text, vlastní hosting), JetBrains Mono
 
+## Autorství fotografií
+
+Fotografie zámku v galerii jsou odvozeniny snímků z Wikimedia Commons pod licencemi CC BY-SA; autory a licence uvádí [ATTRIBUTION.md](ATTRIBUTION.md).
+
 ## Omezení
 
 - Podstránka o interiérech zámku zatím neexistuje; návrhy jsou odložené v `src/mocks/`

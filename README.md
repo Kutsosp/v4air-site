@@ -38,6 +38,10 @@ npm run build    # type-check + production build to dist/
 - Motion (`motion/react`) with Motion Primitives components (text-loop, text-morph, text-effect, in-view, animated-group, text-shimmer) and Watermelon UI's flip-clock
 - Fonts: Aileron (display), Satoshi (body, self-hosted), JetBrains Mono
 
+## Image credits
+
+Castle gallery photos are CC BY-SA derivatives from Wikimedia Commons; see [ATTRIBUTION.md](ATTRIBUTION.md) for authors and licenses.
+
 ## Limitations
 
 - The interior-venue subpage is not built yet; venue mocks are parked under `src/mocks/`
