@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/aileron/600.css';
+@import '@fontsource/aileron/700.css';
+@import '@fontsource/aileron/800.css';
+@import './styles/site.css';
+
+/* Outfit (display, variable) + Satoshi (body, self-hosted Fontshare) */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tailwind color tokens map to the site's theme variables (site.css :root /
+   [data-theme="light"]), so every utility follows the light/dark switch */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raise: var(--bg-raise);
+  --color-line: var(--line);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  /* shadcn-style semantic tokens (Watermelon components expect these) */
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--accent-ink);
+  --color-secondary: var(--bg-raise);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--bg-raise);
+  --color-muted-foreground: var(--text-2);
+  --color-input: var(--line);
+  --color-destructive: #b3402f;
+  --color-destructive-foreground: #f4e9e6;
+  --color-card: var(--bg-raise);
+  --color-card-foreground: var(--text);
+  --color-border: var(--line);
+}
+
+@theme {
+  --font-sans: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Aileron', 'Satoshi', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  /* flip-clock flap animations (Watermelon flip-clock expects these utilities) */
+  --animate-flip-top: flip-top 0.3s ease-in forwards;
+  --animate-flip-bottom: flip-bottom 0.3s ease-out 0.3s forwards;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes flip-top {
+    from { transform: rotateX(0deg); }
+    to { transform: rotateX(-90deg); }
+  }
+  @keyframes flip-bottom {
+    from { transform: rotateX(90deg); }
+    to { transform: rotateX(0deg); }
+  }
+}
+
+body {
+  font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* display face for headlines and the wordmark
+   (--display-font is overridable by the ?debug font switcher) */
+h1,
+h2,
+.who-yes .yes,
+.numbers-sentence .num,
+.nav2 .brand,
+.footer-lockup {
+  font-family: var(--display-font, 'Aileron'), 'Satoshi', system-ui, sans-serif;
+}
