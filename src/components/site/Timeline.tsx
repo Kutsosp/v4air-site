@@ -86,7 +86,6 @@ export function Timeline() {
 
     function build() {
       if (!road || !svg || !stopsEl) return
-      if (!window.matchMedia('(min-width: 901px)').matches) return
       const w = road.clientWidth
       if (!w) return
       road
@@ -222,6 +221,13 @@ export function Timeline() {
           m.innerHTML = `<span class="frame f1">${WALK_SVG}</span><span class="frame f2">${RUN_SVG}</span>`
         }
         road.appendChild(m)
+      }
+
+      /* on a scrolling band (mobile), start with the current position centered */
+      const band = road.parentElement
+      if (band && band.scrollWidth > band.clientWidth + 1) {
+        const focus = sign && !eventLive ? x : pts[5].x
+        band.scrollLeft = Math.max(0, focus - band.clientWidth / 2)
       }
     }
 
