@@ -45,6 +45,7 @@ export function ApplySteps() {
     let span = 0
     let marks: number[] = []
     let panelMark = 1
+    let litTimer = 0
     const measure = () => {
       const ns = items.map((li) => li.querySelector<HTMLElement>('.n')!)
       const c = (n: HTMLElement) =>
@@ -80,12 +81,27 @@ export function ApplySteps() {
       fill.style.height = `${frac * span}px`
       items.forEach((li, k) => li.classList.toggle('on', frac >= marks[k] - 0.01))
       panel.classList.toggle('on', p >= 0.9)
-      panel.classList.toggle('lit', frac >= panelMark - 0.01)
+      /* light up a beat after arrival (same 400ms delay as the nav fold),
+         and only once the panel itself is visible */
+      const arrived = p >= 0.9 && frac >= panelMark - 0.01
+      if (arrived && !litTimer && !panel.classList.contains('lit')) {
+        litTimer = window.setTimeout(() => {
+          panel.classList.add('lit')
+          litTimer = 0
+        }, 400)
+      } else if (!arrived) {
+        if (litTimer) {
+          clearTimeout(litTimer)
+          litTimer = 0
+        }
+        panel.classList.remove('lit')
+      }
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', measure)
     onScroll()
     return () => {
+      if (litTimer) clearTimeout(litTimer)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', measure)
     }
