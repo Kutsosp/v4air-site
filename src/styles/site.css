@@ -131,7 +131,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
    checked = light mode. Sits on the hero photo, so its colors are fixed.
    SCSS color functions precomputed: lighten(#1d2532,5%) ~ #273142, darken(#dedad3,4%) ~ #d4cfc6. */
 .switch {
-  font-size: 4.5px; /* em-scaled: track = 16em x 7em = 72px x 31.5px */
+  font-size: 1.6px; /* em-scaled at 35% of the original 4.5px: track = 16em x 7em ~ 26px x 11px */
   position: relative;
   display: block;
   -webkit-tap-highlight-color: transparent;
