@@ -44,6 +44,7 @@ export function ApplySteps() {
     let top = 0
     let span = 0
     let marks: number[] = []
+    let panelMark = 1
     const measure = () => {
       const ns = items.map((li) => li.querySelector<HTMLElement>('.n')!)
       const c = (n: HTMLElement) =>
@@ -58,12 +59,14 @@ export function ApplySteps() {
       thread.style.height = `${span}px`
       fill.style.top = `${top}px`
       marks = ns.map((n) => (c(n) - top) / span)
+      /* the panel lights up like a ring the moment the fill touches its top edge */
+      panelMark = (panel.offsetTop - steps.offsetTop - top) / span
     }
     measure()
 
     if (reduce) {
       items.forEach((li) => li.classList.add('on'))
-      panel.classList.add('on')
+      panel.classList.add('on', 'lit')
       fill.style.height = `${span}px`
       window.addEventListener('resize', measure)
       return () => window.removeEventListener('resize', measure)
@@ -77,6 +80,7 @@ export function ApplySteps() {
       fill.style.height = `${frac * span}px`
       items.forEach((li, k) => li.classList.toggle('on', frac >= marks[k] - 0.01))
       panel.classList.toggle('on', p >= 0.9)
+      panel.classList.toggle('lit', frac >= panelMark - 0.01)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', measure)
