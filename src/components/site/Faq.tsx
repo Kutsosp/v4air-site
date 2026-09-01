@@ -35,7 +35,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-getting-there',
     q: 'Where is Kostelec and how do I get there?',
-    a: 'Kostelec nad Černými lesy is about 30 minutes from Prague. Accepted participants receive full travel instructions with their acceptance.',
+    a: 'Kostelec nad Černými lesy is about 30 minutes from Prague. Fly into Prague (Václav Havel Airport), take the metro to Háje (line C), and a direct bus takes you to Kostelec; roughly an hour door-to-door from the airport. Accepted participants receive full travel instructions with their acceptance.',
   },
   {
     id: 'faq-early-career',

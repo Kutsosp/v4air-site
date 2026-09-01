@@ -13,8 +13,8 @@ export function Venue() {
             <h2>You will be staying in the castle</h2>
             <p>
               A university-owned Renaissance castle in the black forests, 30 minutes
-              from Prague. All of us will live, eat, and socialize in one place for
-              the whole three days.
+              from Prague, with direct public transport access. All of us will live,
+              eat, and socialize in one place for the whole three days.
             </p>
             <p className="muted">Working language: English.</p>
           </div>

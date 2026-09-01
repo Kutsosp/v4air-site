@@ -23,21 +23,24 @@ export function Partners() {
           Coordinated by Charles University with partner institutions across the V4
           region.
         </p>
-        <div className="logo-wall">
-          {LOGOS.map((l) => (
-            <figure className="logo-cell" key={l.alt}>
-              <img
-                className={l.tall ? 'tall' : undefined}
-                src={l.src}
-                alt={l.alt}
-                width={l.w}
-                height={l.h}
-                loading="lazy"
-              />
-              <figcaption>{l.place}</figcaption>
-            </figure>
-          ))}
-        </div>
+        {/* Logo wall hidden 2026-09-01 (Peter); restore by un-commenting. */}
+        {false && (
+          <div className="logo-wall">
+            {LOGOS.map((l) => (
+              <figure className="logo-cell" key={l.alt}>
+                <img
+                  className={l.tall ? 'tall' : undefined}
+                  src={l.src}
+                  alt={l.alt}
+                  width={l.w}
+                  height={l.h}
+                  loading="lazy"
+                />
+                <figcaption>{l.place}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
         <div className="team">
           <div>
             <h3>Peter Kutsos</h3>

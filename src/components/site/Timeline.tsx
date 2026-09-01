@@ -203,7 +203,7 @@ export function Timeline() {
         tag.className = 'now-tag'
         tag.textContent = 'happening now'
         tag.style.left = `${pts[last].x}px`
-        tag.style.top = `${pts[last].y - 26}px`
+        tag.style.top = `${pts[last].y - 40}px`
         road.appendChild(tag)
       }
 
