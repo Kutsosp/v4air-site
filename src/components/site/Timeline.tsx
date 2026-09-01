@@ -203,7 +203,9 @@ export function Timeline() {
         tag.className = 'now-tag'
         tag.textContent = 'happening now'
         tag.style.left = `${pts[last].x}px`
-        tag.style.top = `${pts[last].y - 40}px`
+        /* walker is translateY(-100%): body spans [y-40.5, y-7] incl. bob, so the
+           tag (~13px tall) must top out at y-60 to clear it with a visible gap */
+        tag.style.top = `${pts[last].y - 60}px`
         road.appendChild(tag)
       }
 
