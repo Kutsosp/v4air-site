@@ -3,8 +3,11 @@ import { asset } from '@/lib/utils'
 
 const LOGOS = [
   { src: asset('assets/charles-university_white.png'), alt: 'Charles University', place: 'Prague, Czechia', tall: true, w: 280, h: 280 },
-  { src: asset('assets/cvut_white.png'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 137, h: 280 },
+  // Partnership paperwork in progress (2026-09): logo blurred, name and city withheld. Flip `tba` off to reveal.
+  { src: asset('assets/uwr-wroclaw_white.png'), alt: 'Partner university in Poland, to be announced', place: 'TBA, Poland', tba: true, w: 751, h: 255 },
   { src: asset('assets/umk-torun_white.png'), alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 348, h: 280 },
+  { src: asset('assets/cvut_white.png'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 137, h: 280 },
+  { src: asset('assets/elte_white.png'), alt: 'Partner university in Hungary, to be announced', place: 'TBA, Hungary', tba: true, w: 1400, h: 280 },
   { src: asset('assets/comenius-university_white.png'), alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 693, h: 280 },
 ]
 
@@ -23,9 +26,9 @@ export function Partners() {
         </p>
         <div className="logo-wall">
           {LOGOS.map((l) => (
-            <figure className="logo-cell" key={l.alt}>
+            <figure className={l.tba ? 'logo-cell tba' : 'logo-cell'} key={l.alt}>
               <img
-                className={l.tall ? 'tall' : undefined}
+                className={[l.tall && 'tall', l.tba && 'tba'].filter(Boolean).join(' ') || undefined}
                 src={l.src}
                 alt={l.alt}
                 width={l.w}

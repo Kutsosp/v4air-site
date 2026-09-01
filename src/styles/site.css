@@ -860,6 +860,10 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 /* logo + country caption: fixed-height logo box keeps captions on one line */
 .logo-cell { margin: 0; flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
 .logo-cell > img { align-self: center; }
+/* partners not yet announced: blurred mark, dimmed caption; light theme keeps the invert */
+.logo-wall img.tba { filter: invert(1) blur(5px); opacity: 0.55; }
+[data-theme="dark"] .logo-wall img.tba { filter: blur(5px); }
+.logo-cell.tba figcaption { color: var(--text-2); font-style: italic; }
 .logo-cell figcaption {
   font-size: clamp(0.42rem, 0.9vw, 0.78rem);
   letter-spacing: 0.06em;
