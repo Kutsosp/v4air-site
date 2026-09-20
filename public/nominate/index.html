@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Nominate someone: V4 AI Researchers Meetup, Kostelec Castle, 28 to 30 April 2027</title>
+<script>
+  (function () {
+    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+  })();
+</script>
+<style>
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-800-normal.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+
+  /* Poster palette (2027 identity): sage paper, ink, teal, bloom orange. Same tokens as the site. */
+  :root {
+    color-scheme: light;
+    --accent-glow: 221 127 62;
+    --bg: #f2f3ec;
+    --bg-raise: #f9f9f4;
+    --line: #d3d5c8;
+    --text: #161616;
+    --text-2: #52564a;
+    --accent: #b35c1f;
+    --accent-ink: #221304;
+    --teal: #4f8c88;
+    --btn-bg: #dd7f3e;
+    --btn-bg-hover: #e98f4e;
+    --btn-ink: #221304;
+    --error: #b3402f;
+    --field: #ffffff;
+    --radius: 12px;
+  }
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --accent-glow: 233 162 79;
+    --bg: #0c1517;
+    --bg-raise: #111d20;
+    --line: #24383b;
+    --text: #e9f1f0;
+    --text-2: #a7bcbb;
+    --accent: #e9a24f;
+    --accent-ink: #221304;
+    --teal: #79aca8;
+    --btn-bg: #e9a24f;
+    --btn-bg-hover: #f2b269;
+    --btn-ink: #221304;
+    --error: #e07a68;
+    --field: #0c1517;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Aileron', 'Satoshi', system-ui, sans-serif; line-height: 1.12; text-wrap: balance; margin: 0 0 1rem; }
+  h1 { font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.015em; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p { margin: 0 0 1rem; max-width: 65ch; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--teal); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
+  .muted { color: var(--text-2); }
+  .chip { background: #ffffff; color: #161616; padding: 0.06em 0.38em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* ---------- nav ---------- */
+  .nav2 { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg-raise) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav2-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1.5rem; }
+  .brand { display: flex; align-items: center; gap: 0.12em; font-family: 'Aileron', 'Satoshi', sans-serif; font-weight: 800; font-size: 1.9rem; line-height: 1; color: var(--text); text-decoration: none; }
+  .brand-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
+  .brand-air { letter-spacing: -0.015em; white-space: nowrap; }
+  .brand-words { display: block; font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; margin-left: 0.14em; }
+  @media (max-width: 700px) { .brand { font-size: 1.35rem; } }
+  .nav-right { display: flex; align-items: center; gap: 1.1rem; }
+  .nav-site { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+  .nav-site:hover { color: var(--teal); }
+  /* theme switch (site component, colours fixed) */
+  .switch { font-size: 3.15px; position: relative; display: block; -webkit-tap-highlight-color: transparent; }
+  .switch__input { display: block; position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; border: 0; cursor: pointer; opacity: 0; appearance: none; }
+  .switch__input:focus-visible ~ .toggle-switch { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .switch__sr { overflow: hidden; position: absolute; width: 1px; height: 1px; }
+  .toggle-switch { display: block; position: relative; width: 16em; height: 7em; border-radius: 3.5em; transition: box-shadow 300ms ease-out, background-color 300ms ease-out; }
+  .toggle-switch:before { content: ""; display: block; position: absolute; z-index: 1; top: 0.25em; left: 0.25em; width: 6.5em; height: 6.5em; border-radius: 3.5em; transition: left 300ms ease-out, background-color 300ms ease-out, box-shadow 300ms ease-out; }
+  .switch__input:checked ~ .toggle-switch:before { left: 9.25em; }
+  .switch--skeuo .toggle-switch { box-shadow: inset 0 0 7em 7em rgba(0,0,0,0.3), inset 0 0.8em 0.4em rgba(0,0,0,0.3), inset 0 3em 1em rgba(0,0,0,0.25), 0 -0.25em 0.25em rgba(0,0,0,0.2), 0 0.25em 0.25em rgba(255,255,255,0.08); }
+  .switch--skeuo .toggle-switch:before { background-color: #273142; box-shadow: inset 0 0.25em 0.25em rgba(255,255,255,0.08), inset 0 -0.25em 0.25em rgba(0,0,0,0.2), 0 0.6em 0.4em rgba(0,0,0,0.5), 0 1.25em 1em rgba(0,0,0,0.5); }
+  .switch--skeuo .switch__input:checked ~ .toggle-switch { box-shadow: inset 0 0 7em 7em rgba(0,0,0,0.1), inset 0 0.8em 0.4em rgba(0,0,0,0.2), inset 0 3em 1em rgba(0,0,0,0.1), 0 -0.25em 0.25em rgba(0,0,0,0.15), 0 0.25em 0.25em rgba(255,255,255,0.4); }
+  .switch--skeuo .switch__input:checked ~ .toggle-switch:before { background-color: #d4cfc6; box-shadow: inset 0 0.25em 0.25em rgba(255,255,255,0.4), inset 0 -0.25em 0.25em rgba(0,0,0,0.15), 0 0.6em 0.4em rgba(0,0,0,0.25), 0 1.25em 1em rgba(0,0,0,0.25); }
+
+  /* ---------- page ---------- */
+  main { padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem); }
+  .form-wrap { max-width: 780px; margin-inline: auto; padding-inline: clamp(1rem, 0.5rem + 2vw, 2rem); }
+  .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+  .progress { display: none; margin: 0 0 1.6rem; }
+  .progress.on { display: block; }
+  .progress-track { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .progress-fill { display: block; height: 100%; width: 0; background: var(--accent); box-shadow: 0 0 10px rgb(var(--accent-glow) / 0.55); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .progress-meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.55rem; font-weight: 700; font-size: 0.95rem; }
+  .progress-meta .time { color: var(--text-2); font-weight: 700; }
+  .panel { background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.4rem, 3.5vw, 2.6rem); }
+  .panel > h2:first-of-type { margin-bottom: 0.5rem; }
+  .lede { color: var(--text-2); margin-bottom: 1.6rem; }
+  .screen { display: none; }
+  .screen.active { display: block; animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .screen.active { animation: none; } .progress-fill { transition: none; } }
+
+  /* intro */
+  .intro-date { font-size: 1.1rem; font-weight: 500; color: var(--text-2); margin-bottom: 1.4rem; }
+  .facts { border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; background: var(--bg); padding: 0.9rem 1.2rem; margin: 0 0 1.6rem; }
+  .facts p { margin: 0.2rem 0; }
+  .intro h3 { margin: 1.6rem 0 0.4rem; }
+  .intro ul { margin: 0.2rem 0 1rem; padding-left: 1.2rem; }
+  .intro li { margin: 0.15rem 0; }
+  .intro .cta-row { margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  /* questions */
+  .q { padding: 1.35rem 0; border-top: 1px solid var(--line); }
+  .q:first-of-type { border-top: none; padding-top: 0.4rem; }
+  .q.hid { display: none; }
+  .qlabel { display: block; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem; }
+  .qlabel .opt-mark { font-weight: 400; color: var(--text-2); }
+  .hint { color: var(--text-2); font-size: 0.95rem; margin: 0 0 0.7rem; }
+  .sublabel { display: block; font-weight: 600; margin: 0.9rem 0 0.25rem; }
+  input[type=text], input[type=email], input[type=url], textarea {
+    font: inherit; width: 100%; max-width: 560px; min-height: 48px; padding: 0.7rem 0.9rem;
+    color: var(--text); background: var(--field); border: 1px solid var(--line); border-radius: 8px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgb(var(--accent-glow) / 0.25); }
+  textarea { min-height: 140px; max-width: 100%; resize: vertical; line-height: 1.55; }
+  .counter { font-size: 0.85rem; color: var(--text-2); margin-top: 0.3rem; }
+  input[type=checkbox], input[type=radio] { width: 22px; height: 22px; margin: 0; flex: 0 0 auto; accent-color: var(--accent); cursor: pointer; }
+  .opt { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.55rem 0.6rem; margin: 0 -0.6rem; min-height: 44px; border-radius: 8px; cursor: pointer; transition: background-color 0.15s ease; }
+  .opt:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .opt input { margin-top: 3px; }
+  .opt.hid { display: none; }
+  .opt.dim { opacity: 0.45; }
+  .opt-row { display: flex; flex-wrap: wrap; gap: 0.2rem 1.2rem; }
+  .opt-row .opt { margin: 0; padding: 0.45rem 0.6rem; }
+  .detail { margin: 0.1rem 0 0.6rem 2.6rem; }
+  .detail.hid, .hid { display: none; }
+  .detail label { display: block; font-size: 0.9rem; color: var(--text-2); margin-bottom: 0.2rem; }
+  .detail input { max-width: 500px; min-height: 42px; }
+  .reveal { border-left: 3px solid var(--teal); padding: 0.4rem 0 0.4rem 1rem; margin: 0.6rem 0 0.4rem; }
+  .reveal.hid { display: none; }
+  .links label, .field-label { display: block; font-size: 0.92rem; color: var(--text-2); margin: 0.7rem 0 0.2rem; }
+  .field-label.strong { color: var(--text); font-weight: 600; font-size: 1rem; }
+  .qhint { position: relative; font-size: 0.9rem; color: var(--accent); border-bottom: 1px dotted var(--accent); cursor: help; margin-left: 0.5rem; font-weight: 500; }
+  .qhint.inline { margin-left: 0; font-size: inherit; font-weight: 500; }
+  .qhint-body { display: none; position: absolute; left: 0; top: 140%; z-index: 4; width: min(20rem, 80vw); background: var(--bg-raise); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.9rem; line-height: 1.5; padding: 0.8rem 1rem; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); font-weight: 400; }
+  .qhint:hover .qhint-body, .qhint:focus .qhint-body, .qhint:focus-within .qhint-body { display: block; }
+  .info { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 700; margin-left: 0.5rem; cursor: help; position: relative; }
+  .info .qhint-body { top: 150%; left: -8px; }
+  .info:hover .qhint-body, .info:focus .qhint-body { display: block; }
+
+  /* chips (keywords) */
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; max-width: 560px; min-height: 48px; padding: 0.4rem 0.6rem; background: var(--field); border: 1px solid var(--line); border-radius: 8px; }
+  .chips:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgb(var(--accent-glow) / 0.25); }
+  .kw { display: inline-flex; align-items: center; gap: 0.4rem; background: color-mix(in srgb, var(--teal) 18%, transparent); color: var(--text); border-radius: 999px; padding: 0.25rem 0.75rem; font-size: 0.92rem; }
+  .kw b { cursor: pointer; font-weight: 700; padding: 0 0.15rem; }
+  .chips input { border: none !important; background: transparent !important; box-shadow: none !important; min-height: 32px !important; padding: 0.2rem !important; flex: 1; min-width: 140px; max-width: none; }
+
+  /* grids */
+  .grid-wrap { overflow-x: auto; margin: 0.6rem -0.25rem 0; }
+  table.grid { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  table.grid th, table.grid td { border-bottom: 1px solid var(--line); text-align: center; vertical-align: middle; padding: 0.25rem; }
+  table.grid th { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); padding: 0.6rem 0.4rem; line-height: 1.3; }
+  table.grid th.item, table.grid td.item { text-align: left; padding: 0.8rem 0.5rem; }
+  table.grid td.item { font-weight: 600; }
+  table.grid .ex { display: block; font-size: 0.85rem; color: var(--text-2); font-weight: 400; }
+  table.grid label.cell { display: flex; align-items: center; justify-content: center; min-height: 48px; min-width: 48px; cursor: pointer; border-radius: 8px; }
+  table.grid label.cell:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  table.grid td.rv.hid { visibility: hidden; }
+  table.grid tr.custom.hid { display: none; }
+  table.grid tr.custom td.hid { visibility: hidden; }
+  table.grid tr.family td { text-align: left; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 0.9rem 0.5rem 0.3rem; border-bottom: none; }
+  .lvl { white-space: nowrap; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--field); }
+  .seg label { position: relative; display: flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; font-weight: 600; cursor: pointer; border-right: 1px solid var(--line); }
+  .seg label:last-child { border-right: none; }
+  .seg input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .seg input:checked + span { background: var(--accent); color: var(--btn-ink); }
+  .seg span { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .seg label:hover span { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .seg input:checked:hover + span { background: var(--accent); }
+  .custom-name { min-height: 42px; padding: 0.5rem 0.7rem; max-width: 260px; }
+  .levels { list-style: none; margin: 0.4rem 0 1rem; padding: 0; font-size: 0.95rem; }
+  .levels li { margin: 0.25rem 0; }
+  .levels strong { color: var(--text); }
+  .ex-toggle { display: inline; margin-left: 0.5rem; font-size: 0.9rem; }
+  .ex-toggle summary { display: inline; cursor: pointer; color: var(--accent); text-decoration: underline dotted; text-underline-offset: 3px; }
+  .ex-toggle summary:hover { color: var(--teal); }
+  .ex-toggle[open] { display: block; margin: 0.3rem 0 0.5rem 1.2rem; padding: 0.5rem 0.8rem; background: var(--bg); border-radius: 8px; color: var(--text-2); }
+  .ex-toggle[open] summary { display: block; margin-bottom: 0.15rem; }
+  details.levels-box { margin: 0 0 0.4rem; }
+  details.levels-box summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+
+  /* errors */
+  .err-summary { display: none; border: 1px solid var(--error); border-left-width: 4px; border-radius: 8px; padding: 0.8rem 1rem; margin: 0 0 1.4rem; color: var(--text); background: color-mix(in srgb, var(--error) 8%, var(--bg-raise)); }
+  .err-summary.on { display: block; }
+  .err-summary strong { display: block; margin-bottom: 0.2rem; }
+  .err-summary ul { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+  .err-summary a { color: var(--error); }
+  .q.has-error > .qlabel, .q.has-error .field-label.strong { color: var(--error); }
+  .q.has-error input[type=text], .q.has-error input[type=email], .q.has-error input[type=url], .q.has-error textarea, .q.has-error .chips { border-color: var(--error); }
+  .err-msg { display: none; color: var(--error); font-weight: 600; font-size: 0.92rem; margin: 0.35rem 0 0; }
+  .q.has-error .err-msg { display: block; }
+
+  /* buttons */
+  .actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .btn { display: inline-block; padding: 0.75rem 1.8rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: 1.08rem; text-decoration: none; white-space: nowrap; border: none; cursor: pointer; transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
+  .btn:active { transform: translateY(1px) scale(0.98); }
+  .btn-primary { background: var(--btn-bg); color: var(--btn-ink); box-shadow: 0 0 20px rgb(var(--accent-glow) / 0.4); }
+  .btn-primary:hover { background: var(--btn-bg-hover); transform: translateY(-1px); box-shadow: 0 0 30px rgb(var(--accent-glow) / 0.6); }
+  .btn-back { background: none; color: var(--text-2); padding-left: 0.4rem; }
+  .btn-back:hover { color: var(--accent); }
+  .btn-back[disabled] { visibility: hidden; }
+  .saved { font-size: 0.85rem; color: var(--text-2); }
+
+  /* end */
+  .end .big { font-size: clamp(1.4rem, 1rem + 1.4vw, 1.9rem); font-weight: 600; font-family: 'Aileron', sans-serif; margin-bottom: 0.6rem; }
+
+  /* footer */
+  .footer { border-top: 1px solid var(--line); }
+  .footer-band { background: #d7d8cc; border-bottom: 1px solid var(--line); }
+  [data-theme="dark"] .footer-band { background: var(--bg-raise); }
+  .footer-send { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(2rem, 4vw, 3rem); flex-wrap: wrap; }
+  .footer-lockup { display: flex; align-items: center; gap: 0.14em; font-family: 'Aileron', sans-serif; font-weight: 800; font-size: clamp(2rem, 1rem + 4vw, 3.6rem); line-height: 0.8; letter-spacing: -0.02em; color: var(--text); }
+  .footer-lockup .fl-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
+  .footer-lockup .fl-ai { color: #ffffff; text-shadow: 0 5px 28px rgb(0 0 0 / 0.4); }
+  .footer-lockup .fl-words { font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; }
+  .footer-castle { height: clamp(50px, 8vw, 90px); width: auto; filter: invert(1); opacity: 0.9; }
+  [data-theme="dark"] .footer-castle { filter: none; }
+  .footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1.8rem; }
+  .footer-meta p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
+  .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
+  .footer-meta button:hover { color: var(--accent); }
+
+  /* dev controls: hidden unless opened from the footer or with ?dev in the URL */
+  .devbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; padding: 0.6rem 1rem; background: #1c1c1c; color: #e9f1f0; font-size: 0.85rem; border-top: 2px solid var(--accent); }
+  .devbar[hidden] { display: none; }
+  .devbar .pos { font-weight: 700; margin-right: auto; }
+  .devbar label { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+  .devbar select { font: inherit; font-size: 0.85rem; padding: 0.25rem 0.4rem; border-radius: 4px; border: 1px solid #666; background: #333; color: #fff; }
+  .devbar button { font: inherit; font-size: 0.85rem; padding: 0.35rem 0.9rem; border-radius: 999px; border: 1px solid #777; background: #333; color: #fff; cursor: pointer; }
+  .devbar button:hover { background: #444; }
+  body.devbar-on main { padding-bottom: 6rem; }
+  @media (max-width: 640px) {
+    .panel { padding: 1.2rem 1rem; }
+    .actions { flex-direction: column-reverse; align-items: stretch; }
+    .actions .btn-primary { text-align: center; }
+    .lvl .seg label { min-width: 38px; height: 40px; }
+  }
+  /* nomination cards */
+  .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); padding: 1.1rem 1.2rem; margin: 0.9rem 0; }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.4rem; }
+  .card-head .n { font-family: 'Aileron', sans-serif; font-weight: 700; font-size: 1.05rem; }
+  .card-head button { font: inherit; font-size: 0.85rem; color: var(--text-2); background: none; border: none; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
+  .card-head button:hover { color: var(--accent); }
+  .card .field-label { margin-top: 0.8rem; }
+  .card input[type=text], .card input[type=email] { background: var(--bg-raise); }
+  .card.has-error { border-color: var(--error); }
+  .card .err-msg { display: none; }
+  .card.has-error .err-msg { display: block; }
+  .add-btn { display: inline-block; margin-top: 0.4rem; padding: 0.65rem 1.4rem; border-radius: 999px; border: 1px dashed var(--accent); color: var(--accent); background: none; font: inherit; font-weight: 600; cursor: pointer; }
+  .add-btn:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .add-btn:disabled { opacity: 0.4; cursor: default; }
+  .caps { font-size: 0.9rem; color: var(--text-2); margin: 0.6rem 0 0; }
+  .ro { background: var(--bg) !important; color: var(--text-2); }
+  .mono { font-family: ui-monospace, Consolas, monospace; letter-spacing: 0.04em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<header class="nav2">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="#" aria-label="V4 AI researchers meetup">
+      <span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+      <span class="brand-air">AI</span>
+      <span class="brand-words" aria-hidden="true">researchers<br>meetup</span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-site" href="../apply/">Apply yourself</a>
+      <label class="switch switch--skeuo">
+        <input class="switch__input" id="theme-switch" type="checkbox" role="switch" checked>
+        <span class="toggle-switch" aria-hidden="true"></span>
+        <span class="switch__sr">Light mode</span>
+      </label>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="form-wrap">
+
+  <div class="progress" id="progress">
+    <div class="progress-track"><span class="progress-fill" id="progress-fill"></span></div>
+    <div class="progress-meta"><span id="progress-step"></span><span class="time" id="progress-time"></span></div>
+  </div>
+
+  <div class="panel">
+    <div class="err-summary" id="err-summary" role="alert" tabindex="-1"></div>
+    <form id="form" novalidate onsubmit="return false">
+
+    <!-- INTRO -->
+    <section class="screen intro" data-min="0.4" data-key="intro">
+      <p class="eyebrow">Nominations</p>
+      <h1>Nominate people for the V4 AI Researchers Meetup</h1>
+      <p class="intro-date">Kostelec Castle, 35 km from Prague. Wednesday 28 to Friday 30 April 2027. Fully funded for students and researchers from partner institutions.</p>
+      <p>Know a motivated student, a researcher whose work fits, or someone in industry, tech transfer, or a startup who could bring an outside perspective? Tell us who. We write to them directly and invite them to apply.</p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" data-next>Start</button>
+      </div>
+    </section>
+
+    <!-- 1 ABOUT YOU -->
+    <section class="screen" data-min="0.4" data-key="b1">
+      <h2>About you</h2>
+      <div class="q" data-q="B.name">
+        <label class="qlabel" for="B.name">Your name</label>
+        <input type="text" id="B.name" name="B.name" autocomplete="name">
+        <p class="err-msg">Enter your name</p>
+      </div>
+      <div class="q" data-q="B.email">
+        <label class="qlabel" for="B.email">Your email</label>
+        <input type="email" id="B.email" name="B.email" autocomplete="email" inputmode="email">
+        <p class="err-msg">Enter an email address we can reach you at</p>
+      </div>
+      <div class="q" data-q="B.institution">
+        <label class="qlabel" for="B.institution">Your institution or organization <span class="opt-mark">(optional)</span></label>
+        <input type="text" id="B.institution" name="B.institution" autocomplete="organization">
+      </div>
+      <div class="q" data-q="B.application_id">
+        <label class="qlabel" for="B.application_id">Your application ID <span class="opt-mark">(optional)</span></label>
+        <p class="hint">If you applied yourself, this pairs your nominations with your application, it is in every email we sent you</p>
+        <input type="text" id="B.application_id" name="B.application_id" class="mono" style="max-width:260px" autocomplete="off" spellcheck="false">
+        <p class="hint" id="appid-note" style="margin-top:0.4rem"></p>
+        <p class="err-msg">An application ID looks like V4A-7K3M-9QX2</p>
+      </div>
+    </section>
+
+    <!-- 2 PEOPLE -->
+    <section class="screen" data-min="1.2" data-key="b4">
+      <h2>People you nominate</h2>
+      <p class="lede">Name and who they are is enough. The rest helps us write to them well.</p>
+      <div class="q" data-q="B4">
+        <div id="cards"></div>
+        <button type="button" class="add-btn" id="add-card">Add another person</button>
+        <p class="caps" id="caps"></p>
+        <p class="err-msg">Every person needs a name and a type</p>
+      </div>
+    </section>
+
+    <!-- 3 LAST THINGS -->
+    <section class="screen" data-min="0.4" data-key="b5">
+      <h2>Last things</h2>
+      <div class="q" data-q="B.mention">
+        <span class="qlabel">May we mention your name when we write to them?</span>
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="B.mention" value="yes"><span>Yes</span></label>
+          <label class="opt"><input type="radio" name="B.mention" value="no"><span>No</span></label>
+        </div>
+        <p class="err-msg">Choose yes or no</p>
+      </div>
+      <div class="q" data-q="B.consent">
+        <span class="qlabel">Consent</span>
+        <label class="opt"><input type="checkbox" name="B.consent"><span>I agree that Charles University and the V4AIR organizing team store my details and the details of the people I nominate for the single purpose of sending them one invitation to apply. [Retention period and link to the full privacy notice to be inserted.]</span></label>
+        <p class="err-msg">We need your consent to write to the people you nominate</p>
+      </div>
+    </section>
+
+    <!-- END -->
+    <section class="screen end" data-min="0" data-key="end">
+      <p class="eyebrow">Sent</p>
+      <p class="big">Thank you.</p>
+      <p><strong>Your nomination ID: <span class="mono" id="end-id"></span></strong><br>Quote it if you write to us about these nominations.</p>
+      <p>We will write to them within [N] days.</p>
+      <p>Haven't applied yourself yet? <a href="../apply/">Apply to the meetup</a></p>
+    </section>
+
+    <div class="actions" id="actions">
+      <button type="button" class="btn btn-back" id="btn-back" data-prev>Back</button>
+      <span class="saved" id="saved"></span>
+      <button type="button" class="btn btn-primary" id="btn-next" data-next>Next</button>
+    </div>
+    </form>
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-band">
+    <div class="wrap footer-send">
+      <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+        <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+        <span class="fl-ai">AI</span>
+        <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+      </div>
+      <img class="footer-castle" src="../assets/castle-silhouette.png" alt="" loading="lazy">
+    </div>
+  </div>
+  <div class="wrap footer-meta">
+    <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+    <p>V4AIR &middot; 28-30 April 2027</p>
+    <span><button type="button" id="reset-preview">Reset this preview</button> &middot; <button type="button" id="dev-toggle">Dev controls</button></span>
+  </div>
+</footer>
+
+<div class="devbar" id="devbar" hidden>
+  <span class="pos" id="dev-pos"></span>
+  <label>Go to <select id="dev-goto"></select></label>
+  <button type="button" id="dev-prev" title="j or left arrow">Prev (j)</button>
+  <button type="button" id="dev-next" title="k or right arrow">Next (k)</button>
+  <button type="button" id="dev-close" title="Hide">Hide</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var STORE = 'v4air-form-b-live-v1';
+  var TYPES = [
+    { key: 'student', label: 'Student', cap: 3 },
+    { key: 'researcher', label: 'Researcher', cap: 3 },
+    { key: 'outside', label: 'Outside academia (industry, tech transfer, startup, public sector, other)', cap: 3 }
+  ];
+  var ID_RE = /^V4A-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}$/;
+  var ID_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function byId(id) { return document.getElementById(id); }
+
+  /* theme */
+  var themeSwitch = byId('theme-switch');
+  themeSwitch.checked = document.documentElement.getAttribute('data-theme') !== 'dark';
+  themeSwitch.addEventListener('change', function () {
+    if (themeSwitch.checked) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('v4air-theme', 'light'); }
+    else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('v4air-theme', 'dark'); }
+  });
+
+  /* state */
+  var form = byId('form');
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { state = {}; }
+  var cards = Array.isArray(state.__cards) && state.__cards.length ? state.__cards : [{ type: '', name: '', contact: '', affiliation: '', why: '' }];
+  var idx = typeof state.__screen === 'number' ? state.__screen : 0;
+  var saveTimer = null;
+
+  /* prefill from the application form when this browser has an application draft (stands in for the signed link token) */
+  var prefilled = false;
+  (function () {
+    if (state.__prefilled || state['B.name']) return;
+    try {
+      var appId = localStorage.getItem('v4air-application-id');
+      var who = JSON.parse(localStorage.getItem('v4air-applicant') || 'null');
+      if (appId && who) {
+        byId('B.name').value = who.name || '';
+        byId('B.email').value = who.email || '';
+        byId('B.application_id').value = appId;
+        state.__prefilled = true; prefilled = true;
+      }
+    } catch (e) {}
+  })();
+  function applyPrefill() {
+    var inp = byId('B.application_id');
+    var locked = !!state.__prefilled && ID_RE.test(inp.value.trim());
+    inp.readOnly = locked; inp.classList.toggle('ro', locked);
+    byId('appid-note').textContent = locked ? 'Filled in from your application. Nominations will be paired with it.' : '';
+  }
+
+  function collect() {
+    var data = {};
+    $$('input', form).forEach(function (el) {
+      if (!el.name || el.closest('.card')) return;
+      if (el.type === 'checkbox') data[el.name] = el.checked;
+      else if (el.type === 'radio') { if (el.checked) data[el.name] = el.value; else if (!(el.name in data)) data[el.name] = ''; }
+      else data[el.name] = el.value;
+    });
+    data.__cards = cards; data.__screen = idx; data.__prefilled = !!state.__prefilled; data.__id = state.__id || '';
+    return data;
+  }
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      state = collect();
+      localStorage.setItem(STORE, JSON.stringify(state));
+      byId('saved').textContent = 'Saved ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    }, 250);
+  }
+  function restore() {
+    $$('input', form).forEach(function (el) {
+      if (!el.name || el.closest('.card') || !(el.name in state)) return;
+      if (el.type === 'checkbox') el.checked = !!state[el.name];
+      else if (el.type === 'radio') el.checked = state[el.name] === el.value;
+      else el.value = state[el.name] || '';
+    });
+  }
+  if (!prefilled) restore();
+  form.addEventListener('input', save);
+  form.addEventListener('change', save);
+  byId('B.application_id').addEventListener('input', function () { this.value = this.value.toUpperCase(); });
+
+  /* cards */
+  function countType(k) { return cards.filter(function (c) { return c.type === k; }).length; }
+  function drawCards() {
+    var host = byId('cards');
+    host.innerHTML = cards.map(function (c, i) {
+      var n = i + 1;
+      var types = TYPES.map(function (t) {
+        var full = countType(t.key) >= t.cap && c.type !== t.key;
+        return '<label class="opt' + (full ? ' dim' : '') + '"><input type="radio" name="type' + n + '" value="' + t.key + '"' + (c.type === t.key ? ' checked' : '') + (full ? ' disabled' : '') + '><span>' + esc(t.label) + (full ? ' <span class="muted" style="font-size:0.9rem">(you have already nominated ' + t.cap + ')</span>' : '') + '</span></label>';
+      }).join('');
+      return '<div class="card" data-i="' + i + '">' +
+        '<div class="card-head"><span class="n">Person ' + n + '</span>' + (cards.length > 1 ? '<button type="button" data-remove="' + i + '">Remove</button>' : '') + '</div>' +
+        '<span class="field-label strong">Who are they?</span>' + types +
+        '<label class="field-label strong" for="c' + n + '-name">Name</label><input type="text" id="c' + n + '-name" data-f="name" value="' + esc(c.name) + '">' +
+        '<label class="field-label" for="c' + n + '-contact">Email or another way to reach them (optional)</label><p class="hint">If you don\'t have it, name and institution are enough</p><input type="text" id="c' + n + '-contact" data-f="contact" value="' + esc(c.contact) + '">' +
+        '<label class="field-label" for="c' + n + '-aff">Institution or organization (optional)</label><input type="text" id="c' + n + '-aff" data-f="affiliation" value="' + esc(c.affiliation) + '">' +
+        '<label class="field-label" for="c' + n + '-why">Why do they fit? One or two sentences (optional)</label><p class="hint">What they work on, or why they would benefit</p><input type="text" id="c' + n + '-why" data-f="why" value="' + esc(c.why) + '">' +
+        '<p class="err-msg">Add a name and pick who they are</p>' +
+        '</div>';
+    }).join('');
+    byId('caps').textContent = 'Nominated so far: ' + countType('student') + ' of 3 students, ' + countType('researcher') + ' of 3 researchers, ' + countType('outside') + ' of 3 outside academia.';
+    var anyFree = TYPES.some(function (t) { return countType(t.key) < t.cap; });
+    byId('add-card').disabled = !anyFree || cards.length >= 9;
+    $$('[data-remove]', host).forEach(function (b) { b.addEventListener('click', function () { cards.splice(+b.getAttribute('data-remove'), 1); drawCards(); save(); }); });
+    $$('input[type=radio]', host).forEach(function (r) { r.addEventListener('change', function () { cards[+r.closest('.card').getAttribute('data-i')].type = r.value; drawCards(); save(); }); });
+    $$('input[data-f]', host).forEach(function (inp) { inp.addEventListener('input', function () { cards[+inp.closest('.card').getAttribute('data-i')][inp.getAttribute('data-f')] = inp.value; save(); }); });
+  }
+  byId('add-card').addEventListener('click', function () {
+    cards.push({ type: '', name: '', contact: '', affiliation: '', why: '' }); drawCards(); save();
+    var last = $$('.card').pop(); if (last) { last.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('input[data-f="name"]', last).focus({ preventScroll: true }); }
+  });
+  drawCards();
+  applyPrefill();
+
+  /* validation */
+  var validators = {
+    'B.name': function () { return byId('B.name').value.trim() ? '' : 'Your name'; },
+    'B.email': function () { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(byId('B.email').value.trim()) ? '' : 'Your email'; },
+    'B.application_id': function () { var v = byId('B.application_id').value.trim(); return (!v || ID_RE.test(v)) ? '' : 'Application ID'; },
+    'B4': function () {
+      var bad = false;
+      $$('.card').forEach(function (card, i) { var ok = cards[i].type && cards[i].name.trim(); card.classList.toggle('has-error', !ok); if (!ok) bad = true; });
+      return bad ? 'People you nominate' : '';
+    },
+    'B.mention': function () { return $('input[name="B.mention"]:checked') ? '' : 'May we mention your name'; },
+    'B.consent': function () { return $('input[name="B.consent"]').checked ? '' : 'Consent'; }
+  };
+  function validateScreen(screen) {
+    var errors = [];
+    $$('.q[data-q]', screen).forEach(function (q) {
+      var fn = validators[q.getAttribute('data-q')]; var msg = fn ? fn(q) : '';
+      q.classList.toggle('has-error', !!msg); if (msg) errors.push({ q: q, label: msg });
+    });
+    return errors;
+  }
+  function showSummary(errors) {
+    var box = byId('err-summary');
+    if (!errors.length) { box.classList.remove('on'); box.innerHTML = ''; return; }
+    box.innerHTML = '<strong>' + (errors.length === 1 ? 'One thing to fix before you continue' : errors.length + ' things to fix before you continue') + '</strong><ul>' +
+      errors.map(function (e, i) { return '<li><a href="#" data-goto="' + i + '">' + esc(e.label) + '</a></li>'; }).join('') + '</ul>';
+    box.classList.add('on');
+    $$('a[data-goto]', box).forEach(function (a) { a.addEventListener('click', function (ev) { ev.preventDefault(); var q = errors[+a.getAttribute('data-goto')].q; q.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = $('input', q); if (f) f.focus({ preventScroll: true }); }); });
+    box.focus();
+  }
+  function liveClear(e) {
+    var q = e.target.closest ? e.target.closest('.q.has-error') : null;
+    if (q) { var fn = validators[q.getAttribute('data-q')]; if (fn && !fn(q)) { q.classList.remove('has-error'); if (!$('.q.has-error', screens[idx])) showSummary([]); } }
+  }
+  form.addEventListener('input', liveClear);
+  form.addEventListener('change', liveClear);
+
+  /* navigation */
+  var screens = $$('.screen');
+  var total = screens.reduce(function (a, s) { return a + parseFloat(s.getAttribute('data-min') || 0); }, 0);
+  var numbered = screens.filter(function (s) { return !s.classList.contains('intro') && !s.classList.contains('end'); });
+  function makeId(prefix) { var out = ''; for (var i = 0; i < 8; i++) { out += ID_ALPHABET.charAt(Math.floor(Math.random() * ID_ALPHABET.length)); if (i === 3) out += '-'; } return prefix + '-' + out; }
+  function render() {
+    if (idx < 0) idx = 0; if (idx >= screens.length) idx = screens.length - 1;
+    screens.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+    var s = screens[idx], isIntro = s.classList.contains('intro'), isEnd = s.classList.contains('end'), n = numbered.indexOf(s);
+    var done = 0, left = 0;
+    screens.forEach(function (sc, i) { var m = parseFloat(sc.getAttribute('data-min') || 0); if (i < idx) done += m; else left += m; });
+    byId('progress').classList.toggle('on', !isIntro && !isEnd);
+    byId('progress-fill').style.width = Math.round(done / total * 100) + '%';
+    byId('progress-step').textContent = n > -1 ? 'Screen ' + (n + 1) + ' of ' + numbered.length : '';
+    byId('progress-time').textContent = left > 0.3 ? 'About ' + Math.max(1, Math.ceil(left)) + ' min left' : '';
+    byId('actions').style.display = (isIntro || isEnd) ? 'none' : 'flex';
+    byId('btn-back').disabled = idx <= 1;
+    byId('btn-next').textContent = (idx === screens.length - 2) ? 'Send nominations' : 'Next';
+    showSummary([]);
+    if (isEnd) { if (!state.__id) state.__id = makeId('V4N'); byId('end-id').textContent = state.__id; }
+    state.__screen = idx; save();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    devUpdate();
+  }
+  function next() {
+    var s = screens[idx];
+    if (!s.classList.contains('intro')) { var errors = validateScreen(s); if (errors.length) { showSummary(errors); return; } }
+    idx++; render();
+  }
+  function prev() { if (idx > 0) { idx--; render(); } }
+  $$('[data-next]').forEach(function (b) { b.addEventListener('click', next); });
+  $$('[data-prev]').forEach(function (b) { b.addEventListener('click', prev); });
+  byId('reset-preview').addEventListener('click', function () {
+    if (!confirm('Clear all answers in this preview and start from the beginning?')) return;
+    localStorage.removeItem(STORE); state = {}; cards = [{ type: '', name: '', contact: '', affiliation: '', why: '' }]; idx = 0;
+    $$('input', form).forEach(function (el) { if (el.type === 'checkbox' || el.type === 'radio') el.checked = false; else el.value = ''; });
+    byId('B.application_id').readOnly = false; byId('B.application_id').classList.remove('ro'); byId('appid-note').textContent = '';
+    drawCards(); render();
+  });
+
+  /* dev controls */
+  var devbar = byId('devbar');
+  function devUpdate() { if (devbar.hidden) return; var s = screens[idx], h = $('h1, h2, .big', s); byId('dev-pos').textContent = idx + '/' + (screens.length - 1) + (h ? ': ' + h.textContent.trim() : ''); byId('dev-goto').value = String(idx); }
+  function devShow(on) { devbar.hidden = !on; document.body.classList.toggle('devbar-on', on); try { localStorage.setItem('v4air-form-b-dev', on ? '1' : '0'); } catch (e) {} devUpdate(); }
+  byId('dev-goto').innerHTML = screens.map(function (s, i) { var h = $('h1, h2, .big', s); return '<option value="' + i + '">' + i + ' ' + esc(h ? h.textContent.trim() : s.getAttribute('data-key')) + '</option>'; }).join('');
+  byId('dev-goto').addEventListener('change', function () { idx = +this.value; render(); });
+  byId('dev-prev').addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+  byId('dev-next').addEventListener('click', function () { if (idx < screens.length - 1) { idx++; render(); } });
+  byId('dev-close').addEventListener('click', function () { devShow(false); });
+  byId('dev-toggle').addEventListener('click', function () { devShow(devbar.hidden); });
+  document.addEventListener('keydown', function (e) {
+    if (devbar.hidden || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'k') byId('dev-next').click();
+    if (e.key === 'ArrowLeft' || e.key === 'j') byId('dev-prev').click();
+  });
+  var wantDev = /[?&]dev\b/.test(location.search);
+  try { if (localStorage.getItem('v4air-form-b-dev') === '1') wantDev = true; } catch (e) {}
+  if (wantDev) devShow(true);
+
+  render();
+})();
+</script>
+</body>
+</html>

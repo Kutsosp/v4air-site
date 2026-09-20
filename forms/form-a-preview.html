@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form A preview: V4 AI Researchers Meetup application</title>
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --muted: #6a6a6a;
+    --line: #dddad4;
+    --bg: #f5f3ee;
+    --card: #ffffff;
+    --accent: #1f4e79;
+    --accent-soft: #e9f0f7;
+    --variant: #fff3d1;
+    --variant-ink: #7a5300;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.45; font-size: 15px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 96px; }
+  .banner { background: #fff8e1; border: 1px solid #efd58a; border-radius: 6px; padding: 12px 16px; font-size: 14px; margin-bottom: 24px; }
+  .banner strong { display: block; margin-bottom: 4px; }
+  .banner label { display: inline-block; margin-top: 8px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 0 0 2px; }
+  .screen { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
+  .screen-no { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .intro p { margin: 8px 0; }
+  .box { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 10px 14px; margin: 12px 0; }
+  .box p { margin: 4px 0; }
+  .q { padding: 14px 0; border-top: 1px solid var(--line); }
+  .q.first { border-top: none; }
+  .qlabel { font-weight: 600; }
+  .qlabel .opt-mark { font-weight: 400; color: var(--muted); }
+  .req { color: #b00020; margin-left: 2px; }
+  .id { font-family: ui-monospace, Consolas, "Courier New", monospace; font-size: 12px; color: var(--muted); margin-left: 8px; font-weight: 400; }
+  body.hide-ids .id { display: none; }
+  .help { font-size: 13.5px; color: var(--muted); margin: 3px 0 8px; }
+  .note { font-size: 13px; color: var(--muted); margin: 8px 0 0; font-style: italic; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 10px; margin-right: 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+  .tag.variant { background: var(--variant); color: var(--variant-ink); }
+  .tag.reveal { display: none; }
+  .variant-block { border-left: 3px solid #efd58a; padding: 6px 12px; margin: 8px 0; }
+  .reveal-block { border-left: 3px solid #9fd3ad; padding: 6px 12px; margin: 8px 0 8px 24px; }
+  input[type=text], input[type=email], input[type=url], select, textarea { font: inherit; padding: 10px 12px; border: 1px solid #b8b8b8; border-radius: 4px; width: 100%; max-width: 520px; background: #fff; min-height: 44px; }
+  textarea { min-height: 110px; }
+  input[type=checkbox], input[type=radio] { width: 22px; height: 22px; margin: 0; vertical-align: middle; accent-color: var(--accent); }
+  .opt { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; min-height: 36px; cursor: pointer; }
+  .opt input { flex: 0 0 auto; margin-top: 1px; }
+  .opt.inline { display: inline-flex; margin-right: 18px; }
+  .sublabel { font-size: 14px; font-weight: 600; margin: 10px 0 2px; }
+  .counter { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .info { display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; text-align: center; line-height: 18px; margin-left: 6px; cursor: help; font-weight: 700; }
+  .tooltip { font-size: 13px; color: var(--muted); font-style: italic; margin-left: 4px; }
+  .hint { position: relative; font-size: 13px; color: var(--accent); border-bottom: 1px dotted var(--accent); cursor: help; margin-left: 6px; }
+  .hint-body { display: none; position: absolute; left: 0; top: 130%; z-index: 4; width: 300px; background: #1c1c1c; color: #fff; font-size: 13px; line-height: 1.4; padding: 8px 10px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.25); font-weight: 400; }
+  .hint:hover .hint-body, .hint:focus .hint-body { display: block; }
+  table.grid { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  table.grid th, table.grid td { border-bottom: 1px solid var(--line); padding: 4px; text-align: center; vertical-align: middle; }
+  table.grid th { font-weight: 600; font-size: 12px; color: var(--muted); line-height: 1.25; padding: 8px 4px; }
+  table.grid td.item, table.grid th.item { text-align: left; padding: 10px 6px; }
+  table.grid .ex { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+  table.grid label.cell { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; cursor: pointer; }
+  .lvl { white-space: nowrap; }
+  .lvl label { display: inline-flex; align-items: center; gap: 4px; padding: 8px 6px; font-size: 13px; cursor: help; border-bottom: 1px dotted #999; margin: 0 1px; }
+  .lvl input { width: 18px; height: 18px; }
+  .ex-toggle { display: inline-block; margin-left: 8px; font-size: 13px; color: var(--muted); }
+  .ex-toggle summary { display: inline; cursor: pointer; color: var(--accent); text-decoration: underline dotted; }
+  .ex-toggle[open] { display: block; margin: 4px 0 6px 18px; padding: 6px 10px; background: var(--accent-soft); border-radius: 4px; }
+  .ex-toggle[open] summary { display: block; margin-bottom: 2px; }
+  .levels { font-size: 14px; margin: 8px 0; padding-left: 0; list-style: none; }
+  .levels li { margin: 2px 0; }
+  details.levels-compact { font-size: 14px; margin: 6px 0 10px; }
+  details.levels-compact summary { cursor: pointer; color: var(--accent); }
+  .btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 20px; border-radius: 4px; font-weight: 600; margin-top: 14px; }
+  .end { background: #eef6ee; }
+  .end .btn { background: #2e7d4f; }
+  .wide { max-width: 100%; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; border: 1px solid #b8b8b8; border-radius: 4px; padding: 6px 8px; max-width: 520px; background: #fff; min-height: 44px; }
+  .chips .chip { background: var(--accent-soft); color: var(--accent); border-radius: 12px; padding: 4px 10px; font-size: 13px; display: inline-flex; gap: 6px; align-items: center; }
+  .chips .chip b { cursor: pointer; font-weight: 700; padding: 0 4px; }
+  .chips input { border: none; padding: 4px; flex: 1; min-width: 120px; max-width: none; outline: none; min-height: 30px; }
+  .detail { margin: 2px 0 8px 32px; }
+  .detail label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+  .detail input { max-width: 460px; }
+  .custom-name { max-width: 260px; }
+  .links input { margin-top: 6px; }
+  .links label { display: block; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .cmt { margin: 10px 0 0; }
+  .cmt textarea { min-height: 38px; max-width: 100%; background: #fffdf5; border: 1px dashed #c9a94a; font-size: 13px; padding: 6px 8px; resize: vertical; }
+  .cmt textarea:focus { background: #fff; border-style: solid; }
+  .cmt textarea.has { background: #fff6d6; border-style: solid; }
+  .cmt-label { font-size: 11px; color: #8a6d1a; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+  tr.cmt-row td { text-align: left; padding: 4px 6px 10px; border-bottom: 1px solid var(--line); }
+  tr.cmt-row textarea { min-height: 30px; }
+  .cmtbar { position: sticky; top: 0; z-index: 5; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; margin-bottom: 16px; font-size: 13px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .cmtbar button { font: inherit; padding: 5px 10px; border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 4px; cursor: pointer; }
+  .cmtbar button.ghost { background: #fff; color: var(--accent); }
+  .cmtbar .n { color: var(--muted); }
+  /* Participant view */
+  .modebar { display: flex; gap: 6px; align-items: center; margin-bottom: 12px; font-size: 13px; flex-wrap: wrap; }
+  .modebar button { font: inherit; padding: 6px 14px; border: 1px solid var(--accent); background: #fff; color: var(--accent); border-radius: 4px; cursor: pointer; }
+  .modebar button.on { background: var(--accent); color: #fff; }
+  .devbar { position: sticky; bottom: 0; z-index: 6; background: #1c1c1c; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 13px; display: none; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+  .devbar button { font: inherit; padding: 6px 14px; border: 1px solid #888; background: #333; color: #fff; border-radius: 4px; cursor: pointer; }
+  .devbar button:disabled { opacity: .35; cursor: default; }
+  .devbar select { font: inherit; padding: 4px 6px; border-radius: 4px; border: 1px solid #888; background: #333; color: #fff; width: auto; max-width: none; min-height: 0; }
+  .devbar label { white-space: nowrap; }
+  .devbar .pos { font-weight: 600; margin-right: auto; }
+  .progress-wrap { display: none; margin: 0 0 16px; }
+  .progress { height: 6px; background: #e4e1da; border-radius: 3px; overflow: hidden; }
+  .progress span { display: block; height: 100%; background: var(--accent); transition: width .3s; }
+  .progress-text { display: flex; justify-content: space-between; font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 6px; }
+  body.pview .devbar { display: flex; }
+  body.pview .progress-wrap { display: block; }
+  body.pview .banner, body.pview .cmtbar { display: none; }
+  body.pview .screen { display: none; }
+  body.pview .screen.active { display: block; }
+  body.pview .tag, body.pview .note, body.pview .id, body.pview .cmt, body.pview tr.cmt-row, body.pview .tooltip { display: none; }
+  body.pview.dev-ids .id { display: inline; }
+  body.pview.dev-notes .note { display: block; }
+  body.pview.dev-notes .tag { display: inline-block; }
+  body.pview.dev-cmt .cmt { display: block; }
+  body.pview.dev-cmt tr.cmt-row { display: table-row; }
+  body.pview .variant-block { border-left: none; padding: 0; margin: 0; }
+  body.pview .variant-block.off { display: none; }
+  body.pview .q.off { display: none; }
+  body.pview .reveal-block { border-left: 3px solid #cfe7d6; padding: 6px 12px; margin: 8px 0 8px 12px; }
+  body.pview .screen-no { display: none; }
+  /* Conditional logic: .hid is set by JS whenever a condition is not met; only the participant view hides it. */
+  body.pview .hid { display: none !important; }
+  body.pview td.rv.hid { display: table-cell !important; visibility: hidden; }
+  body.pview tr.custom td.hid { display: table-cell !important; visibility: hidden; }
+  body.pview.force-reveals .hid { display: revert !important; visibility: visible; }
+  body.pview.force-reveals .reveal-block.hid { display: block !important; }
+  body.pview .opt.dim { opacity: .45; }
+  @media (max-width: 680px) {
+    .screen { padding: 16px; }
+    table.grid { display: block; overflow-x: auto; }
+    .lvl label { padding: 8px 3px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="modebar">
+  <strong style="margin-right:6px">View:</strong>
+  <button id="mode-review" class="on">Review (everything at once)</button>
+  <button id="mode-participant">Participant (one screen at a time)</button>
+</div>
+<div class="progress-wrap">
+  <div class="progress"><span id="progress-bar" style="width:0"></span></div>
+  <div class="progress-text"><span id="progress-step"></span><span id="progress-time"></span></div>
+</div>
+
+<div class="banner">
+  <strong>Preview of Form A (application), built from survey-spec.md v1.5</strong>
+  All screens, every wording variant, and every revealed control are shown at once. In the real form, respondents see one screen at a time, one wording variant, and revealed controls only after the condition is met. Nothing on this page is saved.
+  <br>
+  Every field, grid row, and screen has a yellow comment box. Comments are saved in this browser as you type. Use the bar below to export them as a markdown file or copy them to the clipboard, then paste the result back to Claude.
+  <br>
+  <label><input type="checkbox" id="toggle-ids" checked> Show variable IDs</label>
+  <span class="tag variant" style="margin-left:16px">Variant</span> wording that changes with career stage
+</div>
+
+<div class="cmtbar">
+  <strong>Comments</strong>
+  <span class="n" id="cmt-count">0 written</span>
+  <button id="cmt-download">Download comments.md</button>
+  <button id="cmt-copy" class="ghost">Copy to clipboard</button>
+  <button id="cmt-clear" class="ghost">Clear all</button>
+</div>
+
+<!-- INTRO SCREEN -->
+<div class="screen intro" data-min="0.5">
+  <div class="screen-no">Intro screen</div>
+  <h1>V4 AI Researchers Meetup</h1>
+  <p>Kostelec Castle, 35 km from Prague. Wednesday 28 to Friday 30 April 2027.</p>
+  <div class="box">
+    <p><strong>Deadline: 15 January.</strong> Everyone hears from us by February.</p>
+  </div>
+  <p>Three days for early-career researchers and graduate students from the V4 region who use or build AI methods across disciplines.</p>
+  <p><strong>Participation costs</strong></p>
+  <ul style="margin:4px 0 8px; padding-left:20px">
+    <li>Students and researchers from <span class="hint" style="margin-left:0; font-size:inherit">partner institutions<span class="hint-body">Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava.</span></span>: <span class="hint" style="margin-left:0; font-size:inherit">fully funded<span class="hint-body">No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund.</span></span></li>
+    <li>Students outside partner institutions: 160 euro</li>
+    <li>All other applicants: TBA</li>
+  </ul>
+  <p><strong>The programme is built from your answers.</strong></p>
+  <p>This form asks what you work on, what you want to learn, and who you want to meet. From the answers we pick the talks, workshop topics, and invited speakers, and we put you in the room with the people you asked for. We select for fit and mix, not for who applied first, so a careful application is the best thing you can do for your chances.</p>
+  <p>You don't need a finished talk or poster. Ideas and work in progress are welcome. If you are selected, we contact you and shape your contribution together.</p>
+  <p>Expect a small, informal format: a set of talks, a Not-Just-Posters student session, hands-on workshops, and long breaks in one place, so the conversations don't end when the sessions do.</p>
+  <p>Working language: English.</p>
+  <p><strong>Organizing team:</strong><br>Peter Kutsos (project coordinator)<br>Petr Chlup (technical coordinator)</p>
+  <p>Inquiries: kutsosp@natur.cuni.cz</p>
+  <p><strong>Coordinating institution:</strong><br>Charles University</p>
+  <p><strong>Partner institutions:</strong></p>
+  <ul style="margin:4px 0 8px; padding-left:20px">
+    <li>University of Wrocław</li>
+    <li>Nicolaus Copernicus University in Toruń</li>
+    <li>Czech Technical University in Prague</li>
+    <li>Eötvös Loránd University in Budapest</li>
+    <li>Comenius University Bratislava</li>
+  </ul>
+  <span class="btn">Start the application</span>
+</div>
+
+<form onsubmit="return false">
+
+<!-- A1a -->
+<div class="screen numbered" data-min="0.75">
+  <div class="screen-no"></div>
+  <h2>About you</h2>
+
+  <div class="q first">
+    <div class="qlabel">Full name<span class="req">*</span><span class="id">A1.name</span></div>
+    <input type="text">
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Email<span class="req">*</span><span class="id">A1.email</span></div>
+    <div class="help">We use this for the resume link and everything about the meetup</div>
+    <input type="email" required>
+    <p class="note">Validated for syntax on leaving the field; the form does not advance with an invalid address.</p>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Where are you in your career?<span class="req">*</span><span class="id">A1.stage</span></div>
+    <label class="opt"><input type="radio" name="stage" value="bsc">Bachelor or Master student</label>
+    <label class="opt"><input type="radio" name="stage" value="phd">PhD student</label>
+    <label class="opt"><input type="radio" name="stage" value="postdoc">Post-doc</label>
+    <label class="opt"><input type="radio" name="stage" value="ecr">Other early-career researcher <span class="hint">Who is an early-career researcher?<span class="hint-body">We consider early-career researchers to be anyone who identifies as such.</span></span></label>
+    <label class="opt"><input type="radio" name="stage" value="senior">Senior researcher</label>
+    <label class="opt"><input type="radio" name="stage" value="nonacad">Not in academia</label>
+  </div>
+
+  <div class="q links" id="links-q">
+    <div class="qlabel">Links where we can see your work <span class="opt-mark">(optional)</span><span class="id">A1.link_1 to A1.link_4</span></div>
+    <div class="help">ORCID, Google Scholar, a personal page, GitHub or similar</div>
+    <label for="link1">Link 1</label><input type="url" id="link1" class="link">
+    <label for="link2">Link 2</label><input type="url" id="link2" class="link">
+    <label for="link3">Link 3</label><input type="url" id="link3" class="link">
+    <label for="link4">Link 4</label><input type="url" id="link4" class="link">
+    <p class="note">The next link field appears when the previous one is filled.</p>
+  </div>
+</div>
+
+<!-- A1b -->
+<div class="screen numbered" data-min="0.75">
+  <div class="screen-no"></div>
+  <h2>Where you are</h2>
+
+  <div class="q first">
+    <div class="qlabel">Which country is your institution or organization based in?<span class="req">*</span><span class="id">A1.country</span></div>
+    <div class="help">Start typing to search</div>
+    <select id="country">
+      <option value="">Select a country</option>
+      <optgroup label="V4">
+        <option>Czechia</option><option>Hungary</option><option>Poland</option><option>Slovakia</option>
+      </optgroup>
+      <optgroup label="All countries">
+      <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option>
+      <option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belgium</option><option>Belize</option><option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option>
+      <option>Cabo Verde</option><option>Cambodia</option><option>Cameroon</option><option>Canada</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option><option>Comoros</option><option>Congo (Republic of the)</option><option>Congo (Democratic Republic of the)</option><option>Costa Rica</option><option>Côte d'Ivoire</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czechia</option>
+      <option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option>
+      <option>Ecuador</option><option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Eswatini</option><option>Ethiopia</option>
+      <option>Fiji</option><option>Finland</option><option>France</option>
+      <option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option>
+      <option>Haiti</option><option>Honduras</option><option>Hungary</option>
+      <option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option>
+      <option>Jamaica</option><option>Japan</option><option>Jordan</option>
+      <option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kosovo</option><option>Kuwait</option><option>Kyrgyzstan</option>
+      <option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option>
+      <option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Mauritania</option><option>Mauritius</option><option>Mexico</option><option>Micronesia</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option>
+      <option>Namibia</option><option>Nauru</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option><option>North Macedonia</option><option>Norway</option>
+      <option>Oman</option>
+      <option>Pakistan</option><option>Palau</option><option>Palestine</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option>
+      <option>Qatar</option>
+      <option>Romania</option><option>Russia</option><option>Rwanda</option>
+      <option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>São Tomé and Príncipe</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Africa</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Suriname</option><option>Sweden</option><option>Switzerland</option><option>Syria</option>
+      <option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option><option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Turkey</option><option>Turkmenistan</option><option>Tuvalu</option>
+      <option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Uruguay</option><option>Uzbekistan</option>
+      <option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option>
+      <option>Yemen</option>
+      <option>Zambia</option><option>Zimbabwe</option>
+      </optgroup>
+    </select>
+    <p class="note">In the app this is an autocomplete field over the full ISO 3166-1 list, V4 countries first. No "Other".</p>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Institution<span class="req">*</span><span class="id">A1.institution_key / A1.institution_name</span></div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: academic stages</span>
+      <div class="qlabel" style="margin-top:6px">What institution are you from?</div>
+      <div id="inst-radios">
+        <label class="opt inst-opt" data-country="Czechia"><input type="radio" name="inst" value="cuni">Charles University</label>
+        <label class="opt inst-opt" data-country="Czechia"><input type="radio" name="inst" value="cvut">Czech Technical University in Prague</label>
+        <label class="opt inst-opt" data-country="Poland"><input type="radio" name="inst" value="uwr">University of Wrocław</label>
+        <label class="opt inst-opt" data-country="Poland"><input type="radio" name="inst" value="umk">Nicolaus Copernicus University in Toruń</label>
+        <label class="opt inst-opt" data-country="Hungary"><input type="radio" name="inst" value="elte">Eötvös Loránd University in Budapest</label>
+        <label class="opt inst-opt" data-country="Slovakia"><input type="radio" name="inst" value="uniba">Comenius University Bratislava</label>
+        <label class="opt"><input type="radio" name="inst" value="other">Other</label>
+      </div>
+      <p class="note">In the app only the partner institutions in the chosen country are listed. If that country has none, the text field below appears directly instead of the list.</p>
+      <div class="reveal-block" id="inst-other">
+        <span class="tag reveal">Reveal: when "Other" is chosen or no partner institution matches</span>
+        <label class="qlabel" for="inst-name" style="display:block; margin-top:6px">Name of your institution<span class="req">*</span></label>
+        <input type="text" id="inst-name">
+      </div>
+    </div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: not in academia</span>
+      <label class="qlabel" for="org-name" style="display:block; margin-top:6px">Organization<span class="req">*</span></label>
+      <input type="text" id="org-name">
+      <div class="qlabel" style="margin-top:10px">Type of organization<span class="req">*</span><span class="id">A1.org_type</span></div>
+      <label class="opt"><input type="radio" name="orgtype" value="company">Company</label>
+      <label class="opt"><input type="radio" name="orgtype" value="startup">Startup</label>
+      <label class="opt"><input type="radio" name="orgtype" value="ngo">Nonprofit or NGO</label>
+      <label class="opt"><input type="radio" name="orgtype" value="gov">Government or public sector</label>
+      <label class="opt"><input type="radio" name="orgtype" value="institute">Research institute outside a university</label>
+      <label class="opt"><input type="radio" name="orgtype" value="other">Other</label>
+      <div class="reveal-block" id="org-other">
+        <span class="tag reveal">Reveal: when "Other" is chosen</span>
+        <label class="qlabel" for="org-other-txt" style="display:block; margin-top:6px">What kind of organization?</label>
+        <input type="text" id="org-other-txt">
+      </div>
+    </div>
+  </div>
+
+  <div class="q" data-stages="bsc phd postdoc ecr senior">
+    <div class="qlabel">Department or institute <span class="opt-mark">(optional)</span><span class="id">A1.department</span></div>
+    <input type="text">
+    <p class="note">Academic stages only.</p>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Field<span class="req">*</span><span class="id">A1.field</span></div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: academic stages</span>
+      <label class="qlabel" for="field-acad" style="display:block; margin-top:6px">Your field or discipline</label>
+      <input type="text" id="field-acad">
+    </div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: not in academia</span>
+      <label class="qlabel" for="field-nonacad" style="display:block; margin-top:6px">Your area of work</label>
+      <input type="text" id="field-nonacad">
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Stage-specific fields<span class="id">A1.programme / A1.year / A1.position</span></div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: Bachelor/Master and PhD students</span>
+      <label class="qlabel" for="programme" style="display:block; margin-top:6px">Study programme<span class="req">*</span></label>
+      <input type="text" id="programme">
+      <div class="qlabel" style="margin-top:10px">Year of study<span class="req">*</span></div>
+      <label class="opt inline"><input type="radio" name="year" value="1">1</label>
+      <label class="opt inline"><input type="radio" name="year" value="2">2</label>
+      <label class="opt inline"><input type="radio" name="year" value="3">3</label>
+      <label class="opt inline"><input type="radio" name="year" value="4">4</label>
+      <label class="opt inline"><input type="radio" name="year" value="5+">5+</label>
+    </div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: not in academia</span>
+      <label class="qlabel" for="position" style="display:block; margin-top:6px">Your position<span class="req">*</span></label>
+      <input type="text" id="position">
+    </div>
+    <p class="note">Post-docs, other early-career researchers, and senior researchers see nothing here.</p>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Which days can you attend the in-person meetup?<span class="req">*</span><span class="id">A1.days</span></div>
+    <div class="help">Kostelec Castle, about 35 km from Prague, Czechia</div>
+    <label class="opt"><input type="checkbox">Wednesday 28 April 2027</label>
+    <label class="opt"><input type="checkbox">Thursday 29 April 2027</label>
+    <label class="opt"><input type="checkbox">Friday 30 April 2027</label>
+  </div>
+</div>
+
+<!-- A2 -->
+<div class="screen numbered" data-min="2.5">
+  <div class="screen-no"></div>
+  <h2>Your work</h2>
+  <div class="q first">
+    <div class="qlabel">Project<span class="req">*</span><span class="id">A2.project</span></div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: academic stages</span>
+      <label class="qlabel" for="proj-acad" style="display:block; margin-top:6px">Describe a current or upcoming project. What is it about, and how does AI fit in?</label>
+      <div class="help">Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included</div>
+      <textarea class="wide" id="proj-acad"></textarea>
+      <div class="counter">0 / 1,500 characters (soft limit, does not block)</div>
+    </div>
+    <div class="variant-block">
+      <span class="tag variant">Variant: not in academia</span>
+      <label class="qlabel" for="proj-nonacad" style="display:block; margin-top:6px">Describe what you do and how AI relates to your work.</label>
+      <div class="help">Three to five sentences on what your organization does, your role, and where AI comes in</div>
+      <textarea class="wide" id="proj-nonacad"></textarea>
+      <div class="counter">0 / 1,500 characters (soft limit, does not block)</div>
+    </div>
+  </div>
+
+  <div class="q">
+    <label class="qlabel" for="kw-input">Three to five keywords for your work<span class="req">*</span><span class="id">A2.keywords</span></label>
+    <div class="help">Methods, topics, data types or fields, press Enter after each one</div>
+    <div class="chips" id="kw-chips"><input type="text" id="kw-input" aria-label="Add a keyword"></div>
+    <div class="counter" id="kw-count">0 of 5 (minimum 3)</div>
+    <p class="note">Used to match you with people across disciplines.</p>
+  </div>
+</div>
+
+<!-- A3: one screen per family, rendered from the item list -->
+<div class="screen numbered a3-family" data-min="0.5" data-family="Language and text">
+  <div class="screen-no"></div>
+  <h2>AI methods you use: language and text</h2>
+  <p>Over the next five short screens, tick the methods you use. For each one, tell us your experience level, whether you could present on it, and whether you want to learn more. Leave a method unticked if you don't use it. You can tick "I want to learn more" on anything, including methods you don't use yet.</p>
+  <p style="margin-bottom:0"><strong>Experience level</strong></p>
+  <ul class="levels">
+    <li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.
+      <details class="ex-toggle"><summary>Example</summary>Asking a chatbot to summarize your interview transcripts, or running a pretrained image classifier on your photos without changing anything.</details></li>
+    <li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.
+      <details class="ex-toggle"><summary>Example</summary>Calling an LLM API from a script with your own system prompt and settings, or adapting an existing text-processing pipeline to your own corpus.</details></li>
+    <li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.
+      <details class="ex-toggle"><summary>Example</summary>Fine-tuning a language model on your labelled data, or building a retrieval pipeline that chunks documents, embeds them, and passes the results to an agent.</details></li>
+    <li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.
+      <details class="ex-toggle"><summary>Example</summary>Designing a new model architecture or loss function, or developing a new statistical estimator and implementing it from scratch.</details></li>
+  </ul>
+  <p class="note">Hover over any 1/2/3/4 option to see that level's definition.</p>
+  <div class="gridhost"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+</div>
+<div class="screen numbered a3-family" data-min="0.5" data-family="Vision and multimodal">
+  <div class="screen-no"></div>
+  <h2>AI methods you use: vision and multimodal</h2>
+  <ul class="levels"><li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.</li><li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.</li><li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.</li><li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.</li></ul>
+  <div class="gridhost"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+</div>
+<div class="screen numbered a3-family" data-min="0.5" data-family="Speech and signal">
+  <div class="screen-no"></div>
+  <h2>AI methods you use: speech and signal</h2>
+  <ul class="levels"><li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.</li><li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.</li><li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.</li><li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.</li></ul>
+  <div class="gridhost"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+</div>
+<div class="screen numbered a3-family" data-min="0.5" data-family="Modeling and inference">
+  <div class="screen-no"></div>
+  <h2>AI methods you use: modeling and inference</h2>
+  <ul class="levels"><li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.</li><li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.</li><li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.</li><li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.</li></ul>
+  <div class="gridhost"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+</div>
+<div class="screen numbered a3-family" data-min="0.5" data-family="Generative">
+  <div class="screen-no"></div>
+  <h2>AI methods you use: generative</h2>
+  <ul class="levels"><li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.</li><li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.</li><li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.</li><li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.</li></ul>
+  <div class="gridhost"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+</div>
+
+<!-- A3 custom -->
+<div class="screen numbered" data-min="0.25" id="screen-a3-custom">
+  <div class="screen-no"></div>
+  <h2>Other AI methods you use</h2>
+  <p>Anything not covered on the previous screens. Up to five. Type a name; the controls for that row appear, and the next row after it.</p>
+  <ul class="levels"><li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.</li><li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.</li><li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.</li><li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.</li></ul>
+  <div class="gridhost" id="grid-a3-custom-host"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+  <p class="note">Exit check: if nothing was ticked on any of the six method screens, one soft prompt appears here: "You haven't marked any method. Continue anyway?"</p>
+</div>
+
+<!-- A4 -->
+<div class="screen numbered" data-min="1">
+  <div class="screen-no"></div>
+  <h2>AI-related topics</h2>
+  <p>These are questions about AI rather than methods. Tick the topics you work on or engage with, and the ones you want to learn more about. Leave a topic unticked if it doesn't apply.</p>
+  <div class="gridhost" id="grid-a4-host"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+</div>
+
+<!-- A5 -->
+<div class="screen numbered" data-min="0.75">
+  <div class="screen-no"></div>
+  <h2>Experience beyond academia</h2>
+  <p>This section is about steps you have taken to apply your work outside a purely academic setting, whether or not they led anywhere. Tick what you have done and what you want to hear about from others.</p>
+  <div class="variant-block">
+    <span class="tag variant">Variant: not in academia, one added sentence</span>
+    <p style="margin:6px 0 0">The items are written from the researcher's side. Tick whatever applies to you from the other side, for example if you have hired researchers, advised, or founded.</p>
+  </div>
+  <div class="gridhost" id="grid-a5-host"></div>
+  <p class="help" style="margin-top:10px">Ticking "I could share this experience" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+  <div class="reveal-block" id="a5-detail">
+    <span class="tag reveal">Reveal: when anything in the grid is ticked</span>
+    <label class="qlabel" for="a5-detail-txt" style="display:block; margin-top:6px">Tell us more: what did you do, or what do you want to hear about? <span class="opt-mark">(optional)</span><span class="id">A5.detail</span></label>
+    <textarea class="wide" id="a5-detail-txt" style="min-height:80px"></textarea>
+  </div>
+</div>
+
+<!-- A6 -->
+<div class="screen numbered" data-min="0.75">
+  <div class="screen-no"></div>
+  <h2>What you are looking for</h2>
+
+  <div class="q first" id="useful-q" data-max="5">
+    <div class="qlabel">What would be most useful to you at the meetup? Pick up to five.<span class="req">*</span><span class="id">A6.useful</span></div>
+    <div class="help">We use this to plan sessions and seat you with the right people</div>
+    <label class="opt"><input type="checkbox">Finding collaborators</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Feedback on my research direction</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Feedback on results</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Learning methods and approaches from other fields</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Exploring how AI methods could apply to my work</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Contacts in industry, funding, or tech transfer</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Finding talent or expertise for my team or organization</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Sharing my own experience and knowledge</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox">Just exploring, not sure yet</label>
+    <div class="detail"><label>Tell us more (optional)</label><input type="text"></div>
+    <label class="opt"><input type="checkbox" class="other-cb">Something else</label>
+    <div class="detail other-detail"><label>What is it?<span class="req">*</span><span class="id">A6.useful_other</span></label><input type="text" class="other-txt"></div>
+    <div class="counter">0 of 5 selected</div>
+    <p class="note">Each ticked option reveals its "Tell us more" field. IDs: A6.useful_detail.&lt;option key&gt;.</p>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Are you looking for collaborators for your project?<span class="req">*</span><span class="id">A6.collab</span></div>
+    <label class="opt inline"><input type="radio" name="collab" value="yes">Yes</label>
+    <label class="opt inline"><input type="radio" name="collab" value="maybe">Maybe</label>
+    <label class="opt inline"><input type="radio" name="collab" value="no">No</label>
+    <div class="reveal-block" id="collab-reveal">
+      <span class="tag reveal">Reveal: when Yes or Maybe</span>
+      <label class="qlabel" for="collab-kind" style="display:block; margin-top:6px">What expertise or kind of collaborator would help most? <span class="opt-mark">(optional)</span><span class="id">A6.collab_kind</span></label>
+      <div class="help">The more specific, the better we can invite people who match</div>
+      <input type="text" id="collab-kind">
+    </div>
+  </div>
+  <p style="margin-top:14px">We use everything on this screen to build the conference you actually want: the sessions, the people at your table, and the introductions we make before you arrive.</p>
+</div>
+
+<!-- A7 -->
+<div class="screen numbered" data-min="0.75">
+  <div class="screen-no"></div>
+  <h2>Your involvement</h2>
+  <p>The meetup is built around active participation. Every attendee contributes in some form. Tick the forms you are open to; the exact shape is worked out together with the organizing team after selection.</p>
+
+  <div class="q">
+    <div class="qlabel">How would you like to contribute?<span class="req">*</span><span class="id">A7.roles</span></div>
+    <label class="opt"><input type="checkbox">Speaker</label>
+    <label class="opt"><input type="checkbox">Workshop leader</label>
+    <label class="opt"><input type="checkbox">Panel member or interviewee</label>
+    <label class="opt"><input type="checkbox">Not-Just-Posters session presenter<span class="info" title="We recommend this session mainly for students who may not yet have the results or experience for a full talk but want to share their project and receive feedback. Student talk applications are also accepted and will be considered.">i</span><span class="tooltip">Tooltip: "We recommend this session mainly for students who may not yet have the results or experience for a full talk but want to share their project and receive feedback. Student talk applications are also accepted and will be considered."</span></label>
+    <label class="opt"><input type="checkbox">Scene setter (open a session with a short briefing or a conversation with a keynote)</label>
+    <label class="opt"><input type="checkbox">Closer (reflect on the talks in a session, discuss what comes next)</label>
+    <label class="opt"><input type="checkbox">Not sure yet, I'd like to discuss options</label>
+    <label class="opt"><input type="checkbox" class="other-cb">Other</label>
+    <div class="detail other-detail"><label>Which role?<span class="req">*</span></label><input type="text" class="other-txt"></div>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Have you presented at a conference or workshop before?<span class="req">*</span><span class="id">A7.presented</span></div>
+    <label class="opt inline"><input type="radio" name="presented">Yes</label>
+    <label class="opt inline"><input type="radio" name="presented">No</label>
+  </div>
+
+  <div class="q">
+    <label class="qlabel" for="roles-note" style="display:block">Anything to add about how you would like to participate? <span class="opt-mark">(optional)</span><span class="id">A7.roles_note</span></label>
+    <input type="text" id="roles-note">
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Would you help with organizing?<span class="req">*</span><span class="id">A7.help</span></div>
+    <label class="opt"><input type="checkbox" class="help-yes">Before the event, at my home institution (promoting the call, recruiting participants)</label>
+    <label class="opt"><input type="checkbox" class="help-yes">On site during the event (coordination, helping other participants)</label>
+    <label class="opt"><input type="checkbox" class="help-none">I'd rather just participate</label>
+    <p class="note">"I'd rather just participate" is exclusive: ticking it unticks the two help options, and vice versa.</p>
+    <div class="reveal-block" id="help-reveal">
+      <span class="tag reveal">Reveal: when the first or second option is ticked</span>
+      <label class="qlabel" for="help-detail" style="display:block; margin-top:6px">Tell us more: what could you help with, and roughly how much time? <span class="opt-mark">(optional)</span><span class="id">A7.help_detail</span></label>
+      <input type="text" id="help-detail">
+    </div>
+  </div>
+</div>
+
+<!-- A8 -->
+<div class="screen numbered" data-min="0.5">
+  <div class="screen-no"></div>
+  <h2>Last things</h2>
+
+  <div class="q first">
+    <div class="qlabel">How did this call reach you?<span class="req">*</span><span class="id">A8.source</span></div>
+    <label class="opt"><input type="checkbox">Nominated by my institution's contact person</label>
+    <label class="opt"><input type="checkbox" id="src-open">Open call</label>
+    <div class="reveal-block" id="open-channels">
+      <span class="tag reveal">Reveal: when "Open call" is ticked</span>
+      <div class="qlabel" style="margin-top:6px">Where did you see it?<span class="id">A8.source_open.*</span></div>
+      <label class="opt"><input type="checkbox">Email</label>
+      <div class="detail"><label>Which mailing list or sender?<span class="id">A8.source_open.email_which</span></label><input type="text"></div>
+      <label class="opt"><input type="checkbox">My institution's social media</label>
+      <label class="opt"><input type="checkbox">Other social media</label>
+      <label class="opt"><input type="checkbox">An article or news item</label>
+      <label class="opt"><input type="checkbox" class="other-cb">Somewhere else</label>
+      <div class="detail other-detail"><label>Where?<span class="req">*</span></label><input type="text" class="other-txt"></div>
+    </div>
+    <label class="opt"><input type="checkbox">Personal invitation from the organizers</label>
+    <label class="opt"><input type="checkbox" class="other-cb">Other</label>
+    <div class="detail other-detail"><label>How?<span class="req">*</span></label><input type="text" class="other-txt"></div>
+  </div>
+
+  <div class="q">
+    <label class="qlabel" for="questions" style="display:block">Questions for the organizers, general comments, or requests <span class="opt-mark">(optional)</span><span class="id">A8.questions</span></label>
+    <div class="help">Anything the form didn't ask about</div>
+    <textarea class="wide" id="questions" style="min-height:80px"></textarea>
+    <div class="counter">0 / 1,000 characters (soft limit, does not block)</div>
+  </div>
+
+  <div class="q">
+    <div class="qlabel">Consent<span class="req">*</span><span class="id">A8.consent</span></div>
+    <label class="opt"><input type="checkbox">[Consent text: who processes the data (Charles University, organizing team), for what (selecting participants, building the programme, contacting the applicant about the meetup), how long it is kept (until [date] after the event), and how to withdraw. Link to the full privacy notice.]</label>
+  </div>
+
+  <span class="btn">Submit application</span>
+</div>
+
+</form>
+
+<!-- END SCREEN -->
+<div class="screen end" data-min="0">
+  <div class="screen-no">End screen</div>
+  <p><strong>Thank you. Your application is in.</strong> We reply to everyone by [date].</p>
+  <p>You can change your answers until the deadline through the link in the confirmation email.</p>
+  <p><strong>Know someone who should be here?</strong> Nominate a student, a researcher, or someone outside academia. It takes two minutes and we invite them directly.</p>
+  <span class="btn">Nominate someone</span>
+  <p class="note">Opens the nomination form with name, email, and institution prefilled.</p>
+</div>
+
+<div class="devbar">
+  <span class="pos" id="dev-pos"></span>
+  <label>Stage:
+    <select id="dev-stage">
+      <option value="bsc">Bachelor or Master student</option>
+      <option value="phd" selected>PhD student</option>
+      <option value="postdoc">Post-doc</option>
+      <option value="ecr">Other early-career researcher</option>
+      <option value="senior">Senior researcher</option>
+      <option value="nonacad">Not in academia</option>
+    </select>
+  </label>
+  <label><input type="checkbox" id="dev-reveals"> Force-show all reveals</label>
+  <label><input type="checkbox" id="dev-ids"> IDs</label>
+  <label><input type="checkbox" id="dev-notes"> Dev notes</label>
+  <label><input type="checkbox" id="dev-cmt"> Comments</label>
+  <button id="dev-prev" title="j or left arrow">Prev (j)</button>
+  <button id="dev-next" title="k or right arrow">Next (k)</button>
+</div>
+
+</div>
+<script>
+  // ---------- Item lists (same IDs as survey-spec.md section 1.4) ----------
+  var LEVEL_TIPS = {
+    1: '1 Basic use: out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.',
+    2: '2 Regular use: customizing parameters, using APIs, adapting existing pipelines.',
+    3: '3 Advanced use: training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.',
+    4: '4 Expert use: building or modifying model architectures or analytical methods.'
+  };
+  var METHODS = [
+    { id: 'm01', fam: 'Language and text', label: 'LLMs', ex: 'chat tools, LLM APIs' },
+    { id: 'm02', fam: 'Language and text', label: 'NLP beyond LLMs', ex: 'topic modeling, text classification, corpus and linguistic analysis' },
+    { id: 'm03', fam: 'Language and text', label: 'Embeddings and semantic search', ex: 'vector representations, retrieval' },
+    { id: 'm04', fam: 'Vision and multimodal', label: 'Computer vision, static', ex: 'image classification, object detection' },
+    { id: 'm05', fam: 'Vision and multimodal', label: 'Computer vision, dynamic', ex: 'video, motion tracking, pose and gesture recognition' },
+    { id: 'm06', fam: 'Vision and multimodal', label: 'Multimodal methods', ex: 'combining text, image, audio' },
+    { id: 'm07', fam: 'Speech and signal', label: 'Speech and audio processing', ex: 'ASR, TTS, audio classification' },
+    { id: 'm08', fam: 'Speech and signal', label: 'Sensor and physiological data', ex: 'eye-tracking, biometric, wearable data' },
+    { id: 'm09', fam: 'Modeling and inference', label: 'Classical machine learning', ex: 'regression, classification, clustering' },
+    { id: 'm10', fam: 'Modeling and inference', label: 'Bayesian and probabilistic modeling' },
+    { id: 'm11', fam: 'Modeling and inference', label: 'Causal inference' },
+    { id: 'm12', fam: 'Modeling and inference', label: 'Network and structural analysis', ex: 'graph methods, social network analysis' },
+    { id: 'm13', fam: 'Modeling and inference', label: 'Simulation and agent-based modeling' },
+    { id: 'm14', fam: 'Generative', label: 'Generative AI for content', ex: 'image, audio, video generation' },
+    { id: 'm15', fam: 'Generative', label: 'Agentic AI and AI-assisted coding', ex: 'agents, coding copilots, workflow automation' }
+  ];
+  var TOPICS = [
+    { id: 't01', fam: 'Ethics and society', label: 'AI ethics', ex: 'bias, accountability' },
+    { id: 't02', fam: 'Ethics and society', label: 'AI policy and regulation' },
+    { id: 't03', fam: 'Human experience', label: 'Mental health and wellbeing in relation to AI' },
+    { id: 't04', fam: 'Human experience', label: 'Trust and information reliability' },
+    { id: 't05', fam: 'Human experience', label: 'Auditability' },
+    { id: 't06', fam: 'Human experience', label: 'Tech news overwhelm' },
+    { id: 't07', fam: 'Work and economy', label: 'Labor market and future of work' },
+    { id: 't08', fam: 'Work and economy', label: 'Economic impact and industry transformation' },
+    { id: 't09', fam: 'Knowledge and culture', label: 'Education and learning with or about AI' },
+    { id: 't10', fam: 'Knowledge and culture', label: 'Creativity and authorship' },
+    { id: 't11', fam: 'Other', label: 'Philosophy of mind and cognition', ex: 'what AI reveals about human cognition' },
+    { id: 't12', fam: 'Other', label: 'Environmental and sustainability impact of AI' }
+  ];
+  var EXPERIENCE = [
+    { id: 'e01', label: 'Employment outside academia', ex: 'industry, public sector, NGOs' },
+    { id: 'e02', label: 'Freelance or contract consulting' },
+    { id: 'e03', label: 'Advising a company or organization', ex: 'formal or informal' },
+    { id: 'e04', label: 'Founding or co-founding a startup' },
+    { id: 'e05', label: 'Spinning off a company from research' },
+    { id: 'e06', label: 'Licensing or commercializing research or technology', ex: 'IP, patents, tech transfer' },
+    { id: 'e07', label: 'Public engagement or science communication', ex: 'outreach, media, popularization' },
+    { id: 'e08', label: 'Grant or funding applications aimed at commercial or applied outcomes' },
+    { id: 'e09', label: 'Collaboration between academia and industry', ex: 'joint projects, contract research, technology transfer' }
+  ];
+
+  // ---------- Grid rendering ----------
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function cellCb() { return '<td><label class="cell"><input type="checkbox"></label></td>'; }
+  function cellGate() { return '<td class="gate"><label class="cell"><input type="checkbox"></label></td>'; }
+  function cellPresent() { return '<td class="rv"><label class="cell"><input type="checkbox"></label></td>'; }
+  function cellLevel(name) {
+    var h = '<td class="lvl rv">';
+    for (var i = 1; i <= 4; i++) h += '<label title="' + esc(LEVEL_TIPS[i]) + '"><input type="radio" name="' + name + '">' + i + '</label>';
+    return h + '</td>';
+  }
+  function th(label, idv) { return '<th>' + label + '<br><span class="id">' + idv + '</span></th>'; }
+  function itemCell(it, prefix) {
+    return '<td class="item">' + esc(it.label) + (it.ex ? '<span class="ex">' + esc(it.ex) + '</span>' : '') + '<span class="id">' + prefix + '.' + it.id + '</span></td>';
+  }
+
+  // A3 family grids
+  document.querySelectorAll('.a3-family').forEach(function (screen) {
+    var fam = screen.getAttribute('data-family');
+    var rows = METHODS.filter(function (m) { return m.fam === fam; }).map(function (m) {
+      return '<tr data-id="A3.' + m.id + '">' + itemCell(m, 'A3') + cellCb() + cellGate() + cellLevel(m.id) + cellPresent() + '</tr>';
+    }).join('');
+    screen.querySelector('.gridhost').innerHTML = '<table class="grid grid-a3"><thead><tr><th class="item">Method</th>' +
+      th('I want to learn more', '.learn') + th('I use this', '.use') + th('Experience level', '.level') + th('I could present on this', '.present') +
+      '</tr></thead><tbody>' + rows + '</tbody></table>';
+  });
+  // A3 custom rows
+  (function () {
+    var rows = '';
+    for (var c = 1; c <= 5; c++) {
+      var id = 'c0' + c;
+      rows += '<tr class="custom" data-id="A3.' + id + '"><td class="item"><input type="text" class="custom-name" aria-label="Method name, row ' + c + '"><span class="id">A3.' + id + '</span></td>' +
+        cellCb() + cellGate() + cellLevel(id) + cellPresent() + '</tr>';
+    }
+    document.getElementById('grid-a3-custom-host').innerHTML = '<table class="grid grid-a3" id="grid-a3-custom"><thead><tr><th class="item">Method name</th>' +
+      th('I want to learn more', '.learn') + th('I use this', '.use') + th('Experience level', '.level') + th('I could present on this', '.present') +
+      '</tr></thead><tbody>' + rows + '</tbody></table>';
+  })();
+  // A4
+  (function () {
+    var rows = '', lastFam = null;
+    TOPICS.forEach(function (t) {
+      if (t.fam !== lastFam) { rows += '<tr class="family"><td colspan="4" style="text-align:left;background:#f2f0eb;font-weight:600;font-size:13px;padding:6px">' + esc(t.fam) + '</td></tr>'; lastFam = t.fam; }
+      rows += '<tr data-id="A4.' + t.id + '">' + itemCell(t, 'A4') + cellCb() + cellGate() + cellPresent() + '</tr>';
+    });
+    document.getElementById('grid-a4-host').innerHTML = '<table class="grid" id="grid-a4"><thead><tr><th class="item">Topic</th>' +
+      th('I want to learn more', '.learn') + th('I work on this', '.work') + th('I could present on this', '.present') + '</tr></thead><tbody>' + rows + '</tbody></table>';
+  })();
+  // A5
+  (function () {
+    var rows = EXPERIENCE.map(function (e) { return '<tr data-id="A5.' + e.id + '">' + itemCell(e, 'A5') + cellCb() + cellGate() + cellPresent() + '</tr>'; }).join('');
+    document.getElementById('grid-a5-host').innerHTML = '<table class="grid" id="grid-a5"><thead><tr><th class="item">Experience</th>' +
+      th('I want to learn about this', '.learn') + th('I have experience with this', '.have') + th('I could share this experience', '.present') + '</tr></thead><tbody>' + rows + '</tbody></table>';
+  })();
+
+  // Screen numbering
+  (function () {
+    var numbered = document.querySelectorAll('.screen.numbered');
+    numbered.forEach(function (s, i) { s.querySelector('.screen-no').textContent = 'Screen ' + (i + 1) + ' of ' + numbered.length; });
+  })();
+
+  document.getElementById('toggle-ids').addEventListener('change', function () {
+    document.body.classList.toggle('hide-ids', !this.checked);
+  });
+
+  // ---------- Keyword chips (A2.2) ----------
+  (function () {
+    var box = document.getElementById('kw-chips'), input = document.getElementById('kw-input'), count = document.getElementById('kw-count');
+    var kws = [];
+    function draw() {
+      box.querySelectorAll('.chip').forEach(function (c) { c.remove(); });
+      kws.forEach(function (k, i) {
+        var c = document.createElement('span'); c.className = 'chip'; c.textContent = k + ' ';
+        var x = document.createElement('b'); x.textContent = '×'; x.title = 'Remove';
+        x.addEventListener('click', function () { kws.splice(i, 1); draw(); });
+        c.appendChild(x); box.insertBefore(c, input);
+      });
+      count.textContent = kws.length + ' of 5 (minimum 3)';
+      input.disabled = kws.length >= 5;
+    }
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        var v = input.value.replace(/,/g, '').trim();
+        if (v && kws.length < 5 && kws.indexOf(v) === -1) { kws.push(v); }
+        input.value = ''; draw();
+      }
+      if (e.key === 'Backspace' && !input.value && kws.length) { kws.pop(); draw(); }
+    });
+    box.addEventListener('click', function () { if (!input.disabled) input.focus(); });
+  })();
+
+  // ---------- Participant view, conditional logic, dev controls ----------
+  (function () {
+    var body = document.body;
+    var screens = Array.prototype.slice.call(document.querySelectorAll('.screen'));
+    var idx = 0;
+    var ALL_ACADEMIC = ['bsc', 'phd', 'postdoc', 'ecr', 'senior'];
+    var totalMin = screens.reduce(function (a, s) { return a + parseFloat(s.getAttribute('data-min') || 0); }, 0);
+
+    function stagesForTag(text) {
+      text = text.toLowerCase();
+      if (text.indexOf('not in academia') > -1) return ['nonacad'];
+      if (text.indexOf('student') > -1) return ['bsc', 'phd'];
+      if (text.indexOf('academic') > -1) return ALL_ACADEMIC;
+      return ALL_ACADEMIC.concat(['nonacad']);
+    }
+
+    function applyStage() {
+      var stage = document.getElementById('dev-stage').value;
+      document.querySelectorAll('.variant-block').forEach(function (vb) {
+        var tag = vb.querySelector('.tag.variant');
+        var ok = stagesForTag(tag ? tag.textContent : '').indexOf(stage) > -1;
+        vb.classList.toggle('off', !ok);
+      });
+      document.querySelectorAll('.q').forEach(function (q) {
+        var off = false;
+        var ds = q.getAttribute('data-stages');
+        if (ds && ds.split(' ').indexOf(stage) === -1) off = true;
+        var vbs = q.querySelectorAll('.variant-block');
+        if (vbs.length && !q.querySelector('.variant-block:not(.off)')) off = true;
+        q.classList.toggle('off', off);
+      });
+    }
+
+    function render() {
+      screens.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      var s = screens[idx];
+      var no = (s.querySelector('.screen-no') || {}).textContent || '';
+      var title = (s.querySelector('h2, h1') || {}).textContent || '';
+      document.getElementById('dev-pos').textContent = no.trim() + (title ? ': ' + title.trim() : '');
+      // Weighted progress: share of expected time already behind the respondent.
+      var done = 0, left = 0;
+      screens.forEach(function (sc, i) { var m = parseFloat(sc.getAttribute('data-min') || 0); if (i < idx) done += m; else left += m; });
+      document.getElementById('progress-bar').style.width = Math.round(done / totalMin * 100) + '%';
+      document.getElementById('progress-step').textContent = no.trim();
+      var mins = Math.max(1, Math.ceil(left));
+      var pt = document.getElementById('progress-time');
+      pt.textContent = left > 0.4 ? 'About ' + mins + ' min left' : '';
+      document.getElementById('dev-prev').disabled = idx === 0;
+      document.getElementById('dev-next').disabled = idx === screens.length - 1;
+      window.scrollTo(0, 0);
+    }
+
+    function setMode(participant) {
+      body.classList.toggle('pview', participant);
+      document.getElementById('mode-participant').classList.toggle('on', participant);
+      document.getElementById('mode-review').classList.toggle('on', !participant);
+      if (participant) { applyStage(); render(); }
+      else {
+        screens.forEach(function (s) { s.classList.remove('active'); });
+        document.querySelectorAll('.off').forEach(function (e) { e.classList.remove('off'); });
+      }
+    }
+
+    document.getElementById('mode-review').addEventListener('click', function () { setMode(false); });
+    document.getElementById('mode-participant').addEventListener('click', function () { setMode(true); });
+    document.getElementById('dev-prev').addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+    document.getElementById('dev-next').addEventListener('click', function () { if (idx < screens.length - 1) { idx++; render(); } });
+    document.getElementById('dev-ids').addEventListener('change', function () { body.classList.toggle('dev-ids', this.checked); });
+    document.getElementById('dev-notes').addEventListener('change', function () { body.classList.toggle('dev-notes', this.checked); });
+    document.getElementById('dev-cmt').addEventListener('change', function () { body.classList.toggle('dev-cmt', this.checked); });
+    document.getElementById('dev-reveals').addEventListener('change', function () { body.classList.toggle('force-reveals', this.checked); });
+    document.addEventListener('keydown', function (e) {
+      if (!body.classList.contains('pview') || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+      if (e.key === 'ArrowRight' || e.key === 'k') document.getElementById('dev-next').click();
+      if (e.key === 'ArrowLeft' || e.key === 'j') document.getElementById('dev-prev').click();
+    });
+
+    // Stage: the A1.4 radios and the dev select drive the same state.
+    var stageRadios = document.querySelectorAll('input[name="stage"]');
+    stageRadios.forEach(function (r) {
+      r.addEventListener('change', function () { document.getElementById('dev-stage').value = r.value; applyStage(); });
+    });
+    document.getElementById('dev-stage').addEventListener('change', function () {
+      var v = this.value;
+      stageRadios.forEach(function (r) { r.checked = r.value === v; });
+      applyStage();
+    });
+    (function () { var v = document.getElementById('dev-stage').value; stageRadios.forEach(function (r) { r.checked = r.value === v; }); })();
+
+    // Institution radios filtered by country; "Other" or no match reveals the text field.
+    var country = document.getElementById('country'), instOpts = document.querySelectorAll('.inst-opt'), instRadios = document.querySelectorAll('input[name="inst"]'), instBox = document.getElementById('inst-radios'), instOther = document.getElementById('inst-other');
+    function applyInstitution() {
+      var c = country.value, any = false, chosen = '';
+      instOpts.forEach(function (o) {
+        var show = !c || o.getAttribute('data-country') === c;
+        o.classList.toggle('hid', !show);
+        if (!show) o.querySelector('input').checked = false;
+        if (show && c) any = true;
+      });
+      instRadios.forEach(function (r) { if (r.checked) chosen = r.value; });
+      var noPartner = !!c && !any;
+      instBox.classList.toggle('hid', noPartner);
+      instOther.classList.toggle('hid', !(noPartner || chosen === 'other'));
+    }
+    country.addEventListener('change', applyInstitution);
+    instRadios.forEach(function (r) { r.addEventListener('change', applyInstitution); });
+    applyInstitution();
+
+    // Organization type "Other".
+    var orgRadios = document.querySelectorAll('input[name="orgtype"]'), orgOther = document.getElementById('org-other');
+    function applyOrg() { var v = ''; orgRadios.forEach(function (r) { if (r.checked) v = r.value; }); orgOther.classList.toggle('hid', v !== 'other'); }
+    orgRadios.forEach(function (r) { r.addEventListener('change', applyOrg); }); applyOrg();
+
+    // Grid rows: gate checkbox reveals the .rv cells; unticking clears them.
+    document.querySelectorAll('table.grid tbody tr').forEach(function (tr) {
+      if (tr.classList.contains('family')) return;
+      var gate = tr.querySelector('td.gate input[type=checkbox]');
+      var rv = tr.querySelectorAll('td.rv');
+      if (!gate) return;
+      function apply() {
+        rv.forEach(function (td) {
+          td.classList.toggle('hid', !gate.checked);
+          if (!gate.checked) td.querySelectorAll('input').forEach(function (i) { i.checked = false; });
+        });
+      }
+      gate.addEventListener('change', apply); apply();
+    });
+
+    // A3 custom method rows: controls appear once a name is typed; the next empty row appears after that.
+    var customRows = Array.prototype.slice.call(document.querySelectorAll('#grid-a3-custom tr.custom'));
+    function applyCustom() {
+      var nextShown = false;
+      customRows.forEach(function (tr) {
+        var name = tr.querySelector('.custom-name').value.trim();
+        var ctrls = Array.prototype.slice.call(tr.children).slice(1);
+        ctrls.forEach(function (td) { if (!td.classList.contains('rv')) td.classList.toggle('hid', !name); });
+        if (!name) {
+          tr.querySelectorAll('input[type=checkbox], input[type=radio]').forEach(function (i) { i.checked = false; });
+          tr.querySelectorAll('td.rv').forEach(function (td) { td.classList.add('hid'); });
+        }
+        var show = !!name || !nextShown;
+        if (!name) nextShown = true;
+        tr.classList.toggle('hid', !show);
+      });
+    }
+    customRows.forEach(function (tr) { tr.querySelector('.custom-name').addEventListener('input', applyCustom); });
+    applyCustom();
+
+    // A1.10 links: next field (with its label) appears when the previous one is filled.
+    var links = Array.prototype.slice.call(document.querySelectorAll('#links-q .link'));
+    function applyLinks() {
+      var open = true;
+      links.forEach(function (inp) {
+        var lab = inp.previousElementSibling;
+        inp.classList.toggle('hid', !open); lab.classList.toggle('hid', !open);
+        if (!inp.value.trim()) open = false;
+      });
+    }
+    links.forEach(function (inp) { inp.addEventListener('input', applyLinks); }); applyLinks();
+
+    // A5 detail: appears once anything in the A5 grid is ticked.
+    var a5 = document.getElementById('grid-a5'), a5detail = document.getElementById('a5-detail');
+    function applyA5() { a5detail.classList.toggle('hid', !a5.querySelector('input[type=checkbox]:checked')); }
+    a5.addEventListener('change', applyA5); applyA5();
+
+    // Per-option detail fields (A6.1 and the "Other" options): appear under a ticked option.
+    document.querySelectorAll('.detail').forEach(function (d) {
+      var cb = d.previousElementSibling.querySelector('input[type=checkbox]');
+      function apply() { d.classList.toggle('hid', !cb.checked); if (!cb.checked) d.querySelector('input').value = ''; }
+      cb.addEventListener('change', apply); apply();
+    });
+
+    // A8.1 "Open call" reveals the channel list.
+    var srcOpen = document.getElementById('src-open'), openCh = document.getElementById('open-channels');
+    function applyOpen() { openCh.classList.toggle('hid', !srcOpen.checked); }
+    srcOpen.addEventListener('change', applyOpen); applyOpen();
+
+    // A6.1: pick up to five, counter, disable the rest at the cap.
+    var usefulQ = document.getElementById('useful-q');
+    var usefulCbs = usefulQ.querySelectorAll('input[type=checkbox]'), usefulCount = usefulQ.querySelector('.counter'), max = +usefulQ.getAttribute('data-max');
+    function applyUseful() {
+      var n = 0; usefulCbs.forEach(function (c) { if (c.checked) n++; });
+      usefulCount.textContent = n + ' of ' + max + ' selected';
+      usefulCbs.forEach(function (c) { var block = !c.checked && n >= max; c.disabled = block; c.parentNode.classList.toggle('dim', block); });
+    }
+    usefulCbs.forEach(function (c) { c.addEventListener('change', applyUseful); }); applyUseful();
+
+    // A6.2: collaborator detail only for Yes or Maybe.
+    var collabRadios = document.querySelectorAll('input[name="collab"]'), collabReveal = document.getElementById('collab-reveal');
+    function applyCollab() {
+      var v = ''; collabRadios.forEach(function (r) { if (r.checked) v = r.value; });
+      collabReveal.classList.toggle('hid', !(v === 'yes' || v === 'maybe'));
+    }
+    collabRadios.forEach(function (r) { r.addEventListener('change', applyCollab); }); applyCollab();
+
+    // A7.4: exclusive "rather just participate"; detail field when a help option is ticked.
+    var helpCbs = document.querySelectorAll('.help-yes'), helpNone = document.querySelector('.help-none'), helpReveal = document.getElementById('help-reveal');
+    function applyHelp() { var on = false; helpCbs.forEach(function (c) { if (c.checked) on = true; }); helpReveal.classList.toggle('hid', !on); }
+    helpCbs.forEach(function (c) { c.addEventListener('change', function () { if (c.checked) helpNone.checked = false; applyHelp(); }); });
+    helpNone.addEventListener('change', function () { if (helpNone.checked) helpCbs.forEach(function (c) { c.checked = false; }); applyHelp(); });
+    applyHelp();
+  })();
+
+  // ---------- Comment boxes: one per screen, one per question block, one per grid row ----------
+  (function () {
+    var STORE = 'v4air-form-a-comments-v1';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { data = {}; }
+    var boxes = [];
+
+    function clean(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+    function makeBox(key, label) {
+      var wrap = document.createElement('div');
+      wrap.className = 'cmt';
+      var lab = document.createElement('div');
+      lab.className = 'cmt-label';
+      lab.textContent = 'Comment';
+      var ta = document.createElement('textarea');
+      ta.className = 'wide';
+      ta.setAttribute('aria-label', 'Your comment on: ' + label);
+      ta.value = data[key] || '';
+      if (ta.value) ta.classList.add('has');
+      ta.addEventListener('input', function () {
+        if (ta.value.trim()) { data[key] = ta.value; ta.classList.add('has'); }
+        else { delete data[key]; ta.classList.remove('has'); }
+        localStorage.setItem(STORE, JSON.stringify(data));
+        updateCount();
+      });
+      wrap.appendChild(lab); wrap.appendChild(ta);
+      boxes.push({ key: key, label: label, ta: ta });
+      return wrap;
+    }
+
+    document.querySelectorAll('.screen').forEach(function (screen, si) {
+      var no = clean((screen.querySelector('.screen-no') || {}).textContent) || ('Screen ' + si);
+      var title = clean((screen.querySelector('h2, h1') || {}).textContent);
+      var screenLabel = no + (title ? ': ' + title : '');
+
+      screen.querySelectorAll('.q').forEach(function (q, qi) {
+        var idEl = q.querySelector('.id');
+        var labelEl = q.querySelector('.qlabel');
+        var id = idEl ? clean(idEl.textContent) : '';
+        var label = clean(labelEl ? labelEl.textContent.replace(id, '').replace('*', '') : '');
+        var key = id || (screenLabel + ' / q' + (qi + 1));
+        q.appendChild(makeBox(key, label || key));
+      });
+
+      screen.querySelectorAll('table.grid').forEach(function (table) {
+        Array.prototype.slice.call(table.querySelectorAll('tbody tr')).forEach(function (tr) {
+          if (tr.classList.contains('family')) return;
+          var key = tr.getAttribute('data-id') || 'row';
+          var td0 = tr.querySelector('td.item');
+          var itemName = td0 ? clean(td0.childNodes[0].textContent || '') : '';
+          var ctr = document.createElement('tr');
+          ctr.className = 'cmt-row';
+          var td = document.createElement('td');
+          td.colSpan = tr.children.length;
+          td.appendChild(makeBox(key + (itemName ? ' ' + itemName : ''), itemName || key));
+          ctr.appendChild(td);
+          tr.parentNode.insertBefore(ctr, tr.nextSibling);
+        });
+      });
+
+      screen.appendChild(makeBox('SCREEN ' + screenLabel, 'this whole screen'));
+    });
+
+    function updateCount() {
+      document.getElementById('cmt-count').textContent = Object.keys(data).length + ' written';
+    }
+
+    function toMarkdown() {
+      var out = ['# Comments on Form A preview', '', 'Exported ' + new Date().toLocaleString('en-GB'), ''];
+      boxes.forEach(function (b) {
+        var v = (data[b.key] || '').trim();
+        if (!v) return;
+        out.push('## ' + b.key);
+        if (b.label && b.label !== b.key) out.push('_' + b.label + '_');
+        out.push('');
+        out.push(v);
+        out.push('');
+      });
+      if (out.length === 4) out.push('(no comments)');
+      return out.join('\n');
+    }
+
+    document.getElementById('cmt-download').addEventListener('click', function () {
+      var blob = new Blob([toMarkdown()], { type: 'text/markdown;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'form-a-comments.md';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    });
+    document.getElementById('cmt-copy').addEventListener('click', function () {
+      var btn = this;
+      navigator.clipboard.writeText(toMarkdown()).then(function () {
+        btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy to clipboard'; }, 1500);
+      });
+    });
+    document.getElementById('cmt-clear').addEventListener('click', function () {
+      if (!confirm('Delete all comments saved in this browser?')) return;
+      data = {}; localStorage.removeItem(STORE);
+      boxes.forEach(function (b) { b.ta.value = ''; b.ta.classList.remove('has'); });
+      updateCount();
+    });
+    updateCount();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form B preview: V4 AI Researchers Meetup nominations</title>
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --muted: #6a6a6a;
+    --line: #dddad4;
+    --bg: #f5f3ee;
+    --card: #ffffff;
+    --accent: #1f4e79;
+    --accent-soft: #e9f0f7;
+    --variant: #fff3d1;
+    --variant-ink: #7a5300;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.45; font-size: 15px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 96px; }
+  .banner { background: #fff8e1; border: 1px solid #efd58a; border-radius: 6px; padding: 12px 16px; font-size: 14px; margin-bottom: 24px; }
+  .banner strong { display: block; margin-bottom: 4px; }
+  .banner label { display: inline-block; margin-top: 8px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 0 0 2px; }
+  .screen { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
+  .screen-no { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .intro p { margin: 8px 0; }
+  .box { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 10px 14px; margin: 12px 0; }
+  .box p { margin: 4px 0; }
+  .q { padding: 14px 0; border-top: 1px solid var(--line); }
+  .q.first { border-top: none; }
+  .qlabel { font-weight: 600; }
+  .qlabel .opt-mark { font-weight: 400; color: var(--muted); }
+  .req { color: #b00020; margin-left: 2px; }
+  .id { font-family: ui-monospace, Consolas, "Courier New", monospace; font-size: 12px; color: var(--muted); margin-left: 8px; font-weight: 400; }
+  body.hide-ids .id { display: none; }
+  .help { font-size: 13.5px; color: var(--muted); margin: 3px 0 8px; }
+  .note { font-size: 13px; color: var(--muted); margin: 8px 0 0; font-style: italic; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 10px; margin-right: 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+  .tag.variant { background: var(--variant); color: var(--variant-ink); }
+  .tag.reveal { display: none; }
+  .variant-block { border-left: 3px solid #efd58a; padding: 6px 12px; margin: 8px 0; }
+  .reveal-block { border-left: 3px solid #9fd3ad; padding: 6px 12px; margin: 8px 0 8px 24px; }
+  input[type=text], input[type=email], input[type=url], select, textarea { font: inherit; padding: 10px 12px; border: 1px solid #b8b8b8; border-radius: 4px; width: 100%; max-width: 520px; background: #fff; min-height: 44px; }
+  textarea { min-height: 110px; }
+  input[type=checkbox], input[type=radio] { width: 22px; height: 22px; margin: 0; vertical-align: middle; accent-color: var(--accent); }
+  .opt { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; min-height: 36px; cursor: pointer; }
+  .opt input { flex: 0 0 auto; margin-top: 1px; }
+  .opt.inline { display: inline-flex; margin-right: 18px; }
+  .sublabel { font-size: 14px; font-weight: 600; margin: 10px 0 2px; }
+  .counter { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .info { display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; text-align: center; line-height: 18px; margin-left: 6px; cursor: help; font-weight: 700; }
+  .tooltip { font-size: 13px; color: var(--muted); font-style: italic; margin-left: 4px; }
+  .hint { position: relative; font-size: 13px; color: var(--accent); border-bottom: 1px dotted var(--accent); cursor: help; margin-left: 6px; }
+  .hint-body { display: none; position: absolute; left: 0; top: 130%; z-index: 4; width: 300px; background: #1c1c1c; color: #fff; font-size: 13px; line-height: 1.4; padding: 8px 10px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.25); font-weight: 400; }
+  .hint:hover .hint-body, .hint:focus .hint-body { display: block; }
+  table.grid { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  table.grid th, table.grid td { border-bottom: 1px solid var(--line); padding: 4px; text-align: center; vertical-align: middle; }
+  table.grid th { font-weight: 600; font-size: 12px; color: var(--muted); line-height: 1.25; padding: 8px 4px; }
+  table.grid td.item, table.grid th.item { text-align: left; padding: 10px 6px; }
+  table.grid .ex { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+  table.grid label.cell { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; cursor: pointer; }
+  .lvl { white-space: nowrap; }
+  .lvl label { display: inline-flex; align-items: center; gap: 4px; padding: 8px 6px; font-size: 13px; cursor: help; border-bottom: 1px dotted #999; margin: 0 1px; }
+  .lvl input { width: 18px; height: 18px; }
+  .ex-toggle { display: inline-block; margin-left: 8px; font-size: 13px; color: var(--muted); }
+  .ex-toggle summary { display: inline; cursor: pointer; color: var(--accent); text-decoration: underline dotted; }
+  .ex-toggle[open] { display: block; margin: 4px 0 6px 18px; padding: 6px 10px; background: var(--accent-soft); border-radius: 4px; }
+  .ex-toggle[open] summary { display: block; margin-bottom: 2px; }
+  .levels { font-size: 14px; margin: 8px 0; padding-left: 0; list-style: none; }
+  .levels li { margin: 2px 0; }
+  details.levels-compact { font-size: 14px; margin: 6px 0 10px; }
+  details.levels-compact summary { cursor: pointer; color: var(--accent); }
+  .btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 20px; border-radius: 4px; font-weight: 600; margin-top: 14px; }
+  .end { background: #eef6ee; }
+  .end .btn { background: #2e7d4f; }
+  .wide { max-width: 100%; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; border: 1px solid #b8b8b8; border-radius: 4px; padding: 6px 8px; max-width: 520px; background: #fff; min-height: 44px; }
+  .chips .chip { background: var(--accent-soft); color: var(--accent); border-radius: 12px; padding: 4px 10px; font-size: 13px; display: inline-flex; gap: 6px; align-items: center; }
+  .chips .chip b { cursor: pointer; font-weight: 700; padding: 0 4px; }
+  .chips input { border: none; padding: 4px; flex: 1; min-width: 120px; max-width: none; outline: none; min-height: 30px; }
+  .detail { margin: 2px 0 8px 32px; }
+  .detail label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+  .detail input { max-width: 460px; }
+  .custom-name { max-width: 260px; }
+  .links input { margin-top: 6px; }
+  .links label { display: block; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .cmt { margin: 10px 0 0; }
+  .cmt textarea { min-height: 38px; max-width: 100%; background: #fffdf5; border: 1px dashed #c9a94a; font-size: 13px; padding: 6px 8px; resize: vertical; }
+  .cmt textarea:focus { background: #fff; border-style: solid; }
+  .cmt textarea.has { background: #fff6d6; border-style: solid; }
+  .cmt-label { font-size: 11px; color: #8a6d1a; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+  tr.cmt-row td { text-align: left; padding: 4px 6px 10px; border-bottom: 1px solid var(--line); }
+  tr.cmt-row textarea { min-height: 30px; }
+  .cmtbar { position: sticky; top: 0; z-index: 5; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; margin-bottom: 16px; font-size: 13px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .cmtbar button { font: inherit; padding: 5px 10px; border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 4px; cursor: pointer; }
+  .cmtbar button.ghost { background: #fff; color: var(--accent); }
+  .cmtbar .n { color: var(--muted); }
+  /* Participant view */
+  .modebar { display: flex; gap: 6px; align-items: center; margin-bottom: 12px; font-size: 13px; flex-wrap: wrap; }
+  .modebar button { font: inherit; padding: 6px 14px; border: 1px solid var(--accent); background: #fff; color: var(--accent); border-radius: 4px; cursor: pointer; }
+  .modebar button.on { background: var(--accent); color: #fff; }
+  .devbar { position: sticky; bottom: 0; z-index: 6; background: #1c1c1c; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 13px; display: none; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+  .devbar button { font: inherit; padding: 6px 14px; border: 1px solid #888; background: #333; color: #fff; border-radius: 4px; cursor: pointer; }
+  .devbar button:disabled { opacity: .35; cursor: default; }
+  .devbar select { font: inherit; padding: 4px 6px; border-radius: 4px; border: 1px solid #888; background: #333; color: #fff; width: auto; max-width: none; min-height: 0; }
+  .devbar label { white-space: nowrap; }
+  .devbar .pos { font-weight: 600; margin-right: auto; }
+  .progress-wrap { display: none; margin: 0 0 16px; }
+  .progress { height: 6px; background: #e4e1da; border-radius: 3px; overflow: hidden; }
+  .progress span { display: block; height: 100%; background: var(--accent); transition: width .3s; }
+  .progress-text { display: flex; justify-content: space-between; font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 6px; }
+  body.pview .devbar { display: flex; }
+  body.pview .progress-wrap { display: block; }
+  body.pview .banner, body.pview .cmtbar { display: none; }
+  body.pview .screen { display: none; }
+  body.pview .screen.active { display: block; }
+  body.pview .tag, body.pview .note, body.pview .id, body.pview .cmt, body.pview tr.cmt-row, body.pview .tooltip { display: none; }
+  body.pview.dev-ids .id { display: inline; }
+  body.pview.dev-notes .note { display: block; }
+  body.pview.dev-notes .tag { display: inline-block; }
+  body.pview.dev-cmt .cmt { display: block; }
+  body.pview.dev-cmt tr.cmt-row { display: table-row; }
+  body.pview .variant-block { border-left: none; padding: 0; margin: 0; }
+  body.pview .variant-block.off { display: none; }
+  body.pview .q.off { display: none; }
+  body.pview .reveal-block { border-left: 3px solid #cfe7d6; padding: 6px 12px; margin: 8px 0 8px 12px; }
+  body.pview .screen-no { display: none; }
+  /* Conditional logic: .hid is set by JS whenever a condition is not met; only the participant view hides it. */
+  body.pview .hid { display: none !important; }
+  body.pview td.rv.hid { display: table-cell !important; visibility: hidden; }
+  body.pview tr.custom td.hid { display: table-cell !important; visibility: hidden; }
+  body.pview.force-reveals .hid { display: revert !important; visibility: visible; }
+  body.pview.force-reveals .reveal-block.hid { display: block !important; }
+  body.pview .opt.dim { opacity: .45; }
+  @media (max-width: 680px) {
+    .screen { padding: 16px; }
+    table.grid { display: block; overflow-x: auto; }
+    .lvl label { padding: 8px 3px; }
+  }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin: 10px 0; background: #fafaf7; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .card-head .n { font-weight: 700; }
+  .card-head button { font: inherit; font-size: 12px; background: none; border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; cursor: pointer; color: var(--muted); }
+  .card .qlabel { font-size: 14px; margin-top: 8px; }
+  .card input[type=text], .card input[type=email] { min-height: 40px; }
+  .add-btn { font: inherit; padding: 8px 14px; border: 1px dashed var(--accent); color: var(--accent); background: #fff; border-radius: 4px; cursor: pointer; margin-top: 6px; }
+  .add-btn:disabled { opacity: .4; cursor: default; }
+  .caps { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  body.pview .card { background: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="modebar">
+  <strong style="margin-right:6px">View:</strong>
+  <button id="mode-review" class="on">Review (everything at once)</button>
+  <button id="mode-participant">Participant (one screen at a time)</button>
+</div>
+<div class="progress-wrap">
+  <div class="progress"><span id="progress-bar" style="width:0"></span></div>
+  <div class="progress-text"><span id="progress-step"></span><span id="progress-time"></span></div>
+</div>
+
+<div class="banner">
+  <strong>Preview of Form B (nominations), built from survey-spec.md section 3</strong>
+  All screens and every revealed control are shown at once. In the real form, respondents see one screen at a time and revealed controls only after the condition is met. Nothing on this page is saved.
+  <br>
+  Every field, nominee card, and screen has a yellow comment box. Comments are saved in this browser as you type. Use the bar below to export them as a markdown file or copy them to the clipboard, then paste the result back to Claude.
+  <br>
+  <label><input type="checkbox" id="toggle-ids" checked> Show variable IDs</label>
+</div>
+
+<div class="cmtbar">
+  <strong>Comments</strong>
+  <span class="n" id="cmt-count">0 written</span>
+  <button id="cmt-download">Download comments.md</button>
+  <button id="cmt-copy" class="ghost">Copy to clipboard</button>
+  <button id="cmt-clear" class="ghost">Clear all</button>
+</div>
+
+<!-- INTRO -->
+<div class="screen intro" data-min="0.4">
+  <div class="screen-no">Intro screen</div>
+  <h1>Nominate people for the V4 AI Researchers Meetup</h1>
+  <p>Kostelec Castle, 35 km from Prague. Wednesday 28 to Friday 30 April 2027. Fully funded for students and researchers from partner institutions.</p>
+  <p>Know a motivated student, a researcher whose work fits, or someone in industry, tech transfer, or a startup who could bring an outside perspective? Tell us who. We write to them directly and invite them to apply. Two minutes.</p>
+  <p class="note">Reached from the application form's end screen with name, email, and institution prefilled, or as a standalone link sent to institutional contacts and senior staff.</p>
+  <span class="btn">Start</span>
+</div>
+
+<form onsubmit="return false">
+
+<!-- B1 to B3 -->
+<div class="screen numbered" data-min="0.4">
+  <div class="screen-no"></div>
+  <h2>About you</h2>
+  <div class="q first">
+    <div class="qlabel">Your name<span class="req">*</span><span class="id">B.name</span></div>
+    <input type="text">
+    <p class="note">Prefilled when opened from the application form.</p>
+  </div>
+  <div class="q">
+    <div class="qlabel">Your email<span class="req">*</span><span class="id">B.email</span></div>
+    <input type="email">
+    <p class="note">Prefilled when opened from the application form. Syntax validated on leaving the field.</p>
+  </div>
+  <div class="q">
+    <div class="qlabel">Your institution or organization <span class="opt-mark">(optional)</span><span class="id">B.institution</span></div>
+    <input type="text">
+    <p class="note">Prefilled when opened from the application form.</p>
+  </div>
+  <div class="q">
+    <div class="qlabel">Your application ID <span class="opt-mark">(optional)</span><span class="id">B.application_id</span></div>
+    <div class="help">If you applied yourself, this pairs your nominations with your application, it is in every email we sent you</div>
+    <input type="text" style="max-width:260px; font-family: ui-monospace, Consolas, monospace; letter-spacing:0.04em; text-transform:uppercase" value="V4A-7K3M-9QX2" readonly>
+    <p class="note">Format V4A-XXXX-XXXX (spec 5.17). Prefilled and read-only when opened from the application's end screen (shown here with an example value); an empty, editable field otherwise. Typed IDs are format-checked on leaving the field; an unknown ID is accepted and flagged for the organizers rather than blocking the nominator.</p>
+  </div>
+</div>
+
+<!-- B4 -->
+<div class="screen numbered" data-min="1.2">
+  <div class="screen-no"></div>
+  <h2>People you nominate</h2>
+  <p>Up to three students, three researchers, and three people outside academia. Name and who they are is enough; the rest helps us write to them well.</p>
+  <div class="q first" id="nominees-q">
+    <div class="qlabel">Nominees<span class="id">B4.n.*</span></div>
+    <div id="cards"></div>
+    <button type="button" class="add-btn" id="add-card">Add another person</button>
+    <p class="caps" id="caps"></p>
+    <p class="note">Repeater: the form starts with one card. "Add another person" appends a card; each card has a remove button. A type is disabled in the selector once its cap is reached, with a note "You have already nominated 3 students." In this review view three cards are shown, one per type.</p>
+  </div>
+</div>
+
+<!-- B5, B6 -->
+<div class="screen numbered" data-min="0.4">
+  <div class="screen-no"></div>
+  <h2>Last things</h2>
+  <div class="q first">
+    <div class="qlabel">May we mention your name when we write to them?<span class="req">*</span><span class="id">B.mention</span></div>
+    <label class="opt inline"><input type="radio" name="mention" value="yes">Yes</label>
+    <label class="opt inline"><input type="radio" name="mention" value="no">No</label>
+  </div>
+  <div class="q">
+    <div class="qlabel">Consent<span class="req">*</span><span class="id">B.consent</span></div>
+    <label class="opt"><input type="checkbox">[Consent text covering processing of the nominator's and nominees' data for the single purpose of sending an invitation, retention until [date], and how nominees are told where their contact came from when the answer above is Yes.]</label>
+  </div>
+  <span class="btn">Send nominations</span>
+</div>
+
+</form>
+
+<!-- END -->
+<div class="screen end" data-min="0">
+  <div class="screen-no">End screen</div>
+  <p><strong>Thank you.</strong> We will write to them within [N] days.</p>
+  <p><strong>Your nomination ID: <span style="font-family: ui-monospace, Consolas, monospace; letter-spacing:0.04em">V4N-4PZR-B8TD</span></strong><br>Quote it if you write to us about these nominations.</p>
+  <p>Haven't applied yourself yet? <a href="#">Apply to the meetup</a></p>
+</div>
+
+<div class="devbar">
+  <span class="pos" id="dev-pos"></span>
+  <label><input type="checkbox" id="dev-reveals"> Force-show all reveals</label>
+  <label><input type="checkbox" id="dev-ids"> IDs</label>
+  <label><input type="checkbox" id="dev-notes"> Dev notes</label>
+  <label><input type="checkbox" id="dev-cmt"> Comments</label>
+  <button id="dev-prev" title="j or left arrow">Prev (j)</button>
+  <button id="dev-next" title="k or right arrow">Next (k)</button>
+</div>
+
+</div>
+<script>
+  // ---------- Nominee cards (repeater) ----------
+  var TYPES = [
+    { key: 'student', label: 'Student', cap: 3 },
+    { key: 'researcher', label: 'Researcher', cap: 3 },
+    { key: 'outside', label: 'Outside academia (industry, tech transfer, startup, public sector, other)', cap: 3 }
+  ];
+  var cards = [{ type: 'student' }, { type: 'researcher' }, { type: 'outside' }];
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function countType(k) { return cards.filter(function (c) { return c.type === k; }).length; }
+  function drawCards() {
+    var host = document.getElementById('cards');
+    host.innerHTML = cards.map(function (c, i) {
+      var n = i + 1;
+      var types = TYPES.map(function (t) {
+        var full = countType(t.key) >= t.cap && c.type !== t.key;
+        return '<label class="opt' + (full ? ' dim' : '') + '"><input type="radio" name="type' + n + '" value="' + t.key + '"' + (c.type === t.key ? ' checked' : '') + (full ? ' disabled' : '') + '>' + esc(t.label) + (full ? ' <span class="note" style="display:inline">You have already nominated ' + t.cap + ' of these</span>' : '') + '</label>';
+      }).join('');
+      return '<div class="card" data-n="' + n + '">' +
+        '<div class="card-head"><span class="n">Person ' + n + '</span><button type="button" data-remove="' + i + '">Remove</button></div>' +
+        '<div class="qlabel">Who are they?<span class="req">*</span><span class="id">B4.' + n + '.type</span></div>' + types +
+        '<div class="qlabel">Name<span class="req">*</span><span class="id">B4.' + n + '.name</span></div><input type="text">' +
+        '<div class="qlabel">Email or another way to reach them <span class="opt-mark">(optional)</span><span class="id">B4.' + n + '.contact</span></div><div class="help">If you don\'t have it, name and institution are enough</div><input type="text">' +
+        '<div class="qlabel">Institution or organization <span class="opt-mark">(optional)</span><span class="id">B4.' + n + '.affiliation</span></div><input type="text">' +
+        '<div class="qlabel">Why do they fit? One or two sentences <span class="opt-mark">(optional)</span><span class="id">B4.' + n + '.why</span></div><div class="help">What they work on, or why they would benefit</div><input type="text">' +
+        '</div>';
+    }).join('');
+    document.getElementById('caps').textContent = TYPES.map(function (t) { return countType(t.key) + ' of ' + t.cap + ' ' + t.label.split(' ')[0].toLowerCase() + (t.key === 'outside' ? ' academia' : 's'); }).join(', ');
+    document.getElementById('add-card').disabled = cards.length >= 9;
+    host.querySelectorAll('[data-remove]').forEach(function (b) { b.addEventListener('click', function () { cards.splice(+b.getAttribute('data-remove'), 1); drawCards(); }); });
+    host.querySelectorAll('input[type=radio]').forEach(function (r) { r.addEventListener('change', function () { var i = +r.closest('.card').getAttribute('data-n') - 1; cards[i].type = r.value; drawCards(); }); });
+  }
+  document.getElementById('add-card').addEventListener('click', function () {
+    var free = TYPES.filter(function (t) { return countType(t.key) < t.cap; })[0];
+    if (free) { cards.push({ type: free.key }); drawCards(); }
+  });
+  drawCards();
+
+  // Screen numbering
+  (function () {
+    var numbered = document.querySelectorAll('.screen.numbered');
+    numbered.forEach(function (s, i) { s.querySelector('.screen-no').textContent = 'Screen ' + (i + 1) + ' of ' + numbered.length; });
+  })();
+  document.getElementById('toggle-ids').addEventListener('change', function () { document.body.classList.toggle('hide-ids', !this.checked); });
+
+  // ---------- Participant view ----------
+  (function () {
+    var body = document.body;
+    var screens = Array.prototype.slice.call(document.querySelectorAll('.screen'));
+    var idx = 0;
+    var totalMin = screens.reduce(function (a, s) { return a + parseFloat(s.getAttribute('data-min') || 0); }, 0);
+    function render() {
+      screens.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      var s = screens[idx];
+      var no = (s.querySelector('.screen-no') || {}).textContent || '';
+      var title = (s.querySelector('h2, h1') || {}).textContent || '';
+      document.getElementById('dev-pos').textContent = no.trim() + (title ? ': ' + title.trim() : '');
+      var done = 0, left = 0;
+      screens.forEach(function (sc, i) { var m = parseFloat(sc.getAttribute('data-min') || 0); if (i < idx) done += m; else left += m; });
+      document.getElementById('progress-bar').style.width = Math.round(done / totalMin * 100) + '%';
+      document.getElementById('progress-step').textContent = no.trim();
+      var mins = Math.max(1, Math.ceil(left));
+      document.getElementById('progress-time').textContent = left > 0.3 ? 'About ' + mins + ' min left' : '';
+      document.getElementById('dev-prev').disabled = idx === 0;
+      document.getElementById('dev-next').disabled = idx === screens.length - 1;
+      window.scrollTo(0, 0);
+    }
+    function setMode(p) {
+      body.classList.toggle('pview', p);
+      document.getElementById('mode-participant').classList.toggle('on', p);
+      document.getElementById('mode-review').classList.toggle('on', !p);
+      if (p) render(); else screens.forEach(function (s) { s.classList.remove('active'); });
+    }
+    document.getElementById('mode-review').addEventListener('click', function () { setMode(false); });
+    document.getElementById('mode-participant').addEventListener('click', function () { setMode(true); });
+    document.getElementById('dev-prev').addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+    document.getElementById('dev-next').addEventListener('click', function () { if (idx < screens.length - 1) { idx++; render(); } });
+    ['dev-ids', 'dev-notes', 'dev-cmt'].forEach(function (id) { document.getElementById(id).addEventListener('change', function () { body.classList.toggle(id, this.checked); }); });
+    document.getElementById('dev-reveals').addEventListener('change', function () { body.classList.toggle('force-reveals', this.checked); });
+    document.addEventListener('keydown', function (e) {
+      if (!body.classList.contains('pview') || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+      if (e.key === 'ArrowRight' || e.key === 'k') document.getElementById('dev-next').click();
+      if (e.key === 'ArrowLeft' || e.key === 'j') document.getElementById('dev-prev').click();
+    });
+  })();
+
+  // ---------- Comment boxes ----------
+  (function () {
+    var STORE = 'v4air-form-b-comments-v1';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { data = {}; }
+    var boxes = [];
+    function clean(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+    function makeBox(key, label) {
+      var wrap = document.createElement('div'); wrap.className = 'cmt';
+      var lab = document.createElement('div'); lab.className = 'cmt-label'; lab.textContent = 'Comment';
+      var ta = document.createElement('textarea'); ta.className = 'wide'; ta.setAttribute('aria-label', 'Your comment on: ' + label);
+      ta.value = data[key] || ''; if (ta.value) ta.classList.add('has');
+      ta.addEventListener('input', function () {
+        if (ta.value.trim()) { data[key] = ta.value; ta.classList.add('has'); } else { delete data[key]; ta.classList.remove('has'); }
+        localStorage.setItem(STORE, JSON.stringify(data)); updateCount();
+      });
+      wrap.appendChild(lab); wrap.appendChild(ta); boxes.push({ key: key, label: label, ta: ta }); return wrap;
+    }
+    document.querySelectorAll('.screen').forEach(function (screen, si) {
+      var no = clean((screen.querySelector('.screen-no') || {}).textContent) || ('Screen ' + si);
+      var title = clean((screen.querySelector('h2, h1') || {}).textContent);
+      var screenLabel = no + (title ? ': ' + title : '');
+      screen.querySelectorAll('.q').forEach(function (q, qi) {
+        var idEl = q.querySelector('.id'), labelEl = q.querySelector('.qlabel');
+        var id = idEl ? clean(idEl.textContent) : '';
+        var label = clean(labelEl ? labelEl.textContent.replace(id, '').replace('*', '') : '');
+        q.appendChild(makeBox(id || (screenLabel + ' / q' + (qi + 1)), label || id));
+      });
+      screen.appendChild(makeBox('SCREEN ' + screenLabel, 'this whole screen'));
+    });
+    // one box per nominee-card field, attached after the cards render (cards re-render on type change; boxes live outside)
+    var cardBoxHost = document.createElement('div');
+    document.getElementById('nominees-q').insertBefore(cardBoxHost, document.getElementById('caps').nextSibling);
+    ['B4.n.type Who are they?', 'B4.n.name Name', 'B4.n.contact Email or another way to reach them', 'B4.n.affiliation Institution or organization', 'B4.n.why Why do they fit?'].forEach(function (k) {
+      var lab = document.createElement('div'); lab.className = 'note'; lab.textContent = 'Comment on the card field: ' + k.split(' ').slice(1).join(' ');
+      cardBoxHost.appendChild(lab); cardBoxHost.appendChild(makeBox(k.split(' ')[0], k.split(' ').slice(1).join(' ')));
+    });
+    function updateCount() { document.getElementById('cmt-count').textContent = Object.keys(data).length + ' written'; }
+    function toMarkdown() {
+      var out = ['# Comments on Form B preview', '', 'Exported ' + new Date().toLocaleString('en-GB'), ''];
+      boxes.forEach(function (b) { var v = (data[b.key] || '').trim(); if (!v) return; out.push('## ' + b.key); if (b.label && b.label !== b.key) out.push('_' + b.label + '_'); out.push(''); out.push(v); out.push(''); });
+      if (out.length === 4) out.push('(no comments)');
+      return out.join('\n');
+    }
+    document.getElementById('cmt-download').addEventListener('click', function () {
+      var blob = new Blob([toMarkdown()], { type: 'text/markdown;charset=utf-8' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'form-b-comments.md';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    });
+    document.getElementById('cmt-copy').addEventListener('click', function () {
+      var btn = this; navigator.clipboard.writeText(toMarkdown()).then(function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy to clipboard'; }, 1500); });
+    });
+    document.getElementById('cmt-clear').addEventListener('click', function () {
+      if (!confirm('Delete all comments saved in this browser?')) return;
+      data = {}; localStorage.removeItem(STORE); boxes.forEach(function (b) { b.ta.value = ''; b.ta.classList.remove('has'); }); updateCount();
+    });
+    updateCount();
+  })();
+</script>
+</body>
+</html>

@@ -34,7 +34,7 @@ export function Hero({ theme }: { theme: Theme }) {
           the V4 region who work with AI, in any discipline.
         </p>
         <div className="cta-row">
-          <a className="btn btn-primary" href={APPLY_URL} target="_blank" rel="noopener">
+          <a className="btn btn-primary" href={APPLY_URL}>
             Apply now
           </a>
           <a className="btn btn-ghost" href="#adaptive">

@@ -69,7 +69,7 @@ export function Who() {
               you're a junior faculty member still building your research, you're
               welcome.
             </p>
-            <a className="btn btn-primary" href={APPLY_URL} target="_blank" rel="noopener">
+            <a className="btn btn-primary" href={APPLY_URL}>
               Apply now
             </a>
             {/* div, not p: the tooltip contains a <ul>, which is invalid inside <p> */}

@@ -38,6 +38,30 @@ npm run build    # typová kontrola + produkční build do dist/
 - Motion (`motion/react`) s komponentami Motion Primitives (text-loop, text-morph, text-effect, in-view, animated-group, text-shimmer) a flip-clock z Watermelon UI
 - Písma: Aileron (titulky), Satoshi (text, vlastní hosting), JetBrains Mono
 
+## Formuláře
+
+Přihlašovací a nominační formuláře jsou součástí tohoto repozitáře a nasazují se s webem: `public/apply/` a `public/nominate/` jsou čisté HTML, CSS a JavaScript bez buildu, dostupné na `/apply/` a `/nominate/`. Každé tlačítko Apply na webu vede na `/apply/`; panel s přihláškou odkazuje i na `/nominate/`.
+
+- `forms/survey-spec.md`: specifikace, každá otázka s ID, zněním, možnostmi a podmínkami, plus chování, které musí backend zajistit (oddíly 5.1 až 5.17). Třetí nástroj, formulář po přijetí, je tam specifikován a zamražen.
+- `forms/form-a-preview.html`, `forms/form-b-preview.html`: kontrolní pohledy na oba formuláře s ID proměnných, účastnickým režimem s vývojářskými ovládacími prvky (`j` a `k` přepínají obrazovky) a komentáři s exportem do markdownu. Otevřete přímo v prohlížeči.
+- `public/apply/index.html`, `public/nominate/index.html`: formuláře tak, jak je vidí respondenti. Validace při opuštění pole a při stisku Další, automatické ukládání v prohlížeči, vážený ukazatel postupu se zbývajícím časem, ID odpovědí (`V4A-`, `V4N-`). „Dev controls“ v patičce nebo `?dev` v adrese přidá volný pohyb. Zatím se nic nikam neodesílá.
+
+### Otevřené body k formulářům
+
+Obsah, pro organizátory:
+
+1. Texty souhlasů pro přihlášku (A8) a nominační formulář (B6), doba uchování a odkaz na zásady ochrany údajů. Obojí jsou zástupné texty v hranatých závorkách.
+2. Data a čísla v textech: „Everyone hears from us by February“, „We will write to them within [N] days“ a případně rok u uzávěrky 15. ledna.
+3. Dosud nepotvrzené texty: závěrečná věta obrazovky „What you are looking for“, dvě nápovědy k ceně účasti, čtyři příklady úrovní zkušeností a nápověda k Not-Just-Posters.
+4. Pilot: pět lidí vyplní přihlášku na vlastních zařízeních, alespoň dva na telefonu, s měřením času na obrazovku (spec 5.14). Podle výsledků přepočítat minuty na obrazovku ve spec 5.1.
+
+Stavba, aby formuláře fungovaly naostro:
+
+1. Úložiště: Google tabulka s webovou aplikací v Apps Scriptu (ukládání při stisku Další, obnovení podle tokenu, LockService pro ID), nebo databáze a API. V tomto měřítku tabulka stačí.
+2. E-mail: odkaz pro pokračování s ID přihlášky, potvrzení pro oba formuláře, pozvánka nominovaným. Pozor na kvótu MailApp, pokud je posílá Apps Script.
+3. Administrace: počty podle zemí a kariérních stupňů, matice pokrytí „chci se naučit“ proti „mohl bych přednášet“, seznam nominovaných s detekcí duplicit, export (spec 5.11 a 5.12).
+4. Uzavření k uzávěrce a mazání po uplynutí doby uchování.
+
 ## Autorství fotografií
 
 Fotografie zámku v galerii jsou odvozeniny snímků z Wikimedia Commons pod licencemi CC BY-SA; autory a licence uvádí [ATTRIBUTION.md](ATTRIBUTION.md).

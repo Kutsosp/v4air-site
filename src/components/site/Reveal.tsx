@@ -25,5 +25,7 @@ export function Reveal({
   )
 }
 
-export const APPLY_URL = 'https://forms.gle/Y7kzzHkME9BZp6zx5'
+/* the forms ship with the site under public/apply and public/nominate (base-aware) */
+export const APPLY_URL = import.meta.env.BASE_URL + 'apply/'
+export const NOMINATE_URL = import.meta.env.BASE_URL + 'nominate/'
 export const CONTACT_MAILTO = 'mailto:kutsosp@natur.cuni.cz'

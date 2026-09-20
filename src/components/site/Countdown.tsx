@@ -51,7 +51,7 @@ export function Countdown() {
             Accommodation, board, and travel contribution covered for V4
             participants.
           </p>
-          <a className="btn btn-primary" href={APPLY_URL} target="_blank" rel="noopener">
+          <a className="btn btn-primary" href={APPLY_URL}>
             Apply now
           </a>
           <div className="mt-2 flex flex-col items-center gap-2">

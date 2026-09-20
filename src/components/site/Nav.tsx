@@ -157,8 +157,6 @@ export function Nav({
                 <motion.a
                   className="nav-apply nav-apply-real"
                   href={APPLY_URL}
-                  target="_blank"
-                  rel="noopener"
                   initial={{ opacity: 0, scale: 0.6, y: -10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.6, y: -10 }}

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { APPLY_URL, CONTACT_MAILTO } from './Reveal'
+import { APPLY_URL, CONTACT_MAILTO, NOMINATE_URL } from './Reveal'
 
 const STEPS = [
   {
@@ -136,9 +136,13 @@ export function ApplySteps() {
                 <p>The whole program is built from what you ask for.</p>
               </div>
               <div className="apply-cta">
-                <a className="btn btn-primary" href={APPLY_URL} target="_blank" rel="noopener">
+                <a className="btn btn-primary" href={APPLY_URL}>
                   Apply now
                 </a>
+                <p className="muted">
+                  Know someone who should be here?{' '}
+                  <a href={NOMINATE_URL}>Nominate them</a>
+                </p>
                 <p className="muted">
                   Questions first? Write to{' '}
                   <a href={CONTACT_MAILTO}>kutsosp@natur.cuni.cz</a>
