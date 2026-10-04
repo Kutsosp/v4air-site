@@ -48,7 +48,7 @@ export function Partners() {
           ))}
         </div>
         <div className="partner-strip">
-          <p className="partner-strip-label">Partners</p>
+          <p className="partner-strip-label">Organizing Partners</p>
           <div className="partner-strip-logos">
             {PARTNERS.map((l) => (
               <img

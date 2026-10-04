@@ -405,21 +405,20 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 /* ---------- format ---------- */
 .format { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
 .format h2 { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
-.format-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem);
-}
-@media (max-width: 1100px) { .format-grid { grid-template-columns: 1fr 1fr; } }
+/* editorial rows: title left, body right, one hairline above each row (impeccable-taste 4.4: no equal cards) */
+.format-list { display: flex; flex-direction: column; }
 .format-item {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-raise);
-  padding: clamp(1.4rem, 2.4vw, 2rem);
-  min-height: 15rem;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1rem, 4vw, 5rem);
+  align-items: baseline;
+  padding: clamp(1.4rem, 2.6vw, 2.2rem) 0;
+  border-top: 1px solid var(--line);
 }
-.format-item h3 { margin-bottom: 0.6rem; font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem); }
-.format-item p { margin: 0; color: var(--text-2); }
+.format-item:last-child { border-bottom: 1px solid var(--line); }
+.format-item h3 { margin: 0; font-size: clamp(1.25rem, 1rem + 1.1vw, 1.9rem); letter-spacing: -0.01em; max-width: 16ch; }
+.format-item p { margin: 0; color: var(--text-2); font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); max-width: 48ch; }
+@media (max-width: 700px) { .format-item { grid-template-columns: 1fr; gap: 0.5rem; } }
 
 /* ---------- venue ---------- */
 .venue { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
@@ -910,13 +909,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
 }
-.for-partners {
-  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius);
-  background: var(--bg-raise);
-}
+.for-partners { max-width: 52ch; }
 .for-partners h3 { font-size: 1.05rem; margin: 0 0 0.5rem; }
 .for-partners p { margin: 0; color: var(--text-2); }
 .for-partners a { color: var(--accent); font-weight: 600; }
@@ -1109,7 +1102,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 
 /* ---------- mobile ---------- */
 @media (max-width: 767px) {
-  .funded .wrap, .adaptive .cols, .format-grid, .venue .split, .apply-panel { grid-template-columns: 1fr; }
+  .funded .wrap, .adaptive .cols, .venue .split, .apply-panel { grid-template-columns: 1fr; }
   .partners-bottom { grid-template-columns: 1fr; }
   .venue-photo { order: -1; }
   .apply-cta { text-align: left; }
@@ -1322,18 +1315,6 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .nav2[data-scrolled="true"] .nav2-links a:hover { color: var(--teal); }
 
 /* format-item icons */
-.format-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--bg);
-  color: var(--accent);
-  margin-bottom: 1.4rem;
-}
 
 
 /* ---------- poster identity: highlight chips ---------- */
