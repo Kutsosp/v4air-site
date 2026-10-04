@@ -153,7 +153,7 @@ Button: "Start the application".
 
 ### 2.1 Section A1: About you (screens 1 and 2 of 14)
 
-Screen 1, "About you": A1.1, A1.2, A1.4, A1.10. Screen 2, "Where you are": A1.3, A1.5, A1.6, A1.7, A1.8, A1.9. Career stage is asked on screen 1 so that screen 2 can already show the right variants.
+Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.10. Screen 2, "Where you are": A1.3, A1.5, A1.6, A1.7, A1.8, A1.9. Career stage is asked on screen 1 so that screen 2 can already show the right variants.
 
 **A1.1** `A1.name` Full name. Short text. Required.
 
@@ -196,6 +196,8 @@ Screen 1, "About you": A1.1, A1.2, A1.4, A1.10. Screen 2, "Where you are": A1.3,
 - Wednesday 28 April 2027
 - Thursday 29 April 2027
 - Friday 30 April 2027
+
+**A1.11** `A1.gender` "Gender (optional)". Dropdown, single select, optional, no validation. Options: Woman (`woman`), Man (`man`), I describe myself otherwise (`other`), Prefer not to say (`not_stated`); the empty default reads "Choose an option" and exports as an empty string. Info-icon tooltip on the label: "We use this information only to ensure a balanced representation of genders at the meetup.". Shown on screen 1 after A1.4. Used only in aggregate for the gender-balance checkpoints and the funder report (gender balance brief, sections 4 and 5); `other` and `not_stated` are counted separately and do not count against either floor. Applications saved before the item existed count as not stated. The consent text in A8 must name this purpose.
 
 **A1.10** `A1.link_1` to `A1.link_4` "Links where we can see your work (optional)". Help: "ORCID, Google Scholar, a personal page, GitHub or similar". Up to four URL fields, each with its own visible label "Link 1" to "Link 4", validated for syntax. One field is shown at first; the next appears when the previous one is filled. Optional. Shown on screen 1.
 
@@ -594,7 +596,7 @@ CSV and XLSX. One row per respondent, one column per variable ID. Multi-selects 
 
 ### 5.12 Admin view
 A small internal dashboard, live during the call:
-- Counts of submitted and in-progress applications by country (A1.3) and career stage (A1.4), for monitoring the mix.
+- Counts of submitted and in-progress applications by country (A1.3), career stage (A1.4) and gender (A1.11), for monitoring the mix. The gender counts serve the checkpoint dates in the gender balance brief (1 November 2026, 1 December 2026, 15 January 2027).
 - Coverage matrix over the 36 fixed items plus a list of custom method names from A3.16: for each item, number of respondents with "learn" ticked and number with "present" ticked. Items with learners but no presenters are the list of gaps to fill by invitation (goal 4). Items with presenters but few learners are candidates to drop from the programme.
 - Role lists: respondents per option of A7.1 and A7.4, with A7.2 (presented before) shown next to each name.
 - Keyword cloud from A2.2 with counts, clickable to list the respondents who used each keyword.
@@ -611,7 +613,7 @@ Five test respondents complete A end to end, timed per screen, on their own devi
 English only.
 
 ### 5.16 Tooltips
-Two forms. A dotted-underlined question next to an option that shows its answer on hover and on tap (A1.4 "Who is an early-career researcher?"). An info icon next to an option or label that opens a short text on hover and on tap, used on the A7.1 option "Not-Just-Posters session presenter", and each of the four A3 level options (tooltip = level name and definition). The A3 level examples use a collapsed "Example" toggle instead of a tooltip, so they can be read on any device. Tooltip text is part of the app config, next to the option it belongs to.
+Two forms. A dotted-underlined question next to an option that shows its answer on hover and on tap (A1.4 "Who is an early-career researcher?"). An info icon next to an option or label that opens a short text on hover and on tap, used on the A1.11 label "Gender (optional)", the A7.1 option "Not-Just-Posters session presenter", and each of the four A3 level options (tooltip = level name and definition). The A3 level examples use a collapsed "Example" toggle instead of a tooltip, so they can be read on any device. Tooltip text is part of the app config, next to the option it belongs to.
 
 ### 5.17 Response IDs
 Every response in every instrument gets a human-readable ID the moment its record is created, before anything is submitted. Format: a form prefix, a hyphen, and eight characters in two groups of four, from the alphabet `23456789ABCDEFGHJKLMNPQRSTUVWXYZ` (no 0, O, 1, I), generated randomly and checked for uniqueness on the server.

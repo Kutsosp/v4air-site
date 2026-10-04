@@ -50,7 +50,7 @@ The application and nomination forms live in this repo and ship with the site: `
 
 Content, for the organizers:
 
-1. Consent texts for the application (A8) and the nomination form (B6), the retention period, and the link to the privacy notice. Both are bracketed placeholders.
+1. Consent texts for the application (A8) and the nomination form (B6), the retention period, and the link to the privacy notice. Both are bracketed placeholders. The A8 text and the privacy notice must name the optional gender item (A1.11) and its purpose, aggregate reporting on gender balance; the item was added 04.10.2026.
 2. Dates and numbers in copy: "Everyone hears from us by February", "We will write to them within [N] days", and the year on the 15 January deadline if needed.
 3. Copy not yet confirmed: the closing line of the "What you are looking for" screen, the two participation-cost tooltips, the four experience-level examples, and the Not-Just-Posters tooltip.
 4. Pilot: five people complete the application on their own devices, at least two on phones, timed per screen (spec 5.14). Recalibrate the per-screen minutes in spec 5.1 from the results.

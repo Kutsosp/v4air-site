@@ -132,13 +132,16 @@
   .qlabel .opt-mark { font-weight: 400; color: var(--text-2); }
   .hint { color: var(--text-2); font-size: 0.95rem; margin: 0 0 0.7rem; }
   .sublabel { display: block; font-weight: 600; margin: 0.9rem 0 0.25rem; }
-  input[type=text], input[type=email], input[type=url], textarea {
+  input[type=text], input[type=email], input[type=url], select, textarea {
     font: inherit; width: 100%; max-width: 560px; min-height: 48px; padding: 0.7rem 0.9rem;
     color: var(--text); background: var(--field); border: 1px solid var(--line); border-radius: 8px;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
-  input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgb(var(--accent-glow) / 0.25); }
+  input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgb(var(--accent-glow) / 0.25); }
   textarea { min-height: 140px; max-width: 100%; resize: vertical; line-height: 1.55; }
+  select { max-width: 360px; cursor: pointer; appearance: none; -webkit-appearance: none; padding-right: 2.6rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23888' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; }
+  .qlabel .info { vertical-align: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .counter { font-size: 0.85rem; color: var(--text-2); margin-top: 0.3rem; }
   input[type=checkbox], input[type=radio] { width: 22px; height: 22px; margin: 0; flex: 0 0 auto; accent-color: var(--accent); cursor: pointer; }
   .opt { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.55rem 0.6rem; margin: 0 -0.6rem; min-height: 44px; border-radius: 8px; cursor: pointer; transition: background-color 0.15s ease; }
@@ -357,6 +360,17 @@
         <label class="opt"><input type="radio" name="A1.stage" value="senior"><span>Senior researcher</span></label>
         <label class="opt"><input type="radio" name="A1.stage" value="nonacad"><span>Not in academia</span></label>
         <p class="err-msg">Choose the option closest to your situation</p>
+      </div>
+      <div class="q" data-q="A1.gender">
+        <div class="qlabel"><label for="A1.gender">Gender <span class="opt-mark">(optional)</span></label><span class="info" tabindex="0" role="note" aria-label="Why we ask">i<span class="qhint-body">We use this information only to ensure a balanced representation of genders at the meetup.</span></span></div>
+        <select id="A1.gender" name="A1.gender" aria-describedby="gender-why">
+          <option value="">Choose an option</option>
+          <option value="woman">Woman</option>
+          <option value="man">Man</option>
+          <option value="other">I describe myself otherwise</option>
+          <option value="not_stated">Prefer not to say</option>
+        </select>
+        <span id="gender-why" class="sr-only">We use this information only to ensure a balanced representation of genders at the meetup.</span>
       </div>
       <div class="q links" data-q="A1.links">
         <span class="qlabel">Links where we can see your work <span class="opt-mark">(optional)</span></span>
@@ -852,7 +866,7 @@
 
   function collect() {
     var data = {};
-    $$('input, textarea', form).forEach(function (el) {
+    $$('input, select, textarea', form).forEach(function (el) {
       if (!el.name) return;
       if (el.type === 'checkbox') data[el.name] = el.checked;
       else if (el.type === 'radio') { if (el.checked) data[el.name] = el.value; else if (!(el.name in data)) data[el.name] = data[el.name] || ''; }
@@ -890,7 +904,7 @@
     }, 250);
   }
   function restore() {
-    $$('input, textarea', form).forEach(function (el) {
+    $$('input, select, textarea', form).forEach(function (el) {
       if (!el.name || !(el.name in state)) return;
       if (el.type === 'checkbox') el.checked = !!state[el.name];
       else if (el.type === 'radio') el.checked = state[el.name] === el.value;
@@ -1099,7 +1113,7 @@
       errors.map(function (e, i) { return '<li><a href="#" data-goto="' + i + '">' + esc(e.label) + '</a></li>'; }).join('') + '</ul>';
     box.classList.add('on');
     $$('a[data-goto]', box).forEach(function (a) {
-      a.addEventListener('click', function (ev) { ev.preventDefault(); var q = errors[+a.getAttribute('data-goto')].q; q.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = $('input, textarea', q); if (f) f.focus({ preventScroll: true }); });
+      a.addEventListener('click', function (ev) { ev.preventDefault(); var q = errors[+a.getAttribute('data-goto')].q; q.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = $('input, select, textarea', q); if (f) f.focus({ preventScroll: true }); });
     });
     box.focus();
   }
@@ -1192,7 +1206,7 @@
   $('#reset-preview').addEventListener('click', function () {
     if (!confirm('Clear all answers in this preview and start from the beginning?')) return;
     localStorage.removeItem(STORE); localStorage.removeItem('v4air-application-id'); localStorage.removeItem('v4air-applicant'); state = {}; keywords = []; idx = 0;
-    $$('input, textarea', form).forEach(function (el) { if (el.type === 'checkbox' || el.type === 'radio') el.checked = false; else if (el.type !== 'hidden') el.value = ''; });
+    $$('input, select, textarea', form).forEach(function (el) { if (el.type === 'checkbox' || el.type === 'radio') el.checked = false; else if (el.type !== 'hidden') el.value = ''; });
     applyAll(); render();
   });
   render();
