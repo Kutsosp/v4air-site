@@ -118,7 +118,7 @@ Call text (Peter's wording, 20.09.2026):
 >
 > **Participation costs**
 > - Students and researchers from partner institutions: fully funded
-> - Students outside partner institutions: 160 euro
+> - Participants from outside partner institutions: participation fee, amount to be announced
 > - All other applicants: TBA
 >
 > Two dotted-underlined tooltips in the first line, same pattern as "Who is an early-career researcher?" (5.16). "Partner institutions": "Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava." "Fully funded": "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."
@@ -137,7 +137,7 @@ Call text (Peter's wording, 20.09.2026):
 > Peter Kutsos (project coordinator)
 > Petr Chlup (technical coordinator)
 >
-> Inquiries: kutsosp@natur.cuni.cz
+> Inquiries: info@v4air.eu
 >
 > **Coordinating institution:**
 > Charles University
@@ -153,7 +153,7 @@ Button: "Start the application".
 
 ### 2.1 Section A1: About you (screens 1 and 2 of 14)
 
-Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.10. Screen 2, "Where you are": A1.3, A1.5, A1.6, A1.7, A1.8, A1.9. Career stage is asked on screen 1 so that screen 2 can already show the right variants.
+Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.12, A1.10. Screen 2, "Where you are": A1.3, A1.5, A1.6, A1.7, A1.8, A1.9. Career stage is asked on screen 1 so that screen 2 can already show the right variants.
 
 **A1.1** `A1.name` Full name. Short text. Required.
 
@@ -198,6 +198,8 @@ Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.10. Screen 2, "Where you are"
 - Friday 30 April 2027
 
 **A1.11** `A1.gender` "Gender (optional)". Dropdown, single select, optional, no validation. Options: Woman (`woman`), Man (`man`), I describe myself otherwise (`other`), Prefer not to say (`not_stated`); the empty default reads "Choose an option" and exports as an empty string. Info-icon tooltip on the label: "We use this information only to ensure a balanced representation of genders at the meetup.". Shown on screen 1 after A1.4. Used only in aggregate for the gender-balance checkpoints and the funder report (gender balance brief, sections 4 and 5); `other` and `not_stated` are counted separately and do not count against either floor. Applications saved before the item existed count as not stated. The consent text in A8 must name this purpose.
+
+**A1.12** `A1.care` "Care duties (optional)". One checkbox, optional, no validation: "I have care duties (a child or a dependent) that make a three-day stay harder for me." Help above the box: "Selecting this does not affect admission. The organizers of V4AIR are committed to gender equality and will use this information only to make the event more accessible to participants of all genders." When ticked, an optional short text `A1.care_detail` appears: "What would help? For example, bringing a child, a childcare room, a nursing room, a specific day or time for your talk."; unticking clears it. Shown on screen 1 after A1.11. Exports as true/false plus the text. Purpose: a count before the venue arrangements are booked (gender balance brief, step 12); details such as ages or numbers belong in form C once people are selected. The consent text in A8 and the privacy notice must name this item and its purpose. Added 04.10.2026.
 
 **A1.10** `A1.link_1` to `A1.link_4` "Links where we can see your work (optional)". Help: "ORCID, Google Scholar, a personal page, GitHub or similar". Up to four URL fields, each with its own visible label "Link 1" to "Link 4", validated for syntax. One field is shown at first; the next appears when the previous one is filled. Optional. Shown on screen 1.
 
@@ -598,7 +600,7 @@ CSV and XLSX. One row per respondent, one column per variable ID. Multi-selects 
 
 ### 5.12 Admin view
 A small internal dashboard, live during the call:
-- Counts of submitted and in-progress applications by country (A1.3), career stage (A1.4) and gender (A1.11), for monitoring the mix. The gender counts serve the checkpoint dates in the gender balance brief (1 November 2026, 1 December 2026, 15 January 2027).
+- Counts of submitted and in-progress applications by country (A1.3), career stage (A1.4) and gender (A1.11), for monitoring the mix, plus the count of applicants who ticked care duties (A1.12) with their free-text answers, for the venue arrangements. The gender counts serve the checkpoint dates in the gender balance brief (1 November 2026, 1 December 2026, 15 January 2027).
 - Coverage matrix over the 36 fixed items plus a list of custom method names from A3.16: for each item, number of respondents with "learn" ticked and number with "present" ticked. Items with learners but no presenters are the list of gaps to fill by invitation (goal 4). Items with presenters but few learners are candidates to drop from the programme.
 - Role lists: respondents per option of A7.1 and A7.4, with A7.2 (presented before) shown next to each name.
 - Keyword cloud from A2.2 with counts, clickable to list the respondents who used each keyword.

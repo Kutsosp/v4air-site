@@ -320,7 +320,7 @@
       <h3>Participation costs</h3>
       <ul>
         <li>Students and researchers from <span class="qhint inline" tabindex="0">partner institutions<span class="qhint-body">Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava.</span></span>: <span class="qhint inline" tabindex="0">fully funded<span class="qhint-body">No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund.</span></span></li>
-        <li>Students outside partner institutions: 160 euro</li>
+        <li>Participants from outside partner institutions: participation fee, amount to be announced</li>
         <li>All other applicants: TBA</li>
       </ul>
       <p><strong><span class="chip">The programme is built from your answers.</span></strong></p>
@@ -330,7 +330,7 @@
       <p>Working language: English.</p>
       <h3>Organizing team</h3>
       <ul><li>Peter Kutsos (project coordinator)</li><li>Petr Chlup (technical coordinator)</li></ul>
-      <p>Inquiries: <a href="mailto:kutsosp@natur.cuni.cz">kutsosp@natur.cuni.cz</a></p>
+      <p>Inquiries: <a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
       <h3>Coordinating institution</h3>
       <ul><li>Charles University</li></ul>
       <h3>Partner institutions</h3>
@@ -380,6 +380,12 @@
           <option value="not_stated">Prefer not to say</option>
         </select>
         <span id="gender-why" class="sr-only">We use this information only to ensure a balanced representation of genders at the meetup.</span>
+      </div>
+      <div class="q" data-q="A1.care">
+        <span class="qlabel">Care duties <span class="opt-mark">(optional)</span></span>
+        <p class="hint">Selecting this does not affect admission. The organizers of V4AIR are committed to gender equality and will use this information only to make the event more accessible to participants of all genders.</p>
+        <label class="opt"><input type="checkbox" name="A1.care"><span>I have care duties (a child or a dependent) that make a three-day stay harder for me</span></label>
+        <div class="detail hid"><label for="A1.care_detail">What would help? For example, bringing a child, a childcare room, a nursing room, a specific day or time for your talk.</label><input type="text" id="A1.care_detail" name="A1.care_detail"></div>
       </div>
       <div class="q links" data-q="A1.links">
         <span class="qlabel">Links where we can see your work <span class="opt-mark">(optional)</span></span>
@@ -1181,6 +1187,7 @@
     'A1.student': function (q) { if (!vis(q)) return ''; return ($('#A1\\.programme').value.trim() && $('input[name="A1.year"]:checked')) ? '' : 'Study programme and year'; },
     'A1.position': function (q) { if (!vis(q)) return ''; return $('#A1\\.position').value.trim() ? '' : 'Position'; },
     'A1.days': function (q) { return checkedIn('input[type=checkbox]', q) ? '' : 'Days'; },
+    'A1.care': function () { return ''; },
     'A2.project': function (q) { return $('#A2\\.project').value.trim().length >= 20 ? '' : 'Project description'; },
     'A2.keywords': function (q) { return (keywords.length >= 3 && keywords.length <= 5) ? '' : 'Keywords'; },
     'A3.grid': function (q) { var bad = $$('tbody tr', q).some(function (tr) { var g = $('td.gate input', tr); return g && g.checked && !$('td.lvl input:checked', tr); }); return bad ? 'Experience level' : ''; },
