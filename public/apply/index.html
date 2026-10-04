@@ -152,6 +152,14 @@
   .opt-row { display: flex; flex-wrap: wrap; gap: 0.2rem 1.2rem; }
   .opt-row .opt { margin: 0; padding: 0.45rem 0.6rem; }
   .detail { margin: 0.1rem 0 0.6rem 2.6rem; }
+  .upload { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+  .btn-file { background: var(--bg-raise); color: var(--text); border: 1px solid var(--line); }
+  .file-chip { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.4rem 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); font-size: 0.95rem; max-width: 100%; }
+  .file-chip > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 18rem; }
+  .file-chip button { border: 0; background: none; color: var(--text-2); font-size: 1.2rem; line-height: 1; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; }
+  .file-chip button:hover { background: var(--line); color: var(--text); }
+  .file-status { color: var(--text-2); font-size: 0.95rem; }
+  .file-status.err { color: var(--error); }
   .detail.hid, .hid { display: none; }
   .detail label { display: block; font-size: 0.9rem; color: var(--text-2); margin-bottom: 0.2rem; }
   .detail input { max-width: 500px; min-height: 42px; }
@@ -298,6 +306,7 @@
   <div class="panel">
     <div class="err-summary" id="err-summary" role="alert" tabindex="-1"></div>
     <form id="form" novalidate onsubmit="return false">
+    <input type="text" name="website" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
     <!-- INTRO -->
     <section class="screen intro" data-min="0.5" data-key="intro">
@@ -567,7 +576,8 @@
       <h2>What you are looking for</h2>
       <div class="q" data-q="A6.useful" id="useful-q" data-max="5">
         <span class="qlabel">What would be most useful to you at the meetup? Pick up to five.</span>
-        <p class="hint">We use this to plan sessions and seat you with the right people</p>
+        <p class="hint">Do you need someone with specific expertise for a grant project? A supervisor for your thesis idea? Someone to consult?</p>
+        <p class="hint">Tell us below and we'll match you with them at the event.</p>
         <label class="opt"><input type="checkbox" name="A6.useful.collaborators"><span>Finding collaborators</span></label>
         <div class="detail hid"><label for="A6.useful_detail.collaborators">Tell us more (optional)</label><input type="text" id="A6.useful_detail.collaborators" name="A6.useful_detail.collaborators"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.feedback_direction"><span>Feedback on my research direction</span></label>
@@ -636,6 +646,19 @@
       <div class="q" data-q="A7.roles_note">
         <label class="qlabel" for="A7.roles_note">Anything to add about how you would like to participate? <span class="opt-mark">(optional)</span></label>
         <input type="text" id="A7.roles_note" name="A7.roles_note">
+      </div>
+      <div class="q" data-q="A7.material">
+        <span class="qlabel">Do you have something to show? <span class="opt-mark">(optional)</span></span>
+        <p class="hint">A paper, a poster, slides, a preprint, a demo, or a repository. One file up to 10 MB (PDF, PPTX, PNG, JPG), or a link</p>
+        <div class="upload" id="upload">
+          <input type="file" id="file-input" accept=".pdf,.pptx,.png,.jpg,.jpeg,application/pdf,application/vnd.openxmlformats-officedocument.presentationml.presentation,image/png,image/jpeg" hidden>
+          <button type="button" class="btn btn-file" id="file-pick">Choose a file</button>
+          <span class="file-chip hid" id="file-chip"><span id="file-name"></span> <button type="button" id="file-remove" title="Remove file">×</button></span>
+          <span class="file-status" id="file-status"></span>
+        </div>
+        <label class="field-label" for="A7.link" style="margin-top:0.8rem">Or a link</label>
+        <input type="url" id="A7.link" name="A7.link" inputmode="url" autocomplete="off">
+        <p class="err-msg">Links start with http:// or https://</p>
       </div>
       <div class="q" data-q="A7.help">
         <span class="qlabel">Would you help with organizing?</span>
@@ -745,10 +768,12 @@
   <button type="button" id="dev-close" title="Hide">Hide</button>
 </div>
 
+<script src="../forms-api.js"></script>
 <script>
 (function () {
   'use strict';
   var STORE = 'v4air-form-a-live-v1';
+  var API = window.V4AIR_API || { enabled: function () { return false; } };
   var LEVEL_TIPS = {
     1: '1 Basic use: out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.',
     2: '2 Regular use: customizing parameters, using APIs, adapting existing pipelines.',
@@ -861,6 +886,7 @@
   var state = {};
   try { state = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { state = {}; }
   var keywords = Array.isArray(state.__keywords) ? state.__keywords : [];
+  var fileInfo = (state.__file && state.__file.name) ? state.__file : null; /* {name, size, url} of the stored A7 upload */
   var idx = typeof state.__screen === 'number' ? state.__screen : 0;
   var saveTimer = null;
 
@@ -874,35 +900,111 @@
     });
     data.__keywords = keywords;
     data.__screen = idx;
+    data.__file = fileInfo;
     return data;
   }
   /* Application ID: V4A- plus two groups of four from an alphabet without 0, O, 1, I.
-     Created the first time a valid email is entered (the real app does this server-side at the same moment). */
+     With the backend on, the server assigns it (and a resume token) on the first save after a valid email.
+     Without a backend URL the browser makes one locally, as in the preview. */
   var ID_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+  var remote = { id: API.enabled() ? (state.__token ? state.__id : '') : '', token: state.__token || '' };
   function makeId(prefix) {
     var out = '';
     for (var i = 0; i < 8; i++) { out += ID_ALPHABET.charAt(Math.floor(Math.random() * ID_ALPHABET.length)); if (i === 3) out += '-'; }
     return prefix + '-' + out;
   }
+  function validEmail() { var v = document.getElementById('A1.email').value.trim(); return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? v : ''; }
+  function rememberApplicant(id) {
+    try { localStorage.setItem('v4air-application-id', id); localStorage.setItem('v4air-applicant', JSON.stringify({ name: document.getElementById('A1.name').value.trim(), email: validEmail() })); } catch (e) {}
+  }
   function ensureId() {
+    if (API.enabled()) return remote.id;
     if (state.__id) return state.__id;
-    var email = document.getElementById('A1.email').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return '';
+    if (!validEmail()) return '';
     state.__id = makeId('V4A');
-    try { localStorage.setItem('v4air-application-id', state.__id); localStorage.setItem('v4air-applicant', JSON.stringify({ name: document.getElementById('A1.name').value.trim(), email: email })); } catch (e) {}
+    rememberApplicant(state.__id);
     return state.__id;
+  }
+  function stamp(text) { $('#saved').textContent = text + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }); }
+  function persist() {
+    var id = ensureId();
+    state = collect();
+    if (id) state.__id = id;
+    if (remote.token) state.__token = remote.token;
+    localStorage.setItem(STORE, JSON.stringify(state));
   }
   function save() {
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(function () {
-      var id = ensureId();
-      state = collect();
-      if (id) state.__id = id;
-      localStorage.setItem(STORE, JSON.stringify(state));
-      var t = new Date();
-      $('#saved').textContent = 'Saved ' + t.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-    }, 250);
+    saveTimer = setTimeout(function () { persist(); stamp('Saved'); }, 250);
   }
+  /* Server save, run on every Next. Calls are chained so the first one (which creates the record) finishes
+     before the next one starts; otherwise two quick Nexts could create two records. */
+  var syncing = Promise.resolve();
+  function sync(final) {
+    if (!API.enabled() || !validEmail()) return Promise.resolve(null);
+    var p = syncing.catch(function () {}).then(function () {
+      var data = collect();
+      return API.save('A', remote.id, remote.token, data, final, $('#hp').value);
+    }).then(function (j) {
+      remote.id = j.id; remote.token = j.token;
+      rememberApplicant(j.id);
+      persist(); stamp('Saved');
+      return j;
+    }, function (e) { $('#saved').textContent = 'Saved on this device only'; throw e; });
+    syncing = p;
+    return p;
+  }
+
+  /* ---------- A7 upload: one file, sent to the server the moment it is chosen ---------- */
+  var FILE_TYPES = { 'application/pdf': 1, 'application/vnd.openxmlformats-officedocument.presentationml.presentation': 1, 'image/png': 1, 'image/jpeg': 1 };
+  var FILE_EXT = { pdf: 'application/pdf', pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg' };
+  var fileInput = $('#file-input'), fileStatus = $('#file-status');
+  function fmtSize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB'; }
+  function fileMsg(text, err) { fileStatus.textContent = text; fileStatus.classList.toggle('err', !!err); }
+  function drawFile() {
+    $('#file-chip').classList.toggle('hid', !fileInfo);
+    $('#file-pick').textContent = fileInfo ? 'Replace file' : 'Choose a file';
+    if (fileInfo) { $('#file-name').textContent = fileInfo.name + (fileInfo.size ? ' (' + fmtSize(fileInfo.size) + ')' : ''); }
+  }
+  function fileType(f) { var ext = (f.name.split('.').pop() || '').toLowerCase(); return FILE_TYPES[f.type] ? f.type : (FILE_EXT[ext] || ''); }
+  function uploadFile(f) {
+    var type = fileType(f);
+    if (!type) { fileMsg('Only PDF, PPTX, PNG or JPG files', true); return; }
+    if (f.size > 10 * 1024 * 1024) { fileMsg('This file is ' + fmtSize(f.size) + '; the limit is 10 MB. Share a link instead.', true); return; }
+    if (!API.enabled() || !validEmail()) { fileInfo = { name: f.name, size: f.size, url: '' }; drawFile(); fileMsg('Kept on this device only'); save(); return; }
+    fileMsg('Uploading ' + f.name + '…');
+    $('#file-pick').disabled = true;
+    var reader = new FileReader();
+    reader.onerror = function () { $('#file-pick').disabled = false; fileMsg('Could not read the file', true); };
+    reader.onload = function () {
+      var data = String(reader.result).split(',')[1];
+      var p = syncing.catch(function () {}).then(function () {
+        return API.save('A', remote.id, remote.token, collect(), false, $('#hp').value, { file: { name: f.name, type: type, data: data } });
+      }).then(function (j) {
+        remote.id = j.id; remote.token = j.token; rememberApplicant(j.id);
+        fileInfo = j.file || null; drawFile(); persist(); stamp('Saved');
+        $('#file-pick').disabled = false; fileMsg('Uploaded');
+        return j;
+      }, function (e) {
+        $('#file-pick').disabled = false;
+        var m = String(e && e.message);
+        fileMsg(m === 'file_size' ? 'The file is over 10 MB' : m === 'file_type' ? 'Only PDF, PPTX, PNG or JPG files' : 'Upload failed. Check your connection and try again, or share a link instead.', true);
+      });
+      syncing = p;
+    };
+    reader.readAsDataURL(f);
+  }
+  $('#file-pick').addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () { if (fileInput.files[0]) uploadFile(fileInput.files[0]); fileInput.value = ''; });
+  $('#file-remove').addEventListener('click', function () {
+    var prev = fileInfo; fileInfo = null; drawFile(); fileMsg(''); persist();
+    if (API.enabled() && prev && prev.url) {
+      var p = syncing.catch(function () {}).then(function () { return API.save('A', remote.id, remote.token, collect(), false, $('#hp').value, { removeFile: true }); })
+        .then(function () { fileMsg('File removed'); }, function () { fileMsg('Could not remove the file yet; it will be replaced if you upload another one', true); });
+      syncing = p;
+    }
+  });
+  drawFile();
   function restore() {
     $$('input, select, textarea', form).forEach(function (el) {
       if (!el.name || !(el.name in state)) return;
@@ -1087,6 +1189,7 @@
     'A6.collab': function (q) { return $('input[name="A6.collab"]:checked') ? '' : 'Collaborators'; },
     'A7.roles': function (q) { var any = checkedIn('.opt input[type=checkbox]', q); var otherOk = !$('input[name="A7.roles.other"]').checked || $('#A7\\.roles_other').value.trim(); return (any && otherOk) ? '' : 'How you would like to contribute'; },
     'A7.presented': function (q) { return $('input[name="A7.presented"]:checked') ? '' : 'Presented before'; },
+    'A7.material': function (q) { var v = $('#A7\\.link').value.trim(); return (!v || /^https?:\/\/\S+\.\S+/.test(v)) ? '' : 'Link'; },
     'A7.help': function (q) { return checkedIn('.opt input[type=checkbox]', q) ? '' : 'Help with organizing'; },
     'A8.source': function (q) {
       var top = ['nominated', 'open', 'invite', 'other'].some(function (k) { return $('input[name="A8.source.' + k + '"]').checked; });
@@ -1163,6 +1266,19 @@
         if (!any && !confirm("You haven't marked any method. Continue anyway?")) return;
       }
     }
+    var submitting = idx === screens.length - 2;
+    if (submitting && API.enabled()) {
+      var btn = $('#btn-next');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      sync(true).then(function () { btn.disabled = false; idx++; render(); }, function () {
+        btn.disabled = false; btn.textContent = 'Submit application';
+        var box = $('#err-summary');
+        box.innerHTML = '<strong>Your application was not sent</strong>Your answers are kept in this browser. Check your connection and press Submit application again.';
+        box.classList.add('on'); box.focus();
+      });
+      return;
+    }
+    if (!s.classList.contains('intro')) sync(false).catch(function () {});
     idx++; render();
   }
   function prev() { if (idx > 0) { idx--; render(); } }
@@ -1205,10 +1321,34 @@
   if (wantDev) devShow(true);
   $('#reset-preview').addEventListener('click', function () {
     if (!confirm('Clear all answers in this preview and start from the beginning?')) return;
-    localStorage.removeItem(STORE); localStorage.removeItem('v4air-application-id'); localStorage.removeItem('v4air-applicant'); state = {}; keywords = []; idx = 0;
+    localStorage.removeItem(STORE); localStorage.removeItem('v4air-application-id'); localStorage.removeItem('v4air-applicant'); state = {}; keywords = []; fileInfo = null; drawFile(); fileMsg(''); idx = 0; remote = { id: '', token: '' };
     $$('input, select, textarea', form).forEach(function (el) { if (el.type === 'checkbox' || el.type === 'radio') el.checked = false; else if (el.type !== 'hidden') el.value = ''; });
     applyAll(); render();
   });
+
+  /* ---------- resume link: ?id=V4A-XXXX-XXXX&t=token (sent by email) ---------- */
+  var qs = new URLSearchParams(location.search), qId = qs.get('id'), qToken = qs.get('t');
+  if (qId && qToken && API.enabled()) {
+    history.replaceState(null, '', location.pathname + (/[?&]dev\b/.test(location.search) ? '?dev' : ''));
+    $('#saved').textContent = 'Loading your answers…';
+    API.load('A', qId, qToken).then(function (j) {
+      $$('input, select, textarea', form).forEach(function (el) { if (el.type === 'checkbox' || el.type === 'radio') el.checked = false; else if (el.type !== 'hidden') el.value = ''; });
+      state = j.answers || {};
+      remote = { id: j.id, token: qToken };
+      keywords = Array.isArray(state.__keywords) ? state.__keywords : [];
+      fileInfo = (state.__file && state.__file.name) ? state.__file : null; drawFile();
+      restore(); applyAll();
+      var at = typeof state.__screen === 'number' ? state.__screen : 1;
+      idx = (j.status === 'submitted' || at >= screens.length - 1) ? 1 : Math.max(1, at);
+      rememberApplicant(j.id);
+      render(); stamp('Loaded');
+    }, function () {
+      $('#saved').textContent = '';
+      var box = $('#err-summary');
+      box.innerHTML = '<strong>We could not open your saved application</strong>The link may be incomplete. Try opening it again from the email, or write to us and quote your application ID.';
+      box.classList.add('on');
+    });
+  }
   render();
 })();
 </script>

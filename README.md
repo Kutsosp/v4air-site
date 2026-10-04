@@ -57,8 +57,8 @@ Content, for the organizers:
 
 Build, to make the forms live:
 
-1. Storage: a Google Sheet with an Apps Script web app (save on Next, resume by token, LockService for IDs), or a database and API. The sheet is enough at this scale.
-2. Email: resume link carrying the application ID, confirmations for both forms, the nominee invitation. Mind the MailApp quota if Apps Script sends them.
+1. Storage: built in `backend/` (Google Sheet + Apps Script web app, owned by petkout1@gmail.com). Form A saves on every Next and on Submit, the server assigns IDs and a resume token, and `?id=…&t=…` reopens an application. Form B stores on Send, one row in Nominations plus one row per person in Nominees. The A7 upload (one file, 10 MB, PDF/PPTX/PNG/JPG) goes to the Drive folder `V4AIR uploads/<application ID>/` under its original name; the sheet holds the link. Deployed 29.09.2026 (script id in `backend/.clasp.json`, sheet id 1dDRwBAy8YIQUQIZDiYjlbabDyJ3ZXbUOfl6sznkQYdc); `public/forms-api.js` points at the `/exec` URL. To change the backend: `clasp --user v4air push`, then `clasp --user v4air redeploy <deploymentId>`.
+2. Email: resume link and confirmations are in `backend/Code.gs` and switched off (`EMAIL_ENABLED=false`, `SITE_URL` empty in the script properties) until the copy and sender are confirmed. The nominee invitation is not built. A consumer Gmail account sends to about 100 recipients a day.
 3. Admin: counts by country and stage, coverage matrix of "want to learn" versus "could present", nominee list with duplicate detection, export (spec 5.11 and 5.12).
 4. Closing at the deadline and the retention cleanup.
 

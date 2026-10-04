@@ -57,8 +57,8 @@ Obsah, pro organizátory:
 
 Stavba, aby formuláře fungovaly naostro:
 
-1. Úložiště: Google tabulka s webovou aplikací v Apps Scriptu (ukládání při stisku Další, obnovení podle tokenu, LockService pro ID), nebo databáze a API. V tomto měřítku tabulka stačí.
-2. E-mail: odkaz pro pokračování s ID přihlášky, potvrzení pro oba formuláře, pozvánka nominovaným. Pozor na kvótu MailApp, pokud je posílá Apps Script.
+1. Úložiště: postaveno v `backend/` (Google tabulka + webová aplikace v Apps Scriptu, vlastník petkout1@gmail.com). Formulář A ukládá při každém Další a při odeslání, ID a token pro pokračování přiděluje server, `?id=…&t=…` přihlášku znovu otevře. Formulář B ukládá při odeslání: jeden řádek v Nominations a jeden řádek za každou osobu v Nominees. Příloha z A7 (jeden soubor, 10 MB, PDF/PPTX/PNG/JPG) jde do složky na Disku `V4AIR uploads/<ID přihlášky>/` pod původním názvem; v tabulce je odkaz. Nasazeno 29.09.2026 (id skriptu v `backend/.clasp.json`, id tabulky 1dDRwBAy8YIQUQIZDiYjlbabDyJ3ZXbUOfl6sznkQYdc); `public/forms-api.js` míří na adresu `/exec`. Změna backendu: `clasp --user v4air push`, potom `clasp --user v4air redeploy <deploymentId>`.
+2. E-mail: odkaz pro pokračování a potvrzení jsou v `backend/Code.gs` a vypnuté (`EMAIL_ENABLED=false`, prázdné `SITE_URL` ve vlastnostech skriptu), dokud nebude potvrzený text a odesílatel. Pozvánka nominovaným postavená není. Běžný účet Gmail pošle zhruba 100 příjemcům denně.
 3. Administrace: počty podle zemí a kariérních stupňů, matice pokrytí „chci se naučit“ proti „mohl bych přednášet“, seznam nominovaných s detekcí duplicit, export (spec 5.11 a 5.12).
 4. Uzavření k uzávěrce a mazání po uplynutí doby uchování.
 

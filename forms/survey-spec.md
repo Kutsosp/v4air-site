@@ -292,7 +292,7 @@ The old three-point level (none, some, extensive) is dropped. "Have experience" 
 
 ### 2.6 Section A6: What you are looking for (screen 12 of 14)
 
-**A6.1** `A6.useful` "What would be most useful to you at the meetup? Pick up to five." Multi-select, maximum 5. Required, at least one. Help: "We use this to plan sessions and seat you with the right people".
+**A6.1** `A6.useful` "What would be most useful to you at the meetup? Pick up to five." Multi-select, maximum 5. Required, at least one. Help: "Do you need someone with specific expertise for a grant project? A supervisor for your thesis idea? Someone to consult?" and, as a second line, "Tell us below and we'll match you with them at the event."
 - Finding collaborators
 - Feedback on my research direction
 - Feedback on results
@@ -336,6 +336,8 @@ Intro:
 - No
 
 **A7.3** `A7.roles_note` "Anything to add about how you would like to participate? (optional)" Short text, up to 500 characters. Optional.
+
+**A7.3a** `A7.file`, `A7.link` "Do you have something to show? (optional)" Help: "A paper, a poster, slides, a preprint, a demo, or a repository. One file up to 10 MB (PDF, PPTX, PNG, JPG), or a link". One file input and one URL field, both optional, both allowed. The file uploads the moment it is chosen and can be replaced or removed; it is stored under its original name in the Drive folder `V4AIR uploads/<application ID>/`, one file per application. Exported as `A7.file_name`, `A7.file_url` (Drive link) and `A7.link`.
 
 **A7.4** `A7.help` "Would you help with organizing?" Multi-select. Required, at least one.
 - Before the event, at my home institution (promoting the call, recruiting participants)

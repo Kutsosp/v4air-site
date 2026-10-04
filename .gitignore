@@ -26,3 +26,5 @@ dist-ssr
 # env
 .env*
 !.env.example
+comms/one-pager/assets/fonts/sofia-pro/
+__pycache__/

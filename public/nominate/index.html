@@ -312,6 +312,7 @@
   <div class="panel">
     <div class="err-summary" id="err-summary" role="alert" tabindex="-1"></div>
     <form id="form" novalidate onsubmit="return false">
+    <input type="text" name="website" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
     <!-- INTRO -->
     <section class="screen intro" data-min="0.4" data-key="intro">
@@ -425,10 +426,12 @@
   <button type="button" id="dev-close" title="Hide">Hide</button>
 </div>
 
+<script src="../forms-api.js"></script>
 <script>
 (function () {
   'use strict';
   var STORE = 'v4air-form-b-live-v1';
+  var API = window.V4AIR_API || { enabled: function () { return false; } };
   var TYPES = [
     { key: 'student', label: 'Student', cap: 3 },
     { key: 'researcher', label: 'Researcher', cap: 3 },
@@ -487,7 +490,7 @@
       else if (el.type === 'radio') { if (el.checked) data[el.name] = el.value; else if (!(el.name in data)) data[el.name] = ''; }
       else data[el.name] = el.value;
     });
-    data.__cards = cards; data.__screen = idx; data.__prefilled = !!state.__prefilled; data.__id = state.__id || '';
+    data.__cards = cards; data.__screen = idx; data.__prefilled = !!state.__prefilled; data.__id = state.__id || ''; data.__token = state.__token || '';
     return data;
   }
   function save() {
@@ -601,7 +604,7 @@
     byId('btn-back').disabled = idx <= 1;
     byId('btn-next').textContent = (idx === screens.length - 2) ? 'Send nominations' : 'Next';
     showSummary([]);
-    if (isEnd) { if (!state.__id) state.__id = makeId('V4N'); byId('end-id').textContent = state.__id; }
+    if (isEnd) { if (!state.__id && !API.enabled()) state.__id = makeId('V4N'); byId('end-id').textContent = state.__id; }
     state.__screen = idx; save();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     devUpdate();
@@ -609,6 +612,22 @@
   function next() {
     var s = screens[idx];
     if (!s.classList.contains('intro')) { var errors = validateScreen(s); if (errors.length) { showSummary(errors); return; } }
+    /* nominations are stored once, on Send; the server assigns the V4N ID. Sending again after Back updates the same record. */
+    if (idx === screens.length - 2 && API.enabled()) {
+      var btn = byId('btn-next');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var data = collect(); delete data.__token;
+      API.save('B', state.__id, state.__token, data, true, byId('hp').value).then(function (j) {
+        state.__id = j.id; state.__token = j.token;
+        btn.disabled = false; idx++; render();
+      }, function () {
+        btn.disabled = false; btn.textContent = 'Send nominations';
+        var box = byId('err-summary');
+        box.innerHTML = '<strong>Your nominations were not sent</strong>Your answers are kept in this browser. Check your connection and press Send nominations again.';
+        box.classList.add('on'); box.focus();
+      });
+      return;
+    }
     idx++; render();
   }
   function prev() { if (idx > 0) { idx--; render(); } }
