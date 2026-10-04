@@ -15,7 +15,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-selection',
     q: 'How are participants selected?',
-    a: 'By fit and mix, not first-come-first-served. There is no CV and no motivation letter; the core of your application is reviewed institution-blind, so what you write matters more than where you are from.',
+    a: 'By fit and mix, not first-come-first-served. There is no CV and no motivation letter; what you write in the form is what matters most.',
   },
   {
     id: 'faq-nominated',
@@ -55,7 +55,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-recording',
     q: 'Will my talk be recorded or published?',
-    a: 'A shared repository of recorded talks, slides, and example code goes public after the conference; you can opt out of having your material included. Selected student works are published in the conference proceedings with a DOI.',
+    a: 'A shared repository of recorded talks, slides, and example code goes public after the conference; you can opt out of having your material included.',
   },
   {
     id: 'faq-afterwards',
