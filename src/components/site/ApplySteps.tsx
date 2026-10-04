@@ -4,7 +4,7 @@ import { APPLY_URL, CONTACT_MAILTO, NOMINATE_URL } from './Reveal'
 const STEPS = [
   {
     title: 'Tell us three things',
-    body: 'What you work on, what you want to learn, and who you would like to meet. No abstract, no finished talk; that is the entire form.',
+    body: 'What you work on, what you want to learn, and who you would like to meet. No abstract, no finished talk.',
   },
   {
     title: 'We select for fit and mix',
@@ -145,7 +145,7 @@ export function ApplySteps() {
                 </p>
                 <p className="muted">
                   Questions first? Write to{' '}
-                  <a href={CONTACT_MAILTO}>kutsosp@natur.cuni.cz</a>
+                  <a href={CONTACT_MAILTO}>info@v4air.eu</a>
                 </p>
               </div>
             </div>

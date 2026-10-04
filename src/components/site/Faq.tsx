@@ -10,7 +10,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-places',
     q: 'How many places are there?',
-    a: 'Around 45 funded places for selected participants from the V4 region, plus a limited number of additional seats for a small fee.',
+    a: 'Funded places go to selected participants from the V4 region, plus a limited number of additional seats for a fee.',
   },
   {
     id: 'faq-selection',
@@ -38,6 +38,17 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
     a: 'Kostelec nad Černými lesy is about 30 minutes from Prague. Fly into Prague (Václav Havel Airport), take the metro to Háje (line C), and a direct bus takes you to Kostelec; roughly an hour door-to-door from the airport. Accepted participants receive full travel instructions with their acceptance.',
   },
   {
+    id: 'faq-access',
+    q: 'Is the castle accessible?',
+    a: (
+      <>
+        Kostelec is a Renaissance castle with stairs. If you have access needs of any kind,
+        write to the organizers at <a href={CONTACT_MAILTO}>info@v4air.eu</a> before you
+        apply and we will look for a solution together. This has no bearing on selection.
+      </>
+    ),
+  },
+  {
     id: 'faq-early-career',
     q: 'Who counts as "early-career"?',
     a: "Master's students, PhD candidates, and postdocs, read generously. Recently past the postdoc stage, say a new assistant professor still early in building a group? You're welcome too. If you are unsure, apply.",
@@ -55,19 +66,19 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-recording',
     q: 'Will my talk be recorded or published?',
-    a: 'A shared repository of recorded talks, slides, and example code goes public after the conference; you can opt out of having your material included.',
+    a: 'We plan to share talks, slides, and example code among participants after the meetup; you can opt out of having your material included. Details come with your acceptance.',
   },
   {
     id: 'faq-afterwards',
     q: 'What happens after the three days?',
-    a: 'Selected attendees are invited to join an invitation-only network of early-career researchers and industry veterans, built to carry the connections forward.',
+    a: 'Follow-up activities for participants are being planned so that the connections made over the three days continue. Details come during the meetup.',
   },
   {
     id: 'faq-contact',
     q: 'I have an idea, I want to collaborate, or I have another question.',
     a: (
       <>
-        We want to hear it. Write to <a href={CONTACT_MAILTO}>kutsosp@natur.cuni.cz</a>;
+        We want to hear it. Write to <a href={CONTACT_MAILTO}>info@v4air.eu</a>;
         ideas, collaboration offers, and questions all land with the organizing team
         directly.
       </>

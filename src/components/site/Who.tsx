@@ -93,7 +93,7 @@ export function Who() {
             <p className="funded-note">
               Applicants from outside partner universities are welcome to apply for a
               small fee. If that&rsquo;s you, contact{' '}
-              <a href={CONTACT_MAILTO}>kutsosp@natur.cuni.cz</a>.
+              <a href={CONTACT_MAILTO}>info@v4air.eu</a>.
             </p>
           </Reveal>
         </div>

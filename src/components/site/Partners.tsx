@@ -1,4 +1,4 @@
-import { CONTACT_MAILTO, Reveal } from './Reveal'
+import { CONTACT_MAILTO, PARTNERS_MAILTO, Reveal } from './Reveal'
 import { asset } from '@/lib/utils'
 
 const LOGOS = [
@@ -9,11 +9,14 @@ const LOGOS = [
   { src: asset('assets/cvut_white.png'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 137, h: 280 },
   { src: asset('assets/elte_white.png'), alt: 'Partner university in Hungary, to be announced', place: 'TBA, Hungary', tba: true, w: 1400, h: 280 },
   { src: asset('assets/comenius-university_white.png'), alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 693, h: 280 },
+  // co-organizers outside academia (added 04.10.2026)
+  { src: asset('assets/prgai-logo_white.svg'), alt: 'prg.ai', place: 'Co-organizer', w: 159, h: 40 },
+  { src: asset('assets/common-ground-research_white.png'), alt: 'common ground research', place: 'Co-organizer', tall: true, w: 258, h: 300 },
 ]
 
 export function Partners() {
   return (
-    <section className="partners">
+    <section className="partners" id="partners">
       <Reveal className="wrap">
         <h2>
           <span className="count">Six</span> universities,{' '}
@@ -22,7 +25,7 @@ export function Partners() {
         </h2>
         <p className="intro">
           Coordinated by Charles University with partner institutions across the V4
-          region.
+          region, co-organized with prg.ai and common ground research.
         </p>
         <div className="logo-wall">
           {LOGOS.map((l) => (
@@ -39,6 +42,16 @@ export function Partners() {
             </figure>
           ))}
         </div>
+        {/* for companies and investors arriving from the one-pager: same wording as the one-pager (04.10.2026) */}
+        <div className="for-partners">
+          <h3>Companies and investors</h3>
+          <p>
+            Three days with hand-picked researchers who apply AI across disciplines. If you
+            want to share your experience in a talk or workshop, support the meetup, or meet
+            the people in the room, write to{' '}
+            <a href={PARTNERS_MAILTO}>partners@v4air.eu</a>.
+          </p>
+        </div>
         <div className="team">
           <div>
             <h3>Peter Kutsos</h3>
@@ -51,7 +64,7 @@ export function Partners() {
           <div>
             <h3>Inquiries and collaborations</h3>
             <p>
-              <a href={CONTACT_MAILTO}>kutsosp@natur.cuni.cz</a>
+              <a href={CONTACT_MAILTO}>info@v4air.eu</a>
             </p>
           </div>
         </div>

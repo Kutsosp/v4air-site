@@ -9,7 +9,7 @@ const WALKER = { scale: 32, lift: 3 }
 const VICTORY = { scale: 40, lift: -11 }
 
 const STOPS = [
-  { date: '2026-09-01', label: '1 Sep 2026', what: 'Applications open', sub: 'Three questions, no CV, no motivation letter.' },
+  { date: '2026-09-01', label: '1 Sep 2026', what: 'Applications open', sub: 'No CV, no motivation letter.' },
   { date: '2027-01-15', label: '15 Jan 2027', what: 'Application deadline', sub: 'Careful answers beat fast ones.' },
   { date: '2027-02-15', label: 'Feb 2027', what: 'Selection results', sub: 'Everyone hears from us, either way.' },
   { date: '2027-03-10', label: 'March 2027', what: 'Keynotes + preliminary programme', sub: 'Built to fit you.' },

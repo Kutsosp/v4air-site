@@ -28,4 +28,5 @@ export function Reveal({
 /* the forms ship with the site under public/apply and public/nominate (base-aware) */
 export const APPLY_URL = import.meta.env.BASE_URL + 'apply/'
 export const NOMINATE_URL = import.meta.env.BASE_URL + 'nominate/'
-export const CONTACT_MAILTO = 'mailto:kutsosp@natur.cuni.cz'
+export const CONTACT_MAILTO = 'mailto:info@v4air.eu'
+export const PARTNERS_MAILTO = 'mailto:partners@v4air.eu'

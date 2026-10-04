@@ -873,6 +873,20 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   transition: color 0.25s ease;
 }
 .logo-cell:hover figcaption { color: var(--accent); }
+/* companies and investors: one bordered block under the logo wall */
+.for-partners {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-raise);
+  max-width: 62ch;
+}
+.for-partners h3 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+.for-partners p { margin: 0; color: var(--text-2); }
+.for-partners a { color: var(--accent); font-weight: 600; }
+
 .team {
   margin-top: clamp(3rem, 6vw, 4.5rem);
   display: grid;

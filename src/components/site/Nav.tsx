@@ -19,6 +19,7 @@ const LINKS = [
   { href: '#apply', label: 'Applying' },
   { href: '#timeline', label: 'Timeline' },
   { href: '#faq', label: 'FAQ' },
+  { href: '#partners', label: 'Partners' },
 ]
 
 export function Nav({
