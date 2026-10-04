@@ -110,7 +110,7 @@ Title and date line, then the practical box, then the call text. Order matters: 
 
 Practical box:
 
-> **Deadline: 15 January.** Everyone hears from us by February.
+> **Deadline: 15 January.** Results expected February.
 
 Call text (Peter's wording, 20.09.2026):
 
