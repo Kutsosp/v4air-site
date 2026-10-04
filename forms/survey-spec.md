@@ -1,6 +1,6 @@
 # V4 AI Researchers Meetup: survey specification
 
-Version 1.5, 20.09.2026 (two rounds of preview comments plus the form-UX research pass: 14 screens instead of 8, one method family per screen, weighted progress with time left, radios instead of small dropdowns, visible labels everywhere, exclusive "none" option, 44 px touch targets, one-sentence hints without full stops, "(optional)" in labels). Replaces the current 53-question Google Form. A static preview of Form A with every field, variant, and revealed control visible on one page is in `form-a-preview.html` next to this file. This document defines three instruments question by question (wording, response options, conditional logic) and describes the behaviour the custom form app must provide. Text in [square brackets] is a placeholder the organizers fill in before launch; nothing in brackets is final copy.
+Version 1.5, 20.09.2026 (two rounds of preview comments plus the form-UX research pass: 15 screens instead of 8, one method family per screen, weighted progress with time left, radios instead of small dropdowns, visible labels everywhere, exclusive "none" option, 44 px touch targets, one-sentence hints without full stops, "(optional)" in labels). Replaces the current 53-question Google Form. A static preview of Form A with every field, variant, and revealed control visible on one page is in `form-a-preview.html` next to this file. This document defines three instruments question by question (wording, response options, conditional logic) and describes the behaviour the custom form app must provide. Text in [square brackets] is a placeholder the organizers fill in before launch; nothing in brackets is final copy.
 
 ## 1. Overview
 
@@ -8,7 +8,7 @@ Version 1.5, 20.09.2026 (two rounds of preview comments plus the form-UX researc
 
 | Instrument | Purpose | Respondents | Opens | Size |
 |---|---|---|---|---|
-| A. Application form | Select participants, set session level, build the programme, match people, find speakers and helpers | Applicants | With the open call | 28 items over 14 screens; grids of 2 to 12 rows; target under 10 minutes |
+| A. Application form | Select participants, set session level, build the programme, match people, find speakers and helpers | Applicants | With the open call | 28 items over 15 screens; grids of 2 to 12 rows; target under 10 minutes |
 | B. Nomination form | Collect students, researchers, and people outside academia to invite directly | Anyone: applicants, institutional contacts, senior staff | With the open call, standalone link | 1 repeater plus 5 fields; about 2 minutes |
 | C. Post-acceptance form | Confirm attendance, shape each contribution, set the format mix, collect logistics | Accepted participants only | After selection decisions | About 20 items, most of them one click |
 
@@ -151,7 +151,7 @@ Call text (Peter's wording, 20.09.2026):
 
 Button: "Start the application".
 
-### 2.1 Section A1: About you (screens 1 and 2 of 14)
+### 2.1 Section A1: About you (screens 1 and 2 of 15)
 
 Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.12, A1.10. Screen 2, "Where you are": A1.3, A1.5, A1.6, A1.7, A1.8, A1.9. Career stage is asked on screen 1 so that screen 2 can already show the right variants.
 
@@ -203,7 +203,7 @@ Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.12, A1.10. Screen 2, "Where y
 
 **A1.10** `A1.link_1` to `A1.link_4` "Links where we can see your work (optional)". Help: "ORCID, Google Scholar, a personal page, GitHub or similar". Up to four URL fields, each with its own visible label "Link 1" to "Link 4", validated for syntax. One field is shown at first; the next appears when the previous one is filled. Optional. Shown on screen 1.
 
-### 2.2 Section A2: Your work (screen 3 of 14)
+### 2.2 Section A2: Your work (screen 3 of 15)
 
 **A2.1** `A2.project` Long text. Required. Soft limit 1,500 characters with a live counter; no hard cap.
 - Variant, academic stages: "Describe a current or upcoming project. What is it about, and how does AI fit in?" Help: "Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included".
@@ -211,24 +211,25 @@ Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.12, A1.10. Screen 2, "Where y
 
 **A2.2** `A2.keywords` "Three to five keywords for your work." Tag input with a visible label: type a word or phrase, press Enter or comma to add it; each keyword shown as a removable chip. No placeholder text inside the field. Minimum 3, maximum 5. Required. Help: "Methods, topics, data types or fields, press Enter after each one". Exported as a semicolon-separated string.
 
-### 2.3 Section A3: AI methods you use (screens 4 to 9 of 14)
+### 2.3 Section A3: AI methods you use (screens 4 to 10 of 15)
 
-One screen per method family, then one screen for other methods. Grid research puts the tolerable size at about five rows per screen; the longest family (modeling and inference) has five.
+One intro screen (instructions and the four experience levels), then one screen per method family, then one screen for other methods (05.10.2026). Grid research puts the tolerable size at about five rows per screen; the longest family (modeling and inference) has five.
 
 | Screen | Heading | Rows |
 |---|---|---|
-| 4 | AI methods you use: language and text | m01 to m03 |
-| 5 | AI methods you use: vision and multimodal | m04 to m06 |
-| 6 | AI methods you use: speech and signal | m07, m08 |
-| 7 | AI methods you use: modeling and inference | m09 to m13 |
-| 8 | AI methods you use: generative | m14, m15 |
-| 9 | Other AI methods you use | c01 to c05 (A3.16) |
+| 4 | AI methods you use (intro: instructions, experience levels) | none |
+| 5 | AI methods you use: language and text | m01 to m03 |
+| 6 | AI methods you use: vision and multimodal | m04 to m06 |
+| 7 | AI methods you use: speech and signal | m07, m08 |
+| 8 | AI methods you use: modeling and inference | m09 to m13 |
+| 9 | AI methods you use: generative | m14, m15 |
+| 10 | Other AI methods you use | c01 to c05 (A3.16) |
 
-Intro, screen 4 only, followed by the level definitions with examples:
+Intro screen 4, "AI methods you use", holds this text followed by the level definitions with examples; the family screens carry only the heading "AI methods you use: <family>" and the grid:
 
 > Over the next five short screens, tick the methods you use. For each one, tell us your experience level, whether you could present on it, and whether you want to learn more. Leave a method unticked if you don't use it. You can tick "I want to learn more" on anything, including methods you don't use yet.
 
-Screens 5 to 9 repeat the four level definitions above the grid as a plain list, no heading, no examples. Every method screen (4 to 9) ends with the line: "Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format."
+Every method screen (5 to 10) ends with the line: "Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format."
 >
 > Experience level:
 > 1 Basic use: out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.
@@ -252,11 +253,11 @@ Rows m01 to m15, one family per screen, following the row pattern in 1.5:
 - Reveal: `A3.mNN.level` segmented control headed "Experience level" with options 1, 2, 3, 4. Hovering or long-pressing an option shows a tooltip with that level's name and definition (for example "3 Advanced use: training or fine-tuning models, building custom pipelines, agentic workflows, coding integration"). Required once the gate is ticked. Exported as 0 when the gate is off.
 - Reveal: `A3.mNN.present` checkbox "I could present on this".
 
-**A3.16** Other methods, `A3.c01` to `A3.c05`, on their own screen (9) headed "Other AI methods you use". Intro: "Anything not covered on the previous screens. Up to five. Type a name; the controls for that row appear, and the next row after it." The grid's first column is headed "Method name" and holds a text field per row (the column header is the visible label; no placeholder). The other columns are the same controls as the fixed rows (learn, use, experience level, present). Controls of a row appear once its name is filled; the next empty row appears at the same moment, up to five. Variables per custom row: `A3.cNN.name`, `A3.cNN.use`, `A3.cNN.level`, `A3.cNN.present`, `A3.cNN.learn`. Rows with an empty name are not exported.
+**A3.16** Other methods, `A3.c01` to `A3.c05`, on their own screen (10) headed "Other AI methods you use". Intro: "Anything not covered on the previous screens. Up to five. Type a name; the controls for that row appear, and the next row after it." The grid's first column is headed "Method name" and holds a text field per row (the column header is the visible label; no placeholder). The other columns are the same controls as the fixed rows (learn, use, experience level, present). Controls of a row appear once its name is filled; the next empty row appears at the same moment, up to five. Variables per custom row: `A3.cNN.name`, `A3.cNN.use`, `A3.cNN.level`, `A3.cNN.present`, `A3.cNN.learn`. Rows with an empty name are not exported.
 
-Section exit check, on leaving screen 9: if no gate and no "learn" is ticked on any of screens 4 to 9, show one soft prompt: "You haven't marked any method. Continue anyway?" with "Continue" and "Go back".
+Section exit check, on leaving screen 10: if no gate and no "learn" is ticked on any of screens 5 to 10, show one soft prompt: "You haven't marked any method. Continue anyway?" with "Continue" and "Go back".
 
-### 2.4 Section A4: AI-related topics (screen 10 of 14)
+### 2.4 Section A4: AI-related topics (screen 11 of 15)
 
 Twelve rows on one screen, above the five-row guideline. Kept together because the rows are two checkboxes each, not a scale, and are grouped under five headings; the pilot (5.14) checks whether this screen loses people.
 
@@ -272,7 +273,7 @@ Rows t01 to t12, grouped under group headings:
 
 Under the grid, one line: "Ticking 'I could present on this' does not commit you to anything. We contact you personally to agree on topic and format."
 
-### 2.5 Section A5: Experience beyond academia (screen 11 of 14)
+### 2.5 Section A5: Experience beyond academia (screen 12 of 15)
 
 Intro:
 
@@ -292,7 +293,7 @@ Under the grid, one line: "Ticking "I could share this experience" does not comm
 
 The old three-point level (none, some, extensive) is dropped. "Have experience" plus "could share" covers the two decisions the data serves: who to ask to speak, and who wants the session.
 
-### 2.6 Section A6: What you are looking for (screen 12 of 14)
+### 2.6 Section A6: What you are looking for (screen 13 of 15)
 
 **A6.1** `A6.useful` "What would be most useful to you at the meetup? Pick up to five." Multi-select, maximum 5. Required, at least one. Help: "Do you need someone with specific expertise for a grant project? A supervisor for your thesis idea? Someone to consult?" and, as a second line, "Tell us below and we'll match you with them at the event."
 - Finding collaborators
@@ -317,7 +318,7 @@ Ticking any option reveals a short text field directly under it with the visible
 
 Closing line of the screen, below A6.3: "We use everything on this screen to build the conference you actually want: the sessions, the people at your table, and the introductions we make before you arrive."
 
-### 2.7 Section A7: Your involvement (screen 13 of 14)
+### 2.7 Section A7: Your involvement (screen 14 of 15)
 
 Intro:
 
@@ -350,7 +351,7 @@ Intro:
 
 `A7.help_detail` Revealed when the first or second option is ticked. "Tell us more: what could you help with, and roughly how much time? (optional)" Short text, up to 300 characters. Optional.
 
-### 2.8 Section A8: Last things (screen 14 of 14)
+### 2.8 Section A8: Last things (screen 15 of 15)
 
 **A8.1** `A8.source` "How did this call reach you?" Multi-select. Required, at least one.
 - Nominated by my institution's contact person
@@ -541,9 +542,9 @@ Button: "Send". End screen: "Thank you. See you in Kostelec on [date]. Practical
 Described as text for the build. Applies to all three instruments unless stated.
 
 ### 5.1 Structure and navigation
-Form A has 14 screens (section 2). "Back" keeps all answers. No screen has more than one grid.
+Form A has 15 screens (section 2). "Back" keeps all answers. No screen has more than one grid.
 
-Progress is shown as a bar plus two bold texts under it: "Screen 4 of 14" on the left and "About 7 min left" on the right. The bar is weighted by the expected time of each screen, not by screen count, so it moves fast through the short identity screens and slows through the grids (the meta-analysis in the research pass found constant-speed bars do nothing for drop-off and fast-to-slow bars reduce it). Time left is the sum of the weights of the current and remaining screens, rounded up, never below 1. Expected minutes per screen, to be recalibrated from the pilot (5.14):
+Progress is shown as a bar plus two bold texts under it: "Screen 5 of 15" on the left and "About 7 min left" on the right. The bar is weighted by the expected time of each screen, not by screen count, so it moves fast through the short identity screens and slows through the grids (the meta-analysis in the research pass found constant-speed bars do nothing for drop-off and fast-to-slow bars reduce it). Time left is the sum of the weights of the current and remaining screens, rounded up, never below 1. Expected minutes per screen, to be recalibrated from the pilot (5.14):
 
 | Screen | Minutes |
 |---|---|
