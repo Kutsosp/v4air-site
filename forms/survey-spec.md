@@ -425,7 +425,7 @@ Button: "Send nominations".
 
 ### 3.3 End screen
 
-> Thank you. We will write to them within [N] days.
+> Thank you. We will write to them directly.
 > **Your nomination ID: V4N-XXXX-XXXX.** Quote it if you write to us about these nominations.
 > Haven't applied yourself yet? [Link: Apply to the meetup]
 
