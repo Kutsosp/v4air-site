@@ -35,7 +35,8 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* 05.10.2026: root at 94% (about 15 px) and wider gutters for more air */
+html { scroll-behavior: smooth; font-size: 94%; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
@@ -46,13 +47,13 @@ body {
   color: var(--text);
   font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
 img { display: block; max-width: 100%; height: auto; }
 
-.wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
+.wrap { max-width: 1240px; margin-inline: auto; padding-inline: clamp(1.5rem, 1rem + 4.5vw, 6rem); }
 
 h1, h2, h3 { line-height: 1.12; text-wrap: balance; margin: 0 0 1rem; }
 h1 { font-size: clamp(2.4rem, 1.4rem + 4vw, 4.4rem); font-weight: 800; letter-spacing: -0.02em; }
@@ -348,7 +349,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   text-shadow: 0 1px 12px rgba(8, 14, 16, 0.7);
 }
 .hero h1 { font-size: clamp(1.2rem, 0.7rem + 2vw, 2.2rem); max-width: 21ch; margin-bottom: 0.55rem; }
-.hero .lede { font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem); max-width: 46ch; color: #d5e1e0; margin-bottom: 1rem; }
+.hero .lede { font-size: clamp(1rem, 0.9rem + 0.35vw, 1.2rem); max-width: 46ch; color: #d5e1e0; margin-bottom: 1rem; }
 .hero .cta-row { display: flex; gap: 0.45rem; flex-wrap: wrap; }
 
 /* ---------- funded band ---------- */
@@ -356,7 +357,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--bg-raise);
-  padding-block: clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 .funded .wrap {
   display: grid;
@@ -392,7 +393,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .numbers-sentence strong { color: var(--text); font-weight: 600; }
 
 /* ---------- adaptive statement ---------- */
-.adaptive { padding-block: clamp(5rem, 10vw, 8.5rem); }
+.adaptive { padding-block: clamp(6rem, 12vw, 10.5rem); }
 .adaptive h2 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.3rem); max-width: 18ch; }
 .adaptive .cols {
   display: grid;
@@ -403,7 +404,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .adaptive .cols p { margin-bottom: 0.75rem; }
 
 /* ---------- format ---------- */
-.format { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+.format { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
 .format h2 { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 /* editorial rows: title left, body right, one hairline above each row (impeccable-taste 4.4: no equal cards) */
 .format-list { display: flex; flex-direction: column; }
@@ -421,7 +422,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 @media (max-width: 700px) { .format-item { grid-template-columns: 1fr; gap: 0.5rem; } }
 
 /* ---------- venue ---------- */
-.venue { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+.venue { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
 .venue .split {
   display: grid;
   grid-template-columns: 5fr 6fr;
@@ -531,14 +532,14 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 @media (prefers-reduced-motion: reduce) {
   .pin-outer { height: auto; }
   .pin-inner { position: static; min-height: 0; }
-  .pin-inner .wrap { padding-block: clamp(4.5rem, 9vw, 8rem); }
+  .pin-inner .wrap { padding-block: clamp(5.5rem, 11vw, 10rem); }
 }
 /* small screens: the pinned content is taller than the viewport, so the pin
    would clip it top and bottom; fall back to a normal flowing section */
 @media (max-width: 900px) {
   .pin-outer { height: auto; }
   .pin-inner { position: static; min-height: 0; }
-  .pin-inner .wrap { padding-block: clamp(4.5rem, 9vw, 8rem); }
+  .pin-inner .wrap { padding-block: clamp(5.5rem, 11vw, 10rem); }
 }
 .apply-panel {
   margin-top: 2.5rem;
@@ -580,7 +581,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 }
 
 /* ---------- timeline: the road to Kostelec ---------- */
-.timeline { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+.timeline { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
 /* deliberate night band: this section is always dark (the road at dusk) */
 .timeline {
   --bg: #0c1517;
@@ -754,7 +755,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 
 /* ---------- faq ---------- */
 :root { interpolate-size: allow-keywords; } /* enables height:auto transitions (Chromium 131+) */
-.faq { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+.faq { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
 .faq-head {
   display: flex;
   justify-content: space-between;
@@ -818,7 +819,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 }
 
 /* ---------- partners ---------- */
-.partners { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+.partners { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
 .partners h2 { margin-bottom: 0.5rem; }
 .partners .intro { color: var(--text-2); margin-bottom: clamp(2rem, 4vw, 3rem); }
 .logo-wall {
@@ -919,7 +920,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .team p { margin: 0; color: var(--text-2); font-size: 0.98rem; }
 
 /* ---------- who should apply ---------- */
-.who { padding-block: clamp(4.5rem, 9vw, 8rem); border-top: 1px solid var(--line); }
+.who { padding-block: clamp(5.5rem, 11vw, 10rem); border-top: 1px solid var(--line); }
 .who-q { margin-bottom: 2rem; }
 .who-doubt {
   /* the rotator is the section's highlight: display-scale type */
@@ -941,7 +942,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 }
 .slot__col { display: flex; flex-direction: column; }
 .slot__col > span { display: block; height: 1.5em; white-space: nowrap; }
-.who-yes { margin-top: clamp(4rem, 8vw, 7rem); }
+.who-yes { margin-top: clamp(5rem, 10vw, 9rem); }
 .who-then { margin-bottom: 1.5rem; }
 .who-yes .yes {
   display: block;

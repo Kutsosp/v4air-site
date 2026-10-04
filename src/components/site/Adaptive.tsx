@@ -20,6 +20,11 @@ export function Adaptive() {
             </p>
           </div>
           <div>
+            <p>
+              Meet researchers applying methods like NLP, computer vision, machine
+              learning, agentic AI and statistical modeling across fields like biology,
+              medicine, linguistics, psychology and engineering.
+            </p>
             <p className="muted">
               Selection is based on fit and mix, not first-come-first-served. Filling
               in the form carefully is the best thing you can do for your chances,

@@ -1,6 +1,6 @@
 import { InView } from '@/components/motion-primitives/in-view'
 import { TextLoop } from '@/components/motion-primitives/text-loop'
-import { APPLY_URL, CONTACT_MAILTO, Reveal, PARTNERS_MAILTO } from './Reveal'
+import { APPLY_URL, CONTACT_MAILTO, Reveal } from './Reveal'
 
 /* X and Y rotate as matched pairs so the sentence always makes sense */
 const PAIRS: Array<[string, string]> = [
@@ -95,11 +95,8 @@ export function Who() {
             </p>
             <p className="funded-note">
               <strong>Not in academia?</strong> If you work with AI in a company, a
-              startup, tech transfer or investment, apply through the same form.
-              Applicants can tell us they want contacts in industry, funding or tech
-              transfer, and the meetup is built to bring them together with you. To
-              contribute with a talk, workshop, or to support the meetup, write to{' '}
-              <a href={PARTNERS_MAILTO}>partners@v4air.eu</a>.
+              startup, tech transfer or investment, apply through the same form, as a
+              participant or as a speaker.
             </p>
           </Reveal>
         </div>
