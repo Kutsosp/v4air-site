@@ -9,8 +9,8 @@ const ITEMS = [
   },
   {
     icon: MessagesSquare,
-    title: 'A more-than-posters session',
-    body: 'An open-format session: bring a poster, a prototype, a demo, or a digital presentation. Whatever shows your work best.',
+    title: 'Not-Just-Posters session',
+    body: 'For students: present your project while it is still in progress and get feedback from experts. Bring a poster, a prototype, a demo or slides.',
   },
   {
     icon: Wrench,
@@ -28,7 +28,7 @@ export function FormatGrid() {
   return (
     <section className="format" id="format">
       <Reveal className="wrap">
-        <h2>A small, informal format</h2>
+        <h2>What the three days look like</h2>
         <div className="format-grid">
           {ITEMS.map((it) => (
             <div className="format-item" key={it.title}>

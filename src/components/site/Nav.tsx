@@ -3,15 +3,10 @@ import { AnimatePresence, motion } from 'motion/react'
 import { AnimatedGroup } from '@/components/motion-primitives/animated-group'
 import type { Theme } from '@/App'
 import { TextMorph } from '@/components/motion-primitives/text-morph'
-import { useNow } from '@/lib/time'
 import { APPLY_URL } from './Reveal'
 
 /* Sticky nav: transparent over the hero, solid blurred bar once scrolled.
-   The Apply link carries the application-window state (the persistent
-   "applications are open" reminder lives here, per the CTA research). */
-const OPEN = new Date('2026-09-01T00:00:00').getTime()
-const DEADLINE = new Date('2027-01-15T23:59:59').getTime()
-const DAY = 86400000
+   The Apply link reads "Apply" throughout (05.10.2026); the countdown band carries the window state. */
 
 const LINKS = [
   { href: '#adaptive', label: 'How it works' },
@@ -29,7 +24,6 @@ export function Nav({
   theme: Theme
   onToggleTheme: () => void
 }) {
-  const now = useNow()
   const [scrolled, setScrolled] = useState(false)
   /* the brand folds later than the bar turns opaque, so the morph is visible.
      It mounts folded and unfolds as an entrance beat (and on scrolling back up). */
@@ -52,13 +46,7 @@ export function Nav({
     }
   }, [])
 
-  const isOpen = now >= OPEN && now <= DEADLINE
-  const daysLeft = Math.ceil((DEADLINE - now) / DAY)
-  const applyLabel = !isOpen
-    ? 'Apply'
-    : daysLeft <= 21
-      ? `Apply — ${daysLeft === 1 ? '1 day' : `${daysLeft} days`} left`
-      : 'Apply — open now'
+  const applyLabel = 'Apply'
 
   return (
     <header className="nav2" data-scrolled={scrolled}>
@@ -150,7 +138,6 @@ export function Nav({
               An invisible twin holds the slot open so nothing shifts. */}
           <span className="nav-apply-slot">
             <span className="nav-apply nav-apply-ghost" aria-hidden="true">
-              {isOpen && <span className="nav-apply-dot" />}
               {applyLabel}
             </span>
             <AnimatePresence>
@@ -163,7 +150,6 @@ export function Nav({
                   exit={{ opacity: 0, scale: 0.6, y: -10 }}
                   transition={{ type: 'spring', stiffness: 380, damping: 22 }}
                 >
-                  {isOpen && <span className="nav-apply-dot" aria-hidden="true" />}
                   {applyLabel}
                 </motion.a>
               )}

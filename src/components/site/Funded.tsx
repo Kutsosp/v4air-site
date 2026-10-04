@@ -14,8 +14,8 @@ export function Funded() {
           />
           <p>
             <strong className="chip">Free and fully funded</strong> for students and researchers from
-            V4: you stay right at the castle, with board and a contribution toward
-            travel covered by the International Visegrad Fund.
+            the six partner universities, including admission, accommodation at the
+            castle, meals and a contribution toward travel.
           </p>
         </div>
       </Reveal>

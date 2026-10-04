@@ -2,16 +2,16 @@ import { CONTACT_MAILTO, PARTNERS_MAILTO, Reveal } from './Reveal'
 import { asset } from '@/lib/utils'
 
 const LOGOS = [
-  { src: asset('assets/charles-university_white.png'), alt: 'Charles University', place: 'Prague, Czechia', tall: true, w: 280, h: 280 },
+  { src: asset('assets/charles-university_red.png'), alt: 'Charles University', place: 'Prague, Czechia', tall: true, w: 280, h: 280 },
   // Partnership paperwork in progress (2026-09): logo blurred, name and city withheld. Flip `tba` off to reveal.
-  { src: asset('assets/uwr-wroclaw_white.png'), alt: 'Partner university in Poland, to be announced', place: 'TBA, Poland', tba: true, w: 751, h: 255 },
-  { src: asset('assets/umk-torun_white.png'), alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 348, h: 280 },
-  { src: asset('assets/cvut_white.png'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 137, h: 280 },
-  { src: asset('assets/elte_white.png'), alt: 'Partner university in Hungary, to be announced', place: 'TBA, Hungary', tba: true, w: 1400, h: 280 },
-  { src: asset('assets/comenius-university_white.png'), alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 693, h: 280 },
+  { src: asset('assets/uwr-wroclaw_black.png'), alt: 'Partner university in Poland, to be announced', place: 'TBA, Poland', tba: true, w: 1040, h: 534 },
+  { src: asset('assets/umk-torun_blue.png'), alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 900, h: 725 },
+  { src: asset('assets/cvut_blue.png'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 439, h: 900 },
+  { src: asset('assets/elte_color.svg'), alt: 'Partner university in Hungary, to be announced', place: 'TBA, Hungary', tba: true, w: 963, h: 203 },
+  { src: asset('assets/comenius-university_red.png'), alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 900, h: 363 },
   // co-organizers outside academia (added 04.10.2026)
-  { src: asset('assets/prgai-logo_white.svg'), alt: 'prg.ai', place: 'Co-organizer', w: 159, h: 40 },
-  { src: asset('assets/common-ground-research_white.png'), alt: 'common ground research', place: 'Co-organizer', tall: true, w: 258, h: 300 },
+  { src: asset('assets/prgai-logo.svg'), alt: 'prg.ai', place: 'Co-organizer', w: 159, h: 40 },
+  { src: asset('assets/common-ground-research.png'), alt: 'common ground research', place: 'Co-organizer', tall: true, w: 360, h: 360 },
 ]
 
 export function Partners() {

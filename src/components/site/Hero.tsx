@@ -28,10 +28,10 @@ export function Hero({ theme }: { theme: Theme }) {
       <div className="hero-scrim"></div>
       <div className="hero-inner wrap">
         <p className="eyebrow">28-30 April 2027 &middot; Kostelec Castle, near Prague</p>
-        <h1>Three days of AI, under one castle roof</h1>
+        <h1>Meet the people your project needs</h1>
         <p className="lede">
-          V4AIR brings together early-career researchers and graduate students from
-          the V4 region who work with AI, in any discipline.
+          Three days at Kostelec Castle near Prague for students and early-career
+          researchers who use AI in their research across fields.
         </p>
         <div className="cta-row">
           <a className="btn btn-primary" href={APPLY_URL}>

@@ -129,7 +129,7 @@ Call text (Peter's wording, 20.09.2026):
 >
 > You don't need a finished talk or poster. Ideas and work in progress are welcome. If you are selected, we contact you and shape your contribution together.
 >
-> Expect a small, informal format: a set of talks, a Not-Just-Posters student session, hands-on workshops, and long breaks in one place, so the conversations don't end when the sessions do.
+> The programme: a set of talks, a Not-Just-Posters student session, hands-on workshops, and long breaks in one place, so the conversations don't end when the sessions do.
 >
 > Working language: English.
 >

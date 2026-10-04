@@ -1,5 +1,4 @@
 import { FlipClock } from '@/components/ui/flip-clock'
-import { TextShimmer } from '@/components/motion-primitives/text-shimmer'
 import { useNow } from '@/lib/time'
 import { APPLY_URL } from './Reveal'
 
@@ -40,24 +39,15 @@ export function Countdown() {
         </div>
       ) : (
         <div className="wrap relative flex flex-col items-center gap-5 text-center">
-          <TextShimmer
-            as="h2"
-            className="mb-0 text-3xl font-bold md:text-5xl [--base-color:var(--color-accent)] [--base-gradient-color:#ffe3bd]"
-            duration={2.2}
-          >
-            Applications are open now!
-          </TextShimmer>
+          <h2 className="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
           <p className="mb-0 max-w-[50ch] text-lg text-ink">
-            Accommodation, board, and travel contribution covered for V4
-            participants.
+            No abstract, CV, or motivation letter required. Deadline for
+            applications: 15 January 2027.
           </p>
           <a className="btn btn-primary" href={APPLY_URL}>
             Apply now
           </a>
           <div className="mt-2 flex flex-col items-center gap-2">
-            <p className="mb-0 text-xs font-semibold uppercase tracking-[0.14em] text-ink-2">
-              Deadline: 15 January 2027
-            </p>
             <FlipClock
               countdown
               targetDate={deadlineTarget}

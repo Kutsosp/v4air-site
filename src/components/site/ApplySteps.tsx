@@ -3,8 +3,8 @@ import { APPLY_URL, CONTACT_MAILTO, NOMINATE_URL } from './Reveal'
 
 const STEPS = [
   {
-    title: 'Tell us three things',
-    body: 'What you work on, what you want to learn, and who you would like to meet. No abstract, no finished talk.',
+    title: 'Tell us what you need',
+    body: 'What you work on, what you want to learn, and who you want to meet.',
   },
   {
     title: 'We select for fit and mix',

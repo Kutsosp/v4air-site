@@ -4,17 +4,19 @@ export function Adaptive() {
   return (
     <section className="adaptive" id="adaptive">
       <Reveal className="wrap">
-        <h2>The program adapts to you, not the other way around.</h2>
+        <h2>Meet your next collaborators</h2>
         <div className="cols">
           <div>
             <p>
-              V4AIR is a participant-first adaptive conference. The application form
-              asks what you work on, what you want to learn, and who you would like
-              to meet.
+              In your application, you tell us what expertise your project is missing
+              and who you want to meet, and we invite people who match. Early-career
+              researchers find collaborators, team members and expert advice, and talk
+              to people from industry. Students find mentors and research positions
+              and get feedback on their ideas.
             </p>
             <p className="muted">
-              You choose the talks, the workshops, the speakers, and the people
-              you meet.
+              The talks, the workshop topics, the invited speakers and the sessions are
+              all chosen to fit your answers.
             </p>
           </div>
           <div>

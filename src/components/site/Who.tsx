@@ -1,6 +1,6 @@
 import { InView } from '@/components/motion-primitives/in-view'
 import { TextLoop } from '@/components/motion-primitives/text-loop'
-import { APPLY_URL, CONTACT_MAILTO, Reveal } from './Reveal'
+import { APPLY_URL, CONTACT_MAILTO, Reveal, PARTNERS_MAILTO } from './Reveal'
 
 /* X and Y rotate as matched pairs so the sentence always makes sense */
 const PAIRS: Array<[string, string]> = [
@@ -63,19 +63,17 @@ export function Who() {
           </Reveal>
           <Reveal delay={1}>
             <p>
-              Early-career researchers and graduate students from the V4 region, any
-              discipline. Master's students, PhD candidates, and postdocs are all
-              eligible, and so are researchers recently past the postdoc stage: if
-              you're a junior faculty member still building your research, you're
-              welcome.
+              If AI is part of your research, apply, whatever your field. You don't
+              have to build AI to belong here. Master's and PhD students, postdocs and
+              researchers still early in building a group can all apply.
             </p>
             <a className="btn btn-primary" href={APPLY_URL}>
               Apply now
             </a>
             {/* div, not p: the tooltip contains a <ul>, which is invalid inside <p> */}
             <div className="funded-note">
-              Applicants from partner universities get accommodation, attendance,
-              board, and travel covered.{' '}
+              Applicants from partner universities pay no fee: accommodation, meals and
+              a travel contribution are covered.{' '}
               <span className="partner-q" tabIndex={0}>
                 Is my university a partner?
                 {/* spans styled as a list: real <ul> is invalid inside inline markup */}
@@ -94,6 +92,14 @@ export function Who() {
               Applicants from outside partner universities are welcome to apply for a
               small fee. If that&rsquo;s you, contact{' '}
               <a href={CONTACT_MAILTO}>info@v4air.eu</a>.
+            </p>
+            <p className="funded-note">
+              <strong>Not in academia?</strong> If you work with AI in a company, a
+              startup, tech transfer or investment, apply through the same form.
+              Applicants can tell us they want contacts in industry, funding or tech
+              transfer, and the meetup is built to bring them together with you. To
+              contribute with a talk, workshop, or to support the meetup, write to{' '}
+              <a href={PARTNERS_MAILTO}>partners@v4air.eu</a>.
             </p>
           </Reveal>
         </div>
