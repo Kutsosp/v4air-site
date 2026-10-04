@@ -229,7 +229,7 @@ Intro screen 4, "AI methods you use", holds this text followed by the level defi
 
 > Over the next five short screens, tick the methods you use. For each one, tell us your experience level, whether you could present on it, and whether you want to learn more. Leave a method unticked if you don't use it. You can tick "I want to learn more" on anything, including methods you don't use yet.
 
-Every method screen (5 to 10) ends with the line: "Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format."
+Family screens 5 to 9 repeat the four level definitions with examples under the heading, collapsed in an "Experience levels" dropdown (05.10.2026). Every method screen (5 to 10) ends with the line: "Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format."
 >
 > Experience level:
 > 1 Basic use: out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.
