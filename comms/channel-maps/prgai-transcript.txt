@@ -1,0 +1,823 @@
+Lenka: Jé, už jste tady, pánové. Ahoj.
+Luděk Šafář:  Ahoj.
+Lenka:  Lenka už se těší.
+Luděk Šafář:  Peťa, ahoj.
+Lenka:  Ahoj, Petr, čau.
+Luděk Šafář:  Petr, Petr.
+Lenka:  To bude jednoduchý s váma.
+Luděk Šafář:  Jo. Můžeš kompresovat informace.
+Lenka:  Přesně tak. Petrove, kafíčko už jsme objednali. Dělám čaj, dáte si čaj?
+Luděk Šafář:  Já jsem asi dobrej, děkuju.
+Lenka:  A jaký čaj si dáš?
+Luděk Šafář:  Já myslel, že uděláš nějakou konvici k tomu.
+Lenka:  Udělám, udělám konvici.
+Luděk Šafář:  Já si dám prosím tě mix...
+Lenka:  Můžeš koukat.
+Luděk Šafář:  Tak jo.
+Luděk Šafář:  Hele, ten Wispr Flow má dobrý, dobrý notetaker.
+Luděk Šafář:  Jo, jsem spustil.
+Luděk Šafář:  Co řešíš? Ty záseky, to, co se stalo u toho tvýho streamu...
+Luděk Šafář:  Co znamená zásek? Že jsme se zasekli?
+Luděk Šafář:  Ne, jako... progress report. Progress.
+Luděk Šafář:  Changelog.
+Lenka:  To bude, nebojte.
+Luděk Šafář:  Zapnu age of war.
+Lenka:  Vy jste z Matfyzu?
+Luděk Šafář:  Ne, my jsme z toho přírodovědecký UKČ.
+Lenka:  Přírodovědecký. A s Matfyzem vůbec, jako s Davidem Homsou, vůbec nepřicházíte do styku?
+Luděk Šafář:  Ne.
+Lenka:  Vůbec?
+Luděk Šafář:  Teď jsme přišli s Matfyzem do styku, ale ne. S tím... jak se to jmenuje, počkej... research software engineering team. Oni tady dneska mají workshop, Luděk nás na něj odkázal.
+Luděk Šafář:  A dělají workshop o použití agentů v linguistice.
+Lenka:  Jo, jo, jo, jo, jo, jo, ty jsou, ty jsou, ty jsou akční, no.
+Luděk Šafář:  Jak se říká na to jméno, toho s tím...
+Lenka:  David. David Hop. K-S-Z-A, nebo tak nějak.
+Lenka:  On je bio... bioinformatik, takže se jmenuje.
+Luděk Šafář:  Počkej, jakže? Hop?
+Lenka:  Hop. Hop, K-S-Z-A.
+Luděk Šafář:  Hop, K-S-Z-A?
+Lenka:  Možná.
+Luděk Šafář:  Jo, já znám tohohle...
+Lenka:  To je takovej sympaťák. To jsem si říkala, že byste se mohli znát. Ten je dobrej.
+Luděk Šafář:  Já ho neznám ale osobně, ale já jsem s ním někdy...
+Lenka:  Já ho neznám.
+Luděk Šafář:  Měl, někdy jsem tam zkoušel chodit na nějakej rozhovor. To je naposled, že?
+Lenka:  No, je to simpóž.
+Luděk Šafář:  Nedělá on biopolymery?
+Lenka:  Tak já si jdu zahalit ten čaj a už jsem... už jsem ready. Úplně.
+Luděk Šafář:  Jo, dělá bioinformatiku, no. Já jsem pravděpodobně ho narazil na něj na nějakým cviku.
+Lenka:  My jsme totiž včera předávali ty certifikáty k graduantům našeho programu Prague AI Minor, který má jedno specifikum, a to jde, a to je, že se učí napříč UK a ČVUT, na čtyřech různých fakultách, dokonce tam byli i studenti z Ederky. A měli jít dělat, hraju si, že jsou tam i lidi z FSV, nejenom z těch technickejch oborů. A já jsem tam právě pitchoval tu mezioborovou, právě tohleto, což je evidentně prostě i váš jako play.
+Lenka:  Takže, takže to, to je jako ve stejným, ve stejným vektoru. To je dobrý.
+Lenka:  Takže to děláme rádi, rádi bychom to rozšířili. Ale je to zajímavý, jak vlastně ta, jako, v určitý úrovni ta meziouniverzitní rivalita se jako objeví, jo.
+Lenka:  Takže my jsme chtěli i Prague AI Master, a to už jako, to už jako ne.
+Luděk Šafář:  A pro, a pro...
+Lenka:  No, protože už to zasahuje prostě do těch jako, jako vyšších úrovní, prostě. A tam už jako vlastně si ty fakulty hájěj jako tu, tu jako unikátnost těch, těch...
+Luděk Šafář:  A kde se to zablokovalo?
+Lenka:  Tak to je... já jsem tady nebyl, ale vím, že se Prague AI Master taky tehdy měl bejt, ne?
+Peter Kutsos:  No jasně, Prague AI Master měl bejt zasekl se to na Matfyzu u pana profesora Bartáka.
+Luděk Šafář:  To není nic moc, teda.
+Peter Kutsos:  No, a zaseklo se to vlastně trošičku i na FITu, protože FIT si zrovna udělal svůj vlastní studijní...
+Luděk Šafář:  Program.
+Peter Kutsos:  Program. A prostě jakmile, jakmile jde o ty akreditace, tak se prostě kluci sekli, no. Jako Tomáš Svoboda se pak užil do toho jako s velkým jako nadšením, že se mu to podaří prorazit.
+Peter Kutsos:  A ono to teda taky bylo hodně na poslední chvíli, že se to zaseklo u Ondry Bojara v mailu. Ten dlouho nereagoval, protože Vánoce, byl tam jasnej deadline, prostě do 10. ledna.
+Peter Kutsos:  Potom se Tomáš Svoboda obrátil na mě s tím, že Barták je prostě žába na prameni, tak jsem napsala Skopalovi, a Skopal to přeposlal rovnou Bartáku, takže jsme si tam udělali ještě průser. Takže, takže... ale prostě jakmile, no, prostě ty, ty, ty, ty, ty, ty garanti těch svejch oborů prostě nechtěli spolupracovat.
+Peter Kutsos:  Prostě Barták to dělá přece nejlíp, ne? No, takže, takže tak.
+Peter Kutsos:  Takže škoda veliká, ale...
+Lenka:  Já naštěstí, jak jsem studoval i v Evropě, tak nemám co říct.
+Peter Kutsos:  Tak škoda veliká, ale minor je prostě minor. A Master se nějak trošičku rozjíždí, no. Byť jenom na FELu.
+Lenka:  Tak uvidíme, prostě. Tak mockrát děkuju, že jste všichni přišli fyzicky sem.
+Luděk Šafář:  Děkuju.
+Lenka:  A Lenka je zakladatelka tady Prague AI a největší mozek tady v historii, prostě.
+Lenka:  Kluci teďka skvěle připravujou konferenci o výzkumu pomocí AI a připravují ji jednak mezioborově a jednak ve specifickým formátu meetupu, kterej se odehrává mimo standardní premises na zámku, kterej půjčí ČZU, a tím se to bude jako odehrávat ve zcela jako specifický lokalitě a ve zcela specifický koncentraci těch lidí, který se toho budou účastnit.
+Peter Kutsos:  Super.
+Lenka:  Dokonce na to získali grant od Vyšehradskýho fondu, kterej vlastně do určitý míry podmiňuje tu mezinárodnost toho a do určitý míry jako zužuje toho, kam se ty peníze jako budou dávat, z toho zejména na fundování vlastně účasti těch účastníků. A teďka kolem toho kluci vlastně organizujou celej ten setup, a když jsme se tady potkali, tak jsme měli jako konverzaci, jak bychom tomu teoreticky mohli pomoct. A jednou z věcí, kterou jsme našli, je, že my bychom tomu mohli pomoct přítomností jinejch subjektů, pro který to původně není cílený, a
+Lenka:  to jak z pozice nějakých VCs, tak z pozice jako firem, tak z pozice třeba i akademický účasti, která není přímým cílem toho fondu, což znamená, že to nejsou přímo ty výzkumníci, a tím by to dostalo takovej jako další shift. A možná, to nevím, jestli jsme o tom mluvili, nebo ne, ale mně přišlo, že by možná do toho šlo vlastně i doplnit jako ten mimo grantovej funding někudy, aby se tam daly třeba udělat některý věci navíc, na který prostě jako typicky ty peníze tam buď nejsou, že na
+Lenka:  to nejdou dát, nebo tam nezbydou, protože to ty lidi nejsou.
+Luděk Šafář:  Tady poznámka: v tom Vyšehradským fondu je přísně, že to musí být nonprofit, musí to mít nonprofit character, což nám je jasný. A taky tam není jasně popsaný, co to znamená, jenom že to musí být nonprofit.
+Lenka:  Jo, ty guidelines, to je pak jedna z věcí, co já jsem jako, co mám v tom progress logu, co jsem právě studoval, jak tohle by bylo potřeba nastavit. Ty guidelines jsou strašně vágní, takže to asi by vyžadovalo pak nějaký ověření s nima. Ale jako to, jedna z těch vágních věcí, co tam píšou, je otevřený cofunding.
+Luděk Šafář:  A to jsem se i ptal tý project manažerky od nich a potvrdila mi to, že cofunding je v pohodě.
+Lenka:  To je v pohodě. Tam pak nejspíš o to, jak nastavit vztah s univerzitou naší, která je ten, kdo vlastně dostal ten grant, že jo, na tý smlouvě. Ano, a taky kluci narážej na to, že ta právní entita, která to celý zastupuje, je univerzita, takže podpis každýho papíru prostě přes byt jako nemalý administrativní úsek.
+Peter Kutsos:  I feel your pain.
+Lenka:  No, já...
+Peter Kutsos:  I feel your pain.
+Luděk Šafář:  Jako...
+Lenka:  I'm not so sure.
+Peter Kutsos:  Been doing it for quite some time. Seven years in Prague AI, not one, but two universities.
+Lenka:  To je hezký. A ten, ten základ pro tu expanzi je mimochodem to, že ten prostor, kterej my už teďka máme jako smluvenej a kterej stejně budeme pronajímat, tak má kapacitu třeba pohodlně 150 lidí, a my v tuhle chvíli, ten, ten grant počítá s 50 účastníkama max.
+Peter Kutsos:  OK.
+Lenka:  Jo, což jako byl náš záměr, protože jsme chtěli tu jako kvalitu těch interakcí. Není to jako problém pro nás, ale je tam ten room jako to zvětšit. A i ubytovací kapacity na tom zámku, který jsou součástí, prostě to ČZU to k tomu jako je schopný zprostředkovat, tak ty jsou taky na tolik lidí, na těch 150.
+Lenka:  A plus je vedle pivovar, kde je spousta dalšího ubytování.
+Peter Kutsos:  OK. 50 účastníků z grantu, 50 lidí kapacity.
+Lenka:  Jenom si znovu řekněme ten termín. Je to v dubnu?
+Luděk Šafář:  Ano, 28, 29, 30.
+Lenka:  28 až 30 duben. Tak to už by mohlo bejt hezký, že jo, když to takhle přehrávej. Pánové, jak vy máte rozmyšlenej celej ten?
+Lenka:  Já se musím přiznat, já jsem nečetla ten 30stránkovej dokument a jenom, jenom jak... ne, ne, ale přeposlal jsem ho, přeposlal jsem ho Honzovi.
+Luděk Šafář:  Já jsem to tam sdílel jako anekdotu a Honza mi zase psal: "Tady žádnej komunikační plán."
+Lenka:  Jenom v rychlosti, jak... když mi nastíníte, jak si celý ty tři dny představujete, co se tam musí odehrát a co byste byli rádi, aby se odehrálo.
+Luděk Šafář:  Co se tam musí... no, ale podstata toho, toho meetupu, což tady nepadlo, je, že my děláme jako takovej matchmaking, jo, že my chceme, proto je pro nás důležitá propagace, vlastně vybíráme od těch přihlášenejch účastníků, od kterejch nechceme nic, všechny jim platíme, že jo. Takže jediný, co je, je vyplnit komplexní formulář, kterej my zjistíme jejich AI proficiency, jejich záměry, co jako ofrujou, co, co hledaj, a na základě toho chceme udělat matchmaking tak, aby každej ten účastník tam potkal někoho relevantního pro něj vlastně.
+Peter Kutsos:  OK.
+Luděk Šafář:  Jo, a ten, to, co se tam, ten program těch třech dní, jsou nějaký talky, který jsou zejména od těch early career researchers, vlastně dvě cílový skupiny jsou PhDs a early career researchers. To, co znamená early career researcher, je, kdo se tak identifikuje, což je naschvál jako tak, protože jsou to typicky lidi, který dostali první projekt nebo ho teprv podávaj a nebo zakládaj nějakou skupinu.
+Peter Kutsos:  Takže nějaký jako postdokci.
+Luděk Šafář:  Postdokci a tak. Ale jako já si dokážu představit, že třeba náš školitel by klidně tam jako mohl jet, kterej je, já nevím, pět, šest let po PhD.
+Lenka:  On už se ale nově přestal identifikovat.
+Luděk Šafář:  Já vím, to je jedno, ale jako měl by v tu chvíli co třeba ofrovat a teďka, já nevím, píše gacha, tak by měl i co poptat.
+Lenka:  Ano.
+Luděk Šafář:  Jo. No a ten, takže to jsou talky, který očekáváme, že budou chtít dávat specificky ty early career researchers, který jako mají co sdílet, případně pokud student má tohleto, chce tohle nabídnout, tak taky.
+Lenka:  Pozor, ale co sdílet? Jsou to, jsou to témata, který jsou jako relevantní pro všechny, takže se to právě týká třeba psaní grantů, budování...
+Luděk Šafář:  Ne, ne, ne, je to o sdílení těch metod.
+Lenka:  Výloženě sdílení metod AI, využívání metod, využití metod.
+Peter Kutsos:  Jo, jo, myslím, že se tam dostane.
+Lenka:  Takže já jenom dám rychlej kontext lance. Třeba Petr měl vlastně projekt na AI vision analytics, kterej byl velmi specifickej podmínkama, ve kterejma se odehrává, protože to byly malý změny v obrazu, byl tam nějakej hmyz na nějakejch kytkách a tak dále, a tím jako získal relativně jako specifický know-how, který by se možná dalo použít i v jinejch jako typech jako výzkumu, který potřebují stejně specifický know-how, ale není je komu dát, protože nenajdeš lidi, který mají podobnou potřebu.
+Luděk Šafář:  No právě, že už najdeš. To je právě ono, že potom, co zjistíš, že to dva roky děláš, že jo, ještě se o tom neví, protože o tom není žádnej paper, tak pak zjistíš, že to dělaj lidi v Ústí, bojujou s tím lidi v Německu, v Plzni, whatever, a zároveň lidi ve stejným baráku to stejný potřebujou, já nevím, pro ryby, který jsou taky daleko, a vlastně je to hrozně podobný. A pak zjistíš, že technologie, která ti dokáže pomoct, tak už je vyvinutá částečně pro analýzu obrazů na křižovatkách,
+Luděk Šafář:  kde je strašně moc objektů a potřebuješ ten tracking a tak. A takže proto je to ne field first, ale methods first, protože tyhle lidi se potkávají vždycky na konferencích, který jsou prostě tady ten ekolog s hmyzama se potká na konferencích o hmyzu a možná o kytkách, když jde jako out of this field, a to je to, co jako my děláme na Rudě.
+Lenka:  Jasně, super, chápu.
+Luděk Šafář:  Jo, takže tyhlety metody oni tam budou sdílet, respektive nějakej ten svůj projekt, a v těch, v těch talcích budou nějaký bloky, který budou ideálně tématicky tak nějak jako koherentnější, jo, že dá se očekávat, že prostě budou lidi, který používají jazykový modely k různý jako analýze kvalitativních dat nebo nějaký natural language processing, kterej třeba nevyužívá LLMka. Tohleto buď je možný pulovat dohromady, to bych očekával, a pak třeba computer vision bude někde jako jinde, tam bych čekal, že taky bude víc těch věcí, a pak třeba bude nějakej sběrnej
+Luděk Šafář:  jako blok, kterej půjde, kterej bude třeba nějaký jako modelování, kde nebude třeba AI nutně, ale budou to jako ty machine learningový nějaký modelování a tak. A pak jsou, počítáme s dvouma blokama na workshopy, což teďka jeden jsme pravděpodobně zaplnili těma lidma z toho Matfyzu, který. To je podle mě cross-cutting téma použití AI agentů ve výzkumu, to mi přijde mega užitečný.
+Lenka:  Jeden přeclíbili ti z ČZU, čímž si ale nejsem jistej.
+Peter Kutsos:  Abych ho tam vlastně dával, tak já jsem tam kluky poslal a nějak se to otočilo.
+Luděk Šafář:  Jo, potom z ČZU ty.
+Lenka:  Já si tady jenom doplním něco sám.
+Luděk Šafář:  Eh, vyprávěj. No a pak ještě pro ty studenty, kde očekáváme, že je možný, že se jim nebude chtít dávat ten talk nebo nebude to třeba na celej talk, to, co mají rozdělaný a na čem dělaj, tak chceme mít jako zase trošku na hlavu postavenej konferenční formát. Říkáme tomu not just poster session, my chceme prostě postery, kde tam vždycky člověk tomu musí dát dva dny děkuju moc, a pak tam stojí u statickýho posteru a je to nuda, ale chceme prostě to, bude tam těch lidí mělo bejt málo,
+Luděk Šafář:  což teda by se s tou expanzí možná trošku změnilo, ale kde by prostě byl takovej expo formát toho, že já nevím, ať si na-vibe-koudí prostě appku, kde ukáže to, jak to, co to dělá s těma datama, to je jako metoda, nějakej showcase u každýho stolu, prostě tohle může ukazovat, jakkoli jako interaktivně to jde.
+Lenka:  Super.
+Peter Kutsos:  A místo posterů by to byly stolky s obrazovkou.
+Luděk Šafář:  No, takovej expo formát.
+Lenka:  Hele, a jenom pro představu, když si vezmu těch 50 účastníků z grantu, jaký byste tam rádi měli mix oborově? Asi nechcete, aby vám to všech.
+Luděk Šafář:  Oborově... počkej, počkej, co jsi chtěl říct?
+Lenka:  No ne, ne, ne, pardon, jenom jako samozřejmě, tak my máme přístup do tý, že jo, AI komunity a chápu, že tam nechcete mít jenom samý jako borce, který dělaj jako AI jako core, že jo, že než budete jako, jako to, byť by se jich tam možná pár hodilo.
+Luděk Šafář:  Přesně tak, přesně tak.
+Lenka:  Ale ten, ten mix, aby vám zase vycházel ten matchmaking, jsou to převážně přírodovědci, lékaři, lidi ze STEMu, jakoby ty přírodní vědy.
+Luděk Šafář:  No to právě třeba lidi, co používají tu computer vision, tak tam bude prostě clearly overlap mezi přírodovědcama, potenciálně právě někým z medicíny klidně, a zároveň jako lidi, co dělají tu computer vision, tak třeba v Bratislavě máme spolupráci s lidma, který tohle využívají v nějakejch jinejch oborech, pomáhali s někým, takže to se takhle jako doplní. Si myslím, že tam bude někdo dělat ten technickej, jeho metoda byla aplikovaná někde.
+Lenka:  Takže v tom, já tě přeruším, já si myslím, že Lenka se ptá na to, jestli máte vytipovaný jako ty oblasti, do kterejch cílíte.
+Luděk Šafář:  Myslím, že se to bude naopak hodně, předpokládali jsme, myslím si, že to tak bude, že se to bude hodně odvíjet od toho, jaký jsou ty univerzity a s jakýma, s jakýma.
+Lenka:  Ano, to teď, to jsem zapomněl říct, protože tam jsou přímo vyjmenovaný univerzity.
+Luděk Šafář:  Šest partnerskejch univerzit. Například v Toruni máme spolupráci s experimentální lingvistikou, kde dělají NLP a podobně.
+Lenka:  A každou tu univerzitu už reprezentuje i fakulta?
+Luděk Šafář:  Eh, jak kde. No, takhle, my máme kontakt na většinu vedoucího fakulty, s kterým se nějak známe, a on většinou.
+Lenka:  Ne fakulty, ale potřebuje.
+Luděk Šafář:  Department.
+Lenka:  Ten grant vyžadoval co nejnižší organizační složku.
+Luděk Šafář:  Tak a teďka od toho, jak se to dostane nahoru, je otázkou, u každýho to je jinak. Takže někdo řekne: "Hele, propojím vás až s rektorátem," někdo řekne: "Hele, bude to naše věc našeho departmentu." Asi tak.
+Lenka:  Ale ta propagace těma celofakultníma kanálama je právě něco, od čeho tam máme kontakt, na kterej tohle má bejt.
+Peter Kutsos:  Takže řekněte, prosím vás, lence ty univerzity.
+Luděk Šafář:  Jo. Toru- je to Toruň, Mikuláš Kopernik- Mikuláš Kopernikus v Toruni v Polsku.
+Lenka:  Jo, to je v Polsku.
+Luděk Šafář:  Pak je tam Varš- Vroclav.
+Lenka:  Vroclav, jasně.
+Luděk Šafář:  Pak je tam Bratislava, Comenius v Bratislavě, LT v Maďarsku, ČVUT a UK.
+Lenka:  LTE jste říkal?
+Luděk Šafář:  LT, LT, což je Prešť.
+Lenka:  Dobrý, Maďarsko.
+Luděk Šafář:  Vysoko, LT, nevím.
+Lenka:  A potom.
+Luděk Šafář:  Etv- etvos Lorand, něco takovýho.
+Lenka:  Jo, takže máte prostě po každý zemi jednu a potom máte ČVUT a UK.
+Luděk Šafář:  V Polsku dvě, v Polsku dvě.
+Lenka:  Jo, prosím, promiň.
+Peter Kutsos:  To je vlastně podmínka toho V4 fondu, že tam musí být ta mezinárodní účast.
+Lenka:  Jo, ty ministerstva. VUT a UK, jasně.
+Luděk Šafář:  No a ty, ty lidi na těch univerzitách jsou právě tam, kde jsme znali lidi, který jako to, že jsme znali je a že využívají ty data, jak nás teda ty metody, tak nás k tomu částečně i vedlo. A takže třeba to Polsko je víc humanitní, tam jsou prostě psychologové, lidi z tý experimentální lingvistiky, a tam třeba víme, že někdo z nich pouštěl, používat a chystá to computer vision na analýzu gest, což je vlastně navazování na tu lingvistiku, že jo, to je jako nonverbální. Tam je to, tam
+Luděk Šafář:  je to brutální, brutálně zajímavý, protože oni studujou jazyk a stud- používaj jak ty LLMka, to NLP, tak i tu na tu samou věc, což mi přijde jako skvělý. Ještě jsou dva, dvě mimograntový univerzity, s kterými jednáme, a to je ČZU a Jagelonská v Polsku, což je medicína, právě proto jsme tam chtěli, protože to je medicína, a máme, máme možnost spolupracovat s právnickou fakultou.
+Lenka:  Masarykovy?
+Luděk Šafář:  Masarykovy v Brně, ano. A plus já mám kontakty na, na právnický tady, kde to teda nic není, tam to není zajímavý. Ale na Masaryčce právě je.
+Luděk Šafář:  Tam právě je, proto ji máme, a pak medicínu tady, kde já znám kluka ve výzkumu, co.
+Lenka:  Takže vy to budete mít pokrytý opravdu zleva zprava. Jenom si prostě říkám, jestli těch 50 účastníků, jestli se tam ten matchmaking potom jako, takhle, ono samozřejmě.
+Luděk Šafář:  No, to je, to je tak, že my těch přihlášek chceme mít daleko víc, mít, nevím, 300 přihlášek a z nich vybrat těch 50, který nakombinujeme.
+Lenka:  A plus v tom budgetu jsou nějaký prachy na ty honoráře a speakerům, takže my máme možnost právě v tom matchmakingu říct: "Tady potřebujeme speakera," nikdo se jako kompatibilní do toho matche nepřihlásil, a my tam chcem, tak pozveme někoho.
+Luděk Šafář:  A zaplatíme to.
+Lenka:  Konkrétního a vlastně můžou.
+Luděk Šafář:  Na sílu.
+Lenka:  Ono to není moc, je to kolem 200 eček za ten příspěvek.
+Luděk Šafář:  Záleží, jak.
+Lenka:  Záleží, co, ale je to jakože samozřejmě.
+Luděk Šafář:  Je to víc než nula.
+Lenka:  Je to víc než nula, no. Není to jenom za úsměv. Jak jste, jak jste udělali v Polsku víc humanitní, takže ten zbytek je víc přírodovědnej.
+Luděk Šafář:  Eh, přírodovědu tu máme, jako tu počítám, že obšancuju, obšancujem tady z Českejch zdrojů nebo z Karlovky.
+Lenka:  Což je z Karlovky mimochodem nejtěžší teda těst.
+Luděk Šafář:  Plus ČZU, kde já znám nějaký lidi, co, co to dělaj, a.
+Lenka:  Jo, ekologové jsou dobrý.
+Luděk Šafář:  Právě.
+Peter Kutsos:  Vlastně když jsme tomu vláděli k pilotovi.
+Lenka:  Jo, jo.
+Luděk Šafář:  My jsme se nesnažili.
+Lenka:  My jsme se snažili, ale nás tam prostě zablokoval ten, že jo, proděkan, kterej.
+Peter Kutsos:  Tak mám mu to vyčlenit?
+Lenka:  No, je to.
+Peter Kutsos:  Jo, já nevím, ale třeba jsme od něj chtěli.
+Lenka:  No, tak vytisknout postery například, což nás zablokoval proděkan.
+Peter Kutsos:  Nějakej support, no. Tak to nejdřív, tak v první řadě by bylo dobrý, aby o tom věděl. Třeba, třeba jako ze začátku o něm nebude, po něm nebudeme chtít nic, ale až to přijde, tak jako.
+Lenka:  No, vzhledem k tomu, že ty, jo, máš takovejhle kanál, to když to zmíníš.
+Peter Kutsos:  Jo, dobrý.
+Lenka:  A tak kdo?
+Peter Kutsos:  To je můj kamarád, co s ním jezdím na tábor, Vláďa Pělov, je děkan přírodní fakulty.
+Lenka:  OK.
+Luděk Šafář:  To by se může hodit, aby o tom věděl.
+Lenka:  No, ale hlavně on by to, jak jsme oddělení na sekce, tak třeba lidi z buněčný biologie, on, že jo, je z tý molekulární strany, tak tam on by někoho takhle vytáhl.
+Peter Kutsos:  Přesně tak.
+Lenka:  Nebo někoho pověřil, aby někoho vytáhl.
+Peter Kutsos:  No, tak já mu to píšu a uvidíme.
+Lenka:  Super. Počkej, děkan váš přírodovědecký fakulty.
+Peter Kutsos:  Náš, no.
+Lenka:  Ke kterýmu vy se nemůžete dostat.
+Luděk Šafář:  No, my jsme se k němu dostali hlavně k proděkanovi, kterej to měl jako v gesci, víš, ten měl.
+Lenka:  Krásný.
+Luděk Šafář:  On je.
+Lenka:  Informační technologie a bla bla.
+Luděk Šafář:  Já jsem četl.
+Lenka:  A on je pro studentský záležitosti nebo pro co?
+Peter Kutsos:  To řešíme lidi?
+Lenka:  Ne, on je pro informační technologie.
+Peter Kutsos:  Ne, ne, ne, já nepotřebuju nic víc, prostě, akorát abych to nastala.
+Lenka:  Přesně, my jsme se zase včera v noci jsme se o tom bavili a už zase jsme taky jsme se nasrali, jakože já mám 4 dny.
+Peter Kutsos:  No, no, super, tak jo, takže, takže, takže tak, takže 50 účastníků z grantu, prostor až pro 150 lidí a program je takovej jakoby bárkempovej, že si vlastně účastníci vytvářej sami program.
+Lenka:  No, tak my na to jsme předem. My, ale z těch přihlášenejch.
+Luděk Šafář:  Ale ne až moc předem. Takže my, my v tý, my v těch přihláškách, v tý aplikaci a v tom formuláři se ptáme vlastně, odkaď jsou, co umí, jak moc toho umí a co je zajímá. A na základě těch odpovědí my sestavíme ten program pak.
+Lenka:  Jo, ok.
+Luděk Šafář:  Takže takhle.
+Lenka:  Teďka, teďka je 10. Oktobr, ten open call de facto už běží a teďka na každej, na každý univerzitě, jakmile to rozešlo, tak ASAP se to dostává do nějakejch kanálů. My přijímáme celou dobu přihlášky, tady někdy 15.
+Lenka:  1. je jakoby oficiální deadline, ale nám je to de facto jedno, my můžeme sbírat furt dál, ale tady v tu chvíli očekáváme, že budeme mít většinu jako těch.
+Peter Kutsos:  Matchmakingu.
+Lenka:  Ne, tady právě začíná matchmaking.
+Peter Kutsos:  Jo, tam budete mít ideálně těch 300 třeba.
+Lenka:  Matching, ideál, a potom prostě v podstatě pro nás je důležitý ten program oznámit, já nevím, do konce února třeba, prostě 1. 3. nebo něco takovýho. Je tam něco jako únor, ale i kdyby to bylo 1.
+Lenka:  3., tak je to.
+Peter Kutsos:  Březen tam je, možná preliminární programy březen a full programy duben, něco takovýho.
+Lenka:  No, no, no, a tady prostě pak je konec dubna 28. 4., což jede. Ale to, teda, že jo, to v akademickejch konferencích je úplně standardní timeline, ty ten program, tam se přihlašuješ akorát se svým prostě paperem a oni tě vyberou a ten, to ti dají vědět a pak ten program až potom někdy ohlásěj, jak to rozdělili do nějakejch panelů.
+Lenka:  Takže na to by většina těch lidí mělo bejt úplně v pohodě zvyklá.
+Peter Kutsos:  Jo, jo.
+Lenka:  A mimochodem, i třeba ten workshop, to jsou tady ty agenti z toho Matfyzu, tak to když domluvíme kdekoli předtím, oni, on ten Machines od nich říkal, že to se přizpůsobí určitě, protože se furt mění ta technologie, takže on to v podstatě přislíbil, jakmile my to potvrdíme, tak už tady někde je známej jeden ten workshop, což je třeba programová položka, kterou už je možný proměnit.
+Peter Kutsos:  A tím už můžeš matchmakovat.
+Lenka:  Přesně. Ale ten, já to, to jsem chtěl říct, že ten matchmaking tam je hrozně easy, protože to je cross-cutting úplně, to pro všechny je užitečný. Což je právě skvělej jako zásah.
+Peter Kutsos:  Počkej, a počkej, ten matching, jak říkáte, ten matchmaking, matching, já prostě matchmaking mám, že se sejdou dva lidi, který si mají co říct.
+Lenka:  Hm, ano, ale.
+Peter Kutsos:  A ten matching, ale ten matching nemá tenhle.
+Lenka:  Ne, ne, kluci to myslej tak, že vymyslej, s kým ty lidi z těch přihlášek, který jim tam přišly, se ideálně maj na tý konferenci potkat.
+Peter Kutsos:  Jo, tak jo.
+Luděk Šafář:  Takže je to jakoby selection.
+Lenka:  Selection, tak.
+Luděk Šafář:  Je to vlastně selection, jo, jo, ale ten cíl je prostě na základě vybírat, ne prostě podle toho, kdo je největší jako borec, a když tam prostě přijde jedinej člověk, kterej dělá nějakou ultra níž věc, kterou nikdo jinej nevyužije, tak ho bohužel nevyberem.
+Lenka:  Jasně.
+Luděk Šafář:  Jo.
+Lenka:  Jo, super. Tak jo, tak už mám trošičku to, takže s čím vám teď reálně můžem pomoct?
+Peter Kutsos:  Tak a teď se dostáváme k tomu, že tohleto prostředí by mohlo bejt jako lákavý a atraktivní pro jiný typy cílovek.
+Lenka:  Jo.
+Peter Kutsos:  Bavili jsme se o VC, ale ne ve smyslu jako očekávání, že z toho vzniknou jako startupy, ale ve smyslu jednak adopce nějakejch technologií nebo adopce talentu.
+Lenka:  No jasně.
+Luděk Šafář:  Což teda, jenom promiň, jenom že včera to ten Jakub nešetřil, ten se tvářil, že VC si nám nedokáže představit.
+Peter Kutsos:  My jsme o tom měli debatu, jo, protože samozřejmě VCs tam můžou přijít jako s očekáváním, že prostě jsou to hotový jako nápady na startup, což nejsou.
+Lenka:  Já si myslím, hele, já si myslím, že zase na druhou stranu, takovej Jirka Navrátil.
+Peter Kutsos:  Já jsem to klukům říkal, je potřeba nastavit ty očekávání a potom se ty lidi najednou přijdou tam s očekáváním.
+Lenka:  Jiří Navrátil, prosím vás, jestli si chceš dělat ještě to, tak je to IPL Venture, IPL Ventures, teď dostali, teď vyhlasovali velký IPL Ventures, ano, IPL Ventures.com, DTech, CEE, tam jsou i věci toho, že prostě, no, si dokážu představit, že Jirka Navrátil by tam třeba rád dorazil.
+Peter Kutsos:  A fór je v tom, že my jim to nemůžeme zafandovat z toho fondu, nebo kluci to nemůžou zafandovat z toho fondu, a na místě to ale vytvoří nějaký náklady. Takže by tam kolem toho bylo potřeba vytvořit nějakej jako finanční mechanismus, jak tam ty lidi, na který se ten fond typicky nevztahuje, protože je to fond, kterej jako to platí těm jako účastníkům.
+Lenka:  A máte vypočítanou nějakou částku, kterou prostě jako nákladovou, kterou jako prostě to budete vlastně takhle komunikovat, připojíte se a prostě bude to stát 3 litry nebo já nevím, něco takovýho.
+Luděk Šafář:  Oni ty náklady jsou jako minimální, protože, že jo, tady není žádná registrace, nežijeme s to, žádnou společnost, ale.
+Lenka:  Musí se uhradit jenom.
+Luděk Šafář:  Je to ubytování, což ještě si můžou dělat oni přímo, jídlo a ten venue je vlastně uhrazenej z toho grantu. Ten venue, ale on není nafukovací a po nějakým tom se bude muset přidat.
+Peter Kutsos:  Tam je ten threshold těch 150 lidí, takže ten je jakoby fixní, ale to je blbost. Ale večerní venue, tak ta už třeba by bylo možná lepší tam mít na to nějaký prachy navíc, aby se na večerní program vešli lidi.
+Lenka:  A večerní venue je co?
+Luděk Šafář:  Oni tam jsou místnosti, je tam víc místností v tom zámku, který se zvlášť dá.
+Lenka:  Já to jsem se nadechla, abych se zeptala, celej zámek nemáte k dispozici?
+Luděk Šafář:  Ne, ne, ne, on celej zámek ani není k dispozici, oni maj, oni v něm pronajímají ty místnosti, ten v tom zámku funguje nějaký lesnice z ČZU a tak, a tam je velkej sál rytířskej, tam prostě to je ta naše venue, potom večerní venue je dole jako na nádvoří, jako ve sklu, tam oni to mají vždycky na studén, a tam jsou možnosti vlastně to rozšířit ještě o jednu místnost, což by bylo asi potřeba, a pak eventuálně jsou k dispozici nějaký salonky tady ve věži, whatever, a pak nějaký
+Luděk Šafář:  takový učebny, kdyby bylo třeba potřeba dělit tracks nebo tak, a tam je, tam je možnost s tím správcem se jako dohodnout na nějakým balíčku, jak on nám říkal, že jako když jsme z univerzity, tak se nějak domluvíme, a pak je, proto my taky pracujem na těch ČZU lidech jako partnerech, protože ty, kdyby byly, tak maj ještě ČZU cenu.
+Lenka:  Jo, jo, jo.
+Luděk Šafář:  My takhle využíváme zatím zvýhodněnou cenu na konferenční prostory, ne na svatby a soukromý akce.
+Lenka:  Hele, já si fakt dokážu představit, že když se to bude jako komunikovat zavčasu a osloví se ty správný lidi a udělá se jim tam, zamyslet se, jak je zapojit, aby jim i vám a všem účastníkům to dávalo nějakým způsobem smysl, že si furt dokážu představit, že co by bylo jakoby fajn pro IPL Ventures nebo kdokoliv by tam přijel a třeba to i trošku finančně podpořil, že by tam pustil prostě sponzoring jenom nějakej prostě pro dobrou věc, takže by tam prostě udělal workshop na nevím, co to je
+Lenka:  jako dostat prostě nápad z akademický půdy prostě k VCčku.
+Luděk Šafář:  To je super.
+Lenka:  Což si myslím, což si myslím, že by bylo určitě jako atraktivní i pro ty účastníky, ne.
+Luděk Šafář:  To je ještě, co jsme tady nezmínili, důvod, proč jsme to říkali, že je to jako těžký do toho dostat, ale komunikujeme to jako v tý přihládce a tak, že my bysme chtěli tam dostat lidi, který maj nějaký jako ambice využít ty výsledky svýho výzkumu nebo svojí expertizu někde na hranicích či mimo akademii.
+Lenka:  No, tak vidíte, to je super.
+Luděk Šafář:  Takže to je ono, ale očekával bych, že takovejch lidí jako nebudou všichni.
+Lenka:  Ne, to je úplně jasný, ne, to je úplně jasný, ale že když tam prostě my můžeme jít za nějakým VCčkem a říct, že vy jste pro to udělali maximum z hlediska toho, že se ty lidi snažíte aktivně najít a to, tak jako hele, nevím, nevidím do toho, ale dokážu si představit, že zrovna ty IPL by bylo jako třeba za jako VCčko, takže máme prostě jedno VCčko, který.
+Peter Kutsos:  Takže, takže jedna potenciální cílovka jako third parties byla VCčka, nicméně s tou jako dobře komunikovaným očekáváním.
+Lenka:  Přesně tak.
+Peter Kutsos:  To je jedna věc. Druhá mohly bejt jako naše jako industry members z hlediska jako talent acquisition, jo, protože tam budou prostě lidi, který se něčemu věnujou a dál mě nic dalšího nenapadlo, ale přišlo mi, že když ti to pitchnem, že se nad tím můžem společně zamyslet.
+Luděk Šafář:  Mně se strašně líbilo to, jak ty jsi minule mluvil o tom, že máš lidi, který jako třeba odcházejí z tý akademie nebo maj nějakou tu expertizu a očekávaj, že když budou chtít odejít, že je hned, že je prostě se někam přihlásí a oni je tam vemou prostě, ale že vy byste chtěli jako je naučit vlastně zjistit, co oni by měli jako umět a co by měli nabízet, aby byly pro ty talent tyhlety firmy jako zajímavý.
+Peter Kutsos:  My jsme totiž, a to jsem jako mluvil vlastně o tom, jak tady byl Pavel Kordík s EduMatchem, že vlastně něco podobnýho můžou udělat jako s těma účastníkama i dopředu a šlo by to, když ten EduMatch je vlastně o matchování toho, koho ty firmy reálně poptávaj, s tím, co ty lidi jako reálně uměj, jo, a něco takovýho by tam třeba šlo i udělat dopředu, protože my budeme mít dobře podchycený ty profily těch lidí, jo, že to, že to není jako anonymus auditory, jo, takže vlastně s těma datama
+Peter Kutsos:  můžeme do určitý míry jako nějakým způsobem zacházet taky, jo.
+Luděk Šafář:  Ale hlavně teda jako tohle si myslím, že by byl super věc, co už předem vlastně bejt schopnej říct těm studentům, že se tam dozvěděj o tomhle, co, jakej je ten gap mezi tím, co lidi jako typicky uměj a co ty firmy poptávaj, co je třeba to, na co by se měli soustředit, aby jako měli pocit, že ty jejich skills jsou validated i pro to využití mimo tu akademii, já nevím, jestli to jde generalizovat takhle, ale já třeba vím, že osobně s tímhle pocitem vlastně hrozně bojuju, že
+Luděk Šafář:  ten gap toho, že ano, umím v akademii spoustu věcí, ale že bych teďka zaklepal u někoho na dveře a řekl: "Hele, nechcete mě vzít?" Tak to vlastně mám téma, jako.
+Lenka:  No, ale, ale, ale teda směřujeme k tomu, že by to byly jako AI related positions.
+Peter Kutsos:  Ano.
+Lenka:  Jo, že to bude jasně jakoby ML AI related positions, vzhledem na to, že to je.
+Peter Kutsos:  To vlastně to AI je tam.
+Lenka:  Jo, tak to věřím, že bysme se taky byli schopni, já bych si myslím, že bych tam byla schopná dotáhnout třeba i Matěje Matolína, normálně recruitera, kterej se zaměřuje na AI, kterej by tam mohl mít nějakej jakoby brief a potom třeba tam mít jako pár firem, který jako přijedou. Ten termín je víkend, nebo ne?
+Luděk Šafář:  Jo, před víkendem.
+Lenka:  Před víkendem, jo, ok, super. A je to v Kostelci?
+Luděk Šafář:  V Kostelci jsem předním.
+Lenka:  Takže to je kousek od Prahy.
+Luděk Šafář:  Kousek od Prahy, jezdí tam normálně z Hájů pět.
+Lenka:  No, no, tak.
+Peter Kutsos:  A taky jsme se bavili, že o tom, že kdyby náhodou se z toho stal druhej Woodstock a přijelo tam jako 500 lidí, jako tam se dá prostě zajistit nějakej shuttle prostě a takový věci, tam ty lidi nemusí nutně přespávat, jo, když by tam jako chtěli, takže jsme se i bavili o potenciálních možnostech, že třeba by existoval jako fee za vstup na jeden den tématickej na něco, kterej se bude něčemu věnovat, nemuselo by tam ty lidi zůstávat jako na tři dny, prostě, že by se to dalo nějak
+Peter Kutsos:  tématicky i třeba rozdělit, ale to jsme dál vlastně jako nerozpracovávali, než si jako řekneme něco o těch potenciálních vůbec cílovkách.
+Lenka:  Jo, jo, jo.
+Luděk Šafář:  A ono to pořídí špatně možnost, když by tam třeba byl tenhle faktor toho, jako že by to bylo zajímavý pro ty studenty v rámci tohohle EduMatch thinkingu, tak to otevřít pro studenty, jako že tam můžou přijet na ten na den klidně a tam vlastně jenom zkontrolovat jejich kapacitu a vybrat je nějak.
+Peter Kutsos:  Protože to nebude stát peníze navíc.
+Luděk Šafář:  Protože to by vlastně nestálo peníze navíc.
+Peter Kutsos:  Takže oni zkonzumujou jenom ten fixní náklad toho venue, kterej je uhrazenej.
+Luděk Šafář:  No, plus teda ta cena, jo, ale to by se nějak asi jako dalo na.
+Lenka:  Jo, tak to, a to by se dalo nějakým způsobem zase prostě za nějaký feečko tam jít připravit nějaký bagety, že jo, prostě nebo něco.
+Luděk Šafář:  Přesně, ono tam ještě je to, je tam jídelna, který lze, její kapacita je to, to bylo to jediný, co nás limitovalo z hlediska kapacity, protože tam do toho se vejde třeba 35 lidí na jedno kolo, ale oni by asi byli schopni obsloužit víc, protože to je normálně jídelna pro zaměstnance.
+Lenka:  Jo, jo, jo, jo. Ok, já tady třeba koukám i na, já si říkám, že i nějaký jako zajímavý osobnosti jako z toho, jako třeba jestli Filip Doušek, startup Theorema, Theorema.ai, Theorema jakoby, we train causal disease models a models capture how diseases develop and how the right targets for new drugs, tak třeba ten kdyby tam měl nějakou jako i nějakej, chápu.
+Luděk Šafář:  To zní dobře.
+Lenka:  Do jaký, no.
+Peter Kutsos:  Dokončím, já tady mám jenom.
+Lenka:  Jenom abych teda navnímala, vy věříte, že ten program bude jako relativně už jako done vámi a vašimi účastníky, nebo že tam bude prostor pro pár jako zajímavejch vstupů, pár jako těch.
+Luděk Šafář:  Rozhodně chceme, aby to takhle bylo.
+Lenka:  Jo.
+Peter Kutsos:  Jak myslíš, jako že.
+Lenka:  No, kolik tam bude prostor pro ty externí, řekněme, řekněme přednášející, jo.
+Luděk Šafář:  To bysme právě rádi tenhle ten prostor jako měli, počítáme, počítáme s tím, protože třeba Ondřej Vaněk z ČVUT, tak ten na to, do toho byl nadšenej.
+Lenka:  To jsem mohla Ondra.
+Luděk Šafář:  Akorát s tím tématem, on když jsme, když jsme se o tom s ním bavili, nebo ty ses s ním o tom bavil, tak já nevím, jestli to tlumočím správně.
+Peter Kutsos:  On navrhoval téma adopce AI v univerzitách, ale na institucionální úrovni, jakožto.
+Luděk Šafář:  Jako jeden z těch pilířů.
+Peter Kutsos:  Přesně tak, jakožto jak nastavit AI strategii.
+Lenka:  A to je moc mimo.
+Peter Kutsos:  To je moc mimo.
+Luděk Šafář:  Právě, to není cílovka, co.
+Peter Kutsos:  Mně se, mně se to tehdy líbilo, ale myslím si, že vymyslí něco jinýho.
+Luděk Šafář:  Ale já si myslím, že on je zajímavej v tom, že udělal ten trans, tu tranzici z tý akademie do toho, do toho byznysu.
+Peter Kutsos:  A zpátky.
+Luděk Šafář:  A zpátky.
+Lenka:  Tak, tak, tak. Ne, to, to on tam určitě něco, a hlavně na značku to jsou fakt jako, myslím si, že kdyby tam určitě měl třeba bejt taky ten Běrolisý, William Lisý, Slovák, kterej se zajímá, kterej to, kterej je jako AI vědec, vyloženě vědec, a ten teď, ten teď hodně jako se zajímá jako AI do vědy, a je tam pár dalších, ale samozřejmě chceme jako, chápu, že tam jako, bylo by fajn tam mít jako dobře zastoupenou tu AI jako takovou, ale mělo by to bejt prostě z těch
+Lenka:  účastníků, se troufám domnívat, že by to mělo bejt maximálně prostě, nevím, jako když 50 je fix, jo, tak prostě maximálně 10.
+Peter Kutsos:  Něco takovýho, ano, přesně tak, přesně tak, dokonalý.
+Luděk Šafář:  Jo, a teďka, já jo, bavíme se o tom, že jsou tam zastoupený určitý fundamenty, jo, jeden z těch fundamentů je AI jako taková.
+Peter Kutsos:  Tak řekněme, že něco jako třeba čtvrtina těch, z těch 50 by měli být studenti.
+Luděk Šafář:  Jasný.
+Lenka:  Jakože bakaláři, magistři.
+Luděk Šafář:  Ne, výš, výš.
+Lenka:  Jo, pardon, výš, jo.
+Peter Kutsos:  Hraničně magistři a výš.
+Luděk Šafář:  Když se přihlásí magistr, kterej prostě je bowler a si fitne do toho, tak není důvod.
+Lenka:  Pardon, ale jinak jako doktorandi, ok. A ten reach máte docela dobrej, nebo budete chtít s propagací pomoct?
+Luděk Šafář:  Reach na univerzitách bysme měli mít dobrej na těch partnerskejch univerzitách.
+Peter Kutsos:  Ano.
+Lenka:  Takže včetně ČVUTu a Karlovky.
+Peter Kutsos:  Ano.
+Lenka:  Ok.
+Peter Kutsos:  Dobře. A teďka, jak jsme se bavili o tom vlastně, jaký tam přijedou lidi jako v oborech, bavili jsme se jako o tý přírodovědě prostě a tak dále, kdybychom jako to vlastně se seskupilo do prostě pěti nějakejch jako fundamentů, tak bychom se mohli bavit, jak i jako v těch třetích stranách nechat ty fundamenty zastoupit, jo, protože teďka mě třeba napadlo, pokud jeden z nich budou jako biotechnologie nebo prostě ty učivní, tak my bychom mohli jít do Praga, jo, a zeptat se jich, jestli vlastně z tý jejich jako
+Peter Kutsos:  cílovky, jako u nich budou úplně jiný firmy, který můžou mít úplně jiný zájmy tam prostě přijít z těch biotechnologií a jakoby toho součástí.
+Lenka:  Tam, kdyby přijel Tomáš Kuskos u OCHAVu dát přednášku.
+Peter Kutsos:  Přesně tak, takže, takže když nám to fitne do těch jako fundamentů.
+Lenka:  Proto jsem se, proto jsem se ptala, no, jaký by tam měly bejt klíčový zastoupení, aby se, aby se to potom napečovalo.
+Luděk Šafář:  Jo, jo, já tady právě očekávám, že v těch přírodních vědách tohle bude jako hrát ten prim.
+Peter Kutsos:  Protože já jsem byl na tý konferenci Prague Bio tady a jako polovina přednášek byla o AI.
+Luděk Šafář:  To je strašně moc modelů, který jsou čistě zaměřený na tvorbu, návrh molekul prostě.
+Lenka:  No, a to ten OCHAV právě, tam to je krásná spolupráce mezi OCHAVem a právě CIRCem na ČVUTu a má tam dva, ty by pro vás myslím byli hodně dobrý adepti, mají tam dvojčata, Roman a Anton Bushojevi, Bushojev, a když si dáte, jmenuje se to Mars, Mars, počkejte, Mars, možná bez e, u, Institute of Organic Chemistry and Bio, IOCB, já jsem si nebyla z toho IOCB, a je to IOCB CIRC, Roman, Anton, jo, tady. No, Anton Bushojev, to, to já vám to hodím, já vám možná hodím to,
+Lenka:  je to prostě, ne, takže, takže, takže kdybyste, kdybyste byli schopní, takže já tam vidím jako biotech jako takovej, vidím tam medicínu, biologii.
+Luděk Šafář:  Tam je podle mě hrozně malá zajímavost pro ten, tam jsem já tady v tom jako biologie v tom smyslu ekologie na hranici jako tam, kde prostě se týká toho wildlifeu a tak, tak tam je podle mě docela malej komerční potenciál, na ČZU jsou na těch jako lesnictví a věci, který jsou jako, který mají ten komerční potenciál, tam, tam jsou, ale já si myslím, že to, tam je, tam je právě otázka, jak tohleto jako udělat, jestli, jestli proporčně zastoupit ty věci, těch, ten, ten počet účastníků 50 je
+Luděk Šafář:  na tohle malej, proto my jsme to vlastně chtěli omezit pak a vybrat to, kdo se nám přihlásí, koho to evidentně reachlo jako v tý propagaci a to tam jako nechat.
+Peter Kutsos:  Takhle to bylo, takhle jsme si to představovali.
+Luděk Šafář:  Ale tam pak jako třeba já jsem se obával, proto jsem mluvil s tím pánem, s tím správcem, jak by to, kdyžtak bylo, jestli by nám nepronajal eventuálně ty učebny, protože jsme se báli toho, že kdyby se objevilo něco jako docela níž, což ta, což jako biotechnologie versus ta zelená příroda je jako hroznej divide, přestože to je všechno biologie, tak jestli by nestálo za to udělat třeba paralelní track. A to, a on tam má za den desítku na tu učebnu a pravděpodobně.
+Peter Kutsos:  Ale kolik tam budeš mít lidí, to se těší na řeku, ne?
+Luděk Šafář:  No, to je pravda, kdyby jich bylo jako dost těch účastníků, což to přišlo i poslední.
+Peter Kutsos:  Jo, jo, jo, takže to by se doplnilo těma externíma účastníkama třeba z řad jako lokálních studentů prostě a tak dále.
+Luděk Šafář:  Jo, tohleto začíná dávat smysl ve chvíli, kdy tam přijmeš víc než 50, 50 to je blbost.
+Peter Kutsos:  Jasný, ok.
+Lenka:  Ok.
+Luděk Šafář:  Že protože pak najednou ten panel by mohl bejt přírodní vědy a tam fakt klidně udělat ten jako klidně track, kde si ho ty lidi budou muset vybrat, jako track bílá biologie, to znamená jako.
+Peter Kutsos:  Neztrácí se myšlenka, že to je napříč fields a že to je methods first, pak když už to pak do těch fields rozdělíme.
+Luděk Šafář:  Kdyby tam se.
+Peter Kutsos:  No, ale kdyby tam se to týkalo toho computer vision, tak tam jako, to by tam z medicíny jako diagnostika těhlech věcí a z různejch jako detekce buněk, já nevím co, na mikroskopickejch snímcích versus tohleto stejný na tý zelený biologii, tak tam jako je to stejná metoda, ale v ní jsou to dva jako subfields, který se hodně liší těma podmínkama a tím zaměřením a najednou to dává smysl, že si mezi tím umíš vybrat.
+Lenka:  Uvidíme, jak to, já každopádně jenom pro svoje chápání, ta prostě ty přírodní vědy a mám to prostě od biotechu přes eko až po nevím kam, prostě to je, to je, to je hlavní to gro, ne? A teď tam teda ty lingvisty ještě.
+Luděk Šafář:  Jo, tam je zase velkej overlap, přestože tam oni vyhodnocujou kvalitativní data nebo jako níž věci s jazykem, tam na Matfyzu mimochodem jsou na to strašně zajímavý lidi, ale já si myslím, že tam by bylo zajímavý najít ten a najde se podle největší overlap těch kvalitativních dat a tam najednou nejsou jenom lingvisti, psychologové, ale jsou tam lidi z různejch jako podivnejch oborů na FSV, na FHS, kterejm to pomůže jako zpřístupnit daleko větší datasety, který doteď byly ručně manuálně tagovaný.
+Peter Kutsos:  Další věc je, že z Vroclavy se dá čekat, že budou psychologové a kognitivní vědci nebo antropologové a toho jazyku, my jsme třeba na biologii a taky tam děláme texty.
+Luděk Šafář:  Jo, děláme jako evoluci, že jo, kultury a takhle děláme texty.
+Peter Kutsos:  Takže tam já si myslím, že to jsou, když jsme to původně, já jsem se ty fundamenty snažil předtím definovat a právě velký tyhle rozdělení byly mezi jako analýza jazyků a jazykovejch věcí versus computer vision, která souvisí většinou s něčím, co je v tom hmatatelným světě jako.
+Luděk Šafář:  Já jsem si neuvědomil, že ty dvě dimenze jdou vlastně proti sobě, jo, to method first, která to má spojovat, a zároveň jako se snažíme v tý diskuzi najít vlastně to rozdělení na ty fundamenty, abychom dobře zacílili ty externí cílovky, který jako budou vždycky jako fundament first, ty jako nepůjdou method first.
+Peter Kutsos:  Je to část našeho pitche, že to není fields first, ale zase si říkám, že ti externí účastníci nebo partneři, oni dělají třeba computer vision, že jo, mají problém, kterej jde řešit computer vision, a teďka jestli jim to vyřeší biolog nebo jestli jim to vyřeší tohle, tak to může být druhotná věc, ne?
+Luděk Šafář:  Oni jdou většinou striktně od use casu, oni nejdou od metody.
+Peter Kutsos:  To je přesně ono, že jo.
+Luděk Šafář:  Tam to chodí úplně z druhý strany, oni mají nějakej problém, kterej řešej.
+Lenka:  A je jim jedno, jak ho vyřešej.
+Luděk Šafář:  A je jim jedno, jak ho vyřešej, že zrovna na to fitla computer vision, jo, možná na tom, najmeme 100 indů, vyjde to levnějš. Takže, takže tam se to bude těžko vlastně spojovat, protože vlastně tenhleten přístup často úplně opačnej.
+Peter Kutsos:  Ale to si zase říkám, že právě ten jako ta naše přidaná hodnota, jo, že víc, že prostě už tady, když se bavíme o tom, jestli spojit computer vision lidi čistě, protože používají computer vision, myslím teda ty biology bílý versus zelený, anebo jestli je nechat zelený versus bílý, to je ohledně toho, že tady je podle mě ta hodnota tý organizace, že my řekneme, tady jsou prostě, tady hlavní challenge, který jako společně sdílej, jsou třeba ten messiness toho, toho pozadí, toho podkladu, protože to je v tom daným světě,
+Peter Kutsos:  to, že se ti furt mění světlo, furt se ti mění povětrnostní podmínky a tak, a tady na rozdíl od toho je to třeba, já nevím, tady já tomuhle tolik jako nerozumím, ale od toho mám toho medika, kterej tomu rozumí, tam typicky jsou to věci jako hloubka toho, kde zaměříš na mikroskopu, skládá se to.
+Luděk Šafář:  To snímkování prostě a tak dále.
+Peter Kutsos:  Jo, přesně.
+Luděk Šafář:  Takže já ti, já ti rozumím a myslím si, že je dobře, že vlastně budeme mít k dispozici ty data, že to můžeme rozhodnout o něco později, to nemusíme řešit teď, jo.
+Peter Kutsos:  A tady ještě s tím, jak jsi říkal, od toho use casu, tak to právě tam bysme měli teoreticky pak bejt schopní jako v tom najít ty use casy, respektive když budeme chtít někoho konkrétního pozvat, tak ho pérnout s nějakým use casem, kterej už třeba v tomhle zastoupenej je, a pak teda další otázka pro ty lidi, který by se měli přihlásit sami, jim jako správně zmanageovat ty očekávání a vlastně v tom identifikovat, co za jako, co, co tam nabídnem, jo, což je blbý, že to vlastně se děje
+Peter Kutsos:  docela pozdě, to budem vědět tohle, no.
+Lenka:  Ale hele, jako já si myslím, že můžem přijít na témata, který jsou prostě naprosto průřezový ve srovnání v té biologii používající computer vision nebo psycholog používající NLP, a to jsou ty věci za a, ty komercializační, co jako how to get your idea, human idea, to něco, to je pro všechny, kdo má o to relativně zájem, druhá věc je možná takový to how you sell your knowledge of market, to je taky takový, já tady dělám další young AI research forum, by the way, jo, a třetí věc, co
+Lenka:  může bejt docela zajímavý, a na to bysme byli schopný najít, kdyžtak třeba speakera how to build your personal brand, jako research brand, to jsme taky měli a to bylo dobrý.
+Peter Kutsos:  To mě by to zajímalo, vím, že spoustu vědců by se jako obrátila na Ruby, kdyby jsem řekl něco takovýho.
+Luděk Šafář:  Ale oni to nepotřebujou.
+Peter Kutsos:  Nemaj to rádi.
+Lenka:  Oni to maj to rádi, ale potom to vypadá tak, jak to vypadá.
+Luděk Šafář:  Přesně, přesně, ale zase jako ty malý lidi, ty vole.
+Peter Kutsos:  Jo.
+Lenka:  No, jo, že tam bysme mohli dotáhnout jako akční italku z Falu, to je jako nějaká robotičko, právě taky AI a to je.
+Luděk Šafář:  Jako je to stejný v angličtině.
+Peter Kutsos:  Jo, jo, jo.
+Lenka:  Takže takovejhle pár věcí, a co se týče těch prostě potom konkrétních firem, který bysme tam mohli přitáhnout, když budeme mluvit o těch komerčních subjektech, případně třeba těch VCčkách, tak když dám stranou tady tu jakoby expertní stránku věci, tak je tam spíš dotáhnout na nějaký jako softovější, prostě přijďte to podpořit, něco, něco.
+Luděk Šafář:  Ještě mě napadla jedna věc, a to je datová kvalita, jako já trvale narážím na to, že jako vlastně hodně vědců, jak nemá to typicky vzdělání v tý jako statistice, tak vlastně jako je to tam hodně takový jako potom nepřítomný, a ty datový vzorky jsou nereprezentativní z mnoha jako ohledů, a je to taky jako věc, která jde cross.
+Peter Kutsos:  Jo, a hlavně je strašně důležitá ta AI, že jo, to je jako.
+Luděk Šafář:  No, to je až tak, jako takže, takže když na těch hliněnejch nohách najednou postavíš jako celej jako.
+Peter Kutsos:  To je výborný, to je, to je přesně to téma, co rozhoduje.
+Luděk Šafář:  Jo, kval, no, jo.
+Lenka:  A to by tam, a to by tam lidi mohli z průmyslu krásně použít, jo, právě to.
+Luděk Šafář:  To je úplně zásadní.
+Peter Kutsos:  To je dobrý.
+Luděk Šafář:  Jako protože potom já se s tím potkávám jako dennodenně, že jsou šílený závěry prostě, a teď jsme měli čtyři vzorky.
+Peter Kutsos:  No jasně, no a my jsme statistici v podstatě, takže já tohleto řeším taky furt vždycky, když říkám, někdo mi chce poradit, tak nakonec mu řeknu, metodu neřeš, teďka co ty data.
+Luděk Šafář:  Mě nejdřív napadlo, no ano, mě nejdřív napadlo, že by na to mohlo, mohl mluvit náš školitel, pak jsem si řekl, že spíš jako nevím, jestli, jestli jako dat, čistotu dat pro AI nikdy neřešil, takže podle mě.
+Peter Kutsos:  Ne, ne, ne, ale jako kdyby v tomhletom se našel konkrétně vymezenou věc, tak to, jak to beru statistiku z budoucích, on by dokázal jako.
+Luděk Šafář:  Jo, jo, jo, jo, jo, jo, jo, jo.
+Peter Kutsos:  Hele, to, to je skvělý, to jsem, to je přesně jako shrnutý téma.
+Lenka:  Takže to, takže.
+Luděk Šafář:  Hele, ale teda, takže vy o tu expanzi zájem máte. Nám to přijde jako dobrej nápad z toho, co, musíme se zamyslet na to, jak to udělat tak, aby to nebylo kontraproduktivní, a myslím si, že ten potenciál na to do toho zvlád třetí strany to má, jo, a zároveň máme před sebou jako relativně jako smysluplnej čas na to to dát nějakým způsobem dohromady.
+Peter Kutsos:  Jo, no, já jsem chtěl, aby dneska jsme si odnesli, protože jsem věděl, že máme jenom tu hodinu, to jestli vám to smysl dává, čili tam pak taky zbejvá vymyslet nějaký jako instrumentální věci, protože jednak je tam ten budgetovej problém, to, že aby se to mohlo stát s více lidma, tak je potřeba sehnat minimálně ty náklady na to uhrazen těch jejich, těch jejich, to, co tam sežerou, to, že tam budou spát, to si můžou zaplatit přímo, eventuálně rozšíření jako tý venue.
+Luděk Šafář:  A máme tady nějakou představu, kolik to bude stát na jednoho člověka na den.
+Peter Kutsos:  To je těch 160.
+Luděk Šafář:  Čtyřka.
+Peter Kutsos:  4000.
+Luděk Šafář:  Ne, na den, to není na den, to je na celou dobu.
+Peter Kutsos:  Komplet.
+Luděk Šafář:  4000 je prostě na konferenci, ok, dobře.
+Peter Kutsos:  To jsou náklady.
+Luděk Šafář:  Ale ty jsou včetně úbytka.
+Peter Kutsos:  Včetně úbytka, náklady včetně.
+Luděk Šafář:  Jasně. A chceme tam jako na tom generovat nějakou rezervu?
+Peter Kutsos:  No, no, musí to být jako nonprofit, což.
+Luděk Šafář:  Ale jenom jedině provozní rezerva.
+Peter Kutsos:  Přesně, provozní, provozní rezerva.
+Luděk Šafář:  300 korun prostě.
+Peter Kutsos:  No, ale to myslím, že to, tohleto je už zprůměrovaný s nějakou rezervou, ale takže je to takhle 4000 plus možná nějakej malinkej polštářek.
+Luděk Šafář:  My vám ten zbytek vyfakturujem potom. To nemusíte mít obavu.
+Peter Kutsos:  Ne, tam to totiž, to tam jde o to, že třeba, že jo, ti už přiskočí náklad na nějaký audio vybavení navíc a tak, to je ta rezerva.
+Luděk Šafář:  Já ti naprosto rozumím, já teď jenom se to snažím prostě jako mentálně pojmout, co to znamená, jo, takže ty se chceš dostat k tomu, jestli to smysl dává, smysl to dává, my se teď musíme zamyslet, jestli a komu to nabídnout.
+Peter Kutsos:  Jedna věc, na kterou bych v tomhle chtěl pamatovat, je, že my to vždycky budeme muset odprezentovat těm vědcům, těm hlavním účastníkům, jako něco, co chtěj, a jako něco, co jim nebude překážet, což jsme jim zatím jako nekomunikovali, zatím počítají oni všichni s těma 50 lidma, takže my jim budeme muset přijít, hele, bude tady dalších 100 a je to pro vás super.
+Luděk Šafář:  Dobře.
+Peter Kutsos:  Takže to je.
+Luděk Šafář:  Na druhou stranu těch přihlášenejch, jako těch finálních participantů, kterým to bylo komunikováno, je minimum.
+Peter Kutsos:  No ano, ale myslím těch, i těch partnerů, jo, těm lead of departments, ty jim teďka budeš muset říct, hele, mění se to, a svým lidem musíš říct něco jinýho, ale je to super.
+Luděk Šafář:  Ano, ano.
+Lenka:  Já, ale musíte to komunikovat teď, jako já bych, já bych.
+Luděk Šafář:  Nejdřív to vymyslíme.
+Lenka:  Nejdřív to vymyslíme, získáme, jako já vidím flow od vás v tom slova smyslu, že my od vás potřebujem dostat nějaký prezentabilní informace, ideálně nějaký jako one pager, kde bude nějaký jakoby call for, koho tak cca jako hledáme, dohromady, jo.
+Luděk Šafář:  Bude to preliminární, nic neslibujeme.
+Lenka:  To nic neslibujeme, to my otočíme u našich, můžeme to zaálupnout, protože ono, hele, ono dostat 100 lidí takhle někam zase taky není žádná sranda, že jo, upřímně, když na to přijdem, takže ne, můžeme to trošičku třeba otočit s minorákama, jestli by případně měli zájem někteří z nich, tak to je taková hezká skupina, rozhodně bysme se měli přeptat těch vědců na, i třeba těch AI vědců, pro který si myslím, že by to mohlo bejt zajímavý, který by byli nad rámec těch pět, z pěti maximálně deseti, co by
+Lenka:  byli jako fakt to core, potom to můžeme otočit právě s tím VCčkem a rovnou se jich zeptat, jestli by tam třeba udělali nějaký to s pár zajímavýma startupama, který dělaj jako AI for science, i se viděj při spění.
+Luděk Šafář:  A jak to udělat tak, aby kluci nebyli v nekomfortní zóně, že už vlastně generujeme jako poptávku po něčem, co ještě není odkomunikovaný s těma.
+Lenka:  No, tak to tam budem komunikovat, prostě měli byste případně zájem se zapojit.
+Peter Kutsos:  My je vždycky můžeme nevzít, pokud se přihlásí.
+Lenka:  No, no, no strings attached, ale prostě.
+Peter Kutsos:  Já, já ten nekomfort vůbec nemám z toho komunikování těm partnerům, to si myslím, že tam jsme v dobrý pozici toho, že my jim něco vysloveně nabízíme a platíme to těm jejím studentům a.
+Luděk Šafář:  Ale oni jako na, pak tomu musí prodat svým, svým leadům, jo, oni za tím děkanem nebo proděkanem musí jít a přesvědčit ho.
+Peter Kutsos:  Ano, tam je pro mě ten jako hardline toho, aby ty věci tam nebyly ten cirkus, na který se někdo jde podívat, což ale tak si myslím, že není, takhle to dává jako smysl, a já jako mě limituje tady v tom moje právní pozadí a to, že já jsem nekomfortní z toho, nebo to, proč se na to jako ptám, je, že je tam pak potřeba vyřešit to, jak to, jak tu spolupráci udělat formálně s tou vlastně naší univerzitou, a já mám ten strach z tý naší univerzity v
+Peter Kutsos:  tomhle ve všem.
+Luděk Šafář:  To byla právě otázka, jestli my bychom tam mohli hrát roli někoho, skrz koho ty peníze potečou, aby každá objednávka nemusela prostě jako tady jít jako na rektorát.
+Peter Kutsos:  No a to je.
+Luděk Šafář:  Nevím, jestli můžem.
+Peter Kutsos:  Kterou nevím, jestli můžem, respektive musí na to bejt minimálně smlouva s UKčkem a tak, a tohleto je právě něco, co já jsem se snažil jako prozkoumat, jak to je.
+Luděk Šafář:  A ten Krylok by mohl v tomhle pomoct, to je ten člověk, kterej by na to mohl kývnout.
+Peter Kutsos:  Jo, jako.
+Luděk Šafář:  A tématicky to sedí, že právě AI by pomáhalo organizovat AI konferenci, to není zas tak divný.
+Peter Kutsos:  Jo, jo, tam, tam, tam jenom jsou pak prostě tady ty nějaký právní limity, to, který jsou, je tam ta smlouva mezi tím fondem a naší univerzitou, a to je vlastně jinej vztah než univerzita versus organizátoři, spoluorganizátoři, protože my jsme tady v tom stavu, že jo, jako z pozice jenom zaměstnanců, no, a tak to je pak potřeba vyřešit jako, co ta univerzita vlastně od Prague AI eventuálně.
+Luděk Šafář:  A my jsme spolek, jehož je univerzita členem.
+Peter Kutsos:  Jo.
+Luděk Šafář:  Jo.
+Peter Kutsos:  To je vlastně to, to.
+Luděk Šafář:  To mění to.
+Peter Kutsos:  My jako nejsme jako externí.
+Luděk Šafář:  No jasně, no jasně, no jasně.
+Peter Kutsos:  Ono tam jde jenom o to, že prostě tady ty IVF podmínky na nic z tohodle nepamatujou a jsou strašně vágní, takže to ještě znamená to pak jenom diskuzovat nějak s těma IVF.
+Luděk Šafář:  Pokud by to byla furt univerzita, tak možná to je IVF nemusí zajímat.
+Peter Kutsos:  No jako formálně je to, je to jako jinej subjekt, i když je, i když je.
+Luděk Šafář:  Ano, začne se tam objevit nějaký jiný IČO, jo, který vlastně potřebuje nějaký formální vztah, takže já určitě si myslím, že by na to, pokud tam Prague AI bude figurovat, musí existovat smlouva mezi univerzitou a Prague AI o nějakým výkonu činnosti, já jenom chci říct, že by to nemuselo představovat tak jako zásadní problém, protože my jsme spolek, kterej není tý univerzitě cizí, je to spolek, kterej ta univerzita založila, kofinancuje ho a je ho členem, jo, takže jako tam by asi šlo uzavřít prostě nějakou jako smlouvu.
+Peter Kutsos:  To na tom by se měl podepsat.
+Luděk Šafář:  Ne, ale já s tou univerzitou strach nemám, proto já spíš jsem jako v právní nejistotě z hlediska tý smlouvy, co dovoluje IVF tomu svýmu grantee, což tam není jako, to je hrozně obecný, čili pro mě je těžký to jako právně vykládat, takže si nemyslím vůbec, že jsou.
+Peter Kutsos:  Takže se někdo musí zeptat.
+Luděk Šafář:  No přesně, a to jsme akorát v situaci, kdo se moc tam moc nedoví.
+Peter Kutsos:  No a tak to je přesně ono.
+Luděk Šafář:  To je přesně to, to říkáme celou dobu, to říkáme celou dobu.
+Peter Kutsos:  Ten kámen a hrozivé místo, mezi kterým já jsem zaseklej, jestli se ptát, protože ta, ta, tam to podepisování je.
+Luděk Šafář:  Další varianta, než se jich zeptáme, je podívat se, jestli se něco takovýho stalo už v minulosti a čerpat bezpečnost tam od tamtaď a zeptat se těch lidí, který to už dělali, jak to vlastně měli a jestli to prošlo, a hledat už existující mechanismy a potom se odvolávat na ten precedent. Takže jestli jste schopni udělat nějakej research, najít jako subjekty, který už v podobný situaci byly.
+Peter Kutsos:  Jak by se definovala podobný, podobná situace, že by měli.
+Luděk Šafář:  Podobná situace je, že měli vztah s IVF, dostali peníze a potřebovali část toho projektu dofinancovat z externích peněz, jakým způsobem to fungovalo.
+Lenka:  To bude těžko možná hledat, protože to nebude nutně vyvěšený na webu, že jo.
+Peter Kutsos:  My, my, my.
+Luděk Šafář:  Třeba to nevejde, nebudeme na tom stejně jako jsme teď.
+Peter Kutsos:  Věděl bych o něčem, koho se zeptat, to naše projektový oddělení nás furt odkazovalo na slečnu, která dělala podobnou věc před náma.
+Lenka:  A IVF je.
+Peter Kutsos:  Vyšehradský fond, co nám.
+Lenka:  Tak to, no jasně, tak o tom možná věděla, já vím, že dělá v Pájevě, možná znala nějaký lidi, který by sem.
+Luděk Šafář:  Oni ty projekty mají vyvěšený na webu, co ty projekty byly, jenom tohleto vnitřní strukturu tam jako tam není.
+Peter Kutsos:  To ani není vnitřní struktura, to je jako nad tím, mimo ten.
+Luděk Šafář:  My se vlastně nechceme ptát o IVF přímo, protože v tý chvíli, kdy vlastně řeknu, je v pořádku, že to takhle uděláme, takže jestli když mi řeknou, to vůbec není v pořádku, a víte co, my vám to sebereme, čili.
+Peter Kutsos:  No, ale to je hlavně, když víme, že to udělá nějaká tady projektová paní, která chce něco nejmíň problémů, a řekne ne, protože to neví.
+Luděk Šafář:  Radši ne.
+Peter Kutsos:  Ale, ale jí jsem se ptal a ona řekla, že cofunding je v pohodě, ale dál to nerozvedla.
+Luděk Šafář:  No jo, ale.
+Lenka:  Hele, tak samozřejmě bylo super, teď jako jak všichni krásný lidi dávají těm univerzitám ty peníze, tak kdyby prostě přišel dar v nějaký hodnotě, který by vlastně jako by dofinancoval, byla by to dar univerzitě, a ta by to jako.
+Peter Kutsos:  Kterej by byl jasně jako ohraničený.
+Lenka:  To by bylo, to by bylo jako úplně optimální.
+Peter Kutsos:  On tam totiž je jako jedno specifický omezení, že všechny transakce grantů musej odcházet z účtu toho granteeho, což je ta univerzita naše, ale to samozřejmě nechává prostor interpretaci, že ty účastníci navíc se netýkají grantu, protože v tom grantu nejsou napsaný, na druhou stranu stejně tak by to šlo interpretovat tak, že je to stejnej event fundovanej jako v podstatě tím grantem, a že to teda teoreticky je project expense.
+Lenka:  Pánové, chtěl by to nějakej rozpis, ideálně, co vlastně, chápu, že tady máte funding vyloženě na těch 50 účastníků, který mají covered všechno, ty 4000 to je fíčko, jídlo, ubytko, a teda i rozšíření těch prostor?
+Peter Kutsos:  No, to, to jo.
+Luděk Šafář:  I rozšíření prostor.
+Peter Kutsos:  Je to, je to, je to jako, je v tom započtenej podíl pro jednoho účastníka na ten prostor, kterej už je teďka zaplacenej, ale to, ten je, ten je zaplacenej, a ten, takže prostě je to do.
+Luděk Šafář:  To platí do 150 účastníků.
+Lenka:  Ty, ty, ty prostory, co teď máte, tak platí do 150 účastníků.
+Luděk Šafář:  Jo.
+Lenka:  Teda ty už jsou covered, takže v těch 4000 je teda jenom jídlo a, a, a ubytko.
+Luděk Šafář:  Jo, ve chvíli, kdyby to přesáhlo.
+Peter Kutsos:  Ale rezerva.
+Luděk Šafář:  A nějaká rezerva, ale ve chvíli, kdyby to přesáhlo 150 účastníků, tak tam naskočí další fixní náklady.
+Peter Kutsos:  Tak.
+Luděk Šafář:  Proto.
+Peter Kutsos:  Který ale jde pokryt z tý rezervy právě. Já to, já to.
+Lenka:  Ne, ne, ne, v pohodě. Ne, ne, ne, mně jde jenom jakoby o ten messaging, když to budeme jako, ne, ne, ne, v pohodě, takže, takže kdybysme tam měli dostat dalších 100 lidí, tak se bavíme o 40000.
+Luděk Šafář:  Ano.
+Peter Kutsos:  No, s tím, že ubytko lze dělat tak, že oni ho, ty účastníci uhraděj přímo.
+Luděk Šafář:  Nekomplikuj to.
+Lenka:  Ne, ne, ne, to jenom.
+Luděk Šafář:  To ale z hlediska.
+Peter Kutsos:  Je možný, že oni si to jako uhraděj přímo, takže by ten, jako, my jsme to pochopili, že oni by si teoreticky mohli ubytování zaplatit prostě jako sami, je to tak?
+Luděk Šafář:  Ano, což, což to komplikuje teda, jak ty říkáš, ale z hlediska toho, že by to pak vůbec se netýkalo jako toho projektu, to to zjednodušuje.
+Peter Kutsos:  Jo, ano, jo, takhle to vždycky je, rozumím.
+Luděk Šafář:  A tak furt potřebuješ nějaký peníze na to jídlo aspoň.
+Peter Kutsos:  Ano, na ten keťas.
+Luděk Šafář:  Jasně.
+Lenka:  No, plus si dokážu představit výzkumníky, který si z toho prostě si to jako, pokud na to budou mít budget, tak si to prostě jako by fakt, jako by účtou jako, jako vlastně jako konferenci, že jo, si dokážu představit.
+Peter Kutsos:  Ano, tam si dokážu taky představit, že bude hrát roli to, kdo je na tý faktuře.
+Luděk Šafář:  To je, jo, a to je tady je zajímavý to s tou konferencí, my tomu jednak nesmíme říkat konference, protože v Česku to tak asi moc není, ale v zahraničí, v zahraničí se ptali, jestli to má proceeding, jestli to bude mít sborník a kdo je dělá, a jakmile tohleto nemá, tak to není formálně konference, a často, když to není formálně konference, tak se to těm univerzitám nechce platit, protože co tam jdeš.
+Peter Kutsos:  Co tam jdeš dělat.
+Lenka:  No jasně, no.
+Luděk Šafář:  Takže by tam mohla být větší rezistence tohle dělat, takže to meetup.
+Peter Kutsos:  My tomu říkáme meetup.
+Luděk Šafář:  Ale byznysová konference to je.
+Peter Kutsos:  V pohodě, ale jsme to otočili pro ty, zejména Maďary.
+Lenka:  Jasně, jasně, já jsem si říkala, proč meetup, ale chápu, teď už jasně, no, jasně, no, není to standardní vědecká konference.
+Peter Kutsos:  No, a ten, no, jenom to, že kdo je na faktuře, tak to třeba vím, že z našich nějakých věcí u UK grantů by to bejvalo nešlo uhradit. Kdyby to ale bylo univerzita, tak to bude jednodušší.
+Luděk Šafář:  Kdyby byl kdo, kdyby byl Prague AI na faktuře, tak by to byl problém.
+Peter Kutsos:  Že třeba komerční konference z toho neuhradíš z délku.
+Luděk Šafář:  Aha, aha, aha.
+Peter Kutsos:  Ale to je jako, to jsou, to je vnitřní předpis, co tohleto říká.
+Luděk Šafář:  Dobře, já jsem minule klukům navrhl takovou volnou dvoutýdenní kadenci, jako ve který bychom se jako vždycky syncli, jako co se v tom děje.
+Lenka:  No, co se do těch dvou týdnů má stát.
+Luděk Šafář:  Do těch dvou týdnů my potřebujeme jako tak, my víme, co, my víme, kolik by to zhruba stálo, takže do těch dvou týdnů si myslím, že by bylo super, aby na naší straně jsme udělali jako velmi volnej preliminary, prostě přemejšlení nad tím, koho do toho vůbec jako zvát, to bychom si měli mezi sebou vyměnit, potřebujem ten one pager.
+Peter Kutsos:  Ano, to do pondělka vám můžeme dát ten.
+Lenka:  Jo, jo, nějakej jako short fact to make it, jako short and sweet, ale zase ať jsou tam ty, ty, co je vlastně cílem, a co vlastně, co vlastně čekáte od toho externího světa.
+Peter Kutsos:  A interní nebo externí one pager? Přeposlání externí.
+Lenka:  Už, už ven, už pře, už to, jo, ať je to jako ne žádný jako PR marketingovej bullshit, ale prostě ať je to, co je vlastně jako cílem, a co vy vlastně, proč, co očekáváte od těch lidí, který by tam přišli mimo těch 50 účastníků.
+Luděk Šafář:  A vám se postupně už jako hromadí ty přihlášky, ne?
+Peter Kutsos:  Ne, ještě jsme nezačali, schválně, protože jsme chtěli mít ten dnešek a vědět.
+Luděk Šafář:  Takže v tý chvíli jako zatím neumíme jako lépe definovat ty jako fields, jak vy správně říkáte, jo, takže.
+Lenka:  Ale takhle, můžete tam třeba zase něco nastřelit, že jo, že očekáváte největší účast z těchto oborů.
+Luděk Šafář:  Očekávání, protože to nám zase potom umožní víc přemejšlet nad tím, jako koho vlastně adresovat, a za 14 dní bude 16. listopadu, což je.
+Lenka:  Října.
+Luděk Šafář:  Října, 16. října, takže to pořád budeme v tý timeline vlastně tý komunikace, takže vy budete dál v tý komunikaci při univerzitách už, jo, takže tam třeba jako můžeme zjistit, jestli je potřeba někde pomáhat, já to mezitím pitchnu Vláďovi prostě na přírodě a mezi tím se může ukázat jako, že už něco potřebuje, jo, vy jste se včera potkali s.
+Peter Kutsos:  Jakubem Nešetřilem.
+Luděk Šafář:  S Jakubem Nešetřilem, on se mnou mluvil a právě si nebyl jistej, jako co, co dělat má, my jsme to tady jako dělali jako anekdotu na tom, tak já jsem mu řekl, ať v klidu to nechá na mě, a že já mu potom řeknu, co má dělat.
+Lenka:  To je fantastický.
+Peter Kutsos:  Přesně.
+Lenka:  Hlavně já si myslím, že pro vás teď nejdůstojnější je opravdu ten Ondra, na čo to ne, že by tě ale.
+Peter Kutsos:  To řeknu já taky.
+Luděk Šafář:  Na propagaci v jiných kanálech tam máme někoho v týmu Jakuba Nešetřila.
+Peter Kutsos:  Jo, takže, takže ve chvíli, prosím vás, když vypiknete, že po Jakubovi Nešetřile něco potřebujete, tak mi dejte vědět a já ho oslovím, jo.
+Lenka:  Vy si určitě napište tomu Davidovi Hoxovi, protože ten si myslím, že ten by o tom měl vědět, ten mě napadá jako jeden takovej dobrej, že by vám do těch, do těch informatiků, že by vám tam bude mít jako určitě dobrý studenty, a ty AI věci, ty asi zatím necháme bejt, teda já to, jestli chcete, tak já to pustím na pár jako fakt jako regulérních AI věcí, který si myslím, že by tam, že by to pro ně mohlo bejt zajímavý, jako je třeba ten Willow Leasing, jo, tak
+Lenka:  až budete mít nějakou vyloženě tu informaci pro ty účastníky těch 50, tak to nám taky pošlete.
+Peter Kutsos:  Jak to myslíš?
+Lenka:  Až, až otevřete ten call.
+Peter Kutsos:  Ten je otevřenej, teďka v podstatě jenom sedíme na tom, že jestli těm contact persons řekneme go.
+Lenka:  Tak, jo.
+Peter Kutsos:  Což i ten důvod, proč na tom sedíme, byl jednak komunikační plán, kterej jsme jako vám dávali, a chtěli jsme, chtěli jsme, jestli se dneska něco nezmění, což se vlastně trochu možná mění s tou expanzí potenciální, ale taky já ještě ladil gender balancing, potřebujeme, to je jako, jak bude vypadat to, co oni, na jaký kanály budou reachovat, protože chceme jako se zasadit o to, aby prostě se to dostalo k dostatečně ženám, aby tam byly nějak jako rozumně reprezentovaný.
+Lenka:  Hele, akademii věd tam nemáte vůbec.
+Peter Kutsos:  Nemáme, nemáme.
+Lenka:  A rádi byste?
+Peter Kutsos:  Já jsem, no, jako proč ne, ale já jsem tam, já tam nikoho jako.
+Lenka:  Jo, mě tam, mě tam, mě tam napadá jedna strašně fajn baba, když jsme u těch ženskejch, kurňa, jak ona se jmenuje, to je jedno, já vám to kdyžtak lupnu, a já vám to ještě, kluci, jste na Slacku, nejste?
+Peter Kutsos:  Ale můžem být.
+Luděk Šafář:  Můžeme.
+Lenka:  Ne, tak to nebudeme tou.
+Peter Kutsos:  My jsme flexibilní, neboj.
+Lenka:  Ne, to vás nebudeme stahovat, tak možná rozjedeme WhatsApp skupinu.
+Peter Kutsos:  WhatsApp skupina je dobrá.
+Lenka:  No.
+Peter Kutsos:  Ne?
+Luděk Šafář:  Ať přežije.
+Peter Kutsos:  Ne, ale počkej, jak to zas jako, já bych přežil i ten.
+Luděk Šafář:  Slack, víš proč Slack? Protože můžu číst agenty na rozdíl od WhatsAppovejch skupin.
+Peter Kutsos:  A do WhatsAppu taky dostaneme agenta. Ale Slack, na to chceme mít to rozšíření, tak bychom měli otestovat.
+Lenka:  Tak víte co, tak já vás pozvu, já pozvu, pozveme vás k nám do toho, pozveme vás k nám do Slacku, a vytvoříme tam prostě kanál, a tam si to budeme jako balit různý kontakty, a tady prostě ty myšlenky a tak, jo, já už mám na vás tady složtičku tady v mailu, tak já si to najdu, čtyři, a a a a a a, takže tím, tím, tím začnem, a teď je teda míč na vaší straně, a my se budem teda zamejšlet, komu bysme to všechno mohli pustit, hele,
+Lenka:  já si dokážu představit, jsou tady firmy, který fakt jako mají rádi hodně chytrý lidi, jako je třeba tady prostě Qminers, který dělají algoritmický tradování, přijít za nima včas a poprosit je o nějakej peníz, jestli tady tu akci nepodpoříte, a tak, a to trošičku vyfandrizovat, nemůžu nic zaručit, slíbit.
+Luděk Šafář:  A ty jsou metod first, ty prostě mají rádi hodně chytrý lidi.
+Lenka:  Ty, ty mají, že mají prostě rádi chytrý lidi, a berou to, berou to prostě zleva, zleva, zprava, tak prostě potom jít za nima s nějakým propouzlem, prostě, že tam budou mít jako zviditelnění, že jo, zase já jako, já se vždycky jako křičím tomu, aby to bylo oblepený těma, ale kdyby prostě třeba oni tam mohli mít nějakej, nevím, něco, bylo by super, kdyby oni, bylo by super, kdyby tam třeba měli, kdyby se jim z jejich týmu podařilo vyzobat původně ne ML AI lidi, který přišli z jinejch oborů,
+Lenka:  který by tam třeba mluvili o tý zkušenosti, jaký to je dělat prostě pro AI firmu.
+Peter Kutsos:  Ano, plus tady, pokud je zajímá ten talent, tak je možný tady vymyslet nějakou synergii z toho Montreal Poster Session, v době, kdy tam studenti prezentujou svoje věci, tak aby oni tam měli stánek, nebo že můžou chodit kolem.
+Lenka:  No jasně.
+Peter Kutsos:  Typicky se dělá to, že ty studenti taky chvíli tam ukazujou tu svoji věc, a pak choděj po těch ostatních, a to tam.
+Lenka:  Takže, takže potom se jenom zamysleme, hele, teď je to ještě jako relativně brzo, zase na druhou stranu, samozřejmě, čím dřív začnem, tím líp, že možná by to chtělo teda, a to teda potrvá, chápu, že dát jeden jakoby one pager dohromady je jedna věc, ale potom vyloženě jako call for sponsors, jako kolik poptáváte, na co to bude utracený, a co za to oni budou mít.
+Peter Kutsos:  To jo.
+Lenka:  Taková ta klasika, a fakt si dokážu představit, že nevím, ale že třeba Qminers by to zajímalo, protože oni ti vždycky strašně chytrý lidi, no, takže.
+Peter Kutsos:  Co by za to mohli mít, jaký jsou možnosti, co je třeba zajímá, co by, co.
+Lenka:  No, hlavně přístup k tomu talentu, že jo, takže nějaká jako rozumná forma, jak se odprezentovat, a ideálně tím, že tam nebudou mít jenom bannery, že jo, takže.
+Peter Kutsos:  To znamená to.
+Luděk Šafář:  Oni se nejlíp odprezentujou autentickou zkušeností nějakýho jejich zaměstnance, kterej to vlastně.
+Lenka:  Takže nějakej třeba to, kdyby jim se podařilo z jejich nějakýho padesátičlennýho týmu vyškrábnout lidi, prostě přesně ty biology.
+Peter Kutsos:  Který jsou relevantní pro tu cílovku.
+Lenka:  Který jsou relevantní pro tu cílovku.
+Peter Kutsos:  To je realistický.
+Lenka:  No, no, a dá se to potom, a dá se to dát do toho třeba nějakýho toho bloku takovýho, co po vědě nebo při vědě dělat, jo, nebo prostě, a může to bejt vlastně, můžete tam mít to VCčko, který bude mluvit, a tím pádem by tam třeba ten mohl taky pustit nějakej, my ho teda nejdřív to IPL ventures musíme pumpnout do toho, aby se stal naším partnerem, a potom, potom mu musíme pumpnout to, aby vám tam poslal nějakej peníze.
+Luděk Šafář:  Zaplatit nám peníze, ale to nejsou všechny peníze.
+Lenka:  Díky nám se dostaneš ke skvělejm oportunitám.
+Luděk Šafář:  Zaplatit peníze, nebo vám můžu zaplatit víc peněz.
+Lenka:  No ne, to je, to je vždycky story, tady máme, že jo, jak kluci v uvozovkách, tak trošičku jako kanibalizujeme prostě ty příjmy, když prostě ty jako to, ale to je prostě, takže, takže.
+Luděk Šafář:  Já musím běžet, já musím.
+Lenka:  Běž, a to, takže, takže.
+Luděk Šafář:  Takže já nám hodím placeholder do kalendáře za dva týdny, na podobnej čas.
+Lenka:  Jo, ale možná to bude, pánové, možná to bude online tentokrát.
+Luděk Šafář:  Ano, to je v pohodě, dám tam jako online variantu, mezitím uděláme ten Slack, takže se tam můžeme vidět.
+Lenka:  Jo, Slack, Slack určitě hodím, a.
+Peter Kutsos:  Ještě, Lenko, já jsem se chtěl zeptat, ten one pager, komu se podle tebe bude posílat, jaký jsou ty cílovky, co by to mělo oslovit?
+Lenka:  No, nepotěším tě, ideálně jakoby všem, jako já bych to ráda poslala prostě těm.
+Luděk Šafář:  Hele, ale tam nemusí bejt nic specifickýho, my víme, co je ta unique proposition, prostě, tak jsme si ji zopakovali.
+Peter Kutsos:  A proto tu kopii máme, ať se prostě.
+Lenka:  Jo, jo, a tam, a můžeš, a můžeš tam mít prostě.
+Luděk Šafář:  Kdo se chytí. Přesně tak.
+Lenka:  Kdo se, kdo se chytí, ale tam jako takhle, bylo by fajn, kdyby to bylo napsaný tak, aby prostě ty Qminers se třeba už na to chytli, jo, že to nebude vyloženě sponsorship package, ale že tam bude jakoby přístup vlastně k těm, těm, možnost udělat vlastní program, jo, zapojit se, vzbudit jakoby fakt jako vzbudit zájem, a tím pádem třeba potom, aby já to otočím u Saši, hele, prostě tady skvělý kluci z přírodovědy něco plánujou, dávalo by vám smysl se tam nějak zapojit, finančně to podpořit, a to, takže,
+Lenka:  takže na ten teď nemusíš ani, nemusíš myslet, a to, takže jenom prostě takovej jakoby hezkej teaser, a já bych to potom, já se musím zamyslet, kdo ještě jako dělá to AI for science, jakoby z komerčního hlediska.
+Peter Kutsos:  My jsme se chtěli spojit ještě s těma, ženy v AI, se to jmenovalo?
+Lenka:  Jsem teda boardová.
+Luděk Šafář:  Totiž to, to je, to jsem vymyslel rychle, jenom strašně kvůli tomu, že já jsem viděl, když jsem dělal ten gender balancing plán, tak jedna z věcí, co jsem z toho researchu našel, je, že záleží na tom, samozřejmě, do jakých kanálů se dostane ta informace o tom.
+Peter Kutsos:  Od koho.
+Luděk Šafář:  A od koho i, a taky v jaký formě, že ženy odpovídají výrazně víc na jasně vymezený požadavky toho, co, jako o čem to je, to je, to jsou jako, to jsou jako nitpicking trošku, ale že údajně ženy mají větší likelihood toho si myslet, že jsou qualified, takže nejlepší věc, co dělat, je správně tu komunikaci nastavit tak, aby si ty ženy se v tom snadno identifikovaly, řekly, tam, tam, tam patřím, protože.
+Lenka:  No akorát, no víš.
+Luděk Šafář:  Víš, jenom že ten balancing jako je pro nás, proto taky sedíme na tý komunikaci ještě teď jako do dneška, kdy máme teďkom tak jako další s nima schůzky, protože to, co my můžem nejvíc ovlivnit, je to, jak jim to nabízíme, a ke komu se to dostane, a ne pak dělat balancing při výběru, to už je.
+Lenka:  Hele, napitel úplně je, že napitel úplně je, že, že já jsem s tou Sandrou už seděla, ona teprve začíná, a ona ten network sama moc nemá, a hlavně tam nemá moc těch jako výzkumnickejch, tam bude mít jako úplný, jo, takže to je jako, jako good thinking, ale, ale to, a já právě jsem si vzpomenula na tou.
+Peter Kutsos:  Tady je ještě ženyfkyber.cz, to nám něco říká?
+Luděk Šafář:  To je strašně, strašně široký, no, my samozřejmě CzechSpat, CzechSpat.
+Lenka:  Teď jsem si chtěla, já jsem ti chtěla říct CzechSpaty, tam právě působí ta skvělá vědkyně z toho Hejrovský institut.
+Luděk Šafář:  Což je, není to Stejskalová? Ta ségra Stejskalová?
+Peter Kutsos:  Stejskalová se jmenuje, ale to není to.
+Lenka:  Ne, ne, ne, ne, tady ta se jmenuje, počkej, to já si to, Vladimíra, jmenuje se Vladimíra a je úplně skvělá, jmenuje se Vladimíra Petráková.
+Luděk Šafář:  Aha.
+Lenka:  A s tou bych se na to mohla obrátit, a ona i řeší, podívejte, MSI and CSX, IT development, non-skilled applications biology and medicine, takže za A si myslím, že ona by tam mohla mít jako, ona už je možná moc, ona vypadá skvěle, má asi pět dětí, je jí asi nějakejch 41, takže ona už je možná moc mature, ale ona i právě hodně řešila, ona má přesně ten network, a třeba hodně řešila, že když se vrátila z Freie Universität Berlin na, na, na AV, prostě co tam
+Lenka:  musela řešit, když chtěla prostě kvůli v práci, já nevím, co všechno, takže ne, že by to byla nějaká feministka, ale ten network bude mít, a ty CzechSpat in science jsou celkově jakoby dobrý, teda nic proti feministkám, teď to by znělo hrozně z mé strany, ale, ale ta Vlaďka je fakt jako skvělá, takže ta mě napadá.
+Luděk Šafář:  No tak to je náš nejlepší bet podle mě, jinak my máme dvě studentky jako volunteers z Polska, který, já jednu z nich jsem jim chtěl dát tu agendu vysloveně toho, aby byla ta žena, která reachuje do těch jako ženských kanálů, protože záleží na tom i kdo, aparently, kdo reachuje out, kdo to tam dává, a mít v Čechách takovejhle kanál by bylo fajn.
+Lenka:  Jo, to určitě, kdo mě ještě na tý, na tý medicíně zná, já nevím do jaký míry, ona se tam to, znáte náhodou Kateřinu Šedovou? Luno?
+Peter Kutsos:  Jo, Luno znám.
+Lenka:  No, tak jí poprosit, jestli ona nemá nějaký dobrý kontakty na medicíně.
+Peter Kutsos:  A ona je, ona je lékařka, to jsem nevěděl.
+Lenka:  Ona je, ona je právě lékařka, ona je právě lékařka, a řešili jsme spolu právě founders to the startup, podívejte na ni, ona si nedá pokoj, a ona teda nevím do jaký míry, ona je involved na, na medicíně, jestli nějak, ale ta by mě napadla jako příklad.
+Peter Kutsos:  Prej fakultní nemocnice Bulovka dělala pět let vedoucí projektu.
+Lenka:  No, takže.
+Luděk Šafář:  No a to na tý medicíně, to já tam mám nějaký.
+Lenka:  Jo, na tý medicíně, tady zase nechci jako jakkoliv paušalizovat, co si povídám, na tý medicíně tam ty holky by měly bejt, jinak vám teda cíleně tam můžu přitáhnout, jestli máte Karlůvku a potřebujete babu, tak je tam skvělá, ale ta je vyloženě na UFALu pod Ondrou Duškem, takže ta si myslím, že by byla hodně relevantní jako fakt jako vědkyně, AI vědkyně, a to je Patricia Schmidtová, Slovenka, a strašně fajn, takže třeba tady si myslím, že byste cíleně mohli oslovit pár vyloženě ženskejch jako takovejch.
+Peter Kutsos:  Rozhodně, rozhodně.
+Lenka:  A to je ta Patricia, je moc, moc fajn, Patricia Schmidtová, a ta dělá pod Ondrou Duškem.
+Peter Kutsos:  Tam je, tam je, promiň, není problém, že oni mluví česky, my mluvíme česky, ale budou se jim ozývat holky, co neumí česky, nebo co.
+Luděk Šafář:  Něco se tam snažili vůbec činit, celá ta věc je v tom českým.
+Peter Kutsos:  Ok, ok.
+Luděk Šafář:  Ale to jako se jim klidně můžeme ozvat my, tady těm konkrétním, takže to vůbec není problém, ale mimochodem tohle je potřeba se určitě ozvat nějakým konkrétním ženským, protože nejenom, že tyhlety obory jsou na tom špatně s tím, s tou reprezentací, ale V4 je na tom jako výrazně.
+Lenka:  Mizerně, no, a my, my jsme Češi, a Češi si myslím, že jsou na tom úplně nejhůř, tak jako.
+Peter Kutsos:  Ono to je tak, že se ženy daleko víc hlásí na vysoký školy, ale pak vypadávají v průběhu, jako se přihlásí na bakaláře, ale pak míň se jich dostane do magistra, pak ještě míň se jich dostane na PhD a tak dál.
+Lenka:  No tak si myslím, že jako ty podmínky pro, ještě vůbec podmínky pro vědce jsou relativně tristní, jako všeobecně, ale potom ty vědkyně, že jo, když prostě si má jako odběhnout na maturitku nebo cokoliv.
+Luděk Šafář:  No jasně, což teda mimochodem další věc, že kdyby byla ta možnost s těch, s těm, no ale to se nechce řídit, že mít nějakej room na případný kojení, no dětský.
+Lenka:  Jo, vůbec ne, ale.
+Luděk Šafář:  Nějakej privacy room, což ale je zajištěný, já jsem si říkal, že to je optional, protože to ubytování je součást toho zámku, to znamená odejít si tam, tam bejt jako private.
+Peter Kutsos:  Tohle se zvládne, nevím jestli.
+Luděk Šafář:  Ale to se vymyslí, a to nám, ten pán tam je hrozně fajnovej, a myslím si, že aby nám otevřel účet na tohle, není problém.
+Peter Kutsos:  Jestli se mu to bude líbit.
+Lenka:  Ale ta Vlaďka, ta Vlaďka, ta si myslím, a vůbec to rozšířit v rámci CzechSpat.cz, protože těch ženskejch zase není málo, že by to bylo dobrý, protože oni mají zase svoje ovečky, a mají tu zkušenost mezinárodní, která je prostě k nezaplacení, že jo, takže.
+Peter Kutsos:  Myslíš, Lenko, že by dávalo smysl, on si ho Luděk hodně vychvaloval, že bychom se nad tím messagingem a nad tím marketingem spojili s tím vaším člověkem z marketingu?
+Lenka:  No, s naším, jo, hele, máme, buď se upřímně, máme toho teď jako fakt mraky, že jsou přeplněný prostě podzim, a tím pádem akce.
+Peter Kutsos:  Ok.
+Lenka:  My AI, ale, ale, ale jo, jako připravte to, a dejte mi vědět, a já vás potom spojím, a mezitím Honzu poprosím, jestli to, on je, je dobrej Honza.
+Peter Kutsos:  Můžu si odskočit u vás?
+Lenka:  Jo, určitě, víš kam?
+Peter Kutsos:  Ne.
+Lenka:  Úplně fakt rovně, při údílně, doprava, fakt rovně, a tam vidíš před sebou bílý dveře.
+Peter Kutsos:  Jasně. Cool, tak jo, já jsem ten, ten, ten komunikační plán, já jsem to psal, ono tam, jsem tam schválně dal veškerej možnej kontext o tomhle, ale udělat one pager, nebo udělat něco takovýho, to není problém.
+Lenka:  Jo, hele, no, nějak, nějak to, to, prostě jako one pager, dej, no, postav se do bod, prostě těch lidí, který bys tam jako měl nacobit se, a vůbec ne.
+Peter Kutsos:  Jo, já dělám marketing taky, tak kdo to.
+Lenka:  Jo, jo, marketing, tak jo, tak to je super, a kurňa, kluci, jak já, takže jak se jmenuješ příjmením, prosím tě?
+Peter Kutsos:  Kutsos.
+Lenka:  Kupsos.
+Peter Kutsos:  Kutsos, K-U-T-S-O-S.
+Lenka:  Kutsos, Kutsos, to zní řecky.
+Peter Kutsos:  Jasně, to je řecký.
+Lenka:  A vypadáš jako trošku extrémně zlej, tobě se, ale řecky umíš?
+Peter Kutsos:  Já jsem tam vyrostl, já jsem tady pět, šest let.
+Lenka:  Hezký.
+Peter Kutsos:  Jako maminka je z Česka.
+Lenka:  Jo, takže jste mluvili česky. Giorgis Tolias, u Matase, výbornej vědec na počítačový vidění.
+Peter Kutsos:  Kde?
+Lenka:  U Matase.
+Peter Kutsos:  U Matase, Mat.
+Lenka:  U profesora Matase, Giorgis Tolias, velkej sympaťák, asi si docela podobný.
+Peter Kutsos:  Na to, na tohle jsem.
+Lenka:  Tak já vás možná, já vás teda propojím.
+Peter Kutsos:  Super.
+Lenka:  Já to udělám hned teď. Giorgis, Giorgis, Giorgos, takže Greek intro.
+Peter Kutsos:  Giorgis je hodně, hodně jako zdrobnělina.
+Lenka:  Jo?
+Peter Kutsos:  Jo, jo, jo.
+Lenka:  A vlastně ten.
+Peter Kutsos:  I Giorgi, ne, je jako soused, nebo strejda.
+Lenka:  Petr.
+Lenka:  He's not Greek, and he's.
+Peter Kutsos:  Jsi tady polet nějaký řecký.
+Lenka:  Jo, jo, jo.
+Peter Kutsos:  Chvíli jsi pryč, a už to tady, AI conference.
+Lenka:  Tak no, unfortunately.
+Peter Kutsos:  Meetup, není to conference, nesmí to být.
+Lenka:  Unfortunately. He is, a tvůj, tvůj fokus je co? Ty seš v čem?
+Peter Kutsos:  Eh, kulturní evoluce.
+Lenka:  Ok. He's organizing, he's organizing, and interdisciplinary.
+Peter Kutsos:  Webovku, jestli chceš.
+Lenka:  Meetup, no jasně, meetup.
+Peter Kutsos:  v4air.eu.
+Lenka:  Ještě nový.
+Peter Kutsos:  v4air.eu.
+Lenka:  v4air.eu, jo, tady to máme.
+Lenka:  Takže, takže to, scientific, he's co-organizing AI science, and I'll show him connect for you.
+Peter Kutsos:  Bomba, díky.
+Lenka:  Thanks. Sympaťák, busy, u Matase, a je dobrej, on dostal i ten junior star.
+Peter Kutsos:  Star.
+Lenka:  A fakt je dobrej, no. A interdisciplinary, tak.
+Peter Kutsos:  S Matasem Petřem jsme nějak propojeni? Někdo ho, furt o něm slyším, ale nevím, jestli.
+Lenka:  S Matasem? Profesor Matas je nejlepší informatik v Česku.
+Peter Kutsos:  To vím, to vím.
+Lenka:  A špička na počítačový vidění, a je specifickej, já si myslím, že mě skrytě miluje, akorát to neumí projevit, ani po sedmi letech, a ne, je to, je to fakt bedna, Bůh tam byl spravedlivý, dodal hodně v IQ departmentu, obrov EQ, ale fakt je dobrej, no, a má tam, má tam jako dobrý lidi, jako třeba Geoffrey Sernov.
+Peter Kutsos:  Mhm, cool.
+Lenka:  Seděj a sedí na Karláku.
+Peter Kutsos:  Jo, tam.
+Lenka:  Tady celý vlastně, vlastně AI sedí na Karláku, čuďáckým, tam v tom dvoře, ta budova E a budova G, no, tak to jenom abyste to, tak, tak, tak, super, kluci, takže jsme domluvený, takže míč je na vaší straně, potřebujem jenom one pagera, a já to začnu, hele, mně na první dobrou, s kým bych to ráda jakoby otočila, tak je ta, tak jsou ty kluci z tý teoremy, ten, ten Petr Doušek, kterej si myslím, že by to taky do toho mohl pustit nějakou malou kačku, třeba je to startup,
+Lenka:  ale fundraisovali peníze, a třeba by mu to mohlo dávat smysl, a dokážu si představit, že on by tam mohl mít nějakej fakt dobrej talk, protože ten Fertou Doušek je fakt jako zajímavej člověk, oni exitovali stories, oni existovali stories workday, a potom on napsal i knížku nějaký Hejna bez ptáků, tak jako nějakej filozofickej Hejno bez ptáků, no, filozofický román českého ekonoma, spisovatele, Fertouška, a fakt je ten Fert dobrej, tak tomu dát vědět dostatečně dopředu, ať to má v kalendáři, tak si myslím, že by se mohl hodit, potom
+Lenka:  to, potom to hodím do těch, potom to hodím do těch key miners, a zamyslím se, pro koho by to ještě mohlo bejt jakoby zajímavý, kdo dělá dobrý věci, dokážu si představit, že kluci, kdo to kdyžtak moh případně trošku podpořit, tak by třeba opravdu byla ta nadace, nebo od toho, ale nevím, já nevidím, jaký tam mají financování, ten OHUB přímo, pro ně by to mohlo bejt taky jako fajn, aby tam šlo i nějaký svoje lidi, a OHUB je vlastně, to je jako ta akademie věd, kterou jakoby nemáte
+Lenka:  podchycenou, ale nevadí vám to, když tam budou, musej ty studenti, těch 50 musí bejt z těch participujících organizací.
+Peter Kutsos:  Není to tak, že musej, ale je to preferovaný, protože ten, jedna z podmínek toho grantu je, aby ty grantoví partneři byli aktivní účastníci, a teďka, když řeknem, že oni jako tam ani neposlali studenty, tak jako je to trochu divný.
+Luděk Šafář:  Ty partneři.
+Lenka:  Jasně, ale co chci říct, že kdyby se vám, což se asi určitě stane, ale kdyby se náhodou nedostalo na, kdyby náhodou všichni ty, těch šest univerzit, nebo kolik jich tam máte, nevyslalo prostě 50 pro vás relevantních lidí, a byli tam relevantní od někud jinou přihlášený, tak je můžete vzít jakoby do toho, do těch 50.
+Peter Kutsos:  Jo, jasně, já jsem dlouho pracoval s tím, že je to problém kvůli tomu, jak půjde tok peněz těm partnerům, ale pak mi došlo, že on žádnej tok peněz není, maximálně za travel contribution, což ale u českých lidí stejně v podstatě není, a tím pádem všechny my ty úhrady on their behalf děláme přímo v rámci rezervace.
+Lenka:  Jo, jo, ne, to jenom, že říkám, že si dokážu představit, že na, prostě na tom OHUBu, kterej si myslím, že by byl pro vás hodně relevantní, právě z tý skupiny Tomáše Puskala, jak on tam má ty dva, ty dva Ukrajince třeba, tak to jsou fakt jako špičkový lidi.
+Peter Kutsos:  Další věc je, že máme těch 50, ale český lidi úplně není problém přijmout nad 50, protože.
+Lenka:  Jo, ale furt tam řešíme už potom těch čtyř, tu čtyřku.
+Peter Kutsos:  Jako Češi, pokud jako přijdou a jenom se nají a zase odejdou, tak je to, nemusí tam, nemusí tam ubytovat, protože.
+Lenka:  Jasně, no, tak potom teda ještě uvažujte o tý struktuře tý akce, aby to dávalo třeba logicky smysl pro někoho tam fakt dorazit jenom na ten den, což se možná potom nějakým jako klasifikací na nějaký jakoby témata, podtémata, i třeba oborový, nejenom jakoby metod.
+Peter Kutsos:  Je otázkou, jestli tohle chceme vůbec u tý akce, brát lidi na jeden den, nebo to uzavřít na ty tři, ono to mění tu akci, protože jakmile tam jsou zavřený na tři dny, tak je to komorný, vzniknou tam nový vztahy, to druhý je takový fér, kde jako cirkus, přijdu, podívám se, a jdu domů, takže obojí má svoje.
+Lenka:  No jasně, ne, ale fakt.
+Peter Kutsos:  A ten, ten zámek, tím jak je to jako mimo ten normální svět, tak by, tak by tohle by byla brutální výhoda.
+Luděk Šafář:  Na druhou stranu, ono je dobře, že je to daleko už kvůli tomu, že tam je ta faktická bariéra mezi tím, že se ti tam nechce jezdit tam a zpátky, že teda bys tam zůstal, takže, ale my třeba, co se týče umožnění účasti na jeden na dílčí část, tak já jsem rád, že to umožňujem, nebo umožňujem jim říct preferenci v přihlášce kvůli těm ženám právě, jo, že kdokoli, kdo má nursing responsibilities, tak pro něj fakt nemusí bejt v pohodě jet někam na tři dny.
+Peter Kutsos:  Není to takhle podmíněný, to je super, jo, to mi vůbec.
+Luděk Šafář:  A aby se to tam nepsalo do tý přihlášky, že to je jenom pro lidi, co mají nursing responsibilities, protože jsou možnosti, že musí se starat o rodiče, a já nevím co, ale ta možnost tam je, samozřejmě.
+Lenka:  Ne, já, ale naprosto jako chápu a respektuju, že tam vytvořit jako uzavřenější komunitku na celý tři dny, tak je to prostě úplně.
+Peter Kutsos:  To by pro nás byl dream scenario, kdyby se nám tohle povedlo.
+Luděk Šafář:  Každopádně za mě, kdyby byl jeden den, kdy tam jsou ty víc cross-cutting věci, kde promluví třeba nějaký zajímavý speakers o obecnějším tématu, který je aplikovatelný, tak tohle třeba otevřít, udělat jako ten den, kterej je.
+Peter Kutsos:  Třeba poslední.
+Luděk Šafář:  Jako single nabídnutelnej, tak je podle mě v pohodě.
+Peter Kutsos:  Jo.
+Luděk Šafář:  Třeba poslední, no.
+Lenka:  Ne, jako, jako upřímně dokážu si představit, že jako když, když se opřeme trošičku do marketingu, tak tam jsme schopný nabírat lidi, který by fakt třeba dorazili jenom rádi na ten den, protože jak urvat se z práce, tak případně urvat se ze studia, že jo, když prostě jsou s tím spojený nějaký jako finanční ty, ale ona, hele, jako čtyřka za celý ty tři dny, to není téma, že jo.
+Peter Kutsos:  Já vole, já si myslím, že.
+Lenka:  Akorát, akorát, prostě my tady nemáme ten hlad po myslnej dobrej, všichni tady házíme perly svý, prostě, jsme včera měli, jsme včera měli prostě krásný předávání certifikátů, všechno to mají zadarmo ty studenti, a ještě se ti tam dostane zpětná vazba, že jsme neměli ok zákusky, vole, já mám chytří skóre, normálně chytří skóre.
+Peter Kutsos:  Tak co byl, jsi dal skóre špatně.
+Luděk Šafář:  Expert marketing.
+Lenka:  No ne, ale jako přitom jako dobrej keťas, jo, prostě bylo tam nějakejch 90 lidí, zaplatilo to hlavní město Praha, byly prostě kanapky, chlebíčky a to, a potom tam bylo pár, z těch bylo tam, pravda, nebylo to tiramisu, bylo to popsaný jako tiramisu, ale prostě bylo to jako více než edible, bylo to takový spíš to, a on tam někdo prostě pingal, a já bych je prostě, ještě že jsem to neslyšela, já jsem to slyšela zprostředkovaně od našeho stážisty, protože kdyby se mi tady ten jedinec dostal pod ruku,
+Lenka:  tak normálně, já jsem nikdy nikoho neudeřila, ale normálně bych to prostě přešla, super regulérně, takže, takže potom tady se dělají jako různý skvělý věci, a ty Češi prostě, musím někam jet, vole, no, tak jako, tak samozřejmě, to je přirozenej filtr.
+Peter Kutsos:  A nám, jako takhle, nám by se líbilo, a ten, oni to po nás i chtěli tam jako napsat, jaká je naše strategie, jak máme v plánu zaručit balanc mezi zeměma, takže bylo by super, kdyby to nebylo tak, že přijdou ti fundovaní 30, 40 lidí z ostatních zemí, a pak tam bylo 100 z Česka, takže kdyby se nám jako podařilo to mít jako aspoň nějakej, nějaký zastoupení těch ostatních zemí, tak by to bylo skvělý.
+Lenka:  Třeba Slovácka. Na Slováce mě napadá, že na Slovensku, kdo by určitě o tom měl vědět, tak je Kinit, jestli znáte Kinit, Majku Bělíkovou, to je Kinit, když se podíváte, kinit.sk.
+Peter Kutsos:  Výzkum pre ľudí a pre mysel, to je, to je dobrý.
+Lenka:  No, a tam, ona tam má, to je prostě Majka Bělíková, ženská, dělala děkanku na elektrotechnice, nebo na fikce, na štubě, že jo, na, na, na, no, Slovak Technology University, whatever, vykopli ji odtamtud, a ona založila tady ten soukromej research institute.
+Peter Kutsos:  To je, no, tak to já bych hrozně chtěl potom, protože chceme začít.
+Lenka:  A green and secure environment, tady máš, hello, natural language processing, hello, a tak dále, takže třeba.
+Peter Kutsos:  To je brutální shit.
+Lenka:  No, takže, takže tady, tady, takže tady pro, tady bych určitě dala vědět Majce.
+Peter Kutsos:  Ty znáš?
+Lenka:  Jo, osobně, ty kamsi?
+Luděk Šafář:  Hele, já si myslím, že ten balanc mezi těma zeměma je jako, jednak bych se z toho, tak říkajíc, neposral, protože.
+Peter Kutsos:  Jako jo, tam my stejně budeme v tý finálním reportu vykazovat to, kdo tam byli za ty hrazený účastníky, to je zajímavý, a to, že tam jsme targetovali additional target groups, je jenom bonus, jako, a já to, to nechci se z toho jako tady omezovat, a hlavně, to je, a to je, já jsem to tak naschvál, tenkrát jsem z toho byl rád, že máme dvě ty polský univerzity, takže z nich jako poptat někoho takhle navíc, ten network je větší, ale hlavně tam Poláků bude zastoupený jako větší než
+Peter Kutsos:  nějakejch těch osm lidí, který na to vycházej, bude jich 16, a tak, a ty Slováky jsem spolíhal, že jsme schopný většinou aut jako víc nepřivést, no, takže už byť, takže Maďarů tam bude jako podle mě. To jsme věděli úplně od první chvíle.
+Luděk Šafář:  Věděli, protože ta komunikace je problematická.
+Peter Kutsos:  Oni na nějakou směru.
+Luděk Šafář:  Ale ten kontakt person, kontakt person je dobrej.
+Peter Kutsos:  Ale ten je dobrej, no.
+Lenka:  Jo, tak oni třeba potom to, vidíte.
+Peter Kutsos:  Třeba dovolenej, no.
+Lenka:  Páni, tak jo, takže hele, takže momentálně nemusíme na nic myslet na naší straně, já mám tady položku Prague ITU DOS, a zatím to přemýšlet si tady píšu, a teď je to na vás, aby vy jste, aby vy jste dali teda dohromady.
+Peter Kutsos:  Ten one pager, no, ten, ten v podstatě.
+Lenka:  Ten one pager máte, a já to nějak otočím, a já to prostě otočím nějak u těch, já se, no, říkám, mám tam tu teoremu, mám tam ten, mám tam ten, ten, poslal, udělal bych vám intro na tu vlačku, možná, co.
+Peter Kutsos:  Vlaťek, to já připomínám.
+Lenka:  To je ta z Heyrovského, ta vlaťka z Czech Spats.
+Peter Kutsos:  Jo, jasně.
+Luděk Šafář:  Jo, jo.
+Peter Kutsos:  To tady mám napsaný.
+Luděk Šafář:  Jo, jo, jo.
+Lenka:  Jo, a jo, a hlavně, počkej, rozjet Slack, to já udělám.
+Peter Kutsos:  No, rozjet Slack, já tady první, co jsem si položil, byl ten Slack, s tím totiž i Luděk počítal, že teda tam budem, protože tam mluvíme konkrétně ten termín za těch 14 dní.
+Luděk Šafář:  On něco hodil předběžnýho.
+Peter Kutsos:  Aha, ok, no, a jinak je to na nás, no.
+Lenka:  No, super, tak jo, hele, začínáte brzo, to je skvělý, na věce úplně boží.
+Peter Kutsos:  Nám se právě zdálo, že už dochází čas, ale tak super.
+Luděk Šafář:  Že už zbývá jen kousek.
+Lenka:  No ne, tak jako, hele, tak co je pro vás úplný gró, dostat tam prostě 50 fajn sdílnejch lidí.
+Peter Kutsos:  To se asi stane, no.
+Lenka:  No, to je úplný to gró, tady to je furt jako nice to have, a nechci to prezentovat, že to nebereme vážně, bereme to vážně, ale prostě, když jako zjistíme, že jsme úplně mimo, a že.
+Peter Kutsos:  Jedinýho, no, co se bojím, je, že by se to, jako něco odprezentovat těm lidem, pokud teďka jim odprezentujeme, že tam bude 50, a bude jich tam 150, tak je to trochu divný, těm lidem, s kterýma budeme komunikovat teď, těm placeným účastníkům, a naopak, když jim řeknem, že tam bude 150, a bude jich tam 50, tak je to taky divný, tak nějak.
+Lenka:  Hele, jako určitě, ale tak nějakej damage, můžem to tady prostě komentovat, hele, je to prostě v preliminární fázi, a já teď těm lidem, na který se teď obrátím, tak je i to, vy byste mohli zahrát i jako klíčovou roli, tam přitáhnout další lidi, tím, že tam dáte třeba dobrej obsah, jako jo, takže teď já to prostě budu jasně komunikovat, hele, je tu nějakej plán, co si o tom myslíte, dokážete si tam nějakou roli, cílem je tam prostě mít opravdu dalších 100 lidí, že jo, takže tam je
+Lenka:  prostě 150 lidí.
+Peter Kutsos:  No, no, já si myslím, že my vůbec nemusíme říct, kolik lidí tam bude.
+Luděk Šafář:  Já zatím jdu takhle říct, když někdo reachuje aut s nějakou konferencí, já vůbec nevím, kolik tam bude.
+Peter Kutsos:  To je pravda, i když jsme to takhle komunikovali, že to bude jako malý, ale nemusí být dál.
+Luděk Šafář:  Ale to bylo komunikovaný, kontakt person, s těch budou dál komunikovat, co jim řeknem, a já bych tam neříkal nic.
+Lenka:  No, vůbec nic, no, přesně. Jo, jenom to tam hezky potom napište, co je cílem, jaký lidi byste tam rádi, jako, nebo s kterýma lidma počítáte, a je jedno, jestli bude 50, nebo 100, že jo, a to.
+Peter Kutsos:  Asi, měli bychom, asi to začneme dělat, dávat na stránku postupně speakery, co nám na to kývnou, ne, jako třeba Ondru a toho pana Zahradníka ze dneska.
+Luděk Šafář:  Ne, pana Zahradníka, toho Maši.
+Peter Kutsos:  Zahradník byl ten, ok, tak toho, tak to bych tam začal dávat, a.
+Lenka:  Ale Ondru máte jako speakera.
+Peter Kutsos:  Jo, jo, jo, a teď otázka je, s čím ještě bude, do čeho všeho ještě se zapojí, ale jako.
+Lenka:  To zmanageujte, že prostě pro ty lidi to není jako, on má teď jako velkej pain point, který se snaží řešit, a snaží se to, si myslím, jako řešit s co nejvíce jako chytrejma lidma, bez ohledu na to, jak je to pro ně.
+Peter Kutsos:  On to dal jako návrh, to není, že nám to trvá.
+Lenka:  No jasně, no, no, tak toho Ondru, případně ještě, si myslím, že byste tam měli mít toho Vila, no, ten je dobrej, jako je to, ale to je jedno, a budu teda specificky myslet na holky, myslím si, že teda, kdybych měla si dát jako mental check, jako těch, těch to, a držím se toho maximálně 10, spíš 5, jako vyloženě AI vědců, aby vám to tam netlo, tak ta Patricie, si myslím, že by mohla bejt jako super, a je super.
+Peter Kutsos:  To je teda 10 těch placených, když jich v tom bude 150, tak jich tam může být víc, že jo.
+Lenka:  No jasně, a v těch placených teď jako myslím, a to, a poprosím tu vlačku, aby dala vědět, ta teda bude mít, no, jsou dobrý ty Czech Spati, jako měli by o tom určitě vědět.
+Peter Kutsos:  Super.
+Lenka:  Ok, ok.
+Peter Kutsos:  Super, díky moc.
+Lenka:  Tak jo, tak šení.
+Peter Kutsos:  Lenko, díky, to bylo skvělé.
+Lenka:  Děkujeme, děkujeme, kluci, budete dobrý.

@@ -1,0 +1,198 @@
+# V4AIR academic communication: field schema per channel
+#
+# Draft, 28.09.2026. One entry per channel type from the asset table.
+# Every field has:
+#   type       text | markdown | list | image | url | date
+#   required   true | false
+#   max        character limit; "platform" = hard limit set by the platform,
+#              "recommended" = convention, not enforced by the platform
+#   translate  true = goes into the translation sheet, false = same in all languages
+#   source     shared = filled from the shared facts block below,
+#              asset:N = derived from asset N in the asset table
+#
+# Channels that share an asset (for example all mailing lists) share one schema.
+# Later-phase assets (result emails, programme announcements, info pack,
+# invitation, thank-you email) use the email and web_page schemas.
+
+shared:
+  event_name:            {type: text, translate: false, value: "V4AIR"}
+  event_full_name:       {type: text, translate: true,  value: "V4 AI Researchers Meetup"}
+  dates:                 {type: text, translate: true,  value: "28–30 April 2027"}
+  attendance:            {type: text, translate: true,  value: "Wednesday 28 April from midday to Friday 30 April in the evening"}
+  venue:                 {type: text, translate: true,  value: "Kostelec Castle, Kostelec nad Černými lesy, about 30 minutes from Prague"}
+  deadline:              {type: date, translate: true,  value: "15 January 2027"}
+  results:               {type: text, translate: true,  value: "February 2027"}
+  language_of_event:     {type: text, translate: true,  value: "English"}
+  apply_url:             {type: url,  translate: false, value: "[apply URL]"}
+  nominate_url:          {type: url,  translate: false, value: "[nominate URL]"}
+  contact_email:         {type: text, translate: false, value: "kutsosp@natur.cuni.cz"}
+  funding_line:          {type: text, translate: true,  value: "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."}
+  fee_other_students:    {type: text, translate: true,  value: "160 euro"}
+  partner_universities:  {type: list, translate: true,  value: ["Charles University", "Czech Technical University in Prague", "Comenius University Bratislava", "Eötvös Loránd University", "University of Wrocław", "Nicolaus Copernicus University in Toruń"]}
+  acknowledgement:       {type: text, translate: true,  value: "V4AIR is supported by the International Visegrad Fund, Grant No. 22610317."}
+  funder_logo:           {type: image, translate: false, value: "[Visegrad Fund logo file]"}
+
+channels:
+
+  # ---- Text channels ----
+
+  email:
+    used_by: [mailing lists, dean's office mailings, forwarding note, reminder mailing, result emails, info pack, invitation, thank-you email]
+    fields:
+      subject:           {type: text,     required: true,  max: "60 recommended", translate: true}
+      preheader:         {type: text,     required: false, max: "100 recommended", translate: true}
+      cover_note:        {type: text,     required: false, max: "400 recommended", translate: true, note: "forwarding note only: 2-3 sentences asking the reader to pass the call on"}
+      body:              {type: markdown, required: true,  translate: true, source: "asset:2"}
+      cta_apply:         {type: text,     required: true,  max: "60 recommended", translate: true}
+      apply_url:         {source: shared}
+      cta_nominate:      {type: text,     required: false, translate: true}
+      nominate_url:      {source: shared}
+      contact_email:     {source: shared}
+      acknowledgement:   {source: shared}
+
+  newsletter_item:
+    used_by: [university, faculty and student newsletters, research support and grants office newsletters, alumni newsletter]
+    fields:
+      headline:          {type: text, required: true,  max: "80 recommended", translate: true}
+      teaser:            {type: text, required: true,  max: "400 recommended", translate: true, source: "asset:2"}
+      cta_apply:         {type: text, required: true,  translate: true}
+      apply_url:         {source: shared}
+      acknowledgement:   {source: shared}
+
+  events_calendar:
+    used_by: [university events calendar]
+    fields:
+      title:             {type: text, required: true,  max: "80 recommended", translate: true}
+      date_start:        {type: date, required: true,  translate: false, value: "2027-04-28"}
+      date_end:          {type: date, required: true,  translate: false, value: "2027-04-30"}
+      location:          {source: shared, field: venue}
+      description:       {type: text, required: true,  max: "600 recommended", translate: true, source: "asset:2"}
+      apply_url:         {source: shared}
+
+  web_page:
+    used_by: [university and doctoral school websites, programme announcements]
+    fields:
+      title:             {type: text,     required: true,  max: "60 recommended", translate: true}
+      meta_description:  {type: text,     required: true,  max: "160 recommended", translate: true}
+      headline:          {type: text,     required: true,  translate: true}
+      body:              {type: markdown, required: true,  translate: true, source: "asset:2"}
+      cta_apply:         {type: text,     required: true,  translate: true}
+      apply_url:         {source: shared}
+      acknowledgement:   {source: shared}
+      funder_logo:       {source: shared}
+
+  lms_announcement:
+    used_by: [LMS course announcement channels]
+    fields:
+      title:             {type: text, required: true,  max: "80 recommended", translate: true}
+      text:              {type: text, required: true,  max: "600 recommended", translate: true, source: "asset:3"}
+      apply_url:         {source: shared}
+
+  group_chat:
+    used_by: [Discord, Messenger and WhatsApp groups, through student representatives]
+    fields:
+      text:              {type: text, required: true, max: "2000 platform (Discord, without Nitro)", translate: true, source: "asset:3", note: "plain text, no formatting; the link goes at the end"}
+      apply_url:         {source: shared}
+
+  # ---- Social channels ----
+
+  x:
+    used_by: [university and faculty X accounts]
+    fields:
+      text:              {type: text,  required: true,  max: "280 platform (accounts without Premium), a link counts as 23", translate: true, source: "asset:3"}
+      image:             {type: image, required: true,  translate: true, note: "rendered from the visual set template"}
+      image_alt:         {type: text,  required: true,  max: "1000 platform", translate: true}
+      apply_url:         {source: shared}
+
+  instagram:
+    used_by: [faculty and student-circle Instagram]
+    fields:
+      caption:           {type: text,  required: true,  max: "2200 platform; about the first 125 are visible before 'more'", translate: true, source: "asset:3", note: "links in captions are not clickable; point to the link in bio"}
+      hashtags:          {type: list,  required: false, max: "30 platform", translate: false}
+      image:             {type: image, required: true,  translate: true, note: "1080 x 1350 portrait"}
+      image_alt:         {type: text,  required: true,  translate: true}
+
+  facebook:
+    used_by: [university and faculty Facebook pages, student Facebook groups]
+    fields:
+      text:              {type: text,  required: true,  max: "600 recommended", translate: true, source: "asset:3"}
+      image:             {type: image, required: true,  translate: true}
+      image_alt:         {type: text,  required: true,  translate: true}
+      apply_url:         {source: shared}
+
+  linkedin:
+    used_by: [university, faculty and institute pages, reposts by researchers]
+    fields:
+      text:              {type: text,  required: true,  max: "3000 platform", translate: true, source: "asset:3"}
+      image:             {type: image, required: true,  translate: true}
+      image_alt:         {type: text,  required: true,  translate: true}
+      apply_url:         {source: shared}
+
+  # ---- Press ----
+
+  press_release:
+    used_by: [university press offices, post-event results pack]
+    fields:
+      headline:          {type: text,     required: true,  max: "100 recommended", translate: true}
+      subheadline:       {type: text,     required: false, translate: true}
+      dateline:          {type: text,     required: true,  translate: true, note: "city and release date"}
+      lead:              {type: text,     required: true,  translate: true, source: "summary paragraph in key-messages-table.md"}
+      body:              {type: markdown, required: true,  translate: true}
+      quote:             {type: text,     required: false, translate: true, note: "needs a real named person; do not draft without one"}
+      quote_speaker:     {type: text,     required: false, translate: false}
+      quote_role:        {type: text,     required: false, translate: true}
+      about_v4air:       {type: text,     required: true,  translate: true}
+      media_contact:     {source: shared, field: contact_email}
+      acknowledgement:   {source: shared}
+      funder_logo:       {source: shared}
+
+  # ---- Print and screens (visual set, asset 1) ----
+
+  poster_a4:
+    used_by: [notice boards, seminar rooms, library notice boards]
+    fields:
+      headline:          {type: text,  required: true,  max: "60 recommended", translate: true}
+      subheadline:       {type: text,  required: true,  max: "120 recommended", translate: true}
+      points:            {type: list,  required: true,  max: "4 items, 60 characters each, recommended", translate: true}
+      dates:             {source: shared}
+      venue:             {source: shared}
+      deadline:          {source: shared}
+      funding_line:      {source: shared}
+      cta:               {type: text,  required: true,  max: "40 recommended", translate: true}
+      qr_url:            {type: url,   required: true,  translate: false, note: "apply_url with a university parameter, one QR per university"}
+      acknowledgement:   {source: shared}
+      funder_logo:       {source: shared}
+      partner_logos:     {type: image, required: true,  translate: false}
+
+  leaflet:
+    used_by: [seminars and colloquia, direct outreach]
+    fields:
+      front_headline:    {type: text,  required: true,  max: "60 recommended", translate: true}
+      front_subheadline: {type: text,  required: true,  translate: true}
+      back_body:         {type: text,  required: true,  max: "800 recommended", translate: true, source: "asset:2"}
+      dates:             {source: shared}
+      venue:             {source: shared}
+      deadline:          {source: shared}
+      funding_line:      {source: shared}
+      cta:               {type: text,  required: true,  translate: true}
+      qr_url:            {type: url,   required: true,  translate: false, note: "one QR per university"}
+      acknowledgement:   {source: shared}
+      funder_logo:       {source: shared}
+
+  signage_slide:
+    used_by: [digital signage screens in buildings]
+    fields:
+      headline:          {type: text,  required: true,  max: "50 recommended", translate: true, note: "read from a distance in a few seconds"}
+      line:              {type: text,  required: true,  max: "80 recommended", translate: true}
+      dates:             {source: shared}
+      deadline:          {source: shared}
+      qr_url:            {type: url,   required: true,  translate: false}
+      funder_logo:       {source: shared}
+
+  # ---- Spoken ----
+
+  lecture_pitch:
+    used_by: [in-lecture pitch by the contact person or a lecturer]
+    fields:
+      script:            {type: text,  required: true,  max: "about 150 words (60 seconds spoken), recommended", translate: true, source: "asset:2"}
+      slide:             {source: channel, channel: signage_slide, note: "the signage slide doubles as the lecture slide"}

@@ -1,0 +1,162 @@
+A Guide to Writing 1-pagers: 
+Description, Ideas, and Template
+Courtney Jahn (cjahn@nsf.gov)
+Division of Integrative Organismal Systems (IOS)
+Directorate for Biological Sciences (BIO)
+9/13/2023
+Request this document in an accessible 
+format by visiting nsf.gov/accessibility
+
+Talking to Your Program Director
+One of the most common pieces of advice I give is 
+“Talk to your Program Director”
+This provides an opportunity to:
+• Introduce yourself, your research program, and specific project idea
+• Seek guidance on the fit of your project idea within/across NSF
+• Ask questions about the submission and review process
+Best way to contact your Program Director?
+• Email a 1-pager
+2
+What Is The Purpose of a 1-pager?
+A 1-pager is a Tool for both you and the Program Director.
+• 1-pagers help YOU organize your ideas before you talk to a Program Director
+• 1-pagers help PROGRAM DIRECTORS determine fit to program for a project 
+and prepare useful feedback for meeting with you
+3
+Before You Start
+Do your homework…
+• Peruse the NSF website (www.nsf.gov) to try and identify the most appropriate 
+Program and Program Director
+• Read info on Division websites to learn about the scientific priorities of specific 
+programs
+• Read relevant solicitations (e.g., For IOS: NSF 23-547 for IOS CORE, 23-559 for 
+PGRP , 20-576 for PBI, 21-546 for EDGE, or 22-513 for ORCC)
+• If you have never submitted to NSF before, skim the intro chapter of the 
+Proposal & Award Policies & Procedures Guide (PAPPG); NSF 23-1
+4
+What is a 1-pager?
+A 1-pager should mirror the format of the NSF Project Summary of an NSF 
+proposal and include:
+• a brief overview, 
+• a statement of the intellectual merit of the proposed research activity, and 
+• a statement on the broader impacts of the proposed activity.
+All NSF proposals are reviewed through use of the two National Science Board-approved merit review 
+criteria: Intellectual Merit and Broader Impacts. 
+Some proposals have additional review criteria described in the funding opportunity as Additional 
+Solicitation Specific Review Criteria.
+5
+The Brief Overview of a Good 1-pager Includes…
+Overarching Biological Questions
+What is the 30,000-foot view of your project?
+For example:
+How do cells know when to stop dividing?
+Things you may care about that can help answer that question: 
+special proteins called cyclins, gene regulation, epistasis, chemical signaling, DNA damage or 
+degradation, the cell's internal clock, p53-p21-Cyclin/CDK-DREAM-CDE/CHR pathway
+Tie what you care about to the overarching biological question
+6
+The Intellectual Merit of a Good 1-pager Includes…
+A description of the project’s potential to advance knowledge
+Include
+• The big picture of your research area
+• Knowledge gaps you are addressing
+• The hypotheses you will use to address this question 
+• Specific aims and what you are planning to do
+• Any key preliminary data
+Highlight, as appropriate
+• Potentially innovative or transformative elements
+• Interdisciplinary aspects of the research
+7
+The Broader Impacts of a Good 1-pager Includes:
+A description of the potential to benefit society and 
+contribute to the achievement of specific, desired societal outcomes
+A common mistake is to solely focus on the Intellectual Merit
+Make sure to briefly describe your Broader Impacts so that we can provide 
+feedback on this area as well
+Need resources? 
+https://www.researchinsociety.org/guiding-principles
+8
+Good 1-pagers State How Your Ideas Align With 
+the Program and Solicitation Requirements
+Tell us how your project aligns with the scope of the program.
+If you aren’t sure about fit, ask when you write to the Program Director.
+Include how you will address the solicitation specific criteria. 
+To be competitive, this additional information must be addressed in your proposal, so get feedback 
+before you apply.
+Be strategic and specific! 
+Use the 1-pager to tell us what you are proposing to do. 
+Keep background information to a minimum, use most of the page to explain your hypotheses and 
+your approach(es). 
+9
+General Dos and Don’ts
+Dos
+Present relevant info on the current state of 
+the field
+Highlight overarching hypotheses and tightly 
+focused specific aims
+Provide an overview of planned approaches 
+or experiments
+Explain your motivation
+Write clearly and avoid technical jargon
+Don’ts
+Waste half a page on general knowledge
+Bury the core goals and strengths of the 
+project in dense text
+Get bogged down in experimental details
+Propose research that is Human Health 
+motivated
+Make the font too small; 
+it’s OK if your 1-pager goes a bit over
+10
+What Do Program Directors Do With Your Query?
+Usually, we will acknowledge receipt of your email, ideally within timeframe for 
+useful feedback.
+Behind the scenes, we may:
+• Discuss the idea with other colleagues in the program
+• Request feedback from other programs if the idea is interdisciplinary or not a good fit for
+our program. This may include:
+• Other programs in IOS and/or BIO and/or other NSF directorates
+• Outside NSF
+11
+What You Should Expect in Response
+Program Director follow-up usually includes:
+• Feedback in an email message if your project is a fit to the program
+• Encouragement to submit a proposal
+• Any specific advice
+• An invitation to schedule a phone or Zoom conversation. This provides an opportunity for
+you to ask specific clarifying questions about:
+• the solicitation, (including solicitation specific criteria);
+• your proposal ideas and preparation; and
+• other NSF funding opportunities that may be appropriate for your project
+If the proposal ideas are not a fit for the program, we will usually provide:
+• Advice on other programs to consider
+• Name of the cognizant Program Director(s)
+12
+What to Do If You Don’t Get a Response?
+Responses to one-pager queries typically take a week to respond.
+Do
+Follow up if you don’t 
+hear back from us in 
+about two weeks (or so)
+Don’t
+Assume we don’t care
+(We get a lot of email)
+If you do not hear back within two weeks, then please send a gentle 
+reminder—we all get busy and we don’t want things to fall through 
+the cracks!
+13
+An Example Template: 
+Include the Following Helpful Information
+First Name, Last Name, Organization Name, Email
+Target Program, Potential Secondary Program(s)
+Proposal Type (full titles provided on the template): Research, CAREER, MCA, RAPID, EAGER, 
+RAISE, GOALI, Conference, Center/Research Infrastructure, or Fellowship.  (Further information on 
+these opportunities can be found in the PROPOSAL & AWARD POLICIES AND PROCEDURES 
+GUIDE (PAPPG) and program solicitations.)
+Relevance to Program: 1-2 sentences about how your research fits the program goals
+Brief Submission Running Title
+Key Terms: up to 6 key words or phrases
+Then add your 1-page Concept Outline: brief overview, intellectual merit, and broader impacts
+14
+15
+Questions?

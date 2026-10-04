@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prg.ai is co-organizing the V4 AI Researchers Meetup</title>
+<style>
+/* Sofia Pro: licensed files supplied by prg.ai (04.10.2026). Not for redistribution. */
+@font-face { font-family: "Sofia Pro"; font-weight: 400; src: url("assets/fonts/sofia-pro/Sofia Pro Regular Az.otf"); }
+@font-face { font-family: "Sofia Pro"; font-weight: 500; src: url("assets/fonts/sofia-pro/Sofia Pro Medium Az.otf"); }
+@font-face { font-family: "Sofia Pro"; font-weight: 600; src: url("assets/fonts/sofia-pro/Sofia Pro Semi Bold Az.otf"); }
+@font-face { font-family: "Sofia Pro"; font-weight: 700; src: url("assets/fonts/sofia-pro/Sofia Pro Bold Az.otf"); }
+@font-face { font-family: Figtree; font-weight: 400; src: url(assets/fonts/figtree-400.ttf); }
+@font-face { font-family: Figtree; font-weight: 500; src: url(assets/fonts/figtree-500.ttf); }
+@font-face { font-family: Figtree; font-weight: 600; src: url(assets/fonts/figtree-600.ttf); }
+@font-face { font-family: Figtree; font-weight: 700; src: url(assets/fonts/figtree-700.ttf); }
+
+@page { size: A4; margin: 0; }
+:root { --blue:#3a50dd; --blue-d:#2238c4; --black:#121526; --black-l:#222849; --gray:#7c829f; --gray-m:#bec2d5; --gray-l:#e7e8e9; --soft:#f3f4fb; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 210mm; height: 297mm; }
+body { font-family: "Sofia Pro", Figtree, sans-serif; color: var(--black); background: #fff; font-size: 9.6pt; line-height: 1.42; }
+.page { position: relative; width: 210mm; height: 297mm; padding: 13mm 15mm 0; }
+
+.top { display: flex; justify-content: space-between; align-items: center; }
+.top .prg { height: 8.5mm; }
+.top .x { display: flex; align-items: center; gap: 2.5mm; font-weight: 600; font-size: 10pt; color: var(--gray); }
+.top .x img { height: 7mm; }
+.top .x b { color: var(--black); font-weight: 700; font-size: 12pt; }
+
+h1 { margin-top: 8mm; font-weight: 700; font-size: 29pt; line-height: 1.07; letter-spacing: -0.015em; }
+h1 span { color: var(--blue); }
+.deck { margin-top: 3mm; font-size: 11.3pt; line-height: 1.42; color: var(--black-l); max-width: 168mm; }
+
+h2 { font-weight: 700; font-size: 13pt; margin-bottom: 2.5mm; }
+
+.what { margin-top: 6mm; display: flex; gap: 8mm; align-items: center; }
+.what .txt { flex: 1.05; }
+.what .txt p { font-size: 10pt; }
+.dia { flex: 1; }
+.pair { display: flex; gap: 2.5mm; }
+.field { flex: 1; border: 0.7pt solid var(--gray-m); border-radius: 2mm; padding: 2.2mm 2.6mm; font-size: 8.2pt; line-height: 1.25; color: var(--black-l); }
+.field b { display: block; font-size: 9pt; color: var(--black); }
+.down { display: flex; justify-content: space-around; color: var(--blue); font-weight: 700; padding: 0.6mm 0; font-size: 10pt; line-height: 1; }
+.method { background: var(--blue); color: #fff; border-radius: 2mm; padding: 2.4mm 3mm; font-size: 9pt; text-align: center; }
+.method b { font-weight: 700; }
+
+.meet { margin-top: 6mm; background: var(--soft); border-radius: 3mm; padding: 5mm 6.5mm 3.5mm; }
+.meet p { font-weight: 700; font-size: 15pt; line-height: 1.22; letter-spacing: -0.005em; }
+.meet p span { color: var(--blue); }
+.chips { margin-top: 3mm; }
+.chip { display: inline-block; background: #fff; border: 0.8pt solid var(--blue); color: var(--blue-d); border-radius: 10mm; padding: 1mm 3.4mm; font-size: 8.8pt; font-weight: 600; margin: 0 1.6mm 1.8mm 0; }
+
+.practical { margin-top: 5.5mm; display: flex; border-radius: 3mm; overflow: hidden; border: 0.7pt solid var(--gray-l); }
+.practical .photo { width: 58mm; height: 29mm; background: url(../../public/assets/castle-day.jpg) center / cover; }
+.practical .items { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1.8mm; padding: 3mm 6mm; }
+.item { display: flex; align-items: center; gap: 3mm; font-size: 10.5pt; }
+.item b { font-weight: 700; }
+.item svg { width: 5.5mm; height: 5.5mm; flex: none; }
+
+.cta { margin-top: 5.5mm; background: var(--black); color: #fff; border-radius: 3mm; padding: 5.5mm 6.5mm; }
+.cta p { font-size: 11.5pt; line-height: 1.45; }
+.cta .who { margin-top: 3.5mm; display: flex; align-items: baseline; gap: 4mm; font-size: 11pt; }
+.cta .who b { font-weight: 700; font-size: 13pt; }
+.cta .who a { color: #8f9cff; font-weight: 600; text-decoration: none; }
+.fine { margin-top: 2.5mm; font-size: 7.8pt; color: var(--gray); }
+
+.logos { margin-top: 6mm; padding-top: 4mm; border-top: 0.6pt solid var(--gray-l); }
+.label { font-size: 7pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 2mm; }
+.logos .row { display: flex; justify-content: space-between; align-items: center; }
+.logos .row img { height: 8.5mm; }
+.logos .row img.tall { height: 10.5mm; }
+.logos .row img.prg { height: 6mm; }
+.logos .fund { margin-top: 3.5mm; display: flex; align-items: center; gap: 4mm; }
+.logos .fund .label { margin: 0; }
+.logos .fund img { height: 11mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <img class="prg" src="assets/prgai-logo.svg" alt="prg.ai">
+    <div class="x">× <img src="../../public/assets/castle-silhouette.png" alt=""><b>V4AIR</b></div>
+  </div>
+
+  <h1>prg.ai is co-organizing the <span>V4&nbsp;AI Researchers Meetup</span></h1>
+  <p class="deck">In April 2027, PhD students and early-career researchers from Czechia, Hungary, Poland and Slovakia who use AI in their research meet for three days near Prague. We are inviting our partners and collaborators to join them.</p>
+
+  <div class="what">
+    <div class="txt">
+      <h2>What V4AIR is</h2>
+      <p>Researchers in many fields use the same AI methods, yet they rarely meet. V4AIR matches them by method, across disciplines.</p>
+    </div>
+    <div class="dia">
+      <div class="pair">
+        <div class="field"><b>Ecology</b>insects on flowers in video</div>
+        <div class="field"><b>Transport</b>cyclists at a busy crossing</div>
+      </div>
+      <div class="down"><svg viewBox="0 0 12 12" width="3mm" height="3mm" fill="none" stroke="#3a50dd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1v9M2.5 6.5 6 10l3.5-3.5"/></svg><svg viewBox="0 0 12 12" width="3mm" height="3mm" fill="none" stroke="#3a50dd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1v9M2.5 6.5 6 10l3.5-3.5"/></svg></div>
+      <div class="method"><b>Same method:</b> tracking many small objects</div>
+    </div>
+  </div>
+
+  <div class="meet">
+    <p>Come meet the foremost <span>Central European AI experts</span> from fields like NLP, computer vision, machine learning and more.</p>
+    <div class="chips">
+      <span class="chip">Machine learning</span><span class="chip">Computer vision</span><span class="chip">Natural language processing</span><span class="chip">Agentic AI</span><span class="chip">Statistical and causal modeling</span><span class="chip">Speech and signal processing</span>
+    </div>
+  </div>
+
+  <div class="practical">
+    <div class="photo"></div>
+    <div class="items">
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="#3a50dd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Kostelec Castle</b>, 30 minutes from Prague</span></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="#3a50dd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><b>28–30 April 2027</b></span></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="#3a50dd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12M9 21v-6h6v6M3 21h18"/></svg><span><b>Three days</b>, with accommodation at the castle</span></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <p>If you're interested in sharing your experience in a talk or workshop, supporting the meetup in other ways, or just participating to meet Central Europe's best talent, reach out to Lenka.</p>
+    <div class="who"><b>Lenka Kučerová</b><span>prg.ai</span><a href="mailto:lenka@prg.ai">lenka@prg.ai</a></div>
+  </div>
+  <p class="fine">The programme is in preparation, and nothing here commits either side.</p>
+
+  <div class="logos">
+    <div class="label">Organised by</div>
+    <div class="row">
+      <img src="assets/charles-university_black.png" alt="Charles University">
+      <img class="tall" src="assets/cvut_black.png" alt="CTU in Prague">
+      <img src="assets/comenius-university_black.png" alt="Comenius University Bratislava">
+      <img src="assets/elte_black.png" alt="ELTE">
+      <img src="assets/umk-torun_black.png" alt="Nicolaus Copernicus University in Toruń">
+      <img src="assets/uwr-wroclaw_black.png" alt="University of Wrocław">
+      <img class="prg" src="assets/prgai-logo.svg" alt="prg.ai">
+    </div>
+    <div class="fund"><span class="label">Funded by</span><img src="assets/visegrad-fund_black.png" alt="International Visegrad Fund"></div>
+  </div>
+
+</div>
+</body>
+</html>

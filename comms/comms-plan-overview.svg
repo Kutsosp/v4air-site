@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1656" viewBox="0 0 1400 1656">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#868e96"/></marker></defs>
+<rect width="1400" height="1656" fill="#fff"/>
+<text x="36.0" y="70.0" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700" fill="#1d2330" text-anchor="start" >V4AIR communication plan</text>
+<rect x="36" y="112" width="1328" height="152" rx="16" fill="#edf2ff"/>
+<path d="M36.0,176 V128 Q36.0,112 52.0,112 H1348.0 Q1364.0,112 1364.0,128 V176 z" fill="#364fc7"/>
+<circle cx="82.0" cy="144.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,133.00) scale(0.917)" fill="none" stroke="#364fc7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</g>
+<text x="114.0" y="153.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Coordinators</text>
+<text x="62.0" y="230.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Petr + Peter lead university outreach and collaborate with other partners</text>
+<line x1="92.0" y1="274" x2="92.0" y2="350" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="319.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Coordinate &amp; provide materials</text>
+<line x1="544.0" y1="264" x2="544.0" y2="360" stroke="#868e96" stroke-width="3"/>
+<text x="564.0" y="319.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Collaborate</text>
+<line x1="996.0" y1="264" x2="996.0" y2="360" stroke="#868e96" stroke-width="3"/>
+<text x="1016.0" y="319.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Collaborate</text>
+<rect x="36.0" y="360" width="424.0" height="260" rx="16" fill="#e3fafc"/>
+<path d="M36.0,424 V376 Q36.0,360 52.0,360 H444.0 Q460.0,360 460.0,376 V424 z" fill="#0b7285"/>
+<circle cx="82.0" cy="392.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,381.00) scale(0.917)" fill="none" stroke="#0b7285" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 18v-7" />
+  <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z" />
+  <path d="M14 18v-7" />
+  <path d="M18 18v-7" />
+  <path d="M3 22h18" />
+  <path d="M6 18v-7" />
+</g>
+<text x="114.0" y="401.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Partner universities</text>
+<text x="62.0" y="478.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#0b7285" text-anchor="start" >6 grant partners</text>
+<g transform="translate(62.0,493.0)"><rect width="36" height="12.0" fill="#fff"/><rect y="12.0" width="36" height="12.0" fill="#D7141A"/><path d="M0,0 L18.0,12.0 L0,24 z" fill="#11457E"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<g transform="translate(106.0,493.0)"><rect width="36" height="12.0" fill="#fff"/><rect y="12.0" width="36" height="12.0" fill="#D7141A"/><path d="M0,0 L18.0,12.0 L0,24 z" fill="#11457E"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<g transform="translate(150.0,493.0)"><rect y="0.0" width="36" height="8.0" fill="#CD2A3E"/><rect y="8.0" width="36" height="8.0" fill="#fff"/><rect y="16.0" width="36" height="8.0" fill="#436F4D"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<g transform="translate(194.0,493.0)"><rect width="36" height="12.0" fill="#fff"/><rect y="12.0" width="36" height="12.0" fill="#DC143C"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<g transform="translate(238.0,493.0)"><rect width="36" height="12.0" fill="#fff"/><rect y="12.0" width="36" height="12.0" fill="#DC143C"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<g transform="translate(282.0,493.0)"><rect y="0.0" width="36" height="8.0" fill="#fff"/><rect y="8.0" width="36" height="8.0" fill="#0B4EA2"/><rect y="16.0" width="36" height="8.0" fill="#EE1C25"/><g transform="scale(1.714)"><path d="M4.2,3 H10.2 V8.2 Q10.2,11.2 7.2,12.4 Q4.2,11.2 4.2,8.2 z" fill="#EE1C25" stroke="#fff" stroke-width="0.8"/><path d="M7.2,4.3 V10.6 M5.6,6.2 H8.8 M5.2,8 H9.2" stroke="#fff" stroke-width="0.9"/></g><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="62.0" y="550.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#0b7285" text-anchor="start" >2 collaborating</text>
+<g transform="translate(62.0,565.0)"><rect width="36" height="12.0" fill="#fff"/><rect y="12.0" width="36" height="12.0" fill="#D7141A"/><path d="M0,0 L18.0,12.0 L0,24 z" fill="#11457E"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<g transform="translate(106.0,565.0)"><rect width="36" height="12.0" fill="#fff"/><rect y="12.0" width="36" height="12.0" fill="#DC143C"/><rect width="36" height="24" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<line x1="92.0" y1="630" x2="92.0" y2="706" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="675.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Represented by lead &amp; contact person</text>
+<rect x="488.0" y="360" width="424.0" height="260" rx="16" fill="#e3fafc"/>
+<path d="M488.0,424 V376 Q488.0,360 504.0,360 H896.0 Q912.0,360 912.0,376 V424 z" fill="#0b7285"/>
+<circle cx="534.0" cy="392.0" r="20" fill="#fff"/>
+<g transform="translate(523.00,381.00) scale(0.917)" fill="none" stroke="#0b7285" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 12h4" />
+  <path d="M10 8h4" />
+  <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+  <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+  <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+</g>
+<text x="566.0" y="401.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Industry partners</text>
+<circle cx="519.0" cy="469" r="4.5" fill="#0b7285"/>
+<text x="536.0" y="478.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#343a40" text-anchor="start" >prg.ai</text>
+<g opacity="0.5">
+<circle cx="519.0" cy="505" r="4.5" fill="#0b7285"/>
+<rect x="536.0" y="488.0" width="138.8" height="34" rx="17" fill="#fff" fill-opacity="0.6" stroke="#0b7285" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="548.0" y="514.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >MakeMore</text>
+</g>
+<line x1="544.0" y1="630" x2="544.0" y2="706" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="940.0" y="360" width="424.0" height="260" rx="16" fill="#e3fafc"/>
+<path d="M940.0,424 V376 Q940.0,360 956.0,360 H1348.0 Q1364.0,360 1364.0,376 V424 z" fill="#0b7285"/>
+<circle cx="986.0" cy="392.0" r="20" fill="#fff"/>
+<g transform="translate(975.00,381.00) scale(0.917)" fill="none" stroke="#0b7285" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M15 18h-5" />
+  <path d="M18 14h-8" />
+  <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" />
+  <rect width="8" height="4" x="10" y="6" rx="1" />
+</g>
+<text x="1018.0" y="401.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Public outreach partners</text>
+<circle cx="971.0" cy="469" r="4.5" fill="#0b7285"/>
+<text x="988.0" y="478.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#343a40" text-anchor="start" >prg.ai</text>
+<g opacity="0.5">
+<circle cx="971.0" cy="505" r="4.5" fill="#0b7285"/>
+<rect x="988.0" y="488.0" width="205.7" height="34" rx="17" fill="#fff" fill-opacity="0.6" stroke="#0b7285" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="1000.0" y="514.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Czech Promotion</text>
+</g>
+<line x1="996.0" y1="630" x2="996.0" y2="706" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="36.0" y="716" width="424.0" height="188" rx="16" fill="#f3f0ff"/>
+<path d="M36.0,780 V732 Q36.0,716 52.0,716 H444.0 Q460.0,716 460.0,732 V780 z" fill="#6741d9"/>
+<circle cx="82.0" cy="748.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,737.00) scale(0.917)" fill="none" stroke="#6741d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</g>
+<text x="114.0" y="757.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Local team</text>
+<circle cx="67.0" cy="825" r="4.5" fill="#6741d9"/>
+<text x="84.0" y="834.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Lead</text>
+<circle cx="67.0" cy="861" r="4.5" fill="#6741d9"/>
+<text x="84.0" y="870.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Contact person</text>
+<line x1="92.0" y1="914" x2="92.0" y2="990" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="959.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Contact person finds channels and posts</text>
+<rect x="488.0" y="716" width="424.0" height="188" rx="16" fill="#fff" stroke="#6741d9" stroke-width="2.5" stroke-dasharray="10 7"/>
+<circle cx="534.0" cy="748.0" r="20" fill="#6741d9"/>
+<g transform="translate(523.00,737.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</g>
+<text x="566.0" y="757.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#6741d9" text-anchor="start" >Team</text>
+<line x1="506.0" y1="780" x2="894.0" y2="780" stroke="#6741d9" stroke-width="2" stroke-dasharray="7 6" opacity="0.45"/>
+<text x="700.0" y="872.0" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="700" fill="#6741d9" text-anchor="middle" fill-opacity="0.3">?</text>
+<line x1="544.0" y1="914" x2="544.0" y2="990" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="940.0" y="716" width="424.0" height="188" rx="16" fill="#fff" stroke="#6741d9" stroke-width="2.5" stroke-dasharray="10 7"/>
+<circle cx="986.0" cy="748.0" r="20" fill="#6741d9"/>
+<g transform="translate(975.00,737.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</g>
+<text x="1018.0" y="757.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#6741d9" text-anchor="start" >Team</text>
+<line x1="958.0" y1="780" x2="1346.0" y2="780" stroke="#6741d9" stroke-width="2" stroke-dasharray="7 6" opacity="0.45"/>
+<text x="1152.0" y="872.0" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="700" fill="#6741d9" text-anchor="middle" fill-opacity="0.3">?</text>
+<line x1="996.0" y1="914" x2="996.0" y2="990" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="36.0" y="1000" width="424.0" height="260" rx="16" fill="#fff4e6"/>
+<path d="M36.0,1064 V1016 Q36.0,1000 52.0,1000 H444.0 Q460.0,1000 460.0,1016 V1064 z" fill="#d9480f"/>
+<circle cx="82.0" cy="1032.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,1021.00) scale(0.917)" fill="none" stroke="#d9480f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+  <path d="M8 6v8" />
+</g>
+<text x="114.0" y="1041.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Channels</text>
+<circle cx="67.0" cy="1109" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1118.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Websites</text>
+<circle cx="67.0" cy="1145" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1154.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Social media</text>
+<circle cx="67.0" cy="1181" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1190.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Newsletters</text>
+<circle cx="67.0" cy="1217" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1226.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Posters</text>
+<line x1="92.0" y1="1270" x2="92.0" y2="1346" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="1315.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >The call reaches each audience</text>
+<rect x="488.0" y="1000" width="424.0" height="260" rx="16" fill="#fff" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="10 7"/>
+<circle cx="534.0" cy="1032.0" r="20" fill="#d9480f"/>
+<g transform="translate(523.00,1021.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+  <path d="M8 6v8" />
+</g>
+<text x="566.0" y="1041.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#d9480f" text-anchor="start" >Channels</text>
+<line x1="506.0" y1="1064" x2="894.0" y2="1064" stroke="#d9480f" stroke-width="2" stroke-dasharray="7 6" opacity="0.45"/>
+<text x="700.0" y="1192.0" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="700" fill="#d9480f" text-anchor="middle" fill-opacity="0.3">?</text>
+<line x1="544.0" y1="1270" x2="544.0" y2="1346" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="940.0" y="1000" width="424.0" height="260" rx="16" fill="#fff" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="10 7"/>
+<circle cx="986.0" cy="1032.0" r="20" fill="#d9480f"/>
+<g transform="translate(975.00,1021.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+  <path d="M8 6v8" />
+</g>
+<text x="1018.0" y="1041.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#d9480f" text-anchor="start" >Channels</text>
+<line x1="958.0" y1="1064" x2="1346.0" y2="1064" stroke="#d9480f" stroke-width="2" stroke-dasharray="7 6" opacity="0.45"/>
+<text x="1152.0" y="1192.0" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="700" fill="#d9480f" text-anchor="middle" fill-opacity="0.3">?</text>
+<line x1="996.0" y1="1270" x2="996.0" y2="1346" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="36.0" y="1356" width="424.0" height="260" rx="16" fill="#fff0f6"/>
+<path d="M36.0,1420 V1372 Q36.0,1356 52.0,1356 H444.0 Q460.0,1356 460.0,1372 V1420 z" fill="#a61e4d"/>
+<circle cx="82.0" cy="1388.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,1377.00) scale(0.917)" fill="none" stroke="#a61e4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+  <path d="M22 10v6" />
+  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+</g>
+<text x="114.0" y="1397.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Audiences</text>
+<circle cx="67.0" cy="1465" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="1474.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >ECRs</text>
+<circle cx="67.0" cy="1501" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="1510.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Students</text>
+<circle cx="67.0" cy="1537" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="1546.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Tech transfer offices</text>
+<circle cx="67.0" cy="1573" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="1582.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >University officials</text>
+<rect x="488.0" y="1356" width="424.0" height="260" rx="16" fill="#fff0f6"/>
+<path d="M488.0,1420 V1372 Q488.0,1356 504.0,1356 H896.0 Q912.0,1356 912.0,1372 V1420 z" fill="#a61e4d"/>
+<circle cx="534.0" cy="1388.0" r="20" fill="#fff"/>
+<g transform="translate(523.00,1377.00) scale(0.917)" fill="none" stroke="#a61e4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 12h.01" />
+  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+  <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+  <rect width="20" height="14" x="2" y="6" rx="2" />
+</g>
+<text x="566.0" y="1397.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Audiences</text>
+<g opacity="0.5">
+<circle cx="519.0" cy="1465" r="4.5" fill="#a61e4d"/>
+<rect x="536.0" y="1448.0" width="193.4" height="34" rx="17" fill="#fff" fill-opacity="0.6" stroke="#a61e4d" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="548.0" y="1474.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Industry experts</text>
+</g>
+<g opacity="0.5">
+<circle cx="519.0" cy="1501" r="4.5" fill="#a61e4d"/>
+<rect x="536.0" y="1484.0" width="275.8" height="34" rx="17" fill="#fff" fill-opacity="0.6" stroke="#a61e4d" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="548.0" y="1510.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Managers and founders</text>
+</g>
+<g opacity="0.5">
+<circle cx="519.0" cy="1537" r="4.5" fill="#a61e4d"/>
+<rect x="536.0" y="1520.0" width="118.9" height="34" rx="17" fill="#fff" fill-opacity="0.6" stroke="#a61e4d" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="548.0" y="1546.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Investors</text>
+</g>
+<rect x="940.0" y="1356" width="424.0" height="260" rx="16" fill="#fff0f6"/>
+<path d="M940.0,1420 V1372 Q940.0,1356 956.0,1356 H1348.0 Q1364.0,1356 1364.0,1372 V1420 z" fill="#a61e4d"/>
+<circle cx="986.0" cy="1388.0" r="20" fill="#fff"/>
+<g transform="translate(975.00,1377.00) scale(0.917)" fill="none" stroke="#a61e4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 21a8 8 0 0 0-16 0" />
+  <circle cx="10" cy="8" r="5" />
+  <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+</g>
+<text x="1018.0" y="1397.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start" >Audiences</text>
+<circle cx="971.0" cy="1465" r="4.5" fill="#a61e4d"/>
+<text x="988.0" y="1474.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >General public</text>
+</svg>

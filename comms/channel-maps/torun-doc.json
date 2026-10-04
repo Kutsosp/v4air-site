@@ -1,0 +1,2909 @@
+{
+ "title": "TORUN Departments/Speakers Suggestions",
+ "body": {
+  "content": [
+   {
+    "endIndex": 1,
+    "sectionBreak": {
+     "sectionStyle": {
+      "columnSeparatorStyle": "NONE",
+      "contentDirection": "LEFT_TO_RIGHT",
+      "sectionType": "CONTINUOUS"
+     }
+    }
+   },
+   {
+    "startIndex": 1,
+    "endIndex": 15,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1,
+       "endIndex": 15,
+       "textRun": {
+        "content": "NCU Faculties\n",
+        "textStyle": {
+         "underline": true,
+         "weightedFontFamily": {
+          "fontFamily": "Arial",
+          "weight": 400
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "headingId": "h.s0r3gtkk23n8",
+      "namedStyleType": "HEADING_1",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 15,
+    "endIndex": 16,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 15,
+       "endIndex": 16,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 16,
+    "endIndex": 43,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 16,
+       "endIndex": 43,
+       "textRun": {
+        "content": "Higher Priority Faculties:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 43,
+    "endIndex": 44,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 43,
+       "endIndex": 44,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 44,
+    "endIndex": 65,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 44,
+       "endIndex": 64,
+       "textRun": {
+        "content": "Faculty of Chemistry",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.chem.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 64,
+       "endIndex": 65,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 65,
+    "endIndex": 107,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 65,
+       "endIndex": 106,
+       "textRun": {
+        "content": "Faculty of Philosophy and Social Sciences",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "http://www.wfins.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 106,
+       "endIndex": 107,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 107,
+    "endIndex": 161,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 107,
+       "endIndex": 160,
+       "textRun": {
+        "content": "Faculty of Physics, Astronomy and Applied Informatics",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.fizyka.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 160,
+       "endIndex": 161,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 161,
+    "endIndex": 183,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 161,
+       "endIndex": 182,
+       "textRun": {
+        "content": "Faculty of Humanities",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.human.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 182,
+       "endIndex": 183,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 183,
+    "endIndex": 229,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 183,
+       "endIndex": 228,
+       "textRun": {
+        "content": "Faculty of Biological and Veterinary Sciences",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.biol.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 228,
+       "endIndex": 229,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 229,
+    "endIndex": 273,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 229,
+       "endIndex": 272,
+       "textRun": {
+        "content": "Faculty of Economic Sciences and Management",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.econ.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 272,
+       "endIndex": 273,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 273,
+    "endIndex": 323,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 273,
+       "endIndex": 322,
+       "textRun": {
+        "content": "Faculty of Political Science and Security Studies",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.wnopib.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 322,
+       "endIndex": 323,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 323,
+    "endIndex": 372,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 323,
+       "endIndex": 371,
+       "textRun": {
+        "content": "Faculty of Earth Sciences and Spatial Management",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.geo.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 371,
+       "endIndex": 372,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 372,
+    "endIndex": 373,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 372,
+       "endIndex": 373,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 373,
+    "endIndex": 374,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 373,
+       "endIndex": 374,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 374,
+    "endIndex": 399,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 374,
+       "endIndex": 399,
+       "textRun": {
+        "content": "Lower Priority Faculties\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 399,
+    "endIndex": 400,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 399,
+       "endIndex": 400,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 400,
+    "endIndex": 444,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 400,
+       "endIndex": 443,
+       "textRun": {
+        "content": "Faculty of Mathematics and Computer Science",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.mat.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 443,
+       "endIndex": 444,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 444,
+    "endIndex": 475,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 444,
+       "endIndex": 474,
+       "textRun": {
+        "content": "Faculty of Historical Sciences",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.wnh.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 474,
+       "endIndex": 475,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 475,
+    "endIndex": 509,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 475,
+       "endIndex": 508,
+       "textRun": {
+        "content": "Faculty of Law and Administration",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.law.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 508,
+       "endIndex": 509,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 509,
+    "endIndex": 530,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 509,
+       "endIndex": 529,
+       "textRun": {
+        "content": "Faculty of Fine Arts",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://art.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 529,
+       "endIndex": 530,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 530,
+    "endIndex": 550,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 530,
+       "endIndex": 549,
+       "textRun": {
+        "content": "Faculty of Theology",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.teologia.umk.pl/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 549,
+       "endIndex": 550,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 550,
+    "endIndex": 551,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 550,
+       "endIndex": 551,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 551,
+    "endIndex": 552,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 551,
+       "endIndex": 552,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 552,
+    "endIndex": 553,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 552,
+       "endIndex": 553,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 553,
+    "endIndex": 561,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 553,
+       "endIndex": 561,
+       "textRun": {
+        "content": "Experts\n",
+        "textStyle": {
+         "underline": true,
+         "weightedFontFamily": {
+          "fontFamily": "Arial",
+          "weight": 400
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "headingId": "h.vzz5yn2l1avk",
+      "namedStyleType": "HEADING_1",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 561,
+    "endIndex": 562,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 561,
+       "endIndex": 562,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 562,
+    "endIndex": 720,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 562,
+       "endIndex": 631,
+       "textRun": {
+        "content": "Two people who may be worth considering to be the invited \u201cexperts\u201d (",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 631,
+       "endIndex": 715,
+       "textRun": {
+        "content": "importantly, both are friends of the lab, meaning that they should be trustworthy :)",
+        "textStyle": {
+         "backgroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 1,
+            "green": 0.9490196,
+            "blue": 0.8
+           }
+          }
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 715,
+       "endIndex": 720,
+       "textRun": {
+        "content": ") = \n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 720,
+    "endIndex": 721,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 720,
+       "endIndex": 721,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 721,
+    "endIndex": 738,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 721,
+       "endIndex": 738,
+       "textRun": {
+        "content": "Albert \u0141ukasik. \n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "magnitude": 18,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 36,
+       "unit": "PT"
+      }
+     },
+     "bullet": {
+      "listId": "kix.j74gfkmcfz1f",
+      "textStyle": {}
+     }
+    }
+   },
+   {
+    "startIndex": 738,
+    "endIndex": 739,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 738,
+       "endIndex": 739,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "unit": "PT"
+      },
+      "indentStart": {
+       "unit": "PT"
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 739,
+    "endIndex": 1148,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 739,
+       "endIndex": 838,
+       "textRun": {
+        "content": "Current PhD student (close to the end of the programme). In his words, his research is focused on \u201c",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 838,
+       "endIndex": 934,
+       "textRun": {
+        "content": "the study of the social foundations of interactions between humans and artificial intelligence\u201d.",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 934,
+       "endIndex": 999,
+       "textRun": {
+        "content": " One of the co-founders of Mind Easy, a bio-tech start up which \u201c",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 999,
+       "endIndex": 1146,
+       "textRun": {
+        "content": "develops systems based on AI and biometrics that enable dynamic adaptation of the environment and content to the user's psychophysiological state\u201d.",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 1146,
+       "endIndex": 1148,
+       "textRun": {
+        "content": " \n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "unit": "PT"
+      },
+      "indentStart": {
+       "unit": "PT"
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 1148,
+    "endIndex": 1149,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1148,
+       "endIndex": 1149,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1149,
+    "endIndex": 1156,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1149,
+       "endIndex": 1156,
+       "textRun": {
+        "content": "Links:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1156,
+    "endIndex": 1228,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1156,
+       "endIndex": 1227,
+       "textRun": {
+        "content": "https://cognitivescience.umk.pl/index.php/academic-staff/albertlukasik/",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://cognitivescience.umk.pl/index.php/academic-staff/albertlukasik/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 1227,
+       "endIndex": 1228,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1228,
+    "endIndex": 1270,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1228,
+       "endIndex": 1269,
+       "textRun": {
+        "content": "https://pl.linkedin.com/in/albert-lukasik",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://pl.linkedin.com/in/albert-lukasik"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 1269,
+       "endIndex": 1270,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1270,
+    "endIndex": 1291,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1270,
+       "endIndex": 1290,
+       "textRun": {
+        "content": "https://mindeasy.me/",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://mindeasy.me/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 1290,
+       "endIndex": 1291,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1291,
+    "endIndex": 1292,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1291,
+       "endIndex": 1292,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1292,
+    "endIndex": 1293,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1292,
+       "endIndex": 1293,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1293,
+    "endIndex": 1313,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1293,
+       "endIndex": 1313,
+       "textRun": {
+        "content": "Miros\u0142aw Manelski. \n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "magnitude": 18,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 36,
+       "unit": "PT"
+      }
+     },
+     "bullet": {
+      "listId": "kix.j74gfkmcfz1f",
+      "textStyle": {}
+     }
+    }
+   },
+   {
+    "startIndex": 1313,
+    "endIndex": 1314,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1313,
+       "endIndex": 1314,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "unit": "PT"
+      },
+      "indentStart": {
+       "unit": "PT"
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 1314,
+    "endIndex": 1805,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1314,
+       "endIndex": 1347,
+       "textRun": {
+        "content": "An external lecturer at NCU, and ",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 1347,
+       "endIndex": 1703,
+       "textRun": {
+        "content": "Training and Development Specialist at Torun Technology Park. According to one of his profiles, he \u201cfacilitates workshops and training sessions aimed at fostering innovation and entrepreneurship among students and young professionals\u201d. He is currently a board manager at a company called SIMPLITO, which advertises that one of its tasks is developing the \u201c",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 1703,
+       "endIndex": 1804,
+       "textRun": {
+        "content": "DeepFellow Framework for deploying private AI in local infrastructure and creating dedicated agents\u201d.",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 1804,
+       "endIndex": 1805,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "unit": "PT"
+      },
+      "indentStart": {
+       "unit": "PT"
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 1805,
+    "endIndex": 1806,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1805,
+       "endIndex": 1806,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1806,
+    "endIndex": 1813,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1806,
+       "endIndex": 1813,
+       "textRun": {
+        "content": "Links:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1813,
+    "endIndex": 1854,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1813,
+       "endIndex": 1853,
+       "textRun": {
+        "content": "https://uk.linkedin.com/in/mirekmanelski",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://uk.linkedin.com/in/mirekmanelski"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 1853,
+       "endIndex": 1854,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1854,
+    "endIndex": 1893,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1854,
+       "endIndex": 1893,
+       "textRun": {
+        "content": "https://me.sh/profile/mirosaw-manelski\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1893,
+    "endIndex": 1894,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1893,
+       "endIndex": 1894,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1894,
+    "endIndex": 1895,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1894,
+       "endIndex": 1895,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1895,
+    "endIndex": 1915,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1895,
+       "endIndex": 1915,
+       "textRun": {
+        "content": "Roland Muehlenbernd\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "magnitude": 18,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 36,
+       "unit": "PT"
+      }
+     },
+     "bullet": {
+      "listId": "kix.j74gfkmcfz1f",
+      "textStyle": {
+       "underline": false
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 1915,
+    "endIndex": 1916,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1915,
+       "endIndex": 1916,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1916,
+    "endIndex": 1970,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1916,
+       "endIndex": 1970,
+       "textRun": {
+        "content": "This is how Roland describes himself on his linkedin:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1970,
+    "endIndex": 1971,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1970,
+       "endIndex": 1971,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 1971,
+    "endIndex": 2064,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 1971,
+       "endIndex": 1972,
+       "textRun": {
+        "content": "\u201c",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 1972,
+       "endIndex": 2064,
+       "textRun": {
+        "content": "I build ML models of language \u2014 and I evaluate whether today's LLMs actually understand it.\n",
+        "textStyle": {
+         "fontSize": {
+          "magnitude": 10.5,
+          "unit": "PT"
+         },
+         "weightedFontFamily": {
+          "fontFamily": "Roboto",
+          "weight": 400
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2064,
+    "endIndex": 2065,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2064,
+       "endIndex": 2065,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2065,
+    "endIndex": 2310,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2065,
+       "endIndex": 2310,
+       "textRun": {
+        "content": "My current work develops novel calibration metrics (ESR, CDS) to benchmark frontier models (GPT-4, Claude, Gemini) on fine-grained social and pragmatic tasks. A paper on this work was accepted at CMCL 2026, with a follow-up targeting ACL/EMNLP.\n",
+        "textStyle": {
+         "fontSize": {
+          "magnitude": 10.5,
+          "unit": "PT"
+         },
+         "weightedFontFamily": {
+          "fontFamily": "Roboto",
+          "weight": 400
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2310,
+    "endIndex": 2311,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2310,
+       "endIndex": 2311,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2311,
+    "endIndex": 2589,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2311,
+       "endIndex": 2589,
+       "textRun": {
+        "content": "My background spans Computer Science (BSc, Paderborn), Interdisciplinary Media Studies (MSc, Bielefeld), and Computational Linguistics (PhD, T\u00fcbingen) \u2014 15+ years of rigorous modeling across game theory, multi-agent RL, probabilistic NLP, and now transformer-based evaluation.\u201d\n",
+        "textStyle": {
+         "fontSize": {
+          "magnitude": 10.5,
+          "unit": "PT"
+         },
+         "weightedFontFamily": {
+          "fontFamily": "Roboto",
+          "weight": 400
+         }
+        }
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2589,
+    "endIndex": 2590,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2589,
+       "endIndex": 2590,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2590,
+    "endIndex": 2597,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2590,
+       "endIndex": 2597,
+       "textRun": {
+        "content": "Links:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2597,
+    "endIndex": 2645,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2597,
+       "endIndex": 2644,
+       "textRun": {
+        "content": "https://www.linkedin.com/in/rolandmuehlenbernd/",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.linkedin.com/in/rolandmuehlenbernd/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 2644,
+       "endIndex": 2645,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2645,
+    "endIndex": 2675,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2645,
+       "endIndex": 2674,
+       "textRun": {
+        "content": "https://www.muehlenbernd.net/",
+        "textStyle": {}
+       }
+      },
+      {
+       "startIndex": 2674,
+       "endIndex": 2675,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2675,
+    "endIndex": 2676,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2675,
+       "endIndex": 2676,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2676,
+    "endIndex": 2677,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2676,
+       "endIndex": 2677,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2677,
+    "endIndex": 2678,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2677,
+       "endIndex": 2678,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2678,
+    "endIndex": 2692,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2678,
+       "endIndex": 2692,
+       "textRun": {
+        "content": "Monika Kotus \n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "magnitude": 18,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 36,
+       "unit": "PT"
+      }
+     },
+     "bullet": {
+      "listId": "kix.j74gfkmcfz1f",
+      "textStyle": {
+       "underline": false
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 2692,
+    "endIndex": 2935,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2692,
+       "endIndex": 2935,
+       "textRun": {
+        "content": "Monika is an AI advisor, who is closely tied to the lab, and has worked with NCU on big projects before (grant preparation etc.). I think she would have a lot of expertise from the practical side - preparing agents for specialised tasks, etc.\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2935,
+    "endIndex": 2936,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2935,
+       "endIndex": 2936,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2936,
+    "endIndex": 2937,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2936,
+       "endIndex": 2937,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2937,
+    "endIndex": 2944,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2937,
+       "endIndex": 2944,
+       "textRun": {
+        "content": "Links:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2944,
+    "endIndex": 2976,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2944,
+       "endIndex": 2975,
+       "textRun": {
+        "content": "https://www.monikakotus.com/en/",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.monikakotus.com/en/"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 2975,
+       "endIndex": 2976,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 2976,
+    "endIndex": 3027,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 2976,
+       "endIndex": 3026,
+       "textRun": {
+        "content": "https://www.linkedin.com/in/monikakotus/?locale=pl",
+        "textStyle": {
+         "underline": true,
+         "foregroundColor": {
+          "color": {
+           "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+           }
+          }
+         },
+         "link": {
+          "url": "https://www.linkedin.com/in/monikakotus/?locale=pl"
+         }
+        }
+       }
+      },
+      {
+       "startIndex": 3026,
+       "endIndex": 3027,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3027,
+    "endIndex": 3028,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3027,
+       "endIndex": 3028,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3028,
+    "endIndex": 3029,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3028,
+       "endIndex": 3029,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3029,
+    "endIndex": 3043,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3029,
+       "endIndex": 3043,
+       "textRun": {
+        "content": "Dariusz Danel\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT",
+      "indentFirstLine": {
+       "magnitude": 18,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 36,
+       "unit": "PT"
+      }
+     },
+     "bullet": {
+      "listId": "kix.j74gfkmcfz1f",
+      "textStyle": {
+       "underline": false
+      }
+     }
+    }
+   },
+   {
+    "startIndex": 3043,
+    "endIndex": 3044,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3043,
+       "endIndex": 3044,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3044,
+    "endIndex": 3212,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3044,
+       "endIndex": 3212,
+       "textRun": {
+        "content": "Darek is a biologist, but I assume he must have some AI expertise if S\u0142awek recommends him. I couldn\u2019t find too much info, so S\u0142awek would have to chip in and specify.\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3212,
+    "endIndex": 3213,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3212,
+       "endIndex": 3213,
+       "textRun": {
+        "content": "\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3213,
+    "endIndex": 3220,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3213,
+       "endIndex": 3220,
+       "textRun": {
+        "content": "Links:\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   },
+   {
+    "startIndex": 3220,
+    "endIndex": 3263,
+    "paragraph": {
+     "elements": [
+      {
+       "startIndex": 3220,
+       "endIndex": 3263,
+       "textRun": {
+        "content": "https://www.linkedin.com/in/dariusz-danel/\n",
+        "textStyle": {}
+       }
+      }
+     ],
+     "paragraphStyle": {
+      "namedStyleType": "NORMAL_TEXT",
+      "direction": "LEFT_TO_RIGHT"
+     }
+    }
+   }
+  ]
+ },
+ "documentStyle": {
+  "background": {
+   "color": {}
+  },
+  "pageNumberStart": 1,
+  "marginTop": {
+   "magnitude": 72,
+   "unit": "PT"
+  },
+  "marginBottom": {
+   "magnitude": 72,
+   "unit": "PT"
+  },
+  "marginRight": {
+   "magnitude": 72,
+   "unit": "PT"
+  },
+  "marginLeft": {
+   "magnitude": 72,
+   "unit": "PT"
+  },
+  "pageSize": {
+   "height": {
+    "magnitude": 841.8897637795277,
+    "unit": "PT"
+   },
+   "width": {
+    "magnitude": 595.2755905511812,
+    "unit": "PT"
+   }
+  },
+  "marginHeader": {
+   "magnitude": 36,
+   "unit": "PT"
+  },
+  "marginFooter": {
+   "magnitude": 36,
+   "unit": "PT"
+  },
+  "useCustomHeaderFooterMargins": true,
+  "documentFormat": {
+   "documentMode": "PAGES"
+  }
+ },
+ "namedStyles": {
+  "styles": [
+   {
+    "namedStyleType": "NORMAL_TEXT",
+    "textStyle": {
+     "bold": false,
+     "italic": false,
+     "underline": false,
+     "strikethrough": false,
+     "smallCaps": false,
+     "backgroundColor": {},
+     "foregroundColor": {
+      "color": {
+       "rgbColor": {}
+      }
+     },
+     "fontSize": {
+      "magnitude": 11,
+      "unit": "PT"
+     },
+     "weightedFontFamily": {
+      "fontFamily": "Arial",
+      "weight": 400
+     },
+     "baselineOffset": "NONE"
+    },
+    "paragraphStyle": {
+     "namedStyleType": "NORMAL_TEXT",
+     "alignment": "START",
+     "lineSpacing": 115,
+     "direction": "LEFT_TO_RIGHT",
+     "spacingMode": "COLLAPSE_LISTS",
+     "spaceAbove": {
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "unit": "PT"
+     },
+     "borderBetween": {
+      "color": {},
+      "width": {
+       "unit": "PT"
+      },
+      "padding": {
+       "unit": "PT"
+      },
+      "dashStyle": "SOLID"
+     },
+     "borderTop": {
+      "color": {},
+      "width": {
+       "unit": "PT"
+      },
+      "padding": {
+       "unit": "PT"
+      },
+      "dashStyle": "SOLID"
+     },
+     "borderBottom": {
+      "color": {},
+      "width": {
+       "unit": "PT"
+      },
+      "padding": {
+       "unit": "PT"
+      },
+      "dashStyle": "SOLID"
+     },
+     "borderLeft": {
+      "color": {},
+      "width": {
+       "unit": "PT"
+      },
+      "padding": {
+       "unit": "PT"
+      },
+      "dashStyle": "SOLID"
+     },
+     "borderRight": {
+      "color": {},
+      "width": {
+       "unit": "PT"
+      },
+      "padding": {
+       "unit": "PT"
+      },
+      "dashStyle": "SOLID"
+     },
+     "indentFirstLine": {
+      "unit": "PT"
+     },
+     "indentStart": {
+      "unit": "PT"
+     },
+     "indentEnd": {
+      "unit": "PT"
+     },
+     "keepLinesTogether": false,
+     "keepWithNext": false,
+     "avoidWidowAndOrphan": true,
+     "shading": {
+      "backgroundColor": {}
+     },
+     "pageBreakBefore": false
+    }
+   },
+   {
+    "namedStyleType": "HEADING_1",
+    "textStyle": {
+     "fontSize": {
+      "magnitude": 12,
+      "unit": "PT"
+     },
+     "weightedFontFamily": {
+      "fontFamily": "Times New Roman",
+      "weight": 400
+     }
+    },
+    "paragraphStyle": {
+     "namedStyleType": "NORMAL_TEXT",
+     "alignment": "JUSTIFIED",
+     "lineSpacing": 150,
+     "direction": "LEFT_TO_RIGHT",
+     "keepLinesTogether": true,
+     "keepWithNext": true
+    }
+   },
+   {
+    "namedStyleType": "HEADING_2",
+    "textStyle": {
+     "fontSize": {
+      "magnitude": 12,
+      "unit": "PT"
+     },
+     "weightedFontFamily": {
+      "fontFamily": "Times New Roman",
+      "weight": 400
+     }
+    },
+    "paragraphStyle": {
+     "headingId": "h.yc8kcnvxvmxz",
+     "namedStyleType": "HEADING_2",
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "magnitude": 18,
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 6,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true
+    }
+   },
+   {
+    "namedStyleType": "HEADING_3",
+    "textStyle": {
+     "fontSize": {
+      "magnitude": 12,
+      "unit": "PT"
+     },
+     "weightedFontFamily": {
+      "fontFamily": "Times New Roman",
+      "weight": 400
+     }
+    },
+    "paragraphStyle": {
+     "headingId": "h.gc1bp5dmg4be",
+     "namedStyleType": "HEADING_3",
+     "alignment": "JUSTIFIED",
+     "lineSpacing": 150,
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "magnitude": 16,
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 4,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true
+    }
+   },
+   {
+    "namedStyleType": "HEADING_4",
+    "textStyle": {
+     "fontSize": {
+      "magnitude": 12,
+      "unit": "PT"
+     },
+     "weightedFontFamily": {
+      "fontFamily": "Times New Roman",
+      "weight": 400
+     }
+    },
+    "paragraphStyle": {
+     "headingId": "h.8c12xrargbxw",
+     "namedStyleType": "HEADING_4",
+     "alignment": "JUSTIFIED",
+     "lineSpacing": 150,
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "magnitude": 14,
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 4,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true
+    }
+   },
+   {
+    "namedStyleType": "HEADING_5",
+    "textStyle": {
+     "foregroundColor": {
+      "color": {
+       "rgbColor": {
+        "red": 0.4,
+        "green": 0.4,
+        "blue": 0.4
+       }
+      }
+     },
+     "fontSize": {
+      "magnitude": 11,
+      "unit": "PT"
+     }
+    },
+    "paragraphStyle": {
+     "namedStyleType": "NORMAL_TEXT",
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "magnitude": 12,
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 4,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true,
+     "pageBreakBefore": false
+    }
+   },
+   {
+    "namedStyleType": "HEADING_6",
+    "textStyle": {
+     "italic": true,
+     "foregroundColor": {
+      "color": {
+       "rgbColor": {
+        "red": 0.4,
+        "green": 0.4,
+        "blue": 0.4
+       }
+      }
+     },
+     "fontSize": {
+      "magnitude": 11,
+      "unit": "PT"
+     }
+    },
+    "paragraphStyle": {
+     "namedStyleType": "NORMAL_TEXT",
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "magnitude": 12,
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 4,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true,
+     "pageBreakBefore": false
+    }
+   },
+   {
+    "namedStyleType": "TITLE",
+    "textStyle": {
+     "fontSize": {
+      "magnitude": 26,
+      "unit": "PT"
+     }
+    },
+    "paragraphStyle": {
+     "namedStyleType": "NORMAL_TEXT",
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 3,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true,
+     "pageBreakBefore": false
+    }
+   },
+   {
+    "namedStyleType": "SUBTITLE",
+    "textStyle": {
+     "italic": false,
+     "foregroundColor": {
+      "color": {
+       "rgbColor": {
+        "red": 0.4,
+        "green": 0.4,
+        "blue": 0.4
+       }
+      }
+     },
+     "fontSize": {
+      "magnitude": 15,
+      "unit": "PT"
+     },
+     "weightedFontFamily": {
+      "fontFamily": "Arial",
+      "weight": 400
+     }
+    },
+    "paragraphStyle": {
+     "namedStyleType": "NORMAL_TEXT",
+     "direction": "LEFT_TO_RIGHT",
+     "spaceAbove": {
+      "unit": "PT"
+     },
+     "spaceBelow": {
+      "magnitude": 16,
+      "unit": "PT"
+     },
+     "keepLinesTogether": true,
+     "keepWithNext": true,
+     "pageBreakBefore": false
+    }
+   }
+  ]
+ },
+ "lists": {
+  "kix.j74gfkmcfz1f": {
+   "listProperties": {
+    "nestingLevels": [
+     {
+      "bulletAlignment": "START",
+      "glyphType": "DECIMAL",
+      "glyphFormat": "%0.",
+      "indentFirstLine": {
+       "magnitude": 18,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 36,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "START",
+      "glyphType": "ALPHA",
+      "glyphFormat": "%1.",
+      "indentFirstLine": {
+       "magnitude": 54,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 72,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "END",
+      "glyphType": "ROMAN",
+      "glyphFormat": "%2.",
+      "indentFirstLine": {
+       "magnitude": 90,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 108,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "START",
+      "glyphType": "DECIMAL",
+      "glyphFormat": "%3.",
+      "indentFirstLine": {
+       "magnitude": 126,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 144,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "START",
+      "glyphType": "ALPHA",
+      "glyphFormat": "%4.",
+      "indentFirstLine": {
+       "magnitude": 162,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 180,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "END",
+      "glyphType": "ROMAN",
+      "glyphFormat": "%5.",
+      "indentFirstLine": {
+       "magnitude": 198,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 216,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "START",
+      "glyphType": "DECIMAL",
+      "glyphFormat": "%6.",
+      "indentFirstLine": {
+       "magnitude": 234,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 252,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "START",
+      "glyphType": "ALPHA",
+      "glyphFormat": "%7.",
+      "indentFirstLine": {
+       "magnitude": 270,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 288,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     },
+     {
+      "bulletAlignment": "END",
+      "glyphType": "ROMAN",
+      "glyphFormat": "%8.",
+      "indentFirstLine": {
+       "magnitude": 306,
+       "unit": "PT"
+      },
+      "indentStart": {
+       "magnitude": 324,
+       "unit": "PT"
+      },
+      "textStyle": {
+       "underline": false
+      },
+      "startNumber": 1
+     }
+    ]
+   }
+  }
+ },
+ "revisionId": "ANLCKQnZck5WSLJuHwHwx98FopZYH4Dv5RaXDN0N34-0__8Bfj3QN-RqkDZpiy-CVgNgwhcsUB_7jEuew0IF_rMCzRSYAOz-MduYLSvMeA",
+ "suggestionsViewMode": "SUGGESTIONS_INLINE",
+ "documentId": "1FpzX18rmoh4bEoOODkFXoELLpmlI8MkQJI7vEupkBuY",
+ "commentsViewMode": "COMMENTS_VIEW_MODE_OMITTED"
+}

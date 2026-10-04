@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>V4AIR copy explorer</title>
+<style>
+  :root { --bg:#f2f3ec; --raise:#f9f9f4; --line:#d3d5c8; --ink:#161616; --ink2:#52564a; --accent:#b35c1f; --teal:#4f8c88; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.45 system-ui, sans-serif; color:var(--ink); background:var(--bg); }
+  header { display:flex; align-items:center; gap:16px; padding:10px 18px; border-bottom:1px solid var(--line); background:var(--raise); position:sticky; top:0; z-index:2; }
+  header h1 { font-size:16px; margin:0; }
+  header .nav { display:flex; align-items:center; gap:8px; }
+  header .meta { color:var(--ink2); font-size:13px; }
+  header .spacer { flex:1; }
+  button { font:inherit; padding:6px 12px; border:1px solid var(--line); background:#fff; border-radius:6px; cursor:pointer; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  button:disabled { opacity:.5; cursor:default; }
+  main { display:grid; grid-template-columns: 1fr 1fr; gap:0; min-height:calc(100vh - 50px); }
+  section { padding:18px 22px; }
+  #form { border-right:1px solid var(--line); }
+  #preview { background:#e6e8df; }
+  .asset-head { margin-bottom:14px; }
+  .asset-head h2 { margin:0 0 4px; font-size:20px; }
+  .asset-head p { margin:0; color:var(--ink2); font-size:13px; }
+  .field { margin-bottom:14px; }
+  .field .row { display:flex; align-items:baseline; gap:8px; margin-bottom:4px; }
+  .field label { font-weight:600; font-size:13px; }
+  .field .count { margin-left:auto; font-size:12px; color:var(--ink2); }
+  .field .count.over { color:#b3402f; font-weight:600; }
+  .field .gen { font-size:12px; padding:2px 8px; }
+  input[type=text], textarea { width:100%; font:inherit; padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:#fff; }
+  textarea { min-height:110px; resize:vertical; }
+  textarea.tall { min-height:260px; }
+  .shared { margin-top:26px; border-top:1px solid var(--line); padding-top:12px; }
+  .shared summary { cursor:pointer; font-weight:600; font-size:13px; color:var(--ink2); }
+  .shared dl { display:grid; grid-template-columns:max-content 1fr; gap:4px 12px; font-size:12px; }
+  .shared dt { color:var(--ink2); }
+  .status { font-size:13px; color:var(--ink2); min-width:120px; }
+  .status.err { color:#b3402f; }
+  kbd { font:12px ui-monospace, monospace; background:#fff; border:1px solid var(--line); border-radius:4px; padding:0 5px; }
+  .list { display:none; position:absolute; top:46px; left:0; right:0; background:var(--raise); border-bottom:1px solid var(--line); padding:10px 18px; z-index:3; }
+  .list.open { display:block; }
+  .list table { width:100%; border-collapse:collapse; font-size:13px; }
+  .list td { padding:4px 8px; border-top:1px solid var(--line); cursor:pointer; }
+  .list tr.done td:first-child::before { content:"● "; color:var(--teal); }
+  .list tr.cur td { background:#fff; }
+  .vars { display:flex; flex-wrap:wrap; gap:8px 14px; padding:8px 18px; background:#e6e8df; border-bottom:1px solid var(--line); font-size:12px; align-items:center; }
+  .vars label { color:var(--ink2); }
+  .vars input, .vars select { font:inherit; padding:3px 6px; border:1px solid var(--line); border-radius:4px; background:#fff; width:150px; }
+  .vars input.over { border-color:var(--accent); background:#fdf0e4; }
+  .vars button { padding:2px 7px; font-size:12px; }
+  .vars .hint { color:var(--ink2); margin-left:auto; }
+  .instr { display:none; margin-top:6px; }
+  .instr.open { display:block; }
+  .instr textarea { min-height:54px; font-size:13px; background:#fbfbf6; }
+  .field .row .edit { font-size:12px; padding:2px 8px; background:transparent; border-color:transparent; color:var(--ink2); }
+  .field .row .edit.has { color:var(--accent); border-color:var(--line); }
+  .aprompt { margin:0 0 16px; }
+  .aprompt summary { cursor:pointer; font-size:13px; font-weight:600; color:var(--ink2); }
+  .aprompt textarea { min-height:64px; font-size:13px; background:#fbfbf6; margin-top:6px; }
+  .var { background:#fdf0e4; border-bottom:1px dashed var(--accent); }
+  .ver { display:inline-flex; align-items:center; gap:2px; font-size:12px; color:var(--ink2); }
+  .ver button { padding:0 6px; font-size:11px; line-height:18px; }
+  .ver .n { min-width:38px; text-align:center; }
+  .ver .src { font-size:11px; color:var(--teal); margin-left:4px; }
+  #ac { position:absolute; z-index:10; background:#fff; border:1px solid var(--line); border-radius:6px; box-shadow:0 4px 14px rgba(0,0,0,.12); font-size:13px; min-width:260px; max-width:480px; max-height:260px; overflow:auto; display:none; }
+  #ac div { padding:5px 10px; cursor:pointer; display:flex; gap:10px; }
+  #ac div.sel { background:#fdf0e4; }
+  #ac code { color:var(--accent); }
+  #ac span { color:var(--ink2); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  /* previews */
+  .pv { max-width:640px; margin:0 auto; }
+  .pv-note { color:var(--ink2); font-size:12px; margin-bottom:10px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:8px; }
+  .email .hdr { padding:12px 16px; border-bottom:1px solid var(--line); font-size:13px; }
+  .email .hdr b { display:block; font-size:16px; margin-bottom:2px; }
+  .email .hdr span { color:var(--ink2); }
+  .email .bd { padding:16px; }
+  .email .btn, .web .btn { display:inline-block; background:var(--accent); color:#fff; padding:9px 16px; border-radius:6px; text-decoration:none; margin:10px 0; }
+  .email .foot { padding:10px 16px; border-top:1px solid var(--line); color:var(--ink2); font-size:12px; }
+  .bd p { margin:0 0 10px; } .bd h3 { margin:14px 0 6px; font-size:15px; } .bd ul { margin:0 0 10px; padding-left:20px; }
+  .social .top { display:flex; gap:10px; padding:12px; align-items:center; }
+  .social .av { width:40px; height:40px; border-radius:50%; background:var(--teal); }
+  .social .name b { display:block; } .social .name span { color:var(--ink2); font-size:12px; }
+  .social .txt { padding:0 12px 12px; white-space:pre-wrap; }
+  .social .img { margin:0 12px 12px; aspect-ratio:1/1; background:#0c1517; color:#e9f1f0; display:flex; align-items:flex-end; padding:22px; font-size:26px; font-weight:700; border-radius:6px; }
+  .social .img.wide { aspect-ratio:1.91/1; }
+  .social .lim { padding:0 12px 12px; font-size:12px; color:var(--ink2); }
+  .poster { aspect-ratio:210/297; background:#f2f3ec; color:#161616; padding:8%; display:flex; flex-direction:column; border:1px solid var(--line); }
+  .poster .h { font-size:34px; font-weight:800; line-height:1.05; margin-bottom:12px; } .poster .s { font-size:16px; color:var(--ink2); margin-bottom:18px; }
+  .poster ul { margin:0 0 auto; padding-left:18px; font-size:15px; } .poster .b { display:flex; justify-content:space-between; align-items:flex-end; font-size:13px; gap:12px; }
+  .poster .qr { width:74px; height:74px; background:repeating-conic-gradient(#161616 0 25%, #fff 0 50%) 0 0/12px 12px; flex:none; }
+  .poster .cta { font-weight:700; color:var(--accent); font-size:18px; margin-bottom:6px; }
+  .slide { aspect-ratio:16/9; background:#0c1517; color:#e9f1f0; padding:5%; display:flex; flex-direction:column; justify-content:center; }
+  .slide .h { font-size:38px; font-weight:800; line-height:1.05; } .slide .l { font-size:20px; color:#a7bcbb; margin-top:10px; } .slide .d { margin-top:auto; font-size:15px; color:#e9a24f; }
+  .chat { background:#36393f; color:#dcddde; padding:14px; border-radius:8px; font-size:14px; white-space:pre-wrap; } .chat .who { color:#fff; font-weight:600; margin-bottom:4px; } .chat .who span { color:#72767d; font-weight:400; font-size:12px; margin-left:6px; }
+  .press { padding:22px; } .press .h { font-size:24px; font-weight:800; line-height:1.15; } .press .sh { font-size:16px; color:var(--ink2); margin:6px 0 14px; } .press .dl { font-weight:700; } .press blockquote { border-left:3px solid var(--teal); margin:12px 0; padding:4px 12px; color:var(--ink2); } .press .about { border-top:1px solid var(--line); margin-top:16px; padding-top:10px; font-size:13px; }
+  .script { padding:22px; font-size:17px; line-height:1.6; white-space:pre-wrap; } .script .t { font-size:12px; color:var(--ink2); margin-bottom:10px; }
+  .cal { padding:16px; } .cal .d { color:var(--accent); font-weight:700; font-size:13px; } .cal .t { font-size:20px; font-weight:700; margin:4px 0; } .cal .loc { color:var(--ink2); font-size:13px; margin-bottom:10px; }
+  .web .tab { background:#e6e8df; padding:8px 12px; font-size:12px; border-bottom:1px solid var(--line); border-radius:8px 8px 0 0; } .web .tab b { display:block; } .web .tab span { color:var(--ink2); }
+  .web .h { font-size:26px; font-weight:800; margin:0 0 12px; } .web .bd { padding:16px; }
+  .serp { margin-top:14px; font-family:arial, sans-serif; } .serp .u { font-size:12px; color:#202124; } .serp .t { color:#1a0dab; font-size:18px; } .serp .d { color:#4d5156; font-size:13px; }
+  .nl .h { font-weight:700; font-size:16px; } .nl { padding:14px; } .nl a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>V4AIR copy</h1>
+  <div class="nav">
+    <button id="prev" title="J">◀</button>
+    <span id="pos" class="meta"></span>
+    <button id="next" title="K">▶</button>
+    <button id="toggleList">All assets</button>
+  </div>
+  <span class="meta"><kbd>J</kbd> previous · <kbd>K</kbd> next · autosaves</span>
+  <span class="spacer"></span>
+  <span id="status" class="status"></span>
+  <label class="meta" title="On: the model may use {{examples}} once where it fits. Off: no example personas at all. Typing {{examples}} yourself works either way."><input type="checkbox" id="useExamples"> example personas</label>
+  <button id="genAll">Generate whole asset</button>
+  <button id="save" class="primary">Save now</button>
+  <div id="list" class="list"></div>
+</header>
+<div id="vars" class="vars"></div>
+<div id="ac"></div>
+<main>
+  <section id="form"></section>
+  <section id="preview"></section>
+</main>
+
+<script>
+let DATA, COPY = {}, i = 0, dirty = false, VARS = {};
+
+const $ = (s) => document.querySelector(s);
+const escRaw = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// esc() also substitutes {{variables}} with the current values and marks them in the preview
+const esc = (s) => escRaw(s).replace(/\{\{(\w+)\}\}/g, (m, k) => (k in VARS ? `<span class="var" title="{{${k}}}">${escRaw(VARS[k])}</span>` : m));
+const fill = (s) => String(s ?? '').replace(/\{\{(\w+)\}\}/g, (m, k) => (k in VARS ? VARS[k] : m));
+const nl2p = (s) => esc(s).split(/\n{2,}/).map((p) => '<p>' + p.replace(/\n/g, '<br>') + '</p>').join('');
+// {{CTA}} in a body marks where the call-to-action button goes; {{NOMINATE}} marks where the nominate line goes.
+// When a marker is present, the default copy of that element at the end is omitted.
+const CTA_MARK = '\u0000CTA\u0000', NOM_MARK = '\u0000NOM\u0000';
+const hasCta = (s) => /\{\{CTA\}\}/i.test(s || '');
+const hasNom = (s) => /\{\{NOMINATE\}\}/i.test(s || '');
+function ctaButton(label, url) { return `<a class="btn" href="${escRaw(url)}">${escRaw(label || 'Apply')}</a>`; }
+// nominate line: text from the asset's nominate_text field (or the shared default); [words in brackets] become the link
+function nominateLine(url, text) {
+  const t = (text || '').trim() || DATA.shared.nominate_line_default || 'Know someone who should come? [Nominate them].';
+  let h = esc(t);
+  if (/\[[^\]]+\]/.test(h)) h = h.replace(/\[([^\]]+)\]/, `<a href="${escRaw(url)}">$1</a>`);
+  else h = `<a href="${escRaw(url)}">${h}</a>`;
+  return `<p class="nom" style="font-size:13px;color:#52564a">${h}</p>`;
+}
+function md(s, cta, nom) {
+  // minimal markdown: **bold**, headings, bullets, paragraphs, links
+  let h = escRaw(s || '').replace(/\{\{CTA\}\}/gi, CTA_MARK).replace(/\{\{NOMINATE\}\}/gi, NOM_MARK).replace(/\{\{(\w+)\}\}/g, (m, k) => (k in VARS ? `<span class="var" title="{{${k}}}">${escRaw(VARS[k])}</span>` : m));
+  h = h.replace(/^\*\*(.+?)\*\*$/gm, '<h3>$1</h3>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  h = h.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
+  const lines = h.split('\n'); let out = '', inList = false, para = [];
+  const flush = () => { if (para.length) { out += '<p>' + para.join('<br>') + '</p>'; para = []; } };
+  for (const l of lines) {
+    if (/^- /.test(l)) { flush(); if (!inList) { out += '<ul>'; inList = true; } out += '<li>' + l.slice(2) + '</li>'; continue; }
+    if (inList) { out += '</ul>'; inList = false; }
+    if (l.startsWith('<h3>')) { flush(); out += l; continue; }
+    if (l.trim() === '') { flush(); continue; }
+    para.push(l);
+  }
+  if (inList) out += '</ul>'; flush();
+  // a paragraph that is only the marker becomes the button; a marker inside a paragraph becomes an inline button
+  out = out.replace(new RegExp(`<p>${CTA_MARK}</p>`, 'g'), cta || '').split(CTA_MARK).join(cta || '');
+  out = out.replace(new RegExp(`<p>${NOM_MARK}</p>`, 'g'), nom || '').split(NOM_MARK).join(nom || '');
+  return out;
+}
+
+async function load() {
+  DATA = await (await fetch('assets.json')).json();
+  COPY = await (await fetch('/api/copy')).json();
+  COPY._prompts ||= {};
+  // UI state (current asset, variables) is stored on the server too, so a reload restores it on any browser
+  const ui = COPY._ui || {};
+  OVER = ui.overrides || {};
+  SEED = ui.seed || 0;
+  $('#useExamples').checked = !!ui.useExamples;
+  $('#useExamples').addEventListener('change', autosave);
+  const saved = ui.vars || JSON.parse(localStorage.getItem('v4air-vars') || '{}');
+  VARS = Object.assign({}, DATA.variables, saved);
+  if (!DATA.universities[VARS.university]) VARS.university = Object.keys(DATA.universities)[0];
+  i = Math.min(ui.i ?? (+localStorage.getItem('v4air-copy-i') || 0), DATA.assets.length - 1);
+  applyUniversity();
+  renderVars();
+  render();
+}
+
+// Variables derived from the university: the table in assets.json gives the defaults,
+// OVER[university][key] holds values typed by hand for that university and wins over the table.
+let OVER = {}, SEED = 0;
+const DERIVED = ['university_short', 'city', 'country', 'faculty', 'local_language'];
+function applyUniversity() {
+  const u = DATA.universities[VARS.university] || {};
+  const o = OVER[VARS.university] || {};
+  for (const k of DERIVED) VARS[k] = k in o ? o[k] : (u[k] ?? VARS[k] ?? '');
+  if ('contact_person' in o) VARS.contact_person = o.contact_person;
+  VARS.examples = 'examples' in o ? o.examples : buildExamples();
+}
+// {{examples}}: two personas, career stage from the asset's audiences, field and AI use from the university
+function buildExamples() {
+  const u = DATA.universities[VARS.university];
+  if (!u || !u.fields.length) return '';
+  const auds = (asset().audiences || []).filter((a) => DATA.career_stages[a]);
+  const stages = auds.length ? auds : ['Students', 'ECRs'];
+  const pick = (arr, n) => arr[(n + SEED) % arr.length];
+  const f1 = pick(u.fields, 0), f2 = pick(u.fields, 1 + Math.floor(SEED / u.fields.length));
+  const s1 = pick(DATA.career_stages[stages[0]], 0), s2 = pick(DATA.career_stages[stages[stages.length - 1]], 1);
+  const second = f2[0] === f1[0] ? pick(u.fields, 2) : f2;
+  return `${s1} in ${f1[0]} ${f1[1]} and ${s2} in ${second[0]} ${second[1]}`;
+}
+
+const asset = () => DATA.assets[i];
+const schema = () => DATA.channels[asset().schema];
+const vals = () => (COPY[asset().id] ||= {});
+const val = (k) => { const v = vals()[k]; return Array.isArray(v) ? v.join('\n') : (v ?? ''); };
+// per-asset prompts: { asset: "...", fields: { key: "..." } }, saved in copy.json under _prompts
+const prompts = () => (COPY._prompts[asset().id] ||= { asset: '', fields: {} });
+// version history per field: COPY._versions[assetId][fieldKey] = { list: [{v, src, at}], cur: index }
+const versions = (k) => { COPY._versions ||= {}; const a = (COPY._versions[asset().id] ||= {}); return (a[k] ||= { list: [], cur: -1 }); };
+const same = (a, b) => JSON.stringify(a ?? '') === JSON.stringify(b ?? '');
+// record the current field value as a version if it differs from the one we are on
+function pushVersion(k, src) {
+  const V = versions(k), v = vals()[k];
+  if (v == null || (Array.isArray(v) ? !v.length : !String(v).trim())) return;
+  if (V.list[V.cur] && same(V.list[V.cur].v, v)) return;
+  if (V.list.some((x) => same(x.v, v))) { V.cur = V.list.findIndex((x) => same(x.v, v)); return; }
+  V.list.push({ v, src, at: new Date().toISOString() }); V.cur = V.list.length - 1;
+}
+function showVersion(k, d) {
+  const V = versions(k); const n = V.cur + d;
+  if (n < 0 || n >= V.list.length) return;
+  V.cur = n; vals()[k] = V.list[n].v; dirty = true; setStatus('unsaved'); render();
+}
+function verHtml(k) {
+  const V = versions(k);
+  if (!V.list.length) return '';
+  const c = V.list[V.cur];
+  return `<span class="ver"><button data-ver="${k}" data-d="-1" ${V.cur <= 0 ? 'disabled' : ''}>◀</button><span class="n">${V.cur + 1} / ${V.list.length}</span><button data-ver="${k}" data-d="1" ${V.cur >= V.list.length - 1 ? 'disabled' : ''}>▶</button><span class="src" title="${c ? escRaw(c.at) : ''}">${c ? c.src : ''}</span></span>`;
+}
+const hasContent = (id) => Object.entries(COPY[id] || {}).some(([k, v]) => !k.startsWith('_') && (Array.isArray(v) ? v.length : String(v).trim()));
+
+function renderVars() {
+  const opts = DATA.variable_options || {};
+  const o = OVER[VARS.university] || {};
+  $('#vars').innerHTML = Object.keys(DATA.variables).map((k) => {
+    const v = VARS[k] ?? '';
+    const isOver = k in o;
+    const title = k === 'university' ? '' : isOver ? 'title="Typed by hand for this university. Clear the field to go back to the default."' : 'title="Default for this university, from assets.json"';
+    let ctl;
+    if (k === 'university') ctl = `<select data-var="${k}">${opts[k].map((x) => `<option ${x === v ? 'selected' : ''}>${escRaw(x)}</option>`).join('')}</select>`;
+    else if (k === 'examples') ctl = `<input data-var="${k}" value="${escRaw(v)}" style="width:420px" ${title} class="${isOver ? 'over' : ''}"><button data-reroll title="Another pair of examples">↻</button>`;
+    else ctl = `<input data-var="${k}" value="${escRaw(v)}" ${title} class="${isOver ? 'over' : ''}">`;
+    return `<label>{{${k}}}</label>${ctl}`;
+  }).join('') + `<span class="hint">Pick a university and the other values follow. Type to override for that university. <kbd>{{CTA}}</kbd> and <kbd>{{NOMINATE}}</kbd> in a body place the apply button and the nominate line.</span>`;
+  $('#vars').querySelectorAll('[data-var]').forEach((el) => el.addEventListener('input', () => {
+    const k = el.dataset.var;
+    if (k === 'university') { VARS.university = el.value; applyUniversity(); renderVars(); }
+    else {
+      const ov = (OVER[VARS.university] ||= {});
+      if (el.value === '') { delete ov[k]; applyUniversity(); el.value = VARS[k]; el.classList.remove('over'); }
+      else { ov[k] = el.value; VARS[k] = el.value; el.classList.add('over'); }
+    }
+    localStorage.setItem('v4air-vars', JSON.stringify(VARS)); preview(); autosave();
+  }));
+  $('#vars').querySelector('[data-reroll]')?.addEventListener('click', () => {
+    SEED++; delete (OVER[VARS.university] || {}).examples; applyUniversity(); renderVars(); preview(); autosave();
+  });
+}
+
+function render() {
+  const a = asset(), sc = schema();
+  localStorage.setItem('v4air-copy-i', i);
+  // examples depend on the asset's audiences, so recompute them when the asset changes
+  if (!('examples' in (OVER[VARS.university] || {}))) { VARS.examples = buildExamples(); const ex = $('#vars [data-var=examples]'); if (ex) ex.value = VARS.examples; }
+  $('#pos').textContent = `${i + 1} / ${DATA.assets.length}`;
+  $('#prev').disabled = i === 0; $('#next').disabled = i === DATA.assets.length - 1;
+  document.title = `${a.name} · V4AIR copy`;
+
+  const P = prompts();
+  const aud = new Set(a.audiences || []);
+  const kms = (DATA.key_messages || []).filter((k) => k.audiences.some((x) => aud.has(x)));
+  const nHooks = (DATA.hooks || []).filter((hk) => kms.some((k) => k.n === hk.km)).length;
+  let h = `<div class="asset-head"><h2>${escRaw(a.name)}</h2><p><b>${escRaw(a.type)}</b> · ${escRaw(a.audience)}<br>${escRaw(a.channel)}<br>Schema: ${escRaw(sc.label)}</p></div>`;
+  h += `<details class="aprompt"><summary>Key messages sent to the model for ${escRaw((a.audiences || []).join(', '))}: ${kms.map((k) => k.n).join(', ') || 'none'} (${nHooks} hooks)</summary><ol style="font-size:13px;margin:6px 0 0;padding-left:20px">` +
+    kms.map((k) => `<li value="${k.n}"><b>${escRaw(k.message)}</b><br><span style="color:var(--ink2)">${escRaw(k.headline)}</span></li>`).join('') + `</ol></details>`;
+  h += `<details class="aprompt" ${P.asset ? 'open' : ''}><summary>Prompt for this asset (sent with every Generate)</summary>
+    <textarea data-aprompt placeholder="e.g. Address PhD students at {{university}}. Lead with funding. Keep it under 120 words. Shorten {{asset:mail-ecr.body}} to fit.">${escRaw(P.asset)}</textarea>
+    <div style="font-size:12px;color:var(--ink2);margin-top:4px">Refer to saved copy with <kbd>{{asset:ID}}</kbd> (whole asset) or <kbd>{{asset:ID.field}}</kbd>. IDs: ${DATA.assets.map((x) => `<code title="${escRaw(x.name)}">${x.id}</code>`).join(' ')}</div></details>`;
+  for (const f of sc.fields) {
+    const v = val(f.key);
+    const n = f.type === 'lines' ? v.split('\n').filter(Boolean).length : fill(v).length;
+    const over = f.max && n > f.max;
+    const ins = P.fields[f.key] || '';
+    h += `<div class="field"><div class="row"><label for="f-${f.key}">${escRaw(f.label)}</label>
+      <button class="gen" data-gen="${f.key}">Generate</button>
+      <button class="edit ${ins ? 'has' : ''}" data-edit="${f.key}" title="Edit the instruction sent with Generate">prompt</button>
+      ${verHtml(f.key)}
+      <span class="count ${over ? 'over' : ''}" data-count="${f.key}">${f.max ? `${n} / ${f.max}` : n}</span></div>`;
+    if (f.type === 'text') h += `<input type="text" id="f-${f.key}" data-key="${f.key}" value="${escRaw(v)}">`;
+    else h += `<textarea id="f-${f.key}" data-key="${f.key}" class="${f.key === 'body' ? 'tall' : ''}">${escRaw(v)}</textarea>`;
+    h += `<div class="instr ${ins ? 'open' : ''}" data-instr="${f.key}"><textarea data-fprompt="${f.key}" placeholder="Instruction for this field, e.g. Use hook [3] from the hooks list. Mention {{country}}. Same headline as {{asset:poster.headline}}.">${escRaw(ins)}</textarea></div>`;
+    h += `</div>`;
+  }
+  h += `<details class="shared"><summary>Shared facts (same in every asset, edit in assets.json)</summary><dl>` +
+    Object.entries(DATA.shared).map(([k, v]) => `<dt>${escRaw(k)}</dt><dd style="white-space:pre-wrap">${escRaw(v)}</dd>`).join('') + `</dl></details>`;
+  $('#form').innerHTML = h;
+
+  $('#form').querySelectorAll('[data-key]').forEach((el) => el.addEventListener('input', () => {
+    const f = sc.fields.find((x) => x.key === el.dataset.key);
+    vals()[f.key] = f.type === 'lines' ? el.value.split('\n').filter((s) => s.trim()) : el.value;
+    dirty = true; setStatus('unsaved');
+    const n = f.type === 'lines' ? vals()[f.key].length : fill(el.value).length;
+    const c = $(`[data-count="${f.key}"]`); c.textContent = f.max ? `${n} / ${f.max}` : n; c.classList.toggle('over', !!(f.max && n > f.max));
+    preview();
+  }));
+  $('#form').querySelectorAll('[data-gen]').forEach((b) => b.addEventListener('click', () => generate(b.dataset.gen)));
+  $('#form').querySelectorAll('[data-edit]').forEach((b) => b.addEventListener('click', () => $(`[data-instr="${b.dataset.edit}"]`).classList.toggle('open')));
+  $('#form').querySelectorAll('[data-ver]').forEach((b) => b.addEventListener('click', () => showVersion(b.dataset.ver, +b.dataset.d)));
+  // a manual edit becomes a version once the field loses focus
+  $('#form').querySelectorAll('[data-key]').forEach((el) => el.addEventListener('blur', () => {
+    const V = versions(el.dataset.key), before = V.list.length + ':' + V.cur;
+    pushVersion(el.dataset.key, 'edit');
+    if (before !== V.list.length + ':' + V.cur) { const r = el.closest('.field').querySelector('.row'); const old = r.querySelector('.ver'); const tmp = document.createElement('span'); tmp.innerHTML = verHtml(el.dataset.key); if (old) old.replaceWith(tmp.firstChild); else r.insertBefore(tmp.firstChild, r.querySelector('.count')); r.querySelectorAll('[data-ver]').forEach((b) => b.addEventListener('click', () => showVersion(b.dataset.ver, +b.dataset.d))); }
+  }));
+  $('#form').querySelectorAll('[data-fprompt]').forEach((el) => el.addEventListener('input', () => {
+    P.fields[el.dataset.fprompt] = el.value; dirty = true; setStatus('unsaved');
+    $(`[data-edit="${el.dataset.fprompt}"]`).classList.toggle('has', !!el.value.trim());
+  }));
+  $('[data-aprompt]').addEventListener('input', (e) => { P.asset = e.target.value; dirty = true; setStatus('unsaved'); });
+  preview();
+  renderList();
+}
+
+function renderList() {
+  $('#list').innerHTML = '<table>' + DATA.assets.map((a, k) =>
+    `<tr class="${k === i ? 'cur' : ''} ${hasContent(a.id) ? 'done' : ''}" data-i="${k}"><td>${k + 1}</td><td><code>${a.id}</code></td><td>${escRaw(a.type)}</td><td>${escRaw(a.name)}</td><td>${escRaw(a.audience)}</td><td>${escRaw(a.channel)}</td></tr>`).join('') + '</table>';
+  $('#list').querySelectorAll('tr').forEach((r) => r.addEventListener('click', () => { i = +r.dataset.i; $('#list').classList.remove('open'); render(); autosave(); }));
+}
+
+function preview() {
+  const a = asset(), sc = schema(), S = DATA.shared, v = vals();
+  const g = (k) => val(k);
+  let h = '';
+  switch (sc.preview) {
+    case 'email':
+      h = `<div class="card email"><div class="hdr"><b>${esc(g('subject')) || '<i>subject</i>'}</b><span>${esc(g('preheader') || '')}</span><br><span>From: V4AIR organising team &lt;${esc(S.contact_email)}&gt;</span></div>
+        <div class="bd">${g('cover_note') ? '<p><i>' + esc(g('cover_note')).replace(/\n/g,'<br>') + '</i></p><hr>' : ''}${md(g('body'), ctaButton(g('cta_apply'), S.apply_url), nominateLine(S.nominate_url, g('nominate_text')))}
+        ${hasCta(g('body')) ? '' : ctaButton(g('cta_apply'), S.apply_url)}${hasNom(g('body')) ? '' : nominateLine(S.nominate_url, g('nominate_text'))}</div>
+        <div class="foot">${esc(S.acknowledgement)}</div></div>`; break;
+    case 'newsletter':
+      h = `<div class="card nl"><div class="h">${esc(g('headline'))}</div><p>${esc(g('teaser')).replace(/\n/g,'<br>')}</p><a href="${esc(S.apply_url)}">${esc(g('cta_apply') || 'Apply by ' + S.deadline)} →</a></div>`; break;
+    case 'social': {
+      const t = g('text'), used = fill(t).length + (t.includes('http') ? 0 : 24);
+      h = `<div class="pv-note">X: text + image (link counts 23). Instagram/Facebook: long caption.</div>
+        <div class="card social"><div class="top"><div class="av"></div><div class="name"><b>Faculty account</b><span>@faculty · now</span></div></div>
+        <div class="txt">${esc(t)}${t.includes('http') ? '' : `\n${esc(S.apply_url)}`}</div>
+        <div class="img wide">${esc(g('image_text'))}</div><div class="lim">${used} / 280 characters as an X post</div></div>
+        <div class="card social" style="margin-top:14px"><div class="top"><div class="av"></div><div class="name"><b>faculty.instagram</b></div></div>
+        <div class="img">${esc(g('image_text'))}</div><div class="txt"><b>faculty.instagram</b> ${esc(g('caption_long')).slice(0,125)}${g('caption_long').length > 125 ? '<span style="color:#52564a">… more</span>' : ''}</div></div>`; break; }
+    case 'linkedin':
+      h = `<div class="card social"><div class="top"><div class="av"></div><div class="name"><b>Institute page</b><span>1,204 followers · 1h</span></div></div>
+        <div class="txt">${esc(g('text')).slice(0,210)}${g('text').length > 210 ? '<span style="color:#52564a"> …see more</span>' : ''}</div><div class="img wide">${esc(g('image_text'))}</div></div>`; break;
+    case 'poster':
+      h = `<div class="poster"><div class="h">${esc(g('headline'))}</div><div class="s">${esc(g('subheadline'))}</div><ul>${(v.points||[]).map((p)=>'<li>'+esc(p)+'</li>').join('')}</ul>
+        <div class="b"><div><div class="cta">${esc(g('cta'))}</div>${esc(S.dates)} · Kostelec Castle near Prague<br>Apply by ${esc(S.deadline)}<br><span style="color:#52564a">${esc(S.funding_line)}</span></div><div class="qr"></div></div>
+        <div style="margin-top:14px;font-size:11px;color:#52564a">${esc(S.acknowledgement)} · Visegrad Fund logo · partner logos</div></div>`; break;
+    case 'leaflet':
+      h = `<div class="pv-note">Front</div><div class="poster" style="aspect-ratio:99/210;max-width:300px"><div class="h" style="font-size:26px">${esc(g('front_headline'))}</div><div class="s">${esc(g('front_subheadline'))}</div><div class="b" style="margin-top:auto"><div>${esc(S.dates)}<br>Kostelec Castle</div><div class="qr"></div></div></div>
+        <div class="pv-note" style="margin-top:14px">Back</div><div class="card" style="padding:16px;max-width:300px"><p style="font-size:13px;white-space:pre-wrap;margin:0 0 10px">${esc(g('back_body'))}</p><b style="color:#b35c1f">${esc(g('cta'))}</b><br><small>${esc(S.funding_line)}</small></div>`; break;
+    case 'slide':
+      h = `<div class="pv-note">16:9, read from a distance in a few seconds</div><div class="slide"><div class="h">${esc(g('headline'))}</div><div class="l">${esc(g('line'))}</div><div class="d">${esc(S.dates)} · Kostelec Castle · apply by ${esc(S.deadline)} · QR</div></div>`; break;
+    case 'chat':
+      h = `<div class="chat"><div class="who">Student rep <span>Today at 10:12</span></div>${esc(g('text'))}${g('text').includes('http') ? '' : '\n' + esc(S.apply_url)}</div>`; break;
+    case 'script': {
+      const w = fill(g('script')).trim().split(/\s+/).filter(Boolean).length;
+      h = `<div class="card script"><div class="t">${w} words · about ${Math.round(w / 2.5)} seconds spoken</div>${esc(g('script'))}</div>`; break; }
+    case 'press':
+      h = `<div class="card press"><div class="h">${esc(g('headline'))}</div><div class="sh">${esc(g('subheadline'))}</div><p><span class="dl">${esc(g('dateline'))}</span> ${esc(g('lead'))}</p>${md(g('body'), `<a href="${escRaw(S.apply_url)}">${escRaw(S.apply_url)}</a>`)}
+        ${g('quote') ? `<blockquote>“${esc(g('quote'))}”<br><small>${esc(g('quote_speaker'))}</small></blockquote>` : ''}
+        <div class="about"><b>About V4AIR</b><br>${esc(g('about'))}<br><br>Media contact: ${esc(S.contact_email)}<br>${esc(S.acknowledgement)}</div></div>`; break;
+    case 'calendar':
+      h = `<div class="card cal"><div class="d">28–30 APR 2027</div><div class="t">${esc(g('title'))}</div><div class="loc">${esc(S.venue)}</div><p>${esc(g('description')).replace(/\n/g,'<br>')}</p><a href="${esc(S.apply_url)}">${esc(S.apply_url)}</a></div>`; break;
+    case 'web':
+      h = `<div class="card web"><div class="tab"><b>${esc(g('title'))}</b><span>${esc(S.apply_url)}</span></div><div class="bd"><h1 class="h">${esc(g('headline'))}</h1>${md(g('body'), ctaButton(g('cta_apply'), S.apply_url), nominateLine(S.nominate_url, g('nominate_text')))}${hasCta(g('body')) ? '' : ctaButton(g('cta_apply'), S.apply_url)}${hasNom(g('body')) ? '' : nominateLine(S.nominate_url, g('nominate_text'))}<p style="font-size:12px;color:#52564a">${esc(S.acknowledgement)}</p></div></div>
+        <div class="serp"><div class="pv-note">Search result</div><div class="u">university.edu › news</div><div class="t">${esc(g('title'))}</div><div class="d">${esc(g('meta_description'))}</div></div>`; break;
+  }
+  $('#preview').innerHTML = `<div class="pv">${h}</div>`;
+}
+
+function setStatus(t, err) {
+  const s = $('#status'); s.textContent = t; s.className = 'status' + (err ? ' err' : '');
+  if (/unsaved/.test(t)) autosave();
+}
+
+// autosave: every change is written to copy.json on the server about a second after the last keystroke
+let saveTimer = null, saving = false, queued = false;
+function autosave() { clearTimeout(saveTimer); saveTimer = setTimeout(() => save(true), 800); }
+
+async function save(auto) {
+  if (saving) { queued = true; return; }
+  saving = true; clearTimeout(saveTimer);
+  for (const f of schema().fields) pushVersion(f.key, 'edit');
+  COPY._ui = { i, vars: VARS, overrides: OVER, seed: SEED, useExamples: $('#useExamples').checked };
+  try {
+    const r = await fetch('/api/copy', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(COPY, null, 2) });
+    if (r.ok) { dirty = false; setStatus('saved ' + new Date().toLocaleTimeString()); renderList(); } else setStatus('save failed', true);
+  } catch (e) { setStatus('save failed: server not running', true); }
+  saving = false;
+  if (queued) { queued = false; autosave(); }
+}
+
+async function generate(target) {
+  const a = asset(), sc = schema();
+  const btns = document.querySelectorAll('button'); btns.forEach((b) => (b.disabled = true));
+  setStatus(target ? `generating ${target}…` : 'generating asset…');
+  try {
+    const r = await fetch('/api/generate', { method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ asset: a, channel: sc, shared: DATA.shared, variables: VARS, fields: sc.fields, current: vals(), target: target || null,
+        instructions: prompts().fields, assetPrompt: prompts().asset, keyMessages: DATA.key_messages, hooks: DATA.hooks,
+        university: DATA.universities[VARS.university], careerStages: (a.audiences || []).filter((x) => DATA.career_stages[x]).map((x) => DATA.career_stages[x]).flat(),
+        allAssets: DATA.assets, useExamples: $('#useExamples').checked }) });
+    const out = await r.json();
+    if (!r.ok || out.error) throw new Error(out.error || r.status);
+    // keep what was there as a version, then record the generated text as the new current version
+    for (const k of Object.keys(out)) pushVersion(k, 'edit');
+    Object.assign(vals(), out); dirty = true;
+    for (const k of Object.keys(out)) pushVersion(k, 'generated');
+    render(); setStatus('generated, saving…'); autosave();
+  } catch (e) { setStatus('error: ' + e.message, true); }
+  finally { btns.forEach((b) => (b.disabled = false)); $('#prev').disabled = i === 0; $('#next').disabled = i === DATA.assets.length - 1; }
+}
+
+function go(d) { const n = i + d; if (n < 0 || n >= DATA.assets.length) return; i = n; render(); autosave(); }
+
+// ---- autocomplete for {{variables}} and {{asset:...}} in every input, textarea and prompt box ----
+const AC = { el: null, items: [], sel: 0, start: 0 };
+function acCandidates(q) {
+  const list = [];
+  if (q.startsWith('asset:')) {
+    const [id, field] = q.slice(6).split('.');
+    for (const a of DATA.assets) {
+      if (field === undefined) { if (a.id.startsWith(id)) list.push({ v: `asset:${a.id}`, d: `${a.name}: whole asset` }); }
+      else if (a.id === id) for (const f of DATA.channels[a.schema].fields) if (f.key.startsWith(field)) list.push({ v: `asset:${a.id}.${f.key}`, d: `${a.name}: ${f.label}` });
+    }
+    return list;
+  }
+  for (const k of Object.keys(DATA.variables)) if (k.startsWith(q)) list.push({ v: k, d: VARS[k] || '' });
+  if ('cta'.startsWith(q.toLowerCase())) list.push({ v: 'CTA', d: 'apply button goes here (body fields)' });
+  if ('nominate'.startsWith(q.toLowerCase())) list.push({ v: 'NOMINATE', d: '"Know someone who should come?" line goes here' });
+  if ('asset:'.startsWith(q)) list.push({ v: 'asset:', d: 'insert copy of a saved asset' });
+  return list;
+}
+function acShow(el) {
+  const pos = el.selectionStart, before = el.value.slice(0, pos);
+  const m = before.match(/\{\{([\w:.-]*)$/);
+  if (!m) return acHide();
+  AC.el = el; AC.start = pos - m[1].length; AC.items = acCandidates(m[1]); AC.sel = 0;
+  if (!AC.items.length) return acHide();
+  const box = $('#ac'); box.innerHTML = AC.items.map((x, k) => `<div class="${k === 0 ? 'sel' : ''}" data-k="${k}"><code>{{${escRaw(x.v)}}}</code><span>${escRaw(x.d)}</span></div>`).join('');
+  box.querySelectorAll('div').forEach((r) => r.addEventListener('mousedown', (e) => { e.preventDefault(); acPick(+r.dataset.k); }));
+  const rc = el.getBoundingClientRect();
+  box.style.left = Math.min(rc.left, window.innerWidth - 500) + 'px'; box.style.top = (rc.bottom + window.scrollY + 2) + 'px'; box.style.display = 'block';
+}
+function acHide() { $('#ac').style.display = 'none'; AC.el = null; }
+function acPick(k) {
+  const it = AC.items[k], el = AC.el; if (!it || !el) return;
+  const after = el.value.slice(el.selectionStart);
+  const closing = it.v === 'asset:' ? '' : (after.startsWith('}}') ? '' : '}}');
+  const skip = after.startsWith('}}') && it.v !== 'asset:' ? 2 : 0;
+  el.value = el.value.slice(0, AC.start) + it.v + closing + after.slice(skip);
+  const caret = AC.start + it.v.length + closing.length;
+  el.setSelectionRange(caret, caret);
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+  if (it.v === 'asset:') acShow(el); else acHide();
+}
+document.addEventListener('input', (e) => { if (/INPUT|TEXTAREA/.test(e.target.tagName) && e.target.type !== 'checkbox') acShow(e.target); }, true);
+document.addEventListener('click', (e) => { if (!$('#ac').contains(e.target)) acHide(); });
+document.addEventListener('keydown', (e) => {
+  if (!AC.el || $('#ac').style.display === 'none') return;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); AC.sel = (AC.sel + (e.key === 'ArrowDown' ? 1 : AC.items.length - 1)) % AC.items.length; $('#ac').querySelectorAll('div').forEach((r, k) => r.classList.toggle('sel', k === AC.sel)); $('#ac .sel').scrollIntoView({ block: 'nearest' }); }
+  else if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); acPick(AC.sel); }
+  else if (e.key === 'Escape') { e.stopPropagation(); acHide(); }
+}, true);
+
+$('#prev').onclick = () => go(-1); $('#next').onclick = () => go(1);
+$('#save').onclick = save; $('#genAll').onclick = () => generate(null);
+$('#toggleList').onclick = () => $('#list').classList.toggle('open');
+document.addEventListener('keydown', (e) => {
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); save(); return; }
+  if (typing) return;
+  if (e.key === 'j' || e.key === 'J') go(-1);
+  if (e.key === 'k' || e.key === 'K') go(1);
+  if (e.key === 'Escape') $('#list').classList.remove('open');
+});
+// flush pending changes when the tab is hidden or closed (keepalive lets the request finish after unload)
+window.addEventListener('pagehide', () => {
+  if (!dirty) return;
+  for (const f of schema().fields) pushVersion(f.key, 'edit');
+  COPY._ui = { i, vars: VARS, overrides: OVER, seed: SEED, useExamples: $('#useExamples').checked };
+  navigator.sendBeacon ? navigator.sendBeacon('/api/copy', new Blob([JSON.stringify(COPY)], { type: 'application/json' }))
+    : fetch('/api/copy', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(COPY), keepalive: true });
+});
+load();
+</script>
+</body>
+</html>

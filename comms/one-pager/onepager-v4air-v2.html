@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Join the V4 AI Researchers Meetup</title>
+<style>
+/* V4AIR brand per the "V4AIR document template" Doc on Drive:
+   Inter for title and headings, DM Sans for body; ink #161616, rust #b35c1f for
+   small labels and links, grey #52564a for secondary text; no other colours.
+   Paper tones (#f2f3ec raise, #d3d5c8 line) come from the site tokens. */
+@font-face { font-family: Inter; font-weight: 700; src: url(assets/fonts/inter/inter-700.woff2) format("woff2"); }
+@font-face { font-family: Inter; font-weight: 800; src: url(assets/fonts/inter/inter-800.woff2) format("woff2"); }
+@font-face { font-family: Aileron; font-weight: 800; src: url(../../public/fonts/aileron-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Sofia Pro"; font-weight: 700; src: url("assets/fonts/sofia-pro/Sofia Pro Bold Az.otf") format("opentype"); }
+@font-face { font-family: "DM Sans"; font-weight: 400; src: url(assets/fonts/dmsans/dmsans-400.woff2) format("woff2"); }
+@font-face { font-family: "DM Sans"; font-weight: 500; src: url(assets/fonts/dmsans/dmsans-500.woff2) format("woff2"); }
+@font-face { font-family: "DM Sans"; font-weight: 700; src: url(assets/fonts/dmsans/dmsans-700.woff2) format("woff2"); }
+
+@page { size: A4; margin: 0; }
+:root {
+  --ink: #161616; --grey: #52564a; --rust: #b35c1f;
+  --line: #d3d5c8; --raise: #f2f3ec; --paper: #ffffff;
+  --m: 15mm;             /* page margin */
+  --gap: 4.4mm;          /* vertical rhythm between blocks */
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 210mm; height: 297mm; }
+body { background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; font-size: 10.6pt; line-height: 1.45; }
+.page { position: relative; width: 210mm; height: 297mm; padding: 10mm var(--m) 0; display: flex; flex-direction: column; }
+a { color: inherit; text-decoration: none; }
+h1, h2 { font-family: Inter, sans-serif; letter-spacing: -0.012em; }
+.label { font-family: "DM Sans", sans-serif; font-size: 8.4pt; font-weight: 700; color: var(--rust); letter-spacing: 0.01em; }
+
+/* template header */
+.top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2.6mm; border-bottom: 0.5pt solid var(--line); }
+.top img { height: 8.5mm; display: block; }
+/* expanded logotype, same lockup as the site header (.brand) */
+.lockup { display: flex; align-items: center; gap: 0.12em; font-family: Aileron, sans-serif; font-weight: 800; font-size: 20pt; line-height: 1; color: var(--ink); }
+.lockup .v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
+.lockup .v4 span + span { margin-top: -0.02em; }
+.lockup .ai { letter-spacing: -0.015em; }
+.lockup .words { font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; margin-left: 0.14em; }
+
+/* title block */
+.title { margin-top: 7mm; }
+h1 { font-weight: 800; font-size: 28pt; line-height: 1.08; }
+.sub { margin-top: 1.6mm; font-size: 12.5pt; color: var(--grey); }
+/* partner names in their own brand colours: prg.ai blue from the logo, CU red from the official red logo */
+.sub .prg { font-family: "Sofia Pro", sans-serif; font-weight: 700; }
+.sub .cu { font-weight: 700; }
+.lead { margin-top: 4.5mm; font-size: 11.2pt; max-width: 172mm; }
+
+/* example: raised panel, text left, two frames right */
+.example { margin-top: var(--gap); display: flex; gap: 4mm; align-items: center;
+           background: var(--raise); border-radius: 2.5mm; padding: 4.5mm 4.5mm 4.5mm 5.5mm; }
+.example .q { flex: 1 1 0; font-size: 11.6pt; line-height: 1.38; }
+.example .q p + p { margin-top: 2.2mm; }
+.example .q b { font-weight: 700; }
+.example img { display: block; flex: none; width: 50mm; height: 34mm; object-fit: cover; border-radius: 1.8mm; }
+
+/* goal: the template's quote block */
+.goal { margin-top: var(--gap); font-size: 11.2pt; line-height: 1.45; max-width: 172mm; }
+
+/* facts card: photo + three facts */
+.facts { margin-top: var(--gap); display: flex; height: 40mm; }
+.facts img { display: block; flex: none; width: 74mm; height: 40mm; object-fit: cover; border-radius: 2.5mm; }
+.facts ul { list-style: none; flex: 1 1 0; height: 40mm; padding: 6mm 6mm 0; }
+.fact + .fact { margin-top: 3.4mm; }
+.fact { display: flex; align-items: center; gap: 3.2mm; font-size: 10.6pt; color: var(--grey); }
+.fact svg { width: 6mm; height: 6mm; flex: none; }
+.fact b { font-family: Inter, sans-serif; color: var(--ink); font-weight: 700; font-size: 11.4pt; }
+
+/* methods and fields as one sentence */
+.methods { margin-top: var(--gap); font-size: 11.2pt; line-height: 1.5; max-width: 176mm; }
+.methods b { font-weight: 700; }
+
+/* call to action: bullets left, QR right */
+/* fixed-height row so both columns share top and bottom edges */
+.cta { margin-top: 7mm; position: relative; height: 48mm; display: flex; gap: 8mm; }
+.cta > div:first-child { flex: 1 1 0; position: relative; height: 100%; }
+h2 { font-weight: 700; font-size: 13.5pt; line-height: 1.1; margin-bottom: 3.6mm; }
+.cta ul { list-style: none; }
+.cta li { position: relative; padding-left: 5.2mm; font-size: 11.2pt; line-height: 1.8; }
+.cta li::before { content: ""; position: absolute; left: 0.4mm; top: 2.9mm; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--rust); }
+.reach { position: absolute; left: 0; bottom: 0; margin: 0; font-size: 11.6pt; line-height: 1.2; }
+.reach a { color: var(--rust); font-weight: 700; }
+.qr { flex: none; width: 46mm; height: 100%; position: relative; text-align: center; }
+.qr .label { position: absolute; top: 0; left: 0; right: 0; margin: 0; }
+.qr .links { position: absolute; bottom: 0; left: 0; right: 0; line-height: 1; }
+.qr .label { font-size: 9.6pt; }
+.qr img { position: absolute; top: 5.3mm; left: 50%; margin-left: -16mm; width: 32mm; height: 32mm; }
+.qr a { display: block; font-size: 10.8pt; font-weight: 700; color: var(--rust); line-height: 1.35; }
+.qr a:last-child { line-height: 1.2; }
+
+/* partner logos and template footer, pinned to the bottom */
+.bottom { position: absolute; left: var(--m); right: var(--m); bottom: 5.5mm; padding-top: 3.5mm; border-top: 0.5pt solid var(--line); }
+.logos .label { color: var(--grey); font-size: 7.4pt; letter-spacing: 0.1em; text-transform: uppercase; }
+.logos .row { display: flex; justify-content: space-between; align-items: center; margin: 2mm 0 3mm; }
+.logos .row img { height: 9mm; }
+.logos .row img.tall { height: 10.5mm; }
+.logos .row img.prg { height: 6.2mm; }
+.logos .row img.cgr { height: 10.5mm; border-radius: 1mm; }
+.fund { display: flex; align-items: center; gap: 4mm; font-size: 8.6pt; color: var(--grey); }
+.fund img { height: 9mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <img src="../../public/assets/castle-silhouette_dark.png" alt="">
+    <div class="lockup" role="img" aria-label="V4 AI researchers meetup"><span class="v4"><span>V</span><span>4</span></span><span class="ai">AI</span><span class="words">researchers<br>meetup</span></div>
+  </div>
+
+  <div class="title">
+    <h1>Join the V4 AI Researchers Meetup</h1>
+    <p class="sub">Co-organized by <span class="prg">prg.ai</span> and <span class="cu">Charles University</span></p>
+    <p class="lead">In April 2027, PhD students, researchers and experts implementing AI methods from across Central Europe will meet for three days at V4AIR near Prague. We are inviting our partners and collaborators to join them.</p>
+  </div>
+
+  <div class="example">
+    <div class="q">
+      <p>What does a <b>bee researcher</b> and a <b>traffic engineer</b> have in common?</p>
+      <p>They both use <b>computer vision</b>.<br>They are both coming to <b>V4AIR</b>.</p>
+    </div>
+    <img src="assets/bees-cv.png" alt="Bees detected in a video frame">
+    <img src="assets/traffic-cv.png" alt="Cars and motorbikes detected in a street scene">
+  </div>
+
+  <p class="goal">Our goal is to bring Central Europe's applied AI research and industry into the same room.</p>
+
+  <div class="facts">
+    <img src="../../public/assets/castle-day.jpg" alt="Kostelec Castle">
+    <ul>
+      <li class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Kostelec Castle</b>, 30 minutes from Prague</span></li>
+      <li class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><b>28–30 April 2027</b></span></li>
+      <li class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/></svg><span><b>Three days</b>, with accommodation at the castle</span></li>
+    </ul>
+  </div>
+
+  <p class="methods">Come meet researchers applying methods like <b>NLP</b>, <b>computer vision</b>, <b>machine learning</b>, <b>agentic AI</b> and <b>statistical modeling</b> across fields like <b>biology</b>, <b>medicine</b>, <b>linguistics</b>, <b>psychology</b> and <b>engineering</b>.</p>
+
+  <div class="cta">
+    <div>
+      <h2>If you're interested in:</h2>
+      <ul>
+        <li>meeting someone with specific expertise to your issue</li>
+        <li>sharing your experience in a talk or workshop</li>
+        <li>networking with Central Europe's AI talent</li>
+        <li>supporting the meetup in other ways</li>
+      </ul>
+      <p class="reach">Reach out to the organizers at <a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+    </div>
+    <div class="qr">
+      <div class="label">For more info &amp; applications</div>
+      <img src="assets/qr-v4air.svg" alt="QR code linking to v4air.eu">
+      <div class="links"><a href="https://v4air.eu">v4air.eu</a><a href="https://v4air.eu/apply">v4air.eu/apply</a></div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logos">
+      <div class="label">Organised by</div>
+      <div class="row">
+        <img src="assets/charles-university_black.png" alt="Charles University">
+        <img class="tall" src="assets/cvut_black.png" alt="Czech Technical University in Prague">
+        <img src="assets/comenius-university_black.png" alt="Comenius University Bratislava">
+        <img src="assets/elte_black.png" alt="Eötvös Loránd University">
+        <img src="assets/umk-torun_black.png" alt="Nicolaus Copernicus University in Toruń">
+        <img src="assets/uwr-wroclaw_black.png" alt="University of Wrocław">
+        <img class="prg" src="assets/prgai-logo.svg" alt="prg.ai">
+        <img class="cgr" src="assets/common-ground-research.png" alt="common ground research">
+      </div>
+      <div class="fund"><span class="label" style="color:var(--grey);font-size:7.4pt;letter-spacing:0.1em;text-transform:uppercase">Funded by</span><img src="assets/visegrad-fund_black.png" alt="International Visegrad Fund"><span>Grant No. 22610317</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

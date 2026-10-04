@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>
+    // Prevent FOUC: apply dark mode before any CSS renders
+    (function(){
+      var s = localStorage.getItem('theme');
+      if (s === 'dark' || (!s && matchMedia('(prefers-color-scheme:dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One-Pagers | Verdigris Design System</title>
+  <meta name="description" content="Canonical design tokens, guidelines, and visual rules for all Verdigris surfaces">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%230fc8c3'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-teal: oklch(0.753 0.1279 191.57);
+      --neutral-950: oklch(0.141 0.005 285.823);
+      --neutral-900: oklch(0.21 0.006 285.885);
+      --neutral-800: oklch(0.274 0.006 286.033);
+      --neutral-500: oklch(0.552 0.016 285.938);
+      --neutral-400: oklch(0.705 0.015 286.067);
+      --neutral-200: oklch(0.92 0.004 286.32);
+      --neutral-100: oklch(0.967 0.001 286.375);
+      --neutral-50: oklch(0.985 0 0);
+      --font-body: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --font-display: Lato, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --bg: white;
+      --fg: var(--neutral-950);
+      --border: var(--neutral-200);
+      --muted: var(--neutral-100);
+      --muted-fg: var(--neutral-500);
+      --radius: 0.625rem;
+    }
+    html.dark {
+      --bg: var(--neutral-950);
+      --fg: var(--neutral-50);
+      --border: var(--neutral-800);
+      --muted: var(--neutral-800);
+      --muted-fg: var(--neutral-400);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--fg);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 16px;
+      transition: background 200ms ease, color 200ms ease;
+    }
+
+    a { color: var(--fg); }
+    a:hover { color: var(--brand-teal); }
+
+    /* Top bar */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .header-controls { display: flex; align-items: center; gap: 0.75rem; }
+    .mode-toggle {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      padding: 0.25rem 0.625rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--fg);
+      cursor: pointer;
+    }
+    .mode-toggle:hover { border-color: var(--brand-teal); }
+    .gradient-bar {
+      height: 3px;
+      background: linear-gradient(90deg, #0fc8c3, #214196, #2f0b6f, #d0447a, #ff6361, #fecf00, #0fc8c3);
+      background: linear-gradient(90deg in oklch,
+        oklch(0.753 0.1279 191.57), oklch(0.405 0.1451 264.89),
+        oklch(0.29 0.1506 289.33), oklch(0.5975 0.1808 0.42),
+        oklch(0.7 0.1909 24.11), oklch(0.87 0.1786 92.23),
+        oklch(0.753 0.1279 191.57));
+    }
+    .site-header h1 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .site-header h1 a { text-decoration: none; }
+    .site-header .teal-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-teal);
+      margin-right: 0.5rem;
+    }
+
+    /* Layout */
+    .site-wrapper {
+      display: flex;
+      min-height: calc(100vh - 57px);
+    }
+
+    /* Sidebar */
+    .site-sidebar {
+      width: 260px;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      overflow-y: auto;
+      position: sticky;
+      top: 57px;
+      height: calc(100vh - 57px);
+      font-size: 0.875rem;
+    }
+    .sidebar-search {
+      width: 100%;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.375rem;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 0.8125rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .sidebar-search:focus {
+      border-color: oklch(0.72 0.15 185);
+      box-shadow: 0 0 0 2px oklch(0.72 0.15 185 / 0.2);
+    }
+    .sidebar-search::placeholder {
+      color: var(--muted-fg);
+    }
+    .site-sidebar nav h3 {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted-fg);
+      margin: 1.25rem 0 0.5rem 0;
+    }
+    .sidebar-search + h3 {
+      margin-top: 0;
+    }
+    .sidebar-no-results {
+      font-size: 0.75rem;
+      color: var(--muted-fg);
+      padding: 0.5rem 0.75rem;
+      margin: 0;
+    }
+    .site-sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .site-sidebar nav ul li { margin: 0; }
+    .site-sidebar nav ul li a {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.125rem 0.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--muted-fg);
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .nav-hint {
+      display: block;
+      width: 100%;
+      font-size: 0.625rem;
+      letter-spacing: 0.01em;
+      color: var(--muted-fg);
+      line-height: 1.3;
+      margin-top: -0.0625rem;
+    }
+    .site-sidebar nav ul li a:hover {
+      background: var(--muted);
+      color: var(--fg);
+    }
+    .site-sidebar nav ul li a.active {
+      background: var(--muted);
+      color: var(--fg);
+      font-weight: 500;
+    }
+    .nav-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.075rem 0.35rem;
+      border-radius: 0.25rem;
+      line-height: 1.4;
+      vertical-align: middle;
+      margin-left: 0.25rem;
+    }
+    .nav-status-partial {
+      background: oklch(0.87 0.1786 92.23 / 0.25);
+      color: oklch(0.55 0.12 80);
+    }
+
+    /* Content */
+    .site-content {
+      flex: 1;
+      min-width: 0;
+      max-width: 52rem;
+      padding: 2.5rem 3rem;
+    }
+
+    /* Typography */
+    .site-content h1 {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .site-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.375rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .site-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .site-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .site-content p {
+      margin-bottom: 1rem;
+    }
+    .site-content ul, .site-content ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    .site-content li { margin-bottom: 0.25rem; }
+    .site-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .site-content blockquote {
+      border-left: 3px solid var(--brand-teal);
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      color: var(--muted-fg);
+      background: var(--muted);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .site-content blockquote p { margin-bottom: 0; }
+
+    /* Tables — scrollable on mobile */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 1.5rem;
+    }
+    .site-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0;
+      font-size: 0.875rem;
+    }
+    .site-content th, .site-content td {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .site-content th {
+      font-weight: 600;
+      background: var(--muted);
+    }
+
+    /* Code */
+    .site-content code {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      background: var(--muted);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+    }
+    .site-content pre {
+      background: var(--neutral-950);
+      color: var(--neutral-50);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+    }
+    html.dark .site-content pre {
+      background: var(--neutral-800);
+      border: 1px solid var(--border);
+    }
+    .site-content pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    /* Links — distinguishable in dark mode */
+    .site-content a { text-decoration: underline; text-underline-offset: 2px; }
+    html.dark .site-content a { color: var(--brand-teal); }
+    html.dark .site-content a:hover { opacity: 0.85; }
+
+    /* Status pills for documentation completeness */
+    .page-status {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0 0 1.5rem;
+      padding: 0 0 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-status-note {
+      margin: 0;
+      max-width: 36rem;
+      font-size: 0.875rem;
+      color: var(--muted-fg);
+    }
+    .status-pill {
+      --status-pill-dot: var(--muted-fg);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.625rem;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      background: var(--muted);
+      color: var(--fg);
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      line-height: 1;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .status-pill::before {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      flex-shrink: 0;
+      border-radius: 9999px;
+      background: var(--status-pill-dot);
+    }
+    .status-pill-complete { --status-pill-dot: oklch(0.45 0.15 145); }
+    .status-pill-partial { --status-pill-dot: oklch(0.87 0.1786 92.23); }
+    .status-pill-planned { --status-pill-dot: var(--neutral-400); }
+    .status-pill-blocked { --status-pill-dot: oklch(0.577 0.245 27.325); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .site-sidebar { display: none; }
+      .site-content { padding: 1.5rem; }
+      .site-header { padding: 0.75rem 1.5rem; }
+      .site-content h1 { font-size: 1.75rem; }
+      .site-content h2 { font-size: 1.375rem; }
+    }
+
+    /* Mobile nav toggle */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      font-family: var(--font-body);
+      color: var(--fg);
+    }
+    @media (max-width: 768px) {
+      .mobile-nav-toggle { display: block; }
+      .site-sidebar.open {
+        display: block;
+        position: fixed;
+        top: 57px;
+        left: 0;
+        width: 280px;
+        height: calc(100vh - 57px);
+        background: var(--bg);
+        z-index: 20;
+        box-shadow: 4px 0 16px oklch(0 0 0 / 0.12);
+      }
+      html.dark .site-sidebar.open {
+        box-shadow: 4px 0 16px oklch(0 0 0 / 0.4);
+      }
+      .mobile-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        top: 57px;
+        background: oklch(0 0 0 / 0.4);
+        z-index: 19;
+      }
+      .mobile-backdrop.open { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-bar"></div>
+  <header class="site-header">
+    <div class="header-left">
+      <h1><a href="/"><span class="teal-dot"></span>Verdigris Design System</a></h1>
+      <button class="mobile-nav-toggle" onclick="document.querySelector('.site-sidebar').classList.toggle('open');document.querySelector('.mobile-backdrop').classList.toggle('open')">Menu</button>
+    </div>
+    <div class="header-controls">
+      <button class="mode-toggle" id="modeBtn">Dark</button>
+    </div>
+  </header>
+  <div class="mobile-backdrop" onclick="document.querySelector('.site-sidebar').classList.remove('open');this.classList.remove('open')"></div>
+
+  <div class="site-wrapper">
+    <aside class="site-sidebar">
+      <nav>
+        <input type="search" id="sidebarSearch" class="sidebar-search" placeholder="Filter pages…" aria-label="Filter sidebar navigation" autocomplete="off" />
+        <h3>Specimen</h3>
+        <ul>
+          <li><a href="/specimen">Brand Specimen<span class="nav-hint" aria-hidden="true">logo, banner, palette, font overview</span></a></li>
+          <li><a href="/brand-assets">Brand Assets<span class="nav-hint" aria-hidden="true">download logo svg png, banner, zip kit, press, permitted use</span></a></li>
+        </ul>
+
+        <h3>Foundations</h3>
+        <ul>
+          <li><a href="/foundations/color">Color</a></li>
+          <li><a href="/foundations/typography">Typography<span class="nav-hint" aria-hidden="true">font, typeface, scale, weight, line-height</span></a></li>
+          <li><a href="/foundations/spacing">Spacing</a></li>
+          <li><a href="/foundations/composition">Composition<span class="nav-hint" aria-hidden="true">layout coupling, surface registers, purpose matrix</span></a></li>
+          <li><a href="/foundations/motion">Motion<span class="nav-hint" aria-hidden="true">animation, transition, easing, duration</span></a></li>
+          <li><a href="/foundations/video">Video<span class="nav-hint" aria-hidden="true">Remotion, captions, reduced motion, production workflow</span></a></li>
+          <li><a href="/foundations/accessibility">Accessibility</a></li>
+          <li><a href="/foundations/dark-mode">Dark Mode</a></li>
+          <li><a href="/foundations/elevation">Elevation<span class="nav-hint" aria-hidden="true">shadow, depth, z-index, layers</span></a></li>
+          <li><a href="/foundations/product-ui">Product UI<span class="nav-hint" aria-hidden="true">application tokens, primitives, review units</span></a></li>
+        </ul>
+
+        <h3>Web Components</h3>
+        <ul>
+          <li><a href="/categories/web-components/buttons">Buttons</a></li>
+          <li><a href="/categories/web-components/cards">Cards</a></li>
+          <li><a href="/categories/web-components/data-display">Data Display<span class="nav-hint" aria-hidden="true">badge, tag, avatar, stat, metric</span></a></li>
+          <li><a href="/categories/web-components/feedback">Feedback<span class="nav-hint" aria-hidden="true">alert, notification, banner, status</span></a></li>
+          <li><a href="/categories/web-components/forms">Forms</a></li>
+          <li><a href="/categories/web-components/layout">Layout</a></li>
+          <li><a href="/categories/web-components/page-sections">Page Sections<span class="nav-hint" aria-hidden="true">hero, CTA, feature grid, testimonial</span></a></li>
+          <li><a href="/categories/web-components/navigation">Navigation</a></li>
+          <li><a href="/categories/web-components/modals">Modals & Dialogs</a></li>
+          <li><a href="/categories/web-components/tables">Tables</a></li>
+          <li><a href="/categories/web-components/toasts">Toasts</a></li>
+          <li><a href="/categories/web-components/tooltips">Tooltips & Popovers</a></li>
+          <li><a href="/categories/web-components/tabs">Tabs</a></li>
+          <li><a href="/categories/web-components/sidebar">Sidebar</a></li>
+          <li><a href="/categories/web-components/command-palette">Command Palette<span class="nav-hint" aria-hidden="true">cmd+k, search, quick actions</span></a></li>
+          <li><a href="/categories/web-components/brand-slider">Brand Slider<span class="nav-hint" aria-hidden="true">native range input, Canvas viz contexts</span></a></li>
+        </ul>
+
+        <h3>Visualizations</h3>
+        <ul>
+          <li><a href="/categories/visualizations/">Overview<span class="nav-hint" aria-hidden="true">7-component taxonomy + graduation state</span></a></li>
+          <li><a href="/categories/visualizations/interactive-viz">Interactive Framing<span class="nav-hint" aria-hidden="true">container chrome, affordance, captions, a11y</span></a></li>
+          <li><a href="/categories/visualizations/phase-portrait">Phase Portrait<span class="nav-hint" aria-hidden="true">Lissajous, load fingerprint</span></a></li>
+          <li><a href="/categories/visualizations/waveform-trace">Waveform Trace<span class="nav-hint" aria-hidden="true">time-domain, 60 Hz + harmonics</span></a></li>
+          <li><a href="/categories/visualizations/harmonic-spectrum">Harmonic Spectrum<span class="nav-hint" aria-hidden="true">frequency-domain, H5/H7 diagnostic</span></a></li>
+          <li><a href="/categories/visualizations/resolution-comparison">Resolution Comparison<span class="nav-hint" aria-hidden="true">1 Hz vs 8 kHz, interactive slider</span></a></li>
+        </ul>
+
+        <h3>Animation</h3>
+        <ul>
+          <li><a href="/categories/animation/guidelines">Guidelines</a></li>
+          <li><a href="/categories/animation/hover-states">Hover States</a></li>
+          <li><a href="/categories/animation/reduced-motion">Reduced Motion</a></li>
+          <li><a href="/categories/animation/scroll-reveal">Scroll Reveal</a></li>
+        </ul>
+
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="/categories/typography/h1-punctuation">Typography &mdash; H1 Punctuation<span class="nav-hint" aria-hidden="true">no em-dash, terminal period only when deliberate, antithesis via line break or colon, SOV R8</span> <span class="nav-status-indicator nav-status-partial">Convention</span></a></li>
+          <li><a href="/categories/typography/eyebrow">Typography &mdash; Eyebrow<span class="nav-hint" aria-hidden="true">middot separator, uppercase, singular taxonomy noun, no terminal punctuation, max 64ch</span> <span class="nav-status-indicator nav-status-partial">Convention</span></a></li>
+          <li><a href="/categories/composition/communicate-at-a-glance">Composition &mdash; Communicate at a Glance<span class="nav-hint" aria-hidden="true">the picture is the argument, squint test, no meta-language, caption is a 7-word claim, restraint is the achievement</span> <span class="nav-status-indicator nav-status-partial">Convention</span></a></li>
+          <li><a href="/categories/composition/stat-card">Composition &mdash; Stat Card<span class="nav-hint" aria-hidden="true">three-tier label value sublabel 8px gaps tnum line-heights SOV R8</span> <span class="nav-status-indicator nav-status-partial">Convention</span></a></li>
+          <li><a href="/categories/composition/figure-caption">Composition &mdash; Figure &amp; Caption<span class="nav-hint" aria-hidden="true">below visual 12px gap caption-strong body-small ResourceCard chip</span> <span class="nav-status-indicator nav-status-partial">Convention</span></a></li>
+          <li><a href="/categories/composition/oem-wordmark-placement">Composition &mdash; OEM Wordmark Placement<span class="nav-hint" aria-hidden="true">no partner wordmarks in hero, body diagram permitted, no recoloring, SOV R8</span> <span class="nav-status-indicator nav-status-partial">Rule</span></a></li>
+          <li><a href="/categories/composition/atom-id-exposure">Composition &mdash; Atom ID Exposure<span class="nav-hint" aria-hidden="true">no EVD CLM CMP PER CS in rendered body alt caption sitemap llms.txt invariant</span> <span class="nav-status-indicator nav-status-partial">Invariant</span></a></li>
+          <li><a href="/categories/photography/guidelines">Photography <span class="nav-status-indicator nav-status-partial">Partial</span></a></li>
+          <li><a href="/categories/illustration/guidelines">Illustration <span class="nav-status-indicator nav-status-partial">Partial</span></a></li>
+          <li><a href="/categories/3d-and-spline/guidelines">3D & WebGL<span class="nav-hint" aria-hidden="true">spline, three.js, shader, canvas</span> <span class="nav-status-indicator nav-status-partial">Partial</span></a></li>
+          <li><a href="/categories/ads-and-templates/guidelines">Ads & Templates <span class="nav-status-indicator nav-status-partial">Partial</span></a></li>
+          <li><a href="/categories/physical-goods/guidelines">Physical Goods<span class="nav-hint" aria-hidden="true">merch, swag, print, sticker, packaging</span> <span class="nav-status-indicator nav-status-partial">Partial</span></a></li>
+          <li><a href="/categories/visual-signature/guidelines">Visual Signature<span class="nav-hint" aria-hidden="true">waveform, phase portrait, canvas text, named effects</span></a></li>
+          <li><a href="/categories/whitepapers/cover">Whitepaper Covers<span class="nav-hint" aria-hidden="true">briefing, policy paper, LBNL, PDF cover spec</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/whitepapers/body">Whitepaper Body — Inside Pages<span class="nav-hint" aria-hidden="true">TOC, chapters, citations, multi-author, running headers</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/whitepapers/lab-tradition">Whitepaper — Lab Tradition<span class="nav-hint" aria-hidden="true">research institution coauthored 25-80pp methodology bibliography lab_tradition</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/whitepapers/policy-brief">Whitepaper — Policy Brief<span class="nav-hint" aria-hidden="true">named institution policymakers numbered recommendations 8-25pp policy_brief</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/whitepapers/ceo-brief">Whitepaper — CEO Brief<span class="nav-hint" aria-hidden="true">single byline first-person operator brief 4-12pp ceo_brief</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/whitepapers/buyer-brief">Whitepaper — Buyer Brief<span class="nav-hint" aria-hidden="true">two-page engaged-buyer sales leave-behind case + offer buyer_brief</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/slides/">Slide Decks — Overview<span class="nav-hint" aria-hidden="true">genre selection, decision tree, sales collateral</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/slides/pilot-kickoff">Pilot Kickoff Deck<span class="nav-hint" aria-hidden="true">primary genre, full spec, 12-20 slides, customer-confidential</span></a></li>
+          <li><a href="/categories/slides/customer-101">Customer 101 Deck<span class="nav-hint" aria-hidden="true">first meeting, story-led, public, mark + jon voice</span></a></li>
+          <li><a href="/categories/slides/partner-enablement">Partner Enablement Deck<span class="nav-hint" aria-hidden="true">co-sell, jimit + mike voice, partner-confidential</span></a></li>
+          <li><a href="/categories/slides/internal-team">Internal Team Deck<span class="nav-hint" aria-hidden="true">internal coordination, week-N OK, wordmark only</span></a></li>
+          <li><a href="/categories/slides/customer-201">Customer 201 Deck<span class="nav-hint" aria-hidden="true">technical follow-up, leave-behind density, mike+jon voice, customer-confidential, customer_201</span></a></li>
+          <li><a href="/categories/slides/producing">Slides — Producing<span class="nav-hint" aria-hidden="true">producer workflow, pick genre, pick density, anonymization, validate, GTM review, ship, producing</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/one-pagers/guide">One-Pagers<span class="nav-hint" aria-hidden="true">solution overview, comparative, single page leave-behind, CTA strip</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/one-pagers/solution-overview">One-Pager — Solution Overview<span class="nav-hint" aria-hidden="true">capability segment focus 3-callout grid CTA strip solution_overview</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/one-pagers/comparative">One-Pager — Comparative<span class="nav-hint" aria-hidden="true">decision aid numbered list thesis block</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/case-studies/guide">Case Studies<span class="nav-hint" aria-hidden="true">single genre, dual web PDF render, single anchor metric, named operator quote</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/service-reports/">Service Reports<span class="nav-hint" aria-hidden="true">SE leave-behind operational diagnostic methodology threshold-anchored findings spotlights customer-confidential service_reports</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/service-reports/portfolio-diagnostic">Service Report — Portfolio Diagnostic<span class="nav-hint" aria-hidden="true">survey shape multi-tier categories whole-system unit-level IEEE peer comparison portfolio_diagnostic</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/categories/service-reports/producing">Service Reports — Producing<span class="nav-hint" aria-hidden="true">SE workflow how to produce service report threshold anchor methodology validate deliver producing</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+        </ul>
+
+        <h3>Workflows</h3>
+        <ul>
+          <li><a href="/workflows/adversarial-review">Adversarial Review<span class="nav-hint" aria-hidden="true">research debate synthesis QA non-trivial design decisions</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+          <li><a href="/workflows/pii-review">PII Review<span class="nav-hint" aria-hidden="true">public package surface, package.json files, voice profiles, denylist allowlist</span></a></li>
+          <li><a href="/workflows/sales-collateral">Sales Collateral Production<span class="nav-hint" aria-hidden="true">decks, one-pagers, case studies, naming, distribution, versioning</span> <span class="nav-status-indicator nav-status-partial">Experimental</span></a></li>
+        </ul>
+        <!-- TODO: add Cohesion Audit sidebar entry once a Jekyll-rendered trend page lands.
+             Linking to GitHub /tree/main/ creates a chicken-and-egg link-check failure
+             because main does not have the skill until this PR merges. See PR #47. -->
+
+        <h3>For Consumers</h3>
+        <ul>
+          <li><a href="/CONSUMERS">Integration Guide<span class="nav-hint" aria-hidden="true">tailwind preset, raw tokens, CSS imports, voice recipes, rules YAML, versioning</span></a></li>
+        </ul>
+
+        <h3>Examples</h3>
+        <ul>
+          <li><a href="/examples/">Index<span class="nav-hint" aria-hidden="true">all good and bad visual examples</span></a></li>
+          <li><a href="/examples/good/brand-teal-on-dark">Teal on Dark ✓</a></li>
+          <li><a href="/examples/good/heading-hierarchy">Heading Hierarchy ✓</a></li>
+          <li><a href="/examples/good/card-composition">Card Composition ✓</a></li>
+          <li><a href="/examples/good/dark-mode">Dark Mode ✓</a></li>
+          <li><a href="/examples/good/motion-usage">Motion Usage ✓</a></li>
+          <li><a href="/examples/bad/teal-text-on-white">Teal on White ✗</a></li>
+          <li><a href="/examples/bad/wrong-font-weights">Wrong Weights ✗</a></li>
+          <li><a href="/examples/bad/off-grid-spacing">Off-Grid Spacing ✗</a></li>
+          <li><a href="/examples/bad/missing-reduced-motion">No Reduced Motion ✗</a></li>
+          <li><a href="/examples/bad/pure-black-dark-mode">Pure Black ✗</a></li>
+        </ul>
+
+        <h3>Tokens (JSON)</h3>
+        <ul>
+          <li><a href="/tokens/color/base.json">Color / Base</a></li>
+          <li><a href="/tokens/color/semantic-light.json">Color / Light</a></li>
+          <li><a href="/tokens/color/semantic-dark.json">Color / Dark</a></li>
+          <li><a href="/tokens/typography/font-family.json">Typography / Families</a></li>
+          <li><a href="/tokens/typography/scale.json">Typography / Scale</a></li>
+          <li><a href="/tokens/spacing/base.json">Spacing / Base</a></li>
+          <li><a href="/tokens/spacing/layout.json">Spacing / Layout</a></li>
+          <li><a href="/tokens/motion/duration.json">Motion / Duration</a></li>
+          <li><a href="/tokens/motion/easing.json">Motion / Easing</a></li>
+          <li><a href="/tokens/elevation/shadow.json">Elevation / Shadow</a></li>
+          <li><a href="/tokens/elevation/z-index.json">Elevation / Z-index</a></li>
+          <li><a href="/tokens/breakpoints.json">Breakpoints</a></li>
+          <li><a href="/tokens/radius.json">Radius</a></li>
+        </ul>
+
+        <h3>Rules</h3>
+        <ul>
+          <li><a href="/rules/visual-rules.yml">Visual Rules (YAML)</a></li>
+        </ul>
+
+        <h3>Meta</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/CONTRIBUTING">Contributing</a></li>
+        </ul>
+        <p class="sidebar-no-results" hidden>No pages match your filter.</p>
+      </nav>
+    </aside>
+
+    <main class="site-content">
+      
+      <h1 id="one-pagers">One-Pagers</h1>
+
+<p>A one-pager is a single Letter page, scanned cold without a presenter, that conveys one Verdigris value proposition or one decision aid. It’s the leave-behind after a meeting, the attachment to an outbound email, the asset a partner AE shares with their customer in a single message. It must succeed on its own — no narrator, no calendar to anchor it, no follow-up guaranteed.</p>
+
+<p>This guide defines two genres of one-pager and the rules that apply across them. The Notion <em>Sales Collateral Cheat Sheet</em> lists five existing Verdigris one-pagers (About Verdigris, Architectural Advantages, 7 Ways to Avoid Vendor Lock-In, Signals for AI Data Centers, Signals Overview); they’re the first surfaces this cell graduates against.</p>
+
+<h2 id="pick-the-genre-first">Pick the genre first</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Genre</th>
+      <th>When to use</th>
+      <th>Authority signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Solution overview</strong></td>
+      <td>Describing one Verdigris capability or one segment fit (Signals, AI Factory, etc.)</td>
+      <td>Title + 3 evidence callouts + CTA strip; metric-led; reads as a fact sheet</td>
+    </tr>
+    <tr>
+      <td><strong>Comparative</strong></td>
+      <td>Decision aid framed as “X ways to evaluate / avoid Y”</td>
+      <td>Numbered N-grid + thesis block + CTA strip; argument-led; reads as an opinionated checklist</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The genres differ on five axes. <strong>Pick one and commit.</strong> A solution overview dressed as a comparative reads as scattered (too many open questions for a leave-behind); a comparative dressed as a solution overview reads as flat (no thesis, no opinion, no reason to keep the page).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Axis</th>
+      <th>Solution overview</th>
+      <th>Comparative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Layout</strong></td>
+      <td>Title block + 3 callouts in 3-column grid + CTA strip</td>
+      <td>Title block + numbered list (5-12 items) on left + thesis on right + CTA strip</td>
+    </tr>
+    <tr>
+      <td><strong>Voice center of gravity</strong></td>
+      <td>Mike (field credibility) + technical_precision</td>
+      <td>Jimit (market fluency) + strategic_narrative</td>
+    </tr>
+    <tr>
+      <td><strong>Anchor metric</strong></td>
+      <td>One per callout, three total (capability)</td>
+      <td>One total (overall thesis)</td>
+    </tr>
+    <tr>
+      <td><strong>CTA pattern</strong></td>
+      <td>“See [product] in action” / “Schedule a 30-min walkthrough”</td>
+      <td>“Read the full whitepaper” / “Talk to a Verdigris architect”</td>
+    </tr>
+    <tr>
+      <td><strong>Reference exemplars</strong></td>
+      <td>“Signals Overview”, “Signals for AI Data Centers”</td>
+      <td>“7 Ways to Avoid Vendor Lock-In”, “Architectural Advantages”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-one-pager-is-a-single-page-universal">The one-pager is a single page (universal)</h2>
+
+<p>Whichever genre you pick, this rule holds.</p>
+
+<p>A one-pager is <strong>exactly one page</strong>. Not “one page, mostly.” Not “with a small back side.” If the content does not fit on one Letter page at the typography scale this cell defines, <strong>eject content</strong>, do not shrink type. Below the type floor (10pt body, 13pt callout headline, 9pt footer) the page reads as a dense legal document, not a leave-behind, and reviewers stop reading.</p>
+
+<p>If the content genuinely needs two pages, it is not a one-pager — it is a brief or a short whitepaper, and belongs in <code class="language-plaintext highlighter-rouge">categories/whitepapers/cover.md</code> or a future briefs cell.</p>
+
+<h2 id="hierarchy">Hierarchy</h2>
+
+<p>Required, in this order, top to bottom:</p>
+
+<ol>
+  <li><strong>Top bar</strong> — Verdigris logomark (left, 28pt tall) + eyebrow (right, dot + series + audience, e.g., <code class="language-plaintext highlighter-rouge">· Signals for AI data centers</code>)</li>
+  <li><strong>Headline</strong> (Lato 700, 26pt, max 6.4in wide, max 3 lines, one teal accent phrase)</li>
+  <li><strong>Deck</strong> (Inter 12pt, max 5.6in wide, one sentence, ~24 words ceiling)</li>
+  <li><strong>Body</strong> (genre-specific — see below)</li>
+  <li><strong>CTA strip</strong> (dark band with primary message + action; full width)</li>
+  <li><strong>Footer</strong> (logomark / tagline + confidentiality marking + URL)</li>
+</ol>
+
+<h2 id="body--solution-overview-genre">Body — solution overview genre</h2>
+
+<p>Three callouts in a 3-column grid. Each callout:</p>
+
+<ul>
+  <li><strong>Number</strong> (<code class="language-plaintext highlighter-rouge">01</code>, <code class="language-plaintext highlighter-rouge">02</code>, <code class="language-plaintext highlighter-rouge">03</code>) in JetBrains Mono, teal — establishes scan order</li>
+  <li><strong>Headline</strong> — 13pt Lato 700, 1-3 words; the capability or the outcome (e.g., “Detect failures earlier”, “Recover stranded capacity”)</li>
+  <li><strong>Body</strong> — 10pt Inter 400, 2-4 sentences max; what the capability does and why it matters</li>
+  <li><strong>Anchor metric</strong> — 24pt Lato 700, teal; one number per callout (e.g., “21 days”, “$1.3M-$3M”, “8 kHz”)</li>
+</ul>
+
+<p>Three callouts is the floor and the ceiling. Two callouts read as half-empty; four callouts crowd the grid and the metrics compete.</p>
+
+<h2 id="body--comparative-genre">Body — comparative genre</h2>
+
+<p>Numbered list on the left (5/12 cols), thesis block on the right (4/12 cols).</p>
+
+<ul>
+  <li><strong>Numbered list</strong> — 5-12 items (typically 7), each item is a one-sentence proposition + one-sentence explanation. The first sentence must be readable as a standalone claim (“Choose vendors with open APIs” not “Open APIs matter”).</li>
+  <li><strong>Thesis block</strong> — left-rule teal callout, 11pt body, 2-3 short paragraphs articulating the underlying argument. Reader who reads ONLY the thesis block should still get the value of the page.</li>
+</ul>
+
+<p>The thesis block is what makes the comparative genre work. Without it, a numbered list is just a checklist; with it, the page argues something and the reader has a reason to keep it.</p>
+
+<h2 id="decision-framework-where-to-land-in-the-bounds">Decision framework: where to land in the bounds</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Boundary</th>
+      <th>Floor (small)</th>
+      <th>Default</th>
+      <th>Ceiling (large)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Numbered list count, comparative genre (5-12)</strong></td>
+      <td><strong>5 items</strong> when the argument is simple and the audience is senior. The thesis carries the weight; the items are illustrative.</td>
+      <td><strong>7 items</strong> for a typical comparative one-pager: mixed audience, standard argument complexity, scannable in 60 seconds. This is the default.</td>
+      <td><strong>12 items</strong> only when the spec is an exhaustive checklist where omission is itself a failure mode (e.g., the “7 Ways” page would land at 12 only if the underlying audit framework genuinely has 12 distinct items, not because more felt comprehensive). Above 12 the page reads as a wall of text and the thesis-block discipline collapses.</td>
+    </tr>
+    <tr>
+      <td><strong>Callout count, solution-overview genre (3, fixed)</strong></td>
+      <td><strong>3 callouts is the floor and the ceiling.</strong> Two callouts read as half-empty (the 3-column grid leaves visible white space and the page looks like a draft). Four callouts crowd the grid, force the type smaller, and make the three anchor metrics compete for attention. The fixed count is rigid because the load-bearing claim is “one capability, three concrete proof points” — change the count and the rhetorical structure changes.</td>
+      <td>If you genuinely have 4-6 capabilities to convey, the artifact is a solution brief or a short whitepaper, not a one-pager.</td>
+      <td>If you have only 2 strong proof points, defer the page until the third is real; a 2-callout page with a placeholder reads as marketing rather than evidence.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="spacing-rhythm">Spacing rhythm</h2>
+
+<p>All values from <code class="language-plaintext highlighter-rouge">tokens/spacing/print.json</code> (frame primitives) and the one-pager-specific values in <code class="language-plaintext highlighter-rouge">build/print/one-pager.css</code>. Floor + ceiling for every gap.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gap</th>
+      <th>Floor</th>
+      <th>Default</th>
+      <th>Ceiling</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Frame top</td>
+      <td>0.6in</td>
+      <td>0.75in</td>
+      <td>0.85in</td>
+    </tr>
+    <tr>
+      <td>Frame side</td>
+      <td>0.6in</td>
+      <td>0.75in</td>
+      <td>0.85in</td>
+    </tr>
+    <tr>
+      <td>Frame bottom (above footer)</td>
+      <td>0.7in</td>
+      <td>0.85in</td>
+      <td>1.0in</td>
+    </tr>
+    <tr>
+      <td>Title to deck</td>
+      <td>10pt</td>
+      <td>14pt</td>
+      <td>18pt</td>
+    </tr>
+    <tr>
+      <td>Deck to body</td>
+      <td>22pt</td>
+      <td>28pt</td>
+      <td>36pt</td>
+    </tr>
+    <tr>
+      <td>Body to CTA strip</td>
+      <td>22pt</td>
+      <td>28pt</td>
+      <td>36pt</td>
+    </tr>
+    <tr>
+      <td>CTA strip height</td>
+      <td>0.5in</td>
+      <td>0.6in</td>
+      <td>0.75in</td>
+    </tr>
+    <tr>
+      <td>Footer height</td>
+      <td>—</td>
+      <td>28pt</td>
+      <td>— (fixed)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="typography">Typography</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slot</th>
+      <th>Font</th>
+      <th>Size</th>
+      <th>Weight</th>
+      <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Eyebrow</td>
+      <td>Lato</td>
+      <td>9pt</td>
+      <td>700</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-muted</code> (uppercase, 0.16em letterspacing)</td>
+    </tr>
+    <tr>
+      <td>Headline</td>
+      <td>Lato</td>
+      <td>26pt</td>
+      <td>700</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-ink</code>, one accent in teal</td>
+    </tr>
+    <tr>
+      <td>Deck</td>
+      <td>Inter</td>
+      <td>12pt</td>
+      <td>400</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-muted</code></td>
+    </tr>
+    <tr>
+      <td>Callout headline (solution overview)</td>
+      <td>Lato</td>
+      <td>13pt</td>
+      <td>700</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-ink</code></td>
+    </tr>
+    <tr>
+      <td>Callout body</td>
+      <td>Inter</td>
+      <td>10pt</td>
+      <td>400</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-ink</code></td>
+    </tr>
+    <tr>
+      <td>Anchor metric</td>
+      <td>Lato</td>
+      <td>24pt</td>
+      <td>700</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-teal</code></td>
+    </tr>
+    <tr>
+      <td>Numbered list item</td>
+      <td>Inter</td>
+      <td>10pt</td>
+      <td>400</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-ink</code> (number in JetBrains Mono 11pt 700 teal)</td>
+    </tr>
+    <tr>
+      <td>Thesis body</td>
+      <td>Inter</td>
+      <td>11pt</td>
+      <td>400</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-ink</code></td>
+    </tr>
+    <tr>
+      <td>CTA strip text</td>
+      <td>Lato</td>
+      <td>13pt</td>
+      <td>700</td>
+      <td>rgba(255,255,255,0.96) on dark band</td>
+    </tr>
+    <tr>
+      <td>Footer</td>
+      <td>Inter / Lato</td>
+      <td>8-9pt</td>
+      <td>400 / 700</td>
+      <td><code class="language-plaintext highlighter-rouge">--vd-muted</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="why-fixed-point-sizes-not-ranges">Why fixed point sizes (not ranges)</h3>
+
+<p>Print artifacts assume a constant reading distance — roughly 18 inches for a one-pager held at a desk or pinned to a board. Fixed point sizes lock the visual hierarchy at that distance: every printed copy renders identically, every PDF held by every prospect reads at the same scale. The slide cells use ranges (32-44pt headlines, 18-22pt deck) because projection distance varies — a boardroom monitor at 8 feet versus an auditorium screen at 30 feet calls for different sizes, calibrated per venue. Don’t borrow the slide-cell range pattern back into one-pagers; the read-distance assumption is different and the page should look the same on every desk it lands on.</p>
+
+<h2 id="template-vs-produced">Template vs. produced</h2>
+
+<p>One-pager templates clone across surfaces. The placeholders cluster around the eyebrow (which segment), the anchor metric per callout, and the CTA action.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slot</th>
+      <th>Template stage</th>
+      <th>Produced stage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Eyebrow (solution overview)</td>
+      <td><code class="language-plaintext highlighter-rouge">· &lt;span class="vd-template"&gt;[FIELD: segment / capability, e.g. "Signals for AI data centers"]&lt;/span&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">· Signals for AI data centers</code></td>
+    </tr>
+    <tr>
+      <td>Callout anchor metric</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;span class="vd-template"&gt;[FIELD: metric, e.g. "21 days"]&lt;/span&gt;</code> with caption <code class="language-plaintext highlighter-rouge">&lt;span class="vd-template"&gt;[FIELD: claim, e.g. "advance warning on rectifier-class faults"]&lt;/span&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">21 days</code> with caption <code class="language-plaintext highlighter-rouge">advance warning on rectifier-class faults</code></td>
+    </tr>
+    <tr>
+      <td>CTA action</td>
+      <td><code class="language-plaintext highlighter-rouge">→ &lt;span class="vd-template"&gt;[FIELD: terse action, e.g. "Schedule a 30-minute walkthrough"]&lt;/span&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">→ Schedule a 30-minute walkthrough</code></td>
+    </tr>
+    <tr>
+      <td>Comparative thesis</td>
+      <td><code class="language-plaintext highlighter-rouge">Verdigris's view: &lt;span class="vd-template"&gt;[FIELD: 2-3 sentence thesis tied to one source claim]&lt;/span&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Verdigris's view: open APIs and exportable data are the two architectural choices that prevent vendor lock-in over a 5-year horizon. The other five items in this list are downstream consequences of those two.</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The template stage is what an agent generates from the spec; the produced stage is what a human (or evidence-grounded agent) fills in. Never ship the produced stage without source evidence for every filled placeholder — anchor metrics are from the EVD canonical claim set; the comparative thesis is from a documented Verdigris position, not invented for the page.</p>
+
+<h2 id="cta-strip">CTA strip</h2>
+
+<p>The CTA strip is the load-bearing close of the page. Three rules:</p>
+
+<ol>
+  <li><strong>Dark background.</strong> <code class="language-plaintext highlighter-rouge">--vd-neutral-950</code>. Always. The strip carries the page’s center of gravity; light-on-light dilutes.</li>
+  <li><strong>Two parts only:</strong> primary message (left, Lato 700, 1 sentence + optional teal accent) + action (right, Inter 500, prefixed <code class="language-plaintext highlighter-rouge">→</code>, terse).</li>
+  <li><strong>Always actionable.</strong> Not “Learn more about Signals.” Specific: “See Signals in action” + “→ Schedule a 30-minute walkthrough”. The action is what the reader does next, not what Verdigris would like them to think.</li>
+</ol>
+
+<h2 id="logomark-consistency">Logomark consistency</h2>
+
+<p>Inherits the <code class="language-plaintext highlighter-rouge">composition.persuade-slide-deck.logomark-consistency</code> rule. Top-bar logomark always left, 28pt tall, full-color lockup on light background. Footer logomark uses the same lockup at 18pt. One mark per page (top bar OR footer; never duplicated in body).</p>
+
+<h2 id="confidentiality-marking">Confidentiality marking</h2>
+
+<p>Inherits the <code class="language-plaintext highlighter-rouge">composition.persuade-slide-deck.confidentiality-marking</code> rule. Default tier:</p>
+
+<ul>
+  <li><strong>PUBLIC</strong> — for solution overview and comparative genres distributed via verdigris.co/resources/one-pagers/, attached to outbound emails, shared with prospects</li>
+  <li><strong>PARTNER-CONFIDENTIAL</strong> — for partner-specific one-pagers (co-branded, partner pricing details)</li>
+  <li><strong>CUSTOMER-CONFIDENTIAL</strong> — rare for one-pagers; if an artifact is customer-confidential, it’s probably a brief, not a one-pager</li>
+</ul>
+
+<p>The marking lives in the footer band, right side. Same color discipline as the slides cell.</p>
+
+<h2 id="roles-not-names">Roles, not names</h2>
+
+<p>Inherits the <code class="language-plaintext highlighter-rouge">composition.persuade-slide-deck.template-roles-not-names</code> rule. A one-pager template uses role labels (“Verdigris Field Engineer”) not specific people, except where the page is specifically attributed (named-author thought-leadership pieces).</p>
+
+<h2 id="date-format">Date format</h2>
+
+<p>Inherits the <code class="language-plaintext highlighter-rouge">composition.persuade-slide-deck.absolute-dates</code> rule. One-pagers use absolute calendar dates for any timeline claim. “Q3 2026” is acceptable as a fiscal anchor; “Week 3” is not.</p>
+
+<h2 id="voice-recipe">Voice recipe</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">one_pager</code> recipe in <code class="language-plaintext highlighter-rouge">voice/recipes.yaml</code> branches by genre:</p>
+
+<p><strong>Solution overview</strong> — Mike primary (field credibility on the 3 callouts; operator-recognizable specifics) + Jon supporting (technical precision on capability claims). Mark is absent: founder voice scanned cold reads as a brochure when paired with capability descriptions.</p>
+
+<p><strong>Comparative</strong> — <strong>Mark primary</strong> (the thesis block carries the argument; Mark’s strategic_narrative 9 + mission_gravity 9 land the founder weight where it’s needed) + Jimit supporting (outside-in market positioning across the numbered list items). Mike doesn’t appear; the comparative is positioning + argument, not field credibility.</p>
+
+<p>The Mark-primary assignment on comparative was flipped from Jimit-primary on 2026-05-02 after Loop 3 adversarial review showed the thesis block is the load-bearing element of a comparative one-pager — the voice carrying the thesis is the voice carrying the page. Jimit’s market fluency works as supporting, layered through the numbered list items.</p>
+
+<p>Diction discipline applies (audience_fit_diction): never use internal jargon; spell out acronyms on first use; specific numbers always; CTA action is concrete.</p>
+
+<h2 id="voice-at-a-glance">Voice at a glance</h2>
+
+<p>A producer reading this cell should be able to answer “what voice mix am I writing in?” without leaving the page. The mix branches by genre. Pulled directly from the <code class="language-plaintext highlighter-rouge">one_pager</code> recipe and the linked profile YAMLs.</p>
+
+<h3 id="solution-overview">Solution overview</h3>
+
+<p><strong>Mike — primary</strong> (Profile: <a href="/voice/team/mike-mahedy.yaml"><code class="language-plaintext highlighter-rouge">voice/team/mike-mahedy.yaml</code></a>). Field credibility on the 3 callouts. Mike’s voice makes the callouts read as “someone who has been to your facility wrote this” rather than “a marketing team optimized this for the website.”</p>
+
+<blockquote>
+  <p>“I was at [conference] and they presented…”</p>
+</blockquote>
+
+<p>Carries: all three callouts, anchor metrics, deck. The page’s center of gravity.</p>
+
+<p><strong>Jon — supporting</strong> (Profile: <a href="/voice/team/jon-chu.yaml"><code class="language-plaintext highlighter-rouge">voice/team/jon-chu.yaml</code></a>). Technical precision on capability claims. Jon’s bench-diagnostic register grounds the capability descriptions in observable behavior, not abstraction.</p>
+
+<blockquote>
+  <p>“looks like a firewall issue to me”</p>
+</blockquote>
+
+<p>Carries: callout body copy where the claim needs engineering specificity. Stays terse.</p>
+
+<h3 id="comparative">Comparative</h3>
+
+<p><strong>Mark — primary</strong> (Profile: <a href="/voice/team/mark-chung.yaml"><code class="language-plaintext highlighter-rouge">voice/team/mark-chung.yaml</code></a>). The thesis block carries the argument. Mark’s strategic_narrative (9) and mission_gravity (9) are decisive on mission-anchored framing; the founder voice on the thesis is what gives the page a reason to be kept rather than scanned and discarded.</p>
+
+<blockquote>
+  <p>“There’s a real question inside it”</p>
+</blockquote>
+
+<p>Carries: thesis block. Stays out of the numbered list.</p>
+
+<p><strong>Jimit — supporting</strong> (Profile: <a href="/voice/team/jimit-shah.yaml"><code class="language-plaintext highlighter-rouge">voice/team/jimit-shah.yaml</code></a>). Outside-in market positioning across the numbered list items. Jimit’s market_fluency translates Verdigris claims into the prospect’s commercial frame.</p>
+
+<blockquote>
+  <p>“These come from three inputs:”</p>
+</blockquote>
+
+<p>Carries: every numbered list item. The thesis is Mark; the body is Jimit.</p>
+
+<p><strong>Seren — accent (both genres)</strong> (Profile: <a href="/voice/team/seren-coskun.yaml"><code class="language-plaintext highlighter-rouge">voice/team/seren-coskun.yaml</code></a>). Operator-empathy framing on body copy; rare on a one-pager but available for the diction pass.</p>
+
+<blockquote>
+  <p>“From my perspective”</p>
+</blockquote>
+
+<p>Carries: rare. Use when a body sentence needs to soften from “Verdigris does X” to “your team would see X.”</p>
+
+<h2 id="reference-exemplars-notion-sales-collateral-cheat-sheet">Reference exemplars (Notion Sales Collateral Cheat Sheet)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Existing one-pager</th>
+      <th>Genre</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>About Verdigris</td>
+      <td>Solution overview</td>
+      <td>Pre-cell; needs refresh against this spec</td>
+    </tr>
+    <tr>
+      <td>Architectural Advantages</td>
+      <td>Comparative</td>
+      <td>Pre-cell; needs refresh</td>
+    </tr>
+    <tr>
+      <td>7 Ways to Avoid Vendor Lock-In</td>
+      <td>Comparative</td>
+      <td>Pre-cell; canonical example for comparative genre</td>
+    </tr>
+    <tr>
+      <td>Signals for AI Data Centers</td>
+      <td>Solution overview</td>
+      <td>Pre-cell; canonical example for solution overview genre</td>
+    </tr>
+    <tr>
+      <td>Signals Overview</td>
+      <td>Solution overview</td>
+      <td>Pre-cell; needs refresh</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The first surface refresh under this cell should be one of the comparative pages (“7 Ways…” or “Architectural Advantages”), since the comparative genre’s thesis-block discipline is the most underdeveloped part of the existing five.</p>
+
+<h2 id="what-this-cell-does-not-cover">What this cell does NOT cover</h2>
+
+<ul>
+  <li><strong>Two-pagers / tri-folds.</strong> Different rendering; defer until a real surface needs one.</li>
+  <li><strong>Web one-pagers (HTML / responsive).</strong> This cell is print-first. A future one-pager-web sub-cell can graduate when verdigris.co adds dedicated one-pager pages.</li>
+  <li><strong>Customer-specific one-pagers.</strong> For a customer one-off, use the brief or pilot-kickoff genre instead — one-pagers are designed for repeated, identical distribution.</li>
+  <li><strong>Slide one-pager exports.</strong> A “summary slide” exported to PDF is not a one-pager; it’s a slide. The two genres have different rhythms (slides project; one-pagers scan).</li>
+</ul>
+
+<h2 id="why-this-guide-exists">Why this guide exists</h2>
+
+<p>Verdigris produces one-pagers for ~7 distinct surfaces but ships them as bespoke artifacts. The Notion <em>Sales Collateral Cheat Sheet</em> lists five active one-pagers; reviewing them surfaces inconsistencies in metric placement (some have 2 callouts, some have 4), CTA discipline (most have a generic “learn more”), and thesis discipline (the comparative pages mostly lack a thesis block). Codifying the two genres makes the next refresh cycle a template-fill, not a redesign.</p>
+
+<p>The genre framework was synthesized via the <a href="../../workflows/adversarial-review">adversarial-review workflow</a>. The decision to ship two genres (rather than one universal one-pager spec) was load-bearing: the comparative pages and the solution-overview pages have genuinely different rhetorical structures, and forcing them into one spec would underspecify both.</p>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="../../workflows/sales-collateral"><code class="language-plaintext highlighter-rouge">workflows/sales-collateral</code></a> — production guide spanning all collateral types; see the <a href="../../workflows/sales-collateral#versioning-vs-refresh">versioning-vs-refresh section</a> for when to bump the version vs. edit in place</li>
+  <li><a href="../slides/"><code class="language-plaintext highlighter-rouge">categories/slides/</code></a> — sister cell; sales-collateral universals (logomark, confidentiality, roles, dates) inherited here</li>
+  <li><a href="../whitepapers/cover"><code class="language-plaintext highlighter-rouge">categories/whitepapers/cover</code></a> — sister cell; print-rendering patterns inherited via cover.css</li>
+  <li><a href="/build/print/one-pager.css"><code class="language-plaintext highlighter-rouge">build/print/one-pager.css</code></a> — reference stylesheet</li>
+  <li><a href="/voice/recipes.yaml"><code class="language-plaintext highlighter-rouge">voice/recipes.yaml</code></a> — <code class="language-plaintext highlighter-rouge">one_pager</code> recipe</li>
+</ul>
+
+    </main>
+  </div>
+
+  <script>
+    // Dark mode: restore from localStorage or respect system preference
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var btn = document.getElementById('modeBtn');
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        btn.textContent = 'Light';
+      }
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.classList.toggle('dark');
+        this.textContent = isDark ? 'Light' : 'Dark';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    })();
+
+    // Active sidebar link
+    document.querySelectorAll('.site-sidebar a').forEach(function(a) {
+      var href = a.getAttribute('href');
+      var path = window.location.pathname.replace(/\/$/, '').replace(/\.html$/, '');
+      var linkPath = href.replace(/\/$/, '').replace(/\.html$/, '');
+      if (path === linkPath || (linkPath && path === linkPath + '/index')) {
+        a.classList.add('active');
+      }
+    });
+
+    // Sidebar search filter
+    (function() {
+      var input = document.getElementById('sidebarSearch');
+      var nav = input.closest('nav');
+      var headings = nav.querySelectorAll('h3');
+      var noResults = nav.querySelector('.sidebar-no-results');
+
+      // Build searchable text for a nav item, excluding badge text
+      function searchText(li) {
+        var parts = [];
+        li.querySelectorAll('a').forEach(function(a) {
+          a.childNodes.forEach(function(node) {
+            if (node.nodeType === 3) { parts.push(node.textContent); }
+            else if (node.nodeType === 1 && !node.classList.contains('nav-status-indicator')) {
+              parts.push(node.textContent);
+            }
+          });
+        });
+        return parts.join(' ').toLowerCase();
+      }
+
+      input.addEventListener('input', function() {
+        var q = this.value.toLowerCase().trim();
+        var anyGlobal = false;
+        headings.forEach(function(h3) {
+          var ul = h3.nextElementSibling;
+          if (!ul || ul.tagName !== 'UL') return;
+          var items = ul.querySelectorAll('li');
+          var anyVisible = false;
+          items.forEach(function(li) {
+            var text = searchText(li);
+            var show = !q || text.indexOf(q) !== -1;
+            li.style.display = show ? '' : 'none';
+            if (show) anyVisible = true;
+          });
+          h3.style.display = (!q || anyVisible) ? '' : 'none';
+          ul.style.display = (!q || anyVisible) ? '' : 'none';
+          if (anyVisible) anyGlobal = true;
+        });
+        noResults.hidden = !q || anyGlobal;
+      });
+    })();
+
+    // Wrap tables for mobile scroll
+    document.querySelectorAll('.site-content table').forEach(function(table) {
+      if (!table.closest('.table-wrap')) {
+        var wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      }
+    });
+  </script>
+</body>
+</html>

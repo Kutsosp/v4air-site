@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920">
+<defs><clipPath id="grid"><rect x="132" y="150" width="1232" height="660" rx="16"/></clipPath><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#868e96"/></marker></defs>
+<rect width="1400" height="920" fill="#fff"/>
+<text x="36.0" y="70.0" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700" fill="#1d2330" text-anchor="start" >V4AIR Meetup Stakeholder Map</text>
+<text x="36.0" y="110.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#868e96" text-anchor="start" >Engagement priorities by target group</text>
+<rect x="132.0" y="150" width="616.0" height="330" fill="#e3fafc" clip-path="url(#grid)"/>
+<circle cx="178.0" cy="198.0" r="20" fill="#0b7285"/>
+<g transform="translate(167.00,187.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+</g>
+<text x="210.0" y="207.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#0b7285" text-anchor="start" >Keep satisfied</text>
+<text x="158.0" y="256.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Milestone updates and visibility opportunities</text>
+<circle cx="163.0" cy="302" r="4.5" fill="#0b7285"/>
+<text x="180.0" y="310.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >University leadership</text>
+<circle cx="163.0" cy="338" r="4.5" fill="#0b7285"/>
+<text x="180.0" y="346.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Investors</text>
+<circle cx="163.0" cy="374" r="4.5" fill="#0b7285"/>
+<text x="180.0" y="382.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >University officials</text>
+<rect x="748.0" y="150" width="616.0" height="330" fill="#edf2ff" clip-path="url(#grid)"/>
+<circle cx="794.0" cy="198.0" r="20" fill="#364fc7"/>
+<g transform="translate(783.00,187.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</g>
+<text x="826.0" y="207.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#364fc7" text-anchor="start" >Manage closely</text>
+<text x="774.0" y="256.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Involve in decisions, frequent contact</text>
+<circle cx="779.0" cy="302" r="4.5" fill="#364fc7"/>
+<text x="796.0" y="310.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >ECRs</text>
+<circle cx="779.0" cy="338" r="4.5" fill="#364fc7"/>
+<text x="796.0" y="346.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Accepted participants (from February)</text>
+<rect x="132.0" y="480" width="616.0" height="330" fill="#f1f3f5" clip-path="url(#grid)"/>
+<circle cx="178.0" cy="598.0" r="20" fill="#495057"/>
+<g transform="translate(167.00,587.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+  <circle cx="12" cy="12" r="3" />
+</g>
+<text x="210.0" y="607.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#495057" text-anchor="start" >Monitor</text>
+<text x="158.0" y="656.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Occasional updates via press and partner channels</text>
+<circle cx="163.0" cy="702" r="4.5" fill="#495057"/>
+<text x="180.0" y="710.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >General public</text>
+<rect x="748.0" y="480" width="616.0" height="330" fill="#f3f0ff" clip-path="url(#grid)"/>
+<circle cx="794.0" cy="598.0" r="20" fill="#6741d9"/>
+<g transform="translate(783.00,587.00) scale(0.917)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" />
+</g>
+<text x="826.0" y="607.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#6741d9" text-anchor="start" >Keep informed</text>
+<text x="774.0" y="656.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start" >Regular updates and clear practical info</text>
+<circle cx="779.0" cy="702" r="4.5" fill="#6741d9"/>
+<text x="796.0" y="710.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Students (until acceptance)</text>
+<circle cx="779.0" cy="738" r="4.5" fill="#6741d9"/>
+<text x="796.0" y="746.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Tech transfer offices</text>
+<rect x="626.3" y="406.0" width="243.4" height="148" rx="16" fill="#fff" fill-opacity="0.75"/>
+<g opacity="0.5">
+<rect x="626.3" y="406.0" width="243.4" height="148" rx="16" fill="none" stroke="#495057" stroke-width="2.5" stroke-dasharray="10 7"/>
+<circle cx="657.3" cy="444.0" r="4.5" fill="#495057"/>
+<text x="674.3" y="452.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Industry experts</text>
+<circle cx="657.3" cy="480.0" r="4.5" fill="#495057"/>
+<text x="674.3" y="488.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Managers</text>
+<circle cx="657.3" cy="516.0" r="4.5" fill="#495057"/>
+<text x="674.3" y="524.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start" >Founders</text>
+</g>
+<line x1="76" y1="810" x2="76" y2="156" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="62.0" y="480.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#495057" text-anchor="middle" transform="rotate(-90 62 480.0)">Influence</text>
+<text x="108.0" y="806.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#868e96" text-anchor="start" transform="rotate(-90 108 806)">Low</text>
+<text x="108.0" y="210.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#868e96" text-anchor="start" transform="rotate(-90 108 210)">High</text>
+<line x1="132" y1="850" x2="1358" y2="850" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="748.0" y="900.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#495057" text-anchor="middle" >Interest</text>
+<text x="132.0" y="880.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#868e96" text-anchor="start" >Low</text>
+<text x="1344.0" y="880.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#868e96" text-anchor="end" >High</text>
+</svg>

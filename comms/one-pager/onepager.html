@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>V4AIR for partners</title>
+<style>
+@font-face { font-family: Satoshi; font-weight: 400; src: url(../../public/fonts/satoshi-400.woff2) format("woff2"); }
+@font-face { font-family: Satoshi; font-weight: 500; src: url(../../public/fonts/satoshi-500.woff2) format("woff2"); }
+@font-face { font-family: Satoshi; font-weight: 700; src: url(../../public/fonts/satoshi-700.woff2) format("woff2"); }
+@font-face { font-family: Aileron; font-weight: 700; src: url(../../public/fonts/aileron-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: Aileron; font-weight: 800; src: url(../../public/fonts/aileron-latin-800-normal.woff2) format("woff2"); }
+
+@page { size: A4; margin: 0; }
+:root { --bg:#f2f3ec; --raise:#f9f9f4; --line:#d3d5c8; --ink:#161616; --ink2:#52564a; --rust:#b35c1f; --night:#0c1517; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 210mm; height: 297mm; }
+body { background: var(--bg); color: var(--ink); font-family: Satoshi; font-size: 9.5pt; line-height: 1.4; }
+.page { position: relative; width: 210mm; height: 297mm; padding: 13mm 14mm 0 14mm; }
+
+/* top bar */
+.top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 4mm; border-bottom: 0.6pt solid var(--line); }
+.brand { display: flex; align-items: center; gap: 3mm; }
+.brand img { height: 10mm; }
+.brand b { font-family: Aileron; font-weight: 800; font-size: 13pt; letter-spacing: 0.02em; }
+.brand span { display: block; white-space: nowrap; font-size: 8pt; color: var(--ink2); }
+.eyebrow { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); }
+
+/* hero */
+.hero { padding: 8mm 0 6mm; }
+h1 { font-family: Aileron; font-weight: 800; font-size: 27pt; line-height: 1.08; letter-spacing: -0.01em; max-width: 165mm; }
+h1 em { font-style: normal; color: var(--rust); }
+.deck { margin-top: 3.5mm; font-size: 11.5pt; line-height: 1.4; color: var(--ink2); max-width: 160mm; }
+
+/* fact tiles */
+.facts { display: flex; gap: 3mm; }
+.fact { flex: 1; background: var(--raise); border: 0.6pt solid var(--line); border-radius: 2.5mm; padding: 3.2mm 3.5mm; }
+.fact svg { width: 6mm; height: 6mm; stroke: var(--rust); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.fact b { display: block; margin-top: 1.5mm; font-family: Aileron; font-weight: 800; font-size: 11pt; line-height: 1.15; }
+.fact span { display: block; font-size: 8pt; color: var(--ink2); line-height: 1.3; margin-top: 0.6mm; }
+
+h2 { font-family: Aileron; font-weight: 800; font-size: 13pt; margin-bottom: 2.5mm; }
+.label { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink2); margin-bottom: 1.5mm; }
+
+/* two columns */
+.cols { display: flex; gap: 8mm; margin-top: 7mm; }
+.col { flex: 1; }
+
+/* method diagram */
+.pair { display: flex; gap: 3mm; }
+.pair .field { flex: 1; width: auto; }
+.down { display: flex; justify-content: space-around; color: var(--rust); font-weight: 700; font-size: 10pt; line-height: 1; padding: 0.8mm 0; }
+.diagram { display: flex; align-items: center; gap: 2mm; }
+.field { width: 27mm; border: 0.6pt solid var(--line); background: var(--raise); border-radius: 2mm; padding: 2.2mm; font-size: 8pt; line-height: 1.25; }
+.field b { display: block; font-size: 8.5pt; }
+.arrow { color: var(--rust); font-weight: 700; font-size: 11pt; }
+.method { background: var(--rust); color: #fff; border-radius: 2mm; padding: 2.4mm 3mm; font-size: 9pt; line-height: 1.3; text-align: center; }
+.method b { font-weight: 700; }
+.caption { margin-top: 2.5mm; font-size: 8.5pt; color: var(--ink2); }
+
+.why p { font-size: 10pt; }
+.why p + p { margin-top: 2mm; }
+.chips { margin-top: 3mm; }
+.chip { display: inline-block; border: 0.8pt dashed var(--rust); color: var(--rust); border-radius: 10mm; padding: 0.8mm 3mm; font-size: 8pt; font-weight: 700; margin: 0 1.2mm 1.2mm 0; }
+
+/* ways */
+.ways { margin-top: 7mm; }
+.cards { display: flex; gap: 3mm; }
+.card { flex: 1; border-top: 2pt solid var(--rust); background: var(--raise); padding: 3.2mm 3.5mm 3.5mm; border-radius: 0 0 2.5mm 2.5mm; }
+.card .n { font-family: Aileron; font-weight: 800; color: var(--rust); font-size: 9pt; }
+.card svg { float: right; width: 7mm; height: 7mm; stroke: var(--ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.card b { display: block; font-family: Aileron; font-weight: 800; font-size: 11.5pt; margin: 1mm 0 1.2mm; }
+.card p { font-size: 8.8pt; color: var(--ink2); line-height: 1.35; }
+
+/* logos */
+.logos { margin-top: 7mm; }
+.logos .row { display: flex; justify-content: space-between; align-items: center; }
+.logos .row img { height: 9mm; }
+.logos .row img.tall { height: 11mm; }
+.fundrow { margin-top: 4mm; display: flex; align-items: center; gap: 4mm; }
+.fundrow .label { margin: 0; }
+.fundrow img { height: 13mm; }
+
+/* CTA band */
+.cta { position: absolute; left: 0; right: 0; bottom: 0; background: var(--night); color: #e9f1f0; padding: 7mm 14mm 6mm; }
+.cta .row { display: flex; justify-content: space-between; align-items: flex-end; }
+.cta h3 { font-family: Aileron; font-weight: 800; font-size: 17pt; line-height: 1.15; }
+.cta h3 em { font-style: normal; color: #e9a24f; }
+.cta .contact { text-align: right; font-size: 10pt; line-height: 1.5; }
+.cta .contact b { font-size: 11pt; color: #e9a24f; }
+.cta .fine { margin-top: 4mm; padding-top: 2.5mm; border-top: 0.6pt solid #24383b; font-size: 7.8pt; color: #a7bcbb; }
+a { color: inherit; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <div class="brand">
+      <img src="../../public/assets/castle-silhouette.png" alt="">
+      <div><b>V4AIR</b><span>V4 AI Researchers Meetup</span></div>
+    </div>
+    <div class="eyebrow">For partners</div>
+  </div>
+
+  <div class="hero">
+    <h1>Meet researchers who use <em>AI&nbsp;methods</em> in every field</h1>
+    <p class="deck">V4AIR brings PhD students and early-career researchers from four countries together for three days. We invite companies, investors and former researchers to take part.</p>
+  </div>
+
+  <div class="facts">
+    <div class="fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <b>28–30 April 2027</b><span>three days</span>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      <b>Kostelec Castle</b><span>30 minutes from Prague</span>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l8 5H4z"/></svg>
+      <b>6 universities</b><span>Czechia, Hungary, Poland, Slovakia</span>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b35c1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+      <b>Selected participants</b><span>PhD students and early-career researchers</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h2>Matched by method, across fields</h2>
+      <div class="diagram2">
+        <div class="pair">
+          <div class="field"><b>Ecology</b>insects on flowers in video</div>
+          <div class="field"><b>Transport</b>cyclists at a busy crossing</div>
+        </div>
+        <div class="down"><span>↓</span><span>↓</span></div>
+        <div class="method"><b>Same method:</b> tracking many small objects that overlap</div>
+      </div>
+      <p class="caption">Participants are selected so that each person meets the right people.</p>
+    </div>
+    <div class="col why">
+      <h2>Why partners</h2>
+      <p>Participants want to know where their AI skills can take them, in research or outside it.</p>
+      <p>You can show them, and meet the people who have those skills.</p>
+      <div class="chips">
+        <div class="label">Expected fields</div>
+        <span class="chip">[FIELDS: to be confirmed]</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ways">
+    <h2>Ways to take part</h2>
+    <div class="cards">
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#161616" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
+        <span class="n">01</span><b>Give a talk</b>
+        <p>How your team uses AI methods, or how you moved from research into industry.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#161616" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M4 9v11h16V9M3 9h18M9 20v-6h6v6"/></svg>
+        <span class="n">02</span><b>Join the expo</b>
+        <p>Participants present their work at an expo. Partners can have a stand there.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#161616" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <span class="n">03</span><b>Run a workshop</b>
+        <p>Teach a method or tool your team works with.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="logos">
+    <div class="label">Organised by</div>
+    <div class="row">
+      <img src="assets/charles-university_black.png" alt="Charles University">
+      <img class="tall" src="assets/cvut_black.png" alt="CTU in Prague">
+      <img src="assets/comenius-university_black.png" alt="Comenius University Bratislava">
+      <img src="assets/elte_black.png" alt="ELTE">
+      <img src="assets/umk-torun_black.png" alt="Nicolaus Copernicus University in Toruń">
+      <img src="assets/uwr-wroclaw_black.png" alt="University of Wrocław">
+    </div>
+    <div class="fundrow"><span class="label">Funded by</span><img src="assets/visegrad-fund_black.png" alt="International Visegrad Fund"></div>
+  </div>
+
+  <div class="cta">
+    <div class="row">
+      <h3>Interested?<br><em>Let's find your place in the programme.</em></h3>
+      <div class="contact"><b>Peter Kutsos</b><br>project coordinator<br><a href="mailto:kutsosp@natur.cuni.cz">kutsosp@natur.cuni.cz</a><br><a href="https://v4air.eu">v4air.eu</a></div>
+    </div>
+    <p class="fine">Preliminary: nothing on this page commits either side. Partners who want to support the meetup financially are welcome; a call for sponsors will follow.</p>
+  </div>
+
+</div>
+</body>
+</html>

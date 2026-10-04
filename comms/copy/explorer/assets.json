@@ -1,0 +1,1148 @@
+{
+  "shared": {
+    "event_name": "V4AIR",
+    "event_full_name": "V4 AI Researchers Meetup",
+    "dates": "28–30 April 2027",
+    "venue": "Kostelec Castle, Kostelec nad Černými lesy, about 30 minutes from Prague",
+    "deadline": "15 January 2027",
+    "results": "February 2027",
+    "language_of_event": "English",
+    "apply_url": "https://v4air.eu/apply/",
+    "nominate_url": "https://v4air.eu/nominate/",
+    "contact_email": "kutsosp@natur.cuni.cz",
+    "funding_line": "No participation fee. Accommodation at the castle, meals and a contribution toward travel are covered by the project.",
+    "fee_other_students": "160 euro",
+    "partner_universities": "Charles University, Czech Technical University in Prague, Comenius University Bratislava, Eötvös Loránd University, University of Wrocław, Nicolaus Copernicus University in Toruń",
+    "acknowledgement": "V4AIR is supported by the International Visegrad Fund, Grant No. 22610317.",
+    "programme_line": "You take part in shaping the programme. The application form asks what you work on, what you want to learn and who you want to meet. From what you tell us, we choose the talks, the workshop topics and the invited speakers.",
+    "funding_note": "Write 'covered by the project' in body text. Name the International Visegrad Fund only in the acknowledgement line, the press release and text for university leadership.",
+    "nominate_line_default": "Know someone who should come? [Nominate them], it takes two minutes."
+  },
+  "channels": {
+    "poster_a4": {
+      "label": "A4 poster",
+      "preview": "poster",
+      "fields": [
+        {
+          "key": "headline",
+          "label": "Headline",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "subheadline",
+          "label": "Subheadline",
+          "type": "text",
+          "max": 120
+        },
+        {
+          "key": "points",
+          "label": "Points (one per line, max 4)",
+          "type": "lines",
+          "max": 4
+        },
+        {
+          "key": "cta",
+          "label": "Call to action",
+          "type": "text",
+          "max": 40
+        }
+      ]
+    },
+    "leaflet": {
+      "label": "Leaflet",
+      "preview": "leaflet",
+      "fields": [
+        {
+          "key": "front_headline",
+          "label": "Front headline",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "front_subheadline",
+          "label": "Front subheadline",
+          "type": "text",
+          "max": 120
+        },
+        {
+          "key": "back_body",
+          "label": "Back body",
+          "type": "textarea",
+          "max": 800
+        },
+        {
+          "key": "cta",
+          "label": "Call to action",
+          "type": "text",
+          "max": 40
+        }
+      ]
+    },
+    "email": {
+      "label": "Mass email",
+      "preview": "email",
+      "fields": [
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "preheader",
+          "label": "Preheader",
+          "type": "text",
+          "max": 100
+        },
+        {
+          "key": "body",
+          "label": "Body (markdown)",
+          "type": "textarea"
+        },
+        {
+          "key": "cta_apply",
+          "label": "Apply button text",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "nominate_text",
+          "label": "Nominate line (put the link text in [brackets])",
+          "type": "text",
+          "max": 160
+        }
+      ]
+    },
+    "newsletter_item": {
+      "label": "Newsletter item",
+      "preview": "newsletter",
+      "fields": [
+        {
+          "key": "headline",
+          "label": "Headline",
+          "type": "text",
+          "max": 80
+        },
+        {
+          "key": "teaser",
+          "label": "Teaser",
+          "type": "textarea",
+          "max": 400
+        },
+        {
+          "key": "cta_apply",
+          "label": "Link text",
+          "type": "text",
+          "max": 60
+        }
+      ]
+    },
+    "direct_email": {
+      "label": "Direct email",
+      "preview": "email",
+      "fields": [
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "cover_note",
+          "label": "Cover note (2–3 sentences)",
+          "type": "textarea",
+          "max": 400
+        },
+        {
+          "key": "body",
+          "label": "Body (markdown)",
+          "type": "textarea"
+        },
+        {
+          "key": "cta_apply",
+          "label": "Apply link text",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "nominate_text",
+          "label": "Nominate line (put the link text in [brackets])",
+          "type": "text",
+          "max": 160
+        }
+      ]
+    },
+    "social_post": {
+      "label": "Social post (X, Instagram, Facebook)",
+      "preview": "social",
+      "fields": [
+        {
+          "key": "text",
+          "label": "Post text (X hard limit 280 incl. link)",
+          "type": "textarea",
+          "max": 280
+        },
+        {
+          "key": "caption_long",
+          "label": "Long caption (Instagram, Facebook)",
+          "type": "textarea",
+          "max": 2200
+        },
+        {
+          "key": "image_text",
+          "label": "Text on the image",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "image_alt",
+          "label": "Image alt text",
+          "type": "text",
+          "max": 200
+        }
+      ]
+    },
+    "linkedin": {
+      "label": "LinkedIn post",
+      "preview": "linkedin",
+      "fields": [
+        {
+          "key": "text",
+          "label": "Post text",
+          "type": "textarea",
+          "max": 3000
+        },
+        {
+          "key": "image_text",
+          "label": "Text on the image",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "image_alt",
+          "label": "Image alt text",
+          "type": "text",
+          "max": 200
+        }
+      ]
+    },
+    "press_release": {
+      "label": "Press release",
+      "preview": "press",
+      "fields": [
+        {
+          "key": "headline",
+          "label": "Headline",
+          "type": "text",
+          "max": 100
+        },
+        {
+          "key": "subheadline",
+          "label": "Subheadline",
+          "type": "text",
+          "max": 160
+        },
+        {
+          "key": "dateline",
+          "label": "Dateline (city, date)",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "lead",
+          "label": "Lead paragraph",
+          "type": "textarea",
+          "max": 500
+        },
+        {
+          "key": "body",
+          "label": "Body (markdown)",
+          "type": "textarea"
+        },
+        {
+          "key": "quote",
+          "label": "Quote (needs a real named person)",
+          "type": "textarea",
+          "max": 400
+        },
+        {
+          "key": "quote_speaker",
+          "label": "Quote: speaker and role",
+          "type": "text",
+          "max": 100
+        },
+        {
+          "key": "about",
+          "label": "About V4AIR",
+          "type": "textarea",
+          "max": 500
+        }
+      ]
+    },
+    "group_chat": {
+      "label": "Group chat message",
+      "preview": "chat",
+      "fields": [
+        {
+          "key": "text",
+          "label": "Message (plain text, link at the end)",
+          "type": "textarea",
+          "max": 2000
+        }
+      ]
+    },
+    "lecture_pitch": {
+      "label": "In-lecture pitch",
+      "preview": "script",
+      "fields": [
+        {
+          "key": "script",
+          "label": "Script (about 150 words, 60 seconds)",
+          "type": "textarea",
+          "max": 1000
+        }
+      ]
+    },
+    "signage_slide": {
+      "label": "Digital signage slide",
+      "preview": "slide",
+      "fields": [
+        {
+          "key": "headline",
+          "label": "Headline",
+          "type": "text",
+          "max": 50
+        },
+        {
+          "key": "line",
+          "label": "Second line",
+          "type": "text",
+          "max": 80
+        }
+      ]
+    },
+    "events_calendar": {
+      "label": "Events calendar entry",
+      "preview": "calendar",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "max": 80
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "textarea",
+          "max": 600
+        }
+      ]
+    },
+    "web_page": {
+      "label": "Web page",
+      "preview": "web",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Page title",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "meta_description",
+          "label": "Meta description",
+          "type": "text",
+          "max": 160
+        },
+        {
+          "key": "headline",
+          "label": "Headline",
+          "type": "text",
+          "max": 100
+        },
+        {
+          "key": "body",
+          "label": "Body (markdown)",
+          "type": "textarea"
+        },
+        {
+          "key": "cta_apply",
+          "label": "Apply button text",
+          "type": "text",
+          "max": 60
+        },
+        {
+          "key": "nominate_text",
+          "label": "Nominate line (put the link text in [brackets])",
+          "type": "text",
+          "max": 160
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "poster",
+      "type": "Print",
+      "name": "A4 poster",
+      "audience": "Students, ECRs",
+      "channel": "Notice boards, seminar rooms",
+      "schema": "poster_a4",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    },
+    {
+      "id": "leaflet",
+      "type": "Print",
+      "name": "Leaflet",
+      "audience": "Students, ECRs",
+      "channel": "Seminars and colloquia, direct outreach",
+      "schema": "leaflet",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    },
+    {
+      "id": "mail-ecr",
+      "type": "Mass email",
+      "name": "Mailing text for ECRs",
+      "audience": "ECRs",
+      "channel": "Staff, faculty, department, research-group and doctoral-school lists",
+      "schema": "email",
+      "audiences": [
+        "ECRs"
+      ]
+    },
+    {
+      "id": "mail-students",
+      "type": "Mass email",
+      "name": "Mailing text for students",
+      "audience": "Students",
+      "channel": "Dean's office mailings",
+      "schema": "email",
+      "audiences": [
+        "Students"
+      ]
+    },
+    {
+      "id": "newsletter",
+      "type": "Mass email",
+      "name": "Newsletter blurb",
+      "audience": "Students, ECRs",
+      "channel": "University, faculty and student newsletters; research support and grants office newsletters",
+      "schema": "newsletter_item",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    },
+    {
+      "id": "alumni",
+      "type": "Mass email",
+      "name": "Alumni newsletter item",
+      "audience": "Alumni",
+      "channel": "Alumni network and newsletter",
+      "schema": "newsletter_item",
+      "audiences": [
+        "Students",
+        "ECRs",
+        "University leadership"
+      ]
+    },
+    {
+      "id": "tto",
+      "type": "Direct email",
+      "name": "Invitation for tech transfer offices",
+      "audience": "Tech transfer offices",
+      "channel": "Direct email, through warm introduction",
+      "schema": "direct_email",
+      "audiences": [
+        "University leadership"
+      ]
+    },
+    {
+      "id": "heads",
+      "type": "Direct email",
+      "name": "Request to heads of department and PIs",
+      "audience": "ECRs (via heads of department and PIs)",
+      "channel": "Direct email, through warm introduction",
+      "schema": "direct_email",
+      "audiences": [
+        "ECRs",
+        "University leadership"
+      ]
+    },
+    {
+      "id": "social",
+      "type": "Social",
+      "name": "Social media post and image",
+      "audience": "Students, ECRs",
+      "channel": "University and faculty X, Instagram, Facebook",
+      "schema": "social_post",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    },
+    {
+      "id": "linkedin",
+      "type": "Social",
+      "name": "LinkedIn post",
+      "audience": "ECRs",
+      "channel": "University, faculty and institute pages; reposts by researchers",
+      "schema": "linkedin",
+      "audiences": [
+        "ECRs"
+      ]
+    },
+    {
+      "id": "press",
+      "type": "Article",
+      "name": "Press release",
+      "audience": "University community, press",
+      "channel": "University press office (01.11.2026)",
+      "schema": "press_release",
+      "audiences": [
+        "University leadership",
+        "General public"
+      ]
+    },
+    {
+      "id": "chat",
+      "type": "Chat message",
+      "name": "Group chat message",
+      "audience": "Students",
+      "channel": "Discord, Messenger and WhatsApp groups, through student representatives",
+      "schema": "group_chat",
+      "audiences": [
+        "Students"
+      ]
+    },
+    {
+      "id": "pitch",
+      "type": "Oral",
+      "name": "In-lecture pitch script",
+      "audience": "Students",
+      "channel": "Lectures, given by the contact person or a lecturer",
+      "schema": "lecture_pitch",
+      "audiences": [
+        "Students"
+      ]
+    },
+    {
+      "id": "signage",
+      "type": "Visual",
+      "name": "Digital signage slide",
+      "audience": "Students, ECRs",
+      "channel": "Building screens, library notice boards",
+      "schema": "signage_slide",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    },
+    {
+      "id": "calendar",
+      "type": "Calendar entry",
+      "name": "Events calendar entry",
+      "audience": "Students, ECRs",
+      "channel": "University events calendar",
+      "schema": "events_calendar",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    },
+    {
+      "id": "web",
+      "type": "Article",
+      "name": "Web page text",
+      "audience": "Students, ECRs",
+      "channel": "University and doctoral school websites",
+      "schema": "web_page",
+      "audiences": [
+        "Students",
+        "ECRs"
+      ]
+    }
+  ],
+  "variables": {
+    "university": "Charles University",
+    "university_short": "CUNI",
+    "city": "Prague",
+    "country": "Czechia",
+    "faculty": "Faculty of Science",
+    "contact_person": "[contact person name]",
+    "local_language": "Czech",
+    "examples": ""
+  },
+  "variable_options": {
+    "university": [
+      "Charles University",
+      "Czech Technical University in Prague",
+      "Czech University of Life Sciences",
+      "University of Wrocław",
+      "Nicolaus Copernicus University in Toruń",
+      "Jagiellonian University Medical College",
+      "Eötvös Loránd University",
+      "Comenius University Bratislava"
+    ],
+    "country": [
+      "Czechia",
+      "Poland",
+      "Hungary",
+      "Slovakia"
+    ],
+    "local_language": [
+      "Czech",
+      "Polish",
+      "Hungarian",
+      "Slovak"
+    ]
+  },
+  "key_messages": [
+    {
+      "n": 1,
+      "message": "V4AIR is an interdisciplinary methods-first meetup for students and ECRs to meet collaborators",
+      "goal": "Receive enough applications",
+      "audiences": [
+        "ECRs",
+        "Students"
+      ],
+      "idea": "Matchmaking and networking is a core pillar of V4AIR",
+      "problem_solution": "\"I need a master's student who can code.\" / Somewhere in Poland, a master's student needs exactly your project.",
+      "headline": "Meet the people your research needs.",
+      "microcopy": "Tell us who you want to meet. We put you in the room with them."
+    },
+    {
+      "n": 2,
+      "message": "V4AIR is for practitioners across fields who implement AI methods, rather than being exclusive to any single field OR to those developing/researching AI directly",
+      "goal": "Receive enough applications",
+      "audiences": [
+        "ECRs",
+        "Students"
+      ],
+      "idea": "The meetup is methods-first, not fields-first",
+      "problem_solution": "\"I wonder if we could do something else with this method\" / You probably can. Find out at V4AIR.",
+      "headline": "Should you apply? If AI is part of your research, yes.",
+      "microcopy": "A biologist training models on field data and a historian mining digitized archives both belong at V4AIR."
+    },
+    {
+      "n": 3,
+      "message": "Participation is fully funded for participants from partner institutions",
+      "goal": "Receive enough applications",
+      "audiences": [
+        "ECRs",
+        "Students"
+      ],
+      "idea": "There is no cost to participants for attending",
+      "problem_solution": "\"I can't pay for another conference this year.\" / At V4AIR you don't have to. Partner-university participants pay nothing.",
+      "headline": "Free and fully funded",
+      "microcopy": "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."
+    },
+    {
+      "n": 4,
+      "message": "**ECRs** can find collaborators and team members, consult experts and explore paths to industry",
+      "goal": "Balance split of ECRs/students",
+      "audiences": [
+        "ECRs"
+      ],
+      "idea": "Participants meet the right people to advance their careers",
+      "problem_solution": "\"I need a co-author from outside my field\" / She's coming to V4AIR this April. Come meet her.",
+      "headline": "Find your next collaborator at V4AIR.",
+      "microcopy": "Tell us what expertise your project is missing. We invite people who match."
+    },
+    {
+      "n": 5,
+      "message": "**Students** can find mentors, research positions, get feedback on ideas, and apply know-how in new contexts",
+      "goal": "Balance split of ECRs/students",
+      "audiences": [
+        "Students"
+      ],
+      "idea": "Participants meet the right people to advance their careers",
+      "problem_solution": "\"I have no idea what I'm doing after my masters\" / Spend 3 days at a castle finding out.",
+      "headline": "Find a mentor at V4AIR.",
+      "microcopy": "Present your project in the Not-Just-Posters session and get feedback, even before you have results."
+    },
+    {
+      "n": 6,
+      "message": "V4AIR is not a formal academic conference (no proceedings) but rather an interdisciplinary meetup",
+      "goal": "Ensure a valuable and positive experience for participants by setting expectations",
+      "audiences": [
+        "ECRs",
+        "Students"
+      ],
+      "idea": "You do not need a finished paper or results",
+      "problem_solution": "You do not need an abstract or a finished paper. Come get feedback on what you're currently working on.",
+      "headline": "You do not need a paper to apply",
+      "microcopy": "Works in progress and projects that got stuck are welcome."
+    },
+    {
+      "n": 7,
+      "message": "V4AIR brings together students and early-career researchers who apply AI, from six universities in the four Visegrad countries",
+      "goal": "Positive recognition among secondary target audiences",
+      "audiences": [
+        "Investors",
+        "University leadership",
+        "General public"
+      ],
+      "idea": "V4AIR connects AI talent across the Visegrad region",
+      "problem_solution": "\"We want our researchers working with colleagues across the V4.\" / V4AIR puts them in one place for three days.",
+      "headline": "Young AI researchers from four countries meet at Kostelec Castle.",
+      "microcopy": "Supported by the International Visegrad Fund, Grant No. 22610317."
+    },
+    {
+      "n": 8,
+      "message": "You shape the V4AIR programme: it is built from what you want to learn and who you want to meet",
+      "goal": "Ensure a valuable and positive experience for participants by setting expectations",
+      "audiences": [
+        "ECRs",
+        "Students"
+      ],
+      "idea": "The programme is built from what you say you want to learn, who you want to meet and what interests you.",
+      "problem_solution": "The programme adapts to you, not the other way around.",
+      "headline": "Your answers build the programme.",
+      "microcopy": "Tell us what you want to learn. We choose the talks and speakers from your answers."
+    }
+  ],
+  "hooks": [
+    {
+      "km": 1,
+      "hook": "Students and researchers who use AI: this April, we put you in a room with the collaborators you ask for.",
+      "type": "Label",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 1,
+      "hook": "Would you rather cold-email strangers for a collaborator, or spend three days with the ones you picked?",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 1,
+      "hook": "At V4AIR, your application decides who sits at your table.",
+      "type": "Statement",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 1,
+      "hook": "If you need a student who can code or a co-author from another field, V4AIR is where you meet them.",
+      "type": "Condition",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 2,
+      "hook": "Biologists and historians who use AI: this meetup was built for you.",
+      "type": "Label",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 2,
+      "hook": "You don't have to build AI to belong at an AI meetup.",
+      "type": "Statement",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 2,
+      "hook": "If you're a linguist probing what models learn, V4AIR is for you.",
+      "type": "Condition",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 2,
+      "hook": "Read this if you use AI in a field outside computer science.",
+      "type": "Command",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 3,
+      "hook": "Students and researchers at the six partner universities: three days at a castle near Prague, and your stay is paid for.",
+      "type": "Label",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 3,
+      "hook": "Would you spend three days at a castle near Prague if the International Visegrad Fund paid for your stay?",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 3,
+      "hook": "No conference budget this year? At V4AIR, partner-university participants pay no fee and stay at the castle for free.",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 3,
+      "hook": "Apply by 15 January if you want three funded days at Kostelec Castle.",
+      "type": "Command",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 4,
+      "hook": "Postdocs looking for a collaborator outside your field: V4AIR introduces you before you arrive.",
+      "type": "Label",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 4,
+      "hook": "If your next grant needs a partner from another V4 country, you can meet them at Kostelec this April.",
+      "type": "Condition",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 4,
+      "hook": "Who is missing from your team? Tell us, and we invite people who match.",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 4,
+      "hook": "Considering a move to industry after your PhD? Talk to people from industry at V4AIR before you decide.",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 5,
+      "hook": "If you can code, V4AIR can introduce you to researchers who need that skill.",
+      "type": "Condition",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 5,
+      "hook": "Finishing your master's with no plan yet? Meet researchers and people from industry at V4AIR this April.",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 5,
+      "hook": "Bring your half-finished project to V4AIR and get feedback from researchers in other fields.",
+      "type": "Command",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 5,
+      "hook": "At V4AIR, students spend three days living and working alongside the researchers they want to learn from.",
+      "type": "Statement",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 6,
+      "hook": "No results yet? You can still present at V4AIR.",
+      "type": "Question",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 6,
+      "hook": "If your project got stuck, bring it to V4AIR. We want to hear about it.",
+      "type": "Condition",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 6,
+      "hook": "No abstract and no finished paper: V4AIR asks what you are working on now.",
+      "type": "Statement",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 6,
+      "hook": "PhD students with an unfinished project: apply before 15 January.",
+      "type": "Command",
+      "awareness": "Problem aware"
+    },
+    {
+      "km": 7,
+      "hook": "Young researchers from Prague, Budapest, Bratislava, Wrocław and Toruń who apply AI will spend three days in one castle this April.",
+      "type": "Statement",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 7,
+      "hook": "University leaders in the V4: your researchers will meet their counterparts from three other countries at Kostelec in April.",
+      "type": "Label",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 7,
+      "hook": "Where do the Visegrad region's young AI researchers meet each other? On 28–30 April 2027, at Kostelec Castle.",
+      "type": "Question",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 7,
+      "hook": "Investors looking for AI talent in Central Europe: V4AIR brings it to one castle for three days.",
+      "type": "Label",
+      "awareness": "Completely unaware"
+    },
+    {
+      "km": 8,
+      "hook": "At most conferences, the organisers pick the talks. At V4AIR, your application does.",
+      "type": "Statement",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 8,
+      "hook": "Tell us what you want to learn by 15 January. We'll build the programme around it.",
+      "type": "Command",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 8,
+      "hook": "What would you put on the programme if you could choose? At V4AIR, you can.",
+      "type": "Question",
+      "awareness": "Solution aware"
+    },
+    {
+      "km": 8,
+      "hook": "If you've ever sat through a talk that had nothing to do with your work, this programme is built differently.",
+      "type": "Condition",
+      "awareness": "Problem aware"
+    }
+  ],
+  "universities": {
+    "Charles University": {
+      "university_short": "CUNI",
+      "city": "Prague",
+      "country": "Czechia",
+      "local_language": "Czech",
+      "faculty": "Faculty of Science",
+      "fields": [
+        [
+          "ecology",
+          "training models on field data"
+        ],
+        [
+          "linguistics",
+          "probing what language models learn"
+        ],
+        [
+          "history",
+          "mining digitized archives"
+        ],
+        [
+          "medicine",
+          "classifying scans"
+        ],
+        [
+          "sociology",
+          "studying how people use chatbots"
+        ],
+        [
+          "law",
+          "studying algorithmic decisions"
+        ]
+      ]
+    },
+    "Czech Technical University in Prague": {
+      "university_short": "CTU",
+      "city": "Prague",
+      "country": "Czechia",
+      "local_language": "Czech",
+      "faculty": "Faculty of Electrical Engineering",
+      "fields": [
+        [
+          "civil engineering",
+          "predicting material fatigue"
+        ],
+        [
+          "robotics",
+          "training control policies"
+        ],
+        [
+          "electrical engineering",
+          "denoising sensor data"
+        ],
+        [
+          "architecture",
+          "generating design variants"
+        ],
+        [
+          "transport engineering",
+          "forecasting traffic flows"
+        ]
+      ]
+    },
+    "Czech University of Life Sciences": {
+      "university_short": "CZU",
+      "city": "Prague",
+      "country": "Czechia",
+      "local_language": "Czech",
+      "faculty": "Faculty of Environmental Sciences",
+      "fields": [
+        [
+          "agronomy",
+          "predicting yields from satellite images"
+        ],
+        [
+          "forestry",
+          "detecting bark-beetle damage in aerial photos"
+        ],
+        [
+          "food science",
+          "screening formulations"
+        ],
+        [
+          "environmental science",
+          "modelling water quality"
+        ]
+      ]
+    },
+    "University of Wrocław": {
+      "university_short": "UWr",
+      "city": "Wrocław",
+      "country": "Poland",
+      "local_language": "Polish",
+      "faculty": "Faculty of Mathematics and Computer Science",
+      "fields": [
+        [
+          "chemistry",
+          "screening candidate molecules"
+        ],
+        [
+          "biotechnology",
+          "predicting protein function"
+        ],
+        [
+          "philology",
+          "analysing historical texts"
+        ],
+        [
+          "law",
+          "studying algorithmic decisions"
+        ],
+        [
+          "physics",
+          "classifying detector events"
+        ]
+      ]
+    },
+    "Nicolaus Copernicus University in Toruń": {
+      "university_short": "NCU",
+      "city": "Toruń",
+      "country": "Poland",
+      "local_language": "Polish",
+      "faculty": "Faculty of Physics, Astronomy and Informatics",
+      "fields": [
+        [
+          "astronomy",
+          "classifying telescope images"
+        ],
+        [
+          "medicine",
+          "classifying scans"
+        ],
+        [
+          "chemistry",
+          "screening candidate molecules"
+        ],
+        [
+          "history",
+          "mining digitized archives"
+        ],
+        [
+          "economics",
+          "forecasting with neural nets"
+        ]
+      ]
+    },
+    "Jagiellonian University Medical College": {
+      "university_short": "JUMC",
+      "city": "Kraków",
+      "country": "Poland",
+      "local_language": "Polish",
+      "faculty": "Faculty of Medicine",
+      "fields": [
+        [
+          "medicine",
+          "classifying scans"
+        ],
+        [
+          "pharmacy",
+          "screening candidate molecules"
+        ],
+        [
+          "public health",
+          "modelling disease spread"
+        ],
+        [
+          "nursing science",
+          "predicting patient deterioration"
+        ]
+      ]
+    },
+    "Eötvös Loránd University": {
+      "university_short": "ELTE",
+      "city": "Budapest",
+      "country": "Hungary",
+      "local_language": "Hungarian",
+      "faculty": "Faculty of Informatics",
+      "fields": [
+        [
+          "psychology",
+          "modelling decision-making"
+        ],
+        [
+          "education",
+          "analysing learning data"
+        ],
+        [
+          "linguistics",
+          "probing what language models learn"
+        ],
+        [
+          "geography",
+          "mapping land use from satellite images"
+        ],
+        [
+          "law",
+          "studying algorithmic decisions"
+        ]
+      ]
+    },
+    "Comenius University Bratislava": {
+      "university_short": "UNIBA",
+      "city": "Bratislava",
+      "country": "Slovakia",
+      "local_language": "Slovak",
+      "faculty": "Faculty of Mathematics, Physics and Informatics",
+      "fields": [
+        [
+          "pharmacy",
+          "screening candidate molecules"
+        ],
+        [
+          "medicine",
+          "classifying scans"
+        ],
+        [
+          "mathematics",
+          "proving theorems with model assistance"
+        ],
+        [
+          "social sciences",
+          "studying how people use chatbots"
+        ],
+        [
+          "natural sciences",
+          "modelling ecosystems"
+        ]
+      ]
+    }
+  },
+  "career_stages": {
+    "Students": [
+      "a bachelor's student",
+      "a master's student"
+    ],
+    "ECRs": [
+      "a PhD student",
+      "a postdoc",
+      "a junior faculty member"
+    ]
+  }
+}

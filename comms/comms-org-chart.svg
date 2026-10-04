@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="672" height="2158" viewBox="0 0 672 2158">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#868e96"/></marker></defs>
+<rect width="672" height="2158" fill="#fff"/>
+<text x="36.0" y="70.0" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700" fill="#1d2330" text-anchor="start">Academia communication plan</text>
+<rect x="36" y="112" width="600" height="264" rx="16" fill="#edf2ff"/>
+<path d="M36,176 V128 Q36,112 52,112 H620 Q636,112 636,128 V176 z" fill="#364fc7"/>
+<circle cx="82.0" cy="144.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,133.00) scale(0.917)" fill="none" stroke="#364fc7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</g>
+<text x="114.0" y="153.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start">Coordinators</text>
+<text x="62.0" y="228.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#364fc7" text-anchor="start">Petr + Peter</text>
+<text x="62.0" y="268.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Write key messages and copy</text>
+<text x="62.0" y="304.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Produce posters, leaflets and visuals</text>
+<text x="62.0" y="340.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Collect channel maps from contact persons</text>
+<line x1="92" y1="386" x2="92" y2="450" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="426.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start">Coordinate &amp; provide materials</text>
+<rect x="36" y="460" width="600" height="506" rx="16" fill="#e3fafc"/>
+<path d="M36,524 V476 Q36,460 52,460 H620 Q636,460 636,476 V524 z" fill="#0b7285"/>
+<circle cx="82.0" cy="492.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,481.00) scale(0.917)" fill="none" stroke="#0b7285" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 18v-7" />
+  <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z" />
+  <path d="M14 18v-7" />
+  <path d="M18 18v-7" />
+  <path d="M3 22h18" />
+  <path d="M6 18v-7" />
+</g>
+<text x="114.0" y="501.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start">Partner universities</text>
+<text x="62.0" y="576.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#0b7285" text-anchor="start">Grant partners</text>
+<g transform="translate(62.0,599.0)"><rect width="30" height="10.0" fill="#fff"/><rect y="10.0" width="30" height="10.0" fill="#D7141A"/><path d="M0,0 L15.0,10.0 L0,20 z" fill="#11457E"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="616.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Charles University</text>
+<g transform="translate(62.0,635.0)"><rect width="30" height="10.0" fill="#fff"/><rect y="10.0" width="30" height="10.0" fill="#D7141A"/><path d="M0,0 L15.0,10.0 L0,20 z" fill="#11457E"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="652.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Czech Technical University</text>
+<g transform="translate(62.0,671.0)"><rect y="0.0" width="30" height="6.666666666666667" fill="#CD2A3E"/><rect y="6.666666666666667" width="30" height="6.666666666666667" fill="#fff"/><rect y="13.333333333333334" width="30" height="6.666666666666667" fill="#436F4D"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="688.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Eötvös Loránd University</text>
+<g transform="translate(62.0,707.0)"><rect width="30" height="10.0" fill="#fff"/><rect y="10.0" width="30" height="10.0" fill="#DC143C"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="724.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Nicolaus Copernicus University</text>
+<g transform="translate(62.0,743.0)"><rect width="30" height="10.0" fill="#fff"/><rect y="10.0" width="30" height="10.0" fill="#DC143C"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="760.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">University of Wrocław</text>
+<g transform="translate(62.0,779.0)"><rect y="0.0" width="30" height="6.666666666666667" fill="#fff"/><rect y="6.666666666666667" width="30" height="6.666666666666667" fill="#0B4EA2"/><rect y="13.333333333333334" width="30" height="6.666666666666667" fill="#EE1C25"/><g transform="scale(1.429)"><path d="M4.2,3 H10.2 V8.2 Q10.2,11.2 7.2,12.4 Q4.2,11.2 4.2,8.2 z" fill="#EE1C25" stroke="#fff" stroke-width="0.8"/><path d="M7.2,4.3 V10.6 M5.6,6.2 H8.8 M5.2,8 H9.2" stroke="#fff" stroke-width="0.9"/></g><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="796.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Comenius University</text>
+<text x="62.0" y="854.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#0b7285" text-anchor="start">Other collaborating universities</text>
+<g transform="translate(62.0,877.0)"><rect width="30" height="10.0" fill="#fff"/><rect y="10.0" width="30" height="10.0" fill="#D7141A"/><path d="M0,0 L15.0,10.0 L0,20 z" fill="#11457E"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="894.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Czech University of Life Sciences</text>
+<g transform="translate(62.0,913.0)"><rect width="30" height="10.0" fill="#fff"/><rect y="10.0" width="30" height="10.0" fill="#DC143C"/><rect width="30" height="20" fill="none" stroke="#adb5bd" stroke-width="0.8"/></g>
+<text x="104.0" y="930.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Jagiellonian University Medical College</text>
+<line x1="92" y1="976" x2="92" y2="1040" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="1016.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start">Represented by lead &amp; contact person</text>
+<rect x="36" y="1050" width="600" height="228" rx="16" fill="#f3f0ff"/>
+<path d="M36,1114 V1066 Q36,1050 52,1050 H620 Q636,1050 636,1066 V1114 z" fill="#6741d9"/>
+<circle cx="82.0" cy="1082.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,1071.00) scale(0.917)" fill="none" stroke="#6741d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</g>
+<text x="114.0" y="1091.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start">Local team</text>
+<text x="62.0" y="1166.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#6741d9" text-anchor="start">At each university</text>
+<circle cx="67" cy="1198" r="4.5" fill="#6741d9"/>
+<text x="84.0" y="1206.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Lead: senior researcher, endorses the event</text>
+<circle cx="67" cy="1234" r="4.5" fill="#6741d9"/>
+<text x="84.0" y="1242.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Contact person: maps channels, posts materials</text>
+<line x1="92" y1="1288" x2="92" y2="1352" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="1328.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start">Contact person finds channel owners, negotiates, posts</text>
+<rect x="36" y="1362" width="600" height="372" rx="16" fill="#fff4e6"/>
+<path d="M36,1426 V1378 Q36,1362 52,1362 H620 Q636,1362 636,1378 V1426 z" fill="#d9480f"/>
+<circle cx="82.0" cy="1394.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,1383.00) scale(0.917)" fill="none" stroke="#d9480f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+  <path d="M8 6v8" />
+</g>
+<text x="114.0" y="1403.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start">Channels</text>
+<text x="62.0" y="1478.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#d9480f" text-anchor="start">Identified per university</text>
+<circle cx="67" cy="1510" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1518.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">University and doctoral school websites</text>
+<circle cx="67" cy="1546" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1554.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Faculty and student-circle Instagram</text>
+<circle cx="67" cy="1582" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1590.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Student Facebook group</text>
+<circle cx="67" cy="1618" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1626.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Weekly newsletter to all students</text>
+<circle cx="67" cy="1654" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1662.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Dean's office e-mails to a faculty</text>
+<circle cx="67" cy="1690" r="4.5" fill="#d9480f"/>
+<text x="84.0" y="1698.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Posters and leaflets with QR codes</text>
+<line x1="92" y1="1744" x2="92" y2="1808" stroke="#868e96" stroke-width="3" marker-end="url(#ah)"/>
+<text x="112.0" y="1784.0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#495057" text-anchor="start">The call reaches each audience</text>
+<rect x="36" y="1818" width="600" height="300" rx="16" fill="#fff0f6"/>
+<path d="M36,1882 V1834 Q36,1818 52,1818 H620 Q636,1818 636,1834 V1882 z" fill="#a61e4d"/>
+<circle cx="82.0" cy="1850.0" r="20" fill="#fff"/>
+<g transform="translate(71.00,1839.00) scale(0.917)" fill="none" stroke="#a61e4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+  <path d="M22 10v6" />
+  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+</g>
+<text x="114.0" y="1859.0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="start">Audiences</text>
+<text x="62.0" y="1934.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#a61e4d" text-anchor="start">Reached at each university</text>
+<circle cx="67" cy="1966" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="1974.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">ECRs</text>
+<circle cx="67" cy="2002" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="2010.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Students</text>
+<circle cx="67" cy="2038" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="2046.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">Tech transfer offices</text>
+<circle cx="67" cy="2074" r="4.5" fill="#a61e4d"/>
+<text x="84.0" y="2082.0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" fill="#343a40" text-anchor="start">University officials</text>
+</svg>
