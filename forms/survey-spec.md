@@ -324,13 +324,10 @@ Intro:
 
 > The meetup is built around active participation. Every attendee contributes in some form. Tick the forms you are open to; the exact shape is worked out together with the organizing team after selection.
 
-**A7.1** `A7.roles` "How would you like to contribute?" Multi-select. Required, at least one.
+**A7.1** `A7.roles` "How would you like to contribute?" Multi-select. Required, at least one. Panel member, scene setter and closer removed 05.10.2026: session roles are assigned after selection.
 - Speaker
 - Workshop leader
-- Panel member or interviewee
 - Not-Just-Posters session presenter. Info icon with tooltip: "We recommend this session mainly for students who may not yet have the results or experience for a full talk but want to share their project and receive feedback. Student talk applications are also accepted and will be considered."
-- Scene setter (open a session with a short briefing or a conversation with a keynote)
-- Closer (reflect on the talks in a session, discuss what comes next)
 - Not sure yet, I'd like to discuss options
 - Other: [text]
 
