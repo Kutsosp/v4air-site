@@ -60,7 +60,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-afterwards',
     q: 'What happens after the three days?',
-    a: 'Selected attendees are invited to join an invitation-only network of early-career researchers and industry veterans, built to carry the connections forward. For whoever stays, there is an optional self-funded guided Prague walkthrough on Saturday 1 May.',
+    a: 'Selected attendees are invited to join an invitation-only network of early-career researchers and industry veterans, built to carry the connections forward.',
   },
   {
     id: 'faq-contact',
