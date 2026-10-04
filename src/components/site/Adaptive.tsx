@@ -21,9 +21,12 @@ export function Adaptive() {
           </div>
           <div>
             <p>
-              Meet researchers applying methods like NLP, computer vision, machine
-              learning, agentic AI and statistical modeling across fields like biology,
-              medicine, linguistics, psychology and engineering.
+              Meet researchers applying methods like <strong>NLP</strong>,{' '}
+              <strong>computer vision</strong>, <strong>machine learning</strong>,{' '}
+              <strong>agentic AI</strong> and <strong>statistical modeling</strong> across
+              fields like <strong>biology</strong>, <strong>medicine</strong>,{' '}
+              <strong>linguistics</strong>, <strong>psychology</strong> and{' '}
+              <strong>engineering</strong>.
             </p>
             <p className="muted">
               Selection is based on fit and mix, not first-come-first-served. Filling
