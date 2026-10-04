@@ -40,14 +40,7 @@ export function Countdown() {
       ) : (
         <div className="wrap relative flex flex-col items-center gap-5 text-center">
           <h2 className="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
-          <p className="mb-0 max-w-[50ch] text-lg text-ink">
-            No abstract, CV, or motivation letter required. Deadline for
-            applications: 15 January 2027.
-          </p>
-          <a className="btn btn-primary" href={APPLY_URL}>
-            Apply now
-          </a>
-          <div className="mt-2 flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2">
             <FlipClock
               countdown
               targetDate={deadlineTarget}
@@ -57,6 +50,13 @@ export function Countdown() {
               className="flip-paper"
             />
           </div>
+          <a className="btn btn-primary" href={APPLY_URL}>
+            Apply now
+          </a>
+          <p className="mb-0 max-w-[50ch] text-sm text-ink-2">
+            No abstract, CV, or motivation letter required. Deadline for
+            applications: 15 January 2027.
+          </p>
         </div>
       )}
     </section>

@@ -28,10 +28,10 @@ export function Hero({ theme }: { theme: Theme }) {
       <div className="hero-scrim"></div>
       <div className="hero-inner wrap">
         <p className="eyebrow">28-30 April 2027 &middot; Kostelec Castle, near Prague</p>
-        <h1>Meet the people your project needs</h1>
+        <h1>Meet the experts your project needs</h1>
         <p className="lede">
           Three days at Kostelec Castle near Prague for students and early-career
-          researchers who use AI in their research across fields.
+          researchers across fields who use AI in their research.
         </p>
         <div className="cta-row">
           <a className="btn btn-primary" href={APPLY_URL}>

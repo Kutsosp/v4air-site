@@ -414,7 +414,8 @@
   <div class="wrap footer-meta">
     <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
     <p>V4AIR &middot; 28-30 April 2027</p>
-    <span><button type="button" id="reset-preview">Reset this preview</button> &middot; <button type="button" id="dev-toggle">Dev controls</button></span>
+    <span id="dev-links" hidden><button type="button" id="reset-preview">Reset this preview</button> &middot; <button type="button" id="dev-toggle">Dev controls</button></span>
+    <script>/* reset and dev links only for testers: add ?dev to the URL */ if (/[?&]dev/.test(location.search)) document.getElementById('dev-links').hidden = false;</script>
   </div>
 </footer>
 

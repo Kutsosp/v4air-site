@@ -28,12 +28,12 @@ export function FormatGrid() {
   return (
     <section className="format" id="format">
       <Reveal className="wrap">
-        <h2>What the three days look like</h2>
+        <h2>What you can expect</h2>
         <div className="format-grid">
           {ITEMS.map((it) => (
             <div className="format-item" key={it.title}>
               <span className="format-icon" aria-hidden="true">
-                <it.icon size={22} strokeWidth={1.8} />
+                <it.icon size={26} strokeWidth={1.8} />
               </span>
               <h3>{it.title}</h3>
               <p>{it.body}</p>
