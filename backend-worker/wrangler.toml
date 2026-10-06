@@ -1,0 +1,9 @@
+name = "v4air-forms"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+SHEET_ID = "1dDRwBAy8YIQUQIZDiYjlbabDyJ3ZXbUOfl6sznkQYdc"
+ALLOWED_ORIGINS = "https://v4air.eu,http://localhost:5173,http://localhost:4173"
+
+# Secret, set once: npx wrangler secret put GOOGLE_SA_KEY  (paste the service-account JSON)
