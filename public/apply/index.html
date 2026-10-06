@@ -401,7 +401,6 @@
         <label for="A1.link_2">Link 2</label><input type="url" id="A1.link_2" name="A1.link_2" class="link" inputmode="url">
         <label for="A1.link_3">Link 3</label><input type="url" id="A1.link_3" name="A1.link_3" class="link" inputmode="url">
         <label for="A1.link_4">Link 4</label><input type="url" id="A1.link_4" name="A1.link_4" class="link" inputmode="url">
-        <p class="err-msg">One of the links does not look like a web address; it should start with https://</p>
       </div>
     </section>
 
@@ -725,7 +724,6 @@
         </div>
         <label class="field-label" for="A7.link" style="margin-top:0.8rem">Or a link</label>
         <input type="url" id="A7.link" name="A7.link" inputmode="url" autocomplete="off">
-        <p class="err-msg">Links start with http:// or https://</p>
       </div>
       <div class="q" data-q="A7.help">
         <span class="qlabel">Would you help with organizing?</span>
@@ -1235,7 +1233,6 @@
     'A1.name': function (q) { return $('#A1\\.name').value.trim() ? '' : 'Full name'; },
     'A1.email': function (q) { var v = $('#A1\\.email').value.trim(); return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Email'; },
     'A1.stage': function (q) { return stage() ? '' : 'Career stage'; },
-    'A1.links': function (q) { var bad = links.some(function (l) { var v = l.value.trim(); return v && !/^https?:\/\/\S+\.\S+/.test(v); }); return bad ? 'Links' : ''; },
     'A1.country': function (q) { return COUNTRIES.indexOf(country.value.trim()) > -1 ? '' : 'Country'; },
     'A1.institution': function (q) {
       if (!vis(q)) return '';
@@ -1258,7 +1255,6 @@
     'A6.collab': function (q) { return $('input[name="A6.collab"]:checked') ? '' : 'Collaborators'; },
     'A7.roles': function (q) { var any = checkedIn('.opt input[type=checkbox]', q); var otherOk = !$('input[name="A7.roles.other"]').checked || $('#A7\\.roles_other').value.trim(); return (any && otherOk) ? '' : 'How you would like to contribute'; },
     'A7.presented': function (q) { return $('input[name="A7.presented"]:checked') ? '' : 'Presented before'; },
-    'A7.material': function (q) { var v = $('#A7\\.link').value.trim(); return (!v || /^https?:\/\/\S+\.\S+/.test(v)) ? '' : 'Link'; },
     'A7.help': function (q) { return checkedIn('.opt input[type=checkbox]', q) ? '' : 'Help with organizing'; },
     'A8.source': function (q) {
       var top = ['nominated', 'open', 'invite', 'other'].some(function (k) { return $('input[name="A8.source.' + k + '"]').checked; });
