@@ -17,14 +17,22 @@ const LINKS = [
   { href: '#partners', label: 'Partners' },
 ]
 
+/* /people is a second page (06.10.2026); off the main page the section links point home */
+const PEOPLE_URL = import.meta.env.BASE_URL + 'people/'
+/* /people is password-protected until everyone listed has consented; no public links to it yet */
+export const SHOW_PEOPLE_LINK = false
+
 export function Nav({
   theme,
   onToggleTheme,
+  home = true,
 }: {
   theme: Theme
   onToggleTheme: () => void
+  home?: boolean
 }) {
-  const [scrolled, setScrolled] = useState(false)
+  const base = home ? '' : import.meta.env.BASE_URL
+  const [scrolled, setScrolled] = useState(!home)
   /* the brand folds later than the bar turns opaque, so the morph is visible.
      It mounts folded and unfolds as an entrance beat (and on scrolling back up). */
   const [folded, setFolded] = useState(true)
@@ -32,19 +40,19 @@ export function Nav({
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40)
+      setScrolled(!home || window.scrollY > 40)
       setFolded(window.scrollY > 160)
     }
     /* bar opacity syncs immediately; the fold waits a beat so the unfold
        plays visibly as an entrance */
-    setScrolled(window.scrollY > 40)
+    setScrolled(!home || window.scrollY > 40)
     const t = setTimeout(onScroll, 400)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       clearTimeout(t)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [])
+  }, [home])
 
   const applyLabel = 'Apply'
 
@@ -53,7 +61,7 @@ export function Nav({
       <div className="nav2-inner wrap">
         <a
           className="brand"
-          href="#top"
+          href={home ? '#top' : import.meta.env.BASE_URL}
           aria-label="V4AIR, back to top"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
@@ -115,10 +123,15 @@ export function Nav({
             }}
           >
             {LINKS.map((l) => (
-              <a key={l.href} href={l.href}>
+              <a key={l.href} href={base + l.href}>
                 {l.label}
               </a>
             ))}
+            {(SHOW_PEOPLE_LINK || !home) && (
+              <a href={PEOPLE_URL} aria-current={home ? undefined : 'page'}>
+                People
+              </a>
+            )}
           </AnimatedGroup>
         </nav>
         <div className="nav-right">

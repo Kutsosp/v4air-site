@@ -1370,3 +1370,104 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
     0 8px 20px rgb(0 0 0 / 0.45),
     inset 0 1px 0 rgb(255 255 255 / 0.5);
 }
+
+/* ---------- /people page (06.10.2026) ---------- */
+/* same world as the main page: rules between groups, no cards; portraits are the only round shapes */
+.people-head { padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.people-head h1 { margin-bottom: 0.75rem; }
+.people-intro { color: var(--text-2); font-size: 1.15rem; max-width: 52ch; margin: 0; }
+
+.people-group { padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--line); }
+.people-group h2 { margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem); }
+
+/* person cards: identical for every role; 4 per row on desktop */
+.pcard-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: clamp(1.25rem, 3vw, 2.5rem);
+  row-gap: clamp(2rem, 4vw, 3rem);
+}
+@media (max-width: 1023px) { .pcard-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .pcard-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .pcard-grid { grid-template-columns: 1fr; } }
+
+/* one card for everyone: rows stack tightly in the same order, no reserved or empty rows */
+.pcard { min-width: 0; display: flex; flex-direction: column; }
+.pcard-photo {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+}
+/* the image never sets the box size: any source ratio is cropped into the square.
+   Photos are grayscale; hovering the card shows colour with a slight zoom. */
+.pcard-photo { overflow: hidden; }
+.pcard-photo > img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 25%; border-radius: inherit;
+  filter: grayscale(1);
+  transition: filter 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pcard:hover .pcard-photo > img { filter: grayscale(0); transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) {
+  .pcard-photo > img { transition: filter 0.2s ease; }
+  .pcard:hover .pcard-photo > img { transform: none; }
+}
+.pcard-initials { color: var(--teal); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: 0.02em; }
+/* affiliation badge: the organization's square emblem on a light round chip, bottom-left of the photo */
+.pcard-badge {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  width: 2.9rem;
+  height: 2.9rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  background: #f9f9f4;
+  border: 1px solid #d3d5c8;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
+  display: grid;
+  place-items: center;
+  color: #161616;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.pcard-badge img { width: 100%; height: 100%; object-fit: contain; }
+/* round seals fill the disc edge to edge */
+/* white fill behind the seal: transparent seals (UWr, ELTE, Comenius) must not show the photo through */
+.pcard-badge--round { padding: 0; border: 0; background: #fff; }
+.pcard-badge--round img { border-radius: 50%; }
+/* square marks: inscribed (71% of the diameter) in a disc of the mark's own background colour */
+.pcard-badge--inset { padding: 0; border: 0; }
+.pcard-badge--inset img { position: absolute; inset: 14.5%; width: 71%; height: 71%; }
+/* wide wordmarks (prg.ai) keep the earlier pill */
+.pcard-badge--wordmark { width: auto; max-width: calc(100% - 1.2rem); height: 2.1rem; padding: 0.3rem 0.55rem; border-radius: 8px; }
+.pcard-badge--wordmark img { width: auto; height: 100%; max-width: 7rem; }
+.pcard h3 { margin: 0 0 0.2rem; font-size: 1.08rem; }
+.pcard p { margin: 0; }
+.pcard-position { color: var(--text); font-size: 0.95rem; }
+.pcard-aff { color: var(--text-2); font-size: 0.92rem; }
+/* affiliation and unit stay on one line each; the full name is in the tooltip */
+.pcard-aff { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pcard-socials { list-style: none; margin: 0.7rem 0 0; padding: 0; display: flex; gap: 0.35rem; }
+.pcard-socials a {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.pcard-socials a:hover { color: var(--teal); border-color: var(--teal); }
+.nav2-links a[aria-current="page"] { color: var(--teal); }
+/* 06.10.2026: Peter reviewed /people at 75% browser zoom and preferred it; the page content
+   (not the shared nav and footer) renders at that scale. CSS zoom is supported in all
+   current browsers (Firefox since 126). */
+.people-page { zoom: 0.75; }

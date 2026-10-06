@@ -24,6 +24,21 @@
         } catch (e) { /* storage unavailable: stay light */ }
       })();
     </script>
+    <script>
+      /* GA4 events: clicks on the Apply / Nominate buttons and on contact e-mails, with the section they sit in */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || typeof window.gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var sec = a.closest('section[id], footer, nav, header');
+        var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+        if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
+          gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
+        } else if (href.indexOf('mailto:') === 0) {
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('?')[0], cta_location: where });
+        }
+      }, true);
+    </script>
   </head>
   <body>
     <div id="root"></div>

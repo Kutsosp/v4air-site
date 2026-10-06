@@ -1339,8 +1339,9 @@
     if (submitting && API.enabled()) {
       var btn = $('#btn-next');
       btn.disabled = true; btn.textContent = 'Sending…';
-      sync(true).then(function () { btn.disabled = false; idx++; render(); }, function () {
+      sync(true).then(function () { btn.disabled = false; track('form_submitted', { form_name: 'apply' }); idx++; render(); }, function () {
         btn.disabled = false; btn.textContent = 'Submit application';
+        track('form_error', { form_name: 'apply' });
         var box = $('#err-summary');
         box.innerHTML = '<strong>Your application was not sent</strong>Your answers are kept in this browser. Check your connection and press Submit application again.';
         box.classList.add('on'); box.focus();
@@ -1348,9 +1349,12 @@
       return;
     }
     if (!s.classList.contains('intro')) sync(false).catch(function () {});
+    track('form_step', { form_name: 'apply', step: idx + 1, screen: s.getAttribute('data-key') || s.id || String(idx) });
     idx++; render();
   }
   function prev() { if (idx > 0) { idx--; render(); } }
+  /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
+  function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
   $$('[data-next]').forEach(function (b) { b.addEventListener('click', next); });
   $$('[data-prev]').forEach(function (b) { b.addEventListener('click', prev); });
 

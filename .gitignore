@@ -28,3 +28,10 @@ dist-ssr
 !.env.example
 comms/one-pager/assets/fonts/sofia-pro/
 __pycache__/
+
+
+# /people source and data stay local until consent; only the encrypted page in public/people/ is committed
+src/people-page/
+people-src/
+dist-people/
+.staticrypt.json

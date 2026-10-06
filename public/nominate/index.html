@@ -628,9 +628,10 @@
       var data = collect(); delete data.__token;
       API.save('B', state.__id, state.__token, data, true, byId('hp').value).then(function (j) {
         state.__id = j.id; state.__token = j.token;
-        btn.disabled = false; idx++; render();
+        btn.disabled = false; track('form_submitted', { form_name: 'nominate' }); idx++; render();
       }, function () {
         btn.disabled = false; btn.textContent = 'Send nominations';
+        track('form_error', { form_name: 'nominate' });
         var box = byId('err-summary');
         box.innerHTML = '<strong>Your nominations were not sent</strong>Your answers are kept in this browser. Check your connection and press Send nominations again.';
         box.classList.add('on'); box.focus();
@@ -640,6 +641,8 @@
     idx++; render();
   }
   function prev() { if (idx > 0) { idx--; render(); } }
+  /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
+  function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
   $$('[data-next]').forEach(function (b) { b.addEventListener('click', next); });
   $$('[data-prev]').forEach(function (b) { b.addEventListener('click', prev); });
   byId('reset-preview').addEventListener('click', function () {
