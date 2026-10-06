@@ -5,7 +5,7 @@
   var URL = 'https://script.google.com/macros/s/AKfycbwQ_K5-V5ijWyg4R3KeTtCBNHm2rbTzFoK2AtC1W0pxSZSObD6rHeoZ5yM9G_kufW1j/exec';
   /* Fast path (backend-worker/, Cloudflare Worker, about 0.5 s per save) for load and save. File uploads stay on
      Apps Script. Empty = everything goes to Apps Script. If the Worker fails, the request is repeated on Apps Script. */
-  var WORKER = '';
+  var WORKER = 'https://v4air-forms.v4air.workers.dev';
 
   /* text/plain keeps the request "simple", so the browser sends no CORS preflight (Apps Script cannot answer one).
      script.google.com answers in 1 s most of the time and in 10 to 25 s some of the time (measured 06.10.2026), so the
