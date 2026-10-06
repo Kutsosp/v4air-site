@@ -1351,6 +1351,31 @@
   function prev() { if (idx > 0) { idx--; render(); } }
   /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
   function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
+  /* field_done: one event per answered question. Closed answers (radio, checkbox, select) send the value;
+     text fields send only filled / empty, never the text (GA4 terms: no personal data). */
+  (function () {
+    var form = $('#form'), last = {};
+    function key(el) {
+      var n = el.name || ''; if (!n || n === 'website') return '';
+      if (el.type === 'checkbox') { var i = n.lastIndexOf('.'); return i > 2 ? n.slice(0, i) : n; }
+      return n;
+    }
+    function answer(el) {
+      if (el.type === 'radio') return el.checked ? String(el.value) : '';
+      if (el.type === 'checkbox') { var i = el.name.lastIndexOf('.'); var opt = i > 2 ? el.name.slice(i + 1) : 'yes'; return el.checked ? opt : 'no_' + opt; }
+      if (el.tagName === 'SELECT') return el.value ? String(el.value) : 'empty';
+      return (el.value || '').trim() ? 'filled' : 'empty';
+    }
+    function done(el) {
+      var q = key(el); if (!q) return;
+      var a = answer(el); if (!a) return;
+      var id = q + '|' + a; if (last[q] === id) return; last[q] = id;
+      var sc = el.closest('.screen');
+      track('field_done', { form_name: 'apply', screen: sc ? sc.getAttribute('data-key') : '', question: q, answer: a.slice(0, 100) });
+    }
+    form.addEventListener('change', function (e) { var el = e.target; if (el.type === 'radio' || el.type === 'checkbox' || el.tagName === 'SELECT') done(el); });
+    form.addEventListener('focusout', function (e) { var el = e.target; if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type !== 'radio' && el.type !== 'checkbox')) done(el); });
+  })();
   $$('[data-next]').forEach(function (b) { b.addEventListener('click', next); });
   $$('[data-prev]').forEach(function (b) { b.addEventListener('click', prev); });
 

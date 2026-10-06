@@ -644,6 +644,32 @@
   function prev() { if (idx > 0) { idx--; render(); } }
   /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
   function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
+  /* field_done: one event per answered question. Closed answers (nominee type, mention, consent) send the value;
+     text fields send only filled / empty, never the text (GA4 terms: no personal data). */
+  (function () {
+    var form = $('#form'), last = {};
+    function key(el) {
+      if (el.name === 'website') return '';
+      if (el.dataset && el.dataset.f) return 'nominee.' + el.dataset.f;
+      if (/^type\d+$/.test(el.name || '')) return 'nominee.type';
+      return el.name || '';
+    }
+    function answer(el) {
+      if (el.type === 'radio') return el.checked ? String(el.value) : '';
+      if (el.type === 'checkbox') return el.checked ? 'yes' : 'no';
+      return (el.value || '').trim() ? 'filled' : 'empty';
+    }
+    function done(el) {
+      var q = key(el); if (!q) return;
+      var a = answer(el); if (!a) return;
+      var card = el.closest('.card'); var qq = card ? q + '.' + (Number(card.getAttribute('data-i')) + 1) : q;
+      var id = qq + '|' + a; if (last[qq] === id) return; last[qq] = id;
+      var sc = el.closest('.screen');
+      track('field_done', { form_name: 'nominate', screen: sc ? sc.getAttribute('data-key') : '', question: qq, answer: a });
+    }
+    form.addEventListener('change', function (e) { var el = e.target; if (el.type === 'radio' || el.type === 'checkbox') done(el); });
+    form.addEventListener('focusout', function (e) { var el = e.target; if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type !== 'radio' && el.type !== 'checkbox')) done(el); });
+  })();
   $$('[data-next]').forEach(function (b) { b.addEventListener('click', next); });
   $$('[data-prev]').forEach(function (b) { b.addEventListener('click', prev); });
   byId('reset-preview').addEventListener('click', function () {
