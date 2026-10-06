@@ -15,12 +15,19 @@
             function (e) { if (timer) clearTimeout(timer); throw e; });
   }
 
+  /* GA4 client id from the _ga cookie ("GA1.1.<id>"); empty when the tag never ran (blocked, or no consent) */
+  function gaClientId() {
+    var m = /(?:^|;\s*)_ga=GA1\.\d\.([0-9.]+)/.exec(document.cookie || '');
+    return m ? m[1] : '';
+  }
+
   window.V4AIR_API = {
     enabled: function () { return !!URL; },
     /* extra: { file: {name, type, data(base64)} } to upload, { removeFile: true } to delete the stored file */
     save: function (form, id, token, answers, final, hp, extra) {
       var p = { action: 'save', form: form, id: id || '', token: token || '', answers: answers, final: !!final, hp: hp || '' };
       if (extra) Object.keys(extra).forEach(function (k) { p[k] = extra[k]; });
+      var ga = gaClientId(); if (ga) p.ga_cid = ga;
       return post(p);
     },
     load: function (form, id, token) { return post({ action: 'load', form: form, id: id, token: token }); }
