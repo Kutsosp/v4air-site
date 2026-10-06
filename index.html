@@ -36,7 +36,8 @@
         if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
           gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
         } else if (href.indexOf('mailto:') === 0) {
-          gtag('event', 'contact_click', { cta_target: href.slice(7).split('?')[0], cta_location: where });
+          /* local part only: GA4 redacts anything that looks like an e-mail address */
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('@')[0], cta_location: where });
         }
       }, true);
     </script>

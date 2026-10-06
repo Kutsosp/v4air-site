@@ -638,6 +638,7 @@
       });
       return;
     }
+    track('form_step', { form_name: 'nominate', step: idx + 1, screen: s.getAttribute('data-key') || String(idx) });
     idx++; render();
   }
   function prev() { if (idx > 0) { idx--; render(); } }
