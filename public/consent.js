@@ -1,4 +1,4 @@
-/* Cookie consent: Google Consent Mode v2, everything denied until the visitor clicks OK.
+/* Cookie notice: Google Consent Mode v2, all four signals granted by default; OK only dismisses the banner.
    Loaded synchronously in <head> before the GA4 snippet on every page, so the default
    is in the dataLayer before gtag('config'). The choice is kept in localStorage. */
 (function () {
@@ -12,8 +12,8 @@
   var stored = null;
   try { stored = localStorage.getItem(KEY); } catch (e) { /* storage unavailable: ask every visit */ }
 
-  gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-  if (stored === 'granted') { gtag('consent', 'update', GRANTED); return; }
+  gtag('consent', 'default', GRANTED);
+  if (stored === 'granted') return;
 
   function show() {
     var css = document.createElement('style');
@@ -39,7 +39,6 @@
     ok.textContent = 'OK';
     ok.addEventListener('click', function () {
       try { localStorage.setItem(KEY, 'granted'); } catch (e) { /* not persisted: banner returns next visit */ }
-      window.gtag('consent', 'update', GRANTED);
       box.remove();
     });
     box.appendChild(text);
