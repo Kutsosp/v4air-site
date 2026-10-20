@@ -9,7 +9,8 @@ const UNIVERSITIES = [
   { src: asset('assets/umk-torun_blue-sm.webp'), alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 248, h: 200 },
   { src: asset('assets/cvut_blue-sm.webp'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 98, h: 200 },
   { src: asset('assets/elte_color-sm.webp'), alt: 'Partner university in Hungary, to be announced', place: 'TBA, Hungary', tba: true, w: 569, h: 120 },
-  { src: asset('assets/comenius-university_red-sm.webp'), alt: 'Comenius University Bratislava', place: 'Bratislava, Slovakia', w: 496, h: 200 },
+  // Partnership with the department leadership not yet confirmed (2026-10-20): same tba treatment as above.
+  { src: asset('assets/comenius-university_red-sm.webp'), alt: 'Partner university in Slovakia, to be announced', place: 'TBA, Slovakia', tba: true, w: 496, h: 200 },
 ]
 
 /* partners outside academia: separate strip under the universities (05.10.2026) */
