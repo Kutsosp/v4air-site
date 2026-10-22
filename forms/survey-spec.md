@@ -117,9 +117,8 @@ Call text (Peter's wording, 20.09.2026):
 > Three days for early-career researchers and graduate students from the V4 region who use or build AI methods across disciplines.
 >
 > **Participation costs**
-> - Students and researchers from partner institutions: fully funded
-> - Participants from outside partner institutions: participation fee, amount to be announced
-> - All other applicants: TBA
+> - Students and researchers from partner institutions: no participation fee (tooltip: thanks to the support of the International Visegrad Fund, accommodation at the castle, meals, and a contribution toward travel are also covered for a limited number of participants)
+> - Participants from other institutions: participation fee of 160 euro
 >
 > Two dotted-underlined tooltips in the first line, same pattern as "Who is an early-career researcher?" (5.16). "Partner institutions": "Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava." "Fully funded": "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."
 >
@@ -352,12 +351,14 @@ Intro:
 ### 2.8 Section A8: Last things (screen 15 of 15)
 
 **A8.1** `A8.source` "How did this call reach you?" Multi-select. Required, at least one.
-- Nominated by my institution's contact person
+- Forwarded by my institution's contact person
 - Open call. Ticking it reveals "Where did you see it?", multi-select, at least one required while Open call is ticked:
   - Email (`A8.source_open.email`; reveals `A8.source_open.email_which`, short text "Which mailing list or sender?", optional)
   - My institution's social media (`A8.source_open.inst_social`)
   - Other social media (`A8.source_open.other_social`)
   - An article or news item (`A8.source_open.article`)
+  - A poster (`A8.source_open.poster`)
+  - A lecture or a podcast (`A8.source_open.lecture`)
   - Somewhere else (`A8.source_open.other`; reveals `A8.source_open.other_txt` "Where?", required when ticked)
 - Personal invitation from the organizers
 - Other: [text]
