@@ -1,6 +1,6 @@
 /* V4AIR forms backend: Google Sheet + Apps Script web app.
    Bound to the "V4AIR forms" spreadsheet (created by clasp create --type sheets).
-   Tabs: Applications (form A), Nominations and Nominees (form B).
+   Tabs: Applications (form A), Nominations and Nominees (form B), Speakers (form S).
    Spec: forms/survey-spec.md sections 5.2 (save and resume), 5.11 (export), 5.17 (IDs). */
 
 var ID_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -8,7 +8,9 @@ var META = ['response_id', 'token_hash', 'status', 'started_at', 'last_saved_at'
 var NOMINEE_COLS = ['nomination_id', 'application_id', 'nominator_name', 'nominator_email', 'n', 'type', 'name', 'contact', 'affiliation', 'why', 'saved_at'];
 var FORMS = {
   A: { tab: 'Applications', prefix: 'V4A', keyRe: /^A[1-8]\.[A-Za-z0-9_.]+$/ },
-  B: { tab: 'Nominations', prefix: 'V4N', keyRe: /^B\.[A-Za-z0-9_.]+$/ }
+  B: { tab: 'Nominations', prefix: 'V4N', keyRe: /^B\.[A-Za-z0-9_.]+$/ },
+  /* invited speakers (public/invited-speaker/): shared questions keep the A variable IDs, speaker-only ones are S.* */
+  S: { tab: 'Speakers', prefix: 'V4S', keyRe: /^(A[1-8]|S)\.[A-Za-z0-9_.]+$/ }
 };
 var MAX_BODY = 15000000, MAX_VALUE = 12000, MAX_KEYS = 800, MAX_CARDS = 9;
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -76,7 +78,7 @@ function save(req) {
   var f = FORMS[req.form];
   if (!f || !req.answers || typeof req.answers !== 'object') return { ok: false, error: 'bad_request' };
   var answers = clean(req.answers, f.keyRe);
-  var email = String(req.answers[req.form === 'A' ? 'A1.email' : 'B.email'] || '').trim();
+  var email = String(req.answers[req.form === 'B' ? 'B.email' : 'A1.email'] || '').trim();
   if (!EMAIL_RE.test(email)) return { ok: false, error: 'email' };
 
   var lock = LockService.getScriptLock();
@@ -121,7 +123,7 @@ function save(req) {
   }
 
   if (req.form === 'A' && created) mail('resume', email, id, token, req.answers['A1.name']);
-  if (req.final && !wasSubmitted) mail(req.form === 'A' ? 'confirm_a' : 'confirm_b', email, id, token, req.answers[req.form === 'A' ? 'A1.name' : 'B.name']);
+  if (req.final && !wasSubmitted && req.form !== 'S') mail(req.form === 'A' ? 'confirm_a' : 'confirm_b', email, id, token, req.answers[req.form === 'A' ? 'A1.name' : 'B.name']);
   var out = { ok: true, id: id, token: token, created: created };
   if ('__file' in answers.json) out.file = answers.json.__file;
   return out;
@@ -184,7 +186,7 @@ function ensureColumns(sh, keys) {
 }
 
 function findRow(sh, id) {
-  if (!/^V4[ANC]-[2-9A-HJ-NP-Z]{4}-[2-9A-HJ-NP-Z]{4}$/.test(String(id))) return 0;
+  if (!/^V4[ANCS]-[2-9A-HJ-NP-Z]{4}-[2-9A-HJ-NP-Z]{4}$/.test(String(id))) return 0;
   var last = sh.getLastRow();
   if (last < 2) return 0;
   var hit = sh.getRange(2, 1, last - 1, 1).createTextFinder(id).matchEntireCell(true).findNext();
