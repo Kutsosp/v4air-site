@@ -85,26 +85,29 @@ function save(req) {
   lock.waitLock(20000);
   var created = false, id = req.id, token = req.token, wasSubmitted = false, now = new Date();
   try {
+    /* one header read and one row read per save; every Sheets call costs 0.2 to 1 s inside Apps Script */
     var sh = sheetFor(req.form);
-    var row = id ? findRow(sh, id) : 0;
+    var head = header(sh);
+    var row = id ? findRow(sh, id) : 0, rec = {};
     if (row) {
-      var head0 = header(sh);
-      var cur = sh.getRange(row, 1, 1, head0.length).getValues()[0];
-      if (!token || cur[head0.indexOf('token_hash')] !== hash(token)) return { ok: false, error: 'not_found' };
-      wasSubmitted = cur[head0.indexOf('status')] === 'submitted';
+      var cur = sh.getRange(row, 1, 1, head.length).getValues()[0];
+      head.forEach(function (h, i) { rec[h] = cur[i]; });
+      if (!token || rec.token_hash !== hash(token)) return { ok: false, error: 'not_found' };
+      wasSubmitted = rec.status === 'submitted';
     } else {
-      /* no record yet, or a stale id the sheet doesn't know: start a new record */
-      id = uniqueId(sh, f.prefix);
+      /* no record yet, or a stale id the sheet doesn't know: start a new record.
+         32^8 ids, so no lookup for collisions */
+      id = newId(f.prefix);
       token = Utilities.getUuid() + Utilities.getUuid().slice(0, 8);
       row = sh.getLastRow() + 1;
       created = true;
+      rec.response_id = id; rec.token_hash = hash(token); rec.started_at = now; rec.status = 'in progress';
     }
-    var head = ensureColumns(sh, Object.keys(answers.flat));
-    var rec = created ? {} : rowObject(sh, row, head);
-    if (created) { rec.response_id = id; rec.token_hash = hash(token); rec.started_at = now; rec.status = 'in progress'; }
     rec.last_saved_at = now;
     rec.screen = typeof req.answers.__screen === 'number' ? req.answers.__screen : '';
     rec.answers_json = JSON.stringify(answers.json);
+    /* GA4 client id (the _ga cookie value); joins a row to its traffic source in GA */
+    if (typeof req.ga_cid === 'string' && /^[0-9.]{1,40}$/.test(req.ga_cid)) rec.ga_client_id = req.ga_cid;
     if (req.final) { rec.status = 'submitted'; if (!rec.submitted_at) rec.submitted_at = now; }
     Object.keys(answers.flat).forEach(function (k) { rec[k] = answers.flat[k]; });
     if ((req.form === 'A' || req.form === 'S') && (req.file || req.removeFile)) {
@@ -113,8 +116,8 @@ function save(req) {
       rec.answers_json = JSON.stringify(answers.json);
       rec[col + '_name'] = stored ? stored.name : '';
       rec[col + '_url'] = stored ? stored.url : '';
-      head = ensureColumns(sh, [col + '_name', col + '_url']);
     }
+    head = addColumns(sh, head, Object.keys(rec));
     sh.getRange(row, 1, 1, head.length).setValues([head.map(function (h) { return h in rec ? rec[h] : ''; })]);
     if (req.form === 'B' && req.final) writeNominees(id, answers.json, now);
     SpreadsheetApp.flush();
@@ -183,6 +186,21 @@ function ensureColumns(sh, keys) {
     head = head.concat(missing);
   }
   return head;
+}
+
+/* Same as ensureColumns, with the header already in hand (saves a read). */
+function addColumns(sh, head, keys) {
+  var missing = keys.filter(function (k) { return head.indexOf(k) === -1; });
+  if (!missing.length) return head;
+  if (sh.getMaxColumns() < head.length + missing.length) sh.insertColumnsAfter(sh.getMaxColumns(), head.length + missing.length - sh.getMaxColumns());
+  sh.getRange(1, head.length + 1, 1, missing.length).setValues([missing]);
+  return head.concat(missing);
+}
+
+function newId(prefix) {
+  var out = '';
+  for (var i = 0; i < 8; i++) { out += ID_ALPHABET.charAt(Math.floor(Math.random() * ID_ALPHABET.length)); if (i === 3) out += '-'; }
+  return prefix + '-' + out;
 }
 
 function findRow(sh, id) {
@@ -263,104 +281,29 @@ function hash(s) {
 
 /* ---------- email ---------- */
 
-/* On since 05.10.2026. Sent through GmailApp from the peter@v4air.eu alias of the script owner (petkout1@gmail.com);
-   if the alias is missing in that account, Gmail falls back to the owner's address with the same display name.
-   Script properties: EMAIL_ENABLED=false switches everything off; SITE_URL overrides the site root.
-   A consumer Gmail account sends to about 100 recipients a day. */
-var SITE_DEFAULT = 'https://v4air.eu/', FROM_ALIAS = 'peter@v4air.eu', SENDER_NAME = 'Peter Koutsos, V4AIR';
-var SIGN = '\n\nPeter Koutsos\nV4 AI Researchers Meetup\nv4air.eu';
-
-function emailOn() { return PropertiesService.getScriptProperties().getProperty('EMAIL_ENABLED') !== 'false'; }
-function siteUrl() { return (PropertiesService.getScriptProperties().getProperty('SITE_URL') || SITE_DEFAULT).replace(/\/?$/, '/'); }
-
+/* Off until the organizers confirm the copy and the sender: set script property EMAIL_ENABLED=true and SITE_URL
+   (the site root, for example https://kutsosp.github.io/v4air-site/). A consumer Gmail account sends to about
+   100 recipients a day. */
 function mail(kind, to, id, token, name) {
-  if (!emailOn()) return;
-  var site = siteUrl();
+  var props = PropertiesService.getScriptProperties();
+  if (props.getProperty('EMAIL_ENABLED') !== 'true') return;
+  var site = (props.getProperty('SITE_URL') || '').replace(/\/?$/, '/');
+  if (!/^https:\/\//.test(site)) return;
   var hello = 'Hello' + (name ? ' ' + String(name).trim() : '') + ',\n\n';
   var link = site + 'apply/?id=' + encodeURIComponent(id) + '&t=' + encodeURIComponent(token);
-  var nominate = site + 'nominate/?id=' + encodeURIComponent(id);
   var subject, body;
   if (kind === 'resume') {
-    subject = 'V4AIR application ' + id;
-    body = hello + 'Your application ID is ' + id + '.\nContinue or change your answers here, on any device:\n' + link + SIGN;
+    subject = 'V4 AI Researchers Meetup: your application ' + id;
+    body = hello + 'Your application ID is ' + id + '. Keep it; it is in every email we send you about the meetup.\n\n' +
+      'Your answers are saved as you go. To continue on any device, open this link:\n' + link + '\n';
   } else if (kind === 'confirm_a') {
-    subject = 'V4AIR application ' + id + ' received';
-    body = hello + 'Your application is in. ID: ' + id + '.\n\nYou can change your answers until 15 January 2027:\n' + link +
-      '\n\nEveryone hears from us by February 2027.' + SIGN;
-  } else if (kind === 'confirm_b') {
-    subject = 'V4AIR nomination ' + id + ' received';
-    body = hello + 'Thank you for your nominations. ID: ' + id + '.\nWe write to them directly.' + SIGN;
-  } else if (kind === 'remind_nominate') {
-    subject = 'V4AIR: one request';
-    body = hello + 'Thank you again for applying (' + id + ').\n\nIf you know a student, a researcher or someone outside academia who should be at V4AIR, nominate them. It takes two minutes:\n' + nominate + SIGN;
-  } else return;
-  send(to, subject, body, kind + ' ' + id);
-}
-
-function send(to, subject, body, what) {
-  if (MailApp.getRemainingDailyQuota() < 1) { console.warn('mail quota exhausted, not sent: ' + what); return false; }
-  var opts = { name: SENDER_NAME, replyTo: FROM_ALIAS };
-  try { if (GmailApp.getAliases().indexOf(FROM_ALIAS) !== -1) opts.from = FROM_ALIAS; } catch (e) { console.warn('alias check failed: ' + e); }
-  GmailApp.sendEmail(to, subject, body, opts);
-  return true;
-}
-
-/* ---------- nominate reminder ---------- */
-
-/* Daily trigger (installTriggers). Three days after submitting, applicants who have not sent a nomination
-   (matched by e-mail or application ID in the Nominations tab) get one reminder; the send time is written to
-   the nominate_reminder_at column, so nobody gets it twice. Stops after the application deadline. */
-var REMINDER_DAYS = 3, REMINDER_BATCH = 40, DEADLINE = new Date('2027-01-16T00:00:00+01:00');
-
-function sendNominateReminders() {
-  if (!emailOn() || new Date() > DEADLINE) return;
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName('Applications');
-  if (!sh || sh.getLastRow() < 2) return;
-  var head = ensureColumns(sh, ['nominate_reminder_at']);
-  var col = head.indexOf('nominate_reminder_at') + 1;
-  var data = sh.getRange(2, 1, sh.getLastRow() - 1, head.length).getValues();
-
-  var nominated = {};
-  var nsh = ss.getSheetByName('Nominations');
-  if (nsh && nsh.getLastRow() >= 2) {
-    var nh = header(nsh), ei = nh.indexOf('B.email'), ai = nh.indexOf('B.application_id'), si = nh.indexOf('status');
-    nsh.getRange(2, 1, nsh.getLastRow() - 1, nh.length).getValues().forEach(function (r) {
-      if (si >= 0 && r[si] !== 'submitted') return;
-      if (ei >= 0 && r[ei]) nominated[String(r[ei]).trim().toLowerCase()] = true;
-      if (ai >= 0 && r[ai]) nominated[String(r[ai]).trim().toUpperCase()] = true;
-    });
+    subject = 'V4 AI Researchers Meetup: application ' + id + ' received';
+    body = hello + 'Thank you. Your application is in.\n\nYour application ID: ' + id + '\nKeep it; it is in every email we send you about the meetup.\n\n' +
+      'Everyone hears from us by February. You can change your answers until 15 January through this link:\n' + link + '\n';
+  } else {
+    subject = 'V4 AI Researchers Meetup: nomination ' + id + ' received';
+    body = hello + 'Thank you for your nominations.\n\nYour nomination ID: ' + id + '\nQuote it if you write to us about these nominations.\n';
   }
-
-  var cutoff = Date.now() - REMINDER_DAYS * 864e5, sent = 0;
-  for (var i = 0; i < data.length && sent < REMINDER_BATCH; i++) {
-    var rec = {};
-    head.forEach(function (h, k) { rec[h] = data[i][k]; });
-    if (rec.status !== 'submitted' || !rec.submitted_at || rec.nominate_reminder_at) continue;
-    if (new Date(rec.submitted_at).getTime() > cutoff) continue;
-    var email = String(rec['A1.email'] || '').trim();
-    if (!EMAIL_RE.test(email)) continue;
-    if (nominated[email.toLowerCase()] || nominated[String(rec.response_id).toUpperCase()]) {
-      sh.getRange(i + 2, col).setValue('not needed: nominated');
-      continue;
-    }
-    if (!send(email, 'V4AIR: one request', reminderBody(rec['A1.name'], rec.response_id), 'remind_nominate ' + rec.response_id)) break;
-    sh.getRange(i + 2, col).setValue(new Date());
-    sent++;
-  }
-  if (sent) console.log('nominate reminders sent: ' + sent);
-}
-
-function reminderBody(name, id) {
-  return 'Hello' + (name ? ' ' + String(name).trim() : '') + ',\n\nThank you again for applying (' + id + ').\n\n' +
-    'If you know a student, a researcher or someone outside academia who should be at V4AIR, nominate them. It takes two minutes:\n' +
-    siteUrl() + 'nominate/?id=' + encodeURIComponent(id) + SIGN;
-}
-
-/* Run once from the editor as petkout1 after each change of scopes: grants Gmail and trigger consent and
-   (re)creates the daily reminder trigger, 10:00 Europe/Prague. */
-function installTriggers() {
-  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'sendNominateReminders') ScriptApp.deleteTrigger(t); });
-  ScriptApp.newTrigger('sendNominateReminders').timeBased().everyDays(1).atHour(10).create();
-  console.log('aliases: ' + GmailApp.getAliases().join(', ') + ' | mail quota: ' + MailApp.getRemainingDailyQuota());
+  if (MailApp.getRemainingDailyQuota() < 1) { console.warn('mail quota exhausted, not sent: ' + kind + ' ' + id); return; }
+  MailApp.sendEmail({ to: to, subject: subject, body: body, name: 'V4 AI Researchers Meetup' });
 }
