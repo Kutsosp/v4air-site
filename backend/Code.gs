@@ -14,7 +14,7 @@ var FORMS = {
 };
 var MAX_BODY = 15000000, MAX_VALUE = 12000, MAX_KEYS = 800, MAX_CARDS = 9;
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-/* A7 upload: one file per application, kept under its original name in "V4AIR uploads/<application id>/" */
+/* A7 upload (form A) and speaker photo (form S): one file per record, kept under its original name in "V4AIR uploads/<application id>/" */
 var UPLOAD_ROOT = 'V4AIR uploads', MAX_FILE = 10 * 1024 * 1024;
 var FILE_TYPES = { 'application/pdf': 'pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'pptx', 'image/png': 'png', 'image/jpeg': 'jpg' };
 
@@ -107,13 +107,13 @@ function save(req) {
     rec.answers_json = JSON.stringify(answers.json);
     if (req.final) { rec.status = 'submitted'; if (!rec.submitted_at) rec.submitted_at = now; }
     Object.keys(answers.flat).forEach(function (k) { rec[k] = answers.flat[k]; });
-    if (req.form === 'A' && (req.file || req.removeFile)) {
-      var stored = storeFile(id, req.file);
+    if ((req.form === 'A' || req.form === 'S') && (req.file || req.removeFile)) {
+      var stored = storeFile(id, req.file), col = req.form === 'S' ? 'S.photo' : 'A7.file';
       answers.json.__file = stored;
       rec.answers_json = JSON.stringify(answers.json);
-      rec['A7.file_name'] = stored ? stored.name : '';
-      rec['A7.file_url'] = stored ? stored.url : '';
-      head = ensureColumns(sh, ['A7.file_name', 'A7.file_url']);
+      rec[col + '_name'] = stored ? stored.name : '';
+      rec[col + '_url'] = stored ? stored.url : '';
+      head = ensureColumns(sh, [col + '_name', col + '_url']);
     }
     sh.getRange(row, 1, 1, head.length).setValues([head.map(function (h) { return h in rec ? rec[h] : ''; })]);
     if (req.form === 'B' && req.final) writeNominees(id, answers.json, now);
@@ -233,7 +233,7 @@ function clean(answers, keyRe) {
   Object.keys(answers).forEach(function (k) {
     if (n >= MAX_KEYS) return;
     var v = answers[k];
-    if (k === 'A7.file_name' || k === 'A7.file_url') return; /* server-owned columns */
+    if (/^(A7\.file|S\.photo)_(name|url)$/.test(k)) return; /* server-owned columns */
     if (keyRe.test(k)) {
       if (typeof v === 'boolean') { flat[k] = v; json[k] = v; n++; }
       else if (typeof v === 'string' || typeof v === 'number') { var s = String(v).slice(0, MAX_VALUE); flat[k] = cellText(s); json[k] = s; n++; }

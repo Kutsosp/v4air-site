@@ -545,12 +545,11 @@ Required: `A1.name`, `A1.email`, `A1.institution_name`, `A1.country`, `A7.roles.
 
 | Block | Items |
 |---|---|
-| About you | `A1.name`, `A1.email`, `A1.institution_name`, `A1.country`; optional `A1.position`, `A1.stage` (dropdown, same values as A), `A1.gender`, `A1.link_1`, `A1.link_2`, `S.bio` |
-| Your contribution | `A7.roles.speaker` (labelled "Talk"), `.workshop`, `.panel`, `.njp`, `.unsure`, `.other` + `A7.roles_other`; `S.title`; optional `S.abstract`, `S.length` (15, 30, 45, 90, unsure) |
+| About you | `A1.name`, `A1.email`, `A1.institution_name` (free text with suggestions: the six partner universities and the CTU Technology Transfer Office; the page also writes `A1.institution_key` with the application form's values, `other` for anything typed), `A1.country` (filled in from a chosen partner); optional `A1.position`, `A1.stage` (dropdown, same values as A), `A1.gender`, `S.linkedin`, `S.instagram`, `S.facebook`, `A1.link_1`, `A1.link_2`, `S.bio`, photo (JPG or PNG up to 10 MB, sent with Send, stored like the A7 upload in "V4AIR uploads/<id>/"; server-owned columns `S.photo_name`, `S.photo_url`) |
+| Your contribution | `A7.roles.speaker` (labelled "Talk"), `.plenary` (speaker form only), `.workshop`, `.panel`, `.njp`, `.unsure`, `.other` + `A7.roles_other`; `S.title`; optional `S.description` ("Description or notes"; not called an abstract, see V4AIR Context section 13), `S.length` (15, 30, 45, 90, unsure) |
 | Days | `A1.days.wed/thu/fri`, or one of `S.days.one` (one day, not sure which), `S.days.two` (two days, not sure which), `S.days.tbd` (not sure yet). A specific day and a flexible option exclude each other |
-| Room | optional `S.needs.projector/board/laptops/internet/other` + `S.needs_other` |
-| Sharing | `S.publish_programme` (name, affiliation, bio and topic in the programme: yes/no); `S.publish_social` (announcement on v4air.eu and social networks: yes/no), with an info card that we tag the speaker and would welcome a share; `S.handles` revealed on yes, optional |
-| AI background, all optional | `S.ai_level` (1 to 4, the A3 level definitions); experience beyond academia as pills writing `A5.eNN.have` and `A5.eNN.present`; collapsed fallback lists of methods and topics as pills writing `A3.mNN.use` + `.present` and `A4.tNN.work` + `.present`. `A3.mNN.level` is not asked and stays empty |
+| Sharing | `S.publish_programme` (name, affiliation, bio and topic in the programme: yes/no); `S.publish_social` (announcement on v4air.eu and social networks: yes/no), with an info card that we tag the speaker on the profiles given in About you and would welcome a share |
+| AI background, all optional | `S.ai_level` (1 to 4, the A3 level definitions); experience beyond academia as checklists writing `A5.eNN.have` and `A5.eNN.present`; collapsed fallback lists of methods and topics as checklists writing `A3.mNN.use` + `.present` and `A4.tNN.work` + `.present`. `A3.mNN.level` is not asked and stays empty |
 | Last | `A8.consent` (speaker wording); `S.by_organiser` checkbox "Filled in by an organizer during a call" |
 
 ## 5. Form app: required behaviour

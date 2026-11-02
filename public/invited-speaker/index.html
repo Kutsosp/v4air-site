@@ -91,14 +91,12 @@
   .info .tip { display: none; position: absolute; left: -8px; top: 150%; z-index: 4; width: min(20rem, 80vw); background: var(--bg-raise); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.9rem; font-weight: 400; line-height: 1.5; padding: 0.8rem 1rem; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); }
   .info:hover .tip, .info:focus .tip { display: block; }
 
-  /* pill checkboxes for the optional AI lists */
-  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0.6rem; }
-  .pill { position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 0.35rem 0.9rem; border: 1px solid var(--line); border-radius: 999px; background: var(--field); cursor: pointer; font-size: 0.93rem; line-height: 1.3; }
-  .pill input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-  .pill:hover { border-color: var(--accent); }
-  .pill:has(input:checked) { background: var(--accent); border-color: var(--accent); color: var(--btn-ink); }
-  .pill:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .pill-group { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0.8rem 0 0.1rem; }
+  /* checklists for the optional AI lists: two columns where there is room */
+  .checklist { display: grid; grid-template-columns: 1fr; gap: 0 1.2rem; margin: 0.2rem 0 0.4rem; }
+  @media (min-width: 640px) { .checklist { grid-template-columns: 1fr 1fr; } }
+  .checklist .opt { margin: 0; }
+  .checklist .ex { display: block; color: var(--text-2); font-size: 0.85rem; }
+  .group { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0.9rem 0 0.1rem; }
   details.more { margin: 0.4rem 0 0; }
   details.more > summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 0.4rem 0; }
   .levels { list-style: none; margin: 0.4rem 0 0.4rem; padding: 0; font-size: 0.93rem; color: var(--text-2); }
@@ -117,6 +115,12 @@
   .btn-primary { background: var(--btn-bg); color: var(--btn-ink); box-shadow: 0 0 20px rgb(var(--accent-glow) / 0.4); }
   .btn-primary:hover { background: var(--btn-bg-hover); }
   .btn-primary[disabled] { opacity: 0.6; cursor: wait; }
+  .upload { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+  .btn-file { background: var(--bg-raise); color: var(--text); border: 1px solid var(--line); }
+  .file-chip { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.4rem 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); font-size: 0.95rem; max-width: 100%; }
+  .file-chip > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 18rem; }
+  .file-chip button { border: 0; background: none; color: var(--text-2); font-size: 1.2rem; line-height: 1; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; }
+  .file-chip button:hover { background: var(--line); color: var(--text); }
   .btn-quiet { background: none; color: var(--text-2); border: 1px solid var(--line); }
   .status { color: var(--text-2); font-size: 0.95rem; }
   .status.err { color: var(--error); font-weight: 600; }
@@ -146,7 +150,7 @@
   <div id="form-view">
     <p class="eyebrow">Invited speakers</p>
     <h1>Your contribution to V4AIR</h1>
-    <p class="lede">Thank you for joining us at Kostelec Castle near Prague, 28 to 30 April 2027. This form takes about three minutes. We already know your work, so we only ask what we need to plan the programme. Everything marked "(optional)" can stay empty.</p>
+    <p class="lede">Thank you for joining us at Kostelec Castle near Prague, 28 to 30 April 2027. This form takes about three minutes. We already know your work, so we only ask what we need to plan the programme.</p>
 
     <div class="err-summary" id="err-summary" role="alert" tabindex="-1"></div>
     <form id="form" novalidate onsubmit="return false">
@@ -165,8 +169,10 @@
       <p class="err-msg">Enter an email address we can reach you at</p>
     </div>
     <div class="q" data-q="A1.institution_name" data-err="Institution or organization">
-      <label class="qlabel" for="A1.institution_name">Institution or organization</label>
-      <input type="text" id="A1.institution_name" name="A1.institution_name" autocomplete="organization">
+      <label class="qlabel" for="A1.institution_name">Affiliation</label>
+      <p class="hint">Pick a partner from the list, or type your own institution or organization</p>
+      <input type="text" id="A1.institution_name" name="A1.institution_name" list="partners" autocomplete="off">
+      <datalist id="partners"></datalist>
       <p class="err-msg">Enter your institution or organization</p>
     </div>
     <div class="q" data-q="A1.country" data-err="Country">
@@ -202,9 +208,16 @@
       </select>
     </div>
     <div class="q">
-      <span class="qlabel">Links <span class="opt-mark">(optional)</span></span>
-      <p class="hint">A personal page, LinkedIn, Google Scholar or similar</p>
-      <input type="url" id="A1.link_1" name="A1.link_1" inputmode="url" aria-label="Link 1">
+      <span class="qlabel">Social media and links <span class="opt-mark">(optional)</span></span>
+      <p class="hint">A profile link or @name. We tag you there if we announce your participation.</p>
+      <label class="sublabel" for="S.linkedin">LinkedIn</label>
+      <input type="text" id="S.linkedin" name="S.linkedin" autocomplete="off">
+      <label class="sublabel" for="S.instagram">Instagram</label>
+      <input type="text" id="S.instagram" name="S.instagram" autocomplete="off">
+      <label class="sublabel" for="S.facebook">Facebook</label>
+      <input type="text" id="S.facebook" name="S.facebook" autocomplete="off">
+      <label class="sublabel" for="A1.link_1">Other links, for example a personal page or Google Scholar</label>
+      <input type="url" id="A1.link_1" name="A1.link_1" inputmode="url">
       <input type="url" id="A1.link_2" name="A1.link_2" inputmode="url" aria-label="Link 2" style="margin-top:0.5rem">
     </div>
     <div class="q">
@@ -212,11 +225,23 @@
       <p class="hint">Two or three sentences, written in the third person</p>
       <textarea id="S.bio" name="S.bio"></textarea>
     </div>
+    <div class="q" data-q="S.photo" data-err="Photo">
+      <label class="qlabel" for="photo-input">Photo for the programme and announcements <span class="opt-mark">(optional)</span></label>
+      <p class="hint">JPG or PNG, up to 10 MB. A portrait with some space around the face works best.</p>
+      <div class="upload">
+        <input type="file" id="photo-input" accept="image/jpeg,image/png" hidden>
+        <button type="button" class="btn btn-file" id="photo-pick">Choose a photo</button>
+        <span class="file-chip hid" id="photo-chip"><span id="photo-name"></span> <button type="button" id="photo-remove" title="Remove photo">×</button></span>
+        <span class="hint" id="photo-info" style="margin:0"></span>
+      </div>
+      <p class="err-msg">Use a JPG or PNG file of up to 10 MB</p>
+    </div>
 
     <h2>Your contribution</h2>
     <div class="q" data-q="A7.roles" data-err="Form of contribution">
       <span class="qlabel">How would you like to contribute? Tick all that fit.</span>
       <label class="opt"><input type="checkbox" name="A7.roles.speaker"><span>Talk</span></label>
+      <label class="opt"><input type="checkbox" name="A7.roles.plenary"><span>Plenary talk</span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.workshop"><span>Workshop</span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.panel"><span>Panel discussion <small>(answer a moderator's questions on stage with two or three others)</small></span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.njp"><span>Not-Just-Posters session<span class="info" tabindex="0">i<span class="tip">An open-format session: bring a poster, a prototype, a demo, or a digital presentation. Whatever shows your work best.</span></span></span></label>
@@ -232,8 +257,9 @@
       <p class="err-msg">Enter a topic or a working title</p>
     </div>
     <div class="q">
-      <label class="qlabel" for="S.abstract">A few sentences about it <span class="opt-mark">(optional)</span></label>
-      <textarea id="S.abstract" name="S.abstract"></textarea>
+      <label class="qlabel" for="S.description">Description or notes <span class="opt-mark">(optional)</span></label>
+      <p class="hint">What you plan to cover. A few sentences or rough notes are enough.</p>
+      <textarea id="S.description" name="S.description"></textarea>
     </div>
     <div class="q">
       <span class="qlabel">Preferred length <span class="opt-mark">(optional)</span></span>
@@ -257,15 +283,6 @@
       <label class="opt"><input type="checkbox" name="S.days.tbd" class="day day-flex"><span>Not sure yet</span></label>
       <p class="err-msg">Tick at least one option</p>
     </div>
-    <div class="q">
-      <span class="qlabel">What do you need in the room? <span class="opt-mark">(optional)</span></span>
-      <label class="opt"><input type="checkbox" name="S.needs.projector"><span>Projector</span></label>
-      <label class="opt"><input type="checkbox" name="S.needs.board"><span>Whiteboard or flipchart</span></label>
-      <label class="opt"><input type="checkbox" name="S.needs.laptops"><span>Participants bring laptops</span></label>
-      <label class="opt"><input type="checkbox" name="S.needs.internet"><span>Internet access for participants</span></label>
-      <label class="opt"><input type="checkbox" name="S.needs.other" data-reveal="#needs-other"><span>Something else</span></label>
-      <div class="reveal hid" id="needs-other"><label for="S.needs_other">What do you need?</label><input type="text" id="S.needs_other" name="S.needs_other"></div>
-    </div>
 
     <h2>Sharing your participation</h2>
     <div class="q" data-q="S.publish_programme" data-err="Programme listing">
@@ -279,11 +296,10 @@
     <div class="q" data-q="S.publish_social" data-err="Announcement">
       <span class="qlabel">May we announce your participation on v4air.eu and on our social networks?</span>
       <div class="opt-row">
-        <label class="opt"><input type="radio" name="S.publish_social" value="yes" data-reveal="#handles"><span>Yes</span></label>
+        <label class="opt"><input type="radio" name="S.publish_social" value="yes"><span>Yes</span></label>
         <label class="opt"><input type="radio" name="S.publish_social" value="no"><span>No</span></label>
       </div>
-      <div class="card"><p>If we announce you, we tag you in the post. We would be grateful if you shared or reposted it. It helps the meetup reach researchers in your network.</p></div>
-      <div class="reveal hid" id="handles"><label for="S.handles">Where should we tag you? (optional)</label><input type="text" id="S.handles" name="S.handles"><p class="hint" style="margin:0.3rem 0 0">Profile names or links, for example on LinkedIn, Bluesky or X</p></div>
+      <div class="card"><p>If we announce you, we tag you in the post, using the profiles you gave above. We would be grateful if you shared or reposted it. It helps the meetup reach researchers in your network.</p></div>
       <p class="err-msg">Choose yes or no</p>
     </div>
 
@@ -309,16 +325,16 @@
     <div class="q">
       <span class="qlabel">Which of these could you share from your own experience? <span class="opt-mark">(optional)</span></span>
       <p class="hint">Experience outside a purely academic setting</p>
-      <div class="pills" id="pills-exp"></div>
+      <div class="checklist" id="list-exp"></div>
     </div>
     <div class="q">
       <details class="more">
         <summary>Specific methods and topics (optional, only if you have a minute)</summary>
         <p class="hint" style="margin-top:0.4rem">We use these only as a fallback, when your topic does not already tell us. Tick what you could speak about.</p>
         <span class="qlabel" style="margin-top:0.8rem">AI methods</span>
-        <div id="pills-methods"></div>
+        <div id="list-methods"></div>
         <span class="qlabel" style="margin-top:1rem">AI-related topics</span>
-        <div id="pills-topics"></div>
+        <div id="list-topics"></div>
       </details>
     </div>
 
@@ -424,24 +440,36 @@
   themeLabel();
 
   /* ---------- lists ---------- */
+  /* Partner names and keys match the application form's A1.institution_key options. */
+  var PARTNERS = [
+    { name: 'Charles University', key: 'cuni', country: 'Czechia' },
+    { name: 'Czech Technical University in Prague', key: 'cvut', country: 'Czechia' },
+    { name: 'Czech Technical University in Prague, Technology Transfer Office', key: 'cvut', country: 'Czechia' },
+    { name: 'Comenius University Bratislava', key: 'uniba', country: 'Slovakia' },
+    { name: 'University of Wrocław', key: 'uwr', country: 'Poland' },
+    { name: 'Nicolaus Copernicus University in Toruń', key: 'umk', country: 'Poland' },
+    { name: 'Eötvös Loránd University in Budapest', key: 'elte', country: 'Hungary' }
+  ];
+  function partner(name) { return PARTNERS.filter(function (x) { return x.name === name; })[0]; }
+  $('#partners').innerHTML = PARTNERS.map(function (x) { return '<option value="' + esc(x.name) + '">'; }).join('');
   $('#countries').innerHTML = COUNTRIES.map(function (c) { return '<option value="' + esc(c) + '">'; }).join('');
-  /* Ticking a pill means "I could present on this"; it also sets the item's gate (use / work / have),
+  /* Ticking an item means "I could present on this"; it also sets the item's gate (use / work / have),
      because in the application form "present" exists only behind a ticked gate. */
-  function pill(it, prefix, gate) {
+  function item(it, prefix, gate) {
     var p = prefix + '.' + it.id;
-    return '<label class="pill"' + (it.ex ? ' title="' + esc(it.ex) + '"' : '') + '><input type="checkbox" name="' + p + '.present" data-gate="' + p + '.' + gate + '"><span>' + esc(it.label) + '</span></label>';
+    return '<label class="opt"><input type="checkbox" name="' + p + '.present" data-gate="' + p + '.' + gate + '"><span>' + esc(it.label) + (it.ex ? '<span class="ex">' + esc(it.ex) + '</span>' : '') + '</span></label>';
   }
   function grouped(items, prefix, gate) {
     var html = '', last = null;
     items.forEach(function (it) {
-      if (it.fam !== last) { html += (last ? '</div>' : '') + '<span class="pill-group">' + esc(it.fam) + '</span><div class="pills">'; last = it.fam; }
-      html += pill(it, prefix, gate);
+      if (it.fam !== last) { html += (last ? '</div>' : '') + '<span class="group">' + esc(it.fam) + '</span><div class="checklist">'; last = it.fam; }
+      html += item(it, prefix, gate);
     });
     return html + '</div>';
   }
-  $('#pills-exp').innerHTML = EXPERIENCE.map(function (e) { return pill(e, 'A5', 'have'); }).join('');
-  $('#pills-methods').innerHTML = grouped(METHODS, 'A3', 'use');
-  $('#pills-topics').innerHTML = grouped(TOPICS, 'A4', 'work');
+  $('#list-exp').innerHTML = EXPERIENCE.map(function (e) { return item(e, 'A5', 'have'); }).join('');
+  $('#list-methods').innerHTML = grouped(METHODS, 'A3', 'use');
+  $('#list-topics').innerHTML = grouped(TOPICS, 'A4', 'work');
 
   /* ---------- state ---------- */
   var form = $('#form');
@@ -457,6 +485,8 @@
       else if (el.type === 'radio') { if (el.checked) data[el.name] = el.value; else if (!(el.name in data)) data[el.name] = ''; }
       else data[el.name] = el.value.trim();
     });
+    var pt = partner(data['A1.institution_name']);
+    data['A1.institution_key'] = pt ? pt.key : (data['A1.institution_name'] ? 'other' : '');
     return data;
   }
   function restore(a) {
@@ -470,7 +500,7 @@
     reveals();
   }
   function persist() {
-    try { localStorage.setItem(STORE, JSON.stringify({ answers: collect(), id: remote.id, token: remote.token })); } catch (e) {}
+    try { localStorage.setItem(STORE, JSON.stringify({ answers: collect(), id: remote.id, token: remote.token, photo: sentPhoto })); } catch (e) {}
   }
 
   /* ---------- reveals and the day options ---------- */
@@ -504,6 +534,7 @@
     'days': function () { return ticked('input.day'); },
     'S.publish_programme': function () { return ticked('input[name="S.publish_programme"]'); },
     'S.publish_social': function () { return ticked('input[name="S.publish_social"]'); },
+    'S.photo': function () { var f = photoFile(); return !f || (PHOTO_TYPES[f.type] && f.size <= MAX_PHOTO); },
     'A8.consent': function () { return form.elements['A8.consent'].checked; }
   };
   function check(q) { var ok = RULES[q.getAttribute('data-q')](); q.classList.toggle('has-error', !ok); return ok; }
@@ -519,6 +550,32 @@
     return false;
   }
 
+  var PHOTO_TYPES = { 'image/jpeg': 1, 'image/png': 1 }, MAX_PHOTO = 10 * 1024 * 1024;
+  var photoInput = $('#photo-input');
+  var sentPhoto = saved.photo || null;
+  function photoFile() { return photoInput.files && photoInput.files[0]; }
+  function drawPhoto() {
+    var f = photoFile();
+    $('#photo-chip').classList.toggle('hid', !f);
+    $('#photo-name').textContent = f ? f.name : '';
+    $('#photo-pick').textContent = f || sentPhoto ? 'Choose another photo' : 'Choose a photo';
+    $('#photo-info').textContent = !f && sentPhoto ? 'Already sent: ' + sentPhoto.name : '';
+  }
+  function readPhoto(f) {
+    return new Promise(function (ok, fail) {
+      var r = new FileReader();
+      r.onload = function () { ok({ name: f.name, type: f.type, data: String(r.result).split(',')[1] }); };
+      r.onerror = fail;
+      r.readAsDataURL(f);
+    });
+  }
+  photoInput.addEventListener('change', drawPhoto);
+  $('#photo-pick').addEventListener('click', function () { photoInput.click(); });
+  $('#photo-remove').addEventListener('click', function () {
+    photoInput.value = ''; drawPhoto();
+    check(photoInput.closest('.q'));
+  });
+
   var persistTimer = null;
   function onEdit(e) {
     reveals();
@@ -527,6 +584,10 @@
     clearTimeout(persistTimer);
     persistTimer = setTimeout(persist, 300);
   }
+  $('#A1\\.institution_name').addEventListener('change', function (e) {
+    var pt = partner(e.target.value.trim());
+    if (pt && !val('A1.country')) form.elements['A1.country'].value = pt.country;
+  });
   form.addEventListener('input', onEdit);
   form.addEventListener('change', onEdit);
 
@@ -548,9 +609,13 @@
     if (!validate()) return;
     if (!API.enabled()) { status.textContent = 'Sending is switched off on this copy of the page.'; status.className = 'status err'; return; }
     sendBtn.disabled = true;
-    status.textContent = 'Sending. This can take up to half a minute.'; status.className = 'status';
-    API.save('S', remote.id, remote.token, collect(), true, $('#hp').value).then(function (j) {
+    status.textContent = (photoFile() ? 'Sending with your photo. This can take up to a minute.' : 'Sending. This can take up to half a minute.'); status.className = 'status';
+    var f = photoFile();
+    (f ? readPhoto(f) : Promise.resolve(null)).then(function (file) {
+      return API.save('S', remote.id, remote.token, collect(), true, $('#hp').value, file ? { file: file } : null);
+    }).then(function (j) {
       remote = { id: j.id, token: j.token };
+      if (j.file) { sentPhoto = j.file; photoInput.value = ''; drawPhoto(); }
       persist();
       showEnd(j.id);
     }, function (err) {
@@ -565,6 +630,7 @@
   /* For organizers filling in the form for several speakers in one browser: forget this record, start empty. */
   $('#btn-new').addEventListener('click', function () {
     remote = { id: '', token: '' };
+    sentPhoto = null; photoInput.value = ''; drawPhoto();
     try { localStorage.removeItem(STORE); } catch (e) {}
     restore({});
     $$('.q.has-error', form).forEach(function (q) { q.classList.remove('has-error'); });
@@ -573,6 +639,7 @@
   });
 
   restore(saved.answers);
+  drawPhoto();
 })();
 </script>
 </body>
