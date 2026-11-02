@@ -339,6 +339,13 @@ Intro:
 
 **A7.3a** `A7.file`, `A7.link` "Do you have something to show? (optional)" Help: "A paper, a poster, slides, a preprint, a demo, or a repository. One file up to 10 MB (PDF, PPTX, PNG, JPG), or a link". One file input and one URL field, both optional, both allowed. The file uploads the moment it is chosen and can be replaced or removed; it is stored under its original name in the Drive folder `V4AIR uploads/<application ID>/`, one file per application. Exported as `A7.file_name`, `A7.file_url` (Drive link) and `A7.link`.
 
+**A7.3b** `A7.hardware` "Does your work involve hardware? (optional)" Multi-select. Optional. Help: "For example sensors, field cameras, robots, or embedded systems. This helps us plan a possible session for hardware work."
+- Yes, I build hardware (`A7.hardware.build`)
+- Yes, I need hardware built for my research (`A7.hardware.need`)
+- No (`A7.hardware.no`)
+
+"No" is exclusive: ticking it unticks both Yes options, and ticking either Yes option unticks it. `A7.hardware_detail` Revealed when either Yes option is ticked. "What are you building, or what do you need? (optional)" Short text, up to 300 characters. Optional. Collects interest for a possible hardware session with Make More at Maker Faire Prague; the form names neither until Make More confirms.
+
 **A7.4** `A7.help` "Would you help with organizing?" Multi-select. Required, at least one.
 - Before the event, at my home institution (promoting the call, recruiting participants)
 - On site during the event (coordination, helping other participants)
@@ -362,6 +369,14 @@ Intro:
   - Somewhere else (`A8.source_open.other`; reveals `A8.source_open.other_txt` "Where?", required when ticked)
 - Personal invitation from the organizers
 - Other: [text]
+
+**A8.1a** `A8.own_funding` "Do you have access to funding and wish to self-fund your participation?" Single select, Yes / No. Shown to all applicants. Required. Info icon with tooltip: "Our funding allows us to fund a limited number of places (accommodation and meals at the castle, plus a contribution toward travel). If you have your own funding, for example a grant or a travel budget, using it will help ensure V4AIR remains accessible for those who may not have been able to attend otherwise." Visible help line: "Your answer does not affect whether you are selected."
+
+`A8.own_funding_scope` Revealed on Yes. Single select, required.
+- I can cover all my costs from my own funding (`all`)
+- I can cover part of my costs (`part`)
+
+`A8.own_funding_costs` Revealed on `part`. "Which costs can you cover?" Multi-select, at least one required: Travel (`A8.own_funding_costs.travel`); Accommodation and meals (`A8.own_funding_costs.stay`).
 
 **A8.2** `A8.questions` "Questions for the organizers, general comments, or requests (optional)". Long text, soft limit 1,000 characters. Optional. Help: "Anything the form didn't ask about".
 
