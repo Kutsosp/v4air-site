@@ -370,9 +370,9 @@ Intro:
 - Personal invitation from the organizers
 - Other: [text]
 
-**A8.1a** `A8.own_funding` "Do you have access to funding and wish to self-fund your participation?" Single select, Yes / No. Shown to all applicants. Required. Info icon with tooltip: "Our funding allows us to fund a limited number of places (accommodation and meals at the castle, plus a contribution toward travel). If you have your own funding, for example a grant or a travel budget, using it will help ensure V4AIR remains accessible for those who may not have been able to attend otherwise." Visible help line: "Your answer does not affect whether you are selected."
+**A8.1a** `A8.own_funding` "Do you have access to funding and wish to self-fund your participation?" Single select: "I wish to fund my own participation" (`yes`) / "No, I require covering of my expenses" (`no`). Shown to all applicants. Required. Info icon with tooltip: "Our funding allows us to fund a limited number of places (accommodation and meals at the castle, plus a contribution toward travel). If you have your own funding, for example a grant or a travel budget, using it will help ensure V4AIR remains accessible for those who may not have been able to attend otherwise." Visible help line: "Your answer does not affect whether you are selected. However, if you have available funding, consider freeing up your spot to those that will be unable to attend otherwise."
 
-`A8.own_funding_scope` Revealed on Yes. Single select, required.
+`A8.own_funding_scope` Revealed on `yes`. Single select, required.
 - I can cover all my costs from my own funding (`all`)
 - I can cover part of my costs (`part`)
 
