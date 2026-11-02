@@ -1126,6 +1126,7 @@
     $$('[data-label-acad]').forEach(function (el) { el.textContent = (s === 'nonacad') ? el.getAttribute('data-label-nonacad') : el.getAttribute('data-label-acad'); });
     $$('[data-hint-acad]').forEach(function (el) { el.textContent = (s === 'nonacad') ? el.getAttribute('data-hint-nonacad') : el.getAttribute('data-hint-acad'); });
     void acad;
+    applyFunding();
   }
   $$('input[name="A1.stage"]').forEach(function (r) { r.addEventListener('change', applyStage); });
 
@@ -1142,6 +1143,7 @@
     var noPartner = !!c && COUNTRIES.indexOf(c) > -1 && !any;
     $('#inst-radios').classList.toggle('hid', noPartner);
     $('#inst-other').classList.toggle('hid', !(noPartner || chosen === 'other'));
+    applyFunding();
   }
   country.addEventListener('input', applyInstitution);
   country.addEventListener('change', applyInstitution);
@@ -1220,7 +1222,11 @@
   hwNo.addEventListener('change', function () { if (hwNo.checked) hwCbs.forEach(function (c) { c.checked = false; }); applyHw(); save(); });
 
   function clearIn(root) { $$('input', root).forEach(function (i) { if (i.type === 'checkbox' || i.type === 'radio') i.checked = false; else i.value = ''; }); }
+  /* Self-funding is asked only of partner-university applicants; everyone else pays their own way anyway. */
   function applyFunding() {
+    var inst = $('input[name="A1.institution_key"]:checked');
+    var partner = vis($('[data-q="A1.institution"]')) && !!inst && inst.value !== 'other';
+    $('#own-funding').classList.toggle('hid', !partner); if (!partner) clearIn($('#own-funding'));
     var yes = $('input[name="A8.own_funding"]:checked'), sc = $('input[name="A8.own_funding_scope"]:checked');
     var on = !!yes && yes.value === 'yes', part = on && !!sc && sc.value === 'part';
     $('#funding-reveal').classList.toggle('hid', !on); if (!on) clearIn($('#funding-reveal'));
