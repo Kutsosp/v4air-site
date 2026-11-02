@@ -118,7 +118,7 @@ Call text (Peter's wording, 20.09.2026):
 >
 > **Participation costs**
 > - Students and researchers from partner institutions: no participation fee (tooltip: thanks to the support of the International Visegrad Fund, accommodation at the castle, meals, and a contribution toward travel are also covered for a limited number of participants)
-> - Participants from other institutions: participation fee of 160 euro
+> - Participants from other institutions: participation fee (amount to be confirmed)
 >
 > Two dotted-underlined tooltips in the first line, same pattern as "Who is an early-career researcher?" (5.16). "Partner institutions": "Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava." "Fully funded": "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."
 >
