@@ -177,8 +177,7 @@
     </div>
     <div class="q" data-q="A1.country" data-err="Country">
       <label class="qlabel" for="A1.country">Which country is it based in?</label>
-      <input type="text" id="A1.country" name="A1.country" list="countries" autocomplete="off">
-      <datalist id="countries"></datalist>
+      <select id="A1.country" name="A1.country"></select>
       <p class="err-msg">Enter a country</p>
     </div>
     <div class="q">
@@ -243,7 +242,6 @@
       <label class="opt"><input type="checkbox" name="A7.roles.speaker"><span>Talk</span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.plenary"><span>Plenary talk</span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.workshop"><span>Workshop</span></label>
-      <label class="opt"><input type="checkbox" name="A7.roles.panel"><span>Panel discussion <small>(answer a moderator's questions on stage with two or three others)</small></span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.njp"><span>Not-Just-Posters session<span class="info" tabindex="0">i<span class="tip">An open-format session: bring a poster, a prototype, a demo, or a digital presentation. Whatever shows your work best.</span></span></span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.unsure"><span>Not sure yet, let us discuss it</span></label>
       <label class="opt"><input type="checkbox" name="A7.roles.other" data-reveal="#roles-other"><span>Other</span></label>
@@ -299,7 +297,7 @@
         <label class="opt"><input type="radio" name="S.publish_social" value="yes"><span>Yes</span></label>
         <label class="opt"><input type="radio" name="S.publish_social" value="no"><span>No</span></label>
       </div>
-      <div class="card"><p>If we announce you, we tag you in the post, using the profiles you gave above. We would be grateful if you shared or reposted it. It helps the meetup reach researchers in your network.</p></div>
+      <div class="card"><p>If we announce you, we tag you on the profiles you gave above. We also email you a kit for your own post: an "I'm speaking at V4AIR" graphic and a text you can adapt. If you want to share your involvement, we would be grateful if you used it or reposted our announcement.</p></div>
       <p class="err-msg">Choose yes or no</p>
     </div>
 
@@ -452,7 +450,10 @@
   ];
   function partner(name) { return PARTNERS.filter(function (x) { return x.name === name; })[0]; }
   $('#partners').innerHTML = PARTNERS.map(function (x) { return '<option value="' + esc(x.name) + '">'; }).join('');
-  $('#countries').innerHTML = COUNTRIES.map(function (c) { return '<option value="' + esc(c) + '">'; }).join('');
+  /* COUNTRIES starts with the four V4 countries */
+  function opts(list) { return list.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join(''); }
+  $('#A1\\.country').innerHTML = '<option value="">Choose a country</option><optgroup label="V4 countries">' + opts(COUNTRIES.slice(0, 4)) +
+    '</optgroup><optgroup label="Other countries">' + opts(COUNTRIES.slice(4)) + '</optgroup>';
   /* Ticking an item means "I could present on this"; it also sets the item's gate (use / work / have),
      because in the application form "present" exists only behind a ticked gate. */
   function item(it, prefix, gate) {
