@@ -4,8 +4,8 @@ import { asset } from '@/lib/utils'
 /* Logo files are 200 px tall WebP copies of the colour logos (05.10.2026) to keep the section light. */
 const UNIVERSITIES = [
   { src: asset('assets/charles-university_red-sm.webp'), alt: 'Charles University', place: 'Prague, Czechia', tall: true, w: 200, h: 200 },
-  // Partnership paperwork in progress (2026-09): logo blurred, name and city withheld. Flip `tba` off to reveal.
-  { src: asset('assets/uwr-wroclaw_black-sm.webp'), alt: 'Partner university in Poland, to be announced', place: 'TBA, Poland', tba: true, w: 390, h: 200 },
+  // Rector's patronage granted 02.11.2026; UWr approved the official blue logo (UWr_LOGO_1) for the site on 03.11.2026.
+  { src: asset('assets/uwr-wroclaw_blue-sm.webp'), alt: 'University of Wrocław', place: 'Wrocław, Poland', w: 589, h: 200 },
   { src: asset('assets/umk-torun_blue-sm.webp'), alt: 'Nicolaus Copernicus University in Torun', place: 'Toruń, Poland', w: 248, h: 200 },
   { src: asset('assets/cvut_blue-sm.webp'), alt: 'Czech Technical University in Prague', place: 'Prague, Czechia', tall: true, w: 98, h: 200 },
   { src: asset('assets/elte_color-sm.webp'), alt: 'Eötvös Loránd University in Budapest', place: 'Budapest, Hungary', w: 569, h: 120 },
