@@ -336,10 +336,17 @@
       </details>
     </div>
 
-    <h2>Consent</h2>
-    <div class="q" data-q="A8.consent" data-err="Consent">
-      <label class="opt"><input type="checkbox" name="A8.consent"><span>I agree that Charles University and the V4AIR organizing team store and process the information in this form to plan the programme and contact me about the meetup. The optional gender answer is used only in aggregate, for reporting on gender balance. We keep the data for the duration of the project and delete it afterwards. Write to info@v4air.eu to see, correct or delete your data.</span></label>
-      <p class="err-msg">We need your consent to store these answers</p>
+    <h2>Privacy</h2>
+    <div class="q" data-q="A8.consent" data-err="Privacy notice">
+      <p class="hint">Charles University processes your answers to plan the programme and contact you about the meetup. The <a href="../policy/privacy/" target="_blank" rel="noopener">privacy notice</a> explains what we keep, why, and for how long.</p>
+      <label class="opt"><input type="checkbox" name="A8.consent"><span>I have read the privacy notice.</span></label>
+      <input type="hidden" name="A8.notice_version" value="privacy-v1" data-fixed>
+      <p class="err-msg">Please confirm that you have read the privacy notice</p>
+    </div>
+    <div class="q" data-q="A8.photo_consent">
+      <span class="qlabel">Photos and videos <span class="opt-mark">(optional)</span></span>
+      <p class="hint">We take photos and videos at the meetup to document it and to present it on v4air.eu, on our social media and in reports to the International Visegrad Fund. You can withdraw this consent at any time by writing to gdpr@natur.cuni.cz.</p>
+      <label class="opt"><input type="checkbox" name="A8.photo_consent"><span>I consent to photos and videos of me being taken at the meetup and used for these purposes, as described in the privacy notice.</span></label>
     </div>
 
     <div class="actions">
@@ -493,7 +500,7 @@
   function restore(a) {
     a = a || {};
     $$('input, select, textarea', form).forEach(function (el) {
-      if (!el.name || el.id === 'hp') return;
+      if (!el.name || el.id === 'hp' || el.hasAttribute('data-fixed')) return; /* data-fixed: the page's own value wins */
       if (el.type === 'checkbox') el.checked = a[el.name] === true;
       else if (el.type === 'radio') el.checked = a[el.name] === el.value;
       else el.value = typeof a[el.name] === 'string' ? a[el.name] : '';
