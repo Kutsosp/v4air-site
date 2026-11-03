@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<title>Privacy notice: V4 AI Researchers Meetup</title>
+<meta name="description" content="How Charles University processes the personal data you give us in the V4AIR forms, and your consent to photos and videos.">
+<script src="/consent.js"></script>
+<script>
+  (function () {
+    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+  })();
+</script>
+<style>
+  @font-face { font-family: 'Satoshi'; src: url('../../fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../../fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../../fonts/satoshi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../../fonts/aileron-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../../fonts/aileron-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../../fonts/aileron-latin-800-normal.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+
+  /* Poster palette (2027 identity): sage paper, ink, teal, bloom orange. Same tokens as the site. */
+  :root {
+    color-scheme: light;
+    --accent-glow: 221 127 62;
+    --bg: #f2f3ec;
+    --bg-raise: #f9f9f4;
+    --line: #d3d5c8;
+    --text: #161616;
+    --text-2: #52564a;
+    --accent: #b35c1f;
+    --accent-ink: #221304;
+    --teal: #4f8c88;
+    --btn-bg: #dd7f3e;
+    --btn-bg-hover: #e98f4e;
+    --btn-ink: #221304;
+    --error: #b3402f;
+    --field: #ffffff;
+    --radius: 12px;
+  }
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --accent-glow: 233 162 79;
+    --bg: #0c1517;
+    --bg-raise: #111d20;
+    --line: #24383b;
+    --text: #e9f1f0;
+    --text-2: #a7bcbb;
+    --accent: #e9a24f;
+    --accent-ink: #221304;
+    --teal: #79aca8;
+    --btn-bg: #e9a24f;
+    --btn-bg-hover: #f2b269;
+    --btn-ink: #221304;
+    --error: #e07a68;
+    --field: #0c1517;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Aileron', 'Satoshi', system-ui, sans-serif; line-height: 1.12; text-wrap: balance; margin: 0 0 1rem; }
+  h1 { font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.015em; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p { margin: 0 0 1rem; max-width: 65ch; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--teal); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
+  .muted { color: var(--text-2); }
+  .chip { background: #ffffff; color: #161616; padding: 0.06em 0.38em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* ---------- nav ---------- */
+  .nav2 { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg-raise) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav2-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1.5rem; }
+  .brand { display: flex; align-items: center; gap: 0.12em; font-family: 'Aileron', 'Satoshi', sans-serif; font-weight: 800; font-size: 1.9rem; line-height: 1; color: var(--text); text-decoration: none; }
+  .brand-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
+  .brand-air { letter-spacing: -0.015em; white-space: nowrap; }
+  .brand-words { display: block; font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; margin-left: 0.14em; }
+  @media (max-width: 700px) { .brand { font-size: 1.35rem; } }
+  .nav-right { display: flex; align-items: center; gap: 1.1rem; }
+  .nav-site { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+  .nav-site:hover { color: var(--teal); }
+  /* theme switch (site component, colours fixed) */
+  .switch { font-size: 3.15px; position: relative; display: block; -webkit-tap-highlight-color: transparent; }
+  .switch__input { display: block; position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; border: 0; cursor: pointer; opacity: 0; appearance: none; }
+  .switch__input:focus-visible ~ .toggle-switch { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .switch__sr { overflow: hidden; position: absolute; width: 1px; height: 1px; }
+  .toggle-switch { display: block; position: relative; width: 16em; height: 7em; border-radius: 3.5em; transition: box-shadow 300ms ease-out, background-color 300ms ease-out; }
+  .toggle-switch:before { content: ""; display: block; position: absolute; z-index: 1; top: 0.25em; left: 0.25em; width: 6.5em; height: 6.5em; border-radius: 3.5em; transition: left 300ms ease-out, background-color 300ms ease-out, box-shadow 300ms ease-out; }
+  .switch__input:checked ~ .toggle-switch:before { left: 9.25em; }
+  .switch--skeuo .toggle-switch { box-shadow: inset 0 0 7em 7em rgba(0,0,0,0.3), inset 0 0.8em 0.4em rgba(0,0,0,0.3), inset 0 3em 1em rgba(0,0,0,0.25), 0 -0.25em 0.25em rgba(0,0,0,0.2), 0 0.25em 0.25em rgba(255,255,255,0.08); }
+  .switch--skeuo .toggle-switch:before { background-color: #273142; box-shadow: inset 0 0.25em 0.25em rgba(255,255,255,0.08), inset 0 -0.25em 0.25em rgba(0,0,0,0.2), 0 0.6em 0.4em rgba(0,0,0,0.5), 0 1.25em 1em rgba(0,0,0,0.5); }
+  .switch--skeuo .switch__input:checked ~ .toggle-switch { box-shadow: inset 0 0 7em 7em rgba(0,0,0,0.1), inset 0 0.8em 0.4em rgba(0,0,0,0.2), inset 0 3em 1em rgba(0,0,0,0.1), 0 -0.25em 0.25em rgba(0,0,0,0.15), 0 0.25em 0.25em rgba(255,255,255,0.4); }
+  .switch--skeuo .switch__input:checked ~ .toggle-switch:before { background-color: #d4cfc6; box-shadow: inset 0 0.25em 0.25em rgba(255,255,255,0.4), inset 0 -0.25em 0.25em rgba(0,0,0,0.15), 0 0.6em 0.4em rgba(0,0,0,0.25), 0 1.25em 1em rgba(0,0,0,0.25); }
+
+  /* ---------- page ---------- */
+  main { padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem); }
+  .doc { max-width: 780px; margin-inline: auto; padding-inline: clamp(1rem, 0.5rem + 2vw, 2rem); }
+  .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+  .lede { color: var(--text-2); font-size: 1.15rem; margin-bottom: 0.8rem; }
+  .version { color: var(--text-2); font-size: 0.9rem; margin-bottom: 1.6rem; }
+  .toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 2.5rem; }
+  .toc a { padding: 0.45rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .toc a:hover { border-color: var(--accent); color: var(--accent); }
+  section { background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.4rem, 3.5vw, 2.6rem); margin-bottom: 1.6rem; scroll-margin-top: 80px; }
+  section h2 { margin-bottom: 0.6rem; }
+  section h3 { margin: 1.8rem 0 0.5rem; }
+  section ul { margin: 0 0 1rem; padding-left: 1.2rem; max-width: 65ch; }
+  section li { margin: 0.2rem 0; }
+  .list-head { font-weight: 700; margin: 1.2rem 0 0.3rem; }
+  blockquote { margin: 0 0 1rem; padding: 0.9rem 1.2rem; border-left: 3px solid var(--teal); background: color-mix(in srgb, var(--teal) 8%, transparent); border-radius: 0 8px 8px 0; }
+  blockquote p:last-child { margin-bottom: 0; }
+  .table-wrap { overflow-x: auto; margin: 0 0 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); }
+  th { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); }
+  code { font-size: 0.9em; padding: 0.1em 0.35em; border-radius: 4px; background: color-mix(in srgb, var(--text) 7%, transparent); }
+  @media (max-width: 640px) { section { padding: 1.2rem 1rem; } }
+
+  /* buttons */
+  .actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .btn { display: inline-block; padding: 0.75rem 1.8rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: 1.08rem; text-decoration: none; white-space: nowrap; border: none; cursor: pointer; transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
+  .btn:active { transform: translateY(1px) scale(0.98); }
+  .btn-primary { background: var(--btn-bg); color: var(--btn-ink); box-shadow: 0 0 20px rgb(var(--accent-glow) / 0.4); }
+  .btn-primary:hover { background: var(--btn-bg-hover); transform: translateY(-1px); box-shadow: 0 0 30px rgb(var(--accent-glow) / 0.6); }
+  /* footer */
+  .footer { border-top: 1px solid var(--line); }
+  .footer-band { background: #d7d8cc; border-bottom: 1px solid var(--line); }
+  [data-theme="dark"] .footer-band { background: var(--bg-raise); }
+  .footer-send { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(2rem, 4vw, 3rem); flex-wrap: wrap; }
+  .footer-lockup { display: flex; align-items: center; gap: 0.14em; font-family: 'Aileron', sans-serif; font-weight: 800; font-size: clamp(2rem, 1rem + 4vw, 3.6rem); line-height: 0.8; letter-spacing: -0.02em; color: var(--text); }
+  .footer-lockup .fl-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
+  .footer-lockup .fl-ai { color: #ffffff; text-shadow: 0 5px 28px rgb(0 0 0 / 0.4); }
+  .footer-lockup .fl-words { font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; }
+  .footer-castle { height: clamp(50px, 8vw, 90px); width: auto; filter: invert(1); opacity: 0.9; }
+  [data-theme="dark"] .footer-castle { filter: none; }
+  .footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1.8rem; }
+  .footer-meta p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
+  .footer-meta a, .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
+  .footer-meta a:hover, .footer-meta button:hover { color: var(--accent); }
+
+  .back { display: inline-block; margin: 0 0 1.4rem; color: var(--text-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+  .back:hover { color: var(--teal); }
+  .cards { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+  .card { display: block; background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.5rem; color: var(--text); text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
+  .card:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+  .card h2 { font-size: 1.35rem; margin: 0 0 0.3rem; }
+  .card p { margin: 0; color: var(--text-2); }
+  .card .go { color: var(--accent); font-weight: 600; margin-top: 0.6rem; }
+</style>
+</head>
+<body>
+
+<header class="nav2">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="../../" aria-label="V4 AI researchers meetup">
+      <span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+      <span class="brand-air">AI</span>
+      <span class="brand-words" aria-hidden="true">researchers<br>meetup</span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-site" href="../../">Back to the site</a>
+      <label class="switch switch--skeuo">
+        <input class="switch__input" id="theme-switch" type="checkbox" role="switch" checked>
+        <span class="toggle-switch" aria-hidden="true"></span>
+        <span class="switch__sr">Light mode</span>
+      </label>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="doc">
+    <a class="back" href="../">&larr; All policies</a>
+    <p class="eyebrow">V4AIR policy</p>
+    <h1>Privacy notice</h1>
+    <p class="version">Version 1 &middot; draft &middot; November 2026</p>
+    <section>
+      <p class="muted">Information on the processing of personal data and consent to the processing of personal data, V4 AI Researchers Meetup (V4AIR), Kostelec Castle, 28&ndash;30 April 2027.</p>
+
+      <h3>Data controller</h3>
+      <p>Charles University, Ovocný trh 560/5, 116 36 Prague 1, Czech Republic, company ID (IČO): 00216208 (the &ldquo;Controller&rdquo;).</p>
+
+      <h3>Personal data processed by the Controller</h3>
+      <p>We process the personal data you give us in the forms of the <strong>V4 AI Researchers Meetup (V4AIR)</strong>, held from 28 to 30 April 2027 at Kostelec Castle, Kostelec nad Černými Lesy (the &ldquo;meetup&rdquo;), and photos and videos taken at the meetup.</p>
+      <p class="list-head">Application form (applicants):</p>
+      <ul>
+        <li>name and email address,</li>
+        <li>institution or organisation, its country, your department, your career stage and your field,</li>
+        <li>the days you can attend,</li>
+        <li>a description of your project, keywords, the AI methods and topics you use or could present, your experience beyond academia,</li>
+        <li>what you are looking for at the meetup, how you would like to contribute, and whether you would help with organising,</li>
+        <li>how the call reached you, and whether you wish to fund your own participation,</li>
+        <li>optionally, links to your work, one file you upload, whether your work involves hardware, and your questions or comments for the organisers,</li>
+        <li>optionally, your gender, and whether you have care duties that make a three-day stay harder.</li>
+      </ul>
+      <p class="list-head">Invited speaker form (invited speakers):</p>
+      <ul>
+        <li>name and email address, institution or organisation and its country, your position and career stage (optional),</li>
+        <li>the title and description of your contribution, its length and the days you can attend,</li>
+        <li>a short bio, a photo of you if you send one, and your profiles on social networks if you give them,</li>
+        <li>whether we may publish your name, affiliation, bio and topic in the programme and announce your talk on v4air.eu and on social networks,</li>
+        <li>optionally, your AI background, and your gender.</li>
+      </ul>
+      <p class="list-head">Nomination form (people who nominate):</p>
+      <ul>
+        <li>name and email address,</li>
+        <li>optionally, your application ID, if you have also applied,</li>
+        <li>whether we may mention your name when we write to the people you nominate.</li>
+      </ul>
+      <p class="list-head">People who are nominated (given to us by the person who nominates them):</p>
+      <ul>
+        <li>name, contact, institution or organisation, and whether they are a student, a researcher or from outside academia,</li>
+        <li>why they were nominated.</li>
+      </ul>
+      <p><strong>At the meetup:</strong> your likeness captured in photos and videos of the participants taken at the meetup.</p>
+
+      <h3>Legal grounds for processing</h3>
+      <ul>
+        <li>Explicit consent within the meaning of Article 6(1)(a) of the GDPR, for capturing the participant&rsquo;s likeness in photos and videos of the meetup.</li>
+        <li>Consent within the meaning of Article 6(1)(a) of the GDPR, for keeping the details of nominated people. We ask for it in our first email to them.</li>
+        <li>Performance of the Controller&rsquo;s legal obligations connected with organising the meetup, for the other personal data listed above.</li>
+      </ul>
+
+      <h3>Purposes of processing</h3>
+      <ul>
+        <li>Registration of the meetup&rsquo;s participants: selecting participants, building the programme, and contacting you about the meetup.</li>
+        <li>Protection of the interests of data subjects.</li>
+        <li>Inviting people recommended through the nomination form to apply.</li>
+        <li>Documentation of the meetup, including reporting to the International Visegrad Fund, which funds the meetup.</li>
+        <li>Presentation of the meetup on the website v4air.eu and on the meetup&rsquo;s profiles on social networks.</li>
+        <li>The optional gender answer is used only in aggregate, for reporting on gender balance. The optional care-duties answer is used only for planning the venue.</li>
+      </ul>
+
+      <h3>Recipients</h3>
+      <p>The data from the forms are stored in Google services (Google Sheets and Google Drive). Google processes them on behalf of the Controller and may process them outside the EU, under the EU&ndash;US Data Privacy Framework.</p>
+
+      <h3>Retention period</h3>
+      <ul>
+        <li>Data from the forms: 10 years from the granting of consent.</li>
+        <li>Photos and videos: 10 years from the granting of consent, or until you withdraw your consent.</li>
+        <li>Details of nominated people: deleted as soon as they refuse, or 30 days after our first email if they do not reply. If they agree, the same period as the data from the forms.</li>
+      </ul>
+
+      <h3 id="nominations">If someone nominated you</h3>
+      <p>We did not get your details from you, but from the person who nominated you through the nomination form. We use them to send you one invitation to apply. In that first email we tell you how we got your details and ask whether you agree that we keep them.</p>
+      <p>If you refuse, or do not reply within 30 days, we delete all your details and do not contact you again. If you apply, we process your application as described above.</p>
+
+      <h3>Declaration of the Controller</h3>
+      <p>The Controller declares that it will collect and process personal data only to the extent necessary to fulfil the stated purpose, and will process them only in accordance with that purpose. Employees of the Controller and other persons (further processors) who process personal data under a contract with the Controller are bound to keep the personal data confidential, also after their employment or the agreed work has ended.</p>
+
+      <h3>Your rights</h3>
+      <p>You have the right to:</p>
+      <ul>
+        <li>ask what personal data about you as a participant in the meetup are processed,</li>
+        <li>ask for your personal data to be deleted if you believe there is no reason to process them,</li>
+        <li>ask for your personal data to be corrected if they are inaccurate or out of date,</li>
+        <li>ask that your personal data are not processed until the objections above have been resolved,</li>
+        <li>lodge a complaint with the supervisory authority, the Office for Personal Data Protection (Úřad pro ochranu osobních údajů, <a href="https://www.uoou.cz">www.uoou.cz</a>).</li>
+      </ul>
+      <p>To exercise these rights, write to <a href="mailto:info@v4air.eu">info@v4air.eu</a>. If you have any questions, you can also contact the Data Protection Officer (DPO) at <a href="mailto:gdpr@natur.cuni.cz">gdpr@natur.cuni.cz</a>.</p>
+
+      <h3>Consent to photos and videos</h3>
+      <blockquote>
+        <p>I hereby give my free and informed consent to the taking of photos and videos of me as a participant, processed for the purpose of documenting the V4 AI Researchers Meetup (V4AIR) and presenting it on v4air.eu, on the meetup&rsquo;s profiles on social networks and in reports to the International Visegrad Fund, in accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC, and in accordance with the relevant national legislation, in particular Act No. 110/2019 Coll., on the processing of personal data.</p>
+        <p>I can withdraw this consent at any time by writing to gdpr@natur.cuni.cz.</p>
+      </blockquote>
+      <p class="muted">You give this consent with a separate, optional checkbox in the form.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-band">
+    <div class="wrap footer-send">
+      <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+        <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+        <span class="fl-ai">AI</span>
+        <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+      </div>
+      <img class="footer-castle" src="../../assets/castle-silhouette.png" alt="" loading="lazy">
+    </div>
+  </div>
+  <div class="wrap footer-meta">
+    <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+    <p>V4AIR &middot; 28-30 April 2027</p>
+    <p><a href="../">Policy</a> &middot; <button type="button" data-cookie-settings>Cookie settings</button></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function $(s) { return document.querySelector(s); }
+  /* ---------- theme ---------- */
+  var themeSwitch = $('#theme-switch');
+  themeSwitch.checked = document.documentElement.getAttribute('data-theme') !== 'dark';
+  themeSwitch.addEventListener('change', function () {
+    if (themeSwitch.checked) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('v4air-theme', 'light'); }
+    else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('v4air-theme', 'dark'); }
+  });
+})();
+</script>
+</body>
+</html>
