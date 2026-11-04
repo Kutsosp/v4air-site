@@ -137,7 +137,7 @@ export function KostelecPage() {
             <p className="eyebrow">The venue &middot; 28-30 April 2027</p>
             <h1>Three days in a Renaissance castle near Prague</h1>
             <p className="lede">
-              V4AIR takes place at Kostelec Castle, 30 minutes from Prague. Your room, your
+              V4AIR takes place at Kostelec Castle, 45 minutes from Prague. Your room, your
               meals and every session are a few minutes&rsquo; walk apart, and the forest
               begins at the edge of town.
             </p>
@@ -234,7 +234,7 @@ export function KostelecPage() {
         <section className="k-section" id="brewery">
           <Reveal className="wrap">
             <p className="k-eyebrow">Down the street</p>
-            <h2>A working brewery, four minutes from the castle</h2>
+            <h2>A working brewery, six minutes from the castle</h2>
             <div className="k-text k-cols">
               <p>
                 Kostelec has brewed beer since 1489. The town brewery, a short walk from
@@ -325,7 +325,7 @@ export function KostelecPage() {
               <h2>By metro and bus from Prague</h2>
               <p>
                 Kostelec is 25&nbsp;km east of Prague. By public transport, take metro line
-                C to Háje, then a direct bus to the town square, two minutes from the castle
+                C to Háje, then a direct bus to the town square, four minutes from the castle
                 gate. From Prague airport, allow two to two and a half hours.
               </p>
               <p className="muted">
@@ -412,7 +412,7 @@ export function KostelecPage() {
                   name="Kostelec n.Č.l.,nám."
                   note="The town square. Get off here, at the third stop in Kostelec, after Jevanská and Dobrovského."
                   line="walk"
-                  time="2 min"
+                  time="4 min"
                   leg="Walk"
                 />
                 <li className="k-stop k-terminus">
