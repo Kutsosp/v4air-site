@@ -367,17 +367,9 @@
     <!-- 3 LAST THINGS -->
     <section class="screen" data-min="0.4" data-key="b5">
       <h2>Last things</h2>
-      <div class="q" data-q="B.mention">
-        <span class="qlabel">May we mention your name when we write to them?</span>
-        <div class="opt-row">
-          <label class="opt"><input type="radio" name="B.mention" value="yes"><span>Yes</span></label>
-          <label class="opt"><input type="radio" name="B.mention" value="no"><span>No</span></label>
-        </div>
-        <p class="err-msg">Choose yes or no</p>
-      </div>
       <div class="q" data-q="B.consent">
         <span class="qlabel">Privacy</span>
-        <p class="hint">Charles University uses your details and the details of the people you nominate to send each of them one invitation to apply. In that first email we tell them how we got their details and ask for their consent. If they refuse, or do not reply within 30 days, we delete their details. The <a href="../policy/privacy/#nominations" target="_blank" rel="noopener">privacy notice</a> explains the rest.</p>
+        <p class="hint">Charles University uses your details and the details of the people you nominate to send each of them one invitation to apply. In that first email we tell them that you nominated them and ask for their consent. If they refuse, or do not reply within 30 days, we delete their details. The <a href="../policy/privacy/#nominations" target="_blank" rel="noopener">privacy notice</a> explains the rest.</p>
         <label class="opt"><input type="checkbox" name="B.consent"><span>I have read the privacy notice.</span></label>
         <input type="hidden" name="B.notice_version" value="privacy-v1" data-fixed>
         <p class="err-msg">Please confirm that you have read the privacy notice</p>
@@ -563,7 +555,6 @@
       $$('.card').forEach(function (card, i) { var ok = cards[i].type && cards[i].name.trim(); card.classList.toggle('has-error', !ok); if (!ok) bad = true; });
       return bad ? 'People you nominate' : '';
     },
-    'B.mention': function () { return $('input[name="B.mention"]:checked') ? '' : 'May we mention your name'; },
     'B.consent': function () { return $('input[name="B.consent"]').checked ? '' : 'Privacy notice'; }
   };
   function validateScreen(screen) {
@@ -640,7 +631,7 @@
   function prev() { if (idx > 0) { idx--; render(); } }
   /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
   function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
-  /* field_done: one event per answered question. Closed answers (nominee type, mention, consent) send the value;
+  /* field_done: one event per answered question. Closed answers (nominee type, consent) send the value;
      text fields send only filled / empty, never the text (GA4 terms: no personal data). */
   (function () {
     var form = $('#form'), last = {};
