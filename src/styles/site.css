@@ -1478,3 +1478,249 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
    (not the shared nav and footer) renders at that scale. CSS zoom is supported in all
    current browsers (Firefox since 126). */
 .people-page { zoom: 0.75; }
+
+/* ---------- /kostelec/ venue page ---------- */
+/* the page reuses the home hero (photo, scrim, type) at a shorter height */
+.hero.k-hero { min-height: 82svh; }
+.k-hero .hero-photo img { object-position: center 35%; }
+.k-hero h1 { font-size: clamp(1.6rem, 0.9rem + 2.8vw, 3rem); max-width: 18ch; }
+.k-section { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
+.k-section > * + * { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.k-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+.k-section h2 { max-width: 22ch; }
+.k-text p:last-child { margin-bottom: 0; }
+.k-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); margin-top: 1.5rem; }
+.k-cols p { margin: 0; }
+
+.k-fig { margin: 0; position: relative; }
+.k-fig img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+.k-fig figcaption { font-size: 0.9rem; color: var(--text-2); margin-top: 0.7rem; }
+
+/* castle: one wide courtyard, a tall corridor beside it, two photos below */
+.k-mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+.k-mosaic .k-fig { display: flex; flex-direction: column; }
+.k-mosaic .k-fig img { flex: 1; min-height: 0; }
+.m-courtyard { grid-column: 1 / 9; aspect-ratio: 4 / 3.3; }
+.m-corridor { grid-column: 9 / 13; }
+.m-gate { grid-column: 1 / 7; aspect-ratio: 4 / 3.3; }
+.m-hall { grid-column: 7 / 13; aspect-ratio: 4 / 3.3; }
+
+.k-thennow { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.6vw, 1.25rem); }
+.k-thennow img { aspect-ratio: 16 / 10; }
+.k-year {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 1;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(12, 21, 23, 0.72);
+  color: #e9f1f0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.k-split {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+.k-split-rev { grid-template-columns: 6fr 5fr; }
+
+/* brewery: one large photo, two stacked beside it */
+.k-trio {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+.k-trio .t-main { grid-row: 1 / 3; }
+.k-trio .k-fig { display: flex; flex-direction: column; min-height: 0; }
+.k-trio .k-fig img { flex: 1; min-height: 0; }
+
+/* forests: a full-width band of beech trunks opens the section */
+.k-forest { padding-top: 0; }
+.k-bleed { margin: 0; height: clamp(260px, 48vw, 620px); overflow: hidden; }
+.k-bleed img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+
+.k-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 6rem); }
+.k-access { border-left: 0; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); }
+
+/* The Access card has its own edges, so full section padding on both sides of the divider reads as a hole */
+#practical { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.k-cta { text-align: center; padding-top: clamp(2.5rem, 5vw, 4rem); }
+.k-cta h2 { margin-inline: auto; }
+.k-gmap { aspect-ratio: 1; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-raise); }
+.k-gmap iframe { display: block; width: 100%; height: 100%; border: 0; }
+/* route diagram: drawn like a transit map. Line colours are the operator's, so they
+   match the signs in Prague.
+   Thick lines, ring stations, line badges riding on the line, a round bend where
+   metro A runs into line C, and the line ends at the castle. */
+.k-route {
+  --k-panel: var(--bg-raise);
+  --k-w: 10px;
+  --k-ring: 1.7rem;
+  --k-x: 1.5rem;
+  --k-bend: 2rem;
+  --k-gap: clamp(2rem, 5vw, 4rem);
+  --k-59: #80166f;
+  --k-a: #00a562;
+  --k-a-ink: #06140c;
+  --k-c: #cf003d;
+  --k-bus: #007da8;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+  color: var(--text);
+  background: var(--k-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+[data-theme="dark"] .k-route { --k-59: #b03a9d; }
+.k-route h3 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.1; margin-bottom: 2.25rem; color: var(--text); }
+.k-route-starts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--k-gap); }
+.k-route-starts > div { display: flex; flex-direction: column; }
+.k-route-from {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+.k-line { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; flex: 1; }
+.k-stop { position: relative; padding: 0 0 2.25rem 3.75rem; --k-seg: transparent; }
+.k-route-starts .k-stop:last-child { flex: 1; }
+.k-stop::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--k-x) - var(--k-ring) / 2);
+  top: -0.1rem;
+  width: var(--k-ring);
+  height: var(--k-ring);
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--k-panel);
+  border: 0.42rem solid var(--text);
+}
+.k-stop::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--k-x) - var(--k-w) / 2);
+  top: 0.6rem;
+  bottom: -0.6rem;
+  width: var(--k-w);
+  background: var(--k-seg);
+}
+.k-l-n59 { --k-seg: var(--k-59); }
+.k-l-a { --k-seg: var(--k-a); }
+.k-l-c { --k-seg: var(--k-c); }
+.k-l-bus { --k-seg: var(--k-bus); }
+.k-l-walk::after {
+  background: radial-gradient(circle, var(--text-2) 0 3px, transparent 3.5px) center top / 10px 14px repeat-y;
+}
+.k-stop strong { display: block; font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+.k-stop-note { display: block; font-size: 0.9rem; color: var(--text-2); }
+.k-leg { font-size: 0.92rem; margin: 0.75rem 0 0; }
+.k-leg b { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.k-pills {
+  position: absolute;
+  z-index: 1;
+  left: var(--k-x);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+.k-pill {
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  height: 2rem;
+  box-sizing: border-box;
+  padding-inline: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--k-seg);
+  outline: 3px solid var(--k-panel);
+}
+.k-l-a .k-pill { color: var(--k-a-ink); }
+/* metro A bends round into the Muzeum station, which opens the lower list. The label
+   sits under the line, so the bend can run straight into the station */
+.k-route-starts > div:last-child .k-stop:last-child::after { bottom: var(--k-bend-end); }
+/* on phones the two routes stack, so words replace the bend */
+.k-route-join { display: none; }
+.k-line-end { position: relative; --k-mid: calc(var(--k-ring) / 2 - 0.1rem); }
+.k-route-starts { --k-bend-end: calc(var(--k-bend) - var(--k-ring) / 2 + 0.1rem); }
+.k-line-end::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  box-sizing: border-box;
+  top: calc(var(--k-mid) + var(--k-w) / 2 - var(--k-bend));
+  left: var(--k-x);
+  width: calc(50% + var(--k-gap) / 2 + var(--k-w) / 2);
+  height: var(--k-bend);
+  border: solid var(--k-a);
+  border-width: 0 var(--k-w) var(--k-w) 0;
+  border-bottom-right-radius: var(--k-bend);
+}
+.k-line-end .k-stop:first-child { padding-top: 1.75rem; }
+.k-line-end .k-stop:last-child { padding-bottom: 0; }
+.k-terminus strong { font-size: clamp(1.4rem, 2.6vw, 1.8rem); font-weight: 800; }
+.k-terminus { margin-top: 0.1rem; }
+.k-terminus::before { top: 0.25rem; background: var(--accent); }
+.k-route-note { position: relative; z-index: 1; font-size: 0.85rem; margin-top: 2rem; max-width: 26rem; color: var(--text-2); }
+.k-route-castle {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3.25rem);
+  bottom: 0;
+  width: clamp(14rem, 36%, 24rem);
+  height: auto;
+  filter: brightness(0);
+  opacity: 0.85;
+}
+[data-theme="dark"] .k-route-castle { filter: brightness(0) invert(0.92); }
+.k-cta p { margin-inline: auto; color: var(--text-2); }
+.k-cta .cta-row { display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 1.5rem; }
+.k-back { font-weight: 600; }
+
+.k-credits { padding-bottom: 3rem; font-size: 0.85rem; color: var(--text-2); }
+.k-credits summary { cursor: pointer; font-weight: 600; }
+.k-credits summary:hover { color: var(--accent); }
+.k-credits ul { margin: 0.8rem 0 0; padding-left: 1.1rem; columns: 2; column-gap: 3rem; }
+.k-credits li { break-inside: avoid; margin-bottom: 0.3rem; }
+
+@media (max-width: 860px) {
+  .k-cols, .k-split, .k-split-rev, .k-pair, .k-thennow { grid-template-columns: 1fr; }
+  .k-route-starts { grid-template-columns: 1fr; }
+  .k-line-end::before { display: none; }
+  .k-line-end .k-stop:first-child { padding-top: 0; }
+  .k-route-starts .k-stop:last-child::after, .k-route-starts > div:last-child .k-stop:last-child::after { bottom: 0; }
+  .k-route-join { display: block; }
+  .k-route-castle { position: static; display: block; width: 70%; margin: 1.5rem 0 calc(clamp(1.75rem, 4vw, 3.25rem) * -1) auto; }
+  .k-split-rev > .k-fig { order: 2; }
+  .k-mosaic { grid-template-columns: 1fr 1fr; }
+  .m-courtyard { grid-column: 1 / 3; }
+  .m-corridor { grid-column: 1 / 2; grid-row: span 2; }
+  .m-gate, .m-hall { grid-column: 2 / 3; aspect-ratio: auto; }
+  .k-trio { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .k-trio .t-main { grid-column: 1 / 3; grid-row: auto; }
+  .k-credits ul { columns: 1; }
+}
