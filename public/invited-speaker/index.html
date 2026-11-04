@@ -495,6 +495,7 @@
     });
     var pt = partner(data['A1.institution_name']);
     data['A1.institution_key'] = pt ? pt.key : (data['A1.institution_name'] ? 'other' : '');
+    if (sentPhoto) data.__file = sentPhoto;
     return data;
   }
   function restore(a) {
@@ -584,13 +585,30 @@
     check(photoInput.closest('.q'));
   });
 
-  var persistTimer = null;
+  var persistTimer = null, draftTimer = null;
+  /* Calls are chained so the first one (which creates the row) finishes before the next one starts. */
+  var syncing = Promise.resolve();
+  function push(final, extra) {
+    var p = syncing.catch(function () {}).then(function () {
+      return API.save('S', remote.id, remote.token, collect(), final, $('#hp').value, extra);
+    }).then(function (j) {
+      remote = { id: j.id, token: j.token };
+      if (j.file) { sentPhoto = j.file; photoInput.value = ''; drawPhoto(); }
+      persist();
+      return j;
+    });
+    syncing = p;
+    return p;
+  }
   function onEdit(e) {
     reveals();
     var q = e.target.closest('.q.has-error');
     if (q) check(q);
     clearTimeout(persistTimer);
     persistTimer = setTimeout(persist, 300);
+    /* Draft on the server once the email is valid, so the next-day resume email can reach someone who leaves. */
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(function () { if (API.enabled() && EMAIL_RE.test(val('A1.email'))) push(false).catch(function () {}); }, 5000);
   }
   $('#A1\\.institution_name').addEventListener('change', function (e) {
     var pt = partner(e.target.value.trim());
@@ -616,19 +634,18 @@
   sendBtn.addEventListener('click', function () {
     if (!validate()) return;
     if (!API.enabled()) { status.textContent = 'Sending is switched off on this copy of the page.'; status.className = 'status err'; return; }
+    clearTimeout(draftTimer);
     sendBtn.disabled = true;
     status.textContent = (photoFile() ? 'Sending with your photo. This can take up to a minute.' : 'Sending. This can take up to half a minute.'); status.className = 'status';
     var f = photoFile();
     (f ? readPhoto(f) : Promise.resolve(null)).then(function (file) {
-      return API.save('S', remote.id, remote.token, collect(), true, $('#hp').value, file ? { file: file } : null);
+      return push(true, file ? { file: file } : null);
     }).then(function (j) {
-      remote = { id: j.id, token: j.token };
-      if (j.file) { sentPhoto = j.file; photoInput.value = ''; drawPhoto(); }
-      persist();
       showEnd(j.id);
     }, function (err) {
       status.textContent = (err && err.message === 'email')
         ? 'The server did not accept the email address. Please check it.'
+        : err && err.message === 'too_large' ? 'Your answers are too long to store. Please shorten your longest answers (about 45,000 characters in total) and send again.'
         : 'Sending failed. Your answers are kept in this browser. Please try again in a minute, or write to info@v4air.eu.';
       status.className = 'status err';
     }).then(function () { sendBtn.disabled = false; });
@@ -637,6 +654,7 @@
   $('#btn-edit').addEventListener('click', showForm);
   /* For organizers filling in the form for several speakers in one browser: forget this record, start empty. */
   $('#btn-new').addEventListener('click', function () {
+    clearTimeout(draftTimer);
     remote = { id: '', token: '' };
     sentPhoto = null; photoInput.value = ''; drawPhoto();
     try { localStorage.removeItem(STORE); } catch (e) {}
@@ -649,6 +667,21 @@
   $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
   restore(saved.answers);
   drawPhoto();
+
+  /* ---------- link from an email: ?id=V4S-XXXX-XXXX&t=token ---------- */
+  var qs = new URLSearchParams(location.search), qId = qs.get('id'), qToken = qs.get('t');
+  if (qId && qToken && API.enabled()) {
+    history.replaceState(null, '', location.pathname);
+    status.textContent = 'Loading your answers…'; status.className = 'status';
+    API.load('S', qId, qToken).then(function (j) {
+      remote = { id: j.id, token: qToken };
+      sentPhoto = j.answers.__file || null; photoInput.value = '';
+      restore(j.answers); drawPhoto(); persist();
+      status.textContent = ''; status.className = 'status';
+    }, function () {
+      status.textContent = 'We could not open your saved answers. Try the link again, or write to info@v4air.eu and quote your reference.'; status.className = 'status err';
+    });
+  }
 })();
 </script>
 </body>
