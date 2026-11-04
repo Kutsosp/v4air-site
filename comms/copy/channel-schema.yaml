@@ -27,7 +27,7 @@ shared:
   nominate_url:          {type: url,  translate: false, value: "[nominate URL]"}
   contact_email:         {type: text, translate: false, value: "kutsosp@natur.cuni.cz"}
   funding_line:          {type: text, translate: true,  value: "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."}
-  fee_other_students:    {type: text, translate: true,  value: "160 euro"}
+  fee_other_students:    {type: text, translate: true,  value: "amount to be confirmed"}
   partner_universities:  {type: list, translate: true,  value: ["Charles University", "Czech Technical University in Prague", "Comenius University Bratislava", "Eötvös Loránd University", "University of Wrocław", "Nicolaus Copernicus University in Toruń"]}
   acknowledgement:       {type: text, translate: true,  value: "V4AIR is supported by the International Visegrad Fund, Grant No. 22610317."}
   funder_logo:           {type: image, translate: false, value: "[Visegrad Fund logo file]"}

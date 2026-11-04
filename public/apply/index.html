@@ -329,7 +329,7 @@
       <h3>Participation costs</h3>
       <ul>
         <li>Students and researchers from <span class="qhint inline" tabindex="0">partner institutions<span class="qhint-body">Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava.</span></span>: <span class="qhint inline" tabindex="0">no participation fee<span class="qhint-body">Thanks to the support of the International Visegrad Fund, accommodation at the castle, meals, and a contribution toward travel are also covered for a limited number of participants.</span></span></li>
-        <li>Participants from other institutions: participation fee of 160 euro</li>
+        <li>Participants from other institutions: participation fee (amount to be confirmed)</li>
       </ul>
       <p><strong><span class="chip">The programme is built from your answers.</span></strong></p>
       <p>This form asks what you work on, what you want to learn, and who you want to meet. From the answers we pick the talks, workshop topics, and invited speakers, and we put you in the room with the people you asked for. We select for fit and mix, not for who applied first, so a careful application is the best thing you can do for your chances.</p>
@@ -713,6 +713,17 @@
         <label class="qlabel" for="A7.roles_note">Anything to add about how you would like to participate? <span class="opt-mark">(optional)</span></label>
         <input type="text" id="A7.roles_note" name="A7.roles_note">
       </div>
+      <div class="q" data-q="A7.hardware">
+        <span class="qlabel">Does your work involve hardware? <span class="opt-mark">(optional)</span></span>
+        <p class="hint">For example sensors, field cameras, robots, or embedded systems. This helps us plan a possible session for hardware work.</p>
+        <label class="opt"><input type="checkbox" name="A7.hardware.build" class="hw-yes"><span>Yes, I build hardware</span></label>
+        <label class="opt"><input type="checkbox" name="A7.hardware.need" class="hw-yes"><span>Yes, I need hardware built for my research</span></label>
+        <label class="opt"><input type="checkbox" name="A7.hardware.no" class="hw-no"><span>No</span></label>
+        <div class="reveal hid" id="hw-reveal">
+          <label class="field-label strong" for="A7.hardware_detail">What are you building, or what do you need? <span class="opt-mark" style="font-weight:400;color:var(--text-2)">(optional)</span></label>
+          <input type="text" id="A7.hardware_detail" name="A7.hardware_detail" maxlength="300">
+        </div>
+      </div>
       <div class="q" data-q="A7.material">
         <span class="qlabel">Do you have something to show? <span class="opt-mark">(optional)</span></span>
         <p class="hint">A paper, a poster, slides, a preprint, a demo, or a repository. One file up to 10 MB (PDF, PPTX, PNG, JPG), or a link</p>
@@ -761,6 +772,22 @@
         <label class="opt"><input type="checkbox" name="A8.source.other" class="other-cb"><span>Other</span></label>
         <div class="detail hid other-detail"><label for="A8.source_other">How?</label><input type="text" id="A8.source_other" name="A8.source_other" class="other-txt"></div>
         <p class="err-msg">Tick at least one, say where you saw the open call, and say how if you ticked "Other"</p>
+      </div>
+      <div class="q" data-q="A8.own_funding" id="own-funding">
+        <span class="qlabel">Do you have access to funding and wish to self-fund your participation?<span class="info" tabindex="0">i<span class="qhint-body">Our funding allows us to fund a limited number of places (accommodation and meals at the castle, plus a contribution toward travel). If you have your own funding, for example a grant or a travel budget, using it will help ensure V4AIR remains accessible for those who may not have been able to attend otherwise.</span></span></span>
+        <p class="hint">Your answer does not affect whether you are selected. If you can use your own funding, we can fund someone who could not attend otherwise.</p>
+        <label class="opt"><input type="radio" name="A8.own_funding" value="yes"><span>I wish to fund my own participation</span></label>
+        <label class="opt"><input type="radio" name="A8.own_funding" value="no"><span>No, I require covering of my expenses</span></label>
+        <div class="reveal hid" id="funding-reveal">
+          <label class="opt"><input type="radio" name="A8.own_funding_scope" value="all"><span>I can cover all my costs from my own funding</span></label>
+          <label class="opt"><input type="radio" name="A8.own_funding_scope" value="part"><span>I can cover part of my costs</span></label>
+          <div class="reveal hid" id="funding-part">
+            <span class="field-label strong">Which costs can you cover?</span>
+            <label class="opt"><input type="checkbox" name="A8.own_funding_costs.travel"><span>Travel</span></label>
+            <label class="opt"><input type="checkbox" name="A8.own_funding_costs.stay"><span>Accommodation and meals</span></label>
+          </div>
+        </div>
+        <p class="err-msg">Choose an option, and if you fund your own participation, say which costs you can cover</p>
       </div>
       <div class="q" data-q="A8.questions">
         <label class="qlabel" for="A8.questions">Questions for the organizers, general comments, or requests <span class="opt-mark">(optional)</span></label>
@@ -1099,6 +1126,7 @@
     $$('[data-label-acad]').forEach(function (el) { el.textContent = (s === 'nonacad') ? el.getAttribute('data-label-nonacad') : el.getAttribute('data-label-acad'); });
     $$('[data-hint-acad]').forEach(function (el) { el.textContent = (s === 'nonacad') ? el.getAttribute('data-hint-nonacad') : el.getAttribute('data-hint-acad'); });
     void acad;
+    applyFunding();
   }
   $$('input[name="A1.stage"]').forEach(function (r) { r.addEventListener('change', applyStage); });
 
@@ -1115,6 +1143,7 @@
     var noPartner = !!c && COUNTRIES.indexOf(c) > -1 && !any;
     $('#inst-radios').classList.toggle('hid', noPartner);
     $('#inst-other').classList.toggle('hid', !(noPartner || chosen === 'other'));
+    applyFunding();
   }
   country.addEventListener('input', applyInstitution);
   country.addEventListener('change', applyInstitution);
@@ -1187,6 +1216,24 @@
   helpCbs.forEach(function (c) { c.addEventListener('change', function () { if (c.checked) helpNone.checked = false; applyHelp(); save(); }); });
   helpNone.addEventListener('change', function () { if (helpNone.checked) helpCbs.forEach(function (c) { c.checked = false; }); applyHelp(); save(); });
 
+  var hwCbs = $$('.hw-yes'), hwNo = $('.hw-no');
+  function applyHw() { var on = hwCbs.some(function (c) { return c.checked; }); $('#hw-reveal').classList.toggle('hid', !on); if (!on) document.getElementById('A7.hardware_detail').value = ''; }
+  hwCbs.forEach(function (c) { c.addEventListener('change', function () { if (c.checked) hwNo.checked = false; applyHw(); save(); }); });
+  hwNo.addEventListener('change', function () { if (hwNo.checked) hwCbs.forEach(function (c) { c.checked = false; }); applyHw(); save(); });
+
+  function clearIn(root) { $$('input', root).forEach(function (i) { if (i.type === 'checkbox' || i.type === 'radio') i.checked = false; else i.value = ''; }); }
+  /* Self-funding is asked only of partner-university applicants; everyone else pays their own way anyway. */
+  function applyFunding() {
+    var inst = $('input[name="A1.institution_key"]:checked');
+    var partner = vis($('[data-q="A1.institution"]')) && !!inst && inst.value !== 'other';
+    $('#own-funding').classList.toggle('hid', !partner); if (!partner) clearIn($('#own-funding'));
+    var yes = $('input[name="A8.own_funding"]:checked'), sc = $('input[name="A8.own_funding_scope"]:checked');
+    var on = !!yes && yes.value === 'yes', part = on && !!sc && sc.value === 'part';
+    $('#funding-reveal').classList.toggle('hid', !on); if (!on) clearIn($('#funding-reveal'));
+    $('#funding-part').classList.toggle('hid', !part); if (!part) clearIn($('#funding-part'));
+  }
+  $$('input[name="A8.own_funding"], input[name="A8.own_funding_scope"]').forEach(function (r) { r.addEventListener('change', applyFunding); });
+
   var srcOpen = $('#src-open');
   function applyOpen() { $('#open-channels').classList.toggle('hid', !srcOpen.checked); if (!srcOpen.checked) $$('input', $('#open-channels')).forEach(function (i) { if (i.type === 'checkbox') i.checked = false; else i.value = ''; }); }
   srcOpen.addEventListener('change', applyOpen);
@@ -1224,7 +1271,7 @@
     ta.addEventListener('input', upd); upd();
   });
 
-  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyCollab(); applyHelp(); applyOpen(); drawKw(); }
+  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyCollab(); applyHelp(); applyHw(); applyOpen(); applyFunding(); drawKw(); }
   applyAll();
 
   /* ---------- validation ---------- */
@@ -1263,6 +1310,16 @@
       var otherOk = !$('input[name="A8.source.other"]').checked || $('#A8\\.source_other').value.trim();
       var openOk = !$('#src-open').checked || ($$('.open-ch').some(function (c) { return c.checked; }) && (!$('input[name="A8.source_open.other"]').checked || document.getElementById('A8.source_open.other_txt').value.trim()));
       return (top && otherOk && openOk) ? '' : 'How the call reached you';
+    },
+    'A8.own_funding': function (q) {
+      if (!vis(q)) return '';
+      var r = $('input[name="A8.own_funding"]:checked');
+      if (!r) return 'Self-funding';
+      if (r.value === 'no') return '';
+      var sc = $('input[name="A8.own_funding_scope"]:checked');
+      if (!sc) return 'Self-funding';
+      if (sc.value === 'part' && !checkedIn('#funding-part input[type=checkbox]', q)) return 'Self-funding';
+      return '';
     },
     'A8.consent': function (q) { return $('input[name="A8.consent"]').checked ? '' : 'Consent'; }
   };

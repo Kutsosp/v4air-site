@@ -45,7 +45,7 @@ If you study or work at a partner university, you pay no participation fee. The 
 
 The partner universities are Charles University, the Czech Technical University in Prague, Comenius University Bratislava, Eötvös Loránd University, the University of Wrocław, and Nicolaus Copernicus University in Toruń.
 
-Students from other institutions can take part for 160 euro. If you're from another institution and not a student, write to us at kutsosp@natur.cuni.cz.
+Students from other institutions can take part for a fee (amount to be confirmed). If you're from another institution and not a student, write to us at kutsosp@natur.cuni.cz.
 
 **How selection works**
 
