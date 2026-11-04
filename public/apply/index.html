@@ -1109,6 +1109,8 @@
       else el.value = state[el.name] || '';
     });
   }
+  $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
+  document.getElementById('kw-input').maxLength = 200;
   restore();
   form.addEventListener('input', save);
   form.addEventListener('change', save);
@@ -1395,11 +1397,13 @@
     if (submitting && API.enabled()) {
       var btn = $('#btn-next');
       btn.disabled = true; btn.textContent = 'Sending…';
-      sync(true).then(function () { btn.disabled = false; track('form_submitted', { form_name: 'apply' }); idx++; render(); }, function () {
+      sync(true).then(function () { btn.disabled = false; track('form_submitted', { form_name: 'apply' }); idx++; render(); }, function (e) {
         btn.disabled = false; btn.textContent = 'Submit application';
         track('form_error', { form_name: 'apply' });
         var box = $('#err-summary');
-        box.innerHTML = '<strong>Your application was not sent</strong>Your answers are kept in this browser. Check your connection and press Submit application again.';
+        box.innerHTML = e && e.message === 'too_large'
+          ? '<strong>Your application is too long to store</strong>Your answers are kept in this browser. Please shorten your longest answers (about 45,000 characters in total) and press Submit application again.'
+          : '<strong>Your application was not sent</strong>Your answers are kept in this browser. Check your connection and press Submit application again.';
         box.classList.add('on'); box.focus();
       });
       return;

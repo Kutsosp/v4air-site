@@ -506,6 +506,7 @@
       else el.value = state[el.name] || '';
     });
   }
+  $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
   if (!prefilled) restore();
   form.addEventListener('input', save);
   form.addEventListener('change', save);
@@ -524,10 +525,10 @@
       return '<div class="card" data-i="' + i + '">' +
         '<div class="card-head"><span class="n">Person ' + n + '</span>' + (cards.length > 1 ? '<button type="button" data-remove="' + i + '">Remove</button>' : '') + '</div>' +
         '<span class="field-label strong">Who are they?</span>' + types +
-        '<label class="field-label strong" for="c' + n + '-name">Name</label><input type="text" id="c' + n + '-name" data-f="name" value="' + esc(c.name) + '">' +
-        '<label class="field-label" for="c' + n + '-contact">Email or another way to reach them (optional)</label><p class="hint">If you don\'t have it, name and institution are enough</p><input type="text" id="c' + n + '-contact" data-f="contact" value="' + esc(c.contact) + '">' +
-        '<label class="field-label" for="c' + n + '-aff">Institution or organization (optional)</label><input type="text" id="c' + n + '-aff" data-f="affiliation" value="' + esc(c.affiliation) + '">' +
-        '<label class="field-label" for="c' + n + '-why">Why do they fit? One or two sentences (optional)</label><p class="hint">What they work on, or why they would benefit</p><input type="text" id="c' + n + '-why" data-f="why" value="' + esc(c.why) + '">' +
+        '<label class="field-label strong" for="c' + n + '-name">Name</label><input type="text" id="c' + n + '-name" data-f="name" maxlength="300" value="' + esc(c.name) + '">' +
+        '<label class="field-label" for="c' + n + '-contact">Email or another way to reach them (optional)</label><p class="hint">If you don\'t have it, name and institution are enough</p><input type="text" id="c' + n + '-contact" data-f="contact" maxlength="300" value="' + esc(c.contact) + '">' +
+        '<label class="field-label" for="c' + n + '-aff">Institution or organization (optional)</label><input type="text" id="c' + n + '-aff" data-f="affiliation" maxlength="300" value="' + esc(c.affiliation) + '">' +
+        '<label class="field-label" for="c' + n + '-why">Why do they fit? One or two sentences (optional)</label><p class="hint">What they work on, or why they would benefit</p><input type="text" id="c' + n + '-why" data-f="why" maxlength="1000" value="' + esc(c.why) + '">' +
         '<p class="err-msg">Add a name and pick who they are</p>' +
         '</div>';
     }).join('');

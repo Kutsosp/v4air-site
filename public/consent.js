@@ -32,7 +32,9 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
     document.head.appendChild(s);
     gtag('js', new Date());
-    gtag('config', GA);
+    /* email links carry a personal token, which must not reach Analytics; campaign tags stay */
+    var page = new URL(location.href); page.searchParams.delete('t'); page.searchParams.delete('id');
+    gtag('config', GA, { page_location: page.href });
   }
   /* withdrawal: GA sets its cookies on the top domain, so try every domain they can sit on */
   function dropCookies() {
