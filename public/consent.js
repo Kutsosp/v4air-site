@@ -1,4 +1,4 @@
-/* Cookie consent. Google Analytics 4 loads only after the visitor clicks Accept; before that nothing goes to Google.
+/* Cookie consent. Google Analytics 4 loads only after the visitor clicks Accept; before that nothing goes to Google Analytics.
    Loaded synchronously in <head> on every page, before any page script calls gtag().
    The choice is kept in localStorage for 12 months, then the banner asks again.
    Any element with data-cookie-settings reopens the banner (footer links, the policy page). */
