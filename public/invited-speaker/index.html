@@ -343,7 +343,7 @@
       <input type="hidden" name="A8.notice_version" value="privacy-v1" data-fixed>
       <p class="err-msg">Please confirm that you have read the privacy notice</p>
     </div>
-    <div class="q" data-q="A8.photo_consent">
+    <div class="q">
       <span class="qlabel">Photos and videos <span class="opt-mark">(optional)</span></span>
       <p class="hint">We take photos and videos at the meetup to document it and to present it on v4air.eu, on our social media and in reports to the International Visegrad Fund. You can withdraw this consent at any time by writing to gdpr@natur.cuni.cz.</p>
       <label class="opt"><input type="checkbox" name="A8.photo_consent"><span>I consent to photos and videos of me being taken at the meetup and used for these purposes, as described in the privacy notice.</span></label>
@@ -646,6 +646,7 @@
     showForm();
   });
 
+  $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
   restore(saved.answers);
   drawPhoto();
 })();
