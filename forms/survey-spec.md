@@ -11,6 +11,7 @@ Version 1.5, 20.09.2026 (two rounds of preview comments plus the form-UX researc
 | A. Application form | Select participants, set session level, build the programme, match people, find speakers and helpers | Applicants | With the open call | 28 items over 15 screens; grids of 2 to 12 rows; target under 10 minutes |
 | B. Nomination form | Collect students, researchers, and people outside academia to invite directly | Anyone: applicants, institutional contacts, senior staff | With the open call, standalone link | 1 repeater plus 5 fields; about 2 minutes |
 | C. Post-acceptance form | Confirm attendance, shape each contribution, set the format mix, collect logistics | Accepted participants only | After selection decisions | About 20 items, most of them one click |
+| S. Invited speaker form | Record each invited speaker's contribution, days and publicity consent next to the participant data | Invited speakers who are not participants, or an organizer on a call with them | Any time, unlisted link `/invited-speaker/` | One page, 10 required items; about 3 minutes |
 
 ### 1.2 Goal coverage
 
@@ -551,6 +552,21 @@ This replaces the old five-row 1 to 5 enjoyment grid (old Q49). A forced choice 
 
 Button: "Send". End screen: "Thank you. See you in Kostelec on [date]. Practical information follows by email in [month]."
 
+## 4a. Instrument S: Invited speaker form
+
+One unlisted page at `/invited-speaker/` (no links to it, `noindex`). Filled in by the speaker, or by an organizer during a call. Saved to the tab **Speakers** of the forms sheet, IDs `V4S-` (section 5.17). Every question that also exists in Form A uses the Form A variable ID, so the Speakers columns match the Applications columns; speaker-only items are `S.*`. Saved to the server only on Send (no autosave, no emails); the browser keeps the answers and the record, so sending again updates the same row. "Start a new form" forgets the record, for an organizer filling in several speakers.
+
+Required: `A1.name`, `A1.email`, `A1.institution_name`, `A1.country`, `A7.roles.*` (at least one), `S.title`, days (at least one), `S.publish_programme`, `S.publish_social`, `A8.consent`.
+
+| Block | Items |
+|---|---|
+| About you | `A1.name`, `A1.email`, `A1.institution_name` (free text with suggestions: the six partner universities and the CTU Technology Transfer Office; the page also writes `A1.institution_key` with the application form's values, `other` for anything typed), `A1.country` (dropdown: the four V4 countries first, then all others, same values as A; filled in from a chosen partner); optional `A1.position`, `A1.stage` (dropdown, same values as A), `A1.gender`, `S.linkedin`, `S.instagram`, `S.facebook`, `A1.link_1`, `A1.link_2`, `S.bio`, photo (JPG or PNG up to 10 MB, sent with Send, stored like the A7 upload in "V4AIR uploads/<id>/"; server-owned columns `S.photo_name`, `S.photo_url`) |
+| Your contribution | `A7.roles.speaker` (labelled "Talk"), `.plenary` (speaker form only), `.workshop`, `.njp`, `.unsure`, `.other` + `A7.roles_other`; `S.title`; optional `S.description` ("Description or notes"; not called an abstract, see V4AIR Context section 13), `S.length` (15, 30, 45, 90, unsure) |
+| Days | `A1.days.wed/thu/fri`, or one of `S.days.one` (one day, not sure which), `S.days.two` (two days, not sure which), `S.days.tbd` (not sure yet). A specific day and a flexible option exclude each other |
+| Sharing | `S.publish_programme` (name, affiliation, bio and topic in the programme: yes/no); `S.publish_social` (announcement on v4air.eu and social networks: yes/no), with an info card: we tag the speaker on the profiles given in About you, email them a kit for their own post (the "I'm speaking at V4AIR" graphic and a text to adapt), and would welcome a share |
+| AI background, all optional | `S.ai_level` (1 to 4, the A3 level definitions); experience beyond academia as checklists writing `A5.eNN.have` and `A5.eNN.present`; collapsed fallback lists of methods and topics as checklists writing `A3.mNN.use` + `.present` and `A4.tNN.work` + `.present`. `A3.mNN.level` is not asked and stays empty |
+| Last | `A8.consent` (speaker wording); `S.by_organiser` checkbox "Filled in by an organizer during a call" |
+
 ## 5. Form app: required behaviour
 
 Described as text for the build. Applies to all three instruments unless stated.
@@ -642,6 +658,7 @@ Every response in every instrument gets a human-readable ID the moment its recor
 | A. Application | `V4A` | V4A-7K3M-9QX2 | The applicant enters a valid email in A1.2 (the same moment the resume link is sent) |
 | B. Nomination | `V4N` | V4N-4PZR-B8TD | The nomination form is submitted |
 | C. Post-acceptance | `V4C` | V4C-M2HW-6EFA | The personal C link is generated for an accepted participant |
+| S. Invited speaker | `V4S` | V4S-9RTD-4KXN | The speaker form is sent for the first time |
 
 The application ID is the key that ties everything about one person together: the A record, any B records where `B.application_id` matches, and the C record. It appears:
 - on the A end screen and on the C intro and end screens;

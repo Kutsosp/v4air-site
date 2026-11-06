@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Unlisted page for invited speakers: nothing links here, and search engines are asked not to list it. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Invited speakers: V4 AI Researchers Meetup, Kostelec Castle, 28 to 30 April 2027</title>
+<script>
+  (function () {
+    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+  })();
+</script>
+<style>
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-800-normal.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+
+  /* Same tokens and base styles as /apply/ */
+  :root {
+    color-scheme: light;
+    --accent-glow: 221 127 62;
+    --bg: #f2f3ec; --bg-raise: #f9f9f4; --line: #d3d5c8; --text: #161616; --text-2: #52564a;
+    --accent: #b35c1f; --teal: #4f8c88; --btn-bg: #dd7f3e; --btn-bg-hover: #e98f4e; --btn-ink: #221304;
+    --error: #b3402f; --field: #ffffff; --radius: 12px;
+  }
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --accent-glow: 233 162 79;
+    --bg: #0c1517; --bg-raise: #111d20; --line: #24383b; --text: #e9f1f0; --text-2: #a7bcbb;
+    --accent: #e9a24f; --teal: #79aca8; --btn-bg: #e9a24f; --btn-bg-hover: #f2b269; --btn-ink: #221304;
+    --error: #e07a68; --field: #0c1517;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Aileron', 'Satoshi', system-ui, sans-serif; line-height: 1.12; text-wrap: balance; margin: 0 0 1rem; }
+  h1 { font-size: clamp(1.9rem, 1.2rem + 2.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: 1.35rem; font-weight: 800; margin: 2.4rem 0 0.4rem; padding-top: 1.6rem; border-top: 2px solid var(--line); }
+  p { margin: 0 0 1rem; max-width: 65ch; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
+
+  .nav2 { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg-raise) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav2-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1.5rem; }
+  .brand { display: flex; align-items: center; gap: 0.12em; font-family: 'Aileron', 'Satoshi', sans-serif; font-weight: 800; font-size: 1.9rem; line-height: 1; color: var(--text); text-decoration: none; }
+  .brand-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
+  .brand-words { display: block; font-size: 0.5em; line-height: 0.72; text-align: right; white-space: nowrap; margin-left: 0.14em; }
+  @media (max-width: 700px) { .brand { font-size: 1.35rem; } }
+  .theme-btn { background: none; border: 1px solid var(--line); border-radius: 999px; color: var(--text-2); font: inherit; font-size: 0.9rem; padding: 0.35rem 0.9rem; cursor: pointer; }
+
+  main { padding-block: clamp(2rem, 5vw, 4rem); }
+  .form-wrap { max-width: 780px; margin-inline: auto; padding-inline: clamp(1rem, 0.5rem + 2vw, 2rem); }
+  .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+  .panel { background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.4rem, 3.5vw, 2.6rem); }
+  .lede, .muted { color: var(--text-2); }
+
+  .q { padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  h2 + .lede + .q, h2 + .q { border-top: none; }
+  .qlabel { display: block; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem; }
+  .opt-mark { font-weight: 400; color: var(--text-2); }
+  .hint { color: var(--text-2); font-size: 0.95rem; margin: 0 0 0.6rem; }
+  .sublabel { display: block; font-weight: 600; margin: 0.8rem 0 0.2rem; font-size: 0.95rem; color: var(--text-2); }
+  input[type=text], input[type=email], input[type=url], select, textarea {
+    font: inherit; width: 100%; max-width: 560px; min-height: 48px; padding: 0.7rem 0.9rem;
+    color: var(--text); background: var(--field); border: 1px solid var(--line); border-radius: 8px;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgb(var(--accent-glow) / 0.25); }
+  textarea { min-height: 110px; max-width: 100%; resize: vertical; line-height: 1.55; }
+  select { max-width: 360px; }
+  input[type=checkbox], input[type=radio] { width: 22px; height: 22px; margin: 0; flex: 0 0 auto; accent-color: var(--accent); cursor: pointer; }
+  .opt { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.5rem 0.6rem; margin: 0 -0.6rem; min-height: 44px; border-radius: 8px; cursor: pointer; }
+  .opt:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .opt input { margin-top: 3px; }
+  .opt small { color: var(--text-2); font-size: 0.9rem; }
+  .opt-row { display: flex; flex-wrap: wrap; gap: 0.1rem 1.2rem; }
+  .opt-row .opt { margin: 0; }
+  .hid { display: none !important; }
+  .reveal { border-left: 3px solid var(--teal); padding: 0.3rem 0 0.3rem 1rem; margin: 0.5rem 0 0.3rem; }
+  .reveal label { display: block; font-size: 0.92rem; color: var(--text-2); margin-bottom: 0.2rem; }
+  .card { border: 1px solid var(--line); border-left: 4px solid var(--teal); border-radius: 8px; background: var(--bg); padding: 0.8rem 1rem; margin: 0.8rem 0 0.4rem; font-size: 0.95rem; }
+  .card p { margin: 0; }
+  .info { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 700; margin-left: 0.5rem; cursor: help; position: relative; }
+  .info .tip { display: none; position: absolute; left: -8px; top: 150%; z-index: 4; width: min(20rem, 80vw); background: var(--bg-raise); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.9rem; font-weight: 400; line-height: 1.5; padding: 0.8rem 1rem; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); }
+  .info:hover .tip, .info:focus .tip { display: block; }
+
+  /* checklists for the optional AI lists: two columns where there is room */
+  .checklist { display: grid; grid-template-columns: 1fr; gap: 0 1.2rem; margin: 0.2rem 0 0.4rem; }
+  @media (min-width: 640px) { .checklist { grid-template-columns: 1fr 1fr; } }
+  .checklist .opt { margin: 0; }
+  .checklist .ex { display: block; color: var(--text-2); font-size: 0.85rem; }
+  .group { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0.9rem 0 0.1rem; }
+  details.more { margin: 0.4rem 0 0; }
+  details.more > summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 0.4rem 0; }
+  .levels { list-style: none; margin: 0.4rem 0 0.4rem; padding: 0; font-size: 0.93rem; color: var(--text-2); }
+
+  .err-summary { display: none; border: 1px solid var(--error); border-left-width: 4px; border-radius: 8px; padding: 0.8rem 1rem; margin: 0 0 1.4rem; background: color-mix(in srgb, var(--error) 8%, var(--bg-raise)); }
+  .err-summary.on { display: block; }
+  .err-summary ul { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+  .err-summary a { color: var(--error); }
+  .err-msg { display: none; color: var(--error); font-weight: 600; font-size: 0.92rem; margin: 0.35rem 0 0; }
+  .q.has-error .err-msg { display: block; }
+  .q.has-error > .qlabel { color: var(--error); }
+  .q.has-error input[type=text], .q.has-error input[type=email] { border-color: var(--error); }
+
+  .actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .btn { display: inline-block; padding: 0.75rem 1.8rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: 1.05rem; border: none; cursor: pointer; text-decoration: none; }
+  .btn-primary { background: var(--btn-bg); color: var(--btn-ink); box-shadow: 0 0 20px rgb(var(--accent-glow) / 0.4); }
+  .btn-primary:hover { background: var(--btn-bg-hover); }
+  .btn-primary[disabled] { opacity: 0.6; cursor: wait; }
+  .upload { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+  .btn-file { background: var(--bg-raise); color: var(--text); border: 1px solid var(--line); }
+  .file-chip { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.4rem 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); font-size: 0.95rem; max-width: 100%; }
+  .file-chip > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 18rem; }
+  .file-chip button { border: 0; background: none; color: var(--text-2); font-size: 1.2rem; line-height: 1; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; }
+  .file-chip button:hover { background: var(--line); color: var(--text); }
+  .btn-quiet { background: none; color: var(--text-2); border: 1px solid var(--line); }
+  .status { color: var(--text-2); font-size: 0.95rem; }
+  .status.err { color: var(--error); font-weight: 600; }
+  .organiser { margin-top: 1.4rem; font-size: 0.9rem; color: var(--text-2); }
+  .ref { font-family: ui-monospace, Consolas, monospace; letter-spacing: 0.04em; }
+  .footer { border-top: 1px solid var(--line); }
+  .footer p { margin: 0; color: var(--text-2); font-size: 0.92rem; padding-block: 1.6rem; }
+</style>
+</head>
+<body>
+
+<header class="nav2">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="../" aria-label="V4 AI researchers meetup">
+      <span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+      <span>AI</span>
+      <span class="brand-words" aria-hidden="true">researchers<br>meetup</span>
+    </a>
+    <button type="button" class="theme-btn" id="theme-btn">Dark mode</button>
+  </div>
+</header>
+
+<main>
+<div class="form-wrap">
+  <div class="panel">
+
+  <div id="form-view">
+    <p class="eyebrow">Invited speakers</p>
+    <h1>Your contribution to V4AIR</h1>
+    <p class="lede">Thank you for joining us at Kostelec Castle near Prague, 28 to 30 April 2027. This form takes about three minutes. We already know your work, so we only ask what we need to plan the programme.</p>
+
+    <div class="err-summary" id="err-summary" role="alert" tabindex="-1"></div>
+    <form id="form" novalidate onsubmit="return false">
+    <input type="text" name="website" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+    <h2>About you</h2>
+    <div class="q" data-q="A1.name" data-err="Your name">
+      <label class="qlabel" for="A1.name">Full name</label>
+      <input type="text" id="A1.name" name="A1.name" autocomplete="name">
+      <p class="err-msg">Enter your full name</p>
+    </div>
+    <div class="q" data-q="A1.email" data-err="Email">
+      <label class="qlabel" for="A1.email">Email</label>
+      <p class="hint">We use it only to write to you about the meetup</p>
+      <input type="email" id="A1.email" name="A1.email" autocomplete="email" inputmode="email">
+      <p class="err-msg">Enter an email address we can reach you at</p>
+    </div>
+    <div class="q" data-q="A1.institution_name" data-err="Institution or organization">
+      <label class="qlabel" for="A1.institution_name">Affiliation</label>
+      <p class="hint">Pick a partner from the list, or type your own institution or organization</p>
+      <input type="text" id="A1.institution_name" name="A1.institution_name" list="partners" autocomplete="off">
+      <datalist id="partners"></datalist>
+      <p class="err-msg">Enter your institution or organization</p>
+    </div>
+    <div class="q" data-q="A1.country" data-err="Country">
+      <label class="qlabel" for="A1.country">Which country is it based in?</label>
+      <select id="A1.country" name="A1.country"></select>
+      <p class="err-msg">Enter a country</p>
+    </div>
+    <div class="q">
+      <label class="qlabel" for="A1.position">Your position or role <span class="opt-mark">(optional)</span></label>
+      <input type="text" id="A1.position" name="A1.position" autocomplete="organization-title">
+    </div>
+    <div class="q">
+      <label class="qlabel" for="A1.stage">Career stage <span class="opt-mark">(optional)</span></label>
+      <select id="A1.stage" name="A1.stage">
+        <option value="">Choose an option</option>
+        <option value="bsc">Bachelor or Master student</option>
+        <option value="phd">PhD student</option>
+        <option value="postdoc">Post-doc</option>
+        <option value="ecr">Other early-career researcher</option>
+        <option value="senior">Senior researcher</option>
+        <option value="nonacad">Not in academia</option>
+      </select>
+    </div>
+    <div class="q">
+      <label class="qlabel" for="A1.gender">Gender <span class="opt-mark">(optional)</span></label>
+      <select id="A1.gender" name="A1.gender">
+        <option value="">Choose an option</option>
+        <option value="woman">Woman</option>
+        <option value="man">Man</option>
+        <option value="other">I describe myself otherwise</option>
+        <option value="not_stated">Prefer not to say</option>
+      </select>
+    </div>
+    <div class="q">
+      <span class="qlabel">Social media and links <span class="opt-mark">(optional)</span></span>
+      <p class="hint">A profile link or @name. We tag you there if we announce your participation.</p>
+      <label class="sublabel" for="S.linkedin">LinkedIn</label>
+      <input type="text" id="S.linkedin" name="S.linkedin" autocomplete="off">
+      <label class="sublabel" for="S.instagram">Instagram</label>
+      <input type="text" id="S.instagram" name="S.instagram" autocomplete="off">
+      <label class="sublabel" for="S.facebook">Facebook</label>
+      <input type="text" id="S.facebook" name="S.facebook" autocomplete="off">
+      <label class="sublabel" for="A1.link_1">Other links, for example a personal page or Google Scholar</label>
+      <input type="url" id="A1.link_1" name="A1.link_1" inputmode="url">
+      <input type="url" id="A1.link_2" name="A1.link_2" inputmode="url" aria-label="Link 2" style="margin-top:0.5rem">
+    </div>
+    <div class="q">
+      <label class="qlabel" for="S.bio">Short bio for the programme <span class="opt-mark">(optional)</span></label>
+      <p class="hint">Two or three sentences, written in the third person</p>
+      <textarea id="S.bio" name="S.bio"></textarea>
+    </div>
+    <div class="q" data-q="S.photo" data-err="Photo">
+      <label class="qlabel" for="photo-input">Photo for the programme and announcements <span class="opt-mark">(optional)</span></label>
+      <p class="hint">JPG or PNG, up to 10 MB. A portrait with some space around the face works best.</p>
+      <div class="upload">
+        <input type="file" id="photo-input" accept="image/jpeg,image/png" hidden>
+        <button type="button" class="btn btn-file" id="photo-pick">Choose a photo</button>
+        <span class="file-chip hid" id="photo-chip"><span id="photo-name"></span> <button type="button" id="photo-remove" title="Remove photo">×</button></span>
+        <span class="hint" id="photo-info" style="margin:0"></span>
+      </div>
+      <p class="err-msg">Use a JPG or PNG file of up to 10 MB</p>
+    </div>
+
+    <h2>Your contribution</h2>
+    <div class="q" data-q="A7.roles" data-err="Form of contribution">
+      <span class="qlabel">How would you like to contribute? Tick all that fit.</span>
+      <label class="opt"><input type="checkbox" name="A7.roles.speaker"><span>Talk</span></label>
+      <label class="opt"><input type="checkbox" name="A7.roles.plenary"><span>Plenary talk</span></label>
+      <label class="opt"><input type="checkbox" name="A7.roles.workshop"><span>Workshop</span></label>
+      <label class="opt"><input type="checkbox" name="A7.roles.njp"><span>Not-Just-Posters session<span class="info" tabindex="0">i<span class="tip">An open-format session: bring a poster, a prototype, a demo, or a digital presentation. Whatever shows your work best.</span></span></span></label>
+      <label class="opt"><input type="checkbox" name="A7.roles.unsure"><span>Not sure yet, let us discuss it</span></label>
+      <label class="opt"><input type="checkbox" name="A7.roles.other" data-reveal="#roles-other"><span>Other</span></label>
+      <div class="reveal hid" id="roles-other"><label for="A7.roles_other">What would you like to do?</label><input type="text" id="A7.roles_other" name="A7.roles_other"></div>
+      <p class="err-msg">Tick at least one, and say what "Other" is if you ticked it</p>
+    </div>
+    <div class="q" data-q="S.title" data-err="Topic">
+      <label class="qlabel" for="S.title">Topic or working title</label>
+      <p class="hint">A rough topic is enough, it can change later</p>
+      <input type="text" id="S.title" name="S.title">
+      <p class="err-msg">Enter a topic or a working title</p>
+    </div>
+    <div class="q">
+      <label class="qlabel" for="S.description">Description or notes <span class="opt-mark">(optional)</span></label>
+      <p class="hint">What you plan to cover. A few sentences or rough notes are enough.</p>
+      <textarea id="S.description" name="S.description"></textarea>
+    </div>
+    <div class="q">
+      <span class="qlabel">Preferred length <span class="opt-mark">(optional)</span></span>
+      <div class="opt-row">
+        <label class="opt"><input type="radio" name="S.length" value="15"><span>15 min</span></label>
+        <label class="opt"><input type="radio" name="S.length" value="30"><span>30 min</span></label>
+        <label class="opt"><input type="radio" name="S.length" value="45"><span>45 min</span></label>
+        <label class="opt"><input type="radio" name="S.length" value="90"><span>90 min (workshop)</span></label>
+        <label class="opt"><input type="radio" name="S.length" value="unsure"><span>Not sure yet</span></label>
+      </div>
+    </div>
+    <div class="q" data-q="days" data-err="Days">
+      <span class="qlabel">Which days can you be there?</span>
+      <p class="hint">Kostelec Castle, about 35 km from Prague, Czechia</p>
+      <label class="opt"><input type="checkbox" name="A1.days.wed" class="day"><span>Wednesday 28 April 2027</span></label>
+      <label class="opt"><input type="checkbox" name="A1.days.thu" class="day"><span>Thursday 29 April 2027</span></label>
+      <label class="opt"><input type="checkbox" name="A1.days.fri" class="day"><span>Friday 30 April 2027</span></label>
+      <span class="sublabel">Or, if you do not know the exact days yet:</span>
+      <label class="opt"><input type="checkbox" name="S.days.one" class="day day-flex"><span>One day, not sure which</span></label>
+      <label class="opt"><input type="checkbox" name="S.days.two" class="day day-flex"><span>Two days, not sure which</span></label>
+      <label class="opt"><input type="checkbox" name="S.days.tbd" class="day day-flex"><span>Not sure yet</span></label>
+      <p class="err-msg">Tick at least one option</p>
+    </div>
+
+    <h2>Sharing your participation</h2>
+    <div class="q" data-q="S.publish_programme" data-err="Programme listing">
+      <span class="qlabel">May we list your name, affiliation, short bio and topic in the meetup programme?</span>
+      <div class="opt-row">
+        <label class="opt"><input type="radio" name="S.publish_programme" value="yes"><span>Yes</span></label>
+        <label class="opt"><input type="radio" name="S.publish_programme" value="no"><span>No</span></label>
+      </div>
+      <p class="err-msg">Choose yes or no</p>
+    </div>
+    <div class="q" data-q="S.publish_social" data-err="Announcement">
+      <span class="qlabel">May we announce your participation on v4air.eu and on our social networks?</span>
+      <div class="opt-row">
+        <label class="opt"><input type="radio" name="S.publish_social" value="yes"><span>Yes</span></label>
+        <label class="opt"><input type="radio" name="S.publish_social" value="no"><span>No</span></label>
+      </div>
+      <div class="card"><p>If we announce you, we tag you on the profiles you gave above. We also email you a kit for your own post: an "I'm speaking at V4AIR" graphic and a text you can adapt. If you want to share your involvement, we would be grateful if you used it or reposted our announcement.</p></div>
+      <p class="err-msg">Choose yes or no</p>
+    </div>
+
+    <h2>Your AI background <span class="opt-mark">(optional)</span></h2>
+    <p class="lede">Short, and you can skip it. It helps us connect you with participants who want to learn what you know.</p>
+    <div class="q">
+      <span class="qlabel">How would you describe your work with AI overall? <span class="opt-mark">(optional)</span></span>
+      <div class="opt-row">
+        <label class="opt"><input type="radio" name="S.ai_level" value="1"><span>1 Basic</span></label>
+        <label class="opt"><input type="radio" name="S.ai_level" value="2"><span>2 Regular</span></label>
+        <label class="opt"><input type="radio" name="S.ai_level" value="3"><span>3 Advanced</span></label>
+        <label class="opt"><input type="radio" name="S.ai_level" value="4"><span>4 Expert</span></label>
+      </div>
+      <details class="more"><summary>What the levels mean</summary>
+        <ul class="levels">
+          <li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.</li>
+          <li><strong>2 Regular use:</strong> customizing parameters, using APIs, adapting existing pipelines.</li>
+          <li><strong>3 Advanced use:</strong> training or fine-tuning models, building custom pipelines, agentic workflows, coding integration.</li>
+          <li><strong>4 Expert use:</strong> building or modifying model architectures or analytical methods.</li>
+        </ul>
+      </details>
+    </div>
+    <div class="q">
+      <span class="qlabel">Which of these could you share from your own experience? <span class="opt-mark">(optional)</span></span>
+      <p class="hint">Experience outside a purely academic setting</p>
+      <div class="checklist" id="list-exp"></div>
+    </div>
+    <div class="q">
+      <details class="more">
+        <summary>Specific methods and topics (optional, only if you have a minute)</summary>
+        <p class="hint" style="margin-top:0.4rem">We use these only as a fallback, when your topic does not already tell us. Tick what you could speak about.</p>
+        <span class="qlabel" style="margin-top:0.8rem">AI methods</span>
+        <div id="list-methods"></div>
+        <span class="qlabel" style="margin-top:1rem">AI-related topics</span>
+        <div id="list-topics"></div>
+      </details>
+    </div>
+
+    <h2>Privacy</h2>
+    <div class="q" data-q="A8.consent" data-err="Privacy notice">
+      <p class="hint">Charles University processes your answers to plan the programme and contact you about the meetup. The <a href="../policy/privacy/" target="_blank" rel="noopener">privacy notice</a> explains what we keep, why, and for how long.</p>
+      <label class="opt"><input type="checkbox" name="A8.consent"><span>I have read the privacy notice.</span></label>
+      <input type="hidden" name="A8.notice_version" value="privacy-v1" data-fixed>
+      <p class="err-msg">Please confirm that you have read the privacy notice</p>
+    </div>
+    <div class="q">
+      <span class="qlabel">Photos and videos <span class="opt-mark">(optional)</span></span>
+      <p class="hint">We take photos and videos at the meetup to document it and to present it on v4air.eu, on our social media and in reports to the International Visegrad Fund. You can withdraw this consent at any time by writing to gdpr@natur.cuni.cz.</p>
+      <label class="opt"><input type="checkbox" name="A8.photo_consent"><span>I consent to photos and videos of me being taken at the meetup and used for these purposes, as described in the privacy notice.</span></label>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="btn-send">Send</button>
+      <span class="status" id="status" aria-live="polite"></span>
+    </div>
+    <label class="opt organiser"><input type="checkbox" name="S.by_organiser"><span>Filled in by an organizer during a call</span></label>
+    </form>
+  </div>
+
+  <div id="end-view" class="hid">
+    <p class="eyebrow">Sent</p>
+    <h1>Thank you. We have your answers.</h1>
+    <p>Your reference: <strong class="ref" id="end-id"></strong></p>
+    <p>We will write to you about the next steps. If anything changes, write to <a href="mailto:info@v4air.eu">info@v4air.eu</a>.</p>
+    <div class="actions">
+      <button type="button" class="btn btn-quiet" id="btn-edit">Change my answers</button>
+      <button type="button" class="btn btn-quiet" id="btn-new">Start a new form</button>
+    </div>
+  </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><p>Supported by the International Visegrad Fund, Grant No. 22610317. &middot; V4AIR &middot; 28-30 April 2027<br><a href="../policy/">Policy</a></p></div>
+</footer>
+
+<script src="../forms-api.js"></script>
+<script>
+(function () {
+  'use strict';
+  /* Invited speaker form (form S, IDs V4S-…). One page, saved to the server only on Send, kept in this browser
+     between visits. Shared questions use the application form's variable IDs, so the Speakers tab lines up
+     with Applications column by column. */
+  var STORE = 'v4air-form-s-v1';
+  var API = window.V4AIR_API || { enabled: function () { return false; } };
+  var METHODS = [
+    { id: 'm01', fam: 'Language and text', label: 'LLMs', ex: 'chat tools, LLM APIs' },
+    { id: 'm02', fam: 'Language and text', label: 'NLP beyond LLMs', ex: 'topic modeling, text classification, corpus and linguistic analysis' },
+    { id: 'm03', fam: 'Language and text', label: 'Embeddings and semantic search', ex: 'vector representations, retrieval' },
+    { id: 'm04', fam: 'Vision and multimodal', label: 'Computer vision, static', ex: 'image classification, object detection' },
+    { id: 'm05', fam: 'Vision and multimodal', label: 'Computer vision, dynamic', ex: 'video, motion tracking, pose and gesture recognition' },
+    { id: 'm06', fam: 'Vision and multimodal', label: 'Multimodal methods', ex: 'combining text, image, audio' },
+    { id: 'm07', fam: 'Speech and signal', label: 'Speech and audio processing', ex: 'ASR, TTS, audio classification' },
+    { id: 'm08', fam: 'Speech and signal', label: 'Sensor and physiological data', ex: 'eye-tracking, biometric, wearable data' },
+    { id: 'm09', fam: 'Modeling and inference', label: 'Classical machine learning', ex: 'regression, classification, clustering' },
+    { id: 'm10', fam: 'Modeling and inference', label: 'Bayesian and probabilistic modeling' },
+    { id: 'm11', fam: 'Modeling and inference', label: 'Causal inference' },
+    { id: 'm12', fam: 'Modeling and inference', label: 'Network and structural analysis', ex: 'graph methods, social network analysis' },
+    { id: 'm13', fam: 'Modeling and inference', label: 'Simulation and agent-based modeling' },
+    { id: 'm14', fam: 'Generative', label: 'Generative AI for content', ex: 'image, audio, video generation' },
+    { id: 'm15', fam: 'Generative', label: 'Agentic AI and AI-assisted coding', ex: 'agents, coding copilots, workflow automation' }
+  ];
+  var TOPICS = [
+    { id: 't01', fam: 'Ethics and society', label: 'AI ethics', ex: 'bias, accountability' },
+    { id: 't02', fam: 'Ethics and society', label: 'AI policy and regulation' },
+    { id: 't03', fam: 'Human experience', label: 'Mental health and wellbeing in relation to AI' },
+    { id: 't04', fam: 'Human experience', label: 'Trust and information reliability' },
+    { id: 't05', fam: 'Human experience', label: 'Auditability' },
+    { id: 't06', fam: 'Human experience', label: 'Tech news overwhelm' },
+    { id: 't07', fam: 'Work and economy', label: 'Labor market and future of work' },
+    { id: 't08', fam: 'Work and economy', label: 'Economic impact and industry transformation' },
+    { id: 't09', fam: 'Knowledge and culture', label: 'Education and learning with or about AI' },
+    { id: 't10', fam: 'Knowledge and culture', label: 'Creativity and authorship' },
+    { id: 't11', fam: 'Other', label: 'Philosophy of mind and cognition', ex: 'what AI reveals about human cognition' },
+    { id: 't12', fam: 'Other', label: 'Environmental and sustainability impact of AI' }
+  ];
+  var EXPERIENCE = [
+    { id: 'e01', label: 'Employment outside academia', ex: 'industry, public sector, NGOs' },
+    { id: 'e02', label: 'Freelance or contract consulting' },
+    { id: 'e03', label: 'Advising a company or organization', ex: 'formal or informal' },
+    { id: 'e04', label: 'Founding or co-founding a startup' },
+    { id: 'e05', label: 'Spinning off a company from research' },
+    { id: 'e06', label: 'Licensing or commercializing research or technology', ex: 'IP, patents, tech transfer' },
+    { id: 'e07', label: 'Public engagement or science communication', ex: 'outreach, media, popularization' },
+    { id: 'e08', label: 'Grant or funding applications aimed at commercial or applied outcomes' },
+    { id: 'e09', label: 'Collaboration between academia and industry', ex: 'joint projects, contract research, technology transfer' }
+  ];
+  var COUNTRIES = ['Czechia', 'Hungary', 'Poland', 'Slovakia', 'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo (Republic of the)', 'Congo (Democratic Republic of the)', 'Costa Rica', "Côte d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'São Tomé and Príncipe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'];
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
+  /* ---------- theme ---------- */
+  var themeBtn = $('#theme-btn');
+  function themeLabel() { themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? 'Light mode' : 'Dark mode'; }
+  themeBtn.addEventListener('click', function () {
+    var dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+    if (dark) document.documentElement.setAttribute('data-theme', 'dark'); else document.documentElement.removeAttribute('data-theme');
+    try { localStorage.setItem('v4air-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    themeLabel();
+  });
+  themeLabel();
+
+  /* ---------- lists ---------- */
+  /* Partner names and keys match the application form's A1.institution_key options. */
+  var PARTNERS = [
+    { name: 'Charles University', key: 'cuni', country: 'Czechia' },
+    { name: 'Czech Technical University in Prague', key: 'cvut', country: 'Czechia' },
+    { name: 'Czech Technical University in Prague, Technology Transfer Office', key: 'cvut', country: 'Czechia' },
+    { name: 'Comenius University Bratislava', key: 'uniba', country: 'Slovakia' },
+    { name: 'University of Wrocław', key: 'uwr', country: 'Poland' },
+    { name: 'Nicolaus Copernicus University in Toruń', key: 'umk', country: 'Poland' },
+    { name: 'Eötvös Loránd University in Budapest', key: 'elte', country: 'Hungary' }
+  ];
+  function partner(name) { return PARTNERS.filter(function (x) { return x.name === name; })[0]; }
+  $('#partners').innerHTML = PARTNERS.map(function (x) { return '<option value="' + esc(x.name) + '">'; }).join('');
+  /* COUNTRIES starts with the four V4 countries */
+  function opts(list) { return list.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join(''); }
+  $('#A1\\.country').innerHTML = '<option value="">Choose a country</option><optgroup label="V4 countries">' + opts(COUNTRIES.slice(0, 4)) +
+    '</optgroup><optgroup label="Other countries">' + opts(COUNTRIES.slice(4)) + '</optgroup>';
+  /* Ticking an item means "I could present on this"; it also sets the item's gate (use / work / have),
+     because in the application form "present" exists only behind a ticked gate. */
+  function item(it, prefix, gate) {
+    var p = prefix + '.' + it.id;
+    return '<label class="opt"><input type="checkbox" name="' + p + '.present" data-gate="' + p + '.' + gate + '"><span>' + esc(it.label) + (it.ex ? '<span class="ex">' + esc(it.ex) + '</span>' : '') + '</span></label>';
+  }
+  function grouped(items, prefix, gate) {
+    var html = '', last = null;
+    items.forEach(function (it) {
+      if (it.fam !== last) { html += (last ? '</div>' : '') + '<span class="group">' + esc(it.fam) + '</span><div class="checklist">'; last = it.fam; }
+      html += item(it, prefix, gate);
+    });
+    return html + '</div>';
+  }
+  $('#list-exp').innerHTML = EXPERIENCE.map(function (e) { return item(e, 'A5', 'have'); }).join('');
+  $('#list-methods').innerHTML = grouped(METHODS, 'A3', 'use');
+  $('#list-topics').innerHTML = grouped(TOPICS, 'A4', 'work');
+
+  /* ---------- state ---------- */
+  var form = $('#form');
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { saved = {}; }
+  var remote = { id: saved.id || '', token: saved.token || '' };
+
+  function collect() {
+    var data = {};
+    $$('input, select, textarea', form).forEach(function (el) {
+      if (!el.name || el.id === 'hp') return;
+      if (el.type === 'checkbox') { data[el.name] = el.checked; if (el.dataset.gate) data[el.dataset.gate] = el.checked; }
+      else if (el.type === 'radio') { if (el.checked) data[el.name] = el.value; else if (!(el.name in data)) data[el.name] = ''; }
+      else data[el.name] = el.value.trim();
+    });
+    var pt = partner(data['A1.institution_name']);
+    data['A1.institution_key'] = pt ? pt.key : (data['A1.institution_name'] ? 'other' : '');
+    if (sentPhoto) data.__file = sentPhoto;
+    return data;
+  }
+  function restore(a) {
+    a = a || {};
+    $$('input, select, textarea', form).forEach(function (el) {
+      if (!el.name || el.id === 'hp' || el.hasAttribute('data-fixed')) return; /* data-fixed: the page's own value wins */
+      if (el.type === 'checkbox') el.checked = a[el.name] === true;
+      else if (el.type === 'radio') el.checked = a[el.name] === el.value;
+      else el.value = typeof a[el.name] === 'string' ? a[el.name] : '';
+    });
+    reveals();
+  }
+  function persist() {
+    try { localStorage.setItem(STORE, JSON.stringify({ answers: collect(), id: remote.id, token: remote.token, photo: sentPhoto })); } catch (e) {}
+  }
+
+  /* ---------- reveals and the day options ---------- */
+  function reveals() {
+    $$('[data-reveal]', form).forEach(function (el) {
+      var box = $(el.getAttribute('data-reveal'));
+      box.classList.toggle('hid', !el.checked);
+      if (!el.checked) $$('input', box).forEach(function (i) { i.value = ''; });
+    });
+  }
+  /* A specific day and a "not sure which" option exclude each other; the three flexible options exclude each other too. */
+  $$('input.day', form).forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      if (!cb.checked) return;
+      var flex = cb.classList.contains('day-flex');
+      $$('input.day', form).forEach(function (o) { if (o !== cb && (flex || o.classList.contains('day-flex'))) o.checked = false; });
+    });
+  });
+
+  /* ---------- validation ---------- */
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function val(name) { var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
+  function ticked(sel) { return $$(sel, form).some(function (el) { return el.checked; }); }
+  var RULES = {
+    'A1.name': function () { return !!val('A1.name'); },
+    'A1.email': function () { return EMAIL_RE.test(val('A1.email')); },
+    'A1.institution_name': function () { return !!val('A1.institution_name'); },
+    'A1.country': function () { return !!val('A1.country'); },
+    'A7.roles': function () { return ticked('input[name^="A7.roles."]') && (!form.elements['A7.roles.other'].checked || !!val('A7.roles_other')); },
+    'S.title': function () { return !!val('S.title'); },
+    'days': function () { return ticked('input.day'); },
+    'S.publish_programme': function () { return ticked('input[name="S.publish_programme"]'); },
+    'S.publish_social': function () { return ticked('input[name="S.publish_social"]'); },
+    'S.photo': function () { var f = photoFile(); return !f || (PHOTO_TYPES[f.type] && f.size <= MAX_PHOTO); },
+    'A8.consent': function () { return form.elements['A8.consent'].checked; }
+  };
+  function check(q) { var ok = RULES[q.getAttribute('data-q')](); q.classList.toggle('has-error', !ok); return ok; }
+  function validate() {
+    var bad = $$('.q[data-q]', form).filter(function (q) { return !check(q); });
+    var sum = $('#err-summary');
+    if (!bad.length) { sum.classList.remove('on'); return true; }
+    bad.forEach(function (q, i) { if (!q.id) q.id = 'q-' + i; });
+    sum.innerHTML = '<strong>Please check ' + (bad.length === 1 ? 'one answer' : bad.length + ' answers') + '</strong><ul>' +
+      bad.map(function (q) { return '<li><a href="#' + q.id + '">' + esc(q.getAttribute('data-err')) + '</a></li>'; }).join('') + '</ul>';
+    sum.classList.add('on');
+    sum.focus();
+    return false;
+  }
+
+  var PHOTO_TYPES = { 'image/jpeg': 1, 'image/png': 1 }, MAX_PHOTO = 10 * 1024 * 1024;
+  var photoInput = $('#photo-input');
+  var sentPhoto = saved.photo || null;
+  function photoFile() { return photoInput.files && photoInput.files[0]; }
+  function drawPhoto() {
+    var f = photoFile();
+    $('#photo-chip').classList.toggle('hid', !f);
+    $('#photo-name').textContent = f ? f.name : '';
+    $('#photo-pick').textContent = f || sentPhoto ? 'Choose another photo' : 'Choose a photo';
+    $('#photo-info').textContent = !f && sentPhoto ? 'Already sent: ' + sentPhoto.name : '';
+  }
+  function readPhoto(f) {
+    return new Promise(function (ok, fail) {
+      var r = new FileReader();
+      r.onload = function () { ok({ name: f.name, type: f.type, data: String(r.result).split(',')[1] }); };
+      r.onerror = fail;
+      r.readAsDataURL(f);
+    });
+  }
+  photoInput.addEventListener('change', drawPhoto);
+  $('#photo-pick').addEventListener('click', function () { photoInput.click(); });
+  $('#photo-remove').addEventListener('click', function () {
+    photoInput.value = ''; drawPhoto();
+    check(photoInput.closest('.q'));
+  });
+
+  var persistTimer = null, draftTimer = null;
+  /* Calls are chained so the first one (which creates the row) finishes before the next one starts. */
+  var syncing = Promise.resolve();
+  function push(final, extra) {
+    var p = syncing.catch(function () {}).then(function () {
+      return API.save('S', remote.id, remote.token, collect(), final, $('#hp').value, extra);
+    }).then(function (j) {
+      remote = { id: j.id, token: j.token };
+      if (j.file) { sentPhoto = j.file; photoInput.value = ''; drawPhoto(); }
+      persist();
+      return j;
+    });
+    syncing = p;
+    return p;
+  }
+  function onEdit(e) {
+    reveals();
+    var q = e.target.closest('.q.has-error');
+    if (q) check(q);
+    clearTimeout(persistTimer);
+    persistTimer = setTimeout(persist, 300);
+    /* Draft on the server once the email is valid, so the next-day resume email can reach someone who leaves. */
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(function () { if (API.enabled() && EMAIL_RE.test(val('A1.email'))) push(false).catch(function () {}); }, 5000);
+  }
+  $('#A1\\.institution_name').addEventListener('change', function (e) {
+    var pt = partner(e.target.value.trim());
+    if (pt && !val('A1.country')) form.elements['A1.country'].value = pt.country;
+  });
+  form.addEventListener('input', onEdit);
+  form.addEventListener('change', onEdit);
+
+  /* ---------- send ---------- */
+  var status = $('#status'), sendBtn = $('#btn-send');
+  function showEnd(id) {
+    $('#end-id').textContent = id;
+    $('#form-view').classList.add('hid');
+    $('#end-view').classList.remove('hid');
+    window.scrollTo(0, 0);
+  }
+  function showForm() {
+    $('#end-view').classList.add('hid');
+    $('#form-view').classList.remove('hid');
+    status.textContent = ''; status.className = 'status';
+    window.scrollTo(0, 0);
+  }
+  sendBtn.addEventListener('click', function () {
+    if (!validate()) return;
+    if (!API.enabled()) { status.textContent = 'Sending is switched off on this copy of the page.'; status.className = 'status err'; return; }
+    clearTimeout(draftTimer);
+    sendBtn.disabled = true;
+    status.textContent = (photoFile() ? 'Sending with your photo. This can take up to a minute.' : 'Sending. This can take up to half a minute.'); status.className = 'status';
+    var f = photoFile();
+    (f ? readPhoto(f) : Promise.resolve(null)).then(function (file) {
+      return push(true, file ? { file: file } : null);
+    }).then(function (j) {
+      showEnd(j.id);
+    }, function (err) {
+      status.textContent = (err && err.message === 'email')
+        ? 'The server did not accept the email address. Please check it.'
+        : err && err.message === 'too_large' ? 'Your answers are too long to store. Please shorten your longest answers (about 45,000 characters in total) and send again.'
+        : 'Sending failed. Your answers are kept in this browser. Please try again in a minute, or write to info@v4air.eu.';
+      status.className = 'status err';
+    }).then(function () { sendBtn.disabled = false; });
+  });
+  /* Sending again after "Change my answers" updates the same row in the sheet. */
+  $('#btn-edit').addEventListener('click', showForm);
+  /* For organizers filling in the form for several speakers in one browser: forget this record, start empty. */
+  $('#btn-new').addEventListener('click', function () {
+    clearTimeout(draftTimer);
+    remote = { id: '', token: '' };
+    sentPhoto = null; photoInput.value = ''; drawPhoto();
+    try { localStorage.removeItem(STORE); } catch (e) {}
+    restore({});
+    $$('.q.has-error', form).forEach(function (q) { q.classList.remove('has-error'); });
+    $('#err-summary').classList.remove('on');
+    showForm();
+  });
+
+  $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
+  restore(saved.answers);
+  drawPhoto();
+
+  /* ---------- link from an email: ?id=V4S-XXXX-XXXX&t=token ---------- */
+  var qs = new URLSearchParams(location.search), qId = qs.get('id'), qToken = qs.get('t');
+  if (qId && qToken && API.enabled()) {
+    history.replaceState(null, '', location.pathname);
+    status.textContent = 'Loading your answers…'; status.className = 'status';
+    API.load('S', qId, qToken).then(function (j) {
+      remote = { id: j.id, token: qToken };
+      sentPhoto = j.answers.__file || null; photoInput.value = '';
+      restore(j.answers); drawPhoto(); persist();
+      status.textContent = ''; status.className = 'status';
+    }, function () {
+      status.textContent = 'We could not open your saved answers. Try the link again, or write to info@v4air.eu and quote your reference.'; status.className = 'status err';
+    });
+  }
+})();
+</script>
+</body>
+</html>

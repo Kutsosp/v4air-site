@@ -9,7 +9,7 @@ const FORMS = {
   A: { tab: 'Applications', prefix: 'V4A', keyRe: /^A[1-8]\.[A-Za-z0-9_.]+$/ },
   B: { tab: 'Nominations', prefix: 'V4N', keyRe: /^B\.[A-Za-z0-9_.]+$/ }
 };
-const MAX_BODY = 2000000, MAX_VALUE = 12000, MAX_KEYS = 800, MAX_CARDS = 9;
+const MAX_BODY = 2000000, MAX_VALUE = 12000, MAX_JSON = 49000, MAX_KEYS = 800, MAX_CARDS = 9; /* a Sheets cell holds 50,000 characters */
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const API = 'https://sheets.googleapis.com/v4/spreadsheets/';
 
@@ -56,7 +56,7 @@ async function load(g, req) {
   const row = rowOf(ids, req.id);
   if (!row) return { ok: false, error: 'not_found' };
   const rec = await g.readRow(f.tab, row, head);
-  if (rec.token_hash !== await hash(req.token)) return { ok: false, error: 'not_found' };
+  if (!await tokenOk(rec.token_hash, req.token)) return { ok: false, error: 'not_found' };
   return { ok: true, id: req.id, status: rec.status, answers: JSON.parse(rec.answers_json || '{}') };
 }
 
@@ -64,6 +64,7 @@ async function save(g, req) {
   const f = FORMS[req.form];
   if (!f || !req.answers || typeof req.answers !== 'object') return { ok: false, error: 'bad_request' };
   const answers = clean(req.answers, f.keyRe);
+  if (JSON.stringify(answers.json).length > MAX_JSON) return { ok: false, error: 'too_large' };
   const email = String(req.answers[req.form === 'A' ? 'A1.email' : 'B.email'] || '').trim();
   if (!EMAIL_RE.test(email)) return { ok: false, error: 'email' };
 
@@ -76,7 +77,7 @@ async function save(g, req) {
   if (row) {
     const r = meta[row - 1] || [];
     head.slice(0, 6).forEach((h, i) => { old[h] = r[i] === undefined ? '' : r[i]; });
-    if (!token || old.token_hash !== await hash(token)) return { ok: false, error: 'not_found' };
+    if (!await tokenOk(old.token_hash, token)) return { ok: false, error: 'not_found' };
   } else {
     /* no record yet, or a stale id the sheet doesn't know: start a new record */
     id = newId(f.prefix);
@@ -141,7 +142,11 @@ function clean(answers, keyRe) {
   });
   return { flat, json: out };
 }
-function cellText(s) { return /^[=+\-@]/.test(s) ? "'" + s : s; }
+/* A leading apostrophe makes Sheets keep the cell as typed, so =1+1, 0123, 1/2, 50% and TRUE are not read as formulas, numbers or dates.
+   Plain whole numbers stay numbers. */
+function cellText(s) { return s === '' || /^(0|[1-9][0-9]{0,14})$/.test(s) ? s : "'" + s; }
+/* token_hash holds the browser's token plus one more per email sent (Code.gs sendMail), separated by spaces. */
+async function tokenOk(stored, token) { return !!token && String(stored).split(' ').includes(await hash(token)); }
 async function hash(s) {
   const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(String(s)));
   return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, '0')).join('');
