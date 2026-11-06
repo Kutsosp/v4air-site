@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useState } from 'react'
 import { Nav } from '@/components/site/Nav'
 import { Hero } from '@/components/site/Hero'
 import { Funded } from '@/components/site/Funded'
@@ -15,42 +14,20 @@ import { Footer } from '@/components/site/Footer'
 
 import { MocksPage } from '@/mocks/MocksPage'
 
-export type Theme = 'dark' | 'light'
+export type { Theme } from '@/lib/theme'
 
 const SHOW_MOCKS =
   typeof window !== 'undefined' && window.location.search.includes('mocks')
 
 import { TimeProvider } from '@/lib/time'
+import { useTheme } from '@/lib/theme'
 
 export default function App() {
   return <TimeProvider>{SHOW_MOCKS ? <MocksPage /> : <Site />}</TimeProvider>
 }
 
 function Site() {
-  const [theme, setTheme] = useState<Theme>(() =>
-    typeof document !== 'undefined' &&
-    document.documentElement.getAttribute('data-theme') === 'dark'
-      ? 'dark'
-      : 'light',
-  )
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark')
-    } else {
-      document.documentElement.removeAttribute('data-theme')
-    }
-    try {
-      localStorage.setItem('v4air-theme', theme)
-    } catch {
-      /* storage unavailable */
-    }
-  }, [theme])
-
-  const toggleTheme = useCallback(
-    () => setTheme((t) => (t === 'light' ? 'dark' : 'light')),
-    [],
-  )
+  const [theme, toggleTheme] = useTheme()
 
   return (
     <>

@@ -26,13 +26,19 @@ export function Nav({
   theme,
   onToggleTheme,
   home = true,
+  overPhoto = home,
+  showPeople = !home,
 }: {
   theme: Theme
   onToggleTheme: () => void
   home?: boolean
+  /** page opens on a full-bleed photo: the bar stays transparent until scrolled */
+  overPhoto?: boolean
+  /** /people links to itself; other subpages keep it hidden like the home page */
+  showPeople?: boolean
 }) {
   const base = home ? '' : import.meta.env.BASE_URL
-  const [scrolled, setScrolled] = useState(!home)
+  const [scrolled, setScrolled] = useState(!overPhoto)
   /* the brand folds later than the bar turns opaque, so the morph is visible.
      It mounts folded and unfolds as an entrance beat (and on scrolling back up). */
   const [folded, setFolded] = useState(true)
@@ -40,19 +46,19 @@ export function Nav({
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(!home || window.scrollY > 40)
+      setScrolled(!overPhoto || window.scrollY > 40)
       setFolded(window.scrollY > 160)
     }
     /* bar opacity syncs immediately; the fold waits a beat so the unfold
        plays visibly as an entrance */
-    setScrolled(!home || window.scrollY > 40)
+    setScrolled(!overPhoto || window.scrollY > 40)
     const t = setTimeout(onScroll, 400)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       clearTimeout(t)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [home])
+  }, [overPhoto])
 
   const applyLabel = 'Apply'
 
@@ -127,7 +133,7 @@ export function Nav({
                 {l.label}
               </a>
             ))}
-            {(SHOW_PEOPLE_LINK || !home) && (
+            {(SHOW_PEOPLE_LINK || showPeople) && (
               <a href={PEOPLE_URL} aria-current={home ? undefined : 'page'}>
                 People
               </a>
