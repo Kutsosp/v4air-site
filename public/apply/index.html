@@ -7,14 +7,6 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <title>Apply: V4 AI Researchers Meetup, Kostelec Castle, 28 to 30 April 2027</title>
 <script src="/consent.js"></script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37S10LBELM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-37S10LBELM');
-</script>
 <script>
   (function () {
     try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
@@ -265,8 +257,8 @@
   [data-theme="dark"] .footer-castle { filter: none; }
   .footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1.8rem; }
   .footer-meta p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
-  .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
-  .footer-meta button:hover { color: var(--accent); }
+  .footer-meta a, .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
+  .footer-meta a:hover, .footer-meta button:hover { color: var(--accent); }
 
   /* dev controls: hidden unless opened from the footer or with ?dev in the URL */
   .devbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; padding: 0.6rem 1rem; background: #1c1c1c; color: #e9f1f0; font-size: 0.85rem; border-top: 2px solid var(--accent); }
@@ -350,6 +342,7 @@
         <li>Eötvös Loránd University in Budapest</li>
         <li>Comenius University Bratislava</li>
       </ul>
+      <p>Questions marked (optional) can be skipped. Without the other answers we cannot assess your application.</p>
       <div class="cta-row">
         <button type="button" class="btn btn-primary" data-next>Start the application</button>
       </div>
@@ -797,9 +790,16 @@
         <p class="counter" data-counter-for="A8.questions">0 / 1,000 characters</p>
       </div>
       <div class="q" data-q="A8.consent">
-        <span class="qlabel">Consent</span>
-        <label class="opt"><input type="checkbox" name="A8.consent"><span>I agree that Charles University and the V4AIR organizing team store and process the information in this form to select participants, build the programme, and contact me about the meetup. The optional gender and care-duties answers are used only in aggregate, for reporting on gender balance and for planning the venue. We keep the data for the duration of the project and delete it afterwards. Write to info@v4air.eu to see, correct or delete your data.</span></label>
-        <p class="err-msg">We need your consent to process the application</p>
+        <span class="qlabel">Privacy</span>
+        <p class="hint">Charles University processes your answers to select participants, build the programme and contact you about the meetup. The <a href="../policy/privacy/" target="_blank" rel="noopener">privacy notice</a> explains what we keep, why, and for how long.</p>
+        <label class="opt"><input type="checkbox" name="A8.consent"><span>I have read the privacy notice.</span></label>
+        <input type="hidden" name="A8.notice_version" value="privacy-v1" data-fixed>
+        <p class="err-msg">Please confirm that you have read the privacy notice</p>
+      </div>
+      <div class="q" data-q="A8.photo_consent">
+        <span class="qlabel">Photos and videos <span class="opt-mark">(optional)</span></span>
+        <p class="hint">We take photos and videos at the meetup to document it and to present it on v4air.eu, on our social media and in reports to the International Visegrad Fund. Your answer does not affect your application. You can withdraw this consent at any time by writing to gdpr@natur.cuni.cz.</p>
+        <label class="opt"><input type="checkbox" name="A8.photo_consent"><span>I consent to photos and videos of me being taken at the meetup and used for these purposes, as described in the privacy notice.</span></label>
       </div>
     </section>
 
@@ -838,6 +838,7 @@
   <div class="wrap footer-meta">
     <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
     <p>V4AIR &middot; 28-30 April 2027</p>
+    <p><a href="../policy/">Policy</a> &middot; <button type="button" data-cookie-settings>Cookie settings</button></p>
     <span id="dev-links" hidden><button type="button" id="reset-preview">Reset this preview</button> &middot; <button type="button" id="dev-toggle">Dev controls</button></span>
     <script>/* reset and dev links only for testers: add ?dev to the URL */ if (/[?&]dev/.test(location.search)) document.getElementById('dev-links').hidden = false;</script>
   </div>
@@ -1103,12 +1104,14 @@
   drawFile();
   function restore() {
     $$('input, select, textarea', form).forEach(function (el) {
-      if (!el.name || !(el.name in state)) return;
+      if (!el.name || el.hasAttribute('data-fixed') || !(el.name in state)) return; /* data-fixed: the page's own value wins, e.g. the notice version shown now */
       if (el.type === 'checkbox') el.checked = !!state[el.name];
       else if (el.type === 'radio') el.checked = state[el.name] === el.value;
       else el.value = state[el.name] || '';
     });
   }
+  $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
+  document.getElementById('kw-input').maxLength = 200;
   restore();
   form.addEventListener('input', save);
   form.addEventListener('change', save);
@@ -1322,7 +1325,7 @@
       if (sc.value === 'part' && !checkedIn('#funding-part input[type=checkbox]', q)) return 'Self-funding';
       return '';
     },
-    'A8.consent': function (q) { return $('input[name="A8.consent"]').checked ? '' : 'Consent'; }
+    'A8.consent': function (q) { return $('input[name="A8.consent"]').checked ? '' : 'Privacy notice'; }
   };
   function validateScreen(screen) {
     var errors = [];
@@ -1395,11 +1398,13 @@
     if (submitting && API.enabled()) {
       var btn = $('#btn-next');
       btn.disabled = true; btn.textContent = 'Sending…';
-      sync(true).then(function () { btn.disabled = false; track('form_submitted', { form_name: 'apply' }); idx++; render(); }, function () {
+      sync(true).then(function () { btn.disabled = false; track('form_submitted', { form_name: 'apply' }); idx++; render(); }, function (e) {
         btn.disabled = false; btn.textContent = 'Submit application';
         track('form_error', { form_name: 'apply' });
         var box = $('#err-summary');
-        box.innerHTML = '<strong>Your application was not sent</strong>Your answers are kept in this browser. Check your connection and press Submit application again.';
+        box.innerHTML = e && e.message === 'too_large'
+          ? '<strong>Your application is too long to store</strong>Your answers are kept in this browser. Please shorten your longest answers (about 45,000 characters in total) and press Submit application again.'
+          : '<strong>Your application was not sent</strong>Your answers are kept in this browser. Check your connection and press Submit application again.';
         box.classList.add('on'); box.focus();
       });
       return;

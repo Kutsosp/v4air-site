@@ -1027,6 +1027,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .footer { border-top: 1px solid var(--line); }
 .footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 2.5rem; }
 .footer-meta p { margin: 0; color: var(--text-2); font-size: 0.95rem; }
+.footer-meta a, .footer-meta button { background: none; border: none; padding: 0; font: inherit; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.footer-meta a:hover, .footer-meta button:hover { color: var(--accent); }
 
 /* poster send-off band: the sage paper of the identity, so the white AI reads */
 .footer-band {
