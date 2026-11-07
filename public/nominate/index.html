@@ -614,6 +614,7 @@
     if (idx === screens.length - 2 && API.enabled()) {
       var btn = byId('btn-next');
       btn.disabled = true; btn.textContent = 'Sending…';
+      byId('err-summary').classList.remove('on'); /* an earlier 'not sent' message would look like this attempt failing too */
       var data = collect(); delete data.__token;
       API.save('B', state.__id, state.__token, data, true, byId('hp').value).then(function (j) {
         state.__id = j.id; state.__token = j.token;
