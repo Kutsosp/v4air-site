@@ -7,14 +7,6 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <title>Nominate someone: V4 AI Researchers Meetup, Kostelec Castle, 28 to 30 April 2027</title>
 <script src="/consent.js"></script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37S10LBELM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-37S10LBELM');
-</script>
 <script>
   (function () {
     try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
@@ -254,8 +246,8 @@
   [data-theme="dark"] .footer-castle { filter: none; }
   .footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1.8rem; }
   .footer-meta p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
-  .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
-  .footer-meta button:hover { color: var(--accent); }
+  .footer-meta a, .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
+  .footer-meta a:hover, .footer-meta button:hover { color: var(--accent); }
 
   /* dev controls: hidden unless opened from the footer or with ?dev in the URL */
   .devbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; padding: 0.6rem 1rem; background: #1c1c1c; color: #e9f1f0; font-size: 0.85rem; border-top: 2px solid var(--accent); }
@@ -376,18 +368,12 @@
     <!-- 3 LAST THINGS -->
     <section class="screen" data-min="0.4" data-key="b5">
       <h2>Last things</h2>
-      <div class="q" data-q="B.mention">
-        <span class="qlabel">May we mention your name when we write to them?</span>
-        <div class="opt-row">
-          <label class="opt"><input type="radio" name="B.mention" value="yes"><span>Yes</span></label>
-          <label class="opt"><input type="radio" name="B.mention" value="no"><span>No</span></label>
-        </div>
-        <p class="err-msg">Choose yes or no</p>
-      </div>
       <div class="q" data-q="B.consent">
-        <span class="qlabel">Consent</span>
-        <label class="opt"><input type="checkbox" name="B.consent"><span>I agree that Charles University and the V4AIR organizing team store my details and the details of the people I nominate for the single purpose of sending them one invitation to apply. We keep these details until the invitation has been sent and the project reporting is closed, then delete them. Write to info@v4air.eu to see, correct or delete your data.</span></label>
-        <p class="err-msg">We need your consent to write to the people you nominate</p>
+        <span class="qlabel">Privacy</span>
+        <p class="hint">Charles University uses your details and the details of the people you nominate to send each of them one invitation to apply. In that first email we tell them that you nominated them and ask for their consent. If they refuse, or do not reply within 30 days, we delete their details. The <a href="../policy/privacy/#nominations" target="_blank" rel="noopener">privacy notice</a> explains the rest.</p>
+        <label class="opt"><input type="checkbox" name="B.consent"><span>I have read the privacy notice.</span></label>
+        <input type="hidden" name="B.notice_version" value="privacy-v1" data-fixed>
+        <p class="err-msg">Please confirm that you have read the privacy notice</p>
       </div>
     </section>
 
@@ -424,6 +410,7 @@
   <div class="wrap footer-meta">
     <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
     <p>V4AIR &middot; 28-30 April 2027</p>
+    <p><a href="../policy/">Policy</a> &middot; <button type="button" data-cookie-settings>Cookie settings</button></p>
     <span id="dev-links" hidden><button type="button" id="reset-preview">Reset this preview</button> &middot; <button type="button" id="dev-toggle">Dev controls</button></span>
     <script>/* reset and dev links only for testers: add ?dev to the URL */ if (/[?&]dev/.test(location.search)) document.getElementById('dev-links').hidden = false;</script>
   </div>
@@ -514,12 +501,13 @@
   }
   function restore() {
     $$('input', form).forEach(function (el) {
-      if (!el.name || el.closest('.card') || !(el.name in state)) return;
+      if (!el.name || el.closest('.card') || el.hasAttribute('data-fixed') || !(el.name in state)) return; /* data-fixed: the page's own value wins */
       if (el.type === 'checkbox') el.checked = !!state[el.name];
       else if (el.type === 'radio') el.checked = state[el.name] === el.value;
       else el.value = state[el.name] || '';
     });
   }
+  $$('textarea, input[type=text], input[type=url], input[type=email]', form).forEach(function (el) { if (el.maxLength < 0) el.maxLength = 12000; }); /* the backends cut longer answers */
   if (!prefilled) restore();
   form.addEventListener('input', save);
   form.addEventListener('change', save);
@@ -538,10 +526,10 @@
       return '<div class="card" data-i="' + i + '">' +
         '<div class="card-head"><span class="n">Person ' + n + '</span>' + (cards.length > 1 ? '<button type="button" data-remove="' + i + '">Remove</button>' : '') + '</div>' +
         '<span class="field-label strong">Who are they?</span>' + types +
-        '<label class="field-label strong" for="c' + n + '-name">Name</label><input type="text" id="c' + n + '-name" data-f="name" value="' + esc(c.name) + '">' +
-        '<label class="field-label" for="c' + n + '-contact">Email or another way to reach them (optional)</label><p class="hint">If you don\'t have it, name and institution are enough</p><input type="text" id="c' + n + '-contact" data-f="contact" value="' + esc(c.contact) + '">' +
-        '<label class="field-label" for="c' + n + '-aff">Institution or organization (optional)</label><input type="text" id="c' + n + '-aff" data-f="affiliation" value="' + esc(c.affiliation) + '">' +
-        '<label class="field-label" for="c' + n + '-why">Why do they fit? One or two sentences (optional)</label><p class="hint">What they work on, or why they would benefit</p><input type="text" id="c' + n + '-why" data-f="why" value="' + esc(c.why) + '">' +
+        '<label class="field-label strong" for="c' + n + '-name">Name</label><input type="text" id="c' + n + '-name" data-f="name" maxlength="300" value="' + esc(c.name) + '">' +
+        '<label class="field-label" for="c' + n + '-contact">Email or another way to reach them (optional)</label><p class="hint">If you don\'t have it, name and institution are enough</p><input type="text" id="c' + n + '-contact" data-f="contact" maxlength="300" value="' + esc(c.contact) + '">' +
+        '<label class="field-label" for="c' + n + '-aff">Institution or organization (optional)</label><input type="text" id="c' + n + '-aff" data-f="affiliation" maxlength="300" value="' + esc(c.affiliation) + '">' +
+        '<label class="field-label" for="c' + n + '-why">Why do they fit? One or two sentences (optional)</label><p class="hint">What they work on, or why they would benefit</p><input type="text" id="c' + n + '-why" data-f="why" maxlength="1000" value="' + esc(c.why) + '">' +
         '<p class="err-msg">Add a name and pick who they are</p>' +
         '</div>';
     }).join('');
@@ -569,8 +557,7 @@
       $$('.card').forEach(function (card, i) { var ok = cards[i].type && cards[i].name.trim(); card.classList.toggle('has-error', !ok); if (!ok) bad = true; });
       return bad ? 'People you nominate' : '';
     },
-    'B.mention': function () { return $('input[name="B.mention"]:checked') ? '' : 'May we mention your name'; },
-    'B.consent': function () { return $('input[name="B.consent"]').checked ? '' : 'Consent'; }
+    'B.consent': function () { return $('input[name="B.consent"]').checked ? '' : 'Privacy notice'; }
   };
   function validateScreen(screen) {
     var errors = [];
@@ -646,7 +633,7 @@
   function prev() { if (idx > 0) { idx--; render(); } }
   /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
   function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
-  /* field_done: one event per answered question. Closed answers (nominee type, mention, consent) send the value;
+  /* field_done: one event per answered question. Closed answers (nominee type, consent) send the value;
      text fields send only filled / empty, never the text (GA4 terms: no personal data). */
   (function () {
     var form = $('#form'), last = {};

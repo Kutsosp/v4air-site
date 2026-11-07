@@ -47,8 +47,12 @@
             });
   }
 
-  /* GA4 client id from the _ga cookie ("GA1.1.<id>"); empty when the tag never ran (blocked, or no consent) */
+  /* GA4 client id from the _ga cookie ("GA1.1.<id>"), only after Accept in the cookie banner:
+     visitors from before the banner still carry a _ga cookie they never agreed to. Same 12 months as consent.js. */
   function gaClientId() {
+    var c = null;
+    try { c = JSON.parse(localStorage.getItem('v4air-consent')); } catch (e) { /* unset, unavailable, or the old banner's plain value */ }
+    if (!c || c.choice !== 'granted' || Date.now() - c.at > 365 * 24 * 3600 * 1000) return '';
     var m = /(?:^|;\s*)_ga=GA1\.\d\.([0-9.]+)/.exec(document.cookie || '');
     return m ? m[1] : '';
   }

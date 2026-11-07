@@ -91,6 +91,12 @@ export function Footer() {
         <p>We are looking forward to meeting you in Kostelec.</p>
         <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
         <p>V4AIR &middot; 28-30 April 2027</p>
+        <p>
+          <a href={`${import.meta.env.BASE_URL}policy/`}>Policy</a> &middot;{' '}
+          <button type="button" data-cookie-settings>
+            Cookie settings
+          </button>
+        </p>
       </div>
     </footer>
   )

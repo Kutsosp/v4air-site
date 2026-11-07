@@ -430,10 +430,6 @@ Standalone URL, also reachable from the A end screen with prefill. Open to anyon
 - `B4.n.affiliation` "Institution or organization." Short text. Optional.
 - `B4.n.why` "Why do they fit? One or two sentences." Short text, up to 300 characters. Optional. Help: "What they work on, or why they would benefit."
 
-**B5** `B.mention` "May we mention your name when we write to them?" Single select. Required.
-- Yes
-- No
-
 **B6** `B.consent` Checkbox. Required. Copy: "[Consent text covering processing of the nominator's and nominees' data for the single purpose of sending an invitation, retention until [date], and how nominees are told where their contact came from when B5 is Yes.]"
 
 Button: "Send nominations".
