@@ -14,4 +14,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  /* second page: /kostelec/ (the venue) */
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        kostelec: path.resolve(__dirname, 'kostelec/index.html'),
+      },
+    },
+  },
 })
