@@ -17,6 +17,11 @@ export function Venue() {
               eat, and socialize in one place for the whole three days.
             </p>
             <p className="muted">Working language: English.</p>
+            <p>
+              <a className="btn btn-line" href={`${import.meta.env.BASE_URL}kostelec/`}>
+                More about the venue
+              </a>
+            </p>
           </div>
           <figure className="venue-photo">
             <img

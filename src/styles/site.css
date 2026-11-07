@@ -101,6 +101,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 /* ghost button sits on the hero photo in both themes: fixed light colors */
 .btn-ghost { color: #e9f1f0; border: 1px solid rgba(233, 241, 240, 0.45); background: rgba(12, 21, 23, 0.35); }
 .btn-ghost:hover { border-color: #e9f1f0; }
+.btn-line { color: var(--text); border: 1px solid var(--line); white-space: normal; text-align: left; max-width: 100%; }
+.btn-line:hover { border-color: var(--accent); }
 
 /* ---------- nav ---------- */
 .nav {

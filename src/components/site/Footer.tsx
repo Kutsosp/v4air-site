@@ -92,7 +92,9 @@ export function Footer() {
         <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
         <p>V4AIR &middot; 28-30 April 2027</p>
         <p>
-          <a href={`${import.meta.env.BASE_URL}policy/`}>Policy</a> &middot;{' '}
+          <a href={`${import.meta.env.BASE_URL}policy/privacy/`}>Privacy notice</a> &middot;{' '}
+          <a href={`${import.meta.env.BASE_URL}policy/cookies/`}>Cookies</a> &middot;{' '}
+          <a href={`${import.meta.env.BASE_URL}policy/code-of-conduct/`}>Code of Conduct</a> &middot;{' '}
           <button type="button" data-cookie-settings>
             Cookie settings
           </button>
