@@ -1,0 +1,83 @@
+# Deploys backend/ to Apps Script on every merge that changes it, or by hand from the Actions tab.
+# Needs the repository secret CLASPRC_JSON: the clasp login of petkout1, profile v4air.
+# The web app runs as petkout1, whose Gmail alias, uploads folder and mail trigger it uses,
+# so always deploy through this workflow and never from another Google account.
+#
+# New Google permissions need petkout1's consent in the script editor BEFORE the live version changes,
+# or saves through Apps Script can fail. So if a merge starts using a new Google service, this workflow
+# only uploads the code and leaves the live version alone. Then run `setup` in the script editor as
+# petkout1, and start this workflow by hand. A manual run always updates the live version.
+name: Deploy Apps Script backend
+
+on:
+  push:
+    branches: [main]
+    paths: ['backend/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-apps-script
+  cancel-in-progress: false
+
+env:
+  CLASP: npx --yes @google/clasp@3.4.1 --user v4air
+  DEPLOYMENT_ID: AKfycbwQ_K5-V5ijWyg4R3KeTtCBNHm2rbTzFoK2AtC1W0pxSZSObD6rHeoZ5yM9G_kufW1j
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.secrets.outputs.ready }}
+    steps:
+      - id: secrets
+        env:
+          CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+        run: |
+          if [ -n "$CLASPRC_JSON" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
+          else echo "::warning::CLASPRC_JSON is not set, so Apps Script was not deployed."; fi
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Compare the Google services the code uses
+        id: services
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          used() { grep -oE '\b[A-Z][A-Za-z]*(App|Service)\b' | sort -u; }
+          now=$(used < Code.gs)
+          was=$(git show "$BEFORE:backend/Code.gs" 2>/dev/null | used)
+          same_manifest=$(git diff --quiet "$BEFORE" HEAD -- appsscript.json 2>/dev/null && echo yes || echo no)
+          if [ "$now" != "$was" ] || [ "$same_manifest" = no ]; then echo "consent=needed" >> "$GITHUB_OUTPUT"; fi
+      - name: Log in
+        env:
+          CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+        run: |
+          printf '%s' "$CLASPRC_JSON" > ~/.clasprc.json
+          chmod 600 ~/.clasprc.json
+      - name: Upload the code
+        run: $CLASP push --force
+      - name: Update the live version
+        if: steps.services.outputs.consent != 'needed'
+        run: $CLASP redeploy "$DEPLOYMENT_ID" --description "$GITHUB_SHA"
+      - name: Say what to do next
+        if: steps.services.outputs.consent == 'needed'
+        run: |
+          msg='Code uploaded, live version NOT updated: this code may need new Google permissions. Run setup in the script editor as petkout1, then start this workflow by hand.'
+          echo "::warning::$msg"
+          echo "$msg" >> "$GITHUB_STEP_SUMMARY"
