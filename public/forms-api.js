@@ -23,7 +23,7 @@
       .catch(function (e) { if (e && e.final) throw e; return post(payload); });
   }
   function send(payload) {
-    if (!WORKER) return post(payload);
+    if (!WORKER || payload.form === 'S') return post(payload); /* the Worker knows only forms A and B */
     if (!payload.file && !payload.removeFile) return postWorker(payload);
     /* uploads: make sure the record exists first (created by the Worker), so the two backends never both append a row */
     if (payload.id) return post(payload);
