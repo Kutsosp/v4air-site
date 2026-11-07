@@ -293,13 +293,15 @@ function hash(s) {
 var MAIL_FROM = 'peter@v4air.eu', MAIL_NAME = 'V4 AI Researchers Meetup', MAIL_REPLY = 'info@v4air.eu';
 var MAIL_BATCH = 5; /* the script lock is held during a run, and saves through Apps Script wait for it at most 20 s */
 var RESUME_AFTER_MS = 24 * 60 * 60 * 1000;
+/* example.com, .net and .org are reserved and never receive mail (RFC 2606); the form tests use them, so their rows are marked, not mailed */
+var TEST_ADDRESS = /@example\.(com|net|org)$/i;
 
 /* Runs every 5 minutes (setup() makes the trigger). This is the only sender, because the Worker cannot send mail.
    The sheet is the queue: confirm_sent_at and resume_sent_at say what went out, so a missed run or an empty quota only delays mail.
-   Script properties: EMAIL_ENABLED=true, SITE_URL (site root), MAIL_SINCE (rows last saved before this date are never mailed). */
+   Script properties: EMAIL_ENABLED=true, SITE_URL (site root, default https://v4air.eu/), MAIL_SINCE (rows last saved before this date are never mailed). */
 function sendMail() {
   var props = PropertiesService.getScriptProperties();
-  var site = (props.getProperty('SITE_URL') || '').replace(/\/?$/, '/');
+  var site = (props.getProperty('SITE_URL') || 'https://v4air.eu/').replace(/\/?$/, '/');
   var since = new Date(props.getProperty('MAIL_SINCE') || NaN);
   if (props.getProperty('EMAIL_ENABLED') !== 'true' || !/^https:\/\//.test(site) || isNaN(since)) return;
   var lock = LockService.getScriptLock();
@@ -325,12 +327,13 @@ function mailTab(form, site, since, max) {
       var saved = r[col.last_saved_at], mark = col[kind + '_sent_at'];
       if (sent >= max || r[mark] || !(saved instanceof Date) || saved < since) return;
       if (kind === 'confirm' ? r[col.status] !== 'submitted' : r[col.status] !== 'in progress' || now - saved < RESUME_AFTER_MS) return;
-      var token = newToken(), row = i + 2;
+      var token = newToken(), row = i + 2, to = String(r[col['A1.email']]).trim();
+      if (TEST_ADDRESS.test(to)) { sh.getRange(row, mark + 1).setValue('skipped: test address'); return; }
       sh.getRange(row, col.token_hash + 1).setValue(r[col.token_hash] + ' ' + hash(token));
       var path = form === 'S' ? 'invited-speaker/' : 'apply/', link = site + path + '?id=' + encodeURIComponent(r[col.response_id]) + '&t=' + encodeURIComponent(token);
       var m = emailText(form, kind, r[col.response_id], String(r[col['A1.name']] || '').trim(), link), result = now;
       try {
-        GmailApp.sendEmail(String(r[col['A1.email']]).trim(), m.subject, m.body, { from: MAIL_FROM, name: MAIL_NAME, replyTo: MAIL_REPLY });
+        GmailApp.sendEmail(to, m.subject, m.body, { from: MAIL_FROM, name: MAIL_NAME, replyTo: MAIL_REPLY });
       } catch (err) {
         console.error('mail failed: ' + form + ' ' + kind + ' ' + r[col.response_id] + ': ' + err); /* marked, so one bad address cannot block the queue */
         result = 'failed';
