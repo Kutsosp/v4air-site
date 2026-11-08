@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Unsubscribe: V4 AI Researchers Meetup</title>
+<script>
+  (function () {
+    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+  })();
+</script>
+<style>
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-800-normal.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+  :root {
+    color-scheme: light;
+    --bg: #f2f3ec; --bg-raise: #f9f9f4; --line: #d3d5c8; --text: #161616; --text-2: #52564a;
+    --accent: #b35c1f; --teal: #4f8c88; --error: #b3402f;
+  }
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0f1a1c; --bg-raise: #152325; --line: #26383b; --text: #eef0e8; --text-2: #a5ada0;
+    --accent: #e9a24f; --teal: #7fc0bb; --error: #e07a68;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1 { font-family: 'Aileron', 'Satoshi', system-ui, sans-serif; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; margin: 0 0 1rem; text-wrap: balance; }
+  p { margin: 0 0 1rem; max-width: 60ch; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--teal); }
+  main { max-width: 680px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 0.5rem + 3vw, 2.5rem); }
+  .panel { background: var(--bg-raise); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1.4rem, 3.5vw, 2.4rem); }
+  .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+  .muted { color: var(--text-2); }
+  .err h1 { color: var(--error); }
+  .state { display: none; }
+  .state.on { display: block; }
+</style>
+</head>
+<body>
+<main>
+  <div class="panel">
+    <p class="eyebrow">V4 AI Researchers Meetup</p>
+
+    <section class="state on" id="working">
+      <h1>One moment</h1>
+      <p class="muted">Unsubscribing your address.</p>
+    </section>
+
+    <section class="state" id="done">
+      <h1>You are unsubscribed</h1>
+      <p><strong id="email"></strong> will get no more emails from the V4 AI Researchers Meetup, apart from a confirmation if you send one of our forms.</p>
+      <p class="muted">Changed your mind later? Reply to any earlier email from us and we will switch the emails back on.</p>
+    </section>
+
+    <section class="state err" id="bad">
+      <h1>This link is not valid</h1>
+      <p>Please use the Unsubscribe link at the bottom of the email, or reply to that email with "unsubscribe".</p>
+    </section>
+
+    <section class="state err" id="fail">
+      <h1>Something went wrong</h1>
+      <p>Please try again in a minute, or reply to the email with "unsubscribe".</p>
+    </section>
+
+    <p><a href="/">Back to v4air.eu</a></p>
+  </div>
+</main>
+<script>
+  (function () {
+    var WORKER = 'https://v4air-forms.v4air.workers.dev';
+    var qs = new URLSearchParams(location.search);
+    var e = qs.get('e') || '', t = qs.get('t') || '';
+    function show(id) {
+      var s = document.querySelectorAll('.state');
+      for (var i = 0; i < s.length; i++) s[i].classList.toggle('on', s[i].id === id);
+    }
+    if (!e || !t) { show('bad'); return; }
+    fetch(WORKER, { method: 'POST', body: JSON.stringify({ action: 'unsubscribe', e: e, t: t }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.ok) { document.getElementById('email').textContent = j.email; show('done'); }
+        else show(j && j.error === 'bad_link' ? 'bad' : 'fail');
+      })
+      .catch(function () { show('fail'); });
+  })();
+</script>
+</body>
+</html>

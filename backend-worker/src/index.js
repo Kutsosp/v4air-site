@@ -2,7 +2,8 @@
    Handles load and save (autosave, submit, nominations). File uploads (A7) stay on Apps Script, because a service
    account has no Drive storage of its own; public/forms-api.js routes requests with a file there.
    Same sheet layout, same ids, same token hashes as Code.gs, so either backend can read what the other wrote.
-   Secret: GOOGLE_SA_KEY (service-account JSON, editor on the sheet). Vars: SHEET_ID, ALLOWED_ORIGINS. */
+   Secrets: GOOGLE_SA_KEY (service-account JSON, editor on the sheet), UNSUB_SECRET (HMAC key for Unsubscribe links,
+   the same value as the Apps Script property UNSUB_SECRET). Vars: SHEET_ID, ALLOWED_ORIGINS. */
 
 const ID_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 const FORMS = {
@@ -16,7 +17,9 @@ const API = 'https://sheets.googleapis.com/v4/spreadsheets/';
 export default {
   async fetch(request, env) {
     const cors = corsHeaders(request, env);
+    const url = new URL(request.url);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
+    if (url.pathname === '/unsubscribe') return unsubscribeHttp(request, env, url, cors);
     if (request.method === 'GET') return json({ ok: true, service: 'v4air-forms-worker' }, cors);
     if (request.method !== 'POST') return json({ ok: false, error: 'bad_method' }, cors, 405);
     try {
@@ -28,6 +31,7 @@ export default {
       const g = new Sheets(env);
       if (req.action === 'load') return json(await load(g, req), cors);
       if (req.action === 'save') return json(await save(g, req), cors);
+      if (req.action === 'unsubscribe') return json(await unsubscribe(g, env, req.e, req.t, 'page'), cors);
       return json({ ok: false, error: 'bad_action' }, cors);
     } catch (err) {
       console.error(err && err.stack || String(err));
@@ -35,6 +39,71 @@ export default {
     }
   }
 };
+
+/* ---------- unsubscribe ----------
+   Every email ends with an Unsubscribe link: https://v4air.eu/unsubscribe/?e=<b64url email>&t=<token>, where
+   token = b64url(HMAC-SHA256(UNSUB_SECRET, lowercase email)). The same formula lives in backend/Code.gs (unsubLink),
+   which generates the links. Unsubscribed addresses go to the sheet tab "Unsubscribed"; sendMail in Code.gs checks it
+   before every send. Confirmations of a form that was sent still go out (Doc "V4AIR form emails", tab How it works).
+   Three entry points, all idempotent:
+     POST JSON {action:'unsubscribe', e, t}      the page on v4air.eu
+     POST /unsubscribe?e=&t= (form-encoded)      RFC 8058 one-click from the List-Unsubscribe header
+     GET  /unsubscribe?e=&t=                     fallback that works without JavaScript */
+const UNSUB_TAB = 'Unsubscribed', UNSUB_HEAD = ['email', 'unsubscribed_at', 'source'];
+
+async function unsubscribeHttp(request, env, url, cors) {
+  const e = url.searchParams.get('e') || '', t = url.searchParams.get('t') || '';
+  let res;
+  try { res = await unsubscribe(new Sheets(env), env, e, t, request.method === 'POST' ? 'one-click' : 'link'); }
+  catch (err) { console.error(err && err.stack || String(err)); res = { ok: false, error: 'server' }; }
+  if (request.method === 'POST') return json(res, cors, res.ok ? 200 : 400);
+  const body = res.ok
+    ? '<h1>You are unsubscribed</h1><p>' + escapeHtml(res.email) + ' will get no more emails from the V4 AI Researchers Meetup, apart from a confirmation if you send a form.</p>'
+    : res.error === 'bad_link' ? '<h1>This link is not valid</h1><p>Please use the Unsubscribe link from the bottom of the email, or reply to that email with "unsubscribe".</p>'
+    : '<h1>Something went wrong</h1><p>Please try again in a minute, or reply to the email with "unsubscribe".</p>';
+  return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unsubscribe: V4AIR</title>' +
+    '<style>body{margin:0;background:#f2f3ec;color:#161616;font:1.0625rem/1.6 "Segoe UI",system-ui,sans-serif}main{max-width:40rem;margin:0 auto;padding:4rem 1.5rem}h1{font-size:2rem;line-height:1.15;margin:0 0 1rem}a{color:#b35c1f}</style></head>' +
+    '<body><main>' + body + '<p><a href="https://v4air.eu/">v4air.eu</a></p></main></body></html>',
+    { status: res.ok ? 200 : 400, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
+}
+
+async function unsubscribe(g, env, e, t, source) {
+  const email = decodeEmail(e);
+  if (!email || !(await verifyUnsub(env, email, t))) return { ok: false, error: 'bad_link' };
+  const added = await recordUnsub(g, email, source);
+  return { ok: true, email, added };
+}
+
+function decodeEmail(e) {
+  try {
+    const s = String(e || '').replace(/-/g, '+').replace(/_/g, '/');
+    const email = decodeURIComponent(escape(atob(s + '='.repeat((4 - s.length % 4) % 4)))).trim().toLowerCase();
+    return EMAIL_RE.test(email) && email.length <= 254 ? email : '';
+  } catch (err) { return ''; }
+}
+
+async function unsubToken(env, email) {
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(env.UNSUB_SECRET), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  return b64url(new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(email))));
+}
+
+async function verifyUnsub(env, email, t) {
+  if (!env.UNSUB_SECRET || typeof t !== 'string' || t.length !== 43) return false;
+  const want = await unsubToken(env, email);
+  let diff = 0;
+  for (let i = 0; i < want.length; i++) diff |= want.charCodeAt(i) ^ t.charCodeAt(i);
+  return diff === 0;
+}
+
+async function recordUnsub(g, email, source) {
+  await g.ensureTab(UNSUB_TAB, UNSUB_HEAD);
+  const have = await g.column(UNSUB_TAB);
+  if (have.slice(1).some(v => v.trim().toLowerCase() === email)) return false;
+  await g.append(UNSUB_TAB, [[email, pragueNow(), source]]);
+  return true;
+}
+
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]); }
 
 function corsHeaders(request, env) {
   const origin = request.headers.get('Origin') || '';
@@ -257,6 +326,15 @@ export class Sheets {
     if (need > 0) await this.call(':batchUpdate', { method: 'POST', body: JSON.stringify({ requests: [{ appendDimension: { sheetId: m.id, dimension: 'COLUMNS', length: need } }] }) });
     await this.call('/values/' + encodeURIComponent(q(tab) + '!' + colName(head.length + 1) + '1') + '?valueInputOption=RAW', { method: 'PUT', body: JSON.stringify({ values: [missing] }) });
     return head.concat(missing);
+  }
+
+  /* creates the tab with a header row when it does not exist yet */
+  async ensureTab(tab, head) {
+    if ((await this.meta())[tab]) return;
+    if ((await this.meta(true))[tab]) return;
+    await this.call(':batchUpdate', { method: 'POST', body: JSON.stringify({ requests: [{ addSheet: { properties: { title: tab, gridProperties: { rowCount: 1000, columnCount: head.length, frozenRowCount: 1 } } } }] }) });
+    await this.call('/values/' + encodeURIComponent(q(tab) + '!A1') + '?valueInputOption=RAW', { method: 'PUT', body: JSON.stringify({ values: [head] }) });
+    await this.meta(true);
   }
 
   async deleteRows(tab, zeroBasedRows) {
