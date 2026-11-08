@@ -345,7 +345,7 @@ export function KostelecPage() {
           </Reveal>
           <Reveal className="wrap">
             <div className="k-route">
-              <h3>From Prague to the castle gate</h3>
+              <h3>From Prague to the castle in 45 minutes</h3>
               <div className="k-route-starts">
                 <div>
                   <p className="k-route-from">From a coach or train</p>
