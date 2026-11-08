@@ -90,8 +90,8 @@ export function Who() {
               </span>
             </div>
             <p className="funded-note">
-              Applicants from other universities can apply too, for a small fee. Use
-              the same form and we will contact you about the fee.
+              Applicants from other universities can apply too, for a fee (see the{' '}
+              <a href={`${import.meta.env.BASE_URL}pricing/`}>prices</a>). Use the same form.
             </p>
             <p className="funded-note">
               <strong>Not in academia?</strong> If you work with AI in a company, a

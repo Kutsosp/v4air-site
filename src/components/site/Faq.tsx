@@ -56,7 +56,12 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-non-v4',
     q: 'My university is not a partner. Can I still come?',
-    a: 'Yes. A limited number of paid places are open to people from other institutions, for a small fee. Apply through the same form and we will contact you about the fee.',
+    a: (
+      <>
+        Yes. A limited number of paid places are open to people from other institutions. The fees are
+        on the <a href={`${import.meta.env.BASE_URL}pricing/`}>prices page</a>. Apply through the same form.
+      </>
+    ),
   },
   {
     id: 'faq-no-talk',
