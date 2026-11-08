@@ -12,9 +12,10 @@ export function Venue() {
             <p className="eyebrow">The venue</p>
             <h2>You will be staying in the castle</h2>
             <p>
-              A university-owned Renaissance castle in the black forests, 45 minutes
-              from Prague, with direct public transport access. All of us will live,
-              eat, and socialize in one place for the whole three days.
+              Kostelec Castle is a Renaissance castle owned by the Czech University of
+              Life Sciences Prague, 45 minutes from Prague by metro and a direct bus.
+              Rooms, meals and sessions are all within a few minutes&rsquo; walk of each
+              other.
             </p>
             <p className="muted">Working language: English.</p>
             <p>

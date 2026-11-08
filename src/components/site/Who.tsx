@@ -1,6 +1,6 @@
 import { InView } from '@/components/motion-primitives/in-view'
 import { TextLoop } from '@/components/motion-primitives/text-loop'
-import { APPLY_URL, CONTACT_MAILTO, Reveal } from './Reveal'
+import { APPLY_URL, Reveal } from './Reveal'
 
 /* X and Y rotate as matched pairs so the sentence always makes sense */
 const PAIRS: Array<[string, string]> = [
@@ -63,9 +63,10 @@ export function Who() {
           </Reveal>
           <Reveal delay={1}>
             <p>
-              If AI is part of your research, apply, whatever your field. You don't
-              have to build AI to belong here. Master's and PhD students, postdocs and
-              researchers still early in building a group can all apply.
+              If you use AI in your research, in any field, you can apply. You
+              don&rsquo;t need to build AI models yourself. Master&rsquo;s and PhD
+              students, postdocs and researchers who are starting their own research
+              group can all apply.
             </p>
             <a className="btn btn-primary" href={APPLY_URL}>
               Apply now
@@ -89,9 +90,8 @@ export function Who() {
               </span>
             </div>
             <p className="funded-note">
-              Applicants from outside partner universities are welcome to apply for a
-              small fee. If that&rsquo;s you, contact{' '}
-              <a href={CONTACT_MAILTO}>info@v4air.eu</a>.
+              Applicants from other universities can apply too, for a small fee. Use
+              the same form and we will contact you about the fee.
             </p>
             <p className="funded-note">
               <strong>Not in academia?</strong> If you work with AI in a company, a

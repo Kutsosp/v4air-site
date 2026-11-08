@@ -2,20 +2,16 @@ import { Reveal } from './Reveal'
 
 const ITEMS = [
   {
-    title: 'You choose the topics',
-    body: 'You tell us what you want to learn; that decides the talks and the invited speakers.',
-  },
-  {
-    title: 'Not-Just-Posters session',
-    body: 'For students: present your project while it is still in progress and get feedback from experts. Bring a poster, a prototype, a demo or slides.',
+    title: 'Not-Just-Posters: a session for projects that don’t fit slides',
+    body: 'Students show a poster, a prototype, a physical object or an interactive demo, and get feedback from experts.',
   },
   {
     title: 'Hands-on workshops',
-    body: 'Workshop topics assembled from the interests you bring in your form.',
+    body: 'Practical workshops on topics taken from the interests participants list in the application form.',
   },
   {
-    title: 'Unstructured time, on purpose',
-    body: 'Everyone lives, eats, and socializes in one place, so the best conversations do not end when the sessions do.',
+    title: 'Free time to talk',
+    body: 'Everyone stays and eats within a few minutes’ walk of each other, so conversations continue after the sessions end.',
   },
 ]
 
@@ -23,7 +19,7 @@ export function FormatGrid() {
   return (
     <section className="format" id="format">
       <Reveal className="wrap">
-        <h2>What you can expect</h2>
+        <h2>What happens during the three days</h2>
         <div className="format-list">
           {ITEMS.map((it) => (
             <div className="format-item" key={it.title}>

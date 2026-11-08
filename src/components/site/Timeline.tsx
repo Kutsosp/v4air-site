@@ -9,13 +9,13 @@ const WALKER = { scale: 32, lift: 3 }
 const VICTORY = { scale: 40, lift: -11 }
 
 const STOPS = [
-  { date: '2026-09-01', label: '1 Sep 2026', what: 'Applications open', sub: 'No CV, no motivation letter.' },
-  { date: '2027-01-15', label: '15 Jan 2027', what: 'Application deadline', sub: 'Careful answers beat fast ones.' },
+  { date: '2026-09-01', label: '1 Sep 2026', what: 'Applications open', sub: 'No CV or motivation letter needed.' },
+  { date: '2027-01-15', label: '15 Jan 2027', what: 'Application deadline', sub: 'Take your time with the form.' },
   { date: '2027-02-15', label: 'Feb 2027', what: 'Selection results', sub: 'Everyone hears from us, either way.' },
-  { date: '2027-03-10', label: 'March 2027', what: 'Keynotes + preliminary programme', sub: 'Built to fit you.' },
-  { date: '2027-04-14', label: 'Apr 2027', what: 'Final programme', sub: 'With everything you need for the trip.' },
-  { date: '2027-04-28', label: '28-30 Apr 2027', what: 'V4AIR at Kostelec Castle', sub: 'Three days, one roof.' },
-  { date: '2027-05-01', label: 'And beyond', what: 'Follow-up activities', sub: 'The connections made over three days keep working together.' },
+  { date: '2027-03-10', label: 'March 2027', what: 'Keynote speakers and draft program', sub: 'Built from participants’ answers.' },
+  { date: '2027-04-14', label: 'Apr 2027', what: 'Final program', sub: 'With everything you need for the trip.' },
+  { date: '2027-04-28', label: '28-30 Apr 2027', what: 'V4AIR at Kostelec Castle', sub: 'Three days together in Kostelec.' },
+  { date: '2027-05-01', label: 'And beyond', what: 'Follow-up activities', sub: 'Activities that keep participants in touch after the meetup.' },
 ]
 const T = STOPS.map((s) => new Date(`${s.date}T00:00:00`).getTime())
 const DAY = 86400000
@@ -45,7 +45,7 @@ function phaseCopy(now: number) {
   if (last === -1) line = `Applications open in ${fmtD(dTo(0))}.`
   else if (last === 0) line = `Applications are open. ${fmtD(dTo(1))} left to apply.`
   else if (last === 1) line = 'Applications are closed. Selection is underway; results in February.'
-  else if (last === 2) line = "Results are out. We're working hard on building the ideal programme based on your answers."
+  else if (last === 2) line = 'Results are out. We are building the program from participants’ answers.'
   else if (last === 3) line = 'Keynotes and preliminary programme are out. Final programme lands in April.'
   else if (last === 4) line = `V4AIR starts in ${fmtD(dTo(5))}.`
   else if (eventLive) line = 'V4AIR is happening right now. Why are you looking at this?'
@@ -257,7 +257,7 @@ export function Timeline() {
   return (
     <section className="timeline" id="timeline" ref={sectionRef}>
       <Reveal className="wrap">
-        <h2>The road to Kostelec</h2>
+        <h2>Key dates</h2>
         <p className="countdown" ref={countdownRef}></p>
         <div className="road-wrap">
           <div className="road" ref={roadRef}>

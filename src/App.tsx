@@ -2,10 +2,13 @@ import { Nav } from '@/components/site/Nav'
 import { Hero } from '@/components/site/Hero'
 import { Funded } from '@/components/site/Funded'
 import { Countdown } from '@/components/site/Countdown'
-import { Adaptive } from '@/components/site/Adaptive'
+import { Program } from '@/components/site/Program'
 import { FormatGrid } from '@/components/site/FormatGrid'
 import { Venue } from '@/components/site/Venue'
 import { Who } from '@/components/site/Who'
+import { WhatYouGet } from '@/components/site/WhatYouGet'
+import { NotAiResearcher } from '@/components/site/NotAiResearcher'
+import { WhatToBring } from '@/components/site/WhatToBring'
 import { ApplySteps } from '@/components/site/ApplySteps'
 import { Timeline } from '@/components/site/Timeline'
 import { Faq } from '@/components/site/Faq'
@@ -36,10 +39,13 @@ function Site() {
         <Hero theme={theme} />
         <Funded />
         <Countdown />
-        <Adaptive />
+        <Program />
+        <WhatYouGet />
         <FormatGrid />
         <Venue />
         <Who />
+        <NotAiResearcher />
+        <WhatToBring />
         <ApplySteps />
         <Timeline />
         <Faq />

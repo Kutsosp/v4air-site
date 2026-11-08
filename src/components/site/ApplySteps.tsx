@@ -4,19 +4,19 @@ import { APPLY_URL, CONTACT_MAILTO, NOMINATE_URL } from './Reveal'
 const STEPS = [
   {
     title: 'Tell us what you need',
-    body: 'What you work on, what you want to learn, and who you want to meet.',
+    body: 'In the application form: what you work on, what you want to learn and who you want to meet.',
   },
   {
-    title: 'We select for fit and mix',
-    body: 'Not first-come-first-served. Careful answers beat fast ones, and they shape your experience once you are there.',
+    title: 'We select participants',
+    body: 'Based on your answers in the form, we choose people whose needs and contributions complement each other.',
   },
   {
     title: 'We get in touch',
-    body: 'Accepted participants hear from us directly, with everything you need for the trip.',
+    body: 'Everyone hears from us in February 2027. Accepted participants get travel details and the next steps.',
   },
   {
-    title: 'We shape your contribution together',
-    body: 'Your topic and format get worked out with you, and the whole event is built from what everyone asked for.',
+    title: 'We plan your part together',
+    body: 'We agree with you what you will contribute, for example a talk, a poster or a demo.',
   },
 ]
 
@@ -112,10 +112,10 @@ export function ApplySteps() {
       <div className="pin-outer" ref={outerRef}>
         <div className="pin-inner">
           <div className="wrap">
-            <h2>You do not need a finished talk to apply</h2>
+            <h2>How applying works</h2>
             <p className="muted">
-              Ideas, perspectives, and works-in-progress are welcome. Here is the
-              whole process:
+              You don&rsquo;t need a finished talk or paper. Ideas and unfinished
+              projects are welcome.
             </p>
 
             <ol className="steps" ref={stepsRef}>
@@ -133,7 +133,7 @@ export function ApplySteps() {
             <div className="apply-panel" ref={panelRef}>
               <div>
                 <h3>Ready when you are</h3>
-                <p>The whole program is built from what you ask for.</p>
+                <p>The whole program is built from what participants ask for.</p>
               </div>
               <div className="apply-cta">
                 <a className="btn btn-primary" href={APPLY_URL}>

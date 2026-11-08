@@ -54,8 +54,8 @@ export function Countdown() {
             Apply now
           </a>
           <p className="mb-0 max-w-[50ch] text-sm text-ink-2">
-            No abstract, CV, or motivation letter required. Deadline for
-            applications: 15 January 2027.
+            You apply with one online form. No abstract, CV or motivation letter.
+            Deadline: 15 January 2027.
           </p>
         </div>
       )}

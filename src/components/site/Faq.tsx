@@ -15,7 +15,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-selection',
     q: 'How are participants selected?',
-    a: 'By fit and mix, not first-come-first-served. There is no CV and no motivation letter; what you write in the form is what matters most.',
+    a: 'Based on your answers in the application form. We select people whose needs fit the event and who together make a good mix. There is no CV or motivation letter, and the order of applications does not matter.',
   },
   {
     id: 'faq-nominated',
@@ -25,7 +25,7 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-attendance',
     q: 'Do I have to attend the whole three days?',
-    a: 'Yes, we expect you there from Wednesday midday to Friday evening. The event is built on everyone living, eating, and working in one place; day visits would break exactly the thing that makes it work.',
+    a: 'Yes, from Wednesday midday to Friday evening (28-30 April 2027). The program depends on everyone staying together for the whole time, so day visits are not possible.',
   },
   {
     id: 'faq-language',
@@ -51,17 +51,17 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
   {
     id: 'faq-early-career',
     q: 'Who counts as "early-career"?',
-    a: "Master's students, PhD candidates, and postdocs, read generously. Recently past the postdoc stage, say a new assistant professor still early in building a group? You're welcome too. If you are unsure, apply.",
+    a: "Master’s students, PhD candidates and postdocs. Researchers just past the postdoc stage, for example a new assistant professor starting a research group, are welcome too. If you are unsure, apply.",
   },
   {
     id: 'faq-non-v4',
-    q: "I'm not at a V4 partner institution. Can I still come?",
-    a: 'Yes. A limited number of seats, on top of the funded places, are open to participants from other institutions for a small fee. Apply the same way; we will contact you about the details.',
+    q: 'My university is not a partner. Can I still come?',
+    a: 'Yes. A limited number of paid places are open to people from other institutions, for a small fee. Apply through the same form and we will contact you about the fee.',
   },
   {
     id: 'faq-no-talk',
     q: 'Do I need a paper, poster, or finished talk to apply?',
-    a: 'No. Ideas, perspectives, and works-in-progress are welcome, and projects that failed or got stuck are first-class material here. If you are selected, we shape your contribution together.',
+    a: 'No. Ideas and unfinished projects are welcome, and so are projects that failed or got stuck. If you are selected, we plan your part together.',
   },
   {
     id: 'faq-recording',
@@ -79,8 +79,8 @@ const ITEMS: Array<{ id: string; q: string; a: React.ReactNode }> = [
     a: (
       <>
         We want to hear it. Write to <a href={CONTACT_MAILTO}>info@v4air.eu</a>;
-        ideas, collaboration offers, and questions all land with the organizing team
-        directly.
+        ideas, collaboration offers, and questions all go straight to the organizing
+        team.
       </>
     ),
   },

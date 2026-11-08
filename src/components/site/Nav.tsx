@@ -11,8 +11,8 @@ import { APPLY_URL } from './Reveal'
 const LINKS = [
   { href: '#adaptive', label: 'How it works' },
   { href: '#venue', label: 'The castle' },
-  { href: '#apply', label: 'Applying' },
-  { href: '#timeline', label: 'Timeline' },
+  { href: '#apply', label: 'How to apply' },
+  { href: '#timeline', label: 'Key dates' },
   { href: '#faq', label: 'FAQ' },
   { href: '#partners', label: 'Partners' },
 ]
@@ -111,6 +111,8 @@ export function Nav({
             meetup
           </motion.span>
         </a>
+        {/* event date, centred between the logomark and the switch (mockup) */}
+        <p className="nav-date">28-30 April 2027</p>
         {/* menu items exist only on the opaque bar: staggered blur-drop entrance */}
         <nav aria-label="Sections">
           <AnimatedGroup

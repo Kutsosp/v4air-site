@@ -30,8 +30,9 @@ export function Partners() {
           <span className="count">one</span> castle
         </h2>
         <p className="intro">
-          Coordinated by Charles University with partner institutions across the V4
-          region, co-organized with prg.ai and common ground research.
+          Coordinated by Charles University with partner universities in Czechia,
+          Hungary, Poland and Slovakia (the Visegrad Four, or V4, which gives V4AIR its
+          name). Co-organized with prg.ai and common ground research.
         </p>
         <div className="logo-wall">
           {UNIVERSITIES.map((l) => {
@@ -63,7 +64,7 @@ export function Partners() {
           })}
         </div>
         <div className="partner-strip">
-          <p className="partner-strip-label">Organizing Partners</p>
+          <p className="partner-strip-label">Organizing partners</p>
           <div className="partner-strip-logos">
             {PARTNERS.map((l) => {
               const img = (

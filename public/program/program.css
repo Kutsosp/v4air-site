@@ -1,0 +1,80 @@
+/* Program section ("The program"), scoped to .v4p so nothing leaks into the rest of the site.
+   Colours come from the site's own theme variables; match colours have a light and a dark set. */
+.v4p { --raise: var(--bg-raise); --text2: var(--text-2); --m1: #2a64a8; --m2: #a85a12; --m3: #b3372f; color: var(--text); }
+[data-theme="dark"] .v4p { --m1: #6aa8e8; --m2: #e9a24f; --m3: #e06c75; }
+.v4p *, .v4p *::before, .v4p *::after { box-sizing: border-box; }
+.v4p .halo { fill: var(--bg) !important; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; opacity: .9; }
+
+/* desktop: pinned, two columns */
+.v4p .v4p-pin { min-height: 100vh; display: flex; align-items: center; padding-top: 4.255rem; }
+.v4p .two { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr); gap: 3.19rem; align-items: start; max-width: 93.1rem; padding: 1.86rem 3.19rem; margin: 0 auto; width: 100%; }
+.v4p h2.big { font-size: clamp(2.4rem, 1.6rem + 3vw, 4.2rem); line-height: 1; margin: 0 0 1.1rem; }
+.v4p .expl { font-size: 1.3rem; line-height: 1.55; color: var(--text); max-width: 52ch; margin: 0 0 1.8rem; }
+.v4p .expl p { margin: 0 0 .7em; }
+.v4p .expl p:last-child { margin-bottom: 0; }
+.v4p .n { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 1px solid var(--line); font-weight: 700; font-size: .9rem; transition: background-color .35s, color .35s; }
+.v4p #steps { list-style: none; margin: 1.2rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; }
+.v4p #steps li { display: grid; grid-template-columns: 1.9rem 1fr; gap: .7rem; cursor: pointer; transition: opacity .8s ease, transform .8s ease; }
+.v4p #steps li strong { display: block; color: var(--text); }
+.v4p #steps li .body { display: block; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .8s ease, opacity .8s ease; }
+.v4p #steps li.on .n { background: var(--teal); border-color: var(--teal); color: var(--bg); }
+.v4p #steps li.on strong { font-size: 1.15rem; }
+.v4p #steps li.on .body { max-height: 8em; opacity: 1; font-size: 1.15rem; line-height: 1.45; margin-top: .25rem; }
+.v4p #steps li.done { opacity: .55; transform: none; }
+.v4p #steps li:not(.on):not(.done) { opacity: 0; transform: translateY(6px); pointer-events: none; }
+.v4p svg { width: 100%; height: auto; color: var(--text2); overflow: visible; }
+.v4p svg#stage { max-height: calc(100vh - 7.3rem); }
+
+/* animation drawing */
+.v4p .person { fill: currentColor; }
+.v4p .person.lit { filter: drop-shadow(0 0 5px currentColor); }
+.v4p .lt { font-size: 14.5px; font-weight: 700; fill: var(--text); }
+.v4p .ls { font-size: 13px; font-weight: 600; }
+.v4p .link { stroke-width: 2.5; stroke-dasharray: 1 1; stroke-linecap: round; fill: none; }
+.v4p .mail { fill: var(--bg); stroke-width: 1.6; stroke-linejoin: round; }
+.v4p .empty { fill: none; stroke-width: 2; stroke-dasharray: 4 4; }
+.v4p .place { font-size: 13px; font-weight: 700; fill: var(--text); letter-spacing: .04em; }
+.v4p .head { font-size: 12px; font-weight: 700; letter-spacing: .12em; fill: var(--text2); }
+.v4p .kind { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; }
+.v4p .topic { font-size: 15px; font-weight: 700; fill: var(--text); }
+.v4p .frame { fill: none; stroke: var(--text2); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.v4p .lbg { fill: var(--bg); fill-opacity: .8; }
+:root:not([data-theme="dark"]) .v4p .person.lit { filter: none; }
+
+@media (max-width: 900px) {
+  .v4p .two { grid-template-columns: 1fr; gap: 6px; padding: 14px 16px; }
+  .v4p .lt { font-size: 18px; }
+  .v4p .ls { font-size: 16.5px; }
+}
+
+/* phone version (below 760 px) replaces the desktop one */
+.v4p .phone { display: none; }
+@media (max-width: 760px) {
+  .v4p .desk { display: none !important; }
+  .v4p .phone { display: block; padding: 28px 18px 48px; max-width: 520px; margin: 0 auto; }
+  .v4p .phone h2.big { font-size: 2.3rem; margin-bottom: .8rem; }
+  .v4p .phone .expl { font-size: 1.05rem; line-height: 1.55; margin-bottom: 2rem; }
+  .v4p .phone .expl p { margin-bottom: 1.6em; }
+  .v4p .phone .expl p:last-child { margin-bottom: 0; }
+  .v4p .pstep { padding: 1.4rem 0 1.2rem; border-top: 1px solid var(--line); }
+  .v4p .ptext { display: grid; grid-template-columns: 2rem 1fr; gap: .75rem; align-items: start; }
+  .v4p .ptext .n { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--teal); color: var(--bg); font-weight: 700; border: 0; }
+  .v4p .ptext strong { display: block; font-size: 1.1rem; color: var(--text); }
+  .v4p .ptext p { margin: .2rem 0 0; font-size: 1rem; line-height: 1.5; color: var(--text); }
+  .v4p .pstage { display: block; width: 100%; height: auto; margin-top: .6rem; }
+  .v4p .pplace { font-size: 17.5px; font-weight: 700; letter-spacing: .03em; fill: var(--text); }
+  .v4p .plt { font-size: 15px; font-weight: 700; fill: var(--text); }
+  .v4p .pls { font-size: 14px; font-weight: 600; }
+  .v4p .pkind { font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+  .v4p .ptitle { font-size: 17px; font-weight: 700; fill: var(--text); }
+  .v4p .phone.pscroll { padding: 0; max-width: none; }
+  .v4p .ppin { height: 100vh; height: 100svh; position: relative; overflow: hidden; }
+  .v4p .pintro { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 4.5rem 22px 0; }
+  .v4p .phead { position: absolute; top: calc(env(safe-area-inset-top) + 72px); left: 0; right: 0; margin: 0; padding: 0 22px; z-index: 2; }
+  .v4p .pchap { position: absolute; inset: 128px 0 0 0; display: flex; flex-direction: column; justify-content: center; padding: 0 18px; gap: 10px; }
+  .v4p .ptexts { display: grid; min-height: 7.5rem; align-items: start; }
+  .v4p .ptexts > * { grid-area: 1 / 1; }
+  .v4p .pdots { display: flex; gap: 8px; justify-content: center; padding-top: 6px; }
+  .v4p .pdots span { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text2); }
+  .v4p .pdots span.on { background: var(--teal); border-color: var(--teal); }
+}
