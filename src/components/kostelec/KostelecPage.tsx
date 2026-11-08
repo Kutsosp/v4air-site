@@ -11,6 +11,9 @@ const img = (f: string) => asset('assets/kostelec/' + f)
 
 /* Coordinates, not the place name: a place card would lead to the venue's own website */
 const MAP_URL = 'https://www.google.com/maps?q=49.99578,14.8629&z=15&hl=en&output=embed'
+// Empty date and time: pid.cz searches from the moment the visitor opens it.
+const PID_SEARCH_URL =
+  'https://pid.cz/en/search-connection/?from=H%C3%A1je&to=Kostelec%20n.%C4%8C.l.%2Cn%C3%A1m.&date=&time=&depart=on&speed=medium&over=&max-transfers=default&transports%5B%5D=metro&transports%5B%5D=vlak&transports%5B%5D=tram&transports%5B%5D=bus&transports%5B%5D=trolley&transports%5B%5D=privoz&transports%5B%5D=lan&line_cid='
 
 /* One stop on the route diagram; `line` colours the segment that leaves it and the
    line badges sit on that segment */
@@ -421,7 +424,7 @@ export function KostelecPage() {
               </ol>
               <p className="muted k-route-note">
                 Lines and stops as of November 2026. Check times at{' '}
-                <a href="https://pid.cz/en/">pid.cz</a>.
+                <a href={PID_SEARCH_URL}>pid.cz</a>.
               </p>
               <img className="k-route-castle" src={asset('assets/castle-silhouette.png')} alt="" />
             </div>
