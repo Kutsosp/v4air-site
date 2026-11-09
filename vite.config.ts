@@ -20,6 +20,8 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         kostelec: path.resolve(__dirname, 'kostelec/index.html'),
+        programme: path.resolve(__dirname, 'programme/index.html'),
+        faq: path.resolve(__dirname, 'faq/index.html'),
       },
     },
   },

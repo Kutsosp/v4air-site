@@ -1,4 +1,4 @@
-import { CONTACT_MAILTO, PARTNERS_MAILTO, Reveal } from './Reveal'
+import { Reveal } from './Reveal'
 import { asset } from '@/lib/utils'
 
 /* Logo files are 200 px tall WebP copies of the colour logos (05.10.2026) to keep the section light.
@@ -86,34 +86,6 @@ export function Partners() {
                 <span key={l.alt}>{img}</span>
               )
             })}
-          </div>
-        </div>
-        <div className="partners-bottom">
-          <div className="team">
-            <div>
-              <h3>Peter Kutsos</h3>
-              <p>Project coordinator</p>
-            </div>
-            <div>
-              <h3>Petr Chlup</h3>
-              <p>Technical coordinator</p>
-            </div>
-            <div>
-              <h3>Inquiries and collaborations</h3>
-              <p>
-                <a href={CONTACT_MAILTO}>info@v4air.eu</a>
-              </p>
-            </div>
-          </div>
-          {/* for companies arriving from the one-pager: same wording as the one-pager (04.10.2026) */}
-          <div className="for-partners">
-            <h3>Companies, sponsors and partners</h3>
-            <p>
-              Three days with hand-picked researchers who apply AI across disciplines. If you
-              want to share your experience in a talk or workshop, support the meetup, or meet
-              the people in the room, write to{' '}
-              <a href={PARTNERS_MAILTO}>partners@v4air.eu</a>.
-            </p>
           </div>
         </div>
       </Reveal>

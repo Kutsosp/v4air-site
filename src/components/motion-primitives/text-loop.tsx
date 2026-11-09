@@ -18,6 +18,8 @@ export type TextLoopProps = {
   onIndexChange?: (index: number) => void;
   trigger?: boolean;
   mode?: AnimatePresenceProps['mode'];
+  /* 09.11.2026: controlled mode; when set, the parent drives the index and the interval is off */
+  index?: number;
 };
 
 export function TextLoop({
@@ -29,12 +31,13 @@ export function TextLoop({
   onIndexChange,
   trigger = true,
   mode = 'popLayout',
+  index,
 }: TextLoopProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [ownIndex, setCurrentIndex] = useState(0);
   const items = Children.toArray(children);
 
   useEffect(() => {
-    if (!trigger) return;
+    if (!trigger || index !== undefined) return;
 
     const intervalMs = interval * 1000;
     const timer = setInterval(() => {
@@ -45,7 +48,8 @@ export function TextLoop({
       });
     }, intervalMs);
     return () => clearInterval(timer);
-  }, [items.length, interval, onIndexChange, trigger]);
+  }, [items.length, interval, onIndexChange, trigger, index]);
+  const currentIndex = index !== undefined ? ((index % items.length) + items.length) % items.length : ownIndex;
 
   const motionVariants: Variants = {
     initial: { y: 20, opacity: 0 },

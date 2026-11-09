@@ -29,6 +29,11 @@ export function NotAiResearcher() {
               At the meetup you work with people who specialize in the methods you
               need, so you can bring the problem and leave with a way to approach it.
             </p>
+            <p>
+              <strong>Not in academia?</strong> If you work with AI in a company, a
+              startup, tech transfer or investment, apply through the same form, as a
+              participant or as a speaker.
+            </p>
           </div>
         </div>
       </Reveal>

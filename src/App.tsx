@@ -1,17 +1,16 @@
 import { Nav } from '@/components/site/Nav'
 import { Hero } from '@/components/site/Hero'
-import { Funded } from '@/components/site/Funded'
 import { Countdown } from '@/components/site/Countdown'
-import { Program } from '@/components/site/Program'
+import { ProgramTeaser } from '@/components/site/ProgramTeaser'
 import { FormatGrid } from '@/components/site/FormatGrid'
+import { CostLine } from '@/components/site/CostLine'
 import { Venue } from '@/components/site/Venue'
 import { Who } from '@/components/site/Who'
 import { WhatYouGet } from '@/components/site/WhatYouGet'
 import { NotAiResearcher } from '@/components/site/NotAiResearcher'
 import { WhatToBring } from '@/components/site/WhatToBring'
-import { ApplySteps } from '@/components/site/ApplySteps'
 import { Timeline } from '@/components/site/Timeline'
-import { Faq } from '@/components/site/Faq'
+import { FaqLink } from '@/components/site/FaqLink'
 import { Partners } from '@/components/site/Partners'
 import { Footer } from '@/components/site/Footer'
 
@@ -37,18 +36,19 @@ function Site() {
       <Nav theme={theme} onToggleTheme={toggleTheme} />
       <main id="top">
         <Hero theme={theme} />
-        <Funded />
         <Countdown />
-        <Program />
-        <WhatYouGet />
-        <FormatGrid />
-        <Venue />
+        {/* 09.11.2026 order (redesign doc point 3): for me? -> what I get -> how -> what happens -> where -> cost -> when -> prepare */}
         <Who />
         <NotAiResearcher />
-        <WhatToBring />
-        <ApplySteps />
+        <WhatYouGet />
+        <ProgramTeaser />
+        <FormatGrid />
+        <Venue />
+        <CostLine />
         <Timeline />
-        <Faq />
+        <WhatToBring />
+        <FaqLink />
+        <Countdown id="apply-now" />
         <Partners />
       </main>
       <Footer />

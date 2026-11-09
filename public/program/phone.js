@@ -178,6 +178,42 @@
     return
   }
 
+  /* 09.11.2026 player mode (redesign doc point 12): no pin, normal page flow. Heading and intro in the flow,
+     the stage plays like a video once in view (real seconds: dur / 1000), all four steps listed under it,
+     the current one highlighted; tap a step to jump there. Stops on the last frame. */
+  if (window.V4P_PLAYER) {
+    host.classList.add('pplayer')
+    host.innerHTML =
+      `<h2 class="big">The program</h2>` +
+      `<div class="expl">${intro ? intro.innerHTML : ''}</div>` +
+      `<svg class="pstage" viewBox="0 0 ${PW} ${PH}" role="img" aria-label="How the program is built: applications go to the castle, people are matched and go to the castle as groups, an invited expert fills a gap, and the program is assembled."><g class="pstatic">${castle()}</g><g class="pdyn"></g></svg>` +
+      `<ol class="psteps">${parsed.map((s, k) => `<li><span class="n">${k + 1}</span><div><strong>${s.title}</strong><p>${s.body}</p></div></li>`).join('')}</ol>`
+    const dyn = host.querySelector('.pdyn'), items = host.querySelectorAll('.psteps li')
+    dyn.innerHTML = CHAPTERS[0].draw(0)
+    const ptl = gsap.timeline({ paused: true })
+    const starts = []
+    CHAPTERS.forEach((ch, k) => {
+      const proxy = { t: 0 }, at = ptl.duration()
+      starts.push(at)
+      ptl.addLabel(`c${k}`, at)
+      ptl.to(proxy, { t: 1, duration: ch.dur / 1000, ease: 'none', onUpdate: () => (dyn.innerHTML = ch.draw(proxy.t)) }, at)
+      if (k < CHAPTERS.length - 1) ptl.to({}, { duration: 0.8 })     /* short hold between chapters */
+    })
+    const mark = () => {
+      const t = ptl.time(); let cur = 0
+      starts.forEach((st, k) => { if (t >= st) cur = k })
+      items.forEach((li, k) => li.classList.toggle('on', k === cur))
+    }
+    ptl.eventCallback('onUpdate', mark)
+    mark()
+    let started = false
+    items.forEach((li, k) => li.addEventListener('click', () => { started = true; ptl.play(`c${k}`) }))
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting && !started) { started = true; ptl.play() } }), { threshold: 0.4 })
+    io.observe(host.querySelector('.pstage'))
+    window.V4P_TL = ptl
+    return
+  }
+
   /* one pinned screen: the intro on its own, then the chapter text above one continuous stage */
   host.classList.add('pscroll')
   host.innerHTML =

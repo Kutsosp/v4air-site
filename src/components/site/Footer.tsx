@@ -3,7 +3,7 @@ import { asset } from '@/lib/utils'
 import { motion, useInView } from 'motion/react'
 import { TextEffect } from '@/components/motion-primitives/text-effect'
 import { TextMorph } from '@/components/motion-primitives/text-morph'
-import { Reveal } from './Reveal'
+import { CONTACT_MAILTO, PARTNERS_MAILTO, Reveal } from './Reveal'
 
 export function Footer() {
   /* the lockup arrives folded as AIR, unfolds once seen, and stays unfolded */
@@ -22,7 +22,9 @@ export function Footer() {
     <footer className="footer">
       {/* poster send-off: text lockup + castle silhouette + invitation */}
       <div className="footer-band">
-        <Reveal className="wrap footer-send">
+        {/* 09.11.2026: one footer (point 21): send-off left, contact right, meta row below */}
+        <Reveal className="wrap footer-send footer-split">
+          <div className="footer-left">
           <div className="footer-row">
             <div
               className="footer-lockup"
@@ -85,12 +87,46 @@ export function Footer() {
           >
             See you there.
           </TextEffect>
+          </div>
+          <div className="footer-contact">
+            <div className="team">
+              <div>
+                <h3>Peter Kutsos</h3>
+                <p>Project coordinator</p>
+                <p>
+                  <a href="mailto:peter@v4air.eu">peter@v4air.eu</a>
+                </p>
+              </div>
+              <div>
+                <h3>Petr Chlup</h3>
+                <p>Technical coordinator</p>
+                <p>
+                  <a href="mailto:petr@v4air.eu">petr@v4air.eu</a>
+                </p>
+              </div>
+              <div>
+                <h3>Inquiries and collaborations</h3>
+                <p>
+                  <a href={CONTACT_MAILTO}>info@v4air.eu</a>
+                </p>
+              </div>
+              <div>
+                <h3>Companies, sponsors and partners</h3>
+                <p>
+                  <a href={PARTNERS_MAILTO}>partners@v4air.eu</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </Reveal>
-      </div>
-      <div className="wrap footer-meta">
-        <p>We are looking forward to meeting you in Kostelec.</p>
+        <div className="wrap footer-meta">
         <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
         <p>V4AIR &middot; 28-30 April 2027</p>
+        {/* 09.11.2026: the main links repeated at the bottom (NN/g doormat navigation) */}
+        <p className="footer-links">
+          <a href={`${import.meta.env.BASE_URL}programme/`}>Program</a> &middot; <a href={`${import.meta.env.BASE_URL}kostelec/`}>Venue</a> &middot;{' '}
+          <a href={`${import.meta.env.BASE_URL}pricing/`}>Pricing</a> &middot; <a href={`${import.meta.env.BASE_URL}faq/`}>FAQ</a>
+        </p>
         <p>
           <a href={`${import.meta.env.BASE_URL}policy/privacy/`}>Privacy notice</a> &middot;{' '}
           <a href={`${import.meta.env.BASE_URL}policy/cookies/`}>Cookies</a> &middot;{' '}
@@ -99,6 +135,7 @@ export function Footer() {
             Cookie settings
           </button>
         </p>
+        </div>
       </div>
     </footer>
   )

@@ -136,7 +136,7 @@ function render(p) {
   let s = ''
   CROWD.forEach((g, i) => {
     if (moving.has(i)) return
-    const appear = clamp(intro * 1.6 - rnd(i + 3) * 0.6), dim = (p > 0.1 ? 0.3 : 0.7) * (1 - crowdOut)
+    const appear = clamp(intro * 1.6 - rnd(i + 3) * 0.6), dim = lerp(0.7, 0.3, ease(seg(p, 0.095, 0.125))) * (1 - crowdOut) /* 09.11.2026: gradual dim into step 2 (was a hard cut at 0.1) */
     s += person(g.x, g.y + (1 - appear) * 10, null, false, appear * dim)
   })
   /* step 1: applications, as envelopes flying from people in the crowd up to the castle */

@@ -25,9 +25,11 @@ export function WhatToBring() {
       <Reveal className="wrap">
         <h2>What to bring</h2>
         <p className="bring-lede">You don&rsquo;t need a polished talk. A real problem is enough.</p>
-        <div className="format-list">
-          {ITEMS.map((it) => (
-            <div className="format-item" key={it.title}>
+        {/* 09.11.2026: layout C, four numbered columns */}
+        <div className="lay-cols">
+          {ITEMS.map((it, k) => (
+            <div className="lay-col" key={it.title}>
+              <div className="n">{String(k + 1).padStart(2, '0')}</div>
               <h3>{it.title}</h3>
               <p>{it.body}</p>
             </div>
