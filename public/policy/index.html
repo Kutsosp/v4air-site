@@ -9,7 +9,10 @@
 <script src="/consent.js"></script>
 <script>
   (function () {
-    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+    /* saved choice wins; with none, dark from 17:00 to 07:00 (visitor's clock) */
+    var t = null; try { t = localStorage.getItem('v4air-theme'); } catch (e) {}
+    var h = new Date().getHours();
+    if (t === 'dark' || (t !== 'light' && (h >= 17 || h < 7))) document.documentElement.setAttribute('data-theme', 'dark');
   })();
 </script>
 <style>
