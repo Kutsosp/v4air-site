@@ -9,7 +9,10 @@
 <script src="/consent.js"></script>
 <script>
   (function () {
-    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+    /* saved choice wins; with none, dark from 17:00 to 07:00 (visitor's clock) */
+    var t = null; try { t = localStorage.getItem('v4air-theme'); } catch (e) {}
+    var h = new Date().getHours();
+    if (t === 'dark' || (t !== 'light' && (h >= 17 || h < 7))) document.documentElement.setAttribute('data-theme', 'dark');
   })();
 </script>
 <style>
@@ -182,24 +185,34 @@
     <h1>Cookies</h1>
     <p class="version">Version 1 &middot; draft &middot; November 2026</p>
     <section>
-      <p>This website uses one optional service: Google Analytics 4, which counts visits and shows which pages people use. It sets its cookies only after you click <strong>Accept</strong> in the cookie banner. If you click <strong>Reject</strong>, the site sends nothing to Google Analytics. We ask again after 12 months.</p>
+      <p>This website uses cookies and similar items stored in your browser of two kinds: <strong>essential</strong> ones, which the site needs to work, and <strong>analytics</strong> cookies, which are optional. In the cookie banner, <strong>Reject</strong> and <strong>Accept only essential cookies</strong> do the same thing: the site uses essential items only. <strong>Accept all cookies</strong> also turns on analytics. We ask again after 12 months.</p>
+      <h2>Essential</h2>
+      <p>These are always on and need no consent. Our own items stay in your browser&rsquo;s local storage and are not sent anywhere.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Purpose</th><th>Kept for</th></tr></thead>
+          <tbody>
+            <tr><td><code>v4air-consent</code></td><td>Your cookie choice, so the banner does not ask on every page.</td><td>12 months</td></tr>
+            <tr><td><code>v4air-theme</code></td><td>Light or dark mode, only if you switch it.</td><td>Until you clear it</td></tr>
+            <tr><td><code>v4air-form-a-live-v1</code>, <code>v4air-form-b-live-v1</code>, <code>v4air-form-s-v1</code></td><td>Your unfinished answers in the application, nomination and invited speaker forms, so you can come back to them later.</td><td>Until you send the form or clear it</td></tr>
+            <tr><td><code>v4air-applicant</code>, <code>v4air-application-id</code></td><td>Your name, email and application ID, so the nomination form can fill them in and pair your nominations with your application.</td><td>60 days</td></tr>
+            <tr><td>Google Maps</td><td>The map on the <a href="/kostelec/">venue page</a> is shown by Google. When it loads, Google receives your IP address and may read or set its own cookies under <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Google&rsquo;s cookie policy</a>.</td><td>Set by Google</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>Analytics (optional)</h2>
+      <p>Google Analytics 4 counts visits and shows which pages people use. It sets its cookies only after you click <strong>Accept all cookies</strong>. Otherwise the site sends nothing to Google Analytics. If you accept and then fill in a form, the form also stores your Google Analytics ID with your answers.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Cookie</th><th>Purpose</th><th>Kept for</th></tr></thead>
           <tbody>
-            <tr><td><code>_ga</code></td><td>Tells visits from different browsers apart.</td><td>2 years</td></tr>
-            <tr><td><code>_ga_37S10LBELM</code></td><td>Keeps the state of your current visit.</td><td>2 years</td></tr>
+            <tr><td><code>_ga</code></td><td>Tells visits from different browsers apart.</td><td>Up to 400 days</td></tr>
+            <tr><td><code>_ga_37S10LBELM</code></td><td>Keeps the state of your current visit.</td><td>Up to 400 days</td></tr>
           </tbody>
         </table>
       </div>
       <p>Google Analytics is provided by Google Ireland Limited. Google may process the data in the United States, under the EU&ndash;US Data Privacy Framework. We use no advertising cookies.</p>
-      <p>The site also keeps a few items in your browser&rsquo;s local storage that it needs to work. They never leave your browser, so they do not need your consent:</p>
-      <ul>
-        <li>your cookie choice, so the banner does not ask on every page,</li>
-        <li>light or dark mode, if you switch it,</li>
-        <li>your unfinished answers in the application form, so you can come back to them later.</li>
-      </ul>
-      <p>We ask for your consent to analytics cookies under § 89(3) of Act No. 127/2005 Coll., on electronic communications. You can change your choice at any time. When you reject analytics after accepting, the site deletes its Google Analytics cookies.</p>
+      <p>We ask for your consent to analytics cookies under &sect; 89(3) of Act No. 127/2005 Coll., on electronic communications. Essential items need no consent under the same provision. You can change your choice at any time. When you withdraw consent to analytics, the site deletes its Google Analytics cookies.</p>
       <p><button type="button" class="btn btn-primary" data-cookie-settings>Change cookie settings</button></p>
     </section>
   </div>

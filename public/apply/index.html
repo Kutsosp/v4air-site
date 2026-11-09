@@ -9,7 +9,10 @@
 <script src="/consent.js"></script>
 <script>
   (function () {
-    try { if (localStorage.getItem('v4air-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+    /* saved choice wins; with none, dark from 17:00 to 07:00 (visitor's clock) */
+    var t = null; try { t = localStorage.getItem('v4air-theme'); } catch (e) {}
+    var h = new Date().getHours();
+    if (t === 'dark' || (t !== 'light' && (h >= 17 || h < 7))) document.documentElement.setAttribute('data-theme', 'dark');
   })();
 </script>
 <style>
@@ -1011,8 +1014,9 @@
     return prefix + '-' + out;
   }
   function validEmail() { var v = document.getElementById('A1.email').value.trim(); return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? v : ''; }
+  /* for the nomination form's prefill; consent.js drops both items after 60 days (cookies policy) */
   function rememberApplicant(id) {
-    try { localStorage.setItem('v4air-application-id', id); localStorage.setItem('v4air-applicant', JSON.stringify({ name: document.getElementById('A1.name').value.trim(), email: validEmail() })); } catch (e) {}
+    try { localStorage.setItem('v4air-application-id', id); localStorage.setItem('v4air-applicant', JSON.stringify({ name: document.getElementById('A1.name').value.trim(), email: validEmail(), at: Date.now() })); } catch (e) {}
   }
   function ensureId() {
     if (API.enabled()) return remote.id;

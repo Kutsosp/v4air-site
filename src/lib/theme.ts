@@ -3,7 +3,8 @@ import { useCallback, useEffect, useState } from 'react'
 export type Theme = 'dark' | 'light'
 
 /** Light/dark theme shared by every page: index.html-style inline script sets
-    data-theme before first paint, this hook keeps it and localStorage in sync. */
+    data-theme before first paint, this hook keeps it in sync. The choice is saved
+    only when the visitor switches, never on a plain visit (cookies policy). */
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() =>
     typeof document !== 'undefined' &&
@@ -18,15 +19,19 @@ export function useTheme() {
     } else {
       document.documentElement.removeAttribute('data-theme')
     }
-    try {
-      localStorage.setItem('v4air-theme', theme)
-    } catch {
-      /* storage unavailable */
-    }
   }, [theme])
 
   const toggleTheme = useCallback(
-    () => setTheme((t) => (t === 'light' ? 'dark' : 'light')),
+    () =>
+      setTheme((t) => {
+        const next = t === 'light' ? 'dark' : 'light'
+        try {
+          localStorage.setItem('v4air-theme', next)
+        } catch {
+          /* storage unavailable */
+        }
+        return next
+      }),
     [],
   )
 
