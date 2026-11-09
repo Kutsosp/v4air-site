@@ -38,8 +38,9 @@
 /* 05.10.2026: root at 94% (about 15 px) and wider gutters for more air */
 html { scroll-behavior: smooth; font-size: 94%; }
 /* 08.11.2026: the desktop layout reads better at 80 % browser zoom, so on wide screens the root is
-   80 % of the previous 94 %. Sizes that were in px are in rem so they follow the root. */
-@media (min-width: 1024px) { html { font-size: 75.2%; } }
+   80 % of the previous 94 %. Sizes that were in px are in rem so they follow the root.
+   09.11.2026: reviewer feedback (text too small, better at 110 % zoom): 75.2 % x 1.1 = 82.7 %. */
+@media (min-width: 1024px) { html { font-size: 82.7%; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
@@ -81,7 +82,11 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
   white-space: nowrap;
   transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
-.btn:active { transform: translateY(1px) scale(0.98); }
+.btn:active { transform: translateY(1px) scale(0.97); box-shadow: 0 0 10px rgb(var(--accent-glow) / 0.3); }
+/* 09.11.2026: buttons keep their own text colour on hover; the global a:hover teal outranked .btn-primary */
+a.btn-primary:hover { color: var(--btn-ink); }
+a.btn-ghost:hover { color: #e9f1f0; }
+a.btn-line:hover { color: var(--text); }
 .btn-primary {
   background: var(--btn-bg);
   color: var(--btn-ink);
@@ -345,16 +350,15 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 /* hero type runs ~20% smaller than the global scale */
 .hero h1 { font-size: clamp(1.9rem, 1.1rem + 3.2vw, 3.5rem); }
 .hero .eyebrow {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: clamp(1rem, 0.85rem + 0.5vw, 1.35rem); /* 09.11.2026: date readable at a glance (was 0.7rem caps) */
+  font-weight: 650;
+  letter-spacing: 0.02em;
   color: #e9a24f; /* on the photo, not on the theme surface */
   margin: 0 0 0.55rem;
   text-shadow: 0 1px 12px rgba(8, 14, 16, 0.7);
 }
-.hero h1 { font-size: clamp(1.2rem, 0.7rem + 2vw, 2.2rem); max-width: 21ch; margin-bottom: 0.55rem; }
-.hero .lede { font-size: clamp(1rem, 0.9rem + 0.35vw, 1.2rem); max-width: 46ch; color: #d5e1e0; margin-bottom: 1rem; }
+.hero h1 { font-size: clamp(1.6rem, 0.9rem + 2.4vw, 2.9rem); max-width: 21ch; margin-bottom: 0.8rem; text-shadow: 0 2px 18px rgba(8, 14, 16, 0.55), 0 1px 3px rgba(8, 14, 16, 0.45); } /* 09.11.2026 text protection on the photo */
+.hero .lede { font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.45rem); line-height: 1.55; max-width: 48ch; color: #e4ecea; margin-bottom: 1.4rem; }
 .hero .cta-row { display: flex; gap: 0.45rem; flex-wrap: wrap; }
 
 /* ---------- funded band ---------- */
@@ -412,7 +416,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .numbers-sentence strong { color: var(--text); font-weight: 600; }
 
 /* ---------- adaptive statement ---------- */
-.adaptive { padding-block: clamp(6rem, 12vw, 10.5rem); }
+.adaptive { padding-block: clamp(2.5rem, 4.5vw, 4rem); }
 .adaptive h2 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.3rem); max-width: 18ch; }
 .adaptive .cols {
   display: grid;
@@ -423,8 +427,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .adaptive .cols p { margin-bottom: 0.75rem; }
 
 /* ---------- format ---------- */
-.format { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
-.format h2 { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.format { padding-block: clamp(2.5rem, 4.5vw, 4rem); border-top: 1px solid var(--line); }
+.format h2 { margin-bottom: clamp(1rem, 2vw, 1.6rem); } /* 09.11.2026: was up to 3.5rem */
 /* editorial rows: title left, body right, one hairline above each row (impeccable-taste 4.4: no equal cards) */
 .format-list { display: flex; flex-direction: column; }
 .format-item {
@@ -438,10 +442,11 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .format-item:last-child { border-bottom: 1px solid var(--line); }
 .format-item h3 { margin: 0; font-size: clamp(1.25rem, 1rem + 1.1vw, 1.9rem); letter-spacing: -0.01em; max-width: 16ch; }
 .format-item p { margin: 0; color: var(--text-2); font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); max-width: 48ch; }
+.format-item .format-sub { margin-top: 0.35rem; color: var(--teal); font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem); font-weight: 600; } /* 09.11.2026 subheading under the item title */
 @media (max-width: 700px) { .format-item { grid-template-columns: 1fr; gap: 0.5rem; } }
 
 /* ---------- venue ---------- */
-.venue { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
+.venue { padding-block: clamp(2.5rem, 4.5vw, 4rem); border-top: 1px solid var(--line); }
 .venue .split {
   display: grid;
   grid-template-columns: 5fr 6fr;
@@ -600,7 +605,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 }
 
 /* ---------- timeline: the road to Kostelec ---------- */
-.timeline { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
+.timeline { padding-block: clamp(2.5rem, 4.5vw, 4rem); border-top: 1px solid var(--line); }
 /* deliberate night band: this section is always dark (the road at dusk) */
 .timeline {
   --bg: #0c1517;
@@ -774,7 +779,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 
 /* ---------- faq ---------- */
 :root { interpolate-size: allow-keywords; } /* enables height:auto transitions (Chromium 131+) */
-.faq { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
+.faq { padding-block: clamp(2.5rem, 4.5vw, 4rem); border-top: 1px solid var(--line); }
 .faq-head {
   display: flex;
   justify-content: space-between;
@@ -838,7 +843,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 }
 
 /* ---------- partners ---------- */
-.partners { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }
+.partners { padding-block: clamp(2.5rem, 4.5vw, 4rem); border-top: 1px solid var(--line); }
 .partners h2 { margin-bottom: 0.5rem; }
 .partners .intro { color: var(--text-2); margin-bottom: clamp(2rem, 4vw, 3rem); }
 .logo-wall {
@@ -946,7 +951,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .team p { margin: 0; color: var(--text-2); font-size: 0.98rem; }
 
 /* ---------- who should apply ---------- */
-.who { padding-block: clamp(5.5rem, 11vw, 10rem); border-top: 1px solid var(--line); }
+.who { padding-block: clamp(2.5rem, 4.5vw, 4rem); border-top: 1px solid var(--line); }
 .who-q { margin-bottom: 2rem; }
 .who-doubt {
   /* the rotator is the section's highlight: display-scale type */
@@ -968,8 +973,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 }
 .slot__col { display: flex; flex-direction: column; }
 .slot__col > span { display: block; height: 1.5em; white-space: nowrap; }
-.who-yes { margin-top: clamp(5rem, 10vw, 9rem); }
-.who-then { margin-bottom: 1.5rem; }
+.who-yes { margin-top: clamp(2rem, 4vw, 3.5rem); } /* 09.11.2026: was up to 9rem, split the answer from its question */
+.who-then { margin-bottom: 1rem; }
 .who-yes .yes {
   display: block;
   color: var(--accent);
@@ -982,10 +987,17 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .who-yes .yes-line {
   font-size: clamp(1.3rem, 1rem + 1.4vw, 1.9rem);
   font-weight: 600;
-  margin: 0 0 2rem;
+  margin: 0 0 0.75rem;
 }
+.yes-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem clamp(1.25rem, 3vw, 2.25rem); margin: 0; }
+.yes-row .yes-line { margin: 0; }
+.yes-body { margin: 0; max-width: 62ch; }
 .who-note { color: var(--text-2); font-size: 0.92rem; margin-bottom: 2rem; }
 .funded-note { margin: 1.1rem 0 0; font-size: 0.95rem; color: var(--text-2); }
+.cost-link { margin: 1.4rem 0 0; font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem); font-weight: 700; }
+.cost-link a { color: var(--accent); text-decoration: none; }
+.cost-link a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cost-line .funded-note { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); color: var(--text); max-width: 60ch; }
 .partner-q {
   position: relative;
   display: inline-block;
@@ -1281,7 +1293,6 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 @media (max-width: 700px) { .nav2 .brand { font-size: 1.35rem; } }
 .nav2-links { display: none; gap: 1.4rem; }
 /* hidden links on the transparent bar must not catch clicks or tab focus */
-.nav2:not([data-scrolled="true"]) .nav2-links { visibility: hidden; pointer-events: none; }
 @media (min-width: 900px) { .nav2-links { display: flex; } }
 .nav2-links a {
   color: rgba(233, 241, 240, 0.85);
@@ -1757,12 +1768,12 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .nav2[data-scrolled="true"] .nav-date { color: var(--text); }
 /* desktop, opaque bar: the date joins the row next to the section links instead of covering them */
 @media (min-width: 900px) {
-  .nav2[data-scrolled="true"] .nav-date {
+  .nav2 .nav-date {
     position: static; transform: none; flex: none;
     font-size: 0.9rem; color: var(--teal);
     padding-right: 1.2rem; border-right: 1px solid var(--line);
   }
-  .nav2[data-scrolled="true"] nav { margin-right: auto; }
+  .nav2 nav { margin-right: auto; }
 }
 @media (min-width: 900px) and (max-width: 1180px) { .nav2-links { gap: 0.9rem; } }
 @media (max-width: 560px) { .nav-date { font-size: 0.75rem; } .nav-date { display: none; } }
@@ -1773,16 +1784,102 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .stage-cols { margin-top: clamp(2rem, 4vw, 3rem); }
 .stage-lead { font-size: clamp(1.25rem, 1rem + 1.1vw, 1.9rem); font-weight: 800; letter-spacing: -0.01em; margin: 0 0 1rem; max-width: none; }
 .stage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); }
-.stage-col { transition: opacity 0.3s ease; }
-.stage-col h3 { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); margin: 0 0 0.75rem; color: var(--teal); }
-.stage-col ul { margin: 0; padding-left: 1.2rem; color: var(--text-2); transition: color 0.3s ease; }
-.stage-col li { margin-bottom: 0.45rem; }
-/* the column under the pointer stands out, the other one steps back */
-@media (hover: hover) {
-  .stage-grid:hover .stage-col { opacity: 0.45; }
-  .stage-grid .stage-col:hover { opacity: 1; }
-  .stage-grid .stage-col:hover ul { color: var(--text); }
-}
+.stage-col h3 { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); margin: 0 0 1.2rem; color: var(--teal); }
+.stage-col ul { margin: 0; padding: 0; list-style: none; color: var(--text); }
+/* 09.11.2026: visible teal dots (Tailwind preflight removes list markers), more space between items */
+.stage-col li { position: relative; padding-left: 1.1rem; margin-bottom: 0.75rem; }
+.stage-col li::before { content: ""; position: absolute; left: 0.1rem; top: 0.62em; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--teal); }
+/* 09.11.2026: hover dimming of the other column removed (reviewer: read as a gimmick) */
 @media (max-width: 700px) { .stage-grid { grid-template-columns: 1fr; } }
 .bring-lede { margin: -1.5rem 0 2rem; color: var(--text-2); font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); }
 
+/* 09.11.2026: three layouts, one per section (point 19 of the redesign doc) */
+/* A: numbered cards (What you get) */
+.lay-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.lay-card { background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 1.1rem; align-content: start; }
+.lay-card .n { grid-row: span 2; font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+.lay-card h3 { margin: 0; font-size: clamp(1.2rem, 1rem + 0.5vw, 1.4rem); line-height: 1.2; }
+.lay-card p { margin: 0; font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.2rem); color: var(--text); }
+/* B: list, heading and text as one sentence (Three days at the castle) */
+.lay-list { list-style: none; margin: 0; padding: 0; max-width: 62rem; }
+.lay-list li { position: relative; padding: 1.1rem 0 1.1rem 1.6rem; border-bottom: 1px solid var(--line); }
+.lay-list li:last-child { border-bottom: 0; } /* 09.11.2026: no rule above the first or under the last item; the section border separates */
+.lay-list li::before { content: ""; position: absolute; left: 0.15rem; top: calc(1.1rem + 0.72em); width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--teal); }
+.lay-list p { margin: 0; max-width: none; font-size: clamp(1.1rem, 1rem + 0.45vw, 1.35rem); line-height: 1.5; }
+.lay-list strong { font-weight: 700; }
+.lay-list .sub { color: var(--teal); font-weight: 600; }
+.lay-list .rest { color: var(--text-2); }
+/* C: four numbered columns (What to bring) */
+.lay-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
+.lay-col { border-top: 3px solid var(--accent); padding-top: 1.2rem; }
+.lay-col .n { font-size: 1rem; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+.lay-col h3 { margin: 0 0 0.6rem; font-size: clamp(1.15rem, 1rem + 0.4vw, 1.3rem); line-height: 1.2; }
+.lay-col p { margin: 0; font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); color: var(--text-2); }
+@media (max-width: 900px) { .lay-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .lay-cards { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .lay-cols { grid-template-columns: 1fr; } }
+/* What you get: outcomes as text, audience columns as cards (no number column) */
+.get-text { display: grid; gap: 0.6rem; margin: 0 0 0.5rem; }
+.get-text p { margin: 0; max-width: 62ch; font-size: clamp(1.1rem, 1rem + 0.45vw, 1.35rem); line-height: 1.5; color: var(--text-2); }
+.get-text strong { color: var(--text); font-weight: 700; }
+.stage-col.lay-card { display: block; }
+.stage-col.lay-card h3 { margin: 0 0 1.1rem; } /* 09.11.2026: space under the audience headings (.lay-card h3 reset it to 0) */
+/* 09.11.2026 days-left block (points 8 + 21) */
+.days-left { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.days-n { font-size: clamp(4rem, 2rem + 8vw, 7.5rem); font-weight: 800; letter-spacing: -0.03em; color: var(--accent); }
+.days-label { margin-top: 0.4rem; font-size: clamp(1.1rem, 1rem + 0.6vw, 1.5rem); font-weight: 600; color: var(--text); }
+.days-last { font-size: clamp(2rem, 1.2rem + 3vw, 3.4rem); font-weight: 800; color: var(--accent); }
+/* 09.11.2026 one footer (point 21): send-off left, contact right, meta row inside the band */
+.footer-split { display: grid; grid-template-columns: 1fr; text-align: center; gap: clamp(1.25rem, 2.5vw, 2rem); padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: clamp(1.25rem, 2vw, 1.75rem); }
+/* row 1: the send-off, centred, full original size */
+.footer-left { display: flex; flex-direction: column; align-items: center; gap: 2.2rem; min-width: 0; }
+/* row 2: contact details, four across the full width */
+.footer-contact { border-top: 1px solid var(--line); padding-top: clamp(1.25rem, 2vw, 1.75rem); text-align: left; }
+.footer-contact .team { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+.footer-band .footer-meta { border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .footer-contact .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .footer-contact .team { grid-template-columns: 1fr; } }
+/* 09.11.2026 points 6 + 7: Fund logo in the nav, partner logos in the hero */
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4rem clamp(2rem, 4vw, 3.5rem); }
+/* vertical separator between the buttons and the logos; dropped when the logos wrap below (phones) */
+.hero-unis { padding-left: clamp(2rem, 4vw, 3.5rem); border-left: 1px solid rgba(233, 241, 240, 0.45); }
+@media (max-width: 760px) { .hero-unis { padding-left: 0; border-left: 0; } }
+.hero-unis { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem clamp(1.2rem, 2.6vw, 2.2rem); }
+.hero-ivf { display: flex; align-items: center; height: 2.6rem; }
+.hero-ivf img { height: 100%; width: auto; filter: drop-shadow(0 1px 8px rgba(8, 14, 16, 0.6)); }
+@media (max-width: 700px) { .hero-ivf { height: 2rem; } }
+.hero-unis ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem clamp(1.2rem, 2.6vw, 2.2rem); }
+.hero-unis li { display: flex; align-items: center; height: 2.6rem; }
+.hero-unis img { height: 100%; width: auto; max-width: 9rem; object-fit: contain; opacity: 0.9; filter: drop-shadow(0 1px 8px rgba(8, 14, 16, 0.6)); }
+@media (max-width: 700px) { .hero-unis li { height: 2rem; } .hero-unis img { max-width: 6.5rem; } }
+/* 09.11.2026 /programme/ page and homepage teaser */
+.programme-page { padding-top: 5.5rem; }
+.programme-page .v4p { padding-block: 1rem clamp(2rem, 4vw, 3.5rem); }
+.back-home { padding-block: 1.5rem 2.5rem; margin: 0 auto; }
+.back-home a { font-weight: 700; color: var(--accent); text-decoration: none; }
+.back-home a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.teaser-text p { margin: 0 0 0.6rem; max-width: 62ch; font-size: clamp(1.1rem, 1rem + 0.45vw, 1.35rem); line-height: 1.5; }
+.faq-link { padding-block: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--line); }
+.faq-link .cost-link { margin: 0; }
+.who-arrows { display: inline-flex; gap: 0.15rem; margin-left: 0.8rem; vertical-align: middle; font-weight: 400; } /* on the heading line: fixed position */
+.who-arrows button { background: none; border: 0; padding: 0.1rem 0.35rem; color: var(--text-2); font: inherit; font-size: 0.75em; line-height: 1; cursor: pointer; opacity: 0.7; transition: color 0.2s ease, opacity 0.2s ease; }
+.who-arrows button:hover, .who-arrows button:focus-visible { color: var(--accent); opacity: 1; }
+.yes-note { margin: 1rem 0 0; max-width: 62ch; font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); color: var(--text-2); }
+.yes-note + .yes-note { margin-top: 0.35rem; }
+.yes-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.yes-note a:hover { text-decoration: underline; text-underline-offset: 4px; }
+/* 09.11.2026: "But I'm not an AI researcher" follows "Should you apply?" closely */
+#who { padding-bottom: clamp(2rem, 3.5vw, 3rem); }
+#not-ai { padding-top: clamp(1.25rem, 2.5vw, 2.25rem); }
+.yes-note strong { color: var(--text); }
+/* 09.11.2026 navigation (research: NN/g menu design, hamburger menus) */
+@media (min-width: 900px) { .nav2:not([data-scrolled="true"]) .nav-date { color: #e9f1f0; border-right-color: rgba(233, 241, 240, 0.35); } }
+.nav2-links a[aria-current="page"] { color: var(--teal); font-weight: 700; }
+.nav-menu-btn { display: none; font: inherit; font-size: 0.95rem; font-weight: 600; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(233, 241, 240, 0.5); background: transparent; color: #e9f1f0; cursor: pointer; }
+.nav2[data-scrolled="true"] .nav-menu-btn { border-color: var(--line); color: var(--text); }
+@media (max-width: 899px) { .nav-menu-btn { display: inline-block; } }
+.nav-menu-panel { background: var(--bg-raise); border-bottom: 1px solid var(--line); box-shadow: 0 12px 28px rgb(0 0 0 / 0.18); }
+.nav-menu-panel .wrap { display: flex; flex-direction: column; gap: 0.2rem; padding-block: 0.8rem 1.2rem; }
+.nav-menu-panel a:not(.btn) { color: var(--text); text-decoration: none; font-size: 1.15rem; font-weight: 600; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.nav-menu-panel .btn { align-self: flex-start; margin-top: 0.9rem; }
+@media (min-width: 900px) { .nav-menu-panel { display: none; } }

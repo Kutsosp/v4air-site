@@ -6,8 +6,8 @@ const FOR_ALL = [
     body: 'You see how researchers in other fields use AI methods, and how those methods could work on your own problems.',
   },
   {
-    title: 'Collaborators who know the methods',
-    body: 'You meet people from other fields who specialize in the methods you need.',
+    title: 'Experts in the methods you need',
+    body: 'You meet researchers from other fields who already use these methods and could work with you.',
   },
 ]
 
@@ -15,19 +15,19 @@ export function WhatYouGet() {
   return (
     <section className="format" id="get">
       <Reveal className="wrap">
-        <h2>What you get from the three days</h2>
-        <div className="format-list">
+        <h2>What you&rsquo;ll take home</h2>
+        {/* 09.11.2026: the two outcomes as plain text; the audience columns below are the cards */}
+        <div className="get-text">
           {FOR_ALL.map((it) => (
-            <div className="format-item" key={it.title}>
-              <h3>{it.title}</h3>
-              <p>{it.body}</p>
-            </div>
+            <p key={it.title}>
+              <strong>{it.title}.</strong> {it.body}
+            </p>
           ))}
         </div>
         <div className="stage-cols">
           <p className="stage-lead">If you are&hellip;</p>
-          <div className="stage-grid">
-            <div className="stage-col">
+          <div className="stage-grid lay-cards">
+            <div className="stage-col lay-card">
               <h3>an early-career researcher</h3>
               <ul>
                 <li>Find a methods expert for your next grant</li>
@@ -36,7 +36,7 @@ export function WhatYouGet() {
                 <li>Get feedback on a project while it is still in progress</li>
               </ul>
             </div>
-            <div className="stage-col">
+            <div className="stage-col lay-card">
               <h3>a PhD or master&rsquo;s student</h3>
               <ul>
                 <li>Get feedback from experts in the Not-Just-Posters session</li>

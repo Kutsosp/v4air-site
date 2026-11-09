@@ -8,19 +8,18 @@ import { APPLY_URL } from './Reveal'
 /* Sticky nav: transparent over the hero, solid blurred bar once scrolled.
    The Apply link reads "Apply" throughout (05.10.2026); the countdown band carries the window state. */
 
+/* 09.11.2026 (redesign doc point 3): the nav links go to pages, not homepage sections */
 const LINKS = [
-  { href: '#adaptive', label: 'How it works' },
-  { href: '#venue', label: 'The castle' },
-  { href: '#apply', label: 'How to apply' },
-  { href: '#timeline', label: 'Key dates' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#partners', label: 'Partners' },
+  { href: 'programme/', label: 'Program' },
+  { href: 'kostelec/', label: 'Venue' },
+  { href: 'pricing/', label: 'Pricing' },
+  { href: 'faq/', label: 'FAQ' },
 ]
 
 /* /people is a second page (06.10.2026); off the main page the section links point home */
 const PEOPLE_URL = import.meta.env.BASE_URL + 'people/'
 /* /people is password-protected until everyone listed has consented; no public links to it yet */
-export const SHOW_PEOPLE_LINK = false
+export const SHOW_PEOPLE_LINK = false /* 09.11.2026: hidden for now (Peter); visitors would hit the password screen */
 
 export function Nav({
   theme,
@@ -37,7 +36,6 @@ export function Nav({
   /** /people links to itself; other subpages keep it hidden like the home page */
   showPeople?: boolean
 }) {
-  const base = home ? '' : import.meta.env.BASE_URL
   const [scrolled, setScrolled] = useState(!overPhoto)
   /* the brand folds later than the bar turns opaque, so the morph is visible.
      It mounts folded and unfolds as an entrance beat (and on scrolling back up). */
@@ -61,6 +59,13 @@ export function Nav({
   }, [overPhoto])
 
   const applyLabel = 'Apply'
+  const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [menuOpen])
 
   return (
     <header className="nav2" data-scrolled={scrolled}>
@@ -113,12 +118,12 @@ export function Nav({
         </a>
         {/* event date, centred between the logomark and the switch (mockup) */}
         <p className="nav-date">28-30 April 2027</p>
-        {/* menu items exist only on the opaque bar: staggered blur-drop entrance */}
-        <nav aria-label="Sections">
+        {/* 09.11.2026: links visible from the start, also over the hero (NN/g: keep navigation visible on desktop) */}
+        <nav aria-label="Main">
           <AnimatedGroup
             className="nav2-links"
             asChild="span"
-            animate={scrolled ? 'visible' : 'hidden'}
+            animate="visible"
             variants={{
               container: {
                 visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
@@ -131,18 +136,32 @@ export function Nav({
             }}
           >
             {LINKS.map((l) => (
-              <a key={l.href} href={base + l.href}>
+              <a
+                key={l.href}
+                href={import.meta.env.BASE_URL + l.href}
+                aria-current={typeof window !== 'undefined' && window.location.pathname.endsWith('/' + l.href) ? 'page' : undefined}
+              >
                 {l.label}
               </a>
             ))}
             {(SHOW_PEOPLE_LINK || showPeople) && (
-              <a href={PEOPLE_URL} aria-current={home ? undefined : 'page'}>
+              <a href={PEOPLE_URL} aria-current={typeof window !== 'undefined' && window.location.pathname.endsWith('/people/') ? 'page' : undefined}>
                 People
               </a>
             )}
           </AnimatedGroup>
         </nav>
         <div className="nav-right">
+          {/* phones (< 900 px): the links go into a menu; Apply stays in the bar */}
+          <button
+            type="button"
+            className="nav-menu-btn"
+            aria-expanded={menuOpen}
+            aria-controls="nav-menu"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            {menuOpen ? 'Close' : 'Menu'}
+          </button>
           <label className="switch switch--skeuo">
             <input
               className="switch__input"
@@ -178,6 +197,18 @@ export function Nav({
           </span>
         </div>
       </div>
+      {menuOpen && (
+        <div className="nav-menu-panel" id="nav-menu">
+          <div className="wrap">
+            {LINKS.map((l) => (
+              <a key={l.href} href={import.meta.env.BASE_URL + l.href} onClick={() => setMenuOpen(false)}>
+                {l.label}
+              </a>
+            ))}
+            <a className="btn btn-primary" href={APPLY_URL}>Apply now</a>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

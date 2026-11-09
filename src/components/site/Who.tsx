@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react'
 import { InView } from '@/components/motion-primitives/in-view'
 import { TextLoop } from '@/components/motion-primitives/text-loop'
-import { APPLY_URL, Reveal } from './Reveal'
+import { APPLY_URL, NOMINATE_URL, Reveal } from './Reveal'
 
 /* X and Y rotate as matched pairs so the sentence always makes sense */
 const PAIRS: Array<[string, string]> = [
@@ -17,25 +18,50 @@ const PAIRS: Array<[string, string]> = [
 ]
 
 const LOOP_TRANSITION = { duration: 0.45, ease: [0.65, 0, 0.35, 1] as const }
-const LOOP_INTERVAL = 2.6
+/* 09.11.2026: 5 s per pair (was 2.6 s): the sentence is 13-16 words, about 3.3-4 s to read at 238 wpm */
+const LOOP_INTERVAL = 5
 
 export function Who() {
+  /* the rotation pauses while the pointer is over the sentence or it has focus */
+  const [paused, setPaused] = useState(false)
+  /* 09.11.2026: one index drives both halves of the sentence; prev/next arrows step it, the timer restarts after a click */
+  const [idx, setIdx] = useState(0)
+  const [tick, setTick] = useState(0)
+  useEffect(() => {
+    if (paused) return
+    const t = setInterval(() => setIdx((i) => i + 1), LOOP_INTERVAL * 1000)
+    return () => clearInterval(t)
+  }, [paused, tick])
+  const step = (d: number) => { setIdx((i) => i + d); setTick((t) => t + 1) }
   return (
     <section className="who" id="who">
       <div className="wrap">
         <Reveal>
-          <h2 className="who-q">Should you apply?</h2>
+          <h2 className="who-q">
+            Should you apply?
+            <span className="who-arrows">
+              <button type="button" aria-label="Previous example" onClick={() => step(-1)}>&larr;</button>
+              <button type="button" aria-label="Next example" onClick={() => step(1)}>&rarr;</button>
+            </span>
+          </h2>
           {/* div, not p: TextLoop renders block elements, which break out of a <p> */}
-          <div className="who-doubt">
+          <div
+            className="who-doubt"
+            tabIndex={0}
+            onPointerEnter={() => setPaused(true)}
+            onPointerLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}
+          >
             Well&hellip; if you're{' '}
-            <TextLoop className="slot-loop" interval={LOOP_INTERVAL} transition={LOOP_TRANSITION}>
+            <TextLoop className="slot-loop" transition={LOOP_TRANSITION} index={idx}>
               {PAIRS.map(([x]) => (
                 <span key={x}>{x}</span>
               ))}
             </TextLoop>
             <br />
             and AI is{' '}
-            <TextLoop className="slot-loop" interval={LOOP_INTERVAL} transition={LOOP_TRANSITION}>
+            <TextLoop className="slot-loop" transition={LOOP_TRANSITION} index={idx}>
               {PAIRS.map(([, y], k) => (
                 <span key={k}>{y}</span>
               ))}
@@ -58,45 +84,21 @@ export function Who() {
           >
             <span className="yes">Yes.</span>
           </InView>
+          {/* 09.11.2026: Apply button on the same line as "We want you at V4AIR." (wraps under it on phones) */}
           <Reveal delay={0.8}>
-            <p className="yes-line">We want you at V4AIR.</p>
-          </Reveal>
-          <Reveal delay={1}>
-            <p>
-              If you use AI in your research, in any field, you can apply. You
-              don&rsquo;t need to build AI models yourself. Master&rsquo;s and PhD
-              students, postdocs and researchers who are starting their own research
-              group can all apply.
-            </p>
-            <a className="btn btn-primary" href={APPLY_URL}>
-              Apply now
-            </a>
-            {/* div, not p: the tooltip contains a <ul>, which is invalid inside <p> */}
-            <div className="funded-note">
-              Applicants from partner universities pay no fee: accommodation, meals and
-              a travel contribution are covered.{' '}
-              <span className="partner-q" tabIndex={0}>
-                Is my university a partner?
-                {/* spans styled as a list: real <ul> is invalid inside inline markup */}
-                <span className="partner-tip" role="tooltip">
-                  <strong>The six partner universities</strong>
-                  <span className="tip-li">Charles University, Prague</span>
-                  <span className="tip-li">Czech Technical University in Prague</span>
-                  <span className="tip-li">Comenius University Bratislava</span>
-                  <span className="tip-li">E&ouml;tv&ouml;s Lor&aacute;nd University, Budapest</span>
-                  <span className="tip-li">University of Wroc&#322;aw</span>
-                  <span className="tip-li">Nicolaus Copernicus University in Toru&#324;</span>
-                </span>
-              </span>
+            <div className="yes-row">
+              <p className="yes-line">We want you at V4AIR.</p>
+              <a className="btn btn-primary" href={APPLY_URL}>
+                Apply now
+              </a>
             </div>
-            <p className="funded-note">
-              Applicants from other universities can apply too, for a fee (see the{' '}
-              <a href={`${import.meta.env.BASE_URL}pricing/`}>prices</a>). Use the same form.
+            {/* 09.11.2026: effort + nominate line. "17 minutes" is Peter's figure (Sheet 09.11.2026: median 19 min for the
+                11 one-sitting submissions, mean 15.8 min for the 9 under an hour) */}
+            <p className="yes-note">
+              Just <strong>one online form, ~17 minutes</strong>. No paper, CV or motivation letter.
             </p>
-            <p className="funded-note">
-              <strong>Not in academia?</strong> If you work with AI in a company, a
-              startup, tech transfer or investment, apply through the same form, as a
-              participant or as a speaker.
+            <p className="yes-note">
+              Know someone who should be here? <a href={NOMINATE_URL}>Nominate them &rarr;</a>
             </p>
           </Reveal>
         </div>

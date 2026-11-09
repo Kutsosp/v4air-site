@@ -73,6 +73,7 @@
   p { margin: 0 0 1rem; max-width: 65ch; }
   a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
   a:hover { color: var(--teal); }
+  a.btn-primary:hover { color: var(--btn-ink); } /* 09.11.2026: keep button text colour on hover */
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
   .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
   .muted { color: var(--text-2); }
@@ -278,6 +279,44 @@
     .actions .btn-primary { text-align: center; }
     .lvl .seg label { min-width: 38px; height: 40px; }
   }
+  /* timeline from the homepage "How applying works" (static: no scroll pin, all rings lit) */
+  .steps { list-style: none; margin: 1rem 0 1.6rem; padding: 0; max-width: 42rem; position: relative; display: grid; gap: 1.3rem; }
+  .steps .thread { position: absolute; left: 1.1rem; top: 0.5rem; bottom: 0.5rem; width: 2px; transform: translateX(-1px); background: var(--line); }
+  .steps li { position: relative; padding-left: 3.4rem; }
+  .steps .n { position: absolute; left: 0; top: 0; width: 2.2rem; height: 2.2rem; display: flex; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 50%; font-weight: 700; color: var(--accent); background: var(--bg); box-shadow: 0 0 12px rgb(var(--accent-glow) / 0.35); }
+  .steps h4 { margin: 0 0 0.15rem; font-size: 1.05rem; line-height: 1.3; padding-top: 0.25rem; }
+  .steps p { margin: 0; color: var(--text-2); }
+  .apply-steps-link { font-weight: 700; color: var(--accent); text-decoration: none; white-space: nowrap; }
+  .apply-steps-link:hover { text-decoration: underline; }
+  .intro-logos { list-style: none; margin: 2.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+  .intro-logos li { height: 2.6rem; display: flex; align-items: center; }
+  .intro-logos img { height: 100%; width: auto; max-width: 9rem; object-fit: contain; }
+  [data-theme="dark"] .intro-logos img { background: #f2f3ec; padding: 5px 7px; border-radius: 8px; box-sizing: content-box; height: calc(100% - 10px); }
+  .intro-cost { margin: 0 0 1.4rem; }
+  .intro-q { margin: 0.8rem 0 0; color: var(--text-2); font-size: 0.95rem; }
+  /* 09.11.2026: footer standardized with the homepage (send-off row, contact row, meta row) */
+  .footer-send { flex-direction: column !important; gap: clamp(1.25rem, 2.5vw, 2rem) !important; padding-block: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2vw, 1.75rem) !important; text-align: center; }
+  .footer-row { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); flex-wrap: wrap; }
+  .footer-invite { margin: 0; font-size: clamp(1.2rem, 1rem + 1vw, 1.7rem); font-weight: 600; color: var(--text); }
+  .footer-contact { align-self: stretch; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2rem; border-top: 1px solid var(--line); padding-top: clamp(1.25rem, 2vw, 1.75rem); text-align: left; }
+  .footer-contact h3 { font-size: 1rem; margin: 0 0 0.25rem; }
+  .footer-contact p { margin: 0; color: var(--text-2); font-size: 0.98rem; }
+  .footer-band .footer-meta { border-top: 1px solid var(--line); }
+  @media (max-width: 900px) { .footer-contact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .footer-contact { grid-template-columns: 1fr; } }
+  /* 09.11.2026: same navigation on every page: links on desktop, a menu on phones, current page marked */
+  .snav { display: flex; gap: 1.3rem; margin-right: 0.6rem; }
+  .snav a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+  .snav a:hover { color: var(--teal); }
+  .snav a[aria-current="page"], .smenu-panel a[aria-current="page"] { color: var(--teal); font-weight: 700; }
+  .smenu { display: none; position: relative; }
+  .smenu summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--text); }
+  .smenu summary::-webkit-details-marker { display: none; }
+  .smenu-panel { position: absolute; right: 0; top: calc(100% + 0.6rem); min-width: 14rem; display: flex; flex-direction: column; background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.6rem 1rem 1rem; box-shadow: 0 12px 28px rgb(0 0 0 / 0.18); z-index: 60; }
+  .smenu-panel a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 600; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+  .smenu-panel .btn { margin-top: 0.8rem; text-align: center; }
+  @media (max-width: 899px) { .snav { display: none; } .smenu { display: block; } }
+  .footer-links a { color: var(--text-2); }
 </style>
 </head>
 <body>
@@ -290,7 +329,8 @@
       <span class="brand-words" aria-hidden="true">researchers<br>meetup</span>
     </a>
     <div class="nav-right">
-      <a class="nav-site" href="../">Back to the site</a>
+      <nav class="snav" aria-label="Main"><a href="../programme/">Program</a> <a href="../kostelec/">Venue</a> <a href="../pricing/">Pricing</a> <a href="../faq/">FAQ</a></nav>
+      <details class="smenu"><summary>Menu</summary><div class="smenu-panel"><a href="../programme/">Program</a> <a href="../kostelec/">Venue</a> <a href="../pricing/">Pricing</a> <a href="../faq/">FAQ</a><a class="btn btn-primary" href="../apply/">Apply now</a></div></details>
       <label class="switch switch--skeuo">
         <input class="switch__input" id="theme-switch" type="checkbox" role="switch" checked>
         <span class="toggle-switch" aria-hidden="true"></span>
@@ -314,41 +354,31 @@
     <input type="text" name="website" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
     <!-- INTRO -->
+    <!-- 09.11.2026: consolidated intro (redesign doc, point 20 round 3) -->
     <section class="screen intro" data-min="0.5" data-key="intro">
       <p class="eyebrow">Application</p>
       <h1>V4 AI Researchers Meetup</h1>
-      <p class="intro-date">Kostelec Castle, 35 km from Prague. Wednesday 28 to Friday 30 April 2027.</p>
-      <div class="facts">
-        <p><strong>Deadline: 15 January.</strong> Results expected February.</p>
-      </div>
-      <p>Three days for early-career researchers and graduate students from the V4 region who use or build AI methods across disciplines.</p>
-      <h3>Participation costs</h3>
-      <ul>
-        <li>Students and researchers from <span class="qhint inline" tabindex="0">partner institutions<span class="qhint-body">Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava.</span></span>: <span class="qhint inline" tabindex="0">no participation fee<span class="qhint-body">Thanks to the support of the International Visegrad Fund, accommodation at the castle, meals, and a contribution toward travel are also covered for a limited number of participants.</span></span></li>
-        <li>Participants from other institutions: participation fee, see the <a href="../pricing/" target="_blank" rel="noopener">prices</a></li>
-      </ul>
-      <p><strong><span class="chip">The programme is built from your answers.</span></strong></p>
-      <p>This form asks what you work on, what you want to learn, and who you want to meet. From the answers we pick the talks, workshop topics, and invited speakers, and we put you in the room with the people you asked for. We select for fit and mix, not for who applied first, so a careful application is the best thing you can do for your chances.</p>
-      <p>You don't need a finished talk or poster. Ideas and work in progress are welcome. If you are selected, we contact you and shape your contribution together.</p>
-      <p>The programme: a set of talks, a Not-Just-Posters student session, hands-on workshops, and long breaks in one place, so the conversations don't end when the sessions do.</p>
-      <p>Working language: English.</p>
-      <h3>Organizing team</h3>
-      <ul><li>Peter Kutsos (project coordinator)</li><li>Petr Chlup (technical coordinator)</li></ul>
-      <p>Inquiries: <a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
-      <h3>Coordinating institution</h3>
-      <ul><li>Charles University</li></ul>
-      <h3>Partner institutions</h3>
-      <ul>
-        <li>University of Wrocław</li>
-        <li>Nicolaus Copernicus University in Toruń</li>
-        <li>Czech Technical University in Prague</li>
-        <li>Eötvös Loránd University in Budapest</li>
-        <li>Comenius University Bratislava</li>
-      </ul>
-      <p>Questions marked (optional) can be skipped. Without the other answers we cannot assess your application.</p>
+      <p class="intro-date">28&ndash;30 April 2027 &middot; Kostelec Castle, 35 km from Prague &middot; in English</p>
       <div class="cta-row">
         <button type="button" class="btn btn-primary" data-next>Start the application</button>
       </div>
+      <h3>How applying works</h3>
+      <ol class="steps">
+        <span class="thread" aria-hidden="true"></span>
+        <li><span class="n">1</span><h4>Fill in this form by 15 January 2027</h4><p>What you work on, what you want to learn and who you want to meet.</p></li>
+        <li><span class="n">2</span><h4>We select participants</h4><p>People whose needs and contributions complement each other. <a class="apply-steps-link" href="../programme/" target="_blank" rel="noopener">How it works &rarr;</a></p></li>
+        <li><span class="n">3</span><h4>Results in February 2027</h4><p>Everyone hears from us.</p></li>
+        <li><span class="n">4</span><h4>We plan your part together</h4><p>For example a talk, a poster or a demo.</p></li>
+      </ol>
+      <p class="intro-cost">No fee for the six <span class="qhint inline" tabindex="0">partner universities<span class="qhint-body">Charles University, Czech Technical University in Prague, University of Wrocław, Nicolaus Copernicus University in Toruń, Eötvös Loránd University in Budapest, and Comenius University Bratislava.</span></span>. Others: <a class="apply-steps-link" href="../pricing/" target="_blank" rel="noopener">see the prices &rarr;</a></p>
+      <p class="intro-q">Questions? <a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+      <ul class="intro-logos" aria-label="Partner universities">
+        <li><img src="../assets/charles-university_red-sm.webp" alt="Charles University" loading="lazy"></li>
+        <li><img src="../assets/cvut_blue-sm.webp" alt="Czech Technical University in Prague" loading="lazy"></li>
+        <li><img src="../assets/uwr-wroclaw_blue-sm.webp" alt="University of Wrocław" loading="lazy"></li>
+        <li><img src="../assets/umk-torun_blue-sm.webp" alt="Nicolaus Copernicus University in Toruń" loading="lazy"></li>
+        <li><img src="../assets/elte_color-sm.webp" alt="Eötvös Loránd University in Budapest" loading="lazy"></li>
+      </ul>
     </section>
 
     <!-- 1 ABOUT YOU -->
@@ -830,17 +860,28 @@
 <footer class="footer">
   <div class="footer-band">
     <div class="wrap footer-send">
-      <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
-        <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
-        <span class="fl-ai">AI</span>
-        <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+      <div class="footer-row">
+        <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+          <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+          <span class="fl-ai">AI</span>
+          <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+        </div>
+        <img class="footer-castle" src="../assets/castle-silhouette.png" alt="" loading="lazy">
       </div>
-      <img class="footer-castle" src="../assets/castle-silhouette.png" alt="" loading="lazy">
+      <p class="footer-invite">See you there.</p>
+      <!-- 09.11.2026: contact row, same as the homepage footer -->
+      <div class="footer-contact">
+        <div><h3>Peter Kutsos</h3><p>Project coordinator</p><p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p></div>
+        <div><h3>Petr Chlup</h3><p>Technical coordinator</p><p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p></div>
+        <div><h3>Inquiries and collaborations</h3><p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p></div>
+        <div><h3>Companies, sponsors and partners</h3><p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p></div>
+      </div>
     </div>
   </div>
   <div class="wrap footer-meta">
     <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
     <p>V4AIR &middot; 28-30 April 2027</p>
+    <p class="footer-links"><a href="../programme/">Program</a> &middot; <a href="../kostelec/">Venue</a> &middot; <a href="../pricing/">Pricing</a> &middot; <a href="../faq/">FAQ</a></p>
     <p><a href="../policy/privacy/" target="_blank" rel="noopener">Privacy notice</a> &middot; <a href="../policy/cookies/" target="_blank" rel="noopener">Cookies</a> &middot; <a href="../policy/code-of-conduct/" target="_blank" rel="noopener">Code of Conduct</a> &middot; <button type="button" data-cookie-settings>Cookie settings</button></p>
     <span id="dev-links" hidden><button type="button" id="reset-preview">Reset this preview</button> &middot; <button type="button" id="dev-toggle">Dev controls</button></span>
     <script>/* reset and dev links only for testers: add ?dev to the URL */ if (/[?&]dev/.test(location.search)) document.getElementById('dev-links').hidden = false;</script>

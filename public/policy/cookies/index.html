@@ -73,6 +73,7 @@
   p { margin: 0 0 1rem; max-width: 65ch; }
   a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
   a:hover { color: var(--teal); }
+  a.btn-primary:hover { color: var(--btn-ink); } /* 09.11.2026: keep button text colour on hover */
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
   .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
   .muted { color: var(--text-2); }
@@ -156,6 +157,28 @@
   .card h2 { font-size: 1.35rem; margin: 0 0 0.3rem; }
   .card p { margin: 0; color: var(--text-2); }
   .card .go { color: var(--accent); font-weight: 600; margin-top: 0.6rem; }
+  /* 09.11.2026: footer standardized with the homepage (send-off row, contact row, meta row) */
+  .footer-send { flex-direction: column !important; gap: clamp(1.25rem, 2.5vw, 2rem) !important; padding-block: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2vw, 1.75rem) !important; text-align: center; }
+  .footer-row { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); flex-wrap: wrap; }
+  .footer-invite { margin: 0; font-size: clamp(1.2rem, 1rem + 1vw, 1.7rem); font-weight: 600; color: var(--text); }
+  .footer-contact { align-self: stretch; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2rem; border-top: 1px solid var(--line); padding-top: clamp(1.25rem, 2vw, 1.75rem); text-align: left; }
+  .footer-contact h3 { font-size: 1rem; margin: 0 0 0.25rem; }
+  .footer-contact p { margin: 0; color: var(--text-2); font-size: 0.98rem; }
+  @media (max-width: 900px) { .footer-contact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .footer-contact { grid-template-columns: 1fr; } }
+  /* 09.11.2026: same navigation on every page: links on desktop, a menu on phones, current page marked */
+  .snav { display: flex; gap: 1.3rem; margin-right: 0.6rem; }
+  .snav a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+  .snav a:hover { color: var(--teal); }
+  .snav a[aria-current="page"], .smenu-panel a[aria-current="page"] { color: var(--teal); font-weight: 700; }
+  .smenu { display: none; position: relative; }
+  .smenu summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--text); }
+  .smenu summary::-webkit-details-marker { display: none; }
+  .smenu-panel { position: absolute; right: 0; top: calc(100% + 0.6rem); min-width: 14rem; display: flex; flex-direction: column; background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.6rem 1rem 1rem; box-shadow: 0 12px 28px rgb(0 0 0 / 0.18); z-index: 60; }
+  .smenu-panel a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 600; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+  .smenu-panel .btn { margin-top: 0.8rem; text-align: center; }
+  @media (max-width: 899px) { .snav { display: none; } .smenu { display: block; } }
+  .footer-links a { color: var(--text-2); }
 </style>
 </head>
 <body>
@@ -168,7 +191,8 @@
       <span class="brand-words" aria-hidden="true">researchers<br>meetup</span>
     </a>
     <div class="nav-right">
-      <a class="nav-site" href="../../">Back to the site</a>
+      <nav class="snav" aria-label="Main"><a href="../../programme/">Program</a> <a href="../../kostelec/">Venue</a> <a href="../../pricing/">Pricing</a> <a href="../../faq/">FAQ</a></nav>
+      <details class="smenu"><summary>Menu</summary><div class="smenu-panel"><a href="../../programme/">Program</a> <a href="../../kostelec/">Venue</a> <a href="../../pricing/">Pricing</a> <a href="../../faq/">FAQ</a><a class="btn btn-primary" href="../../apply/">Apply now</a></div></details>
       <label class="switch switch--skeuo">
         <input class="switch__input" id="theme-switch" type="checkbox" role="switch" checked>
         <span class="toggle-switch" aria-hidden="true"></span>
@@ -221,17 +245,28 @@
 <footer class="footer">
   <div class="footer-band">
     <div class="wrap footer-send">
-      <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
-        <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
-        <span class="fl-ai">AI</span>
-        <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+      <div class="footer-row">
+        <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+          <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
+          <span class="fl-ai">AI</span>
+          <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+        </div>
+        <img class="footer-castle" src="../../assets/castle-silhouette.png" alt="" loading="lazy">
       </div>
-      <img class="footer-castle" src="../../assets/castle-silhouette.png" alt="" loading="lazy">
+      <p class="footer-invite">See you there.</p>
+      <!-- 09.11.2026: contact row, same as the homepage footer -->
+      <div class="footer-contact">
+        <div><h3>Peter Kutsos</h3><p>Project coordinator</p><p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p></div>
+        <div><h3>Petr Chlup</h3><p>Technical coordinator</p><p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p></div>
+        <div><h3>Inquiries and collaborations</h3><p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p></div>
+        <div><h3>Companies, sponsors and partners</h3><p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p></div>
+      </div>
     </div>
   </div>
   <div class="wrap footer-meta">
     <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
     <p>V4AIR &middot; 28-30 April 2027</p>
+    <p class="footer-links"><a href="../../programme/">Program</a> &middot; <a href="../../kostelec/">Venue</a> &middot; <a href="../../pricing/">Pricing</a> &middot; <a href="../../faq/">FAQ</a></p>
     <p><a href="../">All policies</a> &middot; <a href="../privacy/">Privacy notice</a> &middot; <a href="../cookies/">Cookies</a> &middot; <a href="../code-of-conduct/">Code of Conduct</a> &middot; <button type="button" data-cookie-settings>Cookie settings</button></p>
   </div>
 </footer>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>The program: how V4AIR is built around your application, 28-30 April 2027</title>
+    <meta name="description" content="How the V4AIR program is built: we read your application, match you with experts and topics, invite speakers to fill the gaps, and build the talks and workshops around the matches." />
+    <script src="/consent.js"></script>
+    <script>
+      /* Apply the stored theme before first paint to avoid a flash (light is default) */
+      (function () {
+        try {
+          if (localStorage.getItem('v4air-theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) { /* storage unavailable: stay light */ }
+      })();
+    </script>
+    <script>
+      /* GA4 events: clicks on the Apply / Nominate buttons and on contact e-mails, with the section they sit in */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || typeof window.gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var sec = a.closest('section[id], footer, nav, header');
+        var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+        if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
+          gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
+        } else if (href.indexOf('mailto:') === 0) {
+          /* local part only: GA4 redacts anything that looks like an e-mail address */
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('@')[0], cta_location: where });
+        }
+      }, true);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/programme.tsx"></script>
+  </body>
+</html>
