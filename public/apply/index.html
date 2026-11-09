@@ -1398,6 +1398,7 @@
     if (submitting && API.enabled()) {
       var btn = $('#btn-next');
       btn.disabled = true; btn.textContent = 'Sending…';
+      $('#err-summary').classList.remove('on'); /* an earlier 'not sent' message would look like this attempt failing too */
       sync(true).then(function () { btn.disabled = false; track('form_submitted', { form_name: 'apply' }); idx++; render(); }, function (e) {
         btn.disabled = false; btn.textContent = 'Submit application';
         track('form_error', { form_name: 'apply' });
