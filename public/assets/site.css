@@ -8709,12 +8709,8 @@ h3, .stage-lead, .stage-col h3, .lay-card h3, .lay-col h3, .yes-line, .who-yes .
 .stop .date, .stop .what, .stop .sub, .stop.main .what, .stop-caption .date, .tl-list .date, .tl-list .sub,
 .footer-meta p, .footer-meta a, .footer-meta button { font-size: var(--fs-small); }
 
-/* "But I'm not an AI researcher" as a quote (10.11.2026): large accent marks, opening and closing, plus attribution */
+/* "But I'm not an AI researcher" with its attribution line (10.11.2026) */
 .not-ai-quote { margin: 0 0 clamp(1.5rem, 3vw, 2.25rem); }
 .not-ai-quote blockquote { margin: 0; }
 .not-ai-quote h2 { margin-bottom: 0.4rem; }
-.q-mark { position: relative; padding-top: 0.55em; }
-.q-mark::before { content: "C"; position: absolute; left: -0.05em; top: -0.32em; font-size: 3em; line-height: 1; color: var(--accent); font-family: Georgia, "Times New Roman", serif; }
-@media (min-width: 1100px) { .q-mark { padding-top: 0; } .q-mark::before { left: -0.62em; top: -0.3em; } }
-.q-close { display: inline-block; color: var(--accent); font-family: Georgia, "Times New Roman", serif; font-size: 3em; line-height: 0; vertical-align: -0.62em; margin-left: 0.06em; }
 .q-attr { color: var(--text-2); font-size: var(--fs-lead); font-style: italic; }
