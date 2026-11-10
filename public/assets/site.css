@@ -5182,7 +5182,8 @@ a.btn-line:hover {
   --ov-x: 0%;
   --ov-y: 0%;
   align-items: flex-end;
-  min-height: 100dvh;
+  /* svh, not dvh: dvh grows when a phone's address bar collapses on the first scroll and the bottom-aligned text jumps */
+  min-height: 100svh;
   display: flex;
   position: relative;
   overflow: hidden;
