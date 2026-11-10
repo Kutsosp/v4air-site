@@ -83,7 +83,7 @@
       })
       return s
     } },
-    { dur: 15000, beats: [0.07, 0.2, 0.3, 0.46, 0.56, 0.65, 0.76, 0.86, 1], draw(t) {
+    { dur: 12000, beats: [0.07, 0.2, 0.3, 0.46, 0.56, 0.65, 0.76, 0.86, 1], draw(t) {
       /* matchmaking: one to one, then one to many. Needs light first, the offer last, then the line, then the castle */
       let s = ''
       if (t < 0.48) {

@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Kostelec Castle: the V4AIR venue, 28-30 April 2027</title>
+    <meta name="description" content="Where V4AIR happens: a Renaissance castle 45 minutes from Prague, with rooms in the castle and next door, a brewery down the street and beech forests around the town." />
+    <script>(function () { var c = document.documentElement.classList; c.add('js'); var seen = false; try { seen = !!sessionStorage.getItem('v4air-nav-seen') } catch (e) {} if (!seen) c.add('nav-entrance') })()</script>
+    <script src="/consent.js"></script>
+    <script>
+      /* Apply the theme before first paint to avoid a flash */
+      (function () {
+        /* saved choice wins; with none, dark from 17:00 to 07:00 (visitor's clock) */
+        var t = null;
+        try {
+          t = localStorage.getItem('v4air-theme');
+        } catch (e) { /* storage unavailable: use the clock */ }
+        var h = new Date().getHours();
+        if (t === 'dark' || (t !== 'light' && (h >= 17 || h < 7))) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <script>
+      /* GA4 events: clicks on the Apply / Nominate buttons and on contact e-mails, with the section they sit in */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || typeof window.gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var sec = a.closest('section[id], footer, nav, header');
+        var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+        if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
+          gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
+        } else if (href.indexOf('mailto:') === 0) {
+          /* local part only: GA4 redacts anything that looks like an e-mail address */
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('@')[0], cta_location: where });
+        }
+      }, true);
+    </script>
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script src="/vendor/motion.js" defer></script>
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+<header class="nav2" data-scrolled="false">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="/" aria-label="V4AIR, back to top"
+      ><span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span
+      ><span class="brand-air">AI<span class="air-r">R</span></span><span class="brand-words" aria-hidden="true"
+        >researchers<br />meetup</span
+      ></a
+    >
+    <p class="nav-date">28-30 April 2027</p>
+    <nav aria-label="Main">
+      <div class="nav2-links">
+        <span><a href="/">Homepage</a></span
+        ><span><a href="/programme/">Program</a></span
+        ><span><a href="/kostelec/" aria-current="page">Venue</a></span
+        ><span><a href="/pricing/">Pricing</a></span
+        ><span><a href="/faq/">FAQ</a></span
+        >
+      </div>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-menu">Menu</button
+      ><label class="switch switch--skeuo"
+        ><input class="switch__input" type="checkbox" role="switch" /><span class="toggle-switch" aria-hidden="true"></span
+        ><span class="switch__sr">Light mode</span></label
+      ><span class="nav-apply-slot"><span class="nav-apply nav-apply-ghost" aria-hidden="true">Apply</span><a class="nav-apply nav-apply-real" href="/apply/">Apply</a></span>
+    </div>
+  </div>
+<div class="nav-menu-panel" id="nav-menu" hidden>
+    <div class="wrap">
+      <a href="/">Homepage</a>
+      <a href="/programme/">Program</a>
+      <a href="/kostelec/">Venue</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+    </div>
+  </div>
+</header>
+<main id="top" class="kostelec">
+  <section class="hero k-hero" id="hero">
+    <div class="hero-photo">
+      <img
+        src="/assets/kostelec/hero.jpg"
+        alt="Kostelec Castle seen from its park: a long cream-coloured wing with red roofs and onion-domed corner towers under a blue sky"
+        width="2400"
+        height="1600"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner wrap">
+        <p class="back-top back-top--photo"><a href="/">&larr; Back to the site</a></p>
+      <p class="eyebrow">The venue · 28-30 April 2027</p>
+      <h1>Three days in a Renaissance castle near Prague</h1>
+      <p class="lede">
+        V4AIR takes place at Kostelec Castle, 45 minutes from Prague. Your room, your meals and every session are a few minutes’ walk apart,
+        and the forest begins at the edge of town.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/apply/">Apply now</a><a class="btn btn-ghost" href="#castle">See the castle</a>
+      </div>
+    </div>
+  </section>
+  <section class="k-section" id="castle">
+    <div class="reveal">
+      <div class="wrap">
+        <p class="k-eyebrow">The castle</p>
+        <h2>Seven centuries old, and still in daily use</h2>
+        <div class="k-text k-cols">
+          <p>
+            A royal castle stood here by the 13th century. After a fire in 1548 it was rebuilt as the Renaissance castle you see today. In
+            1618 its young owner, Albrecht Jan Smiřický, was spoken of as a candidate for the Bohemian throne.
+          </p>
+          <p>
+            Today the castle belongs to the Czech University of Life Sciences Prague, which also manages the forests around the town. It is
+            a working university building, not a museum.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="wrap">
+        <div class="k-mosaic">
+          <figure class="k-fig m-courtyard">
+            <img
+              src="/assets/kostelec/courtyard.jpg"
+              alt="The castle courtyard, with two floors of arched galleries above a ground-floor arcade, a stone fountain and benches on the lawn"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>The Renaissance courtyard, with arcades on three floors.</figcaption>
+          </figure>
+          <figure class="k-fig m-corridor">
+            <img
+              src="/assets/kostelec/corridor.jpg"
+              alt="A long vaulted corridor with a red tiled floor, plants along tall windows on the right"
+              width="1200"
+              height="1600"
+              loading="lazy"
+            />
+            <figcaption>A vaulted corridor along the courtyard.</figcaption>
+          </figure>
+          <figure class="k-fig m-gate">
+            <img
+              src="/assets/kostelec/gate.jpg"
+              alt="The gate tower of the castle, its walls covered in diamond-pattern sgraffito, with a stone bridge leading to the arched entrance"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>The gate tower and its sgraffito walls.</figcaption>
+          </figure>
+          <figure class="k-fig m-hall">
+            <img
+              src="/assets/kostelec/hall.jpg"
+              alt="A large empty hall with a coffered wooden ceiling, a wooden floor and tall arched windows at the far end"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>One of the castle halls.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="wrap">
+        <div class="k-thennow">
+          <figure class="k-fig">
+            <span class="k-year">1819</span
+            ><img
+              src="/assets/kostelec/castle-1819.jpg"
+              alt="A painting of the castle on its hill above trees, ponds and fields, painted in 1819"
+              width="1275"
+              height="756"
+              loading="lazy"
+            />
+            <figcaption>Painted by Johann Venuto in 1819.</figcaption>
+          </figure>
+          <figure class="k-fig">
+            <span class="k-year">Today</span
+            ><img
+              src="/assets/kostelec/castle-today.jpg"
+              alt="The same castle wing today, with its round corner towers and red roof, seen from the lawn"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>The same towers today.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="k-section" id="stay">
+    <div class="reveal">
+      <div class="wrap k-split">
+        <div class="k-text">
+          <p class="k-eyebrow">Where you sleep</p>
+          <h2>Your room is in the castle or next to it</h2>
+          <p>Participants stay in the castle and in the historic guesthouses around it, all within a few minutes’ walk of the courtyard.</p>
+          <p>Meals, sessions and evenings happen on the same few streets. You will not need a car or a taxi during the three days.</p>
+        </div>
+        <figure class="k-fig">
+          <img
+            src="/assets/kostelec/savoy-house.jpg"
+            alt="A two-storey white house with a steep red roof and dormer windows, reached by a short bridge"
+            width="1600"
+            height="1200"
+            loading="lazy"
+          />
+          <figcaption>The Savoy house, an 18th-century building next to the castle, now a guesthouse.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="k-section" id="brewery">
+    <div class="reveal">
+      <div class="wrap">
+        <p class="k-eyebrow">Down the street</p>
+        <h2>A working brewery, six minutes from the castle</h2>
+        <div class="k-text k-cols">
+          <p>
+            Kostelec has brewed beer since 1489. The town brewery, a short walk from the castle gate, has brewed again since 2009. Its
+            courtyard has a pub, long tables outside and a brewing museum.
+          </p>
+          <p>
+            Look for the eight-sided hall where horses once walked in circles to drive the machinery. It is probably the largest building of
+            its kind in Europe.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="wrap">
+        <div class="k-trio">
+          <figure class="k-fig t-main">
+            <img
+              src="/assets/kostelec/brewery-yard.jpg"
+              alt="The cobbled brewery courtyard with tables, parasols and a tall brick chimney behind the buildings"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>The brewery courtyard.</figcaption>
+          </figure>
+          <figure class="k-fig">
+            <img
+              src="/assets/kostelec/brewery-hall.jpg"
+              alt="An eight-sided building with a pyramid roof, with wooden benches and tables in front of it"
+              width="1600"
+              height="1081"
+              loading="lazy"
+            />
+            <figcaption>The eight-sided horse-mill hall.</figcaption>
+          </figure>
+          <figure class="k-fig">
+            <img
+              src="/assets/kostelec/brewery.jpg"
+              alt="Brewery buildings with red roofs and a tall brick chimney under a blue sky"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>The brewhouse and its chimney.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="k-section k-forest" id="forests">
+    <figure class="k-bleed">
+      <img
+        src="/assets/kostelec/beech-forest.jpg"
+        alt="A bright beech forest in spring, with tall grey trunks, long shadows and a floor of brown leaves"
+        width="1600"
+        height="1200"
+        loading="lazy"
+      />
+    </figure>
+    <div class="reveal">
+      <div class="wrap k-split k-split-rev">
+        <figure class="k-fig">
+          <img
+            src="/assets/kostelec/view-forests.jpg"
+            alt="View from the castle over gardens and roofs to a wide band of dark forest on the horizon"
+            width="1600"
+            height="1200"
+            loading="lazy"
+          />
+          <figcaption>The view from the castle.</figcaption>
+        </figure>
+        <div class="k-text">
+          <p class="k-eyebrow">The black forests</p>
+          <h2>The town is named after its forests</h2>
+          <p>Kostelec nad Černými lesy means “Kostelec above the black forests”. The woods begin at the edge of town.</p>
+          <p>
+            Five kilometres away is Voděradské bučiny, a national nature reserve: 684 hectares of beech forest with granite boulders and
+            forest springs. In late April the beeches are coming into leaf. Bring shoes you can walk in.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="k-section" id="practical">
+    <div class="reveal">
+      <div class="wrap k-pair">
+        <div class="k-text">
+          <p class="k-eyebrow">Getting there</p>
+          <h2>By metro and bus from Prague</h2>
+          <p>
+            Kostelec is 25 km east of Prague. By public transport, take metro line C to Háje, then a direct bus to the town square, four
+            minutes from the castle gate. From Prague airport, allow two to two and a half hours.
+          </p>
+          <p class="muted">Selected participants receive full travel instructions with their acceptance.</p>
+        </div>
+        <div class="k-gmap">
+          <iframe
+            src="https://www.google.com/maps?q=49.99578,14.8629&amp;z=15&amp;hl=en&amp;output=embed"
+            title="Google map with Kostelec Castle pinned"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="wrap">
+        <div class="k-route">
+          <h3>From Prague to the castle in 45 minutes</h3>
+          <div class="k-route-starts">
+            <div>
+              <p class="k-route-from">From a coach or train</p>
+              <ol class="k-line">
+                <li class="k-stop k-l-c">
+                  <strong>Florenc</strong><span class="k-stop-note">Coach station</span>
+                  <p class="k-leg">
+                    <span class="k-pills"><span class="k-pill">C</span></span
+                    ><b>20 min</b> <span>Metro towards Háje</span>
+                  </p>
+                </li>
+                <li class="k-stop k-l-c">
+                  <strong>Hlavní nádraží</strong><span class="k-stop-note">Main railway station</span>
+                  <p class="k-leg">
+                    <span class="k-pills"><span class="k-pill">C</span></span
+                    ><b>19 min</b> <span>Metro towards Háje</span>
+                  </p>
+                </li>
+              </ol>
+            </div>
+            <div>
+              <p class="k-route-from">From the airport</p>
+              <ol class="k-line">
+                <li class="k-stop k-l-n59">
+                  <strong>Terminál 1 or Terminál 2</strong><span class="k-stop-note">Prague airport</span>
+                  <p class="k-leg">
+                    <span class="k-pills"><span class="k-pill">59</span></span
+                    ><b>17 min</b> <span>Bus towards Nádraží Veleslavín</span>
+                  </p>
+                </li>
+                <li class="k-stop k-l-a">
+                  <strong>Nádraží Veleslavín</strong><span class="k-stop-note">Change to metro A</span>
+                  <p class="k-leg">
+                    <span class="k-pills"><span class="k-pill">A</span></span
+                    ><b>12 min</b> <span>Metro towards Depo Hostivař or Skalka, to Muzeum</span>
+                  </p>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <p class="k-route-from k-route-join">Both routes continue from Muzeum</p>
+          <ol class="k-line k-line-end">
+            <li class="k-stop k-l-c">
+              <strong>Muzeum</strong><span class="k-stop-note">From the airport, change here to metro C.</span>
+              <p class="k-leg">
+                <span class="k-pills"><span class="k-pill">C</span></span
+                ><b>17 min</b> <span>Metro towards Háje</span>
+              </p>
+            </li>
+            <li class="k-stop k-l-bus">
+              <strong>Háje</strong><span class="k-stop-note">End of metro C. Walk to bus stand A.</span>
+              <p class="k-leg">
+                <span class="k-pills"><span class="k-pill">381</span><span class="k-pill">387</span></span
+                ><b>45 min</b>
+                <span
+                  >Bus towards Čáslav, Kutná Hora or Zásmuky (381) or Uhlířské Janovice (387). On weekdays a bus leaves every 30 to 60
+                  minutes.</span
+                >
+              </p>
+            </li>
+            <li class="k-stop k-l-walk">
+              <strong>Kostelec n.Č.l.,nám.</strong
+              ><span class="k-stop-note"
+                >The town square. Get off here, at the third stop in Kostelec, after Jevanská and Dobrovského.</span
+              >
+              <p class="k-leg"><b>4 min</b> <span>Walk</span></p>
+            </li>
+            <li class="k-stop k-terminus"><strong>Kostelec Castle</strong></li>
+          </ol>
+          <p class="muted k-route-note">
+            Lines and stops as of November 2026. Check times at
+            <a
+              href="https://pid.cz/en/search-connection/?from=H%C3%A1je&amp;to=Kostelec%20n.%C4%8C.l.%2Cn%C3%A1m.&amp;date=&amp;time=&amp;depart=on&amp;speed=medium&amp;over=&amp;max-transfers=default&amp;transports%5B%5D=metro&amp;transports%5B%5D=vlak&amp;transports%5B%5D=tram&amp;transports%5B%5D=bus&amp;transports%5B%5D=trolley&amp;transports%5B%5D=privoz&amp;transports%5B%5D=lan&amp;line_cid="
+              >pid.cz</a
+            >.
+          </p>
+          <img class="k-route-castle" src="/assets/castle-silhouette.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="wrap">
+        <div class="k-text k-access" id="access">
+          <p class="k-eyebrow">Access</p>
+          <h2>The castle is not step-free</h2>
+          <p>
+            It is a historic building with stairs throughout and cobbled courtyards. If you use a wheelchair or find stairs difficult,
+            please write to us at <a href="mailto:info@v4air.eu">info@v4air.eu</a> before you apply. We will look for a solution with the
+            venue.
+          </p>
+          <p class="muted">Telling us has no effect on selection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="k-section k-cta" id="apply">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>Spend three days here in April</h2>
+        <p>Applications close on 15 January 2027.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/apply/">Apply now</a><a class="k-back" href="/">Back to the main page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="wrap k-credits" aria-label="Photo credits">
+    <details>
+      <summary>Photo credits</summary>
+      <ul>
+        <li>
+          Castle from the park: <a href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_%C4%8Cern%C3%BDmi_lesy_(09).jpg">Richenza</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Courtyard:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Z%C3%A1mek_(Kostelec_nad_%C4%8Cern%C3%BDmi_lesy)%2C_jedna_z_venkovn%C3%ADch_fas%C3%A1d_z%C3%A1mku.JPG"
+            >Juan de Vojníkov</a
+          >, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Corridor:
+          <a href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_%C4%8Cern%C3%BDmi_lesy%2C_z%C3%A1mek%2C_chodba.jpg">Palickap</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Gate tower:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_%C4%8Cern%C3%BDmi_lesy_-_z%C3%A1mek_(stav_z%C3%A1%C5%99%C3%AD_2024)_(1).jpg"
+            >MartinVeselka</a
+          >, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Hall: <a href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_Cernymi_lesy_zamek_3.jpg">JiriMatejicek</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          The castle in 1819:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Schloss_Schwarz_Kostelecz_Kaurzimer_Kreises_nach_Pucherna_gemahlt_von_J._Venuto_1819.jpg"
+            >Johann Venuto</a
+          >, Public domain, via Wikimedia Commons
+        </li>
+        <li>
+          The castle today: <a href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_Cernymi_lesy_zamek_q.jpg">JiriMatejicek</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Savoy house:
+          <a href="https://commons.wikimedia.org/wiki/File:D%C5%AFm_Marie_Terezie_kn%C4%9B%C5%BEny_Savojsk%C3%A9%2C_od_kaple.jpg">ŠJů</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Brewery courtyard:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_%C4%8Cern%C3%BDmi_lesy_-_are%C3%A1l_pivovaru_%C4%8Dp._17_v_%C4%8Ceskobrodsk%C3%A9_ul._(stav_z%C3%A1%C5%99%C3%AD_2024)_(4).jpg"
+            >MartinVeselka</a
+          >, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Brewery buildings:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Kostelec_nad_%C4%8Cern%C3%BDmi_lesy_-_are%C3%A1l_pivovaru_%C4%8Dp._17_v_%C4%8Ceskobrodsk%C3%A9_ul._(stav_z%C3%A1%C5%99%C3%AD_2024)_(1).jpg"
+            >MartinVeselka</a
+          >, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Brewery, eight-sided hall:
+          <a href="https://commons.wikimedia.org/wiki/File:Pivovar_Kostelec_nad_%C4%8Cern%C3%BDmi_lesy%2C_polygon%C3%A1ln%C3%AD_mlat.jpg"
+            >ŠJů</a
+          >, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          Beech forest in April:
+          <a href="https://commons.wikimedia.org/wiki/File:Vod%C4%9Bradsk%C3%A9_bu%C4%8Diny_na_ja%C5%99e_(007).JPG">Juan de Vojníkov</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+        <li>
+          View from the castle:
+          <a href="https://commons.wikimedia.org/wiki/File:Kostelec_n%C4%8Cl%2C_v%C3%BDhled_ze_z%C3%A1mku_k_les%C5%AFm.jpg">ŠJů</a>,
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
+        </li>
+      </ul>
+    </details>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-band">
+    <div class="reveal">
+      <div class="wrap footer-send footer-split">
+        <div class="footer-left">
+          <div class="footer-row">
+            <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+              <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span
+              ><span class="fl-ai">AI<span class="air-r">R</span></span><span class="fl-words" aria-hidden="true"
+                >researchers<br />meetup</span
+              >
+            </div>
+            <img
+              class="footer-castle"
+              src="/assets/castle-silhouette.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        <p class="footer-invite">See you there.</p>
+        </div>
+        <div class="footer-contact">
+          <div class="team">
+            <div>
+              <h3>Peter Kutsos</h3>
+              <p>Project coordinator</p>
+              <p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Petr Chlup</h3>
+              <p>Technical coordinator</p>
+              <p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Inquiries and collaborations</h3>
+              <p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Companies, sponsors and partners</h3>
+              <p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-meta">
+      <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+      <p>V4AIR · 28-30 April 2027</p>
+      <p class="footer-links">
+        <a href="/programme/">Program</a> · <a href="/kostelec/">Venue</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a>
+      </p>
+      <p>
+        <a href="/policy/privacy/">Privacy notice</a> · <a href="/policy/cookies/">Cookies</a> ·
+        <a href="/policy/code-of-conduct/">Code of Conduct</a> · <button type="button" data-cookie-settings>Cookie settings</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/version-assets.mjs",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "dev": "node scripts/build-static.mjs && node scripts/serve.mjs",
+    "build": "node scripts/build-static.mjs",
+    "lint": "oxlint"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",

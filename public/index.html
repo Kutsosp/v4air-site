@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="google-site-verification" content="aQLd2pgX5LreZRG4A3vg_XYi5O0z7ro_Ndc1ci0HCNY" />
+    <title>V4AIR: a three-day AI meetup in Kostelec Castle, 28-30 April 2027</title>
+    <meta name="description" content="Students and early-career researchers who use AI in any field: apply for V4AIR, 28-30 April 2027 at Kostelec Castle near Prague. Deadline 15 January 2027." />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "V4AIR: V4 AI Researchers Meetup",
+      "description": "A free, fully funded three-day meetup at Kostelec Castle near Prague for students and early-career researchers from the V4 region who use AI in any field. Applications close 15 January 2027.",
+      "startDate": "2027-04-28",
+      "endDate": "2027-04-30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "url": "https://v4air.eu/",
+      "image": [
+        "https://v4air.eu/assets/castle-day-2x.jpg",
+        "https://v4air.eu/assets/castle-dusk-2x.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Kostelec Castle",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "náměstí Smiřických 1",
+          "addressLocality": "Kostelec nad Černými lesy",
+          "postalCode": "281 63",
+          "addressRegion": "Středočeský kraj",
+          "addressCountry": "CZ"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "V4AIR",
+        "url": "https://v4air.eu/",
+        "email": "info@v4air.eu",
+        "sameAs": [
+          "https://www.linkedin.com/company/v4air",
+          "https://www.instagram.com/v4_air/"
+        ]
+      },
+      "funder": {
+        "@type": "Organization",
+        "name": "International Visegrad Fund",
+        "url": "https://www.visegradfund.org/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "Funded place (application required)",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-09-01",
+        "validThrough": "2027-01-15",
+        "url": "https://v4air.eu/apply/"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Students and early-career researchers who use AI in their work"
+      },
+      "inLanguage": "en"
+    }
+    </script>
+    <script>(function () { var c = document.documentElement.classList; c.add('js'); var seen = false; try { seen = !!sessionStorage.getItem('v4air-nav-seen') } catch (e) {} if (!seen) c.add('nav-entrance') })()</script>
+    <script src="/consent.js"></script>
+    <script>
+      /* Apply the theme before first paint to avoid a flash */
+      (function () {
+        /* saved choice wins; with none, dark from 17:00 to 07:00 (visitor's clock) */
+        var t = null;
+        try {
+          t = localStorage.getItem('v4air-theme');
+        } catch (e) { /* storage unavailable: use the clock */ }
+        var h = new Date().getHours();
+        if (t === 'dark' || (t !== 'light' && (h >= 17 || h < 7))) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <script>
+      /* GA4 events: clicks on the Apply / Nominate buttons and on contact e-mails, with the section they sit in */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || typeof window.gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var sec = a.closest('section[id], footer, nav, header');
+        var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+        if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
+          gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
+        } else if (href.indexOf('mailto:') === 0) {
+          /* local part only: GA4 redacts anything that looks like an e-mail address */
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('@')[0], cta_location: where });
+        }
+      }, true);
+    </script>
+    <link rel="preload" as="image" href="/assets/castle-day-2x.jpg" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script src="/vendor/motion.js" defer></script>
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+<header class="nav2" data-scrolled="false">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="#top" aria-label="V4AIR, back to top"
+      ><span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span
+      ><span class="brand-air">AI<span class="air-r">R</span></span><span class="brand-words" aria-hidden="true"
+        >researchers<br />meetup</span
+      ></a
+    >
+    <p class="nav-date">28-30 April 2027</p>
+    <nav aria-label="Main">
+      <div class="nav2-links">
+        <span><a href="/" aria-current="page">Homepage</a></span
+        ><span><a href="/programme/">Program</a></span
+        ><span><a href="/kostelec/">Venue</a></span
+        ><span><a href="/pricing/">Pricing</a></span
+        ><span><a href="/faq/">FAQ</a></span
+        >
+      </div>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-menu">Menu</button
+      ><label class="switch switch--skeuo"
+        ><input class="switch__input" type="checkbox" role="switch" /><span class="toggle-switch" aria-hidden="true"></span
+        ><span class="switch__sr">Light mode</span></label
+      ><span class="nav-apply-slot"><span class="nav-apply nav-apply-ghost" aria-hidden="true">Apply</span><a class="nav-apply nav-apply-real" href="/apply/">Apply</a></span>
+    </div>
+  </div>
+<div class="nav-menu-panel" id="nav-menu" hidden>
+    <div class="wrap">
+      <a href="/" aria-current="page">Homepage</a>
+      <a href="/programme/">Program</a>
+      <a href="/kostelec/">Venue</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+    </div>
+  </div>
+</header>
+<main id="top">
+  <section class="hero ov-on ts-on" id="hero">
+    <div class="hero-photo">
+      <img
+        src="/assets/castle-day-2x.jpg"
+        alt="Aerial view of Kostelec Castle at dusk, its windows glowing warm against the surrounding forests"
+        width="2528"
+        height="1684"
+        fetchpriority="high"
+      /><img class="ts-layer" src="/assets/castle-day-2x.jpg" alt="" aria-hidden="true" width="2528" height="1684" />
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner wrap">
+      <p class="eyebrow">28-30 April 2027 · Kostelec Castle, near Prague</p>
+      <h1>A three-day meetup for researchers who use AI</h1>
+      <p class="lede">
+        For early-career researchers and PhD students in any field who use AI in their research: historians, sports scientists, biologists,
+        linguists and more. You tell us what your project needs, and we invite the experts and collaborators to match.
+      </p>
+      <div class="hero-actions">
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/apply/">Apply now</a><a class="btn btn-ghost" href="/programme/">How it works</a>
+        </div>
+        <div class="hero-unis">
+          <ul aria-label="Partner universities">
+            <li><img src="/assets/charles-university_white.png" alt="Charles University" width="280" height="280" /></li>
+            <li><img src="/assets/cvut_white.png" alt="Czech Technical University in Prague" width="137" height="280" /></li>
+            <li><img src="/assets/uwr-wroclaw_white.png" alt="University of Wrocław" width="751" height="255" /></li>
+            <li><img src="/assets/umk-torun_white.png" alt="Nicolaus Copernicus University in Toruń" width="348" height="280" /></li>
+            <li><img src="/assets/elte_white.png" alt="Eötvös Loránd University in Budapest" width="1400" height="280" /></li>
+          </ul>
+          <a class="hero-ivf" href="https://www.visegradfund.org" target="_blank" rel="noopener noreferrer"
+            ><img src="/assets/visegrad-fund_white.png" alt="Supported by the International Visegrad Fund" width="626" height="280"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="apply-band relative overflow-hidden border-b border-line bg-bg-raise py-14">
+    <div class="wrap relative flex flex-col items-center gap-5 text-center">
+      <h2 class="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
+      <div class="days-left" aria-live="polite"><span class="days-n">66</span><span class="days-label">days left</span></div>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+      <p class="mb-0 max-w-[50ch] text-sm text-ink-2">
+        You apply with one online form. No abstract, CV or motivation letter. Deadline: 15 January 2027.
+      </p>
+    </div>
+  </section>
+  <section class="who" id="who">
+    <div class="wrap">
+      <div class="reveal">
+        <div>
+          <h2 class="who-q">
+            Should you apply?<span class="who-arrows"
+              ><button type="button" aria-label="Previous example">←</button
+              ><button type="button" aria-label="Next example">→</button></span
+            >
+          </h2>
+          <div class="who-doubt" tabindex="0">
+            Well… if you’re
+            <span class="relative inline-block whitespace-nowrap slot-loop">a biologist training models on field data</span>
+            <br />and AI is
+            <span class="relative inline-block whitespace-nowrap slot-loop">your daily tool</span>
+            …
+          </div>
+        </div>
+      </div>
+      <div class="who-yes">
+        <div class="reveal" style="--d: 0.1s">
+          <div><div class="who-doubt who-then">Then…</div></div>
+        </div>
+        <div class="reveal reveal-yes" style="--d: 0.4s"><span class="yes">Yes.</span></div>
+        <div class="reveal" style="--d: 0.8s">
+          <div>
+            <div class="yes-row">
+              <p class="yes-line">We want you at V4AIR.</p>
+              <a class="btn btn-primary" href="/apply/">Apply now</a>
+            </div>
+            <p class="yes-note">Just <strong>one online form, ~17 minutes</strong>. No paper, CV or motivation letter.</p>
+            <p class="yes-note">Know someone who should be here? <a href="/nominate/">Nominate them →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="adaptive" id="not-ai">
+    <div class="reveal">
+      <div class="wrap">
+        <figure class="not-ai-quote">
+          <blockquote><h2 class="q-mark">But I’m not an AI researcher<span class="q-close" aria-hidden="true">”</span></h2></blockquote>
+          <figcaption class="q-attr">Almost every applicant we talk to</figcaption>
+        </figure>
+        <div class="cols">
+          <div>
+            <p>
+              You don’t need to be. At V4AIR, “AI researchers” means researchers in any field who use AI in their research. Your questions
+              come from your own field, and AI is one of the methods you use to answer them.
+            </p>
+            <p>
+              A historian working through thousands of archival documents belongs here as much as a computer scientist. So does a sports
+              scientist using pose estimation to give young players feedback.
+            </p>
+          </div>
+          <div>
+            <p>
+              If you analyze qualitative data, such as interviews, texts or archives, large language models are a tool worth knowing. You
+              don’t need to build them to use them well.
+            </p>
+            <p class="muted">
+              At the meetup you work with people who specialize in the methods you need, so you can bring the problem and leave with a way
+              to approach it.
+            </p>
+            <p>
+              <strong>Not in academia?</strong> If you work with AI in a company, a startup, tech transfer or investment, apply through the
+              same form, as a participant or as a speaker.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="format" id="get">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>What you’ll take home</h2>
+        <div class="get-text">
+          <p>
+            <strong>Ideas from other fields.</strong> You see how researchers in other fields use AI methods, and how those methods could
+            work on your own problems.
+          </p>
+          <p>
+            <strong>Experts in the methods you need.</strong> You meet researchers from other fields who already use these methods and could
+            work with you.
+          </p>
+        </div>
+        <div class="stage-cols">
+          <p class="stage-lead">If you are…</p>
+          <div class="stage-grid lay-cards">
+            <div class="stage-col lay-card">
+              <h3>an early-career researcher</h3>
+              <ul>
+                <li>Find a methods expert for your next grant</li>
+                <li>Meet grant partners from universities in Czechia, Hungary, Poland and Slovakia</li>
+                <li>Recruit PhD and master’s students for your group</li>
+                <li>Get feedback on a project while it is still in progress</li>
+              </ul>
+            </div>
+            <div class="stage-col lay-card">
+              <h3>a PhD or master’s student</h3>
+              <ul>
+                <li>Get feedback from experts in the Not-Just-Posters session</li>
+                <li>Find a supervisor or mentor</li>
+                <li>Line up your next position: a PhD place or a postdoc</li>
+                <li>Practise a method hands-on in the workshops</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="format program-teaser" id="adaptive">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>The program</h2>
+        <div class="teaser-text">
+          <p>At a typical conference, you sit through talks that have little to do with your work.</p>
+          <p>At V4AIR, the program adapts to you instead. The talks and workshops are chosen to address your specific problem.</p>
+        </div>
+        <p class="cost-link"><a href="/programme/">See how we fit the program to you →</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="format" id="format">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>What you can expect</h2>
+        <ul class="lay-list">
+          <li>
+            <p>
+              <strong>Talks.</strong>
+              <span class="rest"
+                >Invited experts and participants talk about their work. The topics are chosen from what you write in your
+                applications.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Workshops.</strong>
+              <span class="rest">Practical sessions on the methods participants ask for in the application form.</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Not-Just-Posters session.</strong> <span class="sub">For projects that don’t fit slides.</span>
+              <span class="rest"
+                >Students show a poster, a prototype, a physical object or an interactive demo, and get feedback from experts.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Free time to talk.</strong>
+              <span class="rest"
+                >Everyone stays and eats within a few minutes’ walk of each other, so conversations continue after the sessions end.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Evenings at the castle.</strong>
+              <span class="rest"
+                >A welcome dinner on 28 April, a guided tour of the castle, and a gala dinner with beer tasting and a museum tour on 29
+                April at the National Museum of Brewing, the town brewery six minutes’ walk from the castle.</span
+              >
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="venue" id="venue">
+    <div class="reveal">
+      <div class="wrap">
+        <div class="split">
+          <div>
+            <p class="eyebrow">The venue</p>
+            <h2>You will be staying in the castle</h2>
+            <p>
+              Kostelec Castle is a Renaissance castle owned by the Czech University of Life Sciences Prague, 45 minutes from Prague by metro
+              and a direct bus. Rooms, meals and sessions are all within a few minutes’ walk of each other.
+            </p>
+            <p class="muted">Working language: English.</p>
+            <p><a class="btn btn-line" href="/kostelec/">More about the venue</a></p>
+          </div>
+          <figure class="venue-photo">
+            <img
+              src="/assets/castle-day.jpg"
+              alt="Aerial view of Kostelec Castle in daylight, red roofs and towers surrounded by green forest"
+              width="1600"
+              height="1066"
+              loading="lazy"
+            />
+            <figcaption>Kostelec Castle, Kostelec nad Černými lesy, Czechia.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="format cost-line" id="cost">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>Pricing</h2>
+        <div class="funded-note">
+          Applicants from partner universities pay no fee: accommodation, meals and a travel contribution are paid by the International
+          Visegrad Fund.
+          <span class="partner-q" tabindex="0"
+            >Is my university a partner?<span class="partner-tip" role="tooltip"
+              ><strong>The six partner universities</strong><span class="tip-li">Charles University, Prague</span
+              ><span class="tip-li">Czech Technical University in Prague</span><span class="tip-li">Comenius University Bratislava</span
+              ><span class="tip-li">Eötvös Loránd University, Budapest</span><span class="tip-li">University of Wrocław</span
+              ><span class="tip-li">Nicolaus Copernicus University in Toruń</span></span
+            ></span
+          >
+        </div>
+        <p class="funded-note">Applicants from other universities can apply too, for a fee. Use the same form.</p>
+        <p class="cost-link"><a href="/pricing/">See the prices →</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="timeline" id="timeline">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>Key dates</h2>
+        <p class="countdown"></p>
+        <div class="road-wrap">
+          <div class="road">
+            <svg preserveAspectRatio="none" aria-hidden="true"></svg>
+            <div class="road-stops"></div>
+          </div>
+        </div>
+        <ol class="tl-list">
+          <li data-date="2026-09-01">
+            <span class="m-dot"></span><span class="date">1 Sep 2026</span><span class="what">Applications open</span>
+          </li>
+          <li data-date="2027-01-15">
+            <span class="m-dot"></span><span class="date">15 Jan 2027</span><span class="what">Application deadline</span>
+          </li>
+          <li data-date="2027-02-15">
+            <span class="m-dot"></span><span class="date">Feb 2027</span><span class="what">Selection results</span>
+          </li>
+          <li data-date="2027-03-10">
+            <span class="m-dot"></span><span class="date">March 2027</span><span class="what">Keynote speakers and draft program</span>
+          </li>
+          <li data-date="2027-04-14">
+            <span class="m-dot"></span><span class="date">Apr 2027</span><span class="what">Final program</span>
+          </li>
+          <li data-date="2027-04-28">
+            <span class="m-dot"></span><span class="date">28-30 Apr 2027</span><span class="what">V4AIR at Kostelec Castle</span>
+          </li>
+          <li data-date="2027-05-01">
+            <span class="m-dot"></span><span class="date">And beyond</span><span class="what">Follow-up activities</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="format" id="bring">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>What to bring</h2>
+        <p class="bring-lede">You don’t need a polished talk. A real problem is enough.</p>
+        <div class="lay-cols">
+          <div class="lay-col">
+            <div class="n">01</div>
+            <h3>Your problem, in a few sentences</h3>
+            <p>What you are trying to find out, and where you are stuck.</p>
+          </div>
+          <div class="lay-col">
+            <div class="n">02</div>
+            <h3>An example of your data</h3>
+            <p>A sample, a screenshot or a figure on your laptop, so a methods expert can see what you work with.</p>
+          </div>
+          <div class="lay-col">
+            <div class="n">03</div>
+            <h3>What you are missing</h3>
+            <p>The method or the expertise your project needs.</p>
+          </div>
+          <div class="lay-col">
+            <div class="n">04</div>
+            <h3>Students: your unfinished project</h3>
+            <p>For the Not-Just-Posters session: a poster, a prototype, a demo or slides.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="faq-link" id="faq">
+    <div class="wrap">
+      <p class="cost-link"><a href="/faq/">Questions? Read the FAQ →</a></p>
+    </div>
+  </section>
+  <section id="apply-now" class="apply-band relative overflow-hidden border-b border-line bg-bg-raise py-14">
+    <div class="wrap relative flex flex-col items-center gap-5 text-center">
+      <h2 class="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
+      <div class="days-left" aria-live="polite"><span class="days-n">66</span><span class="days-label">days left</span></div>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+      <p class="mb-0 max-w-[50ch] text-sm text-ink-2">
+        You apply with one online form. No abstract, CV or motivation letter. Deadline: 15 January 2027.
+      </p>
+    </div>
+  </section>
+  <section class="partners" id="partners">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>
+          <span class="count">Six</span> universities, <span class="count">four</span> countries, <span class="count">one</span> castle
+        </h2>
+        <p class="intro">
+          Coordinated by Charles University with partner universities in Czechia, Hungary, Poland and Slovakia (the Visegrad Four, or V4,
+          which gives V4AIR its name). Co-organized with prg.ai and common ground research.
+        </p>
+        <div class="logo-wall">
+          <figure class="logo-cell">
+            <a class="logo-link" href="https://cuni.cz/UKEN-1.html" target="_blank" rel="noopener noreferrer"
+              ><img
+                class="tall"
+                src="/assets/charles-university_red-sm.webp"
+                alt="Charles University"
+                width="200"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Prague, Czechia</figcaption></a
+            >
+          </figure>
+          <figure class="logo-cell">
+            <a class="logo-link" href="https://uwr.edu.pl/en/" target="_blank" rel="noopener noreferrer"
+              ><img
+                src="/assets/uwr-wroclaw_blue-sm.webp"
+                alt="University of Wrocław"
+                width="589"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Wrocław, Poland</figcaption></a
+            >
+          </figure>
+          <figure class="logo-cell">
+            <a class="logo-link" href="https://www.umk.pl/en/" target="_blank" rel="noopener noreferrer"
+              ><img
+                src="/assets/umk-torun_blue-sm.webp"
+                alt="Nicolaus Copernicus University in Torun"
+                width="248"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Toruń, Poland</figcaption></a
+            >
+          </figure>
+          <figure class="logo-cell">
+            <a class="logo-link" href="https://www.cvut.cz/en" target="_blank" rel="noopener noreferrer"
+              ><img
+                class="tall"
+                src="/assets/cvut_blue-sm.webp"
+                alt="Czech Technical University in Prague"
+                width="98"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Prague, Czechia</figcaption></a
+            >
+          </figure>
+          <figure class="logo-cell">
+            <a class="logo-link" href="https://www.elte.hu/en/" target="_blank" rel="noopener noreferrer"
+              ><img
+                src="/assets/elte_color-sm.webp"
+                alt="Eötvös Loránd University in Budapest"
+                width="569"
+                height="120"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Budapest, Hungary</figcaption></a
+            >
+          </figure>
+          <figure class="logo-cell tba">
+            <img
+              class="tba"
+              src="/assets/comenius-university_red-sm.webp"
+              alt="Partner university in Slovakia, to be announced"
+              width="496"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>TBA, Slovakia</figcaption>
+          </figure>
+        </div>
+        <div class="partner-strip">
+          <p class="partner-strip-label">Organizing partners</p>
+          <div class="partner-strip-logos">
+            <a href="https://prg.ai/en/" target="_blank" rel="noopener noreferrer"
+              ><img src="/assets/prgai-logo.svg" alt="prg.ai" width="159" height="40" loading="lazy" decoding="async" /></a
+            ><span
+              ><img
+                class="tall"
+                src="/assets/common-ground-research-sm.webp"
+                alt="common ground research"
+                width="160"
+                height="160"
+                loading="lazy"
+                decoding="async"
+            /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-band">
+    <div class="reveal">
+      <div class="wrap footer-send footer-split">
+        <div class="footer-left">
+          <div class="footer-row">
+            <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+              <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span
+              ><span class="fl-ai">AI<span class="air-r">R</span></span><span class="fl-words" aria-hidden="true"
+                >researchers<br />meetup</span
+              >
+            </div>
+            <img
+              class="footer-castle"
+              src="/assets/castle-silhouette.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        <p class="footer-invite">See you there.</p>
+        </div>
+        <div class="footer-contact">
+          <div class="team">
+            <div>
+              <h3>Peter Kutsos</h3>
+              <p>Project coordinator</p>
+              <p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Petr Chlup</h3>
+              <p>Technical coordinator</p>
+              <p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Inquiries and collaborations</h3>
+              <p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Companies, sponsors and partners</h3>
+              <p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-meta">
+      <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+      <p>V4AIR · 28-30 April 2027</p>
+      <p class="footer-links">
+        <a href="/programme/">Program</a> · <a href="/kostelec/">Venue</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a>
+      </p>
+      <p>
+        <a href="/policy/privacy/">Privacy notice</a> · <a href="/policy/cookies/">Cookies</a> ·
+        <a href="/policy/code-of-conduct/">Code of Conduct</a> · <button type="button" data-cookie-settings>Cookie settings</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

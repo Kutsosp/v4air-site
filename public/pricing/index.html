@@ -6,6 +6,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <title>Prices: V4 AI Researchers Meetup</title>
 <meta name="description" content="V4AIR prices: entrance fee, accommodation at Kostelec Castle and the gala dinner, 28-30 April 2027.">
+<script>(function () { var c = document.documentElement.classList; c.add('js'); var seen = false; try { seen = !!sessionStorage.getItem('v4air-nav-seen') } catch (e) {} if (!seen) c.add('nav-entrance') })()</script>
 <script src="/consent.js"></script>
 <script>
   (function () {
@@ -15,303 +16,212 @@
     if (t === 'dark' || (t !== 'light' && (h >= 17 || h < 7))) document.documentElement.setAttribute('data-theme', 'dark');
   })();
 </script>
+<link rel="stylesheet" href="/assets/site.css">
 <style>
-  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-  @font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
-  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
-  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
-  @font-face { font-family: 'Aileron'; src: url('../fonts/aileron-latin-800-normal.woff2') format('woff2'); font-weight: 800; font-display: swap; }
-
-  /* Poster palette (2027 identity): sage paper, ink, teal, bloom orange. Same tokens as the site. */
-  :root {
-    color-scheme: light;
-    --accent-glow: 221 127 62;
-    --bg: #f2f3ec;
-    --bg-raise: #f9f9f4;
-    --line: #d3d5c8;
-    --text: #161616;
-    --text-2: #52564a;
-    --accent: #b35c1f;
-    --accent-ink: #221304;
-    --teal: #4f8c88;
-    --btn-bg: #dd7f3e;
-    --btn-bg-hover: #e98f4e;
-    --btn-ink: #221304;
-    --error: #b3402f;
-    --field: #ffffff;
-    --radius: 12px;
-  }
-  [data-theme="dark"] {
-    color-scheme: dark;
-    --accent-glow: 233 162 79;
-    --bg: #0c1517;
-    --bg-raise: #111d20;
-    --line: #24383b;
-    --text: #e9f1f0;
-    --text-2: #a7bcbb;
-    --accent: #e9a24f;
-    --accent-ink: #221304;
-    --teal: #79aca8;
-    --btn-bg: #e9a24f;
-    --btn-bg-hover: #f2b269;
-    --btn-ink: #221304;
-    --error: #e07a68;
-    --field: #0c1517;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
-    font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3 { font-family: 'Aileron', 'Satoshi', system-ui, sans-serif; line-height: 1.12; text-wrap: balance; margin: 0 0 1rem; }
-  h1 { font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
-  h2 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.015em; }
-  h3 { font-size: 1.15rem; font-weight: 600; }
-  p { margin: 0 0 1rem; max-width: 65ch; }
-  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { color: var(--teal); }
-  a.btn-primary:hover { color: var(--btn-ink); } /* 09.11.2026: keep button text colour on hover */
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-  .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 0.5rem + 3vw, 3rem); }
-  .muted { color: var(--text-2); }
-  .chip { background: #ffffff; color: #161616; padding: 0.06em 0.38em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-
-  /* ---------- nav ---------- */
-  .nav2 { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg-raise) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .nav2-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1.5rem; }
-  .brand { display: flex; align-items: center; gap: 0.12em; font-family: 'Aileron', 'Satoshi', sans-serif; font-weight: 800; font-size: 1.9rem; line-height: 1; color: var(--text); text-decoration: none; }
-  .brand-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
-  .brand-air { letter-spacing: -0.015em; white-space: nowrap; }
-  .brand-words { display: block; font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; margin-left: 0.14em; }
-  @media (max-width: 700px) { .brand { font-size: 1.35rem; } }
-  .nav-right { display: flex; align-items: center; gap: 1.1rem; }
-  .nav-site { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
-  .nav-site:hover { color: var(--teal); }
-  /* theme switch (site component, colours fixed) */
-  .switch { font-size: 3.15px; position: relative; display: block; -webkit-tap-highlight-color: transparent; }
-  .switch__input { display: block; position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; border: 0; cursor: pointer; opacity: 0; appearance: none; }
-  .switch__input:focus-visible ~ .toggle-switch { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .switch__sr { overflow: hidden; position: absolute; width: 1px; height: 1px; }
-  .toggle-switch { display: block; position: relative; width: 16em; height: 7em; border-radius: 3.5em; transition: box-shadow 300ms ease-out, background-color 300ms ease-out; }
-  .toggle-switch:before { content: ""; display: block; position: absolute; z-index: 1; top: 0.25em; left: 0.25em; width: 6.5em; height: 6.5em; border-radius: 3.5em; transition: left 300ms ease-out, background-color 300ms ease-out, box-shadow 300ms ease-out; }
-  .switch__input:checked ~ .toggle-switch:before { left: 9.25em; }
-  .switch--skeuo .toggle-switch { box-shadow: inset 0 0 7em 7em rgba(0,0,0,0.3), inset 0 0.8em 0.4em rgba(0,0,0,0.3), inset 0 3em 1em rgba(0,0,0,0.25), 0 -0.25em 0.25em rgba(0,0,0,0.2), 0 0.25em 0.25em rgba(255,255,255,0.08); }
-  .switch--skeuo .toggle-switch:before { background-color: #273142; box-shadow: inset 0 0.25em 0.25em rgba(255,255,255,0.08), inset 0 -0.25em 0.25em rgba(0,0,0,0.2), 0 0.6em 0.4em rgba(0,0,0,0.5), 0 1.25em 1em rgba(0,0,0,0.5); }
-  .switch--skeuo .switch__input:checked ~ .toggle-switch { box-shadow: inset 0 0 7em 7em rgba(0,0,0,0.1), inset 0 0.8em 0.4em rgba(0,0,0,0.2), inset 0 3em 1em rgba(0,0,0,0.1), 0 -0.25em 0.25em rgba(0,0,0,0.15), 0 0.25em 0.25em rgba(255,255,255,0.4); }
-  .switch--skeuo .switch__input:checked ~ .toggle-switch:before { background-color: #d4cfc6; box-shadow: inset 0 0.25em 0.25em rgba(255,255,255,0.4), inset 0 -0.25em 0.25em rgba(0,0,0,0.15), 0 0.6em 0.4em rgba(0,0,0,0.25), 0 1.25em 1em rgba(0,0,0,0.25); }
-
-  /* ---------- page ---------- */
-  main { padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem); }
-  .doc { max-width: 780px; margin-inline: auto; padding-inline: clamp(1rem, 0.5rem + 2vw, 2rem); }
-  .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
-  .lede { color: var(--text-2); font-size: 1.15rem; margin-bottom: 0.8rem; }
-  .version { color: var(--text-2); font-size: 0.9rem; margin-bottom: 1.6rem; }
-  .toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 2.5rem; }
-  .toc a { padding: 0.45rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-  .toc a:hover { border-color: var(--accent); color: var(--accent); }
-  section { background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.4rem, 3.5vw, 2.6rem); margin-bottom: 1.6rem; scroll-margin-top: 80px; }
-  section h2 { margin-bottom: 0.6rem; }
-  section h3 { margin: 1.8rem 0 0.5rem; }
-  section ul { margin: 0 0 1rem; padding-left: 1.2rem; max-width: 65ch; }
-  section li { margin: 0.2rem 0; }
-  .list-head { font-weight: 700; margin: 1.2rem 0 0.3rem; }
-  blockquote { margin: 0 0 1rem; padding: 0.9rem 1.2rem; border-left: 3px solid var(--teal); background: color-mix(in srgb, var(--teal) 8%, transparent); border-radius: 0 8px 8px 0; }
-  blockquote p:last-child { margin-bottom: 0; }
-  .table-wrap { overflow-x: auto; margin: 0 0 1rem; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); }
-  th { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); }
-  code { font-size: 0.9em; padding: 0.1em 0.35em; border-radius: 4px; background: color-mix(in srgb, var(--text) 7%, transparent); }
-  @media (max-width: 640px) { section { padding: 1.2rem 1rem; } }
-
-  /* buttons */
-  .actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
-  .btn { display: inline-block; padding: 0.75rem 1.8rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: 1.08rem; text-decoration: none; white-space: nowrap; border: none; cursor: pointer; transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
-  .btn:active { transform: translateY(1px) scale(0.98); }
-  .btn-primary { background: var(--btn-bg); color: var(--btn-ink); box-shadow: 0 0 20px rgb(var(--accent-glow) / 0.4); }
-  .btn-primary:hover { background: var(--btn-bg-hover); transform: translateY(-1px); box-shadow: 0 0 30px rgb(var(--accent-glow) / 0.6); }
-  /* footer */
-  .footer { border-top: 1px solid var(--line); }
-  .footer-band { background: #d7d8cc; border-bottom: 1px solid var(--line); }
-  [data-theme="dark"] .footer-band { background: var(--bg-raise); }
-  .footer-send { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(2rem, 4vw, 3rem); flex-wrap: wrap; }
-  .footer-lockup { display: flex; align-items: center; gap: 0.14em; font-family: 'Aileron', sans-serif; font-weight: 800; font-size: clamp(2rem, 1rem + 4vw, 3.6rem); line-height: 0.8; letter-spacing: -0.02em; color: var(--text); }
-  .footer-lockup .fl-v4 { display: flex; flex-direction: column; font-size: 0.5em; line-height: 0.72; letter-spacing: 0.02em; }
-  .footer-lockup .fl-ai { color: #ffffff; text-shadow: 0 5px 28px rgb(0 0 0 / 0.4); }
-  .footer-lockup .fl-words { font-size: 0.5em; line-height: 0.72; letter-spacing: -0.01em; text-align: right; white-space: nowrap; }
-  .footer-castle { height: clamp(50px, 8vw, 90px); width: auto; filter: invert(1); opacity: 0.9; }
-  [data-theme="dark"] .footer-castle { filter: none; }
-  .footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1.8rem; }
-  .footer-meta p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
-  .footer-meta a, .footer-meta button { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0; }
-  .footer-meta a:hover, .footer-meta button:hover { color: var(--accent); }
-
-  .back { display: inline-block; margin: 0 0 1.4rem; color: var(--text-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
-  .back:hover { color: var(--teal); }
-  .cards { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
-  .card { display: block; background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.5rem; color: var(--text); text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
-  .card:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
-  .card h2 { font-size: 1.35rem; margin: 0 0 0.3rem; }
-  .card p { margin: 0; color: var(--text-2); }
-  .card .go { color: var(--accent); font-weight: 600; margin-top: 0.6rem; }
-  .price { white-space: nowrap; font-weight: 700; }
-  td.price, th.price { text-align: right; }
-  /* 09.11.2026: footer standardized with the homepage (send-off row, contact row, meta row) */
-  .footer-send { flex-direction: column !important; gap: clamp(1.25rem, 2.5vw, 2rem) !important; padding-block: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2vw, 1.75rem) !important; text-align: center; }
-  .footer-row { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); flex-wrap: wrap; }
-  .footer-invite { margin: 0; font-size: clamp(1.2rem, 1rem + 1vw, 1.7rem); font-weight: 600; color: var(--text); }
-  .footer-contact { align-self: stretch; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2rem; border-top: 1px solid var(--line); padding-top: clamp(1.25rem, 2vw, 1.75rem); text-align: left; }
-  .footer-contact h3 { font-size: 1rem; margin: 0 0 0.25rem; }
-  .footer-contact p { margin: 0; color: var(--text-2); font-size: 0.98rem; }
-  @media (max-width: 900px) { .footer-contact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 520px) { .footer-contact { grid-template-columns: 1fr; } }
-  /* 09.11.2026: same navigation on every page: links on desktop, a menu on phones, current page marked */
-  .snav { display: flex; gap: 1.3rem; margin-right: 0.6rem; }
-  .snav a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
-  .snav a:hover { color: var(--teal); }
-  .snav a[aria-current="page"], .smenu-panel a[aria-current="page"] { color: var(--teal); font-weight: 700; }
-  .smenu { display: none; position: relative; }
-  .smenu summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--text); }
-  .smenu summary::-webkit-details-marker { display: none; }
-  .smenu-panel { position: absolute; right: 0; top: calc(100% + 0.6rem); min-width: 14rem; display: flex; flex-direction: column; background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.6rem 1rem 1rem; box-shadow: 0 12px 28px rgb(0 0 0 / 0.18); z-index: 60; }
-  .smenu-panel a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 600; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
-  .smenu-panel .btn { margin-top: 0.8rem; text-align: center; }
-  @media (max-width: 899px) { .snav { display: none; } .smenu { display: block; } }
-  .footer-links a { color: var(--text-2); }
+  /* prices page: section layout from /assets/site.css (.format); only the tables and text width live here */
+  .pricing-page h1 { font-size: var(--fs-h2); margin-bottom: 0.4rem; }
+  .pricing-lede { color: var(--text-2); font-size: var(--fs-lead); margin-bottom: 1.6rem; }
+  .pricing-sec p, .pricing-sec ul { max-width: 65ch; font-size: var(--fs-body); }
+  .pricing-sec ul { padding-left: 1.2rem; list-style: disc; }
+  .pricing-sec li { margin: 0.2rem 0; }
+  .pricing-sec h3 { margin: 1.6rem 0 0.5rem; }
+  .pricing-sec .table-wrap { overflow-x: auto; max-width: 48rem; margin: 0 0 1rem; }
+  .pricing-sec table { width: 100%; border-collapse: collapse; font-size: var(--fs-body); }
+  .pricing-sec th, .pricing-sec td { text-align: left; vertical-align: top; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); }
+  .pricing-sec th { font-size: var(--fs-small); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); }
+  .pricing-sec .price { white-space: nowrap; font-weight: 700; text-align: right; }
+  .pricing-sec a:not(.btn) { color: var(--accent); }
 </style>
+<script src="/vendor/motion.js" defer></script>
+<script src="/site.js" defer></script>
 </head>
 <body>
-
-<header class="nav2">
+<header class="nav2" data-scrolled="true">
   <div class="nav2-inner wrap">
-    <a class="brand" href="../" aria-label="V4 AI researchers meetup">
-      <span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span>
-      <span class="brand-air">AI</span>
-      <span class="brand-words" aria-hidden="true">researchers<br>meetup</span>
-    </a>
+    <a class="brand" href="/" aria-label="V4AIR, back to top"
+      ><span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span
+      ><span class="brand-air">AI<span class="air-r">R</span></span><span class="brand-words" aria-hidden="true"
+        >researchers<br />meetup</span
+      ></a
+    >
+    <p class="nav-date">28-30 April 2027</p>
+    <nav aria-label="Main">
+      <div class="nav2-links">
+        <span><a href="/">Homepage</a></span
+        ><span><a href="/programme/">Program</a></span
+        ><span><a href="/kostelec/">Venue</a></span
+        ><span><a href="/pricing/" aria-current="page">Pricing</a></span
+        ><span><a href="/faq/">FAQ</a></span
+        >
+      </div>
+    </nav>
     <div class="nav-right">
-      <nav class="snav" aria-label="Main"><a href="../programme/">Program</a> <a href="../kostelec/">Venue</a> <a href="../pricing/" aria-current="page">Pricing</a> <a href="../faq/">FAQ</a></nav>
-      <details class="smenu"><summary>Menu</summary><div class="smenu-panel"><a href="../programme/">Program</a> <a href="../kostelec/">Venue</a> <a href="../pricing/" aria-current="page">Pricing</a> <a href="../faq/">FAQ</a><a class="btn btn-primary" href="../apply/">Apply now</a></div></details>
-      <label class="switch switch--skeuo">
-        <input class="switch__input" id="theme-switch" type="checkbox" role="switch" checked>
-        <span class="toggle-switch" aria-hidden="true"></span>
-        <span class="switch__sr">Light mode</span>
-      </label>
+      <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-menu">Menu</button
+      ><label class="switch switch--skeuo"
+        ><input class="switch__input" type="checkbox" role="switch" /><span class="toggle-switch" aria-hidden="true"></span
+        ><span class="switch__sr">Light mode</span></label
+      ><span class="nav-apply-slot"
+        ><span class="nav-apply nav-apply-ghost" aria-hidden="true">Apply</span
+        ><a class="nav-apply nav-apply-real" href="/apply/">Apply</a></span
+      >
+    </div>
+  </div>
+<div class="nav-menu-panel" id="nav-menu" hidden>
+    <div class="wrap">
+      <a href="/">Homepage</a>
+      <a href="/programme/">Program</a>
+      <a href="/kostelec/">Venue</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
     </div>
   </div>
 </header>
 
-<main>
-  <div class="doc">
-    <p class="eyebrow">V4AIR prices</p>
-    <h1>Prices</h1>
-    <p class="lede">V4 AI Researchers Meetup, Kostelec Castle, 28-30 April 2027</p>
-
-    <section id="entrance-fee">
-      <h2>Entrance fee</h2>
-      <p>The entrance fee is one price for the whole meetup.</p>
-      <div class="table-wrap">
-        <table>
+<main id="top" class="programme-page pricing-page">
+  <p class="back-top wrap"><a href="/">&larr; Back to the site</a></p>
+  <section class="format pricing-sec" id="entrance-fee">
+    <div class="reveal">
+      <div class="wrap">
+          <h1>Prices</h1>
+          <p class="pricing-lede">V4 AI Researchers Meetup, Kostelec Castle, 28-30 April 2027</p>
+          <h2>Entrance fee</h2>
+          <p>The entrance fee is one price for the whole meetup.</p>
+          <div class="table-wrap">
+          <table>
           <thead><tr><th>Participant</th><th class="price">Entrance fee</th></tr></thead>
           <tbody>
-            <tr><td>Student</td><td class="price">120&nbsp;&euro;</td></tr>
-            <tr><td>Professional</td><td class="price">160&nbsp;&euro;</td></tr>
+          <tr><td>Student</td><td class="price">120&nbsp;&euro;</td></tr>
+          <tr><td>Professional</td><td class="price">160&nbsp;&euro;</td></tr>
           </tbody>
-        </table>
+          </table>
+          </div>
+          <h3>What the entrance fee includes</h3>
+          <ul>
+          <li>Full access to the three-day program</li>
+          <li>Two breakfasts (29 and 30 April)</li>
+          <li>Two lunches (29 and 30 April)</li>
+          <li>Dinner and opening reception (28 April), including alcoholic and non-alcoholic drinks</li>
+          <li>Five coffee breaks with coffee and tea</li>
+          <li>Your badge and program</li>
+          </ul>
       </div>
-      <h3>What the entrance fee includes</h3>
-      <ul>
-        <li>Full access to the three-day program</li>
-        <li>Two breakfasts (29 and 30 April)</li>
-        <li>Two lunches (29 and 30 April)</li>
-        <li>Dinner and opening reception (28 April), including alcoholic and non-alcoholic drinks</li>
-        <li>Five coffee breaks with coffee and tea</li>
-        <li>Your badge and program</li>
-      </ul>
-    </section>
-
-    <section id="help">
-      <h2>Need help with the costs?</h2>
-      <p>Don't let the price stop you from applying. Write to <a href="mailto:info@v4air.eu">info@v4air.eu</a> and we will do our best to cover your expenses.</p>
-    </section>
-
-    <section id="gala-dinner">
-      <h2>Gala dinner</h2>
-      <p>On 29 April, participants can attend a gala dinner at the National Museum of Brewing, with beer tasting and a guided tour.</p>
-      <p>The price of the gala dinner will be announced soon.</p>
-    </section>
-
-    <section id="accommodation">
-      <h2>Accommodation</h2>
-      <p>The price covers two nights, from Wednesday 28 April to Friday 30 April, and includes the local accommodation tax. The number of rooms of each type is limited.</p>
-      <div class="table-wrap">
-        <table>
+    </div>
+  </section>
+  <section class="format pricing-sec" id="help">
+    <div class="reveal">
+      <div class="wrap">
+          <h2>Need help with the costs?</h2>
+          <p>Don't let the price stop you from applying. Write to <a href="mailto:info@v4air.eu">info@v4air.eu</a> and we will do our best to cover your expenses.</p>
+      </div>
+    </div>
+  </section>
+  <section class="format pricing-sec" id="gala-dinner">
+    <div class="reveal">
+      <div class="wrap">
+          <h2>Gala dinner</h2>
+          <p>On 29 April, participants can attend a gala dinner at the National Museum of Brewing, with beer tasting and a guided tour.</p>
+          <p>The price of the gala dinner will be announced soon.</p>
+      </div>
+    </div>
+  </section>
+  <section class="format pricing-sec" id="accommodation">
+    <div class="reveal">
+      <div class="wrap">
+          <h2>Accommodation</h2>
+          <p>The price covers two nights, from Wednesday 28 April to Friday 30 April, and includes the local accommodation tax. The number of rooms of each type is limited.</p>
+          <div class="table-wrap">
+          <table>
           <thead><tr><th>Room</th><th>Type</th><th>Bathroom</th><th class="price">Two nights</th></tr></thead>
           <tbody>
-            <tr><td>Shared room</td><td>Shared</td><td>Shared</td><td class="price">40&nbsp;&euro;</td></tr>
-            <tr><td>Room for two</td><td>Twin</td><td>Shared or private</td><td class="price">70&nbsp;&euro;</td></tr>
-            <tr><td>Private room</td><td>Private</td><td>Shared or private</td><td class="price">120&nbsp;&euro;</td></tr>
+          <tr><td>Shared room</td><td>Shared</td><td>Shared</td><td class="price">40&nbsp;&euro;</td></tr>
+          <tr><td>Room for two</td><td>Twin</td><td>Shared or private</td><td class="price">70&nbsp;&euro;</td></tr>
+          <tr><td>Private room</td><td>Private</td><td>Shared or private</td><td class="price">120&nbsp;&euro;</td></tr>
           </tbody>
-        </table>
+          </table>
+          </div>
       </div>
-    </section>
-
-    <section id="other-expenses">
-      <h2>Other expenses</h2>
-      <p>You pay for your own travel to and from Kostelec Castle.</p>
-      <p>If you have a question about prices, write to us at <a href="mailto:info@v4air.eu">info@v4air.eu</a>.</p>
-    </section>
-
-    <div class="actions">
-      <a class="back" href="../">&larr; Back to the site</a>
-      <a class="btn btn-primary" href="../apply/">Apply now</a>
     </div>
-  </div>
+  </section>
+  <section class="format pricing-sec" id="other-expenses">
+    <div class="reveal">
+      <div class="wrap">
+          <h2>Other expenses</h2>
+          <p>You pay for your own travel to and from Kostelec Castle.</p>
+          <p>If you have a question about prices, write to us at <a href="mailto:info@v4air.eu">info@v4air.eu</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section id="apply-now" class="apply-band relative overflow-hidden border-b border-line bg-bg-raise py-14">
+    <div class="wrap relative flex flex-col items-center gap-5 text-center">
+      <h2 class="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
+      <div class="days-left" aria-live="polite"><span class="days-n">66</span><span class="days-label">days left</span></div>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+      <p class="mb-0 max-w-[50ch] text-sm text-ink-2">
+        You apply with one online form. No abstract, CV or motivation letter. Deadline: 15 January 2027.
+      </p>
+    </div>
+  </section>
+  <p class="back-home wrap"><a href="/">&larr; Back to the V4AIR homepage</a></p>
 </main>
 
 <footer class="footer">
   <div class="footer-band">
-    <div class="wrap footer-send">
-      <div class="footer-row">
-        <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
-          <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span>
-          <span class="fl-ai">AI</span>
-          <span class="fl-words" aria-hidden="true">researchers<br>meetup</span>
+    <div class="reveal">
+      <div class="wrap footer-send footer-split">
+        <div class="footer-left">
+          <div class="footer-row">
+            <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+              <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span
+              ><span class="fl-ai">AI<span class="air-r">R</span></span><span class="fl-words" aria-hidden="true"
+                >researchers<br />meetup</span
+              >
+            </div>
+            <img
+              class="footer-castle"
+              src="/assets/castle-silhouette.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        <p class="footer-invite">See you there.</p>
         </div>
-        <img class="footer-castle" src="../assets/castle-silhouette.png" alt="" loading="lazy">
-      </div>
-      <p class="footer-invite">See you there.</p>
-      <!-- 09.11.2026: contact row, same as the homepage footer -->
-      <div class="footer-contact">
-        <div><h3>Peter Kutsos</h3><p>Project coordinator</p><p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p></div>
-        <div><h3>Petr Chlup</h3><p>Technical coordinator</p><p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p></div>
-        <div><h3>Inquiries and collaborations</h3><p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p></div>
-        <div><h3>Companies, sponsors and partners</h3><p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p></div>
+        <div class="footer-contact">
+          <div class="team">
+            <div>
+              <h3>Peter Kutsos</h3>
+              <p>Project coordinator</p>
+              <p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Petr Chlup</h3>
+              <p>Technical coordinator</p>
+              <p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Inquiries and collaborations</h3>
+              <p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Companies, sponsors and partners</h3>
+              <p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="wrap footer-meta">
-    <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
-    <p>V4AIR &middot; 28-30 April 2027</p>
-    <p class="footer-links"><a href="../programme/">Program</a> &middot; <a href="../kostelec/">Venue</a> &middot; <a href="../pricing/">Pricing</a> &middot; <a href="../faq/">FAQ</a></p>
-    <p><a href="../policy/privacy/">Privacy notice</a> &middot; <a href="../policy/cookies/">Cookies</a> &middot; <a href="../policy/code-of-conduct/">Code of Conduct</a> &middot; <button type="button" data-cookie-settings>Cookie settings</button></p>
+    <div class="wrap footer-meta">
+      <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+      <p>V4AIR · 28-30 April 2027</p>
+      <p class="footer-links">
+        <a href="/programme/">Program</a> · <a href="/kostelec/">Venue</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a>
+      </p>
+      <p>
+        <a href="/policy/privacy/">Privacy notice</a> · <a href="/policy/cookies/">Cookies</a> ·
+        <a href="/policy/code-of-conduct/">Code of Conduct</a> · <button type="button" data-cookie-settings>Cookie settings</button>
+      </p>
+    </div>
   </div>
 </footer>
-
-<script>
-(function () {
-  function $(s) { return document.querySelector(s); }
-  /* ---------- theme ---------- */
-  var themeSwitch = $('#theme-switch');
-  themeSwitch.checked = document.documentElement.getAttribute('data-theme') !== 'dark';
-  themeSwitch.addEventListener('change', function () {
-    if (themeSwitch.checked) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('v4air-theme', 'light'); }
-    else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('v4air-theme', 'dark'); }
-  });
-})();
-</script>
 </body>
 </html>

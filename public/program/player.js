@@ -7,11 +7,13 @@
   if (!stage || window.matchMedia('(max-width: 760px)').matches) return
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const DUR = 46000
+  /* 10.11.2026 (Peter: matchmaking too slow): step 2 (p 0.1-0.64) plays 1.4x faster, 24.8 s -> 17.7 s (2x was too fast) */
+  const MATCH_SPEED = 1.4
   let p = 0, playing = false, last = 0, started = false
   function frame(now) {
     if (!playing) return
     const dt = last ? now - last : 0; last = now
-    p = Math.min(1, p + dt / DUR)
+    p = Math.min(1, p + (dt * (p >= 0.1 && p < 0.64 ? MATCH_SPEED : 1)) / DUR)
     render(p)
     if (p >= 1) { playing = false; return }
     requestAnimationFrame(frame)
