@@ -8709,8 +8709,13 @@ h3, .stage-lead, .stage-col h3, .lay-card h3, .lay-col h3, .yes-line, .who-yes .
 .stop .date, .stop .what, .stop .sub, .stop.main .what, .stop-caption .date, .tl-list .date, .tl-list .sub,
 .footer-meta p, .footer-meta a, .footer-meta button { font-size: var(--fs-small); }
 
-/* "But I'm not an AI researcher" with its attribution line (10.11.2026) */
-.not-ai-quote { margin: 0 0 clamp(1.5rem, 3vw, 2.25rem); }
-.not-ai-quote blockquote { margin: 0; }
-.not-ai-quote h2 { margin-bottom: 0.4rem; }
-.q-attr { color: var(--text-2); font-size: var(--fs-lead); font-style: italic; }
+
+/* highlighter mark (10.11.2026): "You don't need to be." in "But I'm not an AI researcher" */
+mark.hl {
+  color: inherit;
+  font-weight: 700;
+  background: linear-gradient(transparent 55%, rgb(var(--accent-glow) / 0.45) 55%, rgb(var(--accent-glow) / 0.45) 92%, transparent 92%);
+  padding: 0 0.15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
