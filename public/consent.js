@@ -1,5 +1,5 @@
-/* Cookie consent. Google Analytics 4 loads only after the visitor clicks "Accept all cookies"; before that nothing goes to Google Analytics.
-   "Reject" and "Accept only essential cookies" do the same thing: essential items only (stored as 'denied').
+/* Cookie consent. Google Analytics 4 loads only after the visitor clicks "Accept all"; before that nothing goes to Google Analytics.
+   "Accept essential" and "Reject" do the same thing: essential items only (stored as 'denied').
    Loaded synchronously in <head> on every page, before any page script calls gtag().
    The choice is kept in localStorage for 12 months, then the banner asks again.
    Any element with data-cookie-settings reopens the banner (footer links, the policy page). */
@@ -79,9 +79,11 @@
       '.v4c p{margin:0 0 .9rem}' +
       '.v4c a{color:#b35c1f;text-underline-offset:3px}[data-theme="dark"] .v4c a{color:#e9a24f}' +
       '.v4c .v4c-now{font-size:.85rem;color:#52564a;margin:-.4rem 0 .9rem}[data-theme="dark"] .v4c .v4c-now{color:#a7bcbb}' +
-      '.v4c-row{display:flex;flex-wrap:wrap;gap:.6rem}' +
+      '.v4c-row{display:flex;gap:.5rem}' +
+      /* very narrow screens: an equal stack, so no button ends up alone on a wider row */
+      '@media (max-width:359px){.v4c-row{flex-direction:column}}' +
       /* all buttons look the same on purpose: no choice may be easier to make */
-      '.v4c button{flex:1 1 8rem;min-height:44px;padding:.5rem 1rem;border:0;border-radius:999px;background:#dd7f3e;color:#221304;font:700 .95rem/1.2 Satoshi,"Segoe UI",system-ui,sans-serif;cursor:pointer}' +
+      '.v4c button{flex:1 1 auto;min-height:44px;padding:.5rem .75rem;white-space:nowrap;border:0;border-radius:999px;background:#dd7f3e;color:#221304;font:700 .9rem/1.2 Satoshi,"Segoe UI",system-ui,sans-serif;cursor:pointer}' +
       '[data-theme="dark"] .v4c button{background:#e9a24f}' +
       '.v4c button:hover{filter:brightness(1.08)}' +
       '.v4c button:focus-visible{outline:2px solid #4f8c88;outline-offset:2px}';
@@ -100,7 +102,7 @@
       '<p>Essential items are always on: they remember your cookie choice and your unfinished form answers, and show the Google map on the venue page. ' +
       'With your consent we would also use Google Analytics cookies to see how visitors use this site. <a href="/policy/cookies/">Details</a></p>' +
       (current ? '<p class="v4c-now">Your current choice: ' + (current === 'granted' ? 'all cookies' : 'essential cookies only') + '.</p>' : '') +
-      '<div class="v4c-row"><button type="button" data-v4c="denied">Reject</button><button type="button" data-v4c="denied">Accept only essential cookies</button><button type="button" data-v4c="granted">Accept all cookies</button></div>';
+      '<div class="v4c-row"><button type="button" data-v4c="granted">Accept all</button><button type="button" data-v4c="denied">Accept essential</button><button type="button" data-v4c="denied">Reject</button></div>';
     box.addEventListener('click', function (e) {
       var b = e.target.closest('[data-v4c]');
       if (b) choose(b.getAttribute('data-v4c'));
