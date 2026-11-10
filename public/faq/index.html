@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>FAQ: V4AIR, 28-30 April 2027 at Kostelec Castle</title>
+    <meta name="description" content="Questions about V4AIR: who can apply, costs, travel, what to prepare and what happens after the three days at Kostelec Castle." />
+    <script>(function () { var c = document.documentElement.classList; c.add('js'); var seen = false; try { seen = !!sessionStorage.getItem('v4air-nav-seen') } catch (e) {} if (!seen) c.add('nav-entrance') })()</script>
+    <script src="/consent.js"></script>
+    <script>
+      /* Apply the stored theme before first paint to avoid a flash (light is default) */
+      (function () {
+        try {
+          if (localStorage.getItem('v4air-theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) { /* storage unavailable: stay light */ }
+      })();
+    </script>
+    <script>
+      /* GA4 events: clicks on the Apply / Nominate buttons and on contact e-mails, with the section they sit in */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || typeof window.gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var sec = a.closest('section[id], footer, nav, header');
+        var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+        if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
+          gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
+        } else if (href.indexOf('mailto:') === 0) {
+          /* local part only: GA4 redacts anything that looks like an e-mail address */
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('@')[0], cta_location: where });
+        }
+      }, true);
+    </script>
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script src="/vendor/motion.js" defer></script>
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+<header class="nav2" data-scrolled="true">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="/" aria-label="V4AIR, back to top"
+      ><span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span
+      ><span class="brand-air">AI<span class="air-r">R</span></span><span class="brand-words" aria-hidden="true"
+        >researchers<br />meetup</span
+      ></a
+    >
+    <p class="nav-date">28-30 April 2027</p>
+    <nav aria-label="Main">
+      <div class="nav2-links">
+        <span><a href="/">Homepage</a></span
+        ><span><a href="/programme/">Program</a></span
+        ><span><a href="/kostelec/">Venue</a></span
+        ><span><a href="/pricing/">Pricing</a></span
+        ><span><a href="/faq/" aria-current="page">FAQ</a></span
+        >
+      </div>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-menu">Menu</button
+      ><label class="switch switch--skeuo"
+        ><input class="switch__input" type="checkbox" role="switch" /><span class="toggle-switch" aria-hidden="true"></span
+        ><span class="switch__sr">Light mode</span></label
+      ><span class="nav-apply-slot"
+        ><span class="nav-apply nav-apply-ghost" aria-hidden="true">Apply</span
+        ><a class="nav-apply nav-apply-real" href="/apply/">Apply</a></span
+      >
+    </div>
+  </div>
+<div class="nav-menu-panel" id="nav-menu" hidden>
+    <div class="wrap">
+      <a href="/">Homepage</a>
+      <a href="/programme/">Program</a>
+      <a href="/kostelec/">Venue</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+    </div>
+  </div>
+</header>
+<main id="top" class="programme-page">
+  <p class="back-top wrap"><a href="/">&larr; Back to the site</a></p>
+  <section class="faq" id="faq">
+    <div class="reveal">
+      <div class="wrap">
+        <div class="faq-head">
+          <h2>Questions, answered</h2>
+          <button class="expand-all" aria-expanded="false">Expand all</button>
+        </div>
+        <div class="faq-list">
+          <details id="faq-funding">
+            <summary>What does &quot;fully funded&quot; actually cover?</summary>
+            <div class="faq-a">
+              <p>
+                Everything essential: accommodation at the castle, board for the whole three days, and a contribution toward travel scaled
+                by the distance of your institution. Funding comes from the International Visegrad Fund.
+              </p>
+            </div>
+          </details>
+          <details id="faq-places">
+            <summary>How many places are there?</summary>
+            <div class="faq-a">
+              <p>Funded places go to selected participants from the V4 region, plus a limited number of additional seats for a fee.</p>
+            </div>
+          </details>
+          <details id="faq-selection">
+            <summary>How are participants selected?</summary>
+            <div class="faq-a">
+              <p>
+                Based on your answers in the application form. We select people whose needs fit the event and who together make a good mix.
+                There is no CV or motivation letter, and the order of applications does not matter.
+              </p>
+            </div>
+          </details>
+          <details id="faq-nominated">
+            <summary>I was nominated by my institution. Do I still apply?</summary>
+            <div class="faq-a">
+              <p>
+                Yes. Everyone fills in the same application form, nominated or not; the form simply asks who nominated you. A nomination
+                gets you noticed, not selected.
+              </p>
+            </div>
+          </details>
+          <details id="faq-attendance">
+            <summary>Do I have to attend the whole three days?</summary>
+            <div class="faq-a">
+              <p>
+                Yes, from Wednesday midday to Friday evening (28-30 April 2027). The program depends on everyone staying together for the
+                whole time, so day visits are not possible.
+              </p>
+            </div>
+          </details>
+          <details id="faq-language">
+            <summary>What language is everything in?</summary>
+            <div class="faq-a"><p>English, throughout.</p></div>
+          </details>
+          <details id="faq-getting-there">
+            <summary>Where is Kostelec and how do I get there?</summary>
+            <div class="faq-a">
+              <p>
+                Kostelec nad Černými lesy is about 45 minutes from Prague. Fly into Prague (Václav Havel Airport), take the metro to Háje
+                (line C), and a direct bus takes you to Kostelec. From the airport, allow two to two and a half hours. Accepted participants
+                receive full travel instructions with their acceptance.
+              </p>
+            </div>
+          </details>
+          <details id="faq-access">
+            <summary>Is the castle accessible?</summary>
+            <div class="faq-a">
+              <p>
+                Kostelec is a Renaissance castle with stairs. If you have access needs of any kind, write to the organizers at
+                <a href="mailto:info@v4air.eu">info@v4air.eu</a> before you apply and we will look for a solution together. This has no
+                bearing on selection.
+              </p>
+            </div>
+          </details>
+          <details id="faq-early-career">
+            <summary>Who counts as &quot;early-career&quot;?</summary>
+            <div class="faq-a">
+              <p>
+                Master’s students, PhD candidates and postdocs. Researchers just past the postdoc stage, for example a new assistant
+                professor starting a research group, are welcome too. If you are unsure, apply.
+              </p>
+            </div>
+          </details>
+          <details id="faq-non-v4">
+            <summary>My university is not a partner. Can I still come?</summary>
+            <div class="faq-a">
+              <p>
+                Yes. A limited number of paid places are open to people from other institutions. The fees are on the
+                <a href="/pricing/">prices page</a>. Apply through the same form.
+              </p>
+            </div>
+          </details>
+          <details id="faq-no-talk">
+            <summary>Do I need a paper, poster, or finished talk to apply?</summary>
+            <div class="faq-a">
+              <p>
+                No. Ideas and unfinished projects are welcome, and so are projects that failed or got stuck. If you are selected, we plan
+                your part together.
+              </p>
+            </div>
+          </details>
+          <details id="faq-recording">
+            <summary>Will my talk be recorded or published?</summary>
+            <div class="faq-a">
+              <p>
+                We plan to share talks, slides, and example code among participants after the meetup; you can opt out of having your
+                material included. Details come with your acceptance.
+              </p>
+            </div>
+          </details>
+          <details id="faq-afterwards">
+            <summary>What happens after the three days?</summary>
+            <div class="faq-a">
+              <p>
+                Follow-up activities for participants are being planned so that the connections made over the three days continue. Details
+                come during the meetup.
+              </p>
+            </div>
+          </details>
+          <details id="faq-contact">
+            <summary>I have an idea, I want to collaborate, or I have another question.</summary>
+            <div class="faq-a">
+              <p>
+                We want to hear it. Write to <a href="mailto:info@v4air.eu">info@v4air.eu</a>; ideas, collaboration offers, and questions
+                all go straight to the organizing team.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="apply-now" class="apply-band relative overflow-hidden border-b border-line bg-bg-raise py-14">
+    <div class="wrap relative flex flex-col items-center gap-5 text-center">
+      <h2 class="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
+      <div class="days-left" aria-live="polite"><span class="days-n">66</span><span class="days-label">days left</span></div>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+      <p class="mb-0 max-w-[50ch] text-sm text-ink-2">
+        You apply with one online form. No abstract, CV or motivation letter. Deadline: 15 January 2027.
+      </p>
+    </div>
+  </section>
+  <p class="back-home wrap"><a href="/">← Back to the V4AIR homepage</a></p>
+</main>
+<footer class="footer">
+  <div class="footer-band">
+    <div class="reveal">
+      <div class="wrap footer-send footer-split">
+        <div class="footer-left">
+          <div class="footer-row">
+            <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+              <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span
+              ><span class="fl-ai">AI<span class="air-r">R</span></span><span class="fl-words" aria-hidden="true"
+                >researchers<br />meetup</span
+              >
+            </div>
+            <img
+              class="footer-castle"
+              src="/assets/castle-silhouette.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        <p class="footer-invite">See you there.</p>
+        </div>
+        <div class="footer-contact">
+          <div class="team">
+            <div>
+              <h3>Peter Kutsos</h3>
+              <p>Project coordinator</p>
+              <p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Petr Chlup</h3>
+              <p>Technical coordinator</p>
+              <p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Inquiries and collaborations</h3>
+              <p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Companies, sponsors and partners</h3>
+              <p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-meta">
+      <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+      <p>V4AIR · 28-30 April 2027</p>
+      <p class="footer-links">
+        <a href="/programme/">Program</a> · <a href="/kostelec/">Venue</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a>
+      </p>
+      <p>
+        <a href="/policy/privacy/">Privacy notice</a> · <a href="/policy/cookies/">Cookies</a> ·
+        <a href="/policy/code-of-conduct/">Code of Conduct</a> · <button type="button" data-cookie-settings>Cookie settings</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -134,9 +134,14 @@ function render(p) {
   cimg.style.opacity = '0.85'
   svgEl.querySelector('.st-static text').style.opacity = '1'
   let s = ''
+  /* crowd shade: 09.11.2026 gradual dim into step 2 (was a hard cut at 0.1) */
+  const dim = lerp(0.7, 0.3, ease(seg(p, 0.095, 0.125))) * (1 - crowdOut)
+  const appearOf = (i) => clamp(intro * 1.6 - rnd(i + 3) * 0.6)
+  /* 10.11.2026 (Peter): people about to be matched keep the crowd's grey until they light up */
+  const greyOp = (i) => appearOf(i) * dim
   CROWD.forEach((g, i) => {
     if (moving.has(i)) return
-    const appear = clamp(intro * 1.6 - rnd(i + 3) * 0.6), dim = lerp(0.7, 0.3, ease(seg(p, 0.095, 0.125))) * (1 - crowdOut) /* 09.11.2026: gradual dim into step 2 (was a hard cut at 0.1) */
+    const appear = appearOf(i)
     s += person(g.x, g.y + (1 - appear) * 10, null, false, appear * dim)
   })
   /* step 1: applications, as envelopes flying from people in the crowd up to the castle */
@@ -162,7 +167,7 @@ function render(p) {
     g.members.forEach((m, k) => {
       const light = seg(t, start(k), start(k) + 0.07)
       const c = CROWD[m.i]
-      s += person(pos[k].x, pos[k].y, light > 0 ? g.color : null, light > 0, appearAll)
+      s += person(pos[k].x, pos[k].y, light > 0 ? g.color : null, light > 0, light > 0 ? appearAll : greyOp(m.i))
       tag(c.x, c.y - 56, m.field, m.role === 'offers' ? `offers: ${g.topic}` : `needs: ${m.problem}`, g.color, light * fade)
     })
     s += caption(g, seg(p, g.win[1] - 0.015, g.win[1] + 0.025))
@@ -183,7 +188,7 @@ function render(p) {
     s += `<g transform="translate(${ex.toFixed(1)} ${ey.toFixed(1)})" style="opacity:${(1 - seg(gMail, 0.8, 1)).toFixed(3)}">` +
       envelope(0, 0, GAP.color, 1) + '</g>'
   }
-  s += person(ga.x, ga.y, gLight > 0 ? GAP.color : null, gLight > 0, appearAll)
+  s += person(ga.x, ga.y, gLight > 0 ? GAP.color : null, gLight > 0, gLight > 0 ? appearAll : greyOp(GAP.a))
   if (gEnter > 0) s += person(gb.x, gb.y, GAP.color, true, 1)
   const gFade = 1 - gGo * 3
   tag(G.x, G.y - 56, GAP.field, `needs: ${GAP.problem}`, GAP.color, gLight * gFade)

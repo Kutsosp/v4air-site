@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>The program: how V4AIR is built around your application, 28-30 April 2027</title>
+    <meta name="description" content="How the V4AIR program is built: we read your application, match you with experts and topics, invite speakers to fill the gaps, and build the talks and workshops around the matches." />
+    <script>(function () { var c = document.documentElement.classList; c.add('js'); var seen = false; try { seen = !!sessionStorage.getItem('v4air-nav-seen') } catch (e) {} if (!seen) c.add('nav-entrance') })()</script>
+    <script src="/consent.js"></script>
+    <script>
+      /* Apply the stored theme before first paint to avoid a flash (light is default) */
+      (function () {
+        try {
+          if (localStorage.getItem('v4air-theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) { /* storage unavailable: stay light */ }
+      })();
+    </script>
+    <script>
+      /* GA4 events: clicks on the Apply / Nominate buttons and on contact e-mails, with the section they sit in */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || typeof window.gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var sec = a.closest('section[id], footer, nav, header');
+        var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+        if (/^\/?(apply|nominate)\/?(\?|#|$)/.test(href)) {
+          gtag('event', 'cta_click', { cta_target: href.indexOf('nominate') > -1 ? 'nominate' : 'apply', cta_location: where });
+        } else if (href.indexOf('mailto:') === 0) {
+          /* local part only: GA4 redacts anything that looks like an e-mail address */
+          gtag('event', 'contact_click', { cta_target: href.slice(7).split('@')[0], cta_location: where });
+        }
+      }, true);
+    </script>
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/program/program.css" />
+    <script src="/vendor/motion.js" defer></script>
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+<header class="nav2" data-scrolled="true">
+  <div class="nav2-inner wrap">
+    <a class="brand" href="/" aria-label="V4AIR, back to top"
+      ><span class="brand-v4" aria-hidden="true"><span>V</span><span>4</span></span
+      ><span class="brand-air">AI<span class="air-r">R</span></span><span class="brand-words" aria-hidden="true"
+        >researchers<br />meetup</span
+      ></a
+    >
+    <p class="nav-date">28-30 April 2027</p>
+    <nav aria-label="Main">
+      <div class="nav2-links">
+        <span><a href="/">Homepage</a></span
+        ><span><a href="/programme/" aria-current="page">Program</a></span
+        ><span><a href="/kostelec/">Venue</a></span
+        ><span><a href="/pricing/">Pricing</a></span
+        ><span><a href="/faq/">FAQ</a></span
+        >
+      </div>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-menu">Menu</button
+      ><label class="switch switch--skeuo"
+        ><input class="switch__input" type="checkbox" role="switch" /><span class="toggle-switch" aria-hidden="true"></span
+        ><span class="switch__sr">Light mode</span></label
+      ><span class="nav-apply-slot"
+        ><span class="nav-apply nav-apply-ghost" aria-hidden="true">Apply</span
+        ><a class="nav-apply nav-apply-real" href="/apply/">Apply</a></span
+      >
+    </div>
+  </div>
+<div class="nav-menu-panel" id="nav-menu" hidden>
+    <div class="wrap">
+      <a href="/">Homepage</a>
+      <a href="/programme/">Program</a>
+      <a href="/kostelec/">Venue</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+    </div>
+  </div>
+</header>
+<main id="top" class="programme-page">
+  <section class="v4p player" id="program">
+    <div id="pin" class="v4p-pin desk">
+      <div class="two">
+        <div id="left">
+          <div class="lefthead">
+            <h2 class="big">The program</h2>
+            <div class="expl">
+              <p>At a typical conference, you sit through talks that have little to do with your work.</p>
+              <p>At V4AIR, we read your application first, then match you with experts and topics based on what you need.</p>
+              <p>The talks and workshops are chosen to address your specific problem.</p>
+            </div>
+          </div>
+          <ol id="steps"></ol>
+        </div>
+        <svg
+          id="stage"
+          viewBox="0 0 600 560"
+          role="img"
+          aria-label="Participants whose needs and skills match are brought together at Kostelec Castle; an invited expert fills a gap no applicant covers; the program follows."
+        ></svg>
+      </div>
+    </div>
+    <div id="phone" class="phone"></div>
+  </section>
+  <section class="format" id="format">
+    <div class="reveal">
+      <div class="wrap">
+        <h2>What you can expect</h2>
+        <ul class="lay-list">
+          <li>
+            <p>
+              <strong>Talks.</strong>
+              <span class="rest"
+                >Invited experts and participants talk about their work. The topics are chosen from what you write in your
+                applications.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Workshops.</strong>
+              <span class="rest">Practical sessions on the methods participants ask for in the application form.</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Not-Just-Posters session.</strong> <span class="sub">For projects that don’t fit slides.</span>
+              <span class="rest"
+                >Students show a poster, a prototype, a physical object or an interactive demo, and get feedback from experts.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Free time to talk.</strong>
+              <span class="rest"
+                >Everyone stays and eats within a few minutes’ walk of each other, so conversations continue after the sessions end.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Evenings at the castle.</strong>
+              <span class="rest"
+                >A welcome dinner on 28 April, a guided tour of the castle, and a gala dinner with beer tasting and a museum tour on 29
+                April at the National Museum of Brewing, the town brewery six minutes’ walk from the castle.</span
+              >
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="apply-now" class="apply-band relative overflow-hidden border-b border-line bg-bg-raise py-14">
+    <div class="wrap relative flex flex-col items-center gap-5 text-center">
+      <h2 class="mb-0 text-3xl font-bold md:text-5xl">Applications are open.</h2>
+      <div class="days-left" aria-live="polite"><span class="days-n">66</span><span class="days-label">days left</span></div>
+      <a class="btn btn-primary" href="/apply/">Apply now</a>
+      <p class="mb-0 max-w-[50ch] text-sm text-ink-2">
+        You apply with one online form. No abstract, CV or motivation letter. Deadline: 15 January 2027.
+      </p>
+    </div>
+  </section>
+  <p class="back-home wrap"><a href="/">← Back to the V4AIR homepage</a></p>
+</main>
+<footer class="footer">
+  <div class="footer-band">
+    <div class="reveal">
+      <div class="wrap footer-send footer-split">
+        <div class="footer-left">
+          <div class="footer-row">
+            <div class="footer-lockup" role="img" aria-label="V4 AI researchers meetup">
+              <span class="fl-v4" aria-hidden="true"><span>V</span><span>4</span></span
+              ><span class="fl-ai">AI<span class="air-r">R</span></span><span class="fl-words" aria-hidden="true"
+                >researchers<br />meetup</span
+              >
+            </div>
+            <img
+              class="footer-castle"
+              src="/assets/castle-silhouette.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        <p class="footer-invite">See you there.</p>
+        </div>
+        <div class="footer-contact">
+          <div class="team">
+            <div>
+              <h3>Peter Kutsos</h3>
+              <p>Project coordinator</p>
+              <p><a href="mailto:peter@v4air.eu">peter@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Petr Chlup</h3>
+              <p>Technical coordinator</p>
+              <p><a href="mailto:petr@v4air.eu">petr@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Inquiries and collaborations</h3>
+              <p><a href="mailto:info@v4air.eu">info@v4air.eu</a></p>
+            </div>
+            <div>
+              <h3>Companies, sponsors and partners</h3>
+              <p><a href="mailto:partners@v4air.eu">partners@v4air.eu</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-meta">
+      <p>Supported by the International Visegrad Fund, Grant No. 22610317.</p>
+      <p>V4AIR · 28-30 April 2027</p>
+      <p class="footer-links">
+        <a href="/programme/">Program</a> · <a href="/kostelec/">Venue</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a>
+      </p>
+      <p>
+        <a href="/policy/privacy/">Privacy notice</a> · <a href="/policy/cookies/">Cookies</a> ·
+        <a href="/policy/code-of-conduct/">Code of Conduct</a> · <button type="button" data-cookie-settings>Cookie settings</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <script>
+      /* the program animation: plain scripts in public/program/, played once in view (player mode) */
+      window.V4P_EMBED = true;
+      window.V4P_PLAYER = true;
+      window.V4P_ASSET = '/assets/castle-silhouette.png';
+    </script>
+    <script src="/program/gsap.min.js"></script>
+    <script src="/program/anim.js"></script>
+    <script src="/program/phone.js"></script>
+    <script src="/program/player.js"></script>
+  </body>
+</html>
