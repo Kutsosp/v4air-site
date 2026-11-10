@@ -245,7 +245,7 @@
       { date: '2027-02-15', label: 'Feb 2027', what: 'Selection results', sub: 'Everyone hears from us, either way.' },
       { date: '2027-03-10', label: 'March 2027', what: 'Keynote speakers and draft program', sub: 'Built from participants’ answers.' },
       { date: '2027-04-14', label: 'Apr 2027', what: 'Final program', sub: 'With everything you need for the trip.' },
-      { date: '2027-04-28', label: '28-30 Apr 2027', what: 'V4AIR at Kostelec Castle', sub: 'Three days together in Kostelec.' },
+      { date: '2027-04-28', label: '28-30 Apr 2027', what: 'V4AIR at Kostelec Castle' } /* no subline (10.11.2026): it overflowed the card */,
       { date: '2027-05-01', label: 'And beyond', what: 'Follow-up activities', sub: 'Activities that keep participants in touch after the meetup.' },
     ]
     var T = STOPS.map(function (s) { return new Date(s.date + 'T00:00:00').getTime() })
@@ -351,7 +351,7 @@
           div.className = 'stop' + (isMain ? ' main' : '')
           div.style.left = pts[k].x + 'px'
           div.style.top = pts[k].y + 18 + 'px'
-          div.innerHTML = '<span class="date">' + s.label + '</span><span class="what">' + s.what + '</span><span class="sub">' + s.sub + '</span>'
+          div.innerHTML = '<span class="date">' + s.label + '</span><span class="what">' + s.what + '</span>' + (s.sub ? '<span class="sub">' + s.sub + '</span>' : '')
           div.tabIndex = 0
           stopsEl.appendChild(div)
           stopEls.push(div)
