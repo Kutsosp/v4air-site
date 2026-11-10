@@ -8710,12 +8710,3 @@ h3, .stage-lead, .stage-col h3, .lay-card h3, .lay-col h3, .yes-line, .who-yes .
 .footer-meta p, .footer-meta a, .footer-meta button { font-size: var(--fs-small); }
 
 
-/* highlighter mark (10.11.2026): "You don't need to be." in "But I'm not an AI researcher" */
-mark.hl {
-  color: inherit;
-  font-weight: 700;
-  background: linear-gradient(transparent 55%, rgb(var(--accent-glow) / 0.45) 55%, rgb(var(--accent-glow) / 0.45) 92%, transparent 92%);
-  padding: 0 0.15em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
