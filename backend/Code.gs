@@ -266,6 +266,8 @@ function clean(answers, keyRe) {
       });
     } else if (k === '__screen' || k === '__prefilled') {
       json[k] = v;
+    } else if (k === '__layout' && typeof v === 'number') {
+      json[k] = v; /* screen order the __screen index refers to; see LAYOUT in public/apply/index.html */
     } else if (k === '__file' && v && typeof v === 'object') {
       /* what the client remembers about an earlier upload; the server copy is rewritten whenever a file is sent */
       json[k] = { name: String(v.name || '').slice(0, 200), size: +v.size || 0, url: /^https:\/\/(drive|docs)\.google\.com\//.test(v.url) ? v.url : '' };
