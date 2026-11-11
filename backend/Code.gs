@@ -308,16 +308,23 @@ var TEST_ADDRESS = /@example\.(com|net|org)$/i;
 
 /* Runs every 5 minutes (setup() makes the trigger). This is the only sender, because the Worker cannot send mail.
    The sheet is the queue: confirm_sent_at and resume_sent_at say what went out, so a missed run or an empty quota only delays mail.
-   Script properties: EMAIL_ENABLED=true, SITE_URL (site root, default https://v4air.eu/), MAIL_SINCE (rows last saved before this date are never mailed). */
+   Script properties: EMAIL_ENABLED=true, SITE_URL (site root, default https://v4air.eu/), MAIL_SINCE (rows last saved before this date are never mailed),
+   MAIL_MODE: 'dry' (default when unset) or 'live'.
+   Dry run: every run rewrites the tab "Mail preview" with each email that is due now and every row that would be skipped, and why.
+   Nothing is sent, no row is marked, no token is created. Real mail needs MAIL_MODE=live AND EMAIL_ENABLED=true. */
+var PREVIEW_TAB = 'Mail preview', UNSUB_TAB = 'Unsubscribed';
 function sendMail() {
   var props = PropertiesService.getScriptProperties();
   importSecrets(props);
   var site = (props.getProperty('SITE_URL') || 'https://v4air.eu/').replace(/\/?$/, '/');
   var since = new Date(props.getProperty('MAIL_SINCE') || NaN);
-  if (props.getProperty('EMAIL_ENABLED') !== 'true' || !/^https:\/\//.test(site) || isNaN(since)) return;
+  var live = props.getProperty('MAIL_MODE') === 'live';
+  if (!/^https:\/\//.test(site) || isNaN(since)) return;
+  if (live && props.getProperty('EMAIL_ENABLED') !== 'true') return;
   var lock = LockService.getScriptLock();
   if (!lock.tryLock(20000)) return;
   try {
+    if (!live) { writePreview(site, since); return; }
     var left = Math.min(MAIL_BATCH, props.getProperty('RESEND_API_KEY') ? RESEND_DAILY : MailApp.getRemainingDailyQuota());
     ['A', 'S'].forEach(function (form) { if (left > 0) left -= mailTab(form, site, since, left); });
     SpreadsheetApp.flush();
@@ -326,34 +333,86 @@ function sendMail() {
   }
 }
 
-/* Confirmations first, once per row. A resume email goes once, a day after the last save, if the form is still unfinished. */
-function mailTab(form, site, since, max) {
-  var sh = sheetFor(form), head = addColumns(sh, header(sh), ['confirm_sent_at', 'resume_sent_at']);
-  var last = sh.getLastRow(), now = new Date(), col = {}, sent = 0;
-  if (last < 2) return 0;
+/* What is due on one tab, without changing anything. Confirmations first, once per row.
+   A resume email goes once, a day after the last save, if the form is still unfinished.
+   Each item: {form, kind, row, mark (0-based column of *_sent_at), to, id, name, skip ('' or the reason)}. */
+function dueMail(form, since) {
+  var sh = sheetFor(form), head = header(sh), last = sh.getLastRow(), now = new Date(), col = {}, out = [];
+  if (last < 2) return { sh: sh, head: head, items: out };
   head.forEach(function (h, i) { col[h] = i; });
-  var rows = sh.getRange(2, 1, last - 1, head.length).getValues();
+  var rows = sh.getRange(2, 1, last - 1, head.length).getValues(), unsub = unsubscribed(), done = {};
+  /* addresses that already sent this form: their unfinished drafts get no reminder (the "V4AIR form emails" Doc rule) */
+  rows.forEach(function (r) { if (r[col.status] === 'submitted') done[String(r[col['A1.email']] || '').trim().toLowerCase()] = true; });
   ['confirm', 'resume'].forEach(function (kind) {
+    var mark = col[kind + '_sent_at'];
     rows.forEach(function (r, i) {
-      var saved = r[col.last_saved_at], mark = col[kind + '_sent_at'];
-      if (sent >= max || r[mark] || !(saved instanceof Date) || saved < since) return;
-      if (kind === 'confirm' ? r[col.status] !== 'submitted' : r[col.status] !== 'in progress' || now - saved < RESUME_AFTER_MS) return;
-      var token = newToken(), row = i + 2, to = String(r[col['A1.email']]).trim();
-      if (TEST_ADDRESS.test(to)) { sh.getRange(row, mark + 1).setValue('skipped: test address'); return; }
-      sh.getRange(row, col.token_hash + 1).setValue(r[col.token_hash] + ' ' + hash(token));
-      var path = form === 'S' ? 'invited-speaker/' : 'apply/', link = site + path + '?id=' + encodeURIComponent(r[col.response_id]) + '&t=' + encodeURIComponent(token);
-      var m = emailText(form, kind, r[col.response_id], String(r[col['A1.name']] || '').trim(), link), result = now;
-      try {
-        deliver(to, m.subject, m.body);
-      } catch (err) {
-        console.error('mail failed: ' + form + ' ' + kind + ' ' + r[col.response_id] + ': ' + err); /* marked, so one bad address cannot block the queue */
-        result = 'failed';
-      }
-      sh.getRange(row, mark + 1).setValue(result);
-      sent++;
+      var saved = r[col.last_saved_at];
+      if (mark !== undefined && r[mark]) return; /* already sent or marked */
+      if (kind === 'confirm' ? r[col.status] !== 'submitted' : r[col.status] !== 'in progress') return;
+      var to = String(r[col['A1.email']] || '').trim(), skip = '';
+      if (!(saved instanceof Date)) skip = 'no last_saved_at';
+      else if (saved < since) skip = 'saved before MAIL_SINCE (' + Utilities.formatDate(since, 'Europe/Prague', 'dd.MM.yyyy HH:mm') + ')';
+      else if (kind === 'resume' && now - saved < RESUME_AFTER_MS) skip = 'not yet: resume goes 24 h after the last save';
+      else if (TEST_ADDRESS.test(to)) skip = 'test address';
+      else if (!to) skip = 'no email';
+      else if (kind !== 'confirm' && unsub[to.toLowerCase()]) skip = 'unsubscribed';
+      else if (kind === 'resume' && done[to.toLowerCase()]) skip = 'same email already submitted this form';
+      out.push({ form: form, kind: kind, row: i + 2, mark: mark, to: to, id: r[col.response_id], name: String(r[col['A1.name']] || '').trim(), skip: skip, tokenCol: col.token_hash, tokenHash: r[col.token_hash] });
     });
   });
+  return { sh: sh, head: head, items: out };
+}
+
+function unsubscribed() {
+  var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(UNSUB_TAB), set = {};
+  if (!sh || sh.getLastRow() < 2) return set;
+  sh.getRange(2, 1, sh.getLastRow() - 1, 1).getValues().forEach(function (r) { var e = String(r[0] || '').trim().toLowerCase(); if (e) set[e] = true; });
+  return set;
+}
+
+function mailTab(form, site, since, max) {
+  var sh = sheetFor(form);
+  addColumns(sh, header(sh), ['confirm_sent_at', 'resume_sent_at']);
+  var due = dueMail(form, since), sent = 0;
+  due.items.forEach(function (it) {
+    if (sent >= max) return;
+    if (it.skip === 'test address') { sh.getRange(it.row, it.mark + 1).setValue('skipped: test address'); return; }
+    if (it.skip) return;
+    var token = newToken();
+    sh.getRange(it.row, it.tokenCol + 1).setValue(it.tokenHash + ' ' + hash(token));
+    var m = emailText(form, it.kind, it.id, it.name, mailLink(site, form, it.id, token)), result = new Date();
+    try {
+      deliver(it.to, m.subject, m.body);
+    } catch (err) {
+      console.error('mail failed: ' + form + ' ' + it.kind + ' ' + it.id + ': ' + err); /* marked, so one bad address cannot block the queue */
+      result = 'failed';
+    }
+    sh.getRange(it.row, it.mark + 1).setValue(result);
+    sent++;
+  });
   return sent;
+}
+
+function mailLink(site, form, id, token) {
+  return site + (form === 'S' ? 'invited-speaker/' : 'apply/') + '?id=' + encodeURIComponent(id) + '&t=' + encodeURIComponent(token);
+}
+
+/* Dry run output: one row per due or skipped email, rewritten on every run. */
+function writePreview(site, since) {
+  var props = PropertiesService.getScriptProperties(), resend = !!props.getProperty('RESEND_API_KEY');
+  var from = resend ? MAIL_NAME + ' <' + (props.getProperty('RESEND_FROM') || RESEND_FROM) + '> via Resend' : MAIL_NAME + ' <' + MAIL_FROM + '> via Gmail';
+  var stamp = Utilities.formatDate(new Date(), 'Europe/Prague', 'dd.MM.yyyy HH:mm');
+  var rows = [['generated_at', 'would_send', 'skip_reason', 'form', 'kind', 'response_id', 'to', 'from', 'subject', 'body', 'unsubscribe_link']];
+  ['A', 'S'].forEach(function (form) {
+    dueMail(form, since).items.forEach(function (it) {
+      var m = emailText(form, it.kind, it.id, it.name, mailLink(site, form, it.id, '<personal token, made at send time>'));
+      rows.push([stamp, it.skip ? 'no' : 'yes', it.skip, form, it.kind, it.id, it.to, from, m.subject, m.body, it.skip ? '' : unsubscribeLink(it.to)]);
+    });
+  });
+  var ss = SpreadsheetApp.getActiveSpreadsheet(), sh = ss.getSheetByName(PREVIEW_TAB) || ss.insertSheet(PREVIEW_TAB);
+  sh.clearContents();
+  sh.getRange(1, 1, rows.length, rows[0].length).setValues(rows);
+  sh.setFrozenRows(1);
 }
 
 /* One email. Resend when RESEND_API_KEY is set, otherwise Gmail as before. Throws on failure, so the caller marks the row 'failed'. */
