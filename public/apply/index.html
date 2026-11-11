@@ -511,27 +511,7 @@
       </div>
     </section>
 
-    <!-- 3 YOUR WORK -->
-    <section class="screen" data-min="2.5" data-key="a2">
-      <h2>Your work</h2>
-      <div class="q" data-q="A2.project">
-        <label class="qlabel" for="A2.project" data-label-acad="Describe a current or upcoming project. What is it about, and how does AI fit in?" data-label-nonacad="Describe what you do and how AI relates to your work.">Describe a current or upcoming project. What is it about, and how does AI fit in?</label>
-        <p class="hint" data-hint-acad="Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included" data-hint-nonacad="Three to five sentences on what your organization does, your role, and where AI comes in">Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included</p>
-        <textarea id="A2.project" name="A2.project" data-soft="1500"></textarea>
-        <p class="counter" data-counter-for="A2.project">0 / 1,500 characters</p>
-        <p class="err-msg">Tell us about your project in a few sentences</p>
-      </div>
-      <div class="q" data-q="A2.keywords">
-        <label class="qlabel" for="kw-input">Three to five keywords for your work</label>
-        <p class="hint">Methods, topics, data types or fields, press Enter after each one</p>
-        <div class="chips" id="kw-chips"><input type="text" id="kw-input" aria-label="Add a keyword" autocomplete="off"></div>
-        <input type="hidden" name="A2.keywords" id="A2.keywords">
-        <p class="counter" id="kw-count">0 of 5, minimum 3</p>
-        <p class="err-msg">Add between three and five keywords</p>
-      </div>
-    </section>
-
-    <!-- 4 to 8 METHODS -->
+    <!-- 3 to 7 METHODS -->
     <section class="screen" data-min="0.4" data-key="a3-intro">
       <h2>AI methods you use</h2>
       <p class="lede">Over the next five short screens, tick the methods you use. For each one, tell us your experience level, whether you could present on it, and whether you want to learn more. Leave a method unticked if you don't use it. You can tick "I want to learn more" on anything, including methods you don't use yet.</p>
@@ -634,7 +614,7 @@
       <p class="hint" style="margin-top:0.8rem">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
     </section>
 
-    <!-- 9 OTHER METHODS -->
+    <!-- 8 OTHER METHODS -->
     <section class="screen" data-min="0.25" data-key="a3-custom">
       <h2>Other AI methods you use</h2>
       <p class="lede">Anything not covered on the previous screens. Up to five. Type a name; the controls for that row appear, and the next row after it.</p>
@@ -645,7 +625,7 @@
       <p class="hint" style="margin-top:0.8rem">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
     </section>
 
-    <!-- 10 TOPICS -->
+    <!-- 9 TOPICS -->
     <section class="screen" data-min="1" data-key="a4">
       <h2>AI-related topics</h2>
       <p class="lede">These are questions about AI rather than methods. Tick the topics you work on or engage with, and the ones you want to learn more about. Leave a topic unticked if it doesn't apply.</p>
@@ -653,7 +633,7 @@
       <p class="hint" style="margin-top:0.8rem">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
     </section>
 
-    <!-- 11 BEYOND ACADEMIA -->
+    <!-- 10 BEYOND ACADEMIA -->
     <section class="screen" data-min="0.75" data-key="a5">
       <h2>Experience beyond academia</h2>
       <p class="lede">This section is about steps you have taken to apply your work outside a purely academic setting, whether or not they led anywhere. Tick what you have done and what you want to hear about from others.<span class="stage-only" data-stages="nonacad"> The items are written from the researcher's side. Tick whatever applies to you from the other side, for example if you have hired researchers, advised, or founded.</span></p>
@@ -663,6 +643,26 @@
         <label class="field-label strong" for="A5.detail">Tell us more: what did you do, or what do you want to hear about? <span class="opt-mark" style="font-weight:400;color:var(--text-2)">(optional)</span></label>
         <textarea id="A5.detail" name="A5.detail" style="min-height:100px" data-soft="600"></textarea>
         <p class="counter" data-counter-for="A5.detail">0 / 600 characters</p>
+      </div>
+    </section>
+
+    <!-- 11 YOUR WORK (moved after the click screens 11.11.2026: 9 of 14 dropouts stopped here when it was screen 3) -->
+    <section class="screen" data-min="2.5" data-key="a2">
+      <h2>Your work</h2>
+      <div class="q" data-q="A2.project">
+        <label class="qlabel" for="A2.project" data-label-acad="Describe a current or upcoming project. What is it about, and how does AI fit in?" data-label-nonacad="Describe what you do and how AI relates to your work.">Describe a current or upcoming project. What is it about, and how does AI fit in?</label>
+        <p class="hint" data-hint-acad="Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included" data-hint-nonacad="Three to five sentences on what your organization does, your role, and where AI comes in">Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included</p>
+        <textarea id="A2.project" name="A2.project" data-soft="1500"></textarea>
+        <p class="counter" data-counter-for="A2.project">0 / 1,500 characters</p>
+        <p class="err-msg">Tell us about your project in a few sentences</p>
+      </div>
+      <div class="q" data-q="A2.keywords">
+        <label class="qlabel" for="kw-input">Three to five keywords for your work</label>
+        <p class="hint">Methods, topics, data types or fields, press Enter after each one</p>
+        <div class="chips" id="kw-chips"><input type="text" id="kw-input" aria-label="Add a keyword" autocomplete="off"></div>
+        <input type="hidden" name="A2.keywords" id="A2.keywords">
+        <p class="counter" id="kw-count">0 of 5, minimum 3</p>
+        <p class="err-msg">Add between three and five keywords</p>
       </div>
     </section>
 
@@ -1028,7 +1028,8 @@
   try { state = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { state = {}; }
   var keywords = Array.isArray(state.__keywords) ? state.__keywords : [];
   var fileInfo = (state.__file && state.__file.name) ? state.__file : null; /* {name, size, url} of the stored A7 upload */
-  var idx = typeof state.__screen === 'number' ? state.__screen : 0;
+  var LAYOUT = 2;
+  var idx = 0; /* set from the saved state by landing() once the screens are known */
   var saveTimer = null;
 
   function collect() {
@@ -1041,6 +1042,7 @@
     });
     data.__keywords = keywords;
     data.__screen = idx;
+    data.__layout = LAYOUT;
     data.__file = fileInfo;
     return data;
   }
@@ -1406,6 +1408,20 @@
   var screens = $$('.screen');
   var total = screens.reduce(function (a, s) { return a + parseFloat(s.getAttribute('data-min') || 0); }, 0);
   var numbered = screens.filter(function (s) { return !s.classList.contains('intro') && !s.classList.contains('end'); });
+  /* Saved drafts store the screen as an index. LAYOUT names the screen order that index refers to; bump it and add the
+     old order to LAYOUTS whenever screens are added, removed or reordered.
+     Layout 1 = before 11.11.2026, when "Your work" (a2) was screen 3. Layout 2 = a2 after a5. */
+  var LAYOUTS = { 1: ['intro', 'a1a', 'a1b', 'a2', 'a3-intro', 'a3-1', 'a3-2', 'a3-3', 'a3-4', 'a3-5', 'a3-custom', 'a4', 'a5', 'a6', 'a7', 'a8', 'end'] };
+  function landing(st) {
+    var at = typeof st.__screen === 'number' ? st.__screen : 0;
+    var old = LAYOUTS[typeof st.__layout === 'number' ? st.__layout : 1];
+    if (st.__layout === LAYOUT || !old) return at;
+    /* every screen before the saved one was passed with Next; open the first screen of the current order that was not */
+    var passed = old.slice(0, at);
+    for (var i = 0; i < screens.length; i++) if (passed.indexOf(screens[i].getAttribute('data-key')) < 0) return i;
+    return at;
+  }
+  idx = landing(state);
 
   function render() {
     if (idx < 0) idx = 0; if (idx >= screens.length) idx = screens.length - 1;
@@ -1543,7 +1559,7 @@
       keywords = Array.isArray(state.__keywords) ? state.__keywords : [];
       fileInfo = (state.__file && state.__file.name) ? state.__file : null; drawFile();
       restore(); applyAll();
-      var at = typeof state.__screen === 'number' ? state.__screen : 1;
+      var at = landing(state) || 1;
       idx = (j.status === 'submitted' || at >= screens.length - 1) ? 1 : Math.max(1, at);
       rememberApplicant(j.id);
       render(); stamp('Loaded');

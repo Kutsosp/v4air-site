@@ -203,7 +203,9 @@ Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.12, A1.10. Screen 2, "Where y
 
 **A1.10** `A1.link_1` to `A1.link_4` "Links where we can see your work (optional)". Help: "ORCID, Google Scholar, a personal page, GitHub or similar". Up to four URL fields, each with its own visible label "Link 1" to "Link 4", free text, no syntax check. One field is shown at first; the next appears when the previous one is filled. Optional. Shown on screen 1.
 
-### 2.2 Section A2: Your work (screen 3 of 15)
+### 2.2 Section A2: Your work (screen 12 of 15)
+
+Moved on 11.11.2026 from screen 3 to after A5 and before A6: 9 of the first 14 applicants who left without submitting stopped on this screen. The section keeps its A2 field names.
 
 **A2.1** `A2.project` Long text. Required. Soft limit 1,500 characters with a live counter; no hard cap.
 - Variant, academic stages: "Describe a current or upcoming project. What is it about, and how does AI fit in?" Help: "Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included".
@@ -211,7 +213,7 @@ Screen 1, "About you": A1.1, A1.2, A1.4, A1.11, A1.12, A1.10. Screen 2, "Where y
 
 **A2.2** `A2.keywords` "Three to five keywords for your work." Tag input with a visible label: type a word or phrase, press Enter or comma to add it; each keyword shown as a removable chip. No placeholder text inside the field. Minimum 3, maximum 5. Required. Help: "Methods, topics, data types or fields, press Enter after each one". Exported as a semicolon-separated string.
 
-### 2.3 Section A3: AI methods you use (screens 4 to 10 of 15)
+### 2.3 Section A3: AI methods you use (screens 3 to 9 of 15)
 
 One intro screen (instructions and the four experience levels), then one screen per method family, then one screen for other methods (05.10.2026). Grid research puts the tolerable size at about five rows per screen; the longest family (modeling and inference) has five.
 
@@ -225,11 +227,11 @@ One intro screen (instructions and the four experience levels), then one screen 
 | 9 | AI methods you use: generative | m14, m15 |
 | 10 | Other AI methods you use | c01 to c05 (A3.16) |
 
-Intro screen 4, "AI methods you use", holds this text followed by the level definitions with examples; the family screens carry only the heading "AI methods you use: <family>" and the grid:
+Intro screen 3, "AI methods you use", holds this text followed by the level definitions with examples; the family screens carry only the heading "AI methods you use: <family>" and the grid:
 
 > Over the next five short screens, tick the methods you use. For each one, tell us your experience level, whether you could present on it, and whether you want to learn more. Leave a method unticked if you don't use it. You can tick "I want to learn more" on anything, including methods you don't use yet.
 
-Family screens 5 to 9 repeat the four level definitions with examples under the heading, collapsed in an "Experience levels" dropdown (05.10.2026). Every method screen (5 to 10) ends with the line: "Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format."
+Family screens 4 to 8 repeat the four level definitions with examples under the heading, collapsed in an "Experience levels" dropdown (05.10.2026). Every method screen (4 to 9) ends with the line: "Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format."
 >
 > Experience level:
 > 1 Basic use: out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.
@@ -255,9 +257,9 @@ Rows m01 to m15, one family per screen, following the row pattern in 1.5:
 
 **A3.16** Other methods, `A3.c01` to `A3.c05`, on their own screen (10) headed "Other AI methods you use". Intro: "Anything not covered on the previous screens. Up to five. Type a name; the controls for that row appear, and the next row after it." The grid's first column is headed "Method name" and holds a text field per row (the column header is the visible label; no placeholder). The other columns are the same controls as the fixed rows (learn, use, experience level, present). Controls of a row appear once its name is filled; the next empty row appears at the same moment, up to five. Variables per custom row: `A3.cNN.name`, `A3.cNN.use`, `A3.cNN.level`, `A3.cNN.present`, `A3.cNN.learn`. Rows with an empty name are not exported.
 
-Section exit check, on leaving screen 10: if no gate and no "learn" is ticked on any of screens 5 to 10, show one soft prompt: "You haven't marked any method. Continue anyway?" with "Continue" and "Go back".
+Section exit check, on leaving screen 9: if no gate and no "learn" is ticked on any of screens 4 to 9, show one soft prompt: "You haven't marked any method. Continue anyway?" with "Continue" and "Go back".
 
-### 2.4 Section A4: AI-related topics (screen 11 of 15)
+### 2.4 Section A4: AI-related topics (screen 10 of 15)
 
 Twelve rows on one screen, above the five-row guideline. Kept together because the rows are two checkboxes each, not a scale, and are grouped under five headings; the pilot (5.14) checks whether this screen loses people.
 
@@ -273,7 +275,7 @@ Rows t01 to t12, grouped under group headings:
 
 Under the grid, one line: "Ticking 'I could present on this' does not commit you to anything. We contact you personally to agree on topic and format."
 
-### 2.5 Section A5: Experience beyond academia (screen 12 of 15)
+### 2.5 Section A5: Experience beyond academia (screen 11 of 15)
 
 Intro:
 
@@ -577,11 +579,11 @@ Progress is shown as a bar plus two bold texts under it: "Screen 5 of 15" on the
 | Intro | 0.5 |
 | 1 About you | 0.75 |
 | 2 Where you are | 0.75 |
-| 3 Your work | 2.5 |
-| 4 to 8 Method families | 0.5 each |
-| 9 Other methods | 0.25 |
-| 10 Topics | 1 |
-| 11 Beyond academia | 0.75 |
+| 3 to 7 Method families | 0.5 each |
+| 8 Other methods | 0.25 |
+| 9 Topics | 1 |
+| 10 Beyond academia | 0.75 |
+| 11 Your work | 2.5 |
 | 12 Looking for | 0.75 |
 | 13 Involvement | 0.75 |
 | 14 Last things | 0.5 |
