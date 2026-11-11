@@ -58,7 +58,8 @@ function setup() {
   if (!props.getProperty('SITE_URL')) props.setProperty('SITE_URL', '');
   if (!props.getProperty('MAIL_SINCE')) props.setProperty('MAIL_SINCE', new Date().toISOString());
   MailApp.getRemainingDailyQuota(); /* touches the mail scope so consent covers it */
-  if (GmailApp.getAliases().indexOf(MAIL_FROM) === -1) throw new Error('Gmail cannot send as ' + MAIL_FROM);
+  UrlFetchApp.getRequest('https://api.resend.com/emails'); /* same for external requests (Resend); sends nothing */
+  if (!props.getProperty('RESEND_API_KEY') && GmailApp.getAliases().indexOf(MAIL_FROM) === -1) throw new Error('Gmail cannot send as ' + MAIL_FROM);
   uploadRoot(); /* same for Drive */
   if (!ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === 'sendMail'; })) ScriptApp.newTrigger('sendMail').timeBased().everyMinutes(5).create();
 }
@@ -291,8 +292,15 @@ function hash(s) {
 
 /* ---------- email ---------- */
 
-/* Peter's verified Gmail alias. A consumer Gmail account sends to about 100 recipients a day. */
+/* Gmail path: Peter's verified Gmail alias. A consumer Gmail account sends to about 100 recipients a day.
+   Gmail drops "Send mail as" for third-party addresses in January 2027, so mail goes through Resend once the
+   script property RESEND_API_KEY is set: from RESEND_FROM (default info@v4air.eu), DKIM-signed for v4air.eu. Free plan: 100 a day. */
 var MAIL_FROM = 'peter@v4air.eu', MAIL_NAME = 'V4 AI Researchers Meetup', MAIL_REPLY = 'info@v4air.eu';
+var RESEND_FROM = 'info@v4air.eu', RESEND_DAILY = 100;
+/* Secrets reach the script without the editor: a JSON file with this name in petkout1's My Drive, e.g.
+   {"RESEND_API_KEY": "re_...", "UNSUB_SECRET": "..."}, is read into script properties on the next run and trashed.
+   Only the keys listed here are accepted. */
+var SECRETS_FILE = 'v4air-script-secrets.json', SECRET_KEYS = ['RESEND_API_KEY', 'UNSUB_SECRET', 'RESEND_FROM'];
 var MAIL_BATCH = 5; /* the script lock is held during a run, and saves through Apps Script wait for it at most 20 s */
 var RESUME_AFTER_MS = 24 * 60 * 60 * 1000;
 /* example.com, .net and .org are reserved and never receive mail (RFC 2606); the form tests use them, so their rows are marked, not mailed */
@@ -303,13 +311,14 @@ var TEST_ADDRESS = /@example\.(com|net|org)$/i;
    Script properties: EMAIL_ENABLED=true, SITE_URL (site root, default https://v4air.eu/), MAIL_SINCE (rows last saved before this date are never mailed). */
 function sendMail() {
   var props = PropertiesService.getScriptProperties();
+  importSecrets(props);
   var site = (props.getProperty('SITE_URL') || 'https://v4air.eu/').replace(/\/?$/, '/');
   var since = new Date(props.getProperty('MAIL_SINCE') || NaN);
   if (props.getProperty('EMAIL_ENABLED') !== 'true' || !/^https:\/\//.test(site) || isNaN(since)) return;
   var lock = LockService.getScriptLock();
   if (!lock.tryLock(20000)) return;
   try {
-    var left = Math.min(MAIL_BATCH, MailApp.getRemainingDailyQuota());
+    var left = Math.min(MAIL_BATCH, props.getProperty('RESEND_API_KEY') ? RESEND_DAILY : MailApp.getRemainingDailyQuota());
     ['A', 'S'].forEach(function (form) { if (left > 0) left -= mailTab(form, site, since, left); });
     SpreadsheetApp.flush();
   } finally {
@@ -335,7 +344,7 @@ function mailTab(form, site, since, max) {
       var path = form === 'S' ? 'invited-speaker/' : 'apply/', link = site + path + '?id=' + encodeURIComponent(r[col.response_id]) + '&t=' + encodeURIComponent(token);
       var m = emailText(form, kind, r[col.response_id], String(r[col['A1.name']] || '').trim(), link), result = now;
       try {
-        GmailApp.sendEmail(to, m.subject, m.body, { from: MAIL_FROM, name: MAIL_NAME, replyTo: MAIL_REPLY });
+        deliver(to, m.subject, m.body);
       } catch (err) {
         console.error('mail failed: ' + form + ' ' + kind + ' ' + r[col.response_id] + ': ' + err); /* marked, so one bad address cannot block the queue */
         result = 'failed';
@@ -345,6 +354,46 @@ function mailTab(form, site, since, max) {
     });
   });
   return sent;
+}
+
+/* One email. Resend when RESEND_API_KEY is set, otherwise Gmail as before. Throws on failure, so the caller marks the row 'failed'. */
+function deliver(to, subject, body) {
+  var props = PropertiesService.getScriptProperties(), key = props.getProperty('RESEND_API_KEY');
+  var unsub = unsubscribeLink(to);
+  if (!key) {
+    GmailApp.sendEmail(to, subject, body, { from: MAIL_FROM, name: MAIL_NAME, replyTo: MAIL_REPLY });
+    return;
+  }
+  var msg = { from: MAIL_NAME + ' <' + (props.getProperty('RESEND_FROM') || RESEND_FROM) + '>', to: [to], reply_to: MAIL_REPLY, subject: subject, text: body };
+  /* RFC 8058 one-click: mail apps show an Unsubscribe button and POST to the link; the Worker accepts that POST */
+  if (unsub) msg.headers = { 'List-Unsubscribe': '<' + unsub + '>', 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' };
+  var res = UrlFetchApp.fetch('https://api.resend.com/emails', {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    headers: { Authorization: 'Bearer ' + key }, payload: JSON.stringify(msg)
+  });
+  var code = res.getResponseCode();
+  if (code < 200 || code >= 300) throw new Error('Resend ' + code + ': ' + res.getContentText().slice(0, 300));
+}
+
+/* https://v4air.eu/unsubscribe/?e=<base64url email>&t=<base64url HMAC-SHA256(UNSUB_SECRET, email)>, the format the Worker checks.
+   Empty while UNSUB_SECRET is not set. */
+function unsubscribeLink(email) {
+  var secret = PropertiesService.getScriptProperties().getProperty('UNSUB_SECRET');
+  if (!secret) return '';
+  var e = String(email).trim().toLowerCase(), b64 = function (x) { return Utilities.base64EncodeWebSafe(x).replace(/=+$/, ''); };
+  return 'https://v4air.eu/unsubscribe/?e=' + b64(Utilities.newBlob(e).getBytes()) + '&t=' + b64(Utilities.computeHmacSha256Signature(e, secret));
+}
+
+function importSecrets(props) {
+  var files = DriveApp.getRootFolder().getFilesByName(SECRETS_FILE);
+  while (files.hasNext()) {
+    var f = files.next(), data;
+    try { data = JSON.parse(f.getBlob().getDataAsString()); } catch (e) { console.error(SECRETS_FILE + ' is not valid JSON'); data = {}; }
+    var got = SECRET_KEYS.filter(function (k) { return typeof data[k] === 'string' && data[k]; });
+    got.forEach(function (k) { props.setProperty(k, data[k]); });
+    console.log('secrets imported: ' + (got.join(', ') || 'none'));
+    f.setTrashed(true);
+  }
 }
 
 function emailText(form, kind, id, name, link) {
