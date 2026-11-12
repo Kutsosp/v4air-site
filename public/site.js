@@ -178,7 +178,7 @@
       : '<span class="days-n">' + n + '</span><span class="days-label">' + (n === 1 ? 'day left' : 'days left') + '</span>'
   })
 
-  /* ---------- "Should you apply?": X and Y rotate as matched pairs, 5 s each ---------- */
+  /* ---------- "Should you apply?": X and Y rotate as matched pairs, 3.5 s each, no pause on hover or focus ---------- */
   var PAIRS = [
     ['a biologist training models on field data', 'your daily tool'],
     ['a sociologist studying how people use chatbots', 'your research subject'],
@@ -191,12 +191,11 @@
     ['a lawyer-to-be studying algorithmic decisions', 'your case study'],
     ['a master’s student who just met LLMs', 'your next step'],
   ]
-  var who = $('.who-doubt[tabindex]')
+  var who = $('.who-doubt:not(.who-then)')
   if (who && M) {
     var slots = $$('.slot-loop', who)
     slots.forEach(function (s) { s.innerHTML = '<span class="sl-item">' + s.textContent + '</span>' })
     var idx = 0
-    var paused = false
     var timer = null
     /* TextLoop (popLayout): the old phrase leaves upwards out of the layout while the new one rises in */
     var LOOP = { duration: 0.45, ease: [0.65, 0, 0.35, 1] }
@@ -220,10 +219,8 @@
     }
     var restart = function () {
       clearInterval(timer)
-      if (!paused) timer = setInterval(function () { show(idx + 1) }, 5000)
+      timer = setInterval(function () { show(idx + 1) }, 3500)
     }
-    ;['pointerenter', 'focus'].forEach(function (ev) { who.addEventListener(ev, function () { paused = true; restart() }) })
-    ;['pointerleave', 'blur'].forEach(function (ev) { who.addEventListener(ev, function () { paused = false; restart() }) })
     var arrows = $$('.who-arrows button')
     if (arrows[0]) arrows[0].addEventListener('click', function () { show(idx - 1); restart() })
     if (arrows[1]) arrows[1].addEventListener('click', function () { show(idx + 1); restart() })
