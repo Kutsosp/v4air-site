@@ -7810,6 +7810,42 @@ a.btn-line:hover {
     display: none;
   }
 }
+/* Phone nav: the links row is hidden below 900px, so drop its empty
+   container and tighten spacing so brand + Menu + switch + Apply fit. */
+@media (width<=899px) {
+  .nav2 nav {
+    display: none;
+  }
+  .nav2-inner {
+    gap: 0.75rem;
+  }
+}
+@media (width<=560px) {
+  .nav2-inner.wrap {
+    padding-inline: 1rem;
+  }
+  .nav2 .nav-right {
+    gap: 0.6rem;
+  }
+  .nav2 .nav-apply {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+  .nav2 .nav-menu-btn {
+    padding: 0.3rem 0.7rem;
+  }
+}
+@media (width<=400px) {
+  .nav2 .brand {
+    font-size: 1.15rem;
+  }
+  .nav2 .nav-right {
+    gap: 0.45rem;
+  }
+  .nav2 .nav-apply {
+    padding: 0 0.8rem;
+  }
+}
 .prog-steps {
   margin: 0 0 1rem;
   padding-left: 1.3rem;
