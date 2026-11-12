@@ -6243,7 +6243,7 @@ a.btn-line:hover {
   overflow-x: visible;
   transform: translate(-50%);
 }
-@media (width<=700px) {
+@media (width<=1023px) {
   .logo-wall {
     grid-template-columns: repeat(3, 1fr);
     place-items: end center;
@@ -8747,3 +8747,19 @@ h3, .stage-lead, .stage-col h3, .lay-card h3, .lay-col h3, .yes-line, .who-yes .
 .footer-meta p, .footer-meta a, .footer-meta button { font-size: var(--fs-small); }
 
 
+
+/* Logo grid up to 1023px: captions are nowrap uppercase, so 1fr columns grew to
+   the caption width and pushed the page wider than the screen; above 700px the
+   single flex row also overflowed. */
+@media (width<=1023px) {
+  .logo-wall {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .logo-cell {
+    min-width: 0;
+  }
+  .logo-cell figcaption {
+    white-space: normal;
+    text-align: center;
+  }
+}
