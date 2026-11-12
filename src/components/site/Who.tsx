@@ -18,20 +18,17 @@ const PAIRS: Array<[string, string]> = [
 ]
 
 const LOOP_TRANSITION = { duration: 0.45, ease: [0.65, 0, 0.35, 1] as const }
-/* 09.11.2026: 5 s per pair (was 2.6 s): the sentence is 13-16 words, about 3.3-4 s to read at 238 wpm */
-const LOOP_INTERVAL = 5
+/* 12.11.2026: 3.5 s per pair (5 s read as too slow); no pause on hover or focus */
+const LOOP_INTERVAL = 3.5
 
 export function Who() {
-  /* the rotation pauses while the pointer is over the sentence or it has focus */
-  const [paused, setPaused] = useState(false)
   /* 09.11.2026: one index drives both halves of the sentence; prev/next arrows step it, the timer restarts after a click */
   const [idx, setIdx] = useState(0)
   const [tick, setTick] = useState(0)
   useEffect(() => {
-    if (paused) return
     const t = setInterval(() => setIdx((i) => i + 1), LOOP_INTERVAL * 1000)
     return () => clearInterval(t)
-  }, [paused, tick])
+  }, [tick])
   const step = (d: number) => { setIdx((i) => i + d); setTick((t) => t + 1) }
   return (
     <section className="who" id="who">
@@ -45,14 +42,7 @@ export function Who() {
             </span>
           </h2>
           {/* div, not p: TextLoop renders block elements, which break out of a <p> */}
-          <div
-            className="who-doubt"
-            tabIndex={0}
-            onPointerEnter={() => setPaused(true)}
-            onPointerLeave={() => setPaused(false)}
-            onFocus={() => setPaused(true)}
-            onBlur={() => setPaused(false)}
-          >
+          <div className="who-doubt">
             Well&hellip; if you're{' '}
             <TextLoop className="slot-loop" transition={LOOP_TRANSITION} index={idx}>
               {PAIRS.map(([x]) => (
