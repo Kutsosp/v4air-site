@@ -358,6 +358,12 @@ Intro:
 
 `A7.help_detail` Revealed when the first or second option is ticked. "Tell us more: what could you help with, and roughly how much time? (optional)" Short text, up to 300 characters. Optional.
 
+**A7.5** `A7.community` "Are you active in any related AI or research communities?" Single select. Required. Collects communities where the organizers can ask the applicant to share the call.
+- Yes
+- No
+
+`A7.community_detail` Revealed when "Yes" is chosen. "Which communities, and what's your role? Include a link if possible" Short text, up to 500 characters. Required when "Yes" is chosen; cleared when "No" is chosen.
+
 ### 2.8 Section A8: Last things (screen 15 of 15)
 
 **A8.1** `A8.source` "How did this call reach you?" Multi-select. Required, at least one.

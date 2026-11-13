@@ -774,6 +774,18 @@
         </div>
         <p class="err-msg">Tick at least one option</p>
       </div>
+      <div class="q" data-q="A7.community">
+        <span class="qlabel">Are you active in any related AI or research communities?</span>
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="A7.community" value="yes"><span>Yes</span></label>
+          <label class="opt"><input type="radio" name="A7.community" value="no"><span>No</span></label>
+        </div>
+        <div class="reveal hid" id="community-reveal">
+          <label class="field-label strong" for="A7.community_detail">Which communities, and what's your role? Include a link if possible</label>
+          <input type="text" id="A7.community_detail" name="A7.community_detail" maxlength="500">
+        </div>
+        <p class="err-msg">Choose yes or no, and name the communities if you chose yes</p>
+      </div>
     </section>
 
     <!-- 14 LAST THINGS -->
@@ -1267,6 +1279,9 @@
   helpCbs.forEach(function (c) { c.addEventListener('change', function () { if (c.checked) helpNone.checked = false; applyHelp(); save(); }); });
   helpNone.addEventListener('change', function () { if (helpNone.checked) helpCbs.forEach(function (c) { c.checked = false; }); applyHelp(); save(); });
 
+  function applyCommunity() { var r = $('input[name="A7.community"]:checked'), on = !!r && r.value === 'yes'; $('#community-reveal').classList.toggle('hid', !on); if (!on) document.getElementById('A7.community_detail').value = ''; }
+  $$('input[name="A7.community"]').forEach(function (r) { r.addEventListener('change', function () { applyCommunity(); save(); }); });
+
   var hwCbs = $$('.hw-yes'), hwNo = $('.hw-no');
   function applyHw() { var on = hwCbs.some(function (c) { return c.checked; }); $('#hw-reveal').classList.toggle('hid', !on); if (!on) document.getElementById('A7.hardware_detail').value = ''; }
   hwCbs.forEach(function (c) { c.addEventListener('change', function () { if (c.checked) hwNo.checked = false; applyHw(); save(); }); });
@@ -1322,7 +1337,7 @@
     ta.addEventListener('input', upd); upd();
   });
 
-  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyCollab(); applyHelp(); applyHw(); applyOpen(); applyFunding(); drawKw(); }
+  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyCollab(); applyHelp(); applyCommunity(); applyHw(); applyOpen(); applyFunding(); drawKw(); }
   applyAll();
 
   /* ---------- validation ---------- */
@@ -1356,6 +1371,7 @@
     'A7.roles': function (q) { var any = checkedIn('.opt input[type=checkbox]', q); var otherOk = !$('input[name="A7.roles.other"]').checked || $('#A7\\.roles_other').value.trim(); return (any && otherOk) ? '' : 'How you would like to contribute'; },
     'A7.presented': function (q) { return $('input[name="A7.presented"]:checked') ? '' : 'Presented before'; },
     'A7.help': function (q) { return checkedIn('.opt input[type=checkbox]', q) ? '' : 'Help with organizing'; },
+    'A7.community': function (q) { var r = $('input[name="A7.community"]:checked'); if (!r) return 'Communities'; return (r.value === 'no' || document.getElementById('A7.community_detail').value.trim()) ? '' : 'Communities'; },
     'A8.source': function (q) {
       var top = ['nominated', 'open', 'invite', 'other'].some(function (k) { return $('input[name="A8.source.' + k + '"]').checked; });
       var otherOk = !$('input[name="A8.source.other"]').checked || $('#A8\\.source_other').value.trim();
