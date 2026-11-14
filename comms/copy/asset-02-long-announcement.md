@@ -18,7 +18,7 @@ V4AIR, the V4 AI Researchers Meetup, brings students and early-career researcher
 
 If AI is part of your research, you belong here. It can be the tool you use every day or the thing you study. A biologist training models on field data is as welcome as a PhD student building new architectures.
 
-You can apply as a bachelor's or master's student, a PhD student, a postdoc, or a researcher still early in building a group. If you're not sure whether you count as early-career, apply.
+You can apply as a master's or a PhD student, a postdoc or a researcher still early in building a group. If you're not sure whether you count as early-career, apply.
 
 **Meet the people your research needs**
 
