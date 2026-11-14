@@ -19,7 +19,7 @@ shared:
   event_full_name:       {type: text, translate: true,  value: "V4 AI Researchers Meetup"}
   dates:                 {type: text, translate: true,  value: "28–30 April 2027"}
   attendance:            {type: text, translate: true,  value: "Wednesday 28 April from midday to Friday 30 April in the evening"}
-  venue:                 {type: text, translate: true,  value: "Kostelec Castle, Kostelec nad Černými lesy, about 30 minutes from Prague"}
+  venue:                 {type: text, translate: true,  value: "Kostelec Castle, Kostelec nad Černými lesy, about 45 minutes from Prague"}
   deadline:              {type: date, translate: true,  value: "15 January 2027"}
   results:               {type: text, translate: true,  value: "February 2027"}
   language_of_event:     {type: text, translate: true,  value: "English"}
@@ -27,7 +27,7 @@ shared:
   nominate_url:          {type: url,  translate: false, value: "[nominate URL]"}
   contact_email:         {type: text, translate: false, value: "kutsosp@natur.cuni.cz"}
   funding_line:          {type: text, translate: true,  value: "No participation fee. Accommodation at the castle, meals, and a contribution toward travel are covered by the International Visegrad Fund."}
-  fee_other_students:    {type: text, translate: true,  value: "amount to be confirmed"}
+  fee_other_students:    {type: text, translate: true,  value: "a fee (never state the amount; prices only on https://v4air.eu/pricing/)"}
   partner_universities:  {type: list, translate: true,  value: ["Charles University", "Czech Technical University in Prague", "Comenius University Bratislava", "Eötvös Loránd University", "University of Wrocław", "Nicolaus Copernicus University in Toruń"]}
   acknowledgement:       {type: text, translate: true,  value: "V4AIR is supported by the International Visegrad Fund, Grant No. 22610317."}
   funder_logo:           {type: image, translate: false, value: "[Visegrad Fund logo file]"}

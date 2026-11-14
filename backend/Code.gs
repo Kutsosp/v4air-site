@@ -459,7 +459,7 @@ function emailText(form, kind, id, name, link) {
   var hello = 'Hello' + (name ? ' ' + name : '') + ',\n\n';
   var personal = 'This link is personal. Anyone who has it can open your answers, so please do not forward this email.\n\n';
   var end = 'If you have a question, reply to this email.\n\nV4 AI Researchers Meetup (V4AIR)\nKostelec Castle, 28 to 30 April 2027\nhttps://v4air.eu\n';
-  var once = 'This is the only reminder we will send. If you have changed your mind, you can ignore this email.\n\n';
+  var once = 'If you have changed your mind, you can ignore this email.\n\n';
   if (form === 'A' && kind === 'resume') return { subject: 'Your V4AIR application is saved', body: hello +
     'You started an application for the V4 AI Researchers Meetup (V4AIR). Your answers are saved, and you can continue on any device through this link:\n\n' + link + '\n\n' +
     'Applications close on 15 January 2027. Your application ID is ' + id + '.\n\n' + personal + once + end };

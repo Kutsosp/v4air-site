@@ -15,7 +15,7 @@ B = [
  ("P", "Meet participants at the expo. Participants present their work at an expo instead of a poster session. Partners can have a stand there or join the conversations."),
  ("P", "Run a session. Lead a workshop on a method or tool your team works with."),
  ("H2", "Key facts"),
- ("B", "28–30 April 2027, Kostelec Castle, 30 minutes from Prague"),
+ ("B", "28–30 April 2027, Kostelec Castle, 45 minutes from Prague"),
  ("B", "Organised by Charles University with ČVUT Prague, Comenius University Bratislava, ELTE Budapest, Nicolaus Copernicus University in Toruń and the University of Wrocław"),
  ("B", "Funded by the International Visegrad Fund"),
  ("H2", "Interested?"),

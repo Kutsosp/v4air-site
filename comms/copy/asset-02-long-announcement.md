@@ -18,7 +18,7 @@ V4AIR, the V4 AI Researchers Meetup, brings students and early-career researcher
 
 If AI is part of your research, you belong here. It can be the tool you use every day or the thing you study. A biologist training models on field data is as welcome as a PhD student building new architectures.
 
-You can apply as a bachelor's or master's student, a PhD student, a postdoc, or a researcher still early in building a group. If you're not sure whether you count as early-career, apply.
+You can apply as a master's or a PhD student, a postdoc or a researcher still early in building a group. If you're not sure whether you count as early-career, apply.
 
 **Meet the people your research needs**
 
@@ -45,7 +45,7 @@ If you study or work at a partner university, you pay no participation fee. The 
 
 The partner universities are Charles University, the Czech Technical University in Prague, Comenius University Bratislava, Eötvös Loránd University, the University of Wrocław, and Nicolaus Copernicus University in Toruń.
 
-Students from other institutions can take part for a fee (amount to be confirmed). If you're from another institution and not a student, write to us at kutsosp@natur.cuni.cz.
+Participants from other institutions can take part for a fee.
 
 **How selection works**
 
@@ -54,7 +54,7 @@ There's no CV and no motivation letter. We select for fit and mix, so the order 
 **Practical details**
 
 - **When:** Wednesday 28 April 2027 from midday to Friday 30 April in the evening. We expect you for all three days.
-- **Where:** Kostelec Castle in Kostelec nad Černými lesy, about 30 minutes from Prague.
+- **Where:** Kostelec Castle in Kostelec nad Černými lesy, about 45 minutes from Prague.
 - **Language:** English.
 - **Results:** February 2027.
 
