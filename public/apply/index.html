@@ -172,7 +172,9 @@
   .reveal { border-left: 3px solid var(--teal); padding: 0.4rem 0 0.4rem 1rem; margin: 0.6rem 0 0.4rem; }
   .reveal.hid { display: none; }
   .links label, .field-label { display: block; font-size: 0.92rem; color: var(--text-2); margin: 0.7rem 0 0.2rem; }
-  .links label.hid { display: none; } /* .links label outranks .hid, so labels of hidden link fields stayed visible */
+  .links label.hid { display: none; }
+  .orcid-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; max-width: 560px; } .orcid-row input { flex: 1; min-width: 12rem; }
+  #orcid-status.err { color: var(--danger, #c0392b); } /* .links label outranks .hid, so labels of hidden link fields stayed visible */
   .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
   .pills label.pill { position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 0.95rem; }
   .pills label.pill input { position: absolute; opacity: 0; width: 1px; height: 1px; }
@@ -394,6 +396,12 @@
     <!-- 1 ABOUT YOU -->
     <section class="screen" data-min="0.75" data-key="a1a">
       <h2>About you</h2>
+      <div class="q" data-q="A1.orcid">
+        <label class="qlabel" for="A1.orcid">Your ORCID iD <span class="opt-mark">(optional)</span></label>
+        <p class="hint">We can fill in your name, institution and department from your public ORCID record. You check and change everything.</p>
+        <div class="orcid-row"><input type="text" id="A1.orcid" name="A1.orcid" inputmode="text" autocomplete="off" placeholder="0000-0000-0000-0000" maxlength="60"><button type="button" class="btn btn-file" id="orcid-fill">Fill in from ORCID</button></div>
+        <p class="hint" id="orcid-status" role="status"></p>
+      </div>
       <div class="q" data-q="A1.name">
         <label class="qlabel" for="A1.name">Full name</label>
         <input type="text" id="A1.name" name="A1.name" autocomplete="name">
@@ -1313,6 +1321,63 @@
     var t = html && new DOMParser().parseFromString(html, 'text/html').querySelector('#entrance-fee table');
     if (t) $('#fee-mirror').appendChild(document.importNode(t, true));
   }).catch(function () {});
+
+  /* ---------- ORCID prefill (14.11.2026). The visitor's browser reads their public record from pub.orcid.org (CORS open)
+     only when they press the button. Only empty fields are filled; nothing is sent to us until the normal save. */
+  var PARTNER_NAMES = [
+    ['cuni', /charles university|univerzita karlova/i], ['cvut', /czech technical university|české vysoké učení technické/i],
+    ['uniba', /comenius university|univerzita komenského/i], ['uwr', /university of wrocław|uniwersytet wrocławski/i],
+    ['umk', /nicolaus copernicus university|uniwersytet mikołaja kopernika/i], ['elte', /eötvös loránd|eotvos lorand/i]];
+  function orcidId(v) {
+    var m = String(v || '').toUpperCase().match(/(\d{4})-?(\d{4})-?(\d{4})-?(\d{3}[\dX])/);
+    if (!m) return '';
+    var d = m.slice(1).join(''), t = 0;
+    for (var i = 0; i < 15; i++) t = (t + +d[i]) * 2;
+    var r = (12 - t % 11) % 11, chk = r === 10 ? 'X' : String(r);
+    return chk === d[15] ? d.replace(/(\d{4})(\d{4})(\d{4})(\d{3}[\dX])/, '$1-$2-$3-$4') : '';
+  }
+  function setIfEmpty(id, v) { var el = document.getElementById(id); if (el && v && !el.value.trim()) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); return true; } return false; }
+  function orcidMsg(t, err) { var s = $('#orcid-status'); s.textContent = t; s.classList.toggle('err', !!err); }
+  $('#orcid-fill').addEventListener('click', function () {
+    var id = orcidId(document.getElementById('A1.orcid').value);
+    if (!id) { orcidMsg('That does not look like an ORCID iD. It has 16 digits, for example 0000-0002-1825-0097.', true); return; }
+    document.getElementById('A1.orcid').value = id;
+    orcidMsg('Reading your ORCID record…');
+    fetch('https://pub.orcid.org/v3.0/' + id + '/record', { headers: { Accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status === 404 ? 'not_found' : 'http'); return r.json(); })
+      .then(function (rec) {
+        var done = [], p = rec.person || {}, nm = p.name || {};
+        var full = [nm['given-names'] && nm['given-names'].value, nm['family-name'] && nm['family-name'].value].filter(Boolean).join(' ');
+        if (setIfEmpty('A1.name', full)) done.push('name');
+        if (setIfEmpty('A1.link_1', 'https://orcid.org/' + id)) done.push('profile link');
+        /* current employment first, then current education (PhD students often list only that) */
+        var acts = rec['activities-summary'] || {};
+        function current(kind, key) {
+          return ((acts[kind] || {})['affiliation-group'] || []).map(function (g) { return g.summaries[0][key]; }).filter(function (e) { return e && !e['end-date']; })[0];
+        }
+        var aff = current('employments', 'employment-summary') || current('educations', 'education-summary');
+        if (aff) {
+          var org = aff.organization || {}, cc = (org.address || {}).country, cname = '';
+          try { cname = cc ? new Intl.DisplayNames(['en'], { type: 'region' }).of(cc) : ''; } catch (e) { cname = ''; }
+          if (COUNTRIES.indexOf(cname) > -1 && setIfEmpty('A1.country', cname)) { country.dispatchEvent(new Event('change')); done.push('country'); }
+          var key = (PARTNER_NAMES.filter(function (x) { return x[1].test(org.name || ''); })[0] || [])[0];
+          var radio = key && $('input[name="A1.institution_key"][value="' + key + '"]');
+          if (radio && !$('input[name="A1.institution_key"]:checked') && !radio.closest('.hid')) { radio.checked = true; radio.dispatchEvent(new Event('change', { bubbles: true })); done.push('institution'); }
+          else if (!key && org.name) {
+            var other = $('input[name="A1.institution_key"][value="other"]');
+            if (other && !$('input[name="A1.institution_key"]:checked') && !$('#inst-radios').classList.contains('hid')) { other.checked = true; other.dispatchEvent(new Event('change', { bubbles: true })); }
+            if (setIfEmpty('A1.institution_name', org.name)) done.push('institution');
+          }
+          if (setIfEmpty('A1.department', aff['department-name'])) done.push('department');
+        }
+        var kws = ((p.keywords || {}).keyword || []).map(function (k) { return String(k.content || '').trim(); }).filter(Boolean);
+        if (!keywords.length && kws.length) { kws.slice(0, 5).forEach(function (k) { if (keywords.indexOf(k) === -1) keywords.push(k); }); drawKw(); done.push('keywords'); }
+        save();
+        orcidMsg(done.length ? 'Filled in from ORCID: ' + done.join(', ') + '. Please check them; you can change anything.' : 'Your ORCID record had nothing to add to the empty fields.');
+        track('orcid_prefill', { form_name: 'apply', filled: done.join(',') || 'none' });
+      })
+      .catch(function (e) { orcidMsg(e && e.message === 'not_found' ? 'No public ORCID record was found for ' + id + '.' : 'ORCID could not be reached. You can fill in the form by hand.', true); });
+  });
 
   var srcOpen = $('#src-open');
   function applyOpen() { $('#open-channels').classList.toggle('hid', !srcOpen.checked); if (!srcOpen.checked) $$('input', $('#open-channels')).forEach(function (i) { if (i.type === 'checkbox') i.checked = false; else i.value = ''; }); }
