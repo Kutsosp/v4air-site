@@ -1,0 +1,16 @@
+sheet-headers.json = the header rows (column names only, no answers) of the tabs Applications, Nominations and Nominees
+of the live "V4AIR forms" Sheet (1dDRwBAy8YIQUQIZDiYjlbabDyJ3ZXbUOfl6sznkQYdc). The forms data test seeds its imitation of
+the Sheet with them, so it proves that a form change keeps every existing column.
+
+Refresh after the live Sheet has gained columns (needs read access to the Sheet with a Google token):
+
+python3 - <<'EOF'
+import json
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+s = build('sheets', 'v4', credentials=Credentials.from_authorized_user_info(json.load(open('/Users/chlup/.claude_google_token.json'))))
+SID = '1dDRwBAy8YIQUQIZDiYjlbabDyJ3ZXbUOfl6sznkQYdc'
+out = {t: (s.spreadsheets().values().get(spreadsheetId=SID, range=f"'{t}'!1:1").execute().get('values') or [[]])[0] for t in ('Applications', 'Nominations', 'Nominees')}
+out['_note'] = 'Header rows of the live forms Sheet (column names only).'
+json.dump(out, open('tests/forms/fixtures/sheet-headers.json', 'w'), indent=1)
+EOF
