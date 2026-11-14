@@ -1,0 +1,39 @@
+name: Site tests
+
+# Runs on every pull request and on every change to main. Two checks:
+#   forms: the real application and nomination forms are filled in Chrome and sent through the real backends
+#          (backend-worker and backend/Code.gs) to an in-memory imitation of the forms Sheet; every answer must land
+#          in the right column, and existing columns and rows must stay as they were. The real Sheet is never touched.
+#   site:  every page opens without JavaScript errors, broken internal links or missing files, keeps the copy rules
+#          (tests/site/rules.mjs) and does not scroll sideways at phone width.
+# A red cross on the pull request means: do not merge; open "Details" to see what failed. See tests/README.md.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  site-tests:
+    name: Site tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: tests
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Install test tools
+        run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium
+      - name: Forms data test (answers land in the right Sheet columns, old data unchanged)
+        run: npm run forms
+      - name: Site check (no page errors or broken links, copy rules, phone width)
+        if: always()
+        run: npm run site
