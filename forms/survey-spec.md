@@ -8,10 +8,10 @@ variable ID, so removed questions keep their columns for earlier applications an
 | A1 care duties | Removed from A; asked after acceptance in C4.7 | old `A1.care`, `A1.care_detail` |
 | A1.9 days | "Can you attend all three days?" Yes / Not sure (note required) | new `A1.days_all` yes/not_sure, `A1.days_note`; "Yes" also writes `A1.days.wed/thu/fri` = TRUE |
 | A3 | Intro screen tick "I don't use AI yet: I have data and a question" skips the method screens (no screen added, LAYOUT stays 2) | new `A3.none` |
-| A4 | Grid replaced by up to three topic pills | new `A4.<tNN>.pick`; old `.learn`, `.work`, `.present` |
+| A4 | Grid replaced by topic pills, any number | new `A4.<tNN>.pick`; old `.learn`, `.work`, `.present` |
 | A5 | Nine items x three columns replaced by four broad items and one interest question | new `A5.x01`–`x04.have`, `A5.hear` yes/maybe/no; `A5.detail` kept. Mapping: x01 = e01 e02 e03, x02 = e04 e05, x03 = e06 e08, x04 = e09; e07 dropped |
-| A6.1 | Ten options merged to seven; pick up to three (was five; earlier applications may have up to five) | new `A6.useful.people` (= collaborators + talent), `.feedback` (= feedback_direction + feedback_results), `.learning` (= methods + applications), `A6.useful_detail.feedback`, `.learning`; unchanged `contacts`, `sharing`, `exploring`, `other` |
-| A6.2 | "Are you looking for collaborators?" removed; its open follow-up now opens under the "people" option | old `A6.collab`; `A6.collab_kind` keeps its meaning |
+| A6.1 | Ten options to nine (feedback on direction and on results merged); pick up to three (was five; earlier applications may have up to five) | new `A6.useful.feedback` (= feedback_direction + feedback_results), `A6.useful_detail.feedback`; all other options unchanged (`collaborators`, `methods`, `applications`, `contacts`, `talent`, `sharing`, `exploring`, `other`) |
+| A6.2 | "Are you looking for collaborators?" removed; its open follow-up now opens under "Finding collaborators" | old `A6.collab`; `A6.collab_kind` keeps its meaning |
 | A7 | Panel option and hardware question removed; "presented before" and organizing help asked of students only (bsc, phd); softer intro | old `A7.roles.panel`, `A7.hardware.*`, `A7.hardware_detail` |
 | A8 | Applicants outside the partner universities see a fee card mirrored from /pricing/ (`#entrance-fee table`) and a tick "I would need help with the costs" | new `A8.cost_help` |
 | A2.2 | Keywords also split on comma or semicolon while typing (phone keyboards), and a pending keyword is kept on Next | — |
