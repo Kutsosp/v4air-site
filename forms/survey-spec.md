@@ -1,5 +1,21 @@
 # V4 AI Researchers Meetup: survey specification
 
+**Changes of 14.11.2026 (form A, PR feat/apply-simplify).** The live form is the master where it differs from the items below. Columns are keyed by
+variable ID, so removed questions keep their columns for earlier applications and new keys get new columns; no ID changed meaning.
+
+| Item | Change | Keys: new (old kept for earlier rows) |
+|---|---|---|
+| A1 care duties | Removed from A; asked after acceptance in C4.7 | old `A1.care`, `A1.care_detail` |
+| A1.9 days | "Can you attend all three days?" Yes / Not sure (note required) | new `A1.days_all` yes/not_sure, `A1.days_note`; "Yes" also writes `A1.days.wed/thu/fri` = TRUE |
+| A3 | Intro screen tick "I don't use AI yet: I have data and a question" skips the method screens (no screen added, LAYOUT stays 2) | new `A3.none` |
+| A4 | Grid replaced by up to three topic pills | new `A4.<tNN>.pick`; old `.learn`, `.work`, `.present` |
+| A5 | Nine items x three columns replaced by four broad items and one interest question | new `A5.x01`–`x04.have`, `A5.hear` yes/maybe/no; `A5.detail` kept. Mapping: x01 = e01 e02 e03, x02 = e04 e05, x03 = e06 e08, x04 = e09; e07 dropped |
+| A6.1 | Ten options merged to seven | new `A6.useful.people` (= collaborators + talent), `.feedback` (= feedback_direction + feedback_results), `.learning` (= methods + applications), `A6.useful_detail.feedback`, `.learning`; unchanged `contacts`, `sharing`, `exploring`, `other` |
+| A6.2 | "Are you looking for collaborators?" removed; its open follow-up now opens under the "people" option | old `A6.collab`; `A6.collab_kind` keeps its meaning |
+| A7 | Panel option and hardware question removed; "presented before" and organizing help asked of students only (bsc, phd); softer intro | old `A7.roles.panel`, `A7.hardware.*`, `A7.hardware_detail` |
+| A8 | Applicants outside the partner universities see a fee card mirrored from /pricing/ (`#entrance-fee table`) and a tick "I would need help with the costs" | new `A8.cost_help` |
+| A2.2 | Keywords also split on comma or semicolon while typing (phone keyboards), and a pending keyword is kept on Next | — |
+
 Version 1.5, 20.09.2026 (two rounds of preview comments plus the form-UX research pass: 15 screens instead of 8, one method family per screen, weighted progress with time left, radios instead of small dropdowns, visible labels everywhere, exclusive "none" option, 44 px touch targets, one-sentence hints without full stops, "(optional)" in labels). Replaces the current 53-question Google Form. A static preview of Form A with every field, variant, and revealed control visible on one page is in `form-a-preview.html` next to this file. This document defines three instruments question by question (wording, response options, conditional logic) and describes the behaviour the custom form app must provide. Text in [square brackets] is a placeholder the organizers fill in before launch; nothing in brackets is final copy.
 
 ## 1. Overview
@@ -539,6 +555,8 @@ This replaces the old five-row 1 to 5 enjoyment grid (old Q49). A forced choice 
 - `C4.letter` "Do you need an invitation letter or visa support?" Yes / No. Required.
 
 **C4.6** `C4.emergency` "Emergency contact: name and phone number." Short text. Optional.
+
+**C4.7** `C4.care` "I have care duties (a child or a dependent) that make a three-day stay harder for me." Checkbox. Optional. Reveals `C4.care_detail` "What would help? For example, bringing a child, a childcare room, a nursing room, a specific day or time for your talk." Help: "This does not affect your place. We use it only to make the meetup easier to attend." (Moved from form A on 14.11.2026; 0 of 33 applicants had ticked it there.)
 
 ### 4.5 Section C5: Consents
 
