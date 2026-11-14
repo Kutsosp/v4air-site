@@ -643,10 +643,9 @@
     <section class="screen" data-min="1" data-key="a4">
       <h2>AI-related topics</h2>
       <p class="lede">These are questions about AI rather than methods.</p>
-      <div class="q" data-q="A4.pick" id="a4-q" data-max="3">
-        <span class="qlabel">Which would you most like to discuss at the meetup? Pick up to three <span class="opt-mark">(optional)</span></span>
+      <div class="q" data-q="A4.pick" id="a4-q">
+        <span class="qlabel">Which would you like to discuss at the meetup? Tick any that apply <span class="opt-mark">(optional)</span></span>
         <div class="pills" id="a4-pills"></div>
-        <p class="counter" id="a4-count">0 of 3 selected</p>
       </div>
     </section>
 
@@ -678,7 +677,7 @@
       <h2>Your work</h2>
       <div class="q" data-q="A2.project">
         <label class="qlabel" for="A2.project" data-label-acad="Describe a current or upcoming project. What is it about, and how does AI fit in?" data-label-nonacad="Describe what you do and how AI relates to your work.">Describe a current or upcoming project. What is it about, and how does AI fit in?</label>
-        <p class="hint" data-hint-acad="A few sentences: what it is, what you find most interesting about it, and where else it could apply. Works in progress are welcome. A general description is enough; leave out anything confidential. No AI yet? Describe your data and your question." data-hint-nonacad="A few sentences on what your organization does, your role, and where AI comes in. Leave out anything confidential.">A few sentences: what it is, what you find most interesting about it, and where else it could apply. Works in progress are welcome. A general description is enough; leave out anything confidential. No AI yet? Describe your data and your question.</p>
+        <p class="hint" data-hint-acad="A few sentences: what it is, what you find most interesting about it, and where else it could apply. Works in progress are welcome. A general description is enough. No AI yet? Describe your data and your question." data-hint-nonacad="A few sentences on what your organization does, your role, and where AI comes in.">A few sentences: what it is, what you find most interesting about it, and where else it could apply. Works in progress are welcome. A general description is enough. No AI yet? Describe your data and your question.</p>
         <textarea id="A2.project" name="A2.project" data-soft="1500"></textarea>
         <p class="counter" data-counter-for="A2.project">0 / 1,500 characters</p>
         <p class="err-msg">Tell us about your project in a few sentences</p>
@@ -700,17 +699,21 @@
         <span class="qlabel">What would be most useful to you at the meetup? Pick up to three.</span>
         <p class="hint">Do you need someone with specific expertise for a grant project? A supervisor for your thesis idea? Someone to consult?</p>
         <p class="hint">Tell us below and we'll match you with them at the event.</p>
-        <!-- Options merged 14.11.2026; new keys for merged options, old columns stay for earlier applications:
-             people = collaborators + talent, feedback = feedback_direction + feedback_results, learning = methods + applications.
-             The "people" follow-up is A6.collab_kind, the open question that used to follow "Are you looking for collaborators?". -->
-        <label class="opt"><input type="checkbox" name="A6.useful.people"><span>Finding collaborators or people for my team</span></label>
-        <div class="detail hid"><label for="A6.collab_kind">What expertise or kind of person would help most? (optional) The more specific, the better we can invite people who match</label><input type="text" id="A6.collab_kind" name="A6.collab_kind"></div>
+        <!-- 14.11.2026: feedback_direction + feedback_results merged into the new key "feedback" (old columns stay for earlier
+             applications); every other option keeps its original key and wording. The collaborators follow-up is A6.collab_kind,
+             the open question that used to follow "Are you looking for collaborators?". -->
+        <label class="opt"><input type="checkbox" name="A6.useful.collaborators"><span>Finding collaborators</span></label>
+        <div class="detail hid"><label for="A6.collab_kind">What expertise or kind of collaborator would help most? (optional) The more specific, the better we can invite people who match</label><input type="text" id="A6.collab_kind" name="A6.collab_kind"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.feedback"><span>Feedback on my work</span></label>
         <div class="detail hid"><label for="A6.useful_detail.feedback">Tell us more (optional)</label><input type="text" id="A6.useful_detail.feedback" name="A6.useful_detail.feedback"></div>
-        <label class="opt"><input type="checkbox" name="A6.useful.learning"><span>Learning methods from other fields and how they could apply to my work</span></label>
-        <div class="detail hid"><label for="A6.useful_detail.learning">Tell us more (optional)</label><input type="text" id="A6.useful_detail.learning" name="A6.useful_detail.learning"></div>
+        <label class="opt"><input type="checkbox" name="A6.useful.methods"><span>Learning methods and approaches from other fields</span></label>
+        <div class="detail hid"><label for="A6.useful_detail.methods">Tell us more (optional)</label><input type="text" id="A6.useful_detail.methods" name="A6.useful_detail.methods"></div>
+        <label class="opt"><input type="checkbox" name="A6.useful.applications"><span>Exploring how AI methods could apply to my work</span></label>
+        <div class="detail hid"><label for="A6.useful_detail.applications">Tell us more (optional)</label><input type="text" id="A6.useful_detail.applications" name="A6.useful_detail.applications"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.contacts"><span>Contacts in industry, funding, or tech transfer</span></label>
         <div class="detail hid"><label for="A6.useful_detail.contacts">Tell us more (optional)</label><input type="text" id="A6.useful_detail.contacts" name="A6.useful_detail.contacts"></div>
+        <label class="opt"><input type="checkbox" name="A6.useful.talent"><span>Finding talent or expertise for my team or organization</span></label>
+        <div class="detail hid"><label for="A6.useful_detail.talent">Tell us more (optional)</label><input type="text" id="A6.useful_detail.talent" name="A6.useful_detail.talent"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.sharing"><span>Sharing my own experience and knowledge</span></label>
         <div class="detail hid"><label for="A6.useful_detail.sharing">Tell us more (optional)</label><input type="text" id="A6.useful_detail.sharing" name="A6.useful_detail.sharing"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.exploring"><span>Just exploring, not sure yet</span></label>
@@ -1023,7 +1026,7 @@
     }
     $('#grid-custom-host').innerHTML = '<div class="grid-wrap"><table class="grid" id="grid-custom"><thead><tr><th class="item">Method name</th>' + th('I want to<br>learn more') + th('I use<br>this') + th('Experience<br>level') + th('I could<br>present on this') + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   })();
-  /* A4 (14.11.2026): up to three topics as pills, key A4.<id>.pick. Until then a learn / work / present grid (A4.<id>.learn,
+  /* A4 (14.11.2026): topics as pills, any number, key A4.<id>.pick. Until then a learn / work / present grid (A4.<id>.learn,
      .work, .present); those columns stay in the sheet for earlier applications. */
   $('#a4-pills').innerHTML = TOPICS.map(function (t) { return '<label class="pill" title="' + esc(t.fam) + (t.ex ? ': ' + esc(t.ex) : '') + '"><input type="checkbox" name="A4.' + t.id + '.pick"><span>' + esc(t.label) + '</span></label>'; }).join('');
   /* A5 (14.11.2026): four broad kinds of experience, key A5.<id>.have, plus one interest question A5.hear. Until then nine items
@@ -1255,13 +1258,7 @@
   function applyA5() { var h = $('input[name="A5.hear"]:checked'); $('#a5-detail').classList.toggle('hid', !($('#a5-pills input:checked') || (h && h.value !== 'no'))); }
   a5.addEventListener('change', applyA5);
 
-  var a4Cbs = $$('#a4-pills input');
-  function applyA4() {
-    var n = a4Cbs.filter(function (c) { return c.checked; }).length;
-    $('#a4-count').textContent = n + ' of 3 selected';
-    a4Cbs.forEach(function (c) { var block = !c.checked && n >= 3; c.disabled = block; c.parentNode.classList.toggle('dim', block); });
-  }
-  a4Cbs.forEach(function (c) { c.addEventListener('change', applyA4); });
+
 
   $$('.detail').forEach(function (d) {
     var cb = $('input[type=checkbox]', d.previousElementSibling);
@@ -1362,7 +1359,7 @@
     ta.addEventListener('input', upd); upd();
   });
 
-  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyA4(); applyDays(); applyHelp(); applyCommunity(); applyOpen(); applyFunding(); drawKw(); }
+  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyDays(); applyHelp(); applyCommunity(); applyOpen(); applyFunding(); drawKw(); }
   applyAll();
 
   /* ---------- validation ---------- */
