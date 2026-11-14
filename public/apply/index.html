@@ -172,6 +172,17 @@
   .reveal { border-left: 3px solid var(--teal); padding: 0.4rem 0 0.4rem 1rem; margin: 0.6rem 0 0.4rem; }
   .reveal.hid { display: none; }
   .links label, .field-label { display: block; font-size: 0.92rem; color: var(--text-2); margin: 0.7rem 0 0.2rem; }
+  .links label.hid { display: none; }
+  .orcid-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; max-width: 560px; } .orcid-row input { flex: 1; min-width: 12rem; }
+  #orcid-status.err { color: var(--danger, #c0392b); } /* .links label outranks .hid, so labels of hidden link fields stayed visible */
+  .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+  .pills label.pill { position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 0.95rem; }
+  .pills label.pill input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .pills label.pill:has(input:checked) { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .pills label.pill:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pills label.pill.dim { opacity: 0.45; cursor: not-allowed; }
+  .fee-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 0.9rem 1.1rem; margin: 0 0 1.2rem; max-width: 560px; }
+  .fee-card table { border-collapse: collapse; margin: 0.4rem 0; } .fee-card th, .fee-card td { text-align: left; padding: 0.2rem 1.2rem 0.2rem 0; }
   .field-label.strong { color: var(--text); font-weight: 600; font-size: 1rem; }
   .qhint { position: relative; font-size: 0.9rem; color: var(--accent); border-bottom: 1px dotted var(--accent); cursor: help; margin-left: 0.5rem; font-weight: 500; }
   .qhint.inline { margin-left: 0; font-size: inherit; font-weight: 500; }
@@ -378,12 +389,19 @@
         <li><img src="../assets/uwr-wroclaw_blue-sm.webp" alt="University of Wrocław" loading="lazy"></li>
         <li><img src="../assets/umk-torun_blue-sm.webp" alt="Nicolaus Copernicus University in Toruń" loading="lazy"></li>
         <li><img src="../assets/elte_color-sm.webp" alt="Eötvös Loránd University in Budapest" loading="lazy"></li>
+        <li><img src="../assets/comenius-university_red-sm.webp" alt="Comenius University Bratislava" loading="lazy"></li>
       </ul>
     </section>
 
     <!-- 1 ABOUT YOU -->
     <section class="screen" data-min="0.75" data-key="a1a">
       <h2>About you</h2>
+      <div class="q" data-q="A1.orcid">
+        <label class="qlabel" for="A1.orcid">Your ORCID iD <span class="opt-mark">(optional)</span></label>
+        <p class="hint">We can fill in your name, institution and department from your public ORCID record. You check and change everything.</p>
+        <div class="orcid-row"><input type="text" id="A1.orcid" name="A1.orcid" inputmode="text" autocomplete="off" placeholder="0000-0000-0000-0000" maxlength="60"><button type="button" class="btn btn-file" id="orcid-fill">Fill in from ORCID</button></div>
+        <p class="hint" id="orcid-status" role="status"></p>
+      </div>
       <div class="q" data-q="A1.name">
         <label class="qlabel" for="A1.name">Full name</label>
         <input type="text" id="A1.name" name="A1.name" autocomplete="name">
@@ -414,12 +432,6 @@
           <option value="other">I describe myself otherwise</option>
           <option value="not_stated">Prefer not to say</option>
         </select>
-      </div>
-      <div class="q" data-q="A1.care">
-        <span class="qlabel">Care duties <span class="opt-mark">(optional)</span></span>
-        <p class="hint">Selecting this does not affect admission. The organizers of V4AIR are committed to gender equality and will use this information only to make the event more accessible to participants of all genders.</p>
-        <label class="opt"><input type="checkbox" name="A1.care"><span>I have care duties (a child or a dependent) that make a three-day stay harder for me</span></label>
-        <div class="detail hid"><label for="A1.care_detail">What would help? For example, bringing a child, a childcare room, a nursing room, a specific day or time for your talk.</label><input type="text" id="A1.care_detail" name="A1.care_detail"></div>
       </div>
       <div class="q links" data-q="A1.links">
         <span class="qlabel">Links where we can see your work <span class="opt-mark">(optional)</span></span>
@@ -502,12 +514,19 @@
         <p class="err-msg">Enter your position</p>
       </div>
       <div class="q" data-q="A1.days">
-        <span class="qlabel">Which days can you attend the in-person meetup?</span>
+        <span class="qlabel">Can you attend all three days, 28&ndash;30 April 2027?</span>
         <p class="hint">Kostelec Castle, about 35 km from Prague, Czechia</p>
-        <label class="opt"><input type="checkbox" name="A1.days.wed"><span>Wednesday 28 April 2027</span></label>
-        <label class="opt"><input type="checkbox" name="A1.days.thu"><span>Thursday 29 April 2027</span></label>
-        <label class="opt"><input type="checkbox" name="A1.days.fri"><span>Friday 30 April 2027</span></label>
-        <p class="err-msg">Tick at least one day</p>
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="A1.days_all" value="yes"><span>Yes</span></label>
+          <label class="opt"><input type="radio" name="A1.days_all" value="not_sure"><span>Not sure, I will explain</span></label>
+        </div>
+        <div class="reveal hid" id="days-reveal">
+          <label class="field-label strong" for="A1.days_note">What do you know so far?</label>
+          <input type="text" id="A1.days_note" name="A1.days_note" maxlength="300">
+        </div>
+        <!-- A1.days.wed/thu/fri stay as hidden fields: "Yes" ticks all three, so older exports and tools keep working -->
+        <span hidden><input type="checkbox" name="A1.days.wed" tabindex="-1"><input type="checkbox" name="A1.days.thu" tabindex="-1"><input type="checkbox" name="A1.days.fri" tabindex="-1"></span>
+        <p class="err-msg">Choose yes or not sure, and tell us more if you are not sure</p>
       </div>
     </section>
 
@@ -515,6 +534,9 @@
     <section class="screen" data-min="0.4" data-key="a3-intro">
       <h2>AI methods you use</h2>
       <p class="lede">Over the next five short screens, tick the methods you use. For each one, tell us your experience level, whether you could present on it, and whether you want to learn more. Leave a method unticked if you don't use it. You can tick "I want to learn more" on anything, including methods you don't use yet.</p>
+      <div class="q" data-q="A3.none">
+        <label class="opt"><input type="checkbox" name="A3.none" id="A3.none"><span>I don't use AI yet: I have data and a question. <span class="hint" style="display:inline">This skips the method screens.</span></span></label>
+      </div>
       <h3 style="margin:1.2rem 0 0.2rem">Experience level</h3>
       <ul class="levels">
         <li><strong>1 Basic use:</strong> out-of-the-box tools, for example a chatbot web interface or a pretrained model used as-is.
@@ -628,17 +650,29 @@
     <!-- 9 TOPICS -->
     <section class="screen" data-min="1" data-key="a4">
       <h2>AI-related topics</h2>
-      <p class="lede">These are questions about AI rather than methods. Tick the topics you work on or engage with, and the ones you want to learn more about. Leave a topic unticked if it doesn't apply.</p>
-      <div class="q" data-q="A4.grid"><div class="gridhost" id="grid-a4-host"></div></div>
-      <p class="hint" style="margin-top:0.8rem">Ticking "I could present on this" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+      <p class="lede">These are questions about AI rather than methods.</p>
+      <div class="q" data-q="A4.pick" id="a4-q">
+        <span class="qlabel">Which would you like to discuss at the meetup? Tick any that apply <span class="opt-mark">(optional)</span></span>
+        <div class="pills" id="a4-pills"></div>
+      </div>
     </section>
 
     <!-- 10 BEYOND ACADEMIA -->
     <section class="screen" data-min="0.75" data-key="a5">
       <h2>Experience beyond academia</h2>
-      <p class="lede">This section is about steps you have taken to apply your work outside a purely academic setting, whether or not they led anywhere. Tick what you have done and what you want to hear about from others.<span class="stage-only" data-stages="nonacad"> The items are written from the researcher's side. Tick whatever applies to you from the other side, for example if you have hired researchers, advised, or founded.</span></p>
-      <div class="q" data-q="A5.grid"><div class="gridhost" id="grid-a5-host"></div></div>
-      <p class="hint" style="margin-top:0.8rem">Ticking "I could share this experience" does not commit you to anything. We contact you personally to agree on topic and format.</p>
+      <p class="lede">Steps you have taken to use your work outside a purely academic setting, whether or not they led anywhere.<span class="stage-only" data-stages="nonacad"> Tick whatever applies to you from your side, for example if you have hired researchers or advised a research group.</span></p>
+      <div class="q" data-q="A5.have">
+        <span class="qlabel">Have you done any of these? <span class="opt-mark">(optional)</span></span>
+        <div class="pills" id="a5-pills"></div>
+      </div>
+      <div class="q" data-q="A5.hear">
+        <span class="qlabel">Would you like to hear from people who took their research outside academia? <span class="opt-mark">(optional)</span></span>
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="A5.hear" value="yes"><span>Yes</span></label>
+          <label class="opt"><input type="radio" name="A5.hear" value="maybe"><span>Maybe</span></label>
+          <label class="opt"><input type="radio" name="A5.hear" value="no"><span>No</span></label>
+        </div>
+      </div>
       <div class="reveal hid" id="a5-detail">
         <label class="field-label strong" for="A5.detail">Tell us more: what did you do, or what do you want to hear about? <span class="opt-mark" style="font-weight:400;color:var(--text-2)">(optional)</span></label>
         <textarea id="A5.detail" name="A5.detail" style="min-height:100px" data-soft="600"></textarea>
@@ -651,14 +685,14 @@
       <h2>Your work</h2>
       <div class="q" data-q="A2.project">
         <label class="qlabel" for="A2.project" data-label-acad="Describe a current or upcoming project. What is it about, and how does AI fit in?" data-label-nonacad="Describe what you do and how AI relates to your work.">Describe a current or upcoming project. What is it about, and how does AI fit in?</label>
-        <p class="hint" data-hint-acad="Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included" data-hint-nonacad="Three to five sentences on what your organization does, your role, and where AI comes in">Three to five sentences on what it is, what you find most interesting about it, and where else it could apply, works in progress included</p>
+        <p class="hint" data-hint-acad="A few sentences: what it is, what you find most interesting about it, and where else it could apply. Works in progress are welcome. A general description is enough. No AI yet? Describe your data and your question." data-hint-nonacad="A few sentences on what your organization does, your role, and where AI comes in.">A few sentences: what it is, what you find most interesting about it, and where else it could apply. Works in progress are welcome. A general description is enough. No AI yet? Describe your data and your question.</p>
         <textarea id="A2.project" name="A2.project" data-soft="1500"></textarea>
         <p class="counter" data-counter-for="A2.project">0 / 1,500 characters</p>
         <p class="err-msg">Tell us about your project in a few sentences</p>
       </div>
       <div class="q" data-q="A2.keywords">
         <label class="qlabel" for="kw-input">Three to five keywords for your work</label>
-        <p class="hint">Methods, topics, data types or fields, press Enter after each one</p>
+        <p class="hint">Methods, topics, data types or fields. Press Enter or type a comma after each one</p>
         <div class="chips" id="kw-chips"><input type="text" id="kw-input" aria-label="Add a keyword" autocomplete="off"></div>
         <input type="hidden" name="A2.keywords" id="A2.keywords">
         <p class="counter" id="kw-count">0 of 5, minimum 3</p>
@@ -669,16 +703,17 @@
     <!-- 12 LOOKING FOR -->
     <section class="screen" data-min="0.75" data-key="a6">
       <h2>What you are looking for</h2>
-      <div class="q" data-q="A6.useful" id="useful-q" data-max="5">
-        <span class="qlabel">What would be most useful to you at the meetup? Pick up to five.</span>
+      <div class="q" data-q="A6.useful" id="useful-q" data-max="3">
+        <span class="qlabel">What would be most useful to you at the meetup? Pick up to three.</span>
         <p class="hint">Do you need someone with specific expertise for a grant project? A supervisor for your thesis idea? Someone to consult?</p>
         <p class="hint">Tell us below and we'll match you with them at the event.</p>
+        <!-- 14.11.2026: feedback_direction + feedback_results merged into the new key "feedback" (old columns stay for earlier
+             applications); every other option keeps its original key and wording. The collaborators follow-up is A6.collab_kind,
+             the open question that used to follow "Are you looking for collaborators?". -->
         <label class="opt"><input type="checkbox" name="A6.useful.collaborators"><span>Finding collaborators</span></label>
-        <div class="detail hid"><label for="A6.useful_detail.collaborators">Tell us more (optional)</label><input type="text" id="A6.useful_detail.collaborators" name="A6.useful_detail.collaborators"></div>
-        <label class="opt"><input type="checkbox" name="A6.useful.feedback_direction"><span>Feedback on my research direction</span></label>
-        <div class="detail hid"><label for="A6.useful_detail.feedback_direction">Tell us more (optional)</label><input type="text" id="A6.useful_detail.feedback_direction" name="A6.useful_detail.feedback_direction"></div>
-        <label class="opt"><input type="checkbox" name="A6.useful.feedback_results"><span>Feedback on results</span></label>
-        <div class="detail hid"><label for="A6.useful_detail.feedback_results">Tell us more (optional)</label><input type="text" id="A6.useful_detail.feedback_results" name="A6.useful_detail.feedback_results"></div>
+        <div class="detail hid"><label for="A6.collab_kind">What expertise or kind of collaborator would help most? (optional) The more specific, the better we can invite people who match</label><input type="text" id="A6.collab_kind" name="A6.collab_kind"></div>
+        <label class="opt"><input type="checkbox" name="A6.useful.feedback"><span>Feedback on my work</span></label>
+        <div class="detail hid"><label for="A6.useful_detail.feedback">Tell us more (optional)</label><input type="text" id="A6.useful_detail.feedback" name="A6.useful_detail.feedback"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.methods"><span>Learning methods and approaches from other fields</span></label>
         <div class="detail hid"><label for="A6.useful_detail.methods">Tell us more (optional)</label><input type="text" id="A6.useful_detail.methods" name="A6.useful_detail.methods"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.applications"><span>Exploring how AI methods could apply to my work</span></label>
@@ -693,22 +728,8 @@
         <div class="detail hid"><label for="A6.useful_detail.exploring">Tell us more (optional)</label><input type="text" id="A6.useful_detail.exploring" name="A6.useful_detail.exploring"></div>
         <label class="opt"><input type="checkbox" name="A6.useful.other" class="other-cb"><span>Something else</span></label>
         <div class="detail hid other-detail"><label for="A6.useful_other">What is it?</label><input type="text" id="A6.useful_other" name="A6.useful_other" class="other-txt"></div>
-        <p class="counter" id="useful-count">0 of 5 selected</p>
+        <p class="counter" id="useful-count">0 of 3 selected</p>
         <p class="err-msg">Pick at least one, and say what "something else" is if you ticked it</p>
-      </div>
-      <div class="q" data-q="A6.collab">
-        <span class="qlabel">Are you looking for collaborators for your project?</span>
-        <div class="opt-row">
-          <label class="opt"><input type="radio" name="A6.collab" value="yes"><span>Yes</span></label>
-          <label class="opt"><input type="radio" name="A6.collab" value="maybe"><span>Maybe</span></label>
-          <label class="opt"><input type="radio" name="A6.collab" value="no"><span>No</span></label>
-        </div>
-        <div class="reveal hid" id="collab-reveal">
-          <label class="field-label strong" for="A6.collab_kind">What expertise or kind of collaborator would help most? <span class="opt-mark" style="font-weight:400;color:var(--text-2)">(optional)</span></label>
-          <p class="hint">The more specific, the better we can invite people who match</p>
-          <input type="text" id="A6.collab_kind" name="A6.collab_kind">
-        </div>
-        <p class="err-msg">Choose yes, maybe, or no</p>
       </div>
       <p class="lede" style="margin:1.4rem 0 0">We use everything on this screen to build the conference you actually want: the sessions, the people at your table, and the introductions we make before you arrive.</p>
     </section>
@@ -716,19 +737,18 @@
     <!-- 13 INVOLVEMENT -->
     <section class="screen" data-min="0.75" data-key="a7">
       <h2>Your involvement</h2>
-      <p class="lede">The meetup is built around active participation. Every attendee contributes in some form. Tick the forms you are open to; the exact shape is worked out together with the organizing team after selection.</p>
+      <p class="lede">Most participants contribute something: a talk, a workshop or a project in the Not-Just-Posters session. Nobody has to give a talk. Tick what you are open to; we work out the details with you after selection.</p>
       <div class="q" data-q="A7.roles">
         <span class="qlabel">How would you like to contribute?</span>
         <label class="opt"><input type="checkbox" name="A7.roles.speaker"><span>Speaker</span></label>
         <label class="opt"><input type="checkbox" name="A7.roles.workshop"><span>Workshop leader</span></label>
-        <label class="opt"><input type="checkbox" name="A7.roles.panel"><span>Panel discussion (answer a moderator's questions on stage together with two or three others; no slides, no preparation)</span></label>
         <label class="opt"><input type="checkbox" name="A7.roles.njp"><span>Not-Just-Posters session presenter<span class="info" tabindex="0">i<span class="qhint-body">We recommend this session mainly for students who may not yet have the results or experience for a full talk but want to share their project and receive feedback. Student talk applications are also accepted and will be considered.</span></span></span></label>
         <label class="opt"><input type="checkbox" name="A7.roles.unsure"><span>Not sure yet, I'd like to discuss options</span></label>
         <label class="opt"><input type="checkbox" name="A7.roles.other" class="other-cb"><span>Other</span></label>
         <div class="detail hid other-detail"><label for="A7.roles_other">Which role?</label><input type="text" id="A7.roles_other" name="A7.roles_other" class="other-txt"></div>
         <p class="err-msg">Tick at least one, and name the role if you ticked "Other"</p>
       </div>
-      <div class="q" data-q="A7.presented">
+      <div class="q" data-q="A7.presented" data-stages="bsc phd">
         <span class="qlabel">Have you presented at a conference or workshop before?</span>
         <div class="opt-row">
           <label class="opt"><input type="radio" name="A7.presented" value="yes"><span>Yes</span></label>
@@ -739,17 +759,6 @@
       <div class="q" data-q="A7.roles_note">
         <label class="qlabel" for="A7.roles_note">Anything to add about how you would like to participate? <span class="opt-mark">(optional)</span></label>
         <input type="text" id="A7.roles_note" name="A7.roles_note">
-      </div>
-      <div class="q" data-q="A7.hardware">
-        <span class="qlabel">Does your work involve hardware? <span class="opt-mark">(optional)</span></span>
-        <p class="hint">For example sensors, field cameras, robots, or embedded systems. This helps us plan a possible session for hardware work.</p>
-        <label class="opt"><input type="checkbox" name="A7.hardware.build" class="hw-yes"><span>Yes, I build hardware</span></label>
-        <label class="opt"><input type="checkbox" name="A7.hardware.need" class="hw-yes"><span>Yes, I need hardware built for my research</span></label>
-        <label class="opt"><input type="checkbox" name="A7.hardware.no" class="hw-no"><span>No</span></label>
-        <div class="reveal hid" id="hw-reveal">
-          <label class="field-label strong" for="A7.hardware_detail">What are you building, or what do you need? <span class="opt-mark" style="font-weight:400;color:var(--text-2)">(optional)</span></label>
-          <input type="text" id="A7.hardware_detail" name="A7.hardware_detail" maxlength="300">
-        </div>
       </div>
       <div class="q" data-q="A7.material">
         <span class="qlabel">Do you have something to show? <span class="opt-mark">(optional)</span></span>
@@ -763,7 +772,7 @@
         <label class="field-label" for="A7.link" style="margin-top:0.8rem">Or a link</label>
         <input type="url" id="A7.link" name="A7.link" inputmode="url" autocomplete="off">
       </div>
-      <div class="q" data-q="A7.help">
+      <div class="q" data-q="A7.help" data-stages="bsc phd">
         <span class="qlabel">Would you help with organizing?</span>
         <label class="opt"><input type="checkbox" name="A7.help.before" class="help-yes"><span>Before the event, at my home institution (promoting the call, recruiting participants)</span></label>
         <label class="opt"><input type="checkbox" name="A7.help.onsite" class="help-yes"><span>On site during the event (coordination, helping other participants)</span></label>
@@ -811,6 +820,16 @@
         <label class="opt"><input type="checkbox" name="A8.source.other" class="other-cb"><span>Other</span></label>
         <div class="detail hid other-detail"><label for="A8.source_other">How?</label><input type="text" id="A8.source_other" name="A8.source_other" class="other-txt"></div>
         <p class="err-msg">Tick at least one, say where you saw the open call, and say how if you ticked "Other"</p>
+      </div>
+      <div class="q" data-q="A8.cost_help" id="fee-q">
+        <div class="fee-card" id="fee-card">
+          <strong>Participation fee</strong>
+          <p class="hint">People from outside the six partner universities pay a participation fee and their own accommodation and travel. Applying is free: you pay only if you are selected.</p>
+          <div id="fee-mirror"></div>
+          <p class="hint"><a href="../pricing/" target="_blank" rel="noopener">All prices, including accommodation (opens in a new tab) &rarr;</a></p>
+        </div>
+        <label class="opt"><input type="checkbox" name="A8.cost_help"><span>I would need help with the costs</span></label>
+        <p class="hint">This does not affect selection. We get back to you about it after selection.</p>
       </div>
       <div class="q" data-q="A8.own_funding" id="own-funding">
         <span class="qlabel">Do you have access to funding and wish to self-fund your participation?<span class="info" tabindex="0">i<span class="qhint-body">Our funding allows us to fund a limited number of places (accommodation and meals at the castle, plus a contribution toward travel). If you have your own funding, for example a grant or a travel budget, using it will help ensure V4AIR remains accessible for those who may not have been able to attend otherwise.</span></span></span>
@@ -965,15 +984,10 @@
     { id: 't12', fam: 'Other', label: 'Environmental and sustainability impact of AI' }
   ];
   var EXPERIENCE = [
-    { id: 'e01', label: 'Employment outside academia', ex: 'industry, public sector, NGOs' },
-    { id: 'e02', label: 'Freelance or contract consulting' },
-    { id: 'e03', label: 'Advising a company or organization', ex: 'formal or informal' },
-    { id: 'e04', label: 'Founding or co-founding a startup' },
-    { id: 'e05', label: 'Spinning off a company from research' },
-    { id: 'e06', label: 'Licensing or commercializing research or technology', ex: 'IP, patents, tech transfer' },
-    { id: 'e07', label: 'Public engagement or science communication', ex: 'outreach, media, popularization' },
-    { id: 'e08', label: 'Grant or funding applications aimed at commercial or applied outcomes' },
-    { id: 'e09', label: 'Collaboration between academia and industry', ex: 'joint projects, contract research, technology transfer' }
+    { id: 'x01', label: 'Worked or consulted outside academia', ex: 'a job, freelance work or advising a company or organization' },
+    { id: 'x02', label: 'Founded a startup or spin-off' },
+    { id: 'x03', label: 'Licensed or commercialized research', ex: 'patents, tech transfer, applied grants' },
+    { id: 'x04', label: 'Joint projects with companies or other organizations', ex: 'contract research, industry partners' }
   ];
   var COUNTRIES = ['Czechia', 'Hungary', 'Poland', 'Slovakia', 'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo (Republic of the)', 'Congo (Democratic Republic of the)', 'Costa Rica', "Côte d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'São Tomé and Príncipe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'];
 
@@ -1020,19 +1034,13 @@
     }
     $('#grid-custom-host').innerHTML = '<div class="grid-wrap"><table class="grid" id="grid-custom"><thead><tr><th class="item">Method name</th>' + th('I want to<br>learn more') + th('I use<br>this') + th('Experience<br>level') + th('I could<br>present on this') + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   })();
-  (function () {
-    var rows = '', last = null;
-    TOPICS.forEach(function (t) {
-      if (t.fam !== last) { rows += '<tr class="family"><td colspan="4">' + esc(t.fam) + '</td></tr>'; last = t.fam; }
-      var p = 'A4.' + t.id;
-      rows += '<tr data-id="' + p + '">' + itemCell(t) + cellCb(p + '.learn') + cellGate(p + '.work') + cellPresent(p + '.present') + '</tr>';
-    });
-    $('#grid-a4-host').innerHTML = '<div class="grid-wrap"><table class="grid"><thead><tr><th class="item">Topic</th>' + th('I want to<br>learn more') + th('I work<br>on this') + th('I could<br>present on this') + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
-  })();
-  (function () {
-    var rows = EXPERIENCE.map(function (e) { var p = 'A5.' + e.id; return '<tr data-id="' + p + '">' + itemCell(e) + cellCb(p + '.learn') + cellGate(p + '.have') + cellPresent(p + '.present') + '</tr>'; }).join('');
-    $('#grid-a5-host').innerHTML = '<div class="grid-wrap"><table class="grid" id="grid-a5"><thead><tr><th class="item">Experience</th>' + th('I want to<br>learn about this') + th('I have experience<br>with this') + th('I could share<br>this experience') + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
-  })();
+  /* A4 (14.11.2026): topics as pills, any number, key A4.<id>.pick. Until then a learn / work / present grid (A4.<id>.learn,
+     .work, .present); those columns stay in the sheet for earlier applications. */
+  $('#a4-pills').innerHTML = TOPICS.map(function (t) { return '<label class="pill" title="' + esc(t.fam) + (t.ex ? ': ' + esc(t.ex) : '') + '"><input type="checkbox" name="A4.' + t.id + '.pick"><span>' + esc(t.label) + '</span></label>'; }).join('');
+  /* A5 (14.11.2026): four broad kinds of experience, key A5.<id>.have, plus one interest question A5.hear. Until then nine items
+     e01 to e09 with learn / have / present (columns kept). Mapping for analysis: x01 = e01 e02 e03, x02 = e04 e05,
+     x03 = e06 e08, x04 = e09; e07 (public engagement) dropped. */
+  $('#a5-pills').innerHTML = EXPERIENCE.map(function (e) { return '<label class="pill"' + (e.ex ? ' title="' + esc(e.ex) + '"' : '') + '><input type="checkbox" name="A5.' + e.id + '.have"><span>' + esc(e.label) + '</span></label>'; }).join('');
 
   /* ---------- state: save and restore ---------- */
   var form = $('#form');
@@ -1041,6 +1049,7 @@
   var keywords = Array.isArray(state.__keywords) ? state.__keywords : [];
   var fileInfo = (state.__file && state.__file.name) ? state.__file : null; /* {name, size, url} of the stored A7 upload */
   var LAYOUT = 2;
+  var PACE = 1.5; /* data-min values sum to about 11 minutes; submitted applications took a median of 19 (14.11.2026) */
   var idx = 0; /* set from the saved state by landing() once the screens are known */
   var saveTimer = null;
 
@@ -1253,9 +1262,11 @@
   }
   links.forEach(function (inp) { inp.addEventListener('input', applyLinks); });
 
-  var a5 = $('#grid-a5');
-  function applyA5() { $('#a5-detail').classList.toggle('hid', !$('input[type=checkbox]:checked', a5)); }
+  var a5 = $('[data-key="a5"]');
+  function applyA5() { var h = $('input[name="A5.hear"]:checked'); $('#a5-detail').classList.toggle('hid', !($('#a5-pills input:checked') || (h && h.value !== 'no'))); }
   a5.addEventListener('change', applyA5);
+
+
 
   $$('.detail').forEach(function (d) {
     var cb = $('input[type=checkbox]', d.previousElementSibling);
@@ -1271,8 +1282,7 @@
   }
   usefulCbs.forEach(function (c) { c.addEventListener('change', applyUseful); });
 
-  function applyCollab() { var r = $('input[name="A6.collab"]:checked'); $('#collab-reveal').classList.toggle('hid', !(r && (r.value === 'yes' || r.value === 'maybe'))); }
-  $$('input[name="A6.collab"]').forEach(function (r) { r.addEventListener('change', applyCollab); });
+
 
   var helpCbs = $$('.help-yes'), helpNone = $('.help-none');
   function applyHelp() { $('#help-reveal').classList.toggle('hid', !helpCbs.some(function (c) { return c.checked; })); }
@@ -1282,10 +1292,15 @@
   function applyCommunity() { var r = $('input[name="A7.community"]:checked'), on = !!r && r.value === 'yes'; $('#community-reveal').classList.toggle('hid', !on); if (!on) document.getElementById('A7.community_detail').value = ''; }
   $$('input[name="A7.community"]').forEach(function (r) { r.addEventListener('change', function () { applyCommunity(); save(); }); });
 
-  var hwCbs = $$('.hw-yes'), hwNo = $('.hw-no');
-  function applyHw() { var on = hwCbs.some(function (c) { return c.checked; }); $('#hw-reveal').classList.toggle('hid', !on); if (!on) document.getElementById('A7.hardware_detail').value = ''; }
-  hwCbs.forEach(function (c) { c.addEventListener('change', function () { if (c.checked) hwNo.checked = false; applyHw(); save(); }); });
-  hwNo.addEventListener('change', function () { if (hwNo.checked) hwCbs.forEach(function (c) { c.checked = false; }); applyHw(); save(); });
+
+  function applyDays() {
+    var r = $('input[name="A1.days_all"]:checked');
+    if (!r && ['wed', 'thu', 'fri'].every(function (d) { return $('input[name="A1.days.' + d + '"]').checked; })) { r = $('input[name="A1.days_all"][value="yes"]'); r.checked = true; } /* drafts saved before 14.11.2026 */
+    var yes = !!r && r.value === 'yes', unsure = !!r && r.value === 'not_sure';
+    $('#days-reveal').classList.toggle('hid', !unsure); if (!unsure) document.getElementById('A1.days_note').value = '';
+    ['wed', 'thu', 'fri'].forEach(function (d) { $('input[name="A1.days.' + d + '"]').checked = yes; });
+  }
+  $$('input[name="A1.days_all"]').forEach(function (r) { r.addEventListener('change', function () { applyDays(); save(); }); });
 
   function clearIn(root) { $$('input', root).forEach(function (i) { if (i.type === 'checkbox' || i.type === 'radio') i.checked = false; else i.value = ''; }); }
   /* Self-funding is asked only of partner-university applicants; everyone else pays their own way anyway. */
@@ -1293,12 +1308,76 @@
     var inst = $('input[name="A1.institution_key"]:checked');
     var partner = vis($('[data-q="A1.institution"]')) && !!inst && inst.value !== 'other';
     $('#own-funding').classList.toggle('hid', !partner); if (!partner) clearIn($('#own-funding'));
+    $('#fee-q').classList.toggle('hid', partner); if (partner) clearIn($('#fee-q'));
     var yes = $('input[name="A8.own_funding"]:checked'), sc = $('input[name="A8.own_funding_scope"]:checked');
     var on = !!yes && yes.value === 'yes', part = on && !!sc && sc.value === 'part';
     $('#funding-reveal').classList.toggle('hid', !on); if (!on) clearIn($('#funding-reveal'));
     $('#funding-part').classList.toggle('hid', !part); if (!part) clearIn($('#funding-part'));
   }
   $$('input[name="A8.own_funding"], input[name="A8.own_funding_scope"]').forEach(function (r) { r.addEventListener('change', applyFunding); });
+
+  /* the fee table is copied from /pricing/ (#entrance-fee table), the single place where prices are written */
+  fetch('../pricing/').then(function (r) { return r.ok ? r.text() : ''; }).then(function (html) {
+    var t = html && new DOMParser().parseFromString(html, 'text/html').querySelector('#entrance-fee table');
+    if (t) $('#fee-mirror').appendChild(document.importNode(t, true));
+  }).catch(function () {});
+
+  /* ---------- ORCID prefill (14.11.2026). The visitor's browser reads their public record from pub.orcid.org (CORS open)
+     only when they press the button. Only empty fields are filled; nothing is sent to us until the normal save. */
+  var PARTNER_NAMES = [
+    ['cuni', /charles university|univerzita karlova/i], ['cvut', /czech technical university|české vysoké učení technické/i],
+    ['uniba', /comenius university|univerzita komenského/i], ['uwr', /university of wrocław|uniwersytet wrocławski/i],
+    ['umk', /nicolaus copernicus university|uniwersytet mikołaja kopernika/i], ['elte', /eötvös loránd|eotvos lorand/i]];
+  function orcidId(v) {
+    var m = String(v || '').toUpperCase().match(/(\d{4})-?(\d{4})-?(\d{4})-?(\d{3}[\dX])/);
+    if (!m) return '';
+    var d = m.slice(1).join(''), t = 0;
+    for (var i = 0; i < 15; i++) t = (t + +d[i]) * 2;
+    var r = (12 - t % 11) % 11, chk = r === 10 ? 'X' : String(r);
+    return chk === d[15] ? d.replace(/(\d{4})(\d{4})(\d{4})(\d{3}[\dX])/, '$1-$2-$3-$4') : '';
+  }
+  function setIfEmpty(id, v) { var el = document.getElementById(id); if (el && v && !el.value.trim()) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); return true; } return false; }
+  function orcidMsg(t, err) { var s = $('#orcid-status'); s.textContent = t; s.classList.toggle('err', !!err); }
+  $('#orcid-fill').addEventListener('click', function () {
+    var id = orcidId(document.getElementById('A1.orcid').value);
+    if (!id) { orcidMsg('That does not look like an ORCID iD. It has 16 digits, for example 0000-0002-1825-0097.', true); return; }
+    document.getElementById('A1.orcid').value = id;
+    orcidMsg('Reading your ORCID record…');
+    fetch('https://pub.orcid.org/v3.0/' + id + '/record', { headers: { Accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status === 404 ? 'not_found' : 'http'); return r.json(); })
+      .then(function (rec) {
+        var done = [], p = rec.person || {}, nm = p.name || {};
+        var full = [nm['given-names'] && nm['given-names'].value, nm['family-name'] && nm['family-name'].value].filter(Boolean).join(' ');
+        if (setIfEmpty('A1.name', full)) done.push('name');
+        if (setIfEmpty('A1.link_1', 'https://orcid.org/' + id)) done.push('profile link');
+        /* current employment first, then current education (PhD students often list only that) */
+        var acts = rec['activities-summary'] || {};
+        function current(kind, key) {
+          return ((acts[kind] || {})['affiliation-group'] || []).map(function (g) { return g.summaries[0][key]; }).filter(function (e) { return e && !e['end-date']; })[0];
+        }
+        var aff = current('employments', 'employment-summary') || current('educations', 'education-summary');
+        if (aff) {
+          var org = aff.organization || {}, cc = (org.address || {}).country, cname = '';
+          try { cname = cc ? new Intl.DisplayNames(['en'], { type: 'region' }).of(cc) : ''; } catch (e) { cname = ''; }
+          if (COUNTRIES.indexOf(cname) > -1 && setIfEmpty('A1.country', cname)) { country.dispatchEvent(new Event('change')); done.push('country'); }
+          var key = (PARTNER_NAMES.filter(function (x) { return x[1].test(org.name || ''); })[0] || [])[0];
+          var radio = key && $('input[name="A1.institution_key"][value="' + key + '"]');
+          if (radio && !$('input[name="A1.institution_key"]:checked') && !radio.closest('.hid')) { radio.checked = true; radio.dispatchEvent(new Event('change', { bubbles: true })); done.push('institution'); }
+          else if (!key && org.name) {
+            var other = $('input[name="A1.institution_key"][value="other"]');
+            if (other && !$('input[name="A1.institution_key"]:checked') && !$('#inst-radios').classList.contains('hid')) { other.checked = true; other.dispatchEvent(new Event('change', { bubbles: true })); }
+            if (setIfEmpty('A1.institution_name', org.name)) done.push('institution');
+          }
+          if (setIfEmpty('A1.department', aff['department-name'])) done.push('department');
+        }
+        var kws = ((p.keywords || {}).keyword || []).map(function (k) { return String(k.content || '').trim(); }).filter(Boolean);
+        if (!keywords.length && kws.length) { kws.slice(0, 5).forEach(function (k) { if (keywords.indexOf(k) === -1) keywords.push(k); }); drawKw(); done.push('keywords'); }
+        save();
+        orcidMsg(done.length ? 'Filled in from ORCID: ' + done.join(', ') + '. Please check them; you can change anything.' : 'Your ORCID record had nothing to add to the empty fields.');
+        track('orcid_prefill', { form_name: 'apply', filled: done.join(',') || 'none' });
+      })
+      .catch(function (e) { orcidMsg(e && e.message === 'not_found' ? 'No public ORCID record was found for ' + id + '.' : 'ORCID could not be reached. You can fill in the form by hand.', true); });
+  });
 
   var srcOpen = $('#src-open');
   function applyOpen() { $('#open-channels').classList.toggle('hid', !srcOpen.checked); if (!srcOpen.checked) $$('input', $('#open-channels')).forEach(function (i) { if (i.type === 'checkbox') i.checked = false; else i.value = ''; }); }
@@ -1328,6 +1407,14 @@
     if (e.key === 'Backspace' && !kwInput.value && keywords.length) { keywords.pop(); drawKw(); save(); }
   });
   kwInput.addEventListener('blur', function () { if (kwInput.value.trim()) addKw(); });
+  /* phone keyboards often send no usable key code for Enter or comma, so also split on the typed text itself */
+  kwInput.addEventListener('input', function () {
+    var parts = kwInput.value.split(/[,;\n]/);
+    if (parts.length < 2) return;
+    kwInput.value = parts.pop();
+    parts.forEach(function (p) { p = p.trim(); if (p && keywords.length < 5 && keywords.indexOf(p) === -1) keywords.push(p); });
+    drawKw(); save();
+  });
   kwBox.addEventListener('click', function () { if (!kwInput.disabled) kwInput.focus(); });
 
   /* character counters */
@@ -1337,7 +1424,7 @@
     ta.addEventListener('input', upd); upd();
   });
 
-  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyCollab(); applyHelp(); applyCommunity(); applyHw(); applyOpen(); applyFunding(); drawKw(); }
+  function applyAll() { applyStage(); applyInstitution(); applyOrg(); applyCustom(); applyLinks(); applyA5(); applyUseful(); applyDays(); applyHelp(); applyCommunity(); applyOpen(); applyFunding(); drawKw(); }
   applyAll();
 
   /* ---------- validation ---------- */
@@ -1360,17 +1447,15 @@
     'A1.field': function (q) { return $('#A1\\.field').value.trim() ? '' : 'Field'; },
     'A1.student': function (q) { if (!vis(q)) return ''; return ($('#A1\\.programme').value.trim() && $('input[name="A1.year"]:checked')) ? '' : 'Study programme and year'; },
     'A1.position': function (q) { if (!vis(q)) return ''; return $('#A1\\.position').value.trim() ? '' : 'Position'; },
-    'A1.days': function (q) { return checkedIn('input[type=checkbox]', q) ? '' : 'Days'; },
-    'A1.care': function () { return ''; },
+    'A1.days': function (q) { var r = $('input[name="A1.days_all"]:checked'); if (!r) return 'Days'; return (r.value === 'yes' || document.getElementById('A1.days_note').value.trim()) ? '' : 'Days'; },
     'A2.project': function (q) { return $('#A2\\.project').value.trim().length >= 20 ? '' : 'Project description'; },
-    'A2.keywords': function (q) { return (keywords.length >= 3 && keywords.length <= 5) ? '' : 'Keywords'; },
+    'A2.keywords': function (q) { if (kwInput.value.trim()) addKw(); return (keywords.length >= 3 && keywords.length <= 5) ? '' : 'Keywords'; },
     'A3.grid': function (q) { var bad = $$('tbody tr', q).some(function (tr) { var g = $('td.gate input', tr); return g && g.checked && !$('td.lvl input:checked', tr); }); return bad ? 'Experience level' : ''; },
     'A3.custom': function (q) { var bad = $$('tbody tr', q).some(function (tr) { var g = $('td.gate input', tr); return g && g.checked && !$('td.lvl input:checked', tr); }); return bad ? 'Experience level' : ''; },
     'A6.useful': function (q) { var any = usefulCbs.some(function (c) { return c.checked; }); var otherOk = !$('input[name="A6.useful.other"]').checked || $('#A6\\.useful_other').value.trim(); return (any && otherOk) ? '' : 'What would be most useful'; },
-    'A6.collab': function (q) { return $('input[name="A6.collab"]:checked') ? '' : 'Collaborators'; },
     'A7.roles': function (q) { var any = checkedIn('.opt input[type=checkbox]', q); var otherOk = !$('input[name="A7.roles.other"]').checked || $('#A7\\.roles_other').value.trim(); return (any && otherOk) ? '' : 'How you would like to contribute'; },
-    'A7.presented': function (q) { return $('input[name="A7.presented"]:checked') ? '' : 'Presented before'; },
-    'A7.help': function (q) { return checkedIn('.opt input[type=checkbox]', q) ? '' : 'Help with organizing'; },
+    'A7.presented': function (q) { if (!vis(q)) return ''; return $('input[name="A7.presented"]:checked') ? '' : 'Presented before'; },
+    'A7.help': function (q) { if (!vis(q)) return ''; return checkedIn('.opt input[type=checkbox]', q) ? '' : 'Help with organizing'; },
     'A7.community': function (q) { var r = $('input[name="A7.community"]:checked'); if (!r) return 'Communities'; return (r.value === 'no' || document.getElementById('A7.community_detail').value.trim()) ? '' : 'Communities'; },
     'A8.source': function (q) {
       var top = ['nominated', 'open', 'invite', 'other'].some(function (k) { return $('input[name="A8.source.' + k + '"]').checked; });
@@ -1450,7 +1535,7 @@
     $('#progress').classList.toggle('on', !isIntro && !isEnd);
     $('#progress-fill').style.width = Math.round(done / total * 100) + '%';
     $('#progress-step').textContent = n > -1 ? 'Screen ' + (n + 1) + ' of ' + numbered.length : '';
-    var mins = Math.max(1, Math.ceil(left));
+    var mins = Math.max(1, Math.ceil(left * PACE));
     $('#progress-time').textContent = left > 0.4 ? 'About ' + mins + ' min left' : '';
     $('#actions').style.display = (isIntro || isEnd) ? 'none' : 'flex';
     $('#btn-back').disabled = idx <= 1;
@@ -1489,9 +1574,12 @@
     }
     if (!s.classList.contains('intro')) sync(false).catch(function () {});
     track('form_step', { form_name: 'apply', step: idx + 1, screen: s.getAttribute('data-key') || s.id || String(idx) });
-    idx++; render();
+    idx = (s.getAttribute('data-key') === 'a3-intro' && noAi()) ? keyIndex('a4') : idx + 1; render();
   }
-  function prev() { if (idx > 0) { idx--; render(); } }
+  function prev() { if (idx > 0) { idx = (screens[idx].getAttribute('data-key') === 'a4' && noAi()) ? keyIndex('a3-intro') : idx - 1; render(); } }
+  /* "I don't use AI yet" (A3.none) jumps over the method screens in both directions; no screen is added or removed, so LAYOUT stays 2 */
+  function noAi() { return document.getElementById('A3.none').checked; }
+  function keyIndex(k) { for (var i = 0; i < screens.length; i++) if (screens[i].getAttribute('data-key') === k) return i; return idx + 1; }
   /* GA4 custom events; no-op when the tag is absent (blocked or not yet consented) */
   function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
   /* field_done: one event per answered question. Closed answers (radio, checkbox, select) send the value;
