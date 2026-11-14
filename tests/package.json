@@ -2,11 +2,12 @@
   "name": "v4air-site-tests",
   "private": true,
   "type": "module",
-  "description": "Automated checks run by .github/workflows/site-tests.yml: forms data test (forms/run.mjs) and site check (site/check.mjs).",
+  "description": "Automated checks: forms data test (forms/run.mjs) and site check (site/check.mjs) in site-tests.yml; live form check on the real site and Sheet (live/run.mjs) in live-check.yml.",
   "scripts": {
     "forms": "node forms/run.mjs",
     "site": "node site/check.mjs",
-    "test": "node forms/run.mjs && node site/check.mjs"
+    "test": "node forms/run.mjs && node site/check.mjs",
+    "live": "node live/run.mjs"
   },
   "devDependencies": {
     "playwright": "1.48.2"
