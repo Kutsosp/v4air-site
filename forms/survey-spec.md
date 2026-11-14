@@ -10,7 +10,7 @@ variable ID, so removed questions keep their columns for earlier applications an
 | A3 | Intro screen tick "I don't use AI yet: I have data and a question" skips the method screens (no screen added, LAYOUT stays 2) | new `A3.none` |
 | A4 | Grid replaced by up to three topic pills | new `A4.<tNN>.pick`; old `.learn`, `.work`, `.present` |
 | A5 | Nine items x three columns replaced by four broad items and one interest question | new `A5.x01`–`x04.have`, `A5.hear` yes/maybe/no; `A5.detail` kept. Mapping: x01 = e01 e02 e03, x02 = e04 e05, x03 = e06 e08, x04 = e09; e07 dropped |
-| A6.1 | Ten options merged to seven | new `A6.useful.people` (= collaborators + talent), `.feedback` (= feedback_direction + feedback_results), `.learning` (= methods + applications), `A6.useful_detail.feedback`, `.learning`; unchanged `contacts`, `sharing`, `exploring`, `other` |
+| A6.1 | Ten options merged to seven; pick up to three (was five; earlier applications may have up to five) | new `A6.useful.people` (= collaborators + talent), `.feedback` (= feedback_direction + feedback_results), `.learning` (= methods + applications), `A6.useful_detail.feedback`, `.learning`; unchanged `contacts`, `sharing`, `exploring`, `other` |
 | A6.2 | "Are you looking for collaborators?" removed; its open follow-up now opens under the "people" option | old `A6.collab`; `A6.collab_kind` keeps its meaning |
 | A7 | Panel option and hardware question removed; "presented before" and organizing help asked of students only (bsc, phd); softer intro | old `A7.roles.panel`, `A7.hardware.*`, `A7.hardware_detail` |
 | A8 | Applicants outside the partner universities see a fee card mirrored from /pricing/ (`#entrance-fee table`) and a tick "I would need help with the costs" | new `A8.cost_help` |
