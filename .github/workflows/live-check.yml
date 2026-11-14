@@ -1,0 +1,72 @@
+name: Live form check
+
+# The real forms on https://v4air.eu send test answers through the real backends into the real forms Sheet; the check
+# reads the rows back, compares them with what the page held, and deletes them again (tests/live/run.mjs).
+#   after every successful deploy (site, Worker, Apps Script): full run, 2 applications (Worker, Apps Script fallback)
+#                                                              and 1 nomination;
+#   every night: one application, so a broken form never goes unnoticed for days.
+# A failure opens (or comments on) the issue "Live form check failed"; the next pass closes it.
+# Needs the secret LIVE_TEST_SA_KEY: the JSON key of the service account that writes the forms Sheet.
+
+on:
+  workflow_run:
+    workflows: [Deploy to GitHub Pages, Deploy forms Worker, Deploy Apps Script backend]
+    types: [completed]
+  schedule:
+    - cron: '23 3 * * *'   # 04:23 Prague winter time
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: full = 2 applications + 1 nomination, simple = 1 application
+        type: choice
+        options: [full, simple]
+        default: full
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: live-check   # never two runs writing to the Sheet at once
+  cancel-in-progress: false
+
+jobs:
+  live:
+    name: Live form check
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: tests
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Install test tools
+        run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium
+      - name: Live check (real site, real backends, real Sheet; test rows deleted afterwards)
+        env:
+          LIVE_TEST_SA_KEY: ${{ secrets.LIVE_TEST_SA_KEY }}
+          LIVE_MODE: ${{ github.event_name == 'schedule' && 'simple' || inputs.mode || 'full' }}
+        run: npm run live
+      - name: Report in an issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ job.status }}
+        run: |
+          title="Live form check failed"
+          url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number -q '.[0].number')
+          if [ "$OUTCOME" = "success" ]; then
+            [ -n "$n" ] && gh issue close "$n" --repo "$GITHUB_REPOSITORY" --comment "Passes again: $url"
+          elif [ -n "$n" ]; then
+            gh issue comment "$n" --repo "$GITHUB_REPOSITORY" --body "Failed again ($GITHUB_EVENT_NAME): $url"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "The live check of the forms on v4air.eu failed ($GITHUB_EVENT_NAME). The forms may not be saving answers. Open the run for details: $url"
+          fi
+          true
